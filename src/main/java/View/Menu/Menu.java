@@ -10,15 +10,20 @@ public abstract class Menu {
     private HashMap<Integer, Menu> subMenus;
     protected static Scanner scanner;
 
-    public static void setScanner(Scanner scanner) {
-        Menu.scanner = scanner;
-    }
-
     public Menu(String name, Menu parentMenu)
     {
         this.name = name;
         this.parentMenu = parentMenu;
         subMenus = new HashMap<Integer, Menu>();
+    }
+
+    public static void setScanner(Scanner scanner) {
+        Menu.scanner = scanner;
+    }
+
+    public void addToSubMenus(int menuNumber, Menu menu)
+    {
+        subMenus.put(menuNumber, menu);
     }
 
     public void show()
@@ -52,18 +57,18 @@ public abstract class Menu {
         }
         if(input == this.subMenus.size() + 1)
         {
-            if(parentMenu == null)
+            if(this.parentMenu == null)
             {
                 System.exit(1);
             }
             else {
-                parentMenu.show();
-                parentMenu.execute();
+                this.parentMenu.show();
+                this.parentMenu.execute();
             }
         }
         else{
-            subMenus.get(input).show();
-            subMenus.get(input).execute();
+            this.subMenus.get(input).show();
+            this.subMenus.get(input).execute();
         }
     }
 }
