@@ -2,13 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9610a36b-aa98-4cc2-966a-bf2d86b17a51" name="Default Changelist" comment="Basic Account setting And LogIN">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Controller/Database.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Model/AdminAccount.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Model/BuyerAccount.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Model/SellerAccount.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/View/Menu/Menu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/AccountManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/AccountManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Account.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/View/MainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/View/Menu/MainMenu.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,9 +38,7 @@
     </option>
   </component>
   <component name="ProjectId" id="1ajAdbWAllJPSstdgzCpEmPwjC7" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
-    <ConfirmationsSetting value="2" id="Add" />
-  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -52,8 +48,6 @@
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="SvnConfiguration">
@@ -66,10 +60,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1587238717466</updated>
-      <workItem from="1587288353773" duration="420000" />
-      <workItem from="1587289513242" duration="1775000" />
-      <workItem from="1587291416442" duration="1575000" />
-      <workItem from="1587293245198" duration="297000" />
     </task>
     <task id="LOCAL-00001" summary="get ready">
       <created>1587239260289</created>
@@ -78,42 +68,21 @@
       <option name="project" value="LOCAL" />
       <updated>1587239260289</updated>
     </task>
-    <task id="LOCAL-00002" summary="Basic class for Account">
-      <created>1587288621935</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1587288621935</updated>
-    </task>
-    <option name="localTasksCounter" value="3" />
+    <option name="localTasksCounter" value="2" />
     <servers />
-  </component>
-  <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="get ready" />
-    <MESSAGE value="Basic class for Account" />
-    <MESSAGE value="Basic Account setting And LogIN" />
-    <option name="LAST_COMMIT_MESSAGE" value="Basic Account setting And LogIN" />
+    <option name="LAST_COMMIT_MESSAGE" value="get ready" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="488" y="68" key="#com.intellij.ide.util.MemberChooser" timestamp="1587292514546">
-      <screen x="0" y="0" width="1366" height="738" />
+    <state x="531" y="251" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1587397397484">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="488" y="68" key="#com.intellij.ide.util.MemberChooser/0.0.1366.738@0.0.1366.738" timestamp="1587292514546" />
-    <state x="531" y="256" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1587288436196">
-      <screen x="0" y="0" width="1366" height="738" />
+    <state x="531" y="251" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1366.728@0.0.1366.728" timestamp="1587397397484" />
+    <state x="337" y="0" key="CommitChangelistDialog2" timestamp="1587400400847">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="531" y="256" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1366.738@0.0.1366.738" timestamp="1587288436196" />
-    <state x="337" y="0" key="CommitChangelistDialog2" timestamp="1587293587655">
-      <screen x="0" y="0" width="1366" height="738" />
-    </state>
-    <state x="337" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1587239259791" />
-    <state x="337" y="0" key="CommitChangelistDialog2/0.0.1366.738@0.0.1366.738" timestamp="1587293587655" />
-    <state x="275" y="100" key="Vcs.Push.Dialog.v2" timestamp="1587293605299">
-      <screen x="0" y="0" width="1366" height="738" />
-    </state>
-    <state x="275" y="100" key="Vcs.Push.Dialog.v2/0.0.1366.738@0.0.1366.738" timestamp="1587293605299" />
+    <state x="337" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1587400400847" />
   </component>
 </project>
