@@ -2,11 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9610a36b-aa98-4cc2-966a-bf2d86b17a51" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/Database.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/AccountManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/AccountManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Model/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Account.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Model/AdminAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/AdminAccount.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/BuyerAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/BuyerAccount.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/SellerAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/SellerAccount.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -119,7 +120,14 @@
       <option name="project" value="LOCAL" />
       <updated>1587829131002</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="add Account Constructor">
+      <created>1587844054620</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1587844054620</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -131,13 +139,14 @@
     <MESSAGE value="add LoginMenu and make some changes in Menu class &amp; MainMenu class" />
     <MESSAGE value="add ViewCartMenu and BuyerMenu" />
     <MESSAGE value="make PersonalInfoMenu and make some changes" />
-    <option name="LAST_COMMIT_MESSAGE" value="make PersonalInfoMenu and make some changes" />
+    <MESSAGE value="add Account Constructor" />
+    <option name="LAST_COMMIT_MESSAGE" value="add Account Constructor" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="488" y="72" key="#com.intellij.ide.util.MemberChooser" timestamp="1587843721762">
+    <state x="488" y="72" key="#com.intellij.ide.util.MemberChooser" timestamp="1587846887653">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="488" y="72" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1587843721762" />
+    <state x="488" y="72" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1587846887653" />
     <state x="531" y="251" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1587840035588">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -147,10 +156,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="263" y="17" key="#com.intellij.openapi.projectRoots.ui.ProjectJdksEditor/0.0.1366.728@0.0.1366.728" timestamp="1587840031430" />
-    <state x="360" y="57" key="CommitChangelistDialog2" timestamp="1587844006306">
+    <state x="360" y="57" key="CommitChangelistDialog2" timestamp="1587844051182">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="360" y="57" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1587844006306" />
+    <state x="360" y="57" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1587844051182" />
     <state width="1322" height="174" key="GridCell.Tab.0.bottom" timestamp="1587836039732">
       <screen x="0" y="0" width="1366" height="728" />
     </state>

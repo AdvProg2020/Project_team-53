@@ -1,6 +1,8 @@
 package Controller;
 
 import Model.Account;
+import Model.AdminAccount;
+import Model.BuyerAccount;
 import Model.SellerAccount;
 
 public class AccountManager {
@@ -77,5 +79,16 @@ public class AccountManager {
             return "You haven't logged in";
         loggedInAccount = null ;
         return "logged out successfully";
+    }
+
+    public static void register(String role,String username, String firstname, String lastName, String email, String phoneNumber, String password, int credit, String company) throws Exception {
+        if (role.equalsIgnoreCase("Buyer"))
+            Database.addAllAccounts(new BuyerAccount(username, firstname, lastName, password, email, phoneNumber, credit));
+        else if (role.equalsIgnoreCase("Seller"))
+            Database.addAllAccounts(new SellerAccount(username, firstname, lastName, password, email, phoneNumber, credit, company));
+        else if (role.equalsIgnoreCase("AdminAccount"))
+            Database.addAllAccounts(new AdminAccount(username, firstname, lastName, password, email, phoneNumber, credit));
+        else throw new Exception("role is invalid!");
+
     }
 }

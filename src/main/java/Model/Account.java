@@ -4,6 +4,7 @@ import Controller.Database;
 
 public abstract class Account {
     protected String username;
+    protected String firstName;
     protected String lastName;
     protected String password;
     protected String email;
@@ -11,14 +12,14 @@ public abstract class Account {
     protected int credit;
 
 
-    public Account(String username, String lastName, String password, String email, String phoneNumber, int credit) {
+    public Account(String username, String firstName, String lastName, String password, String email, String phoneNumber, int credit) {
         this.username = username;
+        this.firstName = firstName;
         this.lastName = lastName;
         this.password = password;
         this.email = email;
         this.phoneNumber = phoneNumber;
         this.credit = credit;
-        Database.addAllAccounts(this);
     }
 
     public String getUsername() {
