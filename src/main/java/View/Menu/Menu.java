@@ -12,7 +12,7 @@ public abstract class Menu {
     private HashMap<Integer, Menu> subMenus;
     protected static Scanner scanner;
 
-    protected Matcher getMatcher(String regex, String input)
+    protected static Matcher getMatcher(String input, String regex)
     {
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(input);
@@ -53,7 +53,8 @@ public abstract class Menu {
     public void execute(){
         int input;
         try {
-            input = Integer.parseInt(scanner.nextLine());
+            String inputInString = scanner.nextLine();
+            input = Integer.parseInt(inputInString);
             if((input > this.subMenus.size() + 1) || (input < 1))
             {
                 throw new Exception("invalid input");

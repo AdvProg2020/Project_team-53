@@ -37,20 +37,28 @@ public class PersonalInfoMenu  extends Menu{
             @Override
             public void execute()
             {
-                String input = scanner.nextLine();
+                String input;
                 try {
-                    Matcher matcher = getMatcher("[\\s*](\\S+)[\\s+](\\S+)[\\s*]", input);
-                    if(!matcher.find())
+                    input = scanner.nextLine();
+                    Matcher matcher1 = getMatcher(input, "^\\s*(\\S+)\\s+(\\S+)\\s*$");
+                    Matcher matcher2 = getMatcher(input, "^\\s*back\\s*$");
+                    if(matcher2.find())
+                    {
+                        this.parentMenu.show();
+                        this.parentMenu.execute();
+                        return;
+                    }
+                    else if(!matcher1.find())
                     {
                         throw new Exception("invalid input");
                     }
-                    AccountManager.edit(matcher.group(1), matcher.group(2));
+                    AccountManager.edit(matcher1.group(1), matcher1.group(2));
                 }
                 catch (Exception e)
                 {
-                    System.out.println("Your input is invalid.Please try again");
-                    this.execute();
+                    System.out.println(e.getMessage());
                 }
+                this.execute();
             }
         };
     }

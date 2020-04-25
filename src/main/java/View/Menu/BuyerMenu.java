@@ -4,7 +4,7 @@ public class BuyerMenu extends Menu {
 
     public BuyerMenu(Menu parentMenu) {
         super("Buyer Menu", parentMenu);
-        //todo
+        super.addToSubMenus(1,new PersonalInfoMenu(this));
         super.addToSubMenus(2, new ViewCartMenu(this));
         super.addToSubMenus(3, new ViewOrdersMenu(this));
         super.addToSubMenus(4, this.getViewBalanceMenu());
