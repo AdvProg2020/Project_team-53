@@ -2,9 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9610a36b-aa98-4cc2-966a-bf2d86b17a51" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/View/Menu/ViewOrdersMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/View/Menu/BuyerMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/View/Menu/BuyerMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/AccountManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/AccountManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Account.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/View/Menu/ViewCartMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/View/Menu/ViewCartMenu.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,7 +40,9 @@
     </option>
   </component>
   <component name="ProjectId" id="1ajAdbWAllJPSstdgzCpEmPwjC7" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -47,6 +52,8 @@
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RunManager">
@@ -73,6 +80,10 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1587238717466</updated>
+      <workItem from="1587806019097" duration="1763000" />
+      <workItem from="1587807890944" duration="1545000" />
+      <workItem from="1587816808392" duration="1762000" />
+      <workItem from="1587819186089" duration="1640000" />
     </task>
     <task id="LOCAL-00001" summary="get ready">
       <created>1587239260289</created>
@@ -105,6 +116,9 @@
     <option name="localTasksCounter" value="5" />
     <servers />
   </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="get ready" />
     <MESSAGE value="add Menu class" />
@@ -117,14 +131,19 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="488" y="72" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1587501927882" />
-    <state x="531" y="251" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1587397397484">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state x="531" y="254" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1587804065775">
+      <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="531" y="251" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1366.728@0.0.1366.728" timestamp="1587397397484" />
+    <state x="531" y="254" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1366.738@0.0.1366.738" timestamp="1587804065775" />
     <state x="337" y="0" key="CommitChangelistDialog2" timestamp="1587499865601">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="337" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1587499865601" />
+    <state x="213" y="22" key="Maven.ArtifactSearchDialog" timestamp="1587804864740">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state x="213" y="22" key="Maven.ArtifactSearchDialog/0.0.1366.738@0.0.1366.738" timestamp="1587804864740" />
     <state x="275" y="95" key="Vcs.Push.Dialog.v2" timestamp="1587499873908">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -133,9 +152,14 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="378" y="186" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1587487447797" />
-    <state x="492" y="279" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1587497520162">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state x="492" y="283" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1587806048578">
+      <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="492" y="279" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.728@0.0.1366.728" timestamp="1587497520162" />
+    <state x="492" y="283" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.738@0.0.1366.738" timestamp="1587806048578" />
+    <state x="346" y="59" width="672" height="678" key="search.everywhere.popup" timestamp="1587807079783">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state x="346" y="59" width="672" height="678" key="search.everywhere.popup/0.0.1366.738@0.0.1366.738" timestamp="1587807079783" />
   </component>
 </project>

@@ -1,7 +1,5 @@
 package View.Menu;
 
-import com.sun.tools.javac.comp.Todo;
-
 public class ViewCartMenu extends Menu{
 
     public ViewCartMenu(Menu parentMenu) {

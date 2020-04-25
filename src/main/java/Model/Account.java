@@ -1,6 +1,6 @@
 package Model;
 
-public abstract class Account {
+public class Account {
     protected String username;
     protected String lastName;
     protected String password;
