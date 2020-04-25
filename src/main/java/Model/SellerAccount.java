@@ -1,6 +1,6 @@
 package Model;
 
-public class SellerAccount {
+public class SellerAccount extends Account{
     private String company;
 
     public String getCompany() {

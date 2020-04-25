@@ -2,6 +2,8 @@ package View.Menu;
 
 import java.util.HashMap;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public abstract class Menu {
 
@@ -9,6 +11,13 @@ public abstract class Menu {
     protected Menu parentMenu;
     private HashMap<Integer, Menu> subMenus;
     protected static Scanner scanner;
+
+    protected Matcher getMatcher(String regex, String input)
+    {
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(input);
+        return matcher;
+    }
 
     public Menu(String name, Menu parentMenu)
     {

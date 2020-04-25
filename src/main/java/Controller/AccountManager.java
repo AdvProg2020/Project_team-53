@@ -13,7 +13,11 @@ public class AccountManager {
         if (!account.getPassword().equals(password))
             return "Wrong Password";
         loggedInAccount = account;
-        return "Welcom" + account.getUsername();
+        return "Welcome" + account.getUsername();
+    }
+
+    public static Account getLoggedInAccount() {
+        return loggedInAccount;
     }
 
     public static String edit(String field , String changeTo){
