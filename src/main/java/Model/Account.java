@@ -1,12 +1,25 @@
 package Model;
 
-public class Account {
+import Controller.Database;
+
+public abstract class Account {
     protected String username;
     protected String lastName;
     protected String password;
     protected String email;
     protected String phoneNumber;
     protected int credit;
+
+
+    public Account(String username, String lastName, String password, String email, String phoneNumber, int credit) {
+        this.username = username;
+        this.lastName = lastName;
+        this.password = password;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+        this.credit = credit;
+        Database.addAllAccounts(this);
+    }
 
     public String getUsername() {
         return username;

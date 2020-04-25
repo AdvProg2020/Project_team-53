@@ -14,4 +14,8 @@ public class Database {
         }
         return null;
     }
+
+    public static void addAllAccounts(Account account){
+        allAccounts.add(account);
+    }
 }
