@@ -2,15 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9610a36b-aa98-4cc2-966a-bf2d86b17a51" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/View/Menu/AminMenus/AdminMenu.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/View/Menu/AminMenus/MangeUsersMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/View/Menu/AminMenus/ViewDiscountCodeMenu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/AccountManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/AccountManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/View/Menu/BuyerMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/View/Menu/BuyerMenus/BuyerMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/View/Menu/AminMenus/AdminMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/View/Menu/AminMenus/AdminMenu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/View/Menu/UserMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/View/Menu/UserMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/View/Menu/ViewCartMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/View/Menu/BuyerMenus/ViewCartMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/View/Menu/ViewOrdersMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/View/Menu/BuyerMenus/ViewOrdersMenu.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -130,7 +125,14 @@
       <option name="project" value="LOCAL" />
       <updated>1587844054620</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="add AdminMenu and ManageUsersMenu and make some changes">
+      <created>1588354848210</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1588354848210</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -143,13 +145,14 @@
     <MESSAGE value="add ViewCartMenu and BuyerMenu" />
     <MESSAGE value="make PersonalInfoMenu and make some changes" />
     <MESSAGE value="add Account Constructor" />
-    <option name="LAST_COMMIT_MESSAGE" value="add Account Constructor" />
+    <MESSAGE value="add AdminMenu and ManageUsersMenu and make some changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="add AdminMenu and ManageUsersMenu and make some changes" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="488" y="72" key="#com.intellij.ide.util.MemberChooser" timestamp="1588354492508">
+    <state x="488" y="72" key="#com.intellij.ide.util.MemberChooser" timestamp="1588357270997">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="488" y="72" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1588354492508" />
+    <state x="488" y="72" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1588357270997" />
     <state x="531" y="251" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1588352125749">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -159,26 +162,26 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="263" y="17" key="#com.intellij.openapi.projectRoots.ui.ProjectJdksEditor/0.0.1366.728@0.0.1366.728" timestamp="1587840031430" />
-    <state x="360" y="57" key="CommitChangelistDialog2" timestamp="1587844051182">
+    <state x="548" y="0" key="CommitChangelistDialog2" timestamp="1588354846876">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="360" y="57" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1587844051182" />
-    <state width="1322" height="174" key="GridCell.Tab.0.bottom" timestamp="1587836039732">
+    <state x="548" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1588354846876" />
+    <state width="1322" height="174" key="GridCell.Tab.0.bottom" timestamp="1588354988679">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1322" height="174" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1587836039732" />
-    <state width="1322" height="174" key="GridCell.Tab.0.center" timestamp="1587836039731">
+    <state width="1322" height="174" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1588354988679" />
+    <state width="1322" height="174" key="GridCell.Tab.0.center" timestamp="1588354988679">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1322" height="174" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1587836039731" />
-    <state width="1322" height="174" key="GridCell.Tab.0.left" timestamp="1587836039731">
+    <state width="1322" height="174" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1588354988679" />
+    <state width="1322" height="174" key="GridCell.Tab.0.left" timestamp="1588354988678">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1322" height="174" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1587836039731" />
-    <state width="1322" height="174" key="GridCell.Tab.0.right" timestamp="1587836039731">
+    <state width="1322" height="174" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1588354988678" />
+    <state width="1322" height="174" key="GridCell.Tab.0.right" timestamp="1588354988679">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1322" height="174" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1587836039731" />
+    <state width="1322" height="174" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1588354988679" />
     <state x="213" y="22" key="Maven.ArtifactSearchDialog" timestamp="1587804864740">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
