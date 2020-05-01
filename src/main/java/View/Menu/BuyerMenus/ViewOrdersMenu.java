@@ -1,4 +1,6 @@
-package View.Menu;
+package View.Menu.BuyerMenus;
+
+import View.Menu.Menu;
 
 public class ViewOrdersMenu extends Menu {
     public ViewOrdersMenu(Menu parentMenu) {

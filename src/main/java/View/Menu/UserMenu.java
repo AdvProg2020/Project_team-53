@@ -1,11 +1,9 @@
 package View.Menu;
 
 import Controller.AccountManager;
-import Model.Account;
 import Model.BuyerAccount;
 import Model.SellerAccount;
-
-import java.awt.image.PackedColorModel;
+import View.Menu.BuyerMenus.BuyerMenu;
 
 public class UserMenu extends Menu {
     public UserMenu(Menu parentMenu) {

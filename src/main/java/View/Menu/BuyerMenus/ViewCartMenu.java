@@ -1,6 +1,8 @@
-package View.Menu;
+package View.Menu.BuyerMenus;
 
-public class ViewCartMenu extends Menu{
+import View.Menu.Menu;
+
+public class ViewCartMenu extends Menu {
 
     public ViewCartMenu(Menu parentMenu) {
         super("View Cart Menu", parentMenu);

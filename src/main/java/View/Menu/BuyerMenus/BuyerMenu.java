@@ -1,4 +1,6 @@
-package View.Menu;
+package View.Menu.BuyerMenus;
+
+import View.Menu.*;
 
 public class BuyerMenu extends Menu {
 

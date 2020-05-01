@@ -81,13 +81,13 @@ public class AccountManager {
         return "logged out successfully";
     }
 
-    public static void register(String role,String username, String firstname, String lastName, String email, String phoneNumber, String password, int credit, String company) throws Exception {
+    public static void register(String role,String username, String firstName, String lastName, String email, String phoneNumber, String password, int credit, String company) throws Exception {
         if (role.equalsIgnoreCase("Buyer"))
-            Database.addAllAccounts(new BuyerAccount(username, firstname, lastName, password, email, phoneNumber, credit));
+            Database.addAllAccounts(new BuyerAccount(username, firstName, lastName, password, email, phoneNumber, credit));
         else if (role.equalsIgnoreCase("Seller"))
-            Database.addAllAccounts(new SellerAccount(username, firstname, lastName, password, email, phoneNumber, credit, company));
+            Database.addAllAccounts(new SellerAccount(username, firstName, lastName, password, email, phoneNumber, credit, company));
         else if (role.equalsIgnoreCase("AdminAccount"))
-            Database.addAllAccounts(new AdminAccount(username, firstname, lastName, password, email, phoneNumber, credit));
+            Database.addAllAccounts(new AdminAccount(username, firstName, lastName, password, email, phoneNumber, credit));
         else throw new Exception("role is invalid!");
 
     }
