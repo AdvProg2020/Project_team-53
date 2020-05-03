@@ -12,7 +12,7 @@ public class AdminMenu extends Menu {
         super("Admin Menu", parentMenu);
         super.addToSubMenus(1, new PersonalInfoMenu(this));
         super.addToSubMenus(2,new MangeUsersMenu(this));
-        //todo
+        super.addToSubMenus(3, new ManageAllProductsMenu(this));
         super.addToSubMenus(4, getCreateDiscountCodeMenu());
         super.addToSubMenus(5, new ViewDiscountCodeMenu(this));
         super.addToSubMenus(6, new ManageRequestsMenu(this));
