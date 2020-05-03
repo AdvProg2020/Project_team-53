@@ -4,24 +4,23 @@ import View.Menu.Menu;
 
 import java.util.regex.Matcher;
 
-public class ViewDiscountCodeMenu extends Menu {
-
-    public ViewDiscountCodeMenu(Menu parentMenu) {
-        super("View Discount Codes Menu", parentMenu);
-        super.addToSubMenus(1, this.getShowAllDiscountsMenu());
-        super.addToSubMenus(2, this.getViewDiscountCodeMenu());
-        super.addToSubMenus(3, this.getEditDiscountCodeMenu());
-        super.addToSubMenus(4, this.getRemoveDiscountCodeMenu());
+public class ManageRequestsMenu extends Menu {
+    public ManageRequestsMenu(Menu parentMenu) {
+        super("Manage Requests Menu", parentMenu);
+        super.addToSubMenus(1, this.getShowAllRequestsMenu());
+        super.addToSubMenus(2, this.getRequestsDetailsMenu());
+        super.addToSubMenus(3, this.getAcceptRequestsMenu());
+        super.addToSubMenus(4, this.getDeclineRequestsMenu());
     }
 
-    private Menu getShowAllDiscountsMenu()
+    private Menu getShowAllRequestsMenu()
     {
-        return new Menu("ShowAllDiscountsMenu", this) {
+        return new Menu("Show All Requests Menu",this) {
             @Override
-            public void show()
-            {
-                System.out.println("All discounts are:\n(Enter back to return");
+            public void show() {
+                System.out.println("All requests are:\n(Enter back to return");
             }
+
             @Override
             public void execute() {
                 String input = scanner.nextLine();
@@ -45,13 +44,14 @@ public class ViewDiscountCodeMenu extends Menu {
             }
         };
     }
-    private Menu getViewDiscountCodeMenu()
+
+    private Menu getRequestsDetailsMenu()
     {
-        return new Menu("View Discount Code Menu", this) {
+        return new Menu("Requests Details Menu", this) {
             @Override
             public void show()
             {
-                System.out.println("Please enter the code\n(Enter back tp return)");
+                System.out.println("Please enter requestID\n(Enter back to return)");
             }
             @Override
             public void execute() {
@@ -76,14 +76,14 @@ public class ViewDiscountCodeMenu extends Menu {
         };
     }
 
-    private Menu getEditDiscountCodeMenu()
+    private Menu getAcceptRequestsMenu()
     {
-        return new Menu("View Discount Code Menu", this) {
+        return new Menu("Accept Requests Menu", this) {
             @Override
-            public void show()
-            {
-                System.out.println("Please enter the code\n(Enter back tp return)");
+            public void show() {
+                System.out.println("Please enter requestID\n(Enter back to return");
             }
+
             @Override
             public void execute() {
                 String input = scanner.nextLine();
@@ -107,14 +107,14 @@ public class ViewDiscountCodeMenu extends Menu {
         };
     }
 
-    private Menu getRemoveDiscountCodeMenu()
+    private Menu getDeclineRequestsMenu()
     {
-        return new Menu("View Discount Code Menu", this) {
+        return new Menu("Decline Requests Menu", this) {
             @Override
-            public void show()
-            {
-                System.out.println("Please enter the code\n(Enter back tp return)");
+            public void show() {
+                System.out.println("Please enter requestID\n(Enter back to return");
             }
+
             @Override
             public void execute() {
                 String input = scanner.nextLine();
