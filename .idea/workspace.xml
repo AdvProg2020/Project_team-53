@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9610a36b-aa98-4cc2-966a-bf2d86b17a51" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/View/Menu/AminMenus/ManageRequestsMenu.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/View/Menu/AminMenus/ManageCategoriesMenu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/View/Menu/AminMenus/AdminMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/View/Menu/AminMenus/AdminMenu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/View/Menu/AminMenus/ViewDiscountCodeMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/View/Menu/AminMenus/ViewDiscountCodeMenu.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -138,7 +139,14 @@
       <option name="project" value="LOCAL" />
       <updated>1588357658152</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="add ManageRequestsMenu and make some changes in ViewDiscountCodeMenu">
+      <created>1588522207329</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1588522207329</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -153,13 +161,14 @@
     <MESSAGE value="add Account Constructor" />
     <MESSAGE value="add AdminMenu and ManageUsersMenu and make some changes" />
     <MESSAGE value="add ViewDiscountCodeMenu and create discount method to AdminMenu" />
-    <option name="LAST_COMMIT_MESSAGE" value="add ViewDiscountCodeMenu and create discount method to AdminMenu" />
+    <MESSAGE value="add ManageRequestsMenu and make some changes in ViewDiscountCodeMenu" />
+    <option name="LAST_COMMIT_MESSAGE" value="add ManageRequestsMenu and make some changes in ViewDiscountCodeMenu" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="488" y="72" key="#com.intellij.ide.util.MemberChooser" timestamp="1588521876233">
+    <state x="488" y="72" key="#com.intellij.ide.util.MemberChooser" timestamp="1588522436676">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="488" y="72" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1588521876233" />
+    <state x="488" y="72" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1588522436676" />
     <state x="531" y="251" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1588352125749">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -169,10 +178,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="263" y="17" key="#com.intellij.openapi.projectRoots.ui.ProjectJdksEditor/0.0.1366.728@0.0.1366.728" timestamp="1587840031430" />
-    <state x="500" y="0" key="CommitChangelistDialog2" timestamp="1588357657318">
+    <state x="470" y="0" key="CommitChangelistDialog2" timestamp="1588522205414">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="500" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1588357657318" />
+    <state x="470" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1588522205414" />
     <state width="1322" height="174" key="GridCell.Tab.0.bottom" timestamp="1588380260086">
       <screen x="0" y="0" width="1366" height="728" />
     </state>

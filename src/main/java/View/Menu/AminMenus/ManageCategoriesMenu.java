@@ -4,23 +4,22 @@ import View.Menu.Menu;
 
 import java.util.regex.Matcher;
 
-public class ViewDiscountCodeMenu extends Menu {
-
-    public ViewDiscountCodeMenu(Menu parentMenu) {
-        super("View Discount Codes Menu", parentMenu);
-        super.addToSubMenus(1, this.getShowAllDiscountsMenu());
-        super.addToSubMenus(2, this.getViewDiscountCodeMenu());
-        super.addToSubMenus(3, this.getEditDiscountCodeMenu());
-        super.addToSubMenus(4, this.getRemoveDiscountCodeMenu());
+public class ManageCategoriesMenu extends Menu {
+    public ManageCategoriesMenu(Menu parentMenu) {
+        super("Manage Categories Menu ", parentMenu);
+        super.addToSubMenus(1, this.getShowAllCategoriesMenu());
+        super.addToSubMenus(2, this.getEditCategoryMenu());
+        super.addToSubMenus(3, this.getAddCategoryMenu());
+        super.addToSubMenus(4, this.getRemoveCategoryMenu());
     }
 
-    private Menu getShowAllDiscountsMenu()
+    private Menu getShowAllCategoriesMenu()
     {
-        return new Menu("Show All Discounts Menu", this) {
+        return new Menu("Show All Categories Menu", this) {
             @Override
             public void show()
             {
-                System.out.println("All discounts are:\n(Enter back to return");
+                System.out.println("All categories are:\n(Enter back to return");
             }
             @Override
             public void execute() {
@@ -45,20 +44,20 @@ public class ViewDiscountCodeMenu extends Menu {
             }
         };
     }
-    private Menu getViewDiscountCodeMenu()
+
+    private Menu getEditCategoryMenu()
     {
-        return new Menu("View Discount Code Menu", this) {
+        return new Menu("Edit Category Menu", this) {
             @Override
-            public void show()
-            {
-                System.out.println("Please enter the code\n(Enter back tp return)");
+            public void show() {
+                System.out.println("Please enter category name\n(Enter back to return");
             }
+
             @Override
             public void execute() {
                 String input = scanner.nextLine();
                 try
                 {
-                    Matcher matcher1 = getMatcher(input, "");
                     Matcher matcher2 = getMatcher(input, "^\\s*back\\s*$");
                     if(matcher2.find())
                     {
@@ -66,6 +65,8 @@ public class ViewDiscountCodeMenu extends Menu {
                         this.parentMenu.execute();
                         return;
                     }
+                    else
+                        throw new Exception("Invalid Input");
                 }
                 catch (Exception e)
                 {
@@ -76,20 +77,19 @@ public class ViewDiscountCodeMenu extends Menu {
         };
     }
 
-    private Menu getEditDiscountCodeMenu()
+    private Menu getAddCategoryMenu()
     {
-        return new Menu("Edit Discount Code Menu", this) {
+        return new Menu("Add Category Menu", this) {
             @Override
-            public void show()
-            {
-                System.out.println("Please enter the code\n(Enter back tp return)");
+            public void show() {
+                System.out.println("Please enter category name\n(Enter back to return");
             }
+
             @Override
             public void execute() {
                 String input = scanner.nextLine();
                 try
                 {
-                    Matcher matcher1 = getMatcher(input, "");
                     Matcher matcher2 = getMatcher(input, "^\\s*back\\s*$");
                     if(matcher2.find())
                     {
@@ -97,6 +97,8 @@ public class ViewDiscountCodeMenu extends Menu {
                         this.parentMenu.execute();
                         return;
                     }
+                    else
+                        throw new Exception("Invalid Input");
                 }
                 catch (Exception e)
                 {
@@ -107,20 +109,19 @@ public class ViewDiscountCodeMenu extends Menu {
         };
     }
 
-    private Menu getRemoveDiscountCodeMenu()
+    private Menu getRemoveCategoryMenu()
     {
-        return new Menu("Remove Discount Code Menu", this) {
+        return new Menu("Remove Category Menu", this) {
             @Override
-            public void show()
-            {
-                System.out.println("Please enter the code\n(Enter back tp return)");
+            public void show() {
+                System.out.println("Please enter category name\n(Enter back to return");
             }
+
             @Override
             public void execute() {
                 String input = scanner.nextLine();
                 try
                 {
-                    Matcher matcher1 = getMatcher(input, "");
                     Matcher matcher2 = getMatcher(input, "^\\s*back\\s*$");
                     if(matcher2.find())
                     {
@@ -128,6 +129,8 @@ public class ViewDiscountCodeMenu extends Menu {
                         this.parentMenu.execute();
                         return;
                     }
+                    else
+                        throw new Exception("Invalid Input");
                 }
                 catch (Exception e)
                 {

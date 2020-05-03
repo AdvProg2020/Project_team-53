@@ -15,7 +15,8 @@ public class AdminMenu extends Menu {
         //todo
         super.addToSubMenus(4, getCreateDiscountCodeMenu());
         super.addToSubMenus(5, new ViewDiscountCodeMenu(this));
-
+        super.addToSubMenus(6, new ManageRequestsMenu(this));
+        super.addToSubMenus(7, new ManageCategoriesMenu(this));
     }
 
     private Menu getCreateDiscountCodeMenu()
