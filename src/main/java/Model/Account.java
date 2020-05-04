@@ -83,4 +83,15 @@ public abstract class Account {
     public void setCredit(int credit) {
         this.credit = credit;
     }
+
+    public String showInfo(){
+        return "username='" + username + '\n' +
+                "firstName='" + firstName + '\n' +
+                "lastName='" + lastName + '\n' +
+                "email='" + email + '\n' +
+                "phoneNumber='" + phoneNumber + '\n' +
+                "credit=" + credit
+                ;
+    }
+
 }

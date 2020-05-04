@@ -2,9 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9610a36b-aa98-4cc2-966a-bf2d86b17a51" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/View/Menu/AminMenus/ManageAllProductsMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/View/Menu/AminMenus/AdminMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/View/Menu/AminMenus/AdminMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/AccountManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/AccountManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/Database.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Account.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/SellerAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/SellerAccount.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,6 +85,10 @@
       <workItem from="1587807890944" duration="1545000" />
       <workItem from="1587816808392" duration="1762000" />
       <workItem from="1587819186089" duration="1640000" />
+      <workItem from="1588527218807" duration="1220000" />
+      <workItem from="1588535634682" duration="574000" />
+      <workItem from="1588582100128" duration="1712000" />
+      <workItem from="1588583870883" duration="579000" />
     </task>
     <task id="LOCAL-00001" summary="get ready">
       <created>1587239260289</created>
@@ -172,10 +180,11 @@
     <option name="LAST_COMMIT_MESSAGE" value="add ManageCategoriesMenu and make some changes" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="488" y="72" key="#com.intellij.ide.util.MemberChooser" timestamp="1588523512644">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state x="488" y="73" key="#com.intellij.ide.util.MemberChooser" timestamp="1588584111595">
+      <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="488" y="72" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1588523512644" />
+    <state x="488" y="73" key="#com.intellij.ide.util.MemberChooser/0.0.1366.738@0.0.1366.738" timestamp="1588584111595" />
     <state x="531" y="251" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1588352125749">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -185,10 +194,11 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="263" y="17" key="#com.intellij.openapi.projectRoots.ui.ProjectJdksEditor/0.0.1366.728@0.0.1366.728" timestamp="1587840031430" />
-    <state x="470" y="0" key="CommitChangelistDialog2" timestamp="1588523128238">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state x="470" y="0" key="CommitChangelistDialog2" timestamp="1588584498166">
+      <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="470" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1588523128238" />
+    <state x="470" y="0" key="CommitChangelistDialog2/0.0.1366.738@0.0.1366.738" timestamp="1588584498166" />
     <state width="1322" height="174" key="GridCell.Tab.0.bottom" timestamp="1588523293371">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -222,9 +232,9 @@
     </state>
     <state x="492" y="279" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.728@0.0.1366.728" timestamp="1588519194711" />
     <state x="492" y="283" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.738@0.0.1366.738" timestamp="1587806048578" />
-    <state x="346" y="59" width="672" height="678" key="search.everywhere.popup" timestamp="1587807079783">
+    <state x="346" y="59" width="672" height="678" key="search.everywhere.popup" timestamp="1588583268520">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state x="346" y="59" width="672" height="678" key="search.everywhere.popup/0.0.1366.738@0.0.1366.738" timestamp="1587807079783" />
+    <state x="346" y="59" width="672" height="678" key="search.everywhere.popup/0.0.1366.738@0.0.1366.738" timestamp="1588583268520" />
   </component>
 </project>

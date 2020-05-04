@@ -18,4 +18,11 @@ public class SellerAccount extends Account{
         }
         this.company = company;
     }
+
+    @Override
+    public String showInfo() {
+        return super.showInfo() + '\n' +
+                "company=" + company;
+
+    }
 }

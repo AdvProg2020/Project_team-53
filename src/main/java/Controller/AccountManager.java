@@ -23,17 +23,6 @@ public class AccountManager {
     }
 
     public static String edit(String field , String changeTo){
-        if (field.equals("username")){
-            if (Database.getAccountByUsername(changeTo) != null){
-                return "Exist a user with this username";
-            }
-            try {
-                loggedInAccount.setUsername(changeTo);
-                return "changed successfully";
-            } catch (Exception e) {
-                return e.getMessage();
-            }
-        }
 
         if(field.equals("lastName")){
             try {
@@ -70,7 +59,14 @@ public class AccountManager {
                 return e.getMessage();
             }
         }
-
+        if (loggedInAccount instanceof SellerAccount && field.equals("company")){
+            try {
+                ((SellerAccount) loggedInAccount).setCompany(changeTo);
+                return "changed successfully";
+            } catch (Exception e){
+                return e.getMessage();
+            }
+        }
         return "Invalid field";
     }
 
@@ -90,5 +86,9 @@ public class AccountManager {
             Database.addAllAccounts(new AdminAccount(username, firstName, lastName, password, email, phoneNumber, credit));
         else throw new Exception("role is invalid!");
 
+    }
+
+    public static String viewPersonalInfo(){
+        return loggedInAccount.showInfo();
     }
 }
