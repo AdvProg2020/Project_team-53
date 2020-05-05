@@ -1,7 +1,6 @@
 package Controller;
 
 import Model.Account;
-import Model.AdminAccount;
 import Model.BuyerAccount;
 import Model.Request.NewSellerRequest;
 import Model.SellerAccount;
@@ -9,7 +8,7 @@ import Model.SellerAccount;
 public class AccountManager {
     private static Account loggedInAccount = null ;
 
-    public static String logIn(String username , String password)  {
+    public static java.lang.String logIn(String username , String password)  {
         Account account = Database.getAccountByUsername(username);
         if (account == null)
             return "No User with this name";
