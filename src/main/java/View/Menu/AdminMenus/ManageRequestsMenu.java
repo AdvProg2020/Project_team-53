@@ -108,7 +108,7 @@ public class ManageRequestsMenu extends Menu {
                     {
                         throw new Exception("invalid input");
                     }
-                    AdminManager.acceptOrRejectRequest(Integer.parseInt(matcher1.group(1)), true);
+                    System.out.println(AdminManager.acceptOrRejectRequest(Integer.parseInt(matcher1.group(1)), true));
                 }
                 catch (Exception e)
                 {
@@ -144,7 +144,7 @@ public class ManageRequestsMenu extends Menu {
                     {
                         throw new Exception("invalid input");
                     }
-                    AdminManager.acceptOrRejectRequest(Integer.parseInt(matcher1.group(1)), false);
+                    System.out.println(AdminManager.acceptOrRejectRequest(Integer.parseInt(matcher1.group(1)), false));
                 }
                 catch (Exception e)
                 {

@@ -4,8 +4,8 @@
     <list default="true" id="9610a36b-aa98-4cc2-966a-bf2d86b17a51" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/View/Menu/AdminMenus/ManageRequestsMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/View/Menu/AdminMenus/ManageRequestsMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/View/Menu/AdminMenus/MangeUsersMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/View/Menu/AdminMenus/MangeUsersMenu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/View/Menu/LoginMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/View/Menu/LoginMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/View/Menu/PersonalInfoMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/View/Menu/PersonalInfoMenu.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -174,7 +174,14 @@
       <option name="project" value="LOCAL" />
       <updated>1588668135915</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="complete ManageRequestsMenu">
+      <created>1588678350205</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1588678350205</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -194,17 +201,18 @@
     <MESSAGE value="write Account on file &amp; showInfo" />
     <MESSAGE value="Request &amp; AdminManager added" />
     <MESSAGE value="complete login menu" />
-    <option name="LAST_COMMIT_MESSAGE" value="complete login menu" />
+    <MESSAGE value="complete ManageRequestsMenu" />
+    <option name="LAST_COMMIT_MESSAGE" value="complete ManageRequestsMenu" />
   </component>
   <component name="WindowStateProjectService">
     <state x="400" y="26" key="#Main" timestamp="1588661011460">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="400" y="26" key="#Main/0.0.1366.738@0.0.1366.738" timestamp="1588661011460" />
-    <state x="488" y="73" key="#com.intellij.ide.util.MemberChooser" timestamp="1588660448715">
-      <screen x="0" y="0" width="1366" height="738" />
+    <state x="488" y="72" key="#com.intellij.ide.util.MemberChooser" timestamp="1588702247871">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="488" y="72" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1588523512644" />
+    <state x="488" y="72" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1588702247871" />
     <state x="488" y="73" key="#com.intellij.ide.util.MemberChooser/0.0.1366.738@0.0.1366.738" timestamp="1588660448715" />
     <state x="531" y="251" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1588663770057">
       <screen x="0" y="0" width="1366" height="728" />
@@ -215,10 +223,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="263" y="17" key="#com.intellij.openapi.projectRoots.ui.ProjectJdksEditor/0.0.1366.728@0.0.1366.728" timestamp="1587840031430" />
-    <state x="470" y="0" key="CommitChangelistDialog2" timestamp="1588668133619">
+    <state x="470" y="0" key="CommitChangelistDialog2" timestamp="1588678349115">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="470" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1588668133619" />
+    <state x="470" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1588678349115" />
     <state x="470" y="0" key="CommitChangelistDialog2/0.0.1366.738@0.0.1366.738" timestamp="1588661622300" />
     <state x="463" y="122" key="FileChooserDialogImpl" timestamp="1588658182682">
       <screen x="0" y="0" width="1366" height="738" />

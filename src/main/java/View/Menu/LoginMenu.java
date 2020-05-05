@@ -20,7 +20,7 @@ public class LoginMenu extends Menu{
             @Override
             public void show()
             {
-                System.out.println("Please enter role,user name,first name,last name,email,phone number,password,credit in order");
+                System.out.println("Please enter role,username,first name,last name,email,phone number,password,credit in order");
                 System.out.println("Enter back to return");
             }
             @Override
