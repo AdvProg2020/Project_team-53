@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9610a36b-aa98-4cc2-966a-bf2d86b17a51" name="Default Changelist" comment="Request &amp; AdminManager added">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Controller/AdminManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Model/Request/NewSellerRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Model/Request/Request.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="9610a36b-aa98-4cc2-966a-bf2d86b17a51" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/src/main/java/Controller/AccountManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/AccountManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Controller/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/Database.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,6 +66,18 @@
         <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -200,19 +209,19 @@
     </state>
     <state x="488" y="72" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1588523512644" />
     <state x="488" y="73" key="#com.intellij.ide.util.MemberChooser/0.0.1366.738@0.0.1366.738" timestamp="1588660448715" />
-    <state x="531" y="251" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1588352125749">
+    <state x="531" y="251" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1588662200917">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="531" y="251" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1366.728@0.0.1366.728" timestamp="1588352125749" />
+    <state x="531" y="251" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1366.728@0.0.1366.728" timestamp="1588662200917" />
     <state x="531" y="254" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1366.738@0.0.1366.738" timestamp="1587804065775" />
     <state x="263" y="17" key="#com.intellij.openapi.projectRoots.ui.ProjectJdksEditor" timestamp="1587840031430">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="263" y="17" key="#com.intellij.openapi.projectRoots.ui.ProjectJdksEditor/0.0.1366.728@0.0.1366.728" timestamp="1587840031430" />
-    <state x="470" y="0" key="CommitChangelistDialog2" timestamp="1588661622300">
-      <screen x="0" y="0" width="1366" height="738" />
+    <state x="470" y="0" key="CommitChangelistDialog2" timestamp="1588670204982">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="470" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1588523128238" />
+    <state x="470" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1588670204982" />
     <state x="470" y="0" key="CommitChangelistDialog2/0.0.1366.738@0.0.1366.738" timestamp="1588661622300" />
     <state x="463" y="122" key="FileChooserDialogImpl" timestamp="1588658182682">
       <screen x="0" y="0" width="1366" height="738" />
@@ -238,9 +247,10 @@
     </state>
     <state width="1322" height="174" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1588523293371" />
     <state width="661" height="177" key="GridCell.Tab.0.right/0.0.1366.738@0.0.1366.738" timestamp="1588661058037" />
-    <state x="213" y="22" key="Maven.ArtifactSearchDialog" timestamp="1587804864740">
-      <screen x="0" y="0" width="1366" height="738" />
+    <state x="213" y="22" key="Maven.ArtifactSearchDialog" timestamp="1588668858067">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
+    <state x="213" y="22" key="Maven.ArtifactSearchDialog/0.0.1366.728@0.0.1366.728" timestamp="1588668858067" />
     <state x="213" y="22" key="Maven.ArtifactSearchDialog/0.0.1366.738@0.0.1366.738" timestamp="1587804864740" />
     <state x="275" y="96" key="Vcs.Push.Dialog.v2" timestamp="1588584543963">
       <screen x="0" y="0" width="1366" height="738" />

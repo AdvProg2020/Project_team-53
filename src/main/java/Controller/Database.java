@@ -91,4 +91,12 @@ public class Database {
     public static void removeAccount(Account account) {
         allAccounts.remove(account);
     }
+
+    public static void initialize(){
+        for (Account account : allAccounts) {
+            if (account instanceof AdminAccount && account.getUsername().equals("Admin"))
+                return;
+        }
+     allAccounts.add(new AdminAccount("Admin", "Admin", "Admin", "Admin", "Admin@gmail.com", "00000000", 0));
+    }
 }
