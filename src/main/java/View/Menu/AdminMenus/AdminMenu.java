@@ -1,6 +1,5 @@
-package View.Menu.AminMenus;
+package View.Menu.AdminMenus;
 
-import Controller.AccountManager;
 import View.Menu.Menu;
 import View.Menu.PersonalInfoMenu;
 

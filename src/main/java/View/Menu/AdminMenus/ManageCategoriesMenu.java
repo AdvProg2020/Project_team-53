@@ -1,24 +1,56 @@
-package View.Menu.AminMenus;
+package View.Menu.AdminMenus;
 
 import View.Menu.Menu;
 
 import java.util.regex.Matcher;
 
-public class ManageRequestsMenu extends Menu {
-    public ManageRequestsMenu(Menu parentMenu) {
-        super("Manage Requests Menu", parentMenu);
-        super.addToSubMenus(1, this.getShowAllRequestsMenu());
-        super.addToSubMenus(2, this.getRequestsDetailsMenu());
-        super.addToSubMenus(3, this.getAcceptRequestsMenu());
-        super.addToSubMenus(4, this.getDeclineRequestsMenu());
+public class ManageCategoriesMenu extends Menu {
+    public ManageCategoriesMenu(Menu parentMenu) {
+        super("Manage Categories Menu ", parentMenu);
+        super.addToSubMenus(1, this.getShowAllCategoriesMenu());
+        super.addToSubMenus(2, this.getEditCategoryMenu());
+        super.addToSubMenus(3, this.getAddCategoryMenu());
+        super.addToSubMenus(4, this.getRemoveCategoryMenu());
     }
 
-    private Menu getShowAllRequestsMenu()
+    private Menu getShowAllCategoriesMenu()
     {
-        return new Menu("Show All Requests Menu",this) {
+        return new Menu("Show All Categories Menu", this) {
+            @Override
+            public void show()
+            {
+                System.out.println("All categories are:\n(Enter back to return");
+            }
+            @Override
+            public void execute() {
+                String input = scanner.nextLine();
+                try
+                {
+                    Matcher matcher2 = getMatcher(input, "^\\s*back\\s*$");
+                    if(matcher2.find())
+                    {
+                        this.parentMenu.show();
+                        this.parentMenu.execute();
+                        return;
+                    }
+                    else
+                        throw new Exception("Invalid Input");
+                }
+                catch (Exception e)
+                {
+                    System.out.println(e.getMessage());
+                }
+                this.execute();
+            }
+        };
+    }
+
+    private Menu getEditCategoryMenu()
+    {
+        return new Menu("Edit Category Menu", this) {
             @Override
             public void show() {
-                System.out.println("All requests are:\n(Enter back to return");
+                System.out.println("Please enter category name\n(Enter back to return");
             }
 
             @Override
@@ -45,20 +77,19 @@ public class ManageRequestsMenu extends Menu {
         };
     }
 
-    private Menu getRequestsDetailsMenu()
+    private Menu getAddCategoryMenu()
     {
-        return new Menu("Requests Details Menu", this) {
+        return new Menu("Add Category Menu", this) {
             @Override
-            public void show()
-            {
-                System.out.println("Please enter requestID\n(Enter back to return)");
+            public void show() {
+                System.out.println("Please enter category name\n(Enter back to return");
             }
+
             @Override
             public void execute() {
                 String input = scanner.nextLine();
                 try
                 {
-                    Matcher matcher1 = getMatcher(input, "");
                     Matcher matcher2 = getMatcher(input, "^\\s*back\\s*$");
                     if(matcher2.find())
                     {
@@ -66,6 +97,8 @@ public class ManageRequestsMenu extends Menu {
                         this.parentMenu.execute();
                         return;
                     }
+                    else
+                        throw new Exception("Invalid Input");
                 }
                 catch (Exception e)
                 {
@@ -76,12 +109,12 @@ public class ManageRequestsMenu extends Menu {
         };
     }
 
-    private Menu getAcceptRequestsMenu()
+    private Menu getRemoveCategoryMenu()
     {
-        return new Menu("Accept Requests Menu", this) {
+        return new Menu("Remove Category Menu", this) {
             @Override
             public void show() {
-                System.out.println("Please enter requestID\n(Enter back to return");
+                System.out.println("Please enter category name\n(Enter back to return");
             }
 
             @Override
@@ -89,7 +122,6 @@ public class ManageRequestsMenu extends Menu {
                 String input = scanner.nextLine();
                 try
                 {
-                    Matcher matcher1 = getMatcher(input, "");
                     Matcher matcher2 = getMatcher(input, "^\\s*back\\s*$");
                     if(matcher2.find())
                     {
@@ -97,37 +129,8 @@ public class ManageRequestsMenu extends Menu {
                         this.parentMenu.execute();
                         return;
                     }
-                }
-                catch (Exception e)
-                {
-                    System.out.println(e.getMessage());
-                }
-                this.execute();
-            }
-        };
-    }
-
-    private Menu getDeclineRequestsMenu()
-    {
-        return new Menu("Decline Requests Menu", this) {
-            @Override
-            public void show() {
-                System.out.println("Please enter requestID\n(Enter back to return");
-            }
-
-            @Override
-            public void execute() {
-                String input = scanner.nextLine();
-                try
-                {
-                    Matcher matcher1 = getMatcher(input, "");
-                    Matcher matcher2 = getMatcher(input, "^\\s*back\\s*$");
-                    if(matcher2.find())
-                    {
-                        this.parentMenu.show();
-                        this.parentMenu.execute();
-                        return;
-                    }
+                    else
+                        throw new Exception("Invalid Input");
                 }
                 catch (Exception e)
                 {

@@ -1,9 +1,7 @@
-package View.Menu.AminMenus;
+package View.Menu.AdminMenus;
 
-import View.Menu.MainMenu;
 import View.Menu.Menu;
 
-import java.awt.event.MouseAdapter;
 import java.util.regex.Matcher;
 
 public class MangeUsersMenu extends Menu {

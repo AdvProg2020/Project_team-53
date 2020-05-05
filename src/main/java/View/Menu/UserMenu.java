@@ -3,7 +3,7 @@ package View.Menu;
 import Controller.AccountManager;
 import Model.BuyerAccount;
 import Model.SellerAccount;
-import View.Menu.AminMenus.AdminMenu;
+import View.Menu.AdminMenus.AdminMenu;
 import View.Menu.BuyerMenus.BuyerMenu;
 
 public class UserMenu extends Menu {

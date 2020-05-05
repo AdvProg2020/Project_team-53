@@ -1,4 +1,4 @@
-package View.Menu.AminMenus;
+package View.Menu.AdminMenus;
 
 import View.Menu.Menu;
 
@@ -6,7 +6,7 @@ import java.util.regex.Matcher;
 
 public class ManageAllProductsMenu extends Menu {
     public ManageAllProductsMenu(Menu parentMenu) {
-        super(" Manage all products Menu", parentMenu);
+        super("Manage all products Menu", parentMenu);
         super.addToSubMenus(1, this.getRemoveProductMenu());
     }
 
