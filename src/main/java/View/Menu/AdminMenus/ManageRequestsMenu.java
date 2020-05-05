@@ -1,5 +1,6 @@
 package View.Menu.AdminMenus;
 
+import Controller.AdminManager;
 import View.Menu.Menu;
 
 import java.util.regex.Matcher;
@@ -23,6 +24,7 @@ public class ManageRequestsMenu extends Menu {
 
             @Override
             public void execute() {
+                System.out.println(AdminManager.showAllRequests());
                 String input = scanner.nextLine();
                 try
                 {
@@ -58,7 +60,7 @@ public class ManageRequestsMenu extends Menu {
                 String input = scanner.nextLine();
                 try
                 {
-                    Matcher matcher1 = getMatcher(input, "");
+                    Matcher matcher1 = getMatcher(input, "^\\s*(\\d+)\\s*$");
                     Matcher matcher2 = getMatcher(input, "^\\s*back\\s*$");
                     if(matcher2.find())
                     {
@@ -66,6 +68,11 @@ public class ManageRequestsMenu extends Menu {
                         this.parentMenu.execute();
                         return;
                     }
+                    else if(!matcher1.find())
+                    {
+                        throw new Exception("invalid input");
+                    }
+                    System.out.println(AdminManager.showRequestByiId(Integer.parseInt(matcher1.group(1))));
                 }
                 catch (Exception e)
                 {
@@ -89,7 +96,7 @@ public class ManageRequestsMenu extends Menu {
                 String input = scanner.nextLine();
                 try
                 {
-                    Matcher matcher1 = getMatcher(input, "");
+                    Matcher matcher1 = getMatcher(input, "^\\s*(\\d+)\\s*$");
                     Matcher matcher2 = getMatcher(input, "^\\s*back\\s*$");
                     if(matcher2.find())
                     {
@@ -97,6 +104,11 @@ public class ManageRequestsMenu extends Menu {
                         this.parentMenu.execute();
                         return;
                     }
+                    else if(!matcher1.find())
+                    {
+                        throw new Exception("invalid input");
+                    }
+                    AdminManager.acceptOrRejectRequest(Integer.parseInt(matcher1.group(1)), true);
                 }
                 catch (Exception e)
                 {
@@ -120,7 +132,7 @@ public class ManageRequestsMenu extends Menu {
                 String input = scanner.nextLine();
                 try
                 {
-                    Matcher matcher1 = getMatcher(input, "");
+                    Matcher matcher1 = getMatcher(input, "^\\s*(\\d+)\\s*$");
                     Matcher matcher2 = getMatcher(input, "^\\s*back\\s*$");
                     if(matcher2.find())
                     {
@@ -128,6 +140,11 @@ public class ManageRequestsMenu extends Menu {
                         this.parentMenu.execute();
                         return;
                     }
+                    else if(!matcher1.find())
+                    {
+                        throw new Exception("invalid input");
+                    }
+                    AdminManager.acceptOrRejectRequest(Integer.parseInt(matcher1.group(1)), false);
                 }
                 catch (Exception e)
                 {

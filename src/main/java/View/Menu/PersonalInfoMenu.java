@@ -15,13 +15,32 @@ public class PersonalInfoMenu  extends Menu{
         return new Menu("View My Personal Info Menu", this) {
             @Override
             public void show() {
-                //todo
+                System.out.println("Your personal information's are:\n(Enter back to return)");
             }
 
             @Override
             public void execute()
             {
-                //todo
+                AccountManager.viewPersonalInfo();
+                String input = scanner.nextLine();
+                try
+                {
+                    Matcher matcher2 = getMatcher(input, "^\\s*back\\s*$");
+                    if(matcher2.find())
+                    {
+                        this.parentMenu.show();
+                        this.parentMenu.execute();
+                        return;
+                    }
+                    else{
+                        throw new Exception("invalid input");
+                    }
+                }
+                catch (Exception e)
+                {
+                    System.out.println(e.getMessage());
+                }
+                this.execute();
             }
         };
     }
