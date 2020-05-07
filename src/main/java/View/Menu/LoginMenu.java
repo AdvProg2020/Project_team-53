@@ -21,7 +21,7 @@ public class LoginMenu extends Menu{
             public void show()
             {
                 System.out.println("Please enter role,username,first name,last name,email,phone number,password,credit in order");
-                System.out.println("Enter back to return");
+                System.out.println("(Enter back to return)");
             }
             @Override
             public void execute()

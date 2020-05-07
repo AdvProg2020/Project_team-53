@@ -8,14 +8,14 @@ import Model.SellerAccount;
 public class AccountManager {
     private static Account loggedInAccount = null ;
 
-    public static java.lang.String logIn(String username , String password)  {
+    public static String logIn(String username , String password)  {
         Account account = Database.getAccountByUsername(username);
         if (account == null)
             return "No User with this name";
         if (!account.getPassword().equals(password))
             return "Wrong Password";
         loggedInAccount = account;
-        return "Welcome" + account.getUsername();
+        return "Welcome " + account.getUsername();
     }
 
     public static Account getLoggedInAccount() {
@@ -24,7 +24,17 @@ public class AccountManager {
 
     public static String edit(String field , String changeTo){
 
-        if(field.equals("lastName")){
+        if (field.equalsIgnoreCase("firstName")) {
+            try {
+                loggedInAccount.setFirstName(changeTo);
+                return "changed successfully";
+            }
+            catch (Exception e) {
+                return e.getMessage();
+            }
+        }
+
+        if(field.equalsIgnoreCase("lastName")){
             try {
                 loggedInAccount.setLastName(changeTo);
                 return "changed successfully";
@@ -33,7 +43,7 @@ public class AccountManager {
             }
         }
 
-        if (field.equals("password")){
+        if (field.equalsIgnoreCase("password")){
             try {
                 loggedInAccount.setPassword(changeTo);
                 return "changed successfully";
@@ -42,7 +52,7 @@ public class AccountManager {
             }
         }
 
-        if(field.equals("email")){
+        if(field.equalsIgnoreCase("email")){
             try {
                 loggedInAccount.setEmail(changeTo);
                 return "changed successfully";
@@ -51,7 +61,7 @@ public class AccountManager {
             }
         }
 
-        if(field.equals("phoneNumber")){
+        if(field.equalsIgnoreCase("phoneNumber")){
             try {
                 loggedInAccount.setPhoneNumber(changeTo);
                 return "changed successfully";
@@ -59,7 +69,7 @@ public class AccountManager {
                 return e.getMessage();
             }
         }
-        if (loggedInAccount instanceof SellerAccount && field.equals("company")){
+        if (loggedInAccount instanceof SellerAccount && field.equalsIgnoreCase("company")){
             try {
                 ((SellerAccount) loggedInAccount).setCompany(changeTo);
                 return "changed successfully";

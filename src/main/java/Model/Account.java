@@ -53,6 +53,10 @@ public abstract class Account {
         this.username = username;
     }
 
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
     public void setLastName(String lastName) throws Exception{
         if (!lastName.matches("[A-Za-z]+")){
             throw new Exception("Invalid LastName");
@@ -85,12 +89,12 @@ public abstract class Account {
     }
 
     public String showInfo(){
-        return "username='" + username + '\n' +
-                "firstName='" + firstName + '\n' +
-                "lastName='" + lastName + '\n' +
-                "email='" + email + '\n' +
-                "phoneNumber='" + phoneNumber + '\n' +
-                "credit=" + credit
+        return "username='" + username + "'\n" +
+                "firstName='" + firstName + "'\n" +
+                "lastName='" + lastName + "'\n" +
+                "email='" + email + "'\n" +
+                "phoneNumber='" + phoneNumber + "'\n" +
+                "credit='" + credit + "'"
                 ;
     }
 

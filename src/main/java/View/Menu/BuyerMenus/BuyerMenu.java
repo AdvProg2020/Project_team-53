@@ -11,7 +11,6 @@ public class BuyerMenu extends Menu {
         super.addToSubMenus(3, new ViewOrdersMenu(this));
         super.addToSubMenus(4, this.getViewBalanceMenu());
         super.addToSubMenus(5, this.getViewDiscountCodesMenu());
-        super.addToSubMenus(6, new LoginMenu(this));
     }
 
     private Menu getViewBalanceMenu()

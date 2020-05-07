@@ -8,6 +8,7 @@ public class PersonalInfoMenu  extends Menu{
     public PersonalInfoMenu(Menu parentMenu) {
         super("Personal Info Menu", parentMenu);
         super.addToSubMenus(1, this.getViewMyPersonalInfoMenu());
+        super.addToSubMenus(2, this.getEditMyPersonalInfoMenu());
     }
 
     private Menu getViewMyPersonalInfoMenu()
@@ -21,7 +22,7 @@ public class PersonalInfoMenu  extends Menu{
             @Override
             public void execute()
             {
-                AccountManager.viewPersonalInfo();
+                System.out.println(AccountManager.viewPersonalInfo());
                 String input = scanner.nextLine();
                 try
                 {
@@ -45,12 +46,12 @@ public class PersonalInfoMenu  extends Menu{
         };
     }
 
-    private Menu editMyPersonalInfoMenu()
+    private Menu getEditMyPersonalInfoMenu()
     {
         return new Menu("Edit My Personal Info Menu", this) {
             @Override
             public void show() {
-                System.out.println("Please enter the field and new value of that field\n(Enter back to return");
+                System.out.println("Please enter the field and new value of that field\n(Enter back to return)");
             }
 
             @Override
@@ -71,7 +72,7 @@ public class PersonalInfoMenu  extends Menu{
                     {
                         throw new Exception("invalid input");
                     }
-                    AccountManager.edit(matcher1.group(1), matcher1.group(2));
+                    System.out.println(AccountManager.edit(matcher1.group(1), matcher1.group(2)));
                 }
                 catch (Exception e)
                 {
