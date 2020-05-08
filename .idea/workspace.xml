@@ -2,11 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9610a36b-aa98-4cc2-966a-bf2d86b17a51" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/View/Menu/SellerMenus/MangeProductsMenu.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/View/Menu/SellerMenus/ViewOffsMenu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/View/Menu/SellerMenus/SellerMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/View/Menu/SellerMenus/SellerMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/ControllerTest/AccountManagerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ControllerTest/AccountManagerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/View/Menu/AdminMenus/AdminMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/View/Menu/AdminMenus/AdminMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/View/Menu/AdminMenus/ManageAllProductsMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/View/Menu/AdminMenus/ManageAllProductsMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/View/Menu/AdminMenus/ManageCategoriesMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/View/Menu/AdminMenus/ManageCategoriesMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/View/Menu/AdminMenus/ManageRequestsMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/View/Menu/AdminMenus/ManageRequestsMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/View/Menu/AdminMenus/MangeUsersMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/View/Menu/AdminMenus/MangeUsersMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/View/Menu/AdminMenus/ViewDiscountCodeMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/View/Menu/AdminMenus/ViewDiscountCodeMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/View/Menu/SellerMenus/MangeProductsMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/View/Menu/SellerMenus/MangeProductsMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/View/Menu/SellerMenus/ViewOffsMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/View/Menu/SellerMenus/ViewOffsMenu.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -253,7 +257,14 @@
       <option name="project" value="LOCAL" />
       <updated>1588943445242</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="add MangeProductsMenu">
+      <created>1588962772411</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1588962772411</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -279,7 +290,8 @@
     <MESSAGE value="add SellerMenu" />
     <MESSAGE value="start unit testing" />
     <MESSAGE value="add JMockit library and add new test" />
-    <option name="LAST_COMMIT_MESSAGE" value="add JMockit library and add new test" />
+    <MESSAGE value="add MangeProductsMenu" />
+    <option name="LAST_COMMIT_MESSAGE" value="add MangeProductsMenu" />
   </component>
   <component name="WindowStateProjectService">
     <state x="400" y="26" key="#Main" timestamp="1588661011460">
@@ -304,10 +316,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="263" y="17" key="#com.intellij.openapi.projectRoots.ui.ProjectJdksEditor/0.0.1366.728@0.0.1366.728" timestamp="1587840031430" />
-    <state x="458" y="0" key="CommitChangelistDialog2" timestamp="1588943443550">
+    <state x="458" y="0" key="CommitChangelistDialog2" timestamp="1588962771527">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="458" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1588943443550" />
+    <state x="458" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1588962771527" />
     <state x="470" y="0" key="CommitChangelistDialog2/0.0.1366.738@0.0.1366.738" timestamp="1588661622300" />
     <state x="463" y="122" key="FileChooserDialogImpl" timestamp="1588658182682">
       <screen x="0" y="0" width="1366" height="738" />

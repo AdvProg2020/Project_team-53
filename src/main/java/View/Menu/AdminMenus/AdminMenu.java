@@ -24,7 +24,7 @@ public class AdminMenu extends Menu {
             @Override
             public void show()
             {
-                System.out.println("Please enter features\n(Enter back to return");
+                System.out.println("Please enter features\n(Enter back to return)");
             }
             @Override
             public void execute() {

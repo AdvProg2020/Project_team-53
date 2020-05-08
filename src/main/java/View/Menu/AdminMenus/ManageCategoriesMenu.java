@@ -19,7 +19,7 @@ public class ManageCategoriesMenu extends Menu {
             @Override
             public void show()
             {
-                System.out.println("All categories are:\n(Enter back to return");
+                System.out.println("All categories are:\n(Enter back to return)");
             }
             @Override
             public void execute() {
@@ -50,7 +50,7 @@ public class ManageCategoriesMenu extends Menu {
         return new Menu("Edit Category Menu", this) {
             @Override
             public void show() {
-                System.out.println("Please enter category name\n(Enter back to return");
+                System.out.println("Please enter category name\n(Enter back to return)");
             }
 
             @Override
@@ -82,7 +82,7 @@ public class ManageCategoriesMenu extends Menu {
         return new Menu("Add Category Menu", this) {
             @Override
             public void show() {
-                System.out.println("Please enter category name\n(Enter back to return");
+                System.out.println("Please enter category name\n(Enter back to return)");
             }
 
             @Override
@@ -114,7 +114,7 @@ public class ManageCategoriesMenu extends Menu {
         return new Menu("Remove Category Menu", this) {
             @Override
             public void show() {
-                System.out.println("Please enter category name\n(Enter back to return");
+                System.out.println("Please enter category name\n(Enter back to return)");
             }
 
             @Override

@@ -19,7 +19,7 @@ public class ManageRequestsMenu extends Menu {
         return new Menu("Show All Requests Menu",this) {
             @Override
             public void show() {
-                System.out.println("All requests are:\n(Enter back to return");
+                System.out.println("All requests are:\n(Enter back to return)");
             }
 
             @Override
@@ -88,7 +88,7 @@ public class ManageRequestsMenu extends Menu {
         return new Menu("Accept Requests Menu", this) {
             @Override
             public void show() {
-                System.out.println("Please enter requestID\n(Enter back to return");
+                System.out.println("Please enter requestID\n(Enter back to return)");
             }
 
             @Override
@@ -124,7 +124,7 @@ public class ManageRequestsMenu extends Menu {
         return new Menu("Decline Requests Menu", this) {
             @Override
             public void show() {
-                System.out.println("Please enter requestID\n(Enter back to return");
+                System.out.println("Please enter requestID\n(Enter back to return)");
             }
 
             @Override

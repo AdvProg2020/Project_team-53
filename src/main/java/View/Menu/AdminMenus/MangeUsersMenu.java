@@ -20,7 +20,7 @@ public class MangeUsersMenu extends Menu {
         return new Menu("VieW All Users Menu", this) {
             @Override
             public void show() {
-                System.out.println("All users are:\n(Enter back to return");
+                System.out.println("All users are:\n(Enter back to return)");
             }
 
             @Override
@@ -54,7 +54,7 @@ public class MangeUsersMenu extends Menu {
         return new Menu("View users Menu", this) {
             @Override
             public void show() {
-                System.out.println("Please enter username\n(Enter back to return");
+                System.out.println("Please enter username\n(Enter back to return)");
             }
 
             @Override
@@ -157,7 +157,7 @@ public class MangeUsersMenu extends Menu {
             @Override
             public void show()
             {
-                System.out.println("Please enter username,first name,last name,email,phone number,password,credit in order\n(Enter back to return");
+                System.out.println("Please enter username,first name,last name,email,phone number,password,credit in order\n(Enter back to return)");
             }
 
             @Override

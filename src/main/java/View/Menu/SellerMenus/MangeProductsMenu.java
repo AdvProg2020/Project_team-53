@@ -17,7 +17,7 @@ public class MangeProductsMenu extends Menu {
         return new Menu("View Product Menu", this) {
             @Override
             public void show() {
-                System.out.println("Please enter productID\n(Enter back to return");
+                System.out.println("Please enter productID\n(Enter back to return)");
             }
 
             @Override
@@ -52,7 +52,7 @@ public class MangeProductsMenu extends Menu {
         return new Menu("View Buyers Menu", this) {
             @Override
             public void show() {
-                System.out.println("Please enter productID\n(Enter back to return");
+                System.out.println("Please enter productID\n(Enter back to return)");
             }
 
             @Override
@@ -87,7 +87,7 @@ public class MangeProductsMenu extends Menu {
         return new Menu("Edit Product Menu", this) {
             @Override
             public void show() {
-                System.out.println("Please enter productID\n(Enter back to return");
+                System.out.println("Please enter productID\n(Enter back to return)");
             }
 
             @Override

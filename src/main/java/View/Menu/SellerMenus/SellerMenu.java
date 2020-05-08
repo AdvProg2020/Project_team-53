@@ -17,6 +17,8 @@ public class SellerMenu extends Menu {
         super.addToSubMenus(4, new MangeProductsMenu(this));
         super.addToSubMenus(5, this.getAddProductMenu());
         super.addToSubMenus(6, this.getRemoveProductMenu());
+        super.addToSubMenus(7, this.getShowAllCategoriesMenu());
+        super.addToSubMenus(8, new ViewOffsMenu(this));
     }
 
     private Menu getViewCompanyInformMenu()

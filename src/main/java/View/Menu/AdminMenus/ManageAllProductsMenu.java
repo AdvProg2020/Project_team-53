@@ -15,7 +15,7 @@ public class ManageAllProductsMenu extends Menu {
         return new Menu("Remove Product Menu", this) {
             @Override
             public void show() {
-                System.out.println("Please enter productId\n(Enter back to return");
+                System.out.println("Please enter productID\n(Enter back to return)");
             }
 
             @Override

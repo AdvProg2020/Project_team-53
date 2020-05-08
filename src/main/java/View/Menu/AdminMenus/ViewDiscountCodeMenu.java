@@ -20,7 +20,7 @@ public class ViewDiscountCodeMenu extends Menu {
             @Override
             public void show()
             {
-                System.out.println("All discounts are:\n(Enter back to return");
+                System.out.println("All discounts are:\n(Enter back to return)");
             }
             @Override
             public void execute() {
