@@ -1,6 +1,7 @@
 package ControllerTest;
 
 import Controller.AccountManager;
+import Model.Account;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -30,4 +31,15 @@ public class AccountManagerTest {
 
         Assert.assertEquals(expected, result);
     }
+
+    @Test
+    public void logoutTest()
+    {
+        String expected = "You haven't logged in";
+        String result = AccountManager.logOut();
+
+        Assert.assertEquals(expected, result);
+    }
+
+
 }
