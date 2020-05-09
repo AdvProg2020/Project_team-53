@@ -2,17 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9610a36b-aa98-4cc2-966a-bf2d86b17a51" name="Default Changelist" comment="Account constructor handled">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Controller/AccountManagerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/AdminManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/AdminManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Controller/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/Database.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Account.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/AdminAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/AdminAccount.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/BuyerAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/BuyerAccount.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Request/NewSellerRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Request/NewSellerRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/SellerAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/SellerAccount.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/ControllerTest/AccountManagerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ControllerTest/AccountManagerTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -65,10 +56,10 @@
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
   </component>
-  <component name="RunManager" selected="JUnit.AccountManagerTest">
+  <component name="RunManager" selected="JUnit.AccountManagerTest.loginTest2">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
-      <module name="Project" />
+      <module name="Project_team-53_Test" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -86,6 +77,22 @@
       <option name="METHOD_NAME" value="" />
       <option name="TEST_OBJECT" value="class" />
       <option name="PARAMETERS" value="" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AccountManagerTest.loginTest2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Project_team-53_Test" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ControllerTest.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ControllerTest" />
+      <option name="MAIN_CLASS_NAME" value="ControllerTest.AccountManagerTest" />
+      <option name="METHOD_NAME" value="loginTest2" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -108,9 +115,10 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.AccountManagerTest.loginTest2" />
+        <item itemvalue="Application.Main" />
         <item itemvalue="JUnit.AccountManagerTest" />
         <item itemvalue="JUnit.AccountManagerTest.registerTest1" />
-        <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
   </component>
@@ -288,7 +296,14 @@
       <option name="project" value="LOCAL" />
       <updated>1589018760333</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="Account constructor handled">
+      <created>1589022710974</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1589022710974</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -324,14 +339,19 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="280" y="20" key="#AccountManagerTest/0.0.1366.728@0.0.1366.728" timestamp="1589017236666" />
-    <state x="400" y="26" key="#Main" timestamp="1588661011460">
-      <screen x="0" y="0" width="1366" height="738" />
+    <state x="400" y="26" key="#Main" timestamp="1589035445245">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
+    <state x="400" y="26" key="#Main/0.0.1366.728@0.0.1366.728" timestamp="1589035445245" />
     <state x="400" y="26" key="#Main/0.0.1366.738@0.0.1366.738" timestamp="1588661011460" />
     <state x="275" y="21" key="#Project_Structure" timestamp="1588882477025">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="275" y="21" key="#Project_Structure/0.0.1366.728@0.0.1366.728" timestamp="1588882477025" />
+    <state x="92" y="92" width="1182" height="544" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog" timestamp="1589035445292">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="92" y="92" width="1182" height="544" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog/0.0.1366.728@0.0.1366.728" timestamp="1589035445292" />
     <state x="488" y="72" key="#com.intellij.ide.util.MemberChooser" timestamp="1588962125823">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -350,10 +370,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="479" y="224" width="408" height="288" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1366.728@0.0.1366.728" timestamp="1589019288405" />
-    <state x="458" y="0" key="CommitChangelistDialog2" timestamp="1589022667971">
+    <state x="458" y="0" key="CommitChangelistDialog2" timestamp="1589034917096">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="458" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1589022667971" />
+    <state x="458" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1589034917096" />
     <state x="470" y="0" key="CommitChangelistDialog2/0.0.1366.738@0.0.1366.738" timestamp="1588661622300" />
     <state x="92" y="92" width="1182" height="544" key="DiffContextDialog" timestamp="1589020586896">
       <screen x="0" y="0" width="1366" height="728" />
@@ -363,25 +383,25 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="463" y="122" key="FileChooserDialogImpl/0.0.1366.738@0.0.1366.738" timestamp="1588658182682" />
-    <state width="1323" height="179" key="GridCell.Tab.0.bottom" timestamp="1589022668081">
+    <state width="1323" height="179" key="GridCell.Tab.0.bottom" timestamp="1589035462338">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="179" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1589022668081" />
+    <state width="1323" height="179" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1589035462338" />
     <state width="661" height="177" key="GridCell.Tab.0.bottom/0.0.1366.738@0.0.1366.738" timestamp="1588661058037" />
-    <state width="1323" height="179" key="GridCell.Tab.0.center" timestamp="1589022668081">
+    <state width="1323" height="179" key="GridCell.Tab.0.center" timestamp="1589035462338">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="179" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1589022668081" />
+    <state width="1323" height="179" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1589035462338" />
     <state width="661" height="177" key="GridCell.Tab.0.center/0.0.1366.738@0.0.1366.738" timestamp="1588661058037" />
-    <state width="1323" height="179" key="GridCell.Tab.0.left" timestamp="1589022668081">
+    <state width="1323" height="179" key="GridCell.Tab.0.left" timestamp="1589035462338">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="179" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1589022668081" />
+    <state width="1323" height="179" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1589035462338" />
     <state width="661" height="177" key="GridCell.Tab.0.left/0.0.1366.738@0.0.1366.738" timestamp="1588661058037" />
-    <state width="1323" height="179" key="GridCell.Tab.0.right" timestamp="1589022668081">
+    <state width="1323" height="179" key="GridCell.Tab.0.right" timestamp="1589035462338">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="179" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1589022668081" />
+    <state width="1323" height="179" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1589035462338" />
     <state width="661" height="177" key="GridCell.Tab.0.right/0.0.1366.738@0.0.1366.738" timestamp="1588661058037" />
     <state x="213" y="22" key="Maven.ArtifactSearchDialog" timestamp="1589017820205">
       <screen x="0" y="0" width="1366" height="728" />

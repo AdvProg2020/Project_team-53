@@ -15,6 +15,7 @@ import java.util.ArrayList;
 public class Database {
     private static ArrayList<Account> allAccounts = new ArrayList<>();
     private static ArrayList<Request> allRequest = new ArrayList<>();
+
     public static ArrayList<Account> getAllAccounts() {
         return allAccounts;
     }
@@ -23,7 +24,7 @@ public class Database {
         return allRequest;
     }
 
-    public static Account getAccountByUsername(String username){
+    public static Account getAccountByUsername(String username) {
         for (Account account : allAccounts) {
             if (account.getUsername().equals(username))
                 return account;
@@ -31,11 +32,11 @@ public class Database {
         return null;
     }
 
-    public static void addAllAccounts(Account account){
+    public static void addAllAccounts(Account account) {
         allAccounts.add(account);
     }
 
-    public static Request getRequestById(int id){
+    public static Request getRequestById(int id) {
         for (Request request : allRequest) {
             if (request.getId() == id)
                 return request;
@@ -43,12 +44,12 @@ public class Database {
         return null;
     }
 
-    public static void addRequest(Request request){
+    public static void addRequest(Request request) {
         allRequest.add(request);
     }
 
 
-    public static void writeDataOnFile(){
+    public static void writeDataOnFile() {
         ArrayList<Account> sellers = new ArrayList<>();
         ArrayList<Account> admins = new ArrayList<>();
         ArrayList<Account> buyers = new ArrayList<>();
@@ -68,8 +69,8 @@ public class Database {
         writeArrayOnFile(buyers, "Buyers");
     }
 
-    private static void writeArrayOnFile(ArrayList<Account> arr, String name){
-        File file = new File("Data\\"+ name + ".json");
+    private static void writeArrayOnFile(ArrayList<Account> arr, String name) {
+        File file = new File("Data\\" + name + ".json");
         file.getParentFile().mkdirs();
         FileWriter fileWriter = null;
         try {
@@ -92,15 +93,15 @@ public class Database {
         allAccounts.remove(account);
     }
 
-    public static void initialize(){
+    public static void initialize() {
         for (Account account : allAccounts) {
             if (account instanceof AdminAccount && account.getUsername().equals("Admin"))
                 return;
         }
-     try {
-         allAccounts.add(new AdminAccount("Admin", "Admin", "Admin", "Admin", "Admin@gmail.com", "00000000", 0));
-     } catch (Exception e){
-         
-     }
-     }
+        try {
+            allAccounts.add(new AdminAccount("Admin", "Admin", "Admin", "Admin", "Admin@gmail.com", "00000000", 0));
+        } catch (Exception e) {
+
+        }
+    }
 }
