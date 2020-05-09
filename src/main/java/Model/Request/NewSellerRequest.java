@@ -27,7 +27,11 @@ public class NewSellerRequest extends Request {
 
     @Override
     public String acceptRequest() {
-        Database.addAllAccounts(new SellerAccount(username, firstName, lastName, password, email, phoneNumber, credit, company));
+        try {
+            Database.addAllAccounts(new SellerAccount(username, firstName, lastName, password, email, phoneNumber, credit, company));
+        } catch (Exception e){
+            return e.getMessage();
+        }
         return "New Seller account registered";
     }
 

@@ -3,7 +3,7 @@ package Model;
 public class SellerAccount extends Account{
     private String company;
 
-    public SellerAccount(String username, String firstName, String lastName, String password, String email, String phoneNumber, int credit, String company) {
+    public SellerAccount(String username, String firstName, String lastName, String password, String email, String phoneNumber, int credit, String company) throws Exception{
         super(username, firstName, lastName, password, email, phoneNumber, credit);
         this.company = company;
     }

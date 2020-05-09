@@ -27,7 +27,11 @@ public class AdminManager {
     public static String addNewAdminAccount(String username, String firstName, String lastName, String email, String phoneNumber, String password, int credit) {
         if (Database.getAccountByUsername(username) != null)
             return "Exist account with this username.";
-        Database.addAllAccounts(new AdminAccount(username, firstName, lastName, password, email, phoneNumber, credit));
+        try {
+            Database.addAllAccounts(new AdminAccount(username, firstName, lastName, password, email, phoneNumber, credit));
+        } catch (Exception e){
+            return e.getMessage();
+        }
         return "New admin account registered.";
     }
 

@@ -17,9 +17,13 @@ public class AccountManagerTest {
 
     @Test
     public void registerTest2() throws Exception{
-        String expected = "New buyer account registered.";
-        String result = AccountManager.register("buyer", "a", "b", "c", "d", "e", "f",1000, "");
-
+        String expected = "Weak or Invalid Password";
+        String result = new String();
+        try {
+            result = AccountManager.register("buyer", "a", "b", "c", "d", "e", "f",1000, "");
+        }catch (Exception e){
+            result = e.getMessage();
+        }
         Assert.assertEquals(expected, result);
     }
 

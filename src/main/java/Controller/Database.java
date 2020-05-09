@@ -97,6 +97,10 @@ public class Database {
             if (account instanceof AdminAccount && account.getUsername().equals("Admin"))
                 return;
         }
-     allAccounts.add(new AdminAccount("Admin", "Admin", "Admin", "Admin", "Admin@gmail.com", "00000000", 0));
-    }
+     try {
+         allAccounts.add(new AdminAccount("Admin", "Admin", "Admin", "Admin", "Admin@gmail.com", "00000000", 0));
+     } catch (Exception e){
+         
+     }
+     }
 }

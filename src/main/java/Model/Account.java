@@ -13,13 +13,31 @@ public abstract class Account {
 
 
     public Account(String username, String firstName, String lastName, String password, String email, String phoneNumber, int credit) throws Exception {
-        this.setUsername(username);
-        this.setFirstName(firstName);
-        this.setLastName(lastName);
-        this.setPassword(password);
-        this.setEmail(email);
-        this.setPhoneNumber(phoneNumber);
-        this.setCredit(credit);
+        if (!username.matches("[A-Za-z_0-9]+")){
+            throw new Exception("Invalid Username");
+        }
+        this.username = username;
+        if (!lastName.matches("[A-Za-z]+")){
+            throw new Exception("Invalid FirstName");
+        }
+        this.firstName = firstName;
+        if (!lastName.matches("[A-Za-z]+")){
+            throw new Exception("Invalid LastName");
+        }
+        this.lastName = lastName;
+        if (password.length() < 5 || !password.matches("\\S+")){
+            throw new Exception("Weak or Invalid Password");
+        }
+        this.password = password;
+        if (!email.matches("\\S+@\\S+\\.\\S+")){
+            throw new Exception("Invalid Email");
+        }
+        this.email = email;
+        if (!phoneNumber.matches("\\d+")) {
+            throw new Exception("Invalid PhoneNumber");
+        }
+        this.phoneNumber = phoneNumber;
+        this.credit = credit;
     }
 
     public String getUsername() {
@@ -53,7 +71,10 @@ public abstract class Account {
         this.username = username;
     }
 
-    public void setFirstName(String firstName) {
+    public void setFirstName(String firstName) throws Exception{
+        if (!lastName.matches("[A-Za-z]+")){
+            throw new Exception("Invalid FirstName");
+        }
         this.firstName = firstName;
     }
 
