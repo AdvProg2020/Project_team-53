@@ -12,14 +12,14 @@ public abstract class Account {
     protected int credit;
 
 
-    public Account(String username, String firstName, String lastName, String password, String email, String phoneNumber, int credit) {
-        this.username = username;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.password = password;
-        this.email = email;
-        this.phoneNumber = phoneNumber;
-        this.credit = credit;
+    public Account(String username, String firstName, String lastName, String password, String email, String phoneNumber, int credit) throws Exception {
+        this.setUsername(username);
+        this.setFirstName(firstName);
+        this.setLastName(lastName);
+        this.setPassword(password);
+        this.setEmail(email);
+        this.setPhoneNumber(phoneNumber);
+        this.setCredit(credit);
     }
 
     public String getUsername() {
