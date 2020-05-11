@@ -1,5 +1,7 @@
 package View.Menu;
 
+import Controller.Database;
+
 import java.util.HashMap;
 import java.util.Scanner;
 import java.util.regex.Matcher;
@@ -69,6 +71,7 @@ public abstract class Menu {
         {
             if(this.parentMenu == null)
             {
+                Database.writeDataOnFile();
                 System.exit(1);
             }
             else {

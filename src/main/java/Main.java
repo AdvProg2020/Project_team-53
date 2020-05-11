@@ -12,6 +12,5 @@ public class Main {
         Database.initialize();
         mainMenu.show();
         mainMenu.execute();
-        Database.writeDataOnFile();
     }
 }
