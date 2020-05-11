@@ -1,10 +1,7 @@
 package Controller;
 
-import Model.Account;
-import Model.AdminAccount;
-import Model.BuyerAccount;
+import Model.*;
 import Model.Request.Request;
-import Model.SellerAccount;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -15,6 +12,7 @@ import java.util.ArrayList;
 public class Database {
     private static ArrayList<Account> allAccounts = new ArrayList<>();
     private static ArrayList<Request> allRequest = new ArrayList<>();
+    private static ArrayList<Product> allProducts= new ArrayList<>();
 
     public static ArrayList<Account> getAllAccounts() {
         return allAccounts;
@@ -50,6 +48,11 @@ public class Database {
 
 
     public static void writeDataOnFile() {
+        writeAccountsOnFile();
+
+    }
+
+    private static void writeAccountsOnFile(){
         ArrayList<Account> sellers = new ArrayList<>();
         ArrayList<Account> admins = new ArrayList<>();
         ArrayList<Account> buyers = new ArrayList<>();
@@ -63,13 +66,14 @@ public class Database {
             else
                 System.out.println("What the hell");
         }
-        writeArrayOnFile(admins, "Admins");
-        writeArrayOnFile(sellers, "Sellers");
-        writeArrayOnFile(buyers, "Buyers");
+        writeArrayOnFile(admins, "Accounts\\Admins");
+        writeArrayOnFile(sellers, "Accounts\\Sellers");
+        writeArrayOnFile(buyers, "Accounts\\Buyers");
+
     }
 
     private static void writeArrayOnFile(ArrayList<Account> arr, String name) {
-        File file = new File("Data\\Accounts\\" + name + ".json");
+        File file = new File("Data\\" + name + ".json");
         file.getParentFile().mkdirs();
         FileWriter fileWriter = null;
 
@@ -131,8 +135,10 @@ public class Database {
         }
         arr = gson.fromJson(br, type);
 
-        for (Account account : arr) {
-            allAccounts.add(account);
-        }
+        allAccounts.addAll(arr);
+    }
+
+    public static void addAllProduct(Product product) {
+        allProducts.add(product);
     }
 }

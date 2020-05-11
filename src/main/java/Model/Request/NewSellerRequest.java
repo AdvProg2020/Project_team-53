@@ -38,14 +38,14 @@ public class NewSellerRequest extends Request {
     @Override
     public String show() {
         return "NewSellerRequest" + '{' + '\n' +
-                "username='" + username + '\n' +
-                "firstName='" + firstName + '\n' +
-                "lastName='" + lastName + '\n' +
-                "password='" + password + '\n' +
-                "email='" + email + '\n' +
-                "company='" + company + '\n' +
-                "credit=" + credit + '\n' +
-                "phoneNumber='" + phoneNumber + '\n' +
+                "   username=" + username + '\n' +
+                "   firstName=" + firstName + '\n' +
+                "   lastName=" + lastName + '\n' +
+                "   password=" + password + '\n' +
+                "   email=" + email + '\n' +
+                "   company=" + company + '\n' +
+                "   credit=" + credit + '\n' +
+                "   phoneNumber=" + phoneNumber + '\n' +
                 '}';
     }
 
