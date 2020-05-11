@@ -4,7 +4,6 @@ import Controller.AdminManager;
 import org.junit.Assert;
 import org.junit.Test;
 
-
 public class AdminManagerTest {
 
     @Test
