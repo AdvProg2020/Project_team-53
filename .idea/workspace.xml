@@ -1,20 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9610a36b-aa98-4cc2-966a-bf2d86b17a51" name="Default Changelist" comment="Account constructor handled">
-      <change afterPath="$PROJECT_DIR$/src/test/java/ControllerTest/AdminManagerTest.java" afterDir="false" />
+    <list default="true" id="9610a36b-aa98-4cc2-966a-bf2d86b17a51" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/test/java/ControllerTest/AccountTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/AccountManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/AccountManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/AccountManagerTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/AdminManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/AdminManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Account.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
-  </component>
-  <component name="CoverageViewManager">
-    <option name="myElementSize" value="182" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -61,9 +56,9 @@
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
   </component>
-  <component name="RunManager" selected="JUnit.AdminManagerTest.deleteUserNameTest2">
-    <configuration name="AdminManagerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Project" />
+  <component name="RunManager" selected="JUnit.AccountTest.accountConstructorExceptionsTest">
+    <configuration name="AccountManagerTest.editTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Project_team-53_Test" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="ControllerTest.*" />
@@ -71,30 +66,15 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="ControllerTest" />
-      <option name="MAIN_CLASS_NAME" value="ControllerTest.AdminManagerTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="AdminManagerTest.deleteUserNameTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Project" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ControllerTest.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="ControllerTest" />
-      <option name="MAIN_CLASS_NAME" value="ControllerTest.AdminManagerTest" />
-      <option name="METHOD_NAME" value="deleteUserNameTest" />
+      <option name="MAIN_CLASS_NAME" value="ControllerTest.AccountManagerTest" />
+      <option name="METHOD_NAME" value="editTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AdminManagerTest.deleteUserNameTest1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Project" />
+    <configuration name="AccountManagerTest.editTest1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Project_team-53_Test" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="ControllerTest.*" />
@@ -102,15 +82,15 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="ControllerTest" />
-      <option name="MAIN_CLASS_NAME" value="ControllerTest.AdminManagerTest" />
-      <option name="METHOD_NAME" value="deleteUserNameTest1" />
+      <option name="MAIN_CLASS_NAME" value="ControllerTest.AccountManagerTest" />
+      <option name="METHOD_NAME" value="editTest1" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AdminManagerTest.deleteUserNameTest2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Project" />
+    <configuration name="AccountManagerTest.loginTest2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Project_team-53_Test" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="ControllerTest.*" />
@@ -118,15 +98,15 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="ControllerTest" />
-      <option name="MAIN_CLASS_NAME" value="ControllerTest.AdminManagerTest" />
-      <option name="METHOD_NAME" value="deleteUserNameTest2" />
+      <option name="MAIN_CLASS_NAME" value="ControllerTest.AccountManagerTest" />
+      <option name="METHOD_NAME" value="loginTest2" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AdminManagerTest.showRequestWithIDTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Project" />
+    <configuration name="AccountTest.accountConstructorExceptionsTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Project_team-53_Test" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="ControllerTest.*" />
@@ -134,8 +114,24 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="ControllerTest" />
-      <option name="MAIN_CLASS_NAME" value="ControllerTest.AdminManagerTest" />
-      <option name="METHOD_NAME" value="showRequestWithIDTest" />
+      <option name="MAIN_CLASS_NAME" value="ControllerTest.AccountTest" />
+      <option name="METHOD_NAME" value="accountConstructorExceptionsTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AccountTest.constructorTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Project_team-53_Test" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ControllerTest.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ControllerTest" />
+      <option name="MAIN_CLASS_NAME" value="ControllerTest.AccountTest" />
+      <option name="METHOD_NAME" value="constructorTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -143,11 +139,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.AdminManagerTest.deleteUserNameTest2" />
-        <item itemvalue="JUnit.AdminManagerTest.deleteUserNameTest1" />
-        <item itemvalue="JUnit.AdminManagerTest.deleteUserNameTest" />
-        <item itemvalue="JUnit.AdminManagerTest" />
-        <item itemvalue="JUnit.AdminManagerTest.showRequestWithIDTest" />
+        <item itemvalue="JUnit.AccountTest.accountConstructorExceptionsTest" />
+        <item itemvalue="JUnit.AccountTest.constructorTest" />
+        <item itemvalue="JUnit.AccountManagerTest.editTest1" />
+        <item itemvalue="JUnit.AccountManagerTest.editTest" />
+        <item itemvalue="JUnit.AccountManagerTest.loginTest2" />
       </list>
     </recent_temporary>
   </component>
@@ -332,7 +328,14 @@
       <option name="project" value="LOCAL" />
       <updated>1589022710974</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="login test added">
+      <created>1589035641152</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1589035641152</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -361,17 +364,14 @@
     <MESSAGE value="add MangeProductsMenu" />
     <MESSAGE value="Account constructor modified" />
     <MESSAGE value="Account constructor handled" />
-    <option name="LAST_COMMIT_MESSAGE" value="Account constructor handled" />
+    <MESSAGE value="login test added" />
+    <option name="LAST_COMMIT_MESSAGE" value="login test added" />
   </component>
   <component name="WindowStateProjectService">
     <state x="280" y="20" key="#AccountManagerTest" timestamp="1589017236666">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="280" y="20" key="#AccountManagerTest/0.0.1366.728@0.0.1366.728" timestamp="1589017236666" />
-    <state x="280" y="29" key="#AdminManagerTest" timestamp="1589188106482">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="280" y="29" key="#AdminManagerTest/0.0.1366.728@0.0.1366.728" timestamp="1589188106482" />
     <state x="400" y="26" key="#Main" timestamp="1589035445245">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -403,10 +403,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="479" y="224" width="408" height="288" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1366.728@0.0.1366.728" timestamp="1589019288405" />
-    <state x="458" y="0" key="CommitChangelistDialog2" timestamp="1589034917096">
+    <state x="458" y="0" key="CommitChangelistDialog2" timestamp="1589197395329">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="458" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1589034917096" />
+    <state x="458" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1589197395329" />
     <state x="470" y="0" key="CommitChangelistDialog2/0.0.1366.738@0.0.1366.738" timestamp="1588661622300" />
     <state x="92" y="92" width="1182" height="544" key="DiffContextDialog" timestamp="1589020586896">
       <screen x="0" y="0" width="1366" height="728" />
@@ -416,25 +416,25 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="463" y="122" key="FileChooserDialogImpl/0.0.1366.738@0.0.1366.738" timestamp="1588658182682" />
-    <state width="1322" height="174" key="GridCell.Tab.0.bottom" timestamp="1589191733555">
+    <state width="1323" height="179" key="GridCell.Tab.0.bottom" timestamp="1589197367426">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1322" height="174" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1589191733555" />
+    <state width="1323" height="179" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1589197367426" />
     <state width="661" height="177" key="GridCell.Tab.0.bottom/0.0.1366.738@0.0.1366.738" timestamp="1588661058037" />
-    <state width="1322" height="174" key="GridCell.Tab.0.center" timestamp="1589191733555">
+    <state width="1323" height="179" key="GridCell.Tab.0.center" timestamp="1589197367426">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1322" height="174" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1589191733555" />
+    <state width="1323" height="179" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1589197367426" />
     <state width="661" height="177" key="GridCell.Tab.0.center/0.0.1366.738@0.0.1366.738" timestamp="1588661058037" />
-    <state width="1322" height="174" key="GridCell.Tab.0.left" timestamp="1589191733555">
+    <state width="1323" height="179" key="GridCell.Tab.0.left" timestamp="1589197367426">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1322" height="174" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1589191733555" />
+    <state width="1323" height="179" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1589197367426" />
     <state width="661" height="177" key="GridCell.Tab.0.left/0.0.1366.738@0.0.1366.738" timestamp="1588661058037" />
-    <state width="1322" height="174" key="GridCell.Tab.0.right" timestamp="1589191733555">
+    <state width="1323" height="179" key="GridCell.Tab.0.right" timestamp="1589197367426">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1322" height="174" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1589191733555" />
+    <state width="1323" height="179" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1589197367426" />
     <state width="661" height="177" key="GridCell.Tab.0.right/0.0.1366.738@0.0.1366.738" timestamp="1588661058037" />
     <state x="213" y="22" key="Maven.ArtifactSearchDialog" timestamp="1589017820205">
       <screen x="0" y="0" width="1366" height="728" />
@@ -445,38 +445,28 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="395" y="78" key="MultipleFileMergeDialog/0.0.1366.728@0.0.1366.728" timestamp="1588702867482" />
-    <state x="275" y="95" key="Vcs.Push.Dialog.v2" timestamp="1588943451153">
+    <state x="275" y="95" key="Vcs.Push.Dialog.v2" timestamp="1589036236194">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="275" y="95" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1588943451153" />
+    <state x="275" y="95" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1589036236194" />
     <state x="275" y="96" key="Vcs.Push.Dialog.v2/0.0.1366.738@0.0.1366.738" timestamp="1588584543963" />
-    <state x="378" y="186" key="com.intellij.ide.util.TipDialog" timestamp="1588937753989">
+    <state x="378" y="186" key="com.intellij.ide.util.TipDialog" timestamp="1589192068501">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="378" y="186" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1588937753989" />
-    <state x="492" y="279" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1589017529512">
+    <state x="378" y="186" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1589192068501" />
+    <state x="492" y="279" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1589192073536">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="492" y="279" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.728@0.0.1366.728" timestamp="1589017529512" />
+    <state x="492" y="279" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.728@0.0.1366.728" timestamp="1589192073536" />
     <state x="492" y="283" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.738@0.0.1366.738" timestamp="1588657757013" />
-    <state x="346" y="58" width="672" height="669" key="search.everywhere.popup" timestamp="1589190031842">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state x="346" y="59" width="672" height="678" key="search.everywhere.popup" timestamp="1588583268520">
+      <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state x="346" y="58" width="672" height="669" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1589190031842" />
     <state x="346" y="59" width="672" height="678" key="search.everywhere.popup/0.0.1366.738@0.0.1366.738" timestamp="1588583268520" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/Project$AdminManagerTest_showRequestWithIDTest.ic" NAME="AdminManagerTest.showRequestWithIDTest Coverage Results" MODIFIED="1589190342908" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>ControllerTest.*</FILTER>
-    </SUITE>
-    <SUITE FILE_PATH="coverage/Project$AdminManagerTest.ic" NAME="AdminManagerTest Coverage Results" MODIFIED="1589190573527" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>ControllerTest.*</FILTER>
-    </SUITE>
     <SUITE FILE_PATH="coverage/Project$AccountManagerTest.ic" NAME="AccountManagerTest Coverage Results" MODIFIED="1588943574745" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>ControllerTest.*</FILTER>
-    </SUITE>
-    <SUITE FILE_PATH="coverage/Project$AdminAccountTest.ic" NAME="AdminAccountTest Coverage Results" MODIFIED="1589188985283" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>ModelTest.*</FILTER>
     </SUITE>
   </component>
 </project>

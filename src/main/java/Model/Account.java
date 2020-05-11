@@ -17,7 +17,7 @@ public abstract class Account {
             throw new Exception("Invalid Username");
         }
         this.username = username;
-        if (!lastName.matches("[A-Za-z]+")){
+        if (!firstName.matches("[A-Za-z]+")){
             throw new Exception("Invalid FirstName");
         }
         this.firstName = firstName;

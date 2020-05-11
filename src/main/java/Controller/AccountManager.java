@@ -9,6 +9,9 @@ public class AccountManager {
     private static Account loggedInAccount = null ;
 
     public static String logIn(String username , String password)  {
+        if (loggedInAccount != null){
+            return "You have already loggedIn. You have to logout first.";
+        }
         Account account = Database.getAccountByUsername(username);
         if (account == null)
             return "No User with this name";

@@ -6,10 +6,10 @@ import Model.BuyerAccount;
 import Model.Request.Request;
 import Model.SellerAccount;
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 
 public class Database {
@@ -63,16 +63,16 @@ public class Database {
             else
                 System.out.println("What the hell");
         }
-
         writeArrayOnFile(admins, "Admins");
         writeArrayOnFile(sellers, "Sellers");
         writeArrayOnFile(buyers, "Buyers");
     }
 
     private static void writeArrayOnFile(ArrayList<Account> arr, String name) {
-        File file = new File("Data\\" + name + ".json");
+        File file = new File("Data\\Accounts\\" + name + ".json");
         file.getParentFile().mkdirs();
         FileWriter fileWriter = null;
+
         try {
             fileWriter = new FileWriter(file);
             Gson gson = new Gson();
@@ -94,6 +94,9 @@ public class Database {
     }
 
     public static void initialize() {
+        readArrayOfAccountFromFile("Admins");
+        readArrayOfAccountFromFile("Buyers");
+        readArrayOfAccountFromFile("Sellers");
         for (Account account : allAccounts) {
             if (account instanceof AdminAccount && account.getUsername().equals("Admin"))
                 return;
@@ -102,6 +105,34 @@ public class Database {
             allAccounts.add(new AdminAccount("Admin", "Admin", "Admin", "Admin", "Admin@gmail.com", "00000000", 0));
         } catch (Exception e) {
 
+        }
+    }
+
+    private static void readArrayOfAccountFromFile(String place) {
+        Gson gson = new Gson();
+        File file = new File("Data\\Accounts\\"+place+".json");
+        BufferedReader br = null;
+        try {
+            br = new BufferedReader(new FileReader(file));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        ArrayList<Account> arr = new ArrayList<>();
+        Type type ;
+        if (place.equals("Admins")) {
+             type = new TypeToken<ArrayList<AdminAccount>>(){}.getType();
+        }
+        else if (place.equals("Buyers")){
+            type = new TypeToken<ArrayList<BuyerAccount>>(){}.getType();
+        }
+        else{
+            type = new TypeToken<ArrayList<SellerAccount>>(){}.getType();
+        }
+        arr = gson.fromJson(br, type);
+
+        for (Account account : arr) {
+            allAccounts.add(account);
         }
     }
 }
