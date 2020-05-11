@@ -9,6 +9,7 @@ public class ProductsMenu extends Menu {
         super("Products Menu", parentMenu);
         super.addToSubMenus(1, this.getViewAllCategoriesMenu());
         super.addToSubMenus(2, new FilteringMenu(this));
+        super.addToSubMenus(3, new SortingMenu(this));
     }
 
     private Menu getViewAllCategoriesMenu()
