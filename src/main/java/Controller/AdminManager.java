@@ -38,7 +38,7 @@ public class AdminManager {
     public static String showRequestByiId(int id){
         Request request = Database.getRequestById(id);
         if (request == null)
-            return "No requet with this id";
+            return "No request with this id";
         return request.show();
     }
 
