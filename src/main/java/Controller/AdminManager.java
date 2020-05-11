@@ -12,7 +12,7 @@ public class AdminManager {
         ArrayList<Account> accounts = Database.getAllAccounts();
         StringBuilder res = new StringBuilder();
         for (Account account : accounts) {
-            res.append("\n ++++++++++++++++++++++++++++++ \n" + account.showInfo());
+            res.append("\n ++++++++++++++++++++++++++++++ \n").append(account.showInfo());
         }
         return res.toString();
     }

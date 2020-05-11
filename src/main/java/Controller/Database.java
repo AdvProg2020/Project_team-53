@@ -48,6 +48,11 @@ public class Database {
 
 
     public static void writeDataOnFile() {
+        writeAccountsOnFile();
+
+    }
+
+    private static void writeAccountsOnFile(){
         ArrayList<Account> sellers = new ArrayList<>();
         ArrayList<Account> admins = new ArrayList<>();
         ArrayList<Account> buyers = new ArrayList<>();
@@ -61,13 +66,14 @@ public class Database {
             else
                 System.out.println("What the hell");
         }
-        writeArrayOnFile(admins, "Admins");
-        writeArrayOnFile(sellers, "Sellers");
-        writeArrayOnFile(buyers, "Buyers");
+        writeArrayOnFile(admins, "Accounts\\Admins");
+        writeArrayOnFile(sellers, "Accounts\\Sellers");
+        writeArrayOnFile(buyers, "Accounts\\Buyers");
+
     }
 
     private static void writeArrayOnFile(ArrayList<Account> arr, String name) {
-        File file = new File("Data\\Accounts\\" + name + ".json");
+        File file = new File("Data\\" + name + ".json");
         file.getParentFile().mkdirs();
         FileWriter fileWriter = null;
 
