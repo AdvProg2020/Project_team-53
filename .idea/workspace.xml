@@ -1,31 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9610a36b-aa98-4cc2-966a-bf2d86b17a51" name="Default Changelist" comment="Account constructor handled">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="9610a36b-aa98-4cc2-966a-bf2d86b17a51" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/test/java/ControllerTest/AccountTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/Database.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/View/Menu/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/View/Menu/Menu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Account.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
-  </component>
-  <component name="DatabaseView">
-    <option name="SHOW_INTERMEDIATE" value="true" />
-    <option name="GROUP_DATA_SOURCES" value="true" />
-    <option name="GROUP_SCHEMA" value="true" />
-    <option name="GROUP_CONTENTS" value="false" />
-    <option name="SORT_POSITIONED" value="false" />
-    <option name="SHOW_EMPTY_GROUPS" value="false" />
-    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
-    <option name="HIDDEN_KINDS">
-      <set />
-    </option>
-    <expand />
-    <select />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -44,11 +28,6 @@
         <option value="F:\university\AP_project\Project\.idea" />
       </set>
     </option>
-  </component>
-  <component name="JavaAutoRunManager">
-    <enabled-run-configurations>
-      <run-configuration type="JUnit" name="AccountManagerTest" />
-    </enabled-run-configurations>
   </component>
   <component name="MavenImportPreferences">
     <option name="importingSettings">
@@ -72,22 +51,14 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../tam2/JsonCheck" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
   </component>
-  <component name="RunManager" selected="Application.Main">
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Main" />
-      <module name="Project_team-53" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="AccountManagerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Project_team-53" />
-      <useClassPathOnly />
+  <component name="RunManager" selected="JUnit.AccountTest.accountConstructorExceptionsTest">
+    <configuration name="AccountManagerTest.editTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Project_team-53_Test" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="ControllerTest.*" />
@@ -96,9 +67,24 @@
       </extension>
       <option name="PACKAGE_NAME" value="ControllerTest" />
       <option name="MAIN_CLASS_NAME" value="ControllerTest.AccountManagerTest" />
-      <option name="METHOD_NAME" value="" />
-      <option name="TEST_OBJECT" value="class" />
-      <option name="PARAMETERS" value="" />
+      <option name="METHOD_NAME" value="editTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AccountManagerTest.editTest1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Project_team-53_Test" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ControllerTest.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ControllerTest" />
+      <option name="MAIN_CLASS_NAME" value="ControllerTest.AccountManagerTest" />
+      <option name="METHOD_NAME" value="editTest1" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -119,9 +105,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AccountManagerTest.registerTest1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Project_team-53" />
-      <useClassPathOnly />
+    <configuration name="AccountTest.accountConstructorExceptionsTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Project_team-53_Test" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="ControllerTest.*" />
@@ -129,19 +114,35 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="ControllerTest" />
-      <option name="MAIN_CLASS_NAME" value="ControllerTest.AccountManagerTest" />
-      <option name="METHOD_NAME" value="registerTest1" />
+      <option name="MAIN_CLASS_NAME" value="ControllerTest.AccountTest" />
+      <option name="METHOD_NAME" value="accountConstructorExceptionsTest" />
       <option name="TEST_OBJECT" value="method" />
-      <option name="PARAMETERS" value="" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AccountTest.constructorTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Project_team-53_Test" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ControllerTest.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ControllerTest" />
+      <option name="MAIN_CLASS_NAME" value="ControllerTest.AccountTest" />
+      <option name="METHOD_NAME" value="constructorTest" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Main" />
-        <item itemvalue="JUnit.AccountManagerTest" />
-        <item itemvalue="JUnit.AccountManagerTest.registerTest1" />
+        <item itemvalue="JUnit.AccountTest.accountConstructorExceptionsTest" />
+        <item itemvalue="JUnit.AccountTest.constructorTest" />
+        <item itemvalue="JUnit.AccountManagerTest.editTest1" />
+        <item itemvalue="JUnit.AccountManagerTest.editTest" />
         <item itemvalue="JUnit.AccountManagerTest.loginTest2" />
       </list>
     </recent_temporary>
@@ -179,7 +180,6 @@
       <workItem from="1588657693915" duration="1767000" />
       <workItem from="1588659523976" duration="1784000" />
       <workItem from="1588661359855" duration="287000" />
-      <workItem from="1589196523023" duration="917000" />
     </task>
     <task id="LOCAL-00001" summary="get ready">
       <created>1587239260289</created>
@@ -328,7 +328,14 @@
       <option name="project" value="LOCAL" />
       <updated>1589022710974</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="login test added">
+      <created>1589035641152</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1589035641152</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -357,23 +364,19 @@
     <MESSAGE value="add MangeProductsMenu" />
     <MESSAGE value="Account constructor modified" />
     <MESSAGE value="Account constructor handled" />
-    <option name="LAST_COMMIT_MESSAGE" value="Account constructor handled" />
+    <MESSAGE value="login test added" />
+    <option name="LAST_COMMIT_MESSAGE" value="login test added" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="280" y="20" key="#AccountManagerTest" timestamp="1589195126551">
-      <screen x="0" y="0" width="1366" height="738" />
+    <state x="280" y="20" key="#AccountManagerTest" timestamp="1589017236666">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="280" y="6" key="#AccountManagerTest.registerTest1" timestamp="1589195059964">
-      <screen x="0" y="0" width="1366" height="738" />
-    </state>
-    <state x="280" y="6" key="#AccountManagerTest.registerTest1/0.0.1366.738@0.0.1366.738" timestamp="1589195059964" />
     <state x="280" y="20" key="#AccountManagerTest/0.0.1366.728@0.0.1366.728" timestamp="1589017236666" />
-    <state x="280" y="20" key="#AccountManagerTest/0.0.1366.738@0.0.1366.738" timestamp="1589195126551" />
-    <state x="400" y="26" key="#Main" timestamp="1589195912573">
-      <screen x="0" y="0" width="1366" height="738" />
+    <state x="400" y="26" key="#Main" timestamp="1589035445245">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="400" y="26" key="#Main/0.0.1366.728@0.0.1366.728" timestamp="1589035445245" />
-    <state x="400" y="26" key="#Main/0.0.1366.738@0.0.1366.738" timestamp="1589195912573" />
+    <state x="400" y="26" key="#Main/0.0.1366.738@0.0.1366.738" timestamp="1588661011460" />
     <state x="275" y="21" key="#Project_Structure" timestamp="1588882477025">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -400,39 +403,39 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="479" y="224" width="408" height="288" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1366.728@0.0.1366.728" timestamp="1589019288405" />
-    <state x="470" y="0" key="CommitChangelistDialog2" timestamp="1589197541427">
-      <screen x="0" y="0" width="1366" height="738" />
+    <state x="458" y="0" key="CommitChangelistDialog2" timestamp="1589197395329">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="458" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1589034917096" />
-    <state x="470" y="0" key="CommitChangelistDialog2/0.0.1366.738@0.0.1366.738" timestamp="1589197541427" />
+    <state x="458" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1589197395329" />
+    <state x="470" y="0" key="CommitChangelistDialog2/0.0.1366.738@0.0.1366.738" timestamp="1588661622300" />
     <state x="92" y="92" width="1182" height="544" key="DiffContextDialog" timestamp="1589020586896">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="92" y="92" width="1182" height="544" key="DiffContextDialog/0.0.1366.728@0.0.1366.728" timestamp="1589020586896" />
-    <state x="463" y="122" key="FileChooserDialogImpl" timestamp="1589196167588">
+    <state x="463" y="122" key="FileChooserDialogImpl" timestamp="1588658182682">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state x="463" y="122" key="FileChooserDialogImpl/0.0.1366.738@0.0.1366.738" timestamp="1589196167588" />
-    <state width="1322" height="215" key="GridCell.Tab.0.bottom" timestamp="1589197485357">
-      <screen x="0" y="0" width="1366" height="738" />
+    <state x="463" y="122" key="FileChooserDialogImpl/0.0.1366.738@0.0.1366.738" timestamp="1588658182682" />
+    <state width="1323" height="179" key="GridCell.Tab.0.bottom" timestamp="1589197367426">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="179" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1589035462338" />
-    <state width="1322" height="215" key="GridCell.Tab.0.bottom/0.0.1366.738@0.0.1366.738" timestamp="1589197485357" />
-    <state width="1322" height="215" key="GridCell.Tab.0.center" timestamp="1589197485357">
-      <screen x="0" y="0" width="1366" height="738" />
+    <state width="1323" height="179" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1589197367426" />
+    <state width="661" height="177" key="GridCell.Tab.0.bottom/0.0.1366.738@0.0.1366.738" timestamp="1588661058037" />
+    <state width="1323" height="179" key="GridCell.Tab.0.center" timestamp="1589197367426">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="179" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1589035462338" />
-    <state width="1322" height="215" key="GridCell.Tab.0.center/0.0.1366.738@0.0.1366.738" timestamp="1589197485357" />
-    <state width="1322" height="215" key="GridCell.Tab.0.left" timestamp="1589197485357">
-      <screen x="0" y="0" width="1366" height="738" />
+    <state width="1323" height="179" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1589197367426" />
+    <state width="661" height="177" key="GridCell.Tab.0.center/0.0.1366.738@0.0.1366.738" timestamp="1588661058037" />
+    <state width="1323" height="179" key="GridCell.Tab.0.left" timestamp="1589197367426">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="179" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1589035462338" />
-    <state width="1322" height="215" key="GridCell.Tab.0.left/0.0.1366.738@0.0.1366.738" timestamp="1589197485357" />
-    <state width="1322" height="215" key="GridCell.Tab.0.right" timestamp="1589197485357">
-      <screen x="0" y="0" width="1366" height="738" />
+    <state width="1323" height="179" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1589197367426" />
+    <state width="661" height="177" key="GridCell.Tab.0.left/0.0.1366.738@0.0.1366.738" timestamp="1588661058037" />
+    <state width="1323" height="179" key="GridCell.Tab.0.right" timestamp="1589197367426">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="179" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1589035462338" />
-    <state width="1322" height="215" key="GridCell.Tab.0.right/0.0.1366.738@0.0.1366.738" timestamp="1589197485357" />
+    <state width="1323" height="179" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1589197367426" />
+    <state width="661" height="177" key="GridCell.Tab.0.right/0.0.1366.738@0.0.1366.738" timestamp="1588661058037" />
     <state x="213" y="22" key="Maven.ArtifactSearchDialog" timestamp="1589017820205">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -442,24 +445,20 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="395" y="78" key="MultipleFileMergeDialog/0.0.1366.728@0.0.1366.728" timestamp="1588702867482" />
-    <state x="275" y="95" key="Vcs.Push.Dialog.v2" timestamp="1588943451153">
+    <state x="275" y="95" key="Vcs.Push.Dialog.v2" timestamp="1589036236194">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="275" y="95" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1588943451153" />
+    <state x="275" y="95" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1589036236194" />
     <state x="275" y="96" key="Vcs.Push.Dialog.v2/0.0.1366.738@0.0.1366.738" timestamp="1588584543963" />
-    <state x="378" y="186" key="com.intellij.ide.util.TipDialog" timestamp="1588937753989">
+    <state x="378" y="186" key="com.intellij.ide.util.TipDialog" timestamp="1589192068501">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="378" y="186" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1588937753989" />
-    <state x="492" y="283" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1589195803130">
-      <screen x="0" y="0" width="1366" height="738" />
+    <state x="378" y="186" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1589192068501" />
+    <state x="492" y="279" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1589192073536">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="492" y="279" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.728@0.0.1366.728" timestamp="1589017529512" />
-    <state x="492" y="283" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.738@0.0.1366.738" timestamp="1589195803130" />
-    <state x="339" y="159" key="run.anything.popup" timestamp="1589195275828">
-      <screen x="0" y="0" width="1366" height="738" />
-    </state>
-    <state x="339" y="159" key="run.anything.popup/0.0.1366.738@0.0.1366.738" timestamp="1589195275828" />
+    <state x="492" y="279" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.728@0.0.1366.728" timestamp="1589192073536" />
+    <state x="492" y="283" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.738@0.0.1366.738" timestamp="1588657757013" />
     <state x="346" y="59" width="672" height="678" key="search.everywhere.popup" timestamp="1588583268520">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
