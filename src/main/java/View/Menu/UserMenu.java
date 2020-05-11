@@ -1,30 +1,36 @@
 package View.Menu;
 
 import Controller.AccountManager;
+import Controller.AdminManager;
 import Model.BuyerAccount;
 import Model.SellerAccount;
 import View.Menu.AdminMenus.AdminMenu;
 import View.Menu.BuyerMenus.BuyerMenu;
+import View.Menu.SellerMenus.SellerMenu;
 
 public class UserMenu extends Menu {
     public UserMenu(Menu parentMenu) {
         super("User Menu", parentMenu);
     }
 
+    BuyerMenu buyerMenu = new BuyerMenu(this.parentMenu);
+    SellerMenu sellerMenu = new SellerMenu(this.parentMenu);
+    AdminMenu adminMenu = new AdminMenu(this.parentMenu);
+
     @Override
     public void show()
     {
         if(AccountManager.getLoggedInAccount() instanceof BuyerAccount)
         {
-            new BuyerMenu(this.parentMenu).show();
+            buyerMenu.show();
         }
         else if(AccountManager.getLoggedInAccount() instanceof SellerAccount)
         {
-            //todo
+            sellerMenu.show();
         }
         else
         {
-            new AdminMenu(this.parentMenu).show();
+            adminMenu.show();
         }
     }
 
@@ -33,15 +39,15 @@ public class UserMenu extends Menu {
     {
         if(AccountManager.getLoggedInAccount() instanceof BuyerAccount)
         {
-            new BuyerMenu(this.parentMenu).execute();
+            buyerMenu.execute();
         }
         else if(AccountManager.getLoggedInAccount() instanceof SellerAccount)
         {
-            //todo
+            sellerMenu.execute();
         }
         else
         {
-            new AdminMenu(this.parentMenu).execute();
+            adminMenu.execute();
         }
     }
 }

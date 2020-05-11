@@ -6,7 +6,6 @@ import java.util.regex.Matcher;
 
 public class LoginMenu extends Menu{
 
-
     public LoginMenu(Menu parentMenu) {
         super("Login Menu", parentMenu);
         super.addToSubMenus(1, this.getRegisterMenu());

@@ -2,9 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9610a36b-aa98-4cc2-966a-bf2d86b17a51" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/test/java/ControllerTest/AccountTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/View/Menu/ProductsMenus/FilteringMenu.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/View/Menu/ProductsMenus/ProductsMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Account.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/View/Menu/LoginMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/View/Menu/LoginMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/View/Menu/UserMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/View/Menu/UserMenu.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -385,15 +388,15 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="92" y="92" width="1182" height="544" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog/0.0.1366.728@0.0.1366.728" timestamp="1589035445292" />
-    <state x="488" y="72" key="#com.intellij.ide.util.MemberChooser" timestamp="1588962125823">
+    <state x="488" y="72" key="#com.intellij.ide.util.MemberChooser" timestamp="1589228889474">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="488" y="72" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1588962125823" />
+    <state x="488" y="72" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1589228889474" />
     <state x="488" y="73" key="#com.intellij.ide.util.MemberChooser/0.0.1366.738@0.0.1366.738" timestamp="1588660448715" />
-    <state x="531" y="251" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1588663770057">
+    <state x="531" y="251" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1589221819323">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="531" y="251" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1366.728@0.0.1366.728" timestamp="1588663770057" />
+    <state x="531" y="251" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1366.728@0.0.1366.728" timestamp="1589221819323" />
     <state x="531" y="254" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1366.738@0.0.1366.738" timestamp="1587804065775" />
     <state x="263" y="17" key="#com.intellij.openapi.projectRoots.ui.ProjectJdksEditor" timestamp="1587840031430">
       <screen x="0" y="0" width="1366" height="728" />
@@ -445,10 +448,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="395" y="78" key="MultipleFileMergeDialog/0.0.1366.728@0.0.1366.728" timestamp="1588702867482" />
-    <state x="275" y="95" key="Vcs.Push.Dialog.v2" timestamp="1589036236194">
+    <state x="275" y="95" key="Vcs.Push.Dialog.v2" timestamp="1589221794715">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="275" y="95" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1589036236194" />
+    <state x="275" y="95" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1589221794715" />
     <state x="275" y="96" key="Vcs.Push.Dialog.v2/0.0.1366.738@0.0.1366.738" timestamp="1588584543963" />
     <state x="378" y="186" key="com.intellij.ide.util.TipDialog" timestamp="1589192068501">
       <screen x="0" y="0" width="1366" height="728" />
