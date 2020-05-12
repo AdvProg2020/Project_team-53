@@ -1,4 +1,4 @@
-package View.Menu.SellerMenus.ProductMenus;
+package View.Menu.ProductMenus;
 
 import View.Menu.Menu;
 
