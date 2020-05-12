@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9610a36b-aa98-4cc2-966a-bf2d86b17a51" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Model/Category.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Category.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Category.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Product.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -411,15 +411,27 @@
       <option name="project" value="LOCAL" />
       <updated>1589293396110</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="Category added">
+      <created>1589299991133</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1589299991133</updated>
+    </task>
+    <task id="LOCAL-00027" summary="Category fixed">
+      <created>1589300065803</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1589300065803</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="get ready" />
-    <MESSAGE value="add Menu class" />
     <MESSAGE value="add LoginMenu and make some changes in Menu class &amp; MainMenu class" />
     <MESSAGE value="add ViewCartMenu and BuyerMenu" />
     <MESSAGE value="make PersonalInfoMenu and make some changes" />
@@ -443,7 +455,9 @@
     <MESSAGE value="login test added" />
     <MESSAGE value="add new Product added" />
     <MESSAGE value="complete SellerMenu" />
-    <option name="LAST_COMMIT_MESSAGE" value="complete SellerMenu" />
+    <MESSAGE value="Category added" />
+    <MESSAGE value="Category fixed" />
+    <option name="LAST_COMMIT_MESSAGE" value="Category fixed" />
   </component>
   <component name="WindowStateProjectService">
     <state x="280" y="20" key="#AccountManagerTest" timestamp="1589226101281">
@@ -531,10 +545,10 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="280" y="6" key="#null./0.0.1366.738@0.0.1366.738" timestamp="1589226532697" />
-    <state x="458" y="0" key="CommitChangelistDialog2" timestamp="1589299989070">
+    <state x="458" y="0" key="CommitChangelistDialog2" timestamp="1589300064335">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="458" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1589299989070" />
+    <state x="458" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1589300064335" />
     <state x="470" y="0" key="CommitChangelistDialog2/0.0.1366.738@0.0.1366.738" timestamp="1589235727739" />
     <state x="92" y="93" width="1182" height="552" key="DiffContextDialog" timestamp="1589235790734">
       <screen x="0" y="0" width="1366" height="738" />
@@ -578,10 +592,10 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="184" y="0" key="SettingsEditor/0.0.1366.738@0.0.1366.738" timestamp="1589230363466" />
-    <state x="275" y="96" key="Vcs.Push.Dialog.v2" timestamp="1589235797203">
-      <screen x="0" y="0" width="1366" height="738" />
+    <state x="275" y="95" key="Vcs.Push.Dialog.v2" timestamp="1589300089626">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="275" y="95" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1589036236194" />
+    <state x="275" y="95" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1589300089626" />
     <state x="275" y="96" key="Vcs.Push.Dialog.v2/0.0.1366.738@0.0.1366.738" timestamp="1589235797203" />
     <state x="378" y="186" key="com.intellij.ide.util.TipDialog" timestamp="1589192068501">
       <screen x="0" y="0" width="1366" height="728" />

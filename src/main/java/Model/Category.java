@@ -66,4 +66,11 @@ public class Category {
     public void addSubCategory(String categoryName){
         allSubCategoryNames.add(categoryName);
     }
+
+    public void removeProduct(int productId){
+        for (Integer Id : allProductIds) {
+            if (Id == productId)
+                allProductIds.remove(Id);
+        }
+    }
 }
