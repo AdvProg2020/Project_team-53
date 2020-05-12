@@ -89,8 +89,8 @@ public class SellerMenu extends Menu {
         return new Menu("Add Product Menu", this) {
             @Override
             public void show() {
-                System.out.println("Please enter product status, name, number, description, category name in order");
-                System.out.println("(Enter back to return");
+                System.out.println("Please enter product status, name, available(true or false), number, description, category name in order");
+                System.out.println("(Enter back to return)");
             }
 
             @Override
@@ -98,7 +98,7 @@ public class SellerMenu extends Menu {
                 String input = scanner.nextLine();
                 try
                 {
-                    Matcher matcher1 = getMatcher(input, "^\\s*(\\S+)\\s+(\\S+)\\s+(\\S+)\\s+(\\S+)\\s+(\\S+)\\s*$");
+                    Matcher matcher1 = getMatcher(input, "^\\s*(\\S+)\\s+(\\S+)\\s+(\\S+)\\s+(\\S+)\\s+(\\S+)\\s+(\\S+)\\s*$");
                     Matcher matcher2 = getMatcher(input, "^\\s*back\\s*$");
                     if(matcher2.find())
                     {
@@ -112,6 +112,7 @@ public class SellerMenu extends Menu {
                     }
                     else
                     {
+                        System.out.println(SellerManager.sendAddProductRequest(matcher1.group(1), matcher1.group(2), Boolean.parseBoolean(matcher1.group(3)), Integer.parseInt(matcher1.group(4)), matcher1.group(5), matcher1.group(6)));
                     }
                 }
                 catch (Exception e)
@@ -193,6 +194,4 @@ public class SellerMenu extends Menu {
             }
         };
     }
-
-
 }
