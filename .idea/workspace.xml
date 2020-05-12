@@ -2,9 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9610a36b-aa98-4cc2-966a-bf2d86b17a51" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/View/Menu/SellerMenus/ProductMenus/CommentsMenu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/View/Menu/SellerMenus/ProductMenus/ProductMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/View/Menu/SellerMenus/ProductMenus/ProductMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/View/Menu/ProductsMenus/FilteringMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/View/Menu/ProductsMenus/FilteringMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/View/Menu/SellerMenus/ProductMenus/CommentsMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/View/Menu/ProductMenus/CommentsMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/View/Menu/SellerMenus/ProductMenus/DigestMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/View/Menu/ProductMenus/DigestMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/View/Menu/SellerMenus/ProductMenus/ProductMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/View/Menu/ProductMenus/ProductMenu.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,7 +66,14 @@
     <property name="project.structure.side.proportion" value="0.0" />
     <property name="settings.editor.selected.configurable" value="coverage" />
   </component>
-  <component name="RunManager" selected="JUnit.AccountTest">
+  <component name="RunManager" selected="Application.Main">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Main" />
+      <module name="Project" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="AccountManagerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Project_team-53" />
       <useClassPathOnly />
@@ -151,7 +160,7 @@
           <option name="ENABLED" value="true" />
         </pattern>
         <pattern>
-          <option name="PATTERN" value="View.Menu.SellerMenus.ProductMenus.*" />
+          <option name="PATTERN" value="View.Menu.ProductMenus.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -171,9 +180,11 @@
       <item itemvalue="JUnit.ControllerTest.*" />
       <item itemvalue="JUnit.AccountManagerTest" />
       <item itemvalue="JUnit.AccountTest" />
+      <item itemvalue="Application.Main" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Main" />
         <item itemvalue="JUnit.AccountTest" />
         <item itemvalue="JUnit.AccountManagerTest" />
       </list>
@@ -403,14 +414,20 @@
       <option name="project" value="LOCAL" />
       <updated>1589294148823</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="add CommentsMenu and complete ProductMenu">
+      <created>1589295931153</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1589295931153</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="add Menu class" />
     <MESSAGE value="add LoginMenu and make some changes in Menu class &amp; MainMenu class" />
     <MESSAGE value="add ViewCartMenu and BuyerMenu" />
     <MESSAGE value="make PersonalInfoMenu and make some changes" />
@@ -435,7 +452,8 @@
     <MESSAGE value="add new Product added" />
     <MESSAGE value="complete SellerMenu" />
     <MESSAGE value="add ProductMenu and DigestMenu" />
-    <option name="LAST_COMMIT_MESSAGE" value="add ProductMenu and DigestMenu" />
+    <MESSAGE value="add CommentsMenu and complete ProductMenu" />
+    <option name="LAST_COMMIT_MESSAGE" value="add CommentsMenu and complete ProductMenu" />
   </component>
   <component name="WindowStateProjectService">
     <state x="280" y="20" key="#AccountManagerTest" timestamp="1589226101281">
@@ -514,6 +532,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="263" y="17" key="#com.intellij.openapi.projectRoots.ui.ProjectJdksEditor/0.0.1366.728@0.0.1366.728" timestamp="1587840031430" />
+    <state x="304" y="288" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1589296031437">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="304" y="288" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.0.1366.728@0.0.1366.728" timestamp="1589296031436" />
     <state x="479" y="224" width="408" height="288" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1589019288405">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -522,10 +544,10 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="280" y="6" key="#null./0.0.1366.738@0.0.1366.738" timestamp="1589226532697" />
-    <state x="458" y="0" key="CommitChangelistDialog2" timestamp="1589294147465">
+    <state x="458" y="0" key="CommitChangelistDialog2" timestamp="1589295929676">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="458" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1589294147465" />
+    <state x="458" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1589295929676" />
     <state x="470" y="0" key="CommitChangelistDialog2/0.0.1366.738@0.0.1366.738" timestamp="1589235727739" />
     <state x="92" y="93" width="1182" height="552" key="DiffContextDialog" timestamp="1589235790734">
       <screen x="0" y="0" width="1366" height="738" />
@@ -536,25 +558,25 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="463" y="122" key="FileChooserDialogImpl/0.0.1366.738@0.0.1366.738" timestamp="1589229857106" />
-    <state width="1322" height="121" key="GridCell.Tab.0.bottom" timestamp="1589230660430">
-      <screen x="0" y="0" width="1366" height="738" />
+    <state width="1322" height="174" key="GridCell.Tab.0.bottom" timestamp="1589296180016">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="179" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1589197367426" />
+    <state width="1322" height="174" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1589296180016" />
     <state width="1322" height="121" key="GridCell.Tab.0.bottom/0.0.1366.738@0.0.1366.738" timestamp="1589230660430" />
-    <state width="1322" height="121" key="GridCell.Tab.0.center" timestamp="1589230660429">
-      <screen x="0" y="0" width="1366" height="738" />
+    <state width="1322" height="174" key="GridCell.Tab.0.center" timestamp="1589296180016">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="179" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1589197367426" />
+    <state width="1322" height="174" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1589296180016" />
     <state width="1322" height="121" key="GridCell.Tab.0.center/0.0.1366.738@0.0.1366.738" timestamp="1589230660429" />
-    <state width="1322" height="121" key="GridCell.Tab.0.left" timestamp="1589230660429">
-      <screen x="0" y="0" width="1366" height="738" />
+    <state width="1322" height="174" key="GridCell.Tab.0.left" timestamp="1589296180014">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="179" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1589197367426" />
+    <state width="1322" height="174" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1589296180014" />
     <state width="1322" height="121" key="GridCell.Tab.0.left/0.0.1366.738@0.0.1366.738" timestamp="1589230660429" />
-    <state width="1322" height="121" key="GridCell.Tab.0.right" timestamp="1589230660430">
-      <screen x="0" y="0" width="1366" height="738" />
+    <state width="1322" height="174" key="GridCell.Tab.0.right" timestamp="1589296180016">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="179" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1589197367426" />
+    <state width="1322" height="174" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1589296180016" />
     <state width="1322" height="121" key="GridCell.Tab.0.right/0.0.1366.738@0.0.1366.738" timestamp="1589230660430" />
     <state x="213" y="22" key="Maven.ArtifactSearchDialog" timestamp="1589017820205">
       <screen x="0" y="0" width="1366" height="728" />
@@ -569,10 +591,10 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="184" y="0" key="SettingsEditor/0.0.1366.738@0.0.1366.738" timestamp="1589230363466" />
-    <state x="275" y="95" key="Vcs.Push.Dialog.v2" timestamp="1589294151006">
+    <state x="275" y="95" key="Vcs.Push.Dialog.v2" timestamp="1589295936466">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="275" y="95" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1589294151006" />
+    <state x="275" y="95" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1589295936466" />
     <state x="275" y="96" key="Vcs.Push.Dialog.v2/0.0.1366.738@0.0.1366.738" timestamp="1589235797203" />
     <state x="378" y="186" key="com.intellij.ide.util.TipDialog" timestamp="1589192068501">
       <screen x="0" y="0" width="1366" height="728" />

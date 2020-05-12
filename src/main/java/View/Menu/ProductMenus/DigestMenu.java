@@ -1,22 +1,23 @@
-package View.Menu.SellerMenus.ProductMenus;
+package View.Menu.ProductMenus;
 
 import View.Menu.Menu;
 
 import java.util.regex.Matcher;
 
-public class CommentsMenu extends Menu {
-    public CommentsMenu(Menu parentMenu) {
-        super("Comments Menu", parentMenu);
-        super.addToSubMenus(1, this.getShowCommentsAndScoreMenu());
-        super.addToSubMenus(2, this.getAddCommentMenu());
+public class DigestMenu extends Menu {
+
+    public DigestMenu(Menu parentMenu) {
+        super("Digest Menu", parentMenu);
+        super.addToSubMenus(1, this.getProductInformationMenu());
+        super.addToSubMenus(2, this.getAddToCartMenu());
     }
 
-    private Menu getShowCommentsAndScoreMenu()
+    private Menu getProductInformationMenu()
     {
-        return new Menu("Show Comments And Score Menu", this) {
+        return new Menu("Product Information Menu", this) {
             @Override
             public void show() {
-                System.out.println("This product comments and score\n(Enter back to return)");
+                System.out.println("Product information is:\n(Enter back to return)");
             }
 
             @Override
@@ -43,32 +44,28 @@ public class CommentsMenu extends Menu {
         };
     }
 
-    private Menu getAddCommentMenu()
+    private Menu getAddToCartMenu()
     {
-        return new Menu("Add Comment Menu", this) {
+        return new Menu("Add To Cart Menu", this) {
             @Override
             public void show() {
-                System.out.println("Please enter title in first line and content in second line");
-                System.out.println("(Enter back to return)");
+                System.out.println("Please enter seller:\n(Enter back to return");
             }
 
             @Override
             public void execute() {
-                String title = scanner.nextLine();
-                String content = scanner.nextLine();
+                String input = scanner.nextLine();
                 try
                 {
-                    Matcher matcher1 = getMatcher(title, "");
-                    Matcher matcher2 = getMatcher(title, "^\\s*back\\s*$");
-                    Matcher matcher3 = getMatcher(content, "");
-                    Matcher matcher4 = getMatcher(content, "^\\s*back\\s*$");
-                    if(matcher2.find() || matcher4.find())
+                    Matcher matcher1 = getMatcher(input, "");
+                    Matcher matcher2 = getMatcher(input, "^\\s*back\\s*$");
+                    if(matcher2.find())
                     {
                         this.parentMenu.show();
                         this.parentMenu.execute();
                         return;
                     }
-                    else if(!matcher1.find() || !matcher3.find())
+                    else if(!matcher1.find())
                     {
                         throw new Exception("invalid input");
                     }

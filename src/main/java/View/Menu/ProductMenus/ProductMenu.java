@@ -1,23 +1,24 @@
-package View.Menu.SellerMenus.ProductMenus;
+package View.Menu.ProductMenus;
 
 import View.Menu.Menu;
 
 import java.util.regex.Matcher;
 
-public class DigestMenu extends Menu {
-
-    public DigestMenu(Menu parentMenu) {
-        super("Digest Menu", parentMenu);
-        super.addToSubMenus(1, this.getProductInformationMenu());
-        super.addToSubMenus(2, this.getAddToCartMenu());
+public class ProductMenu extends Menu {
+    public ProductMenu(Menu parentMenu) {
+        super("Product Menu", parentMenu);
+        super.addToSubMenus(1, new DigestMenu(this));
+        super.addToSubMenus(2, this.getAttributesMenu());
+        super.addToSubMenus(3, this.getCompareMenu());
+        super.addToSubMenus(4, new CommentsMenu(this));
     }
 
-    private Menu getProductInformationMenu()
+    private Menu getAttributesMenu()
     {
-        return new Menu("Product Information Menu", this) {
+        return new Menu("Attributes Menu", this) {
             @Override
             public void show() {
-                System.out.println("Product information is:\n(Enter back to return)");
+                System.out.println("This product attributes are:\n(Enter back to return)");
             }
 
             @Override
@@ -44,12 +45,12 @@ public class DigestMenu extends Menu {
         };
     }
 
-    private Menu getAddToCartMenu()
+    private Menu getCompareMenu()
     {
-        return new Menu("Add To Cart Menu", this) {
+        return new Menu("Compare Menu", this) {
             @Override
             public void show() {
-                System.out.println("Please enter seller:\n(Enter back to return");
+                System.out.println("Please enter productID\n(Enter back to return)");
             }
 
             @Override
@@ -78,4 +79,7 @@ public class DigestMenu extends Menu {
             }
         };
     }
+
+
+
 }
