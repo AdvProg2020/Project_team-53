@@ -1,4 +1,4 @@
-package ControllerTest;
+package ModelTest;
 
 import Model.BuyerAccount;
 import org.junit.Assert;

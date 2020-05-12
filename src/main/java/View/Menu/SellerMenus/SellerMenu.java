@@ -1,10 +1,9 @@
 package View.Menu.SellerMenus;
 
-import Controller.AdminManager;
+import Controller.SellerManager;
 import View.Menu.Menu;
 import View.Menu.PersonalInfoMenu;
 
-import javax.lang.model.element.PackageElement;
 import java.util.regex.Matcher;
 
 public class SellerMenu extends Menu {
@@ -90,7 +89,8 @@ public class SellerMenu extends Menu {
         return new Menu("Add Product Menu", this) {
             @Override
             public void show() {
-
+                System.out.println("Please enter product status, name, number, description, category name in order");
+                System.out.println("(Enter back to return");
             }
 
             @Override
@@ -98,7 +98,7 @@ public class SellerMenu extends Menu {
                 String input = scanner.nextLine();
                 try
                 {
-                    Matcher matcher1 = getMatcher(input, "");
+                    Matcher matcher1 = getMatcher(input, "^\\s*(\\S+)\\s+(\\S+)\\s+(\\S+)\\s+(\\S+)\\s+(\\S+)\\s*$");
                     Matcher matcher2 = getMatcher(input, "^\\s*back\\s*$");
                     if(matcher2.find())
                     {
@@ -109,6 +109,9 @@ public class SellerMenu extends Menu {
                     else if(!matcher1.find())
                     {
                         throw new Exception("invalid input");
+                    }
+                    else
+                    {
                     }
                 }
                 catch (Exception e)
@@ -133,7 +136,7 @@ public class SellerMenu extends Menu {
                 String input = scanner.nextLine();
                 try
                 {
-                    Matcher matcher1 = getMatcher(input, "");
+                    Matcher matcher1 = getMatcher(input, "^\\s*(\\S+)\\s*$");
                     Matcher matcher2 = getMatcher(input, "^\\s*back\\s*$");
                     if(matcher2.find())
                     {
@@ -144,6 +147,10 @@ public class SellerMenu extends Menu {
                     else if(!matcher1.find())
                     {
                         throw new Exception("invalid input");
+                    }
+                    else
+                    {
+                        System.out.println(SellerManager.deleteProduct(Integer.parseInt(matcher1.group(1))));
                     }
                 }
                 catch (Exception e)
