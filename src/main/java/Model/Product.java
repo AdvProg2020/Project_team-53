@@ -60,4 +60,8 @@ public class Product {
         Category.getCategoryByName(categoryName).addProduct(this.productId);
         this.categoryName = categoryName;
     }
+
+    public String getName() {
+        return name;
+    }
 }
