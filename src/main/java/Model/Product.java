@@ -25,5 +25,36 @@ public class Product {
         averageScore = 0;
     }
 
+    public int getProductId() {
+        return productId;
+    }
 
+    public String getSellerUsername() {
+        return sellerUsername;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setAvailable(boolean available) {
+        this.available = available;
+    }
+
+    public void setNumber(int number) {
+        this.number = number;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setCategoryName(String categoryName) {
+        // TODO: 12-May-20
+        this.categoryName = categoryName;
+    }
 }

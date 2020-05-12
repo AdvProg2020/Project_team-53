@@ -22,6 +22,10 @@ public class Database {
         return allRequest;
     }
 
+    public static ArrayList<Product> getAllProducts() {
+        return allProducts;
+    }
+
     public static Account getAccountByUsername(String username) {
         for (Account account : allAccounts) {
             if (account.getUsername().equals(username))
@@ -30,8 +34,12 @@ public class Database {
         return null;
     }
 
-    public static void addAllAccounts(Account account) {
-        allAccounts.add(account);
+    public static Product getProductByID(int productId){
+        for (Product product : allProducts) {
+            if (product.getProductId() == productId)
+                return product;
+        }
+        return null;
     }
 
     public static Request getRequestById(int id) {
@@ -42,14 +50,38 @@ public class Database {
         return null;
     }
 
+    public static void addAllAccounts(Account account) {
+        allAccounts.add(account);
+    }
+
     public static void addRequest(Request request) {
         allRequest.add(request);
     }
 
+    public static void addAllProduct(Product product) {
+        allProducts.add(product);
+    }
 
     public static void writeDataOnFile() {
         writeAccountsOnFile();
+        writeProductsOnFile();
+    }
 
+    private static void writeProductsOnFile() {
+        File file = new File("Data\\Products\\Products.json");
+        file.getParentFile().mkdirs();
+        FileWriter fileWriter = null;
+
+        try {
+            fileWriter = new FileWriter(file);
+            Gson gson = new Gson();
+            String json = gson.toJson(allProducts);
+            fileWriter.write(json);
+            fileWriter.flush();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private static void writeAccountsOnFile(){
@@ -66,13 +98,12 @@ public class Database {
             else
                 System.out.println("What the hell");
         }
-        writeArrayOnFile(admins, "Accounts\\Admins");
-        writeArrayOnFile(sellers, "Accounts\\Sellers");
-        writeArrayOnFile(buyers, "Accounts\\Buyers");
-
+        writeArrayAccountOnFile(admins, "Accounts\\Admins");
+        writeArrayAccountOnFile(sellers, "Accounts\\Sellers");
+        writeArrayAccountOnFile(buyers, "Accounts\\Buyers");
     }
 
-    private static void writeArrayOnFile(ArrayList<Account> arr, String name) {
+    private static void writeArrayAccountOnFile(ArrayList<Account> arr, String name) {
         File file = new File("Data\\" + name + ".json");
         file.getParentFile().mkdirs();
         FileWriter fileWriter = null;
@@ -97,10 +128,15 @@ public class Database {
         allAccounts.remove(account);
     }
 
+    public static void removeProduct(Product product) {
+        allProducts.remove(product);
+    }
+
     public static void initialize() {
         readArrayOfAccountFromFile("Admins");
         readArrayOfAccountFromFile("Buyers");
         readArrayOfAccountFromFile("Sellers");
+        readArrayOfProductFromFile("Products");
         for (Account account : allAccounts) {
             if (account instanceof AdminAccount && account.getUsername().equals("Admin"))
                 return;
@@ -110,6 +146,19 @@ public class Database {
         } catch (Exception e) {
 
         }
+    }
+
+    private static void readArrayOfProductFromFile(String place) {
+        Gson gson = new Gson();
+        File file = new File("Data\\Products\\"+place+".json");
+        BufferedReader br = null;
+        try {
+            br = new BufferedReader(new FileReader(file));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        Type type = new TypeToken<ArrayList<Product>>(){}.getType();
+        allProducts = gson.fromJson(br, type);
     }
 
     private static void readArrayOfAccountFromFile(String place) {
@@ -138,7 +187,4 @@ public class Database {
         allAccounts.addAll(arr);
     }
 
-    public static void addAllProduct(Product product) {
-        allProducts.add(product);
-    }
 }
