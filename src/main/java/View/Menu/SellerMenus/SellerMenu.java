@@ -112,7 +112,7 @@ public class SellerMenu extends Menu {
                     }
                     else
                     {
-                        System.out.println(SellerManager.sendAddProductRequest(matcher1.group(1), matcher1.group(2), Boolean.parseBoolean(matcher1.group(3)), Integer.parseInt(matcher1.group(4)), matcher1.group(5), matcher1.group(6)));
+                        System.out.println(SellerManager.sendAddProductRequest(matcher1.group(1), matcher1.group(2), Boolean.parseBoolean(matcher1.group(3)), Integer.parseInt(matcher1.group(4)), matcher1.group(5), matcher1.group(6), Integer.parseInt(matcher1.group(7))));
                     }
                 }
                 catch (Exception e)

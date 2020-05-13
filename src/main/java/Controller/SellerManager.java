@@ -6,8 +6,8 @@ import Model.Request.NewProductRequest;
 
 public class SellerManager {
 
-    public static String sendAddProductRequest(String status, String name, boolean available, int number, String description, String categoryName){
-        Database.addRequest(new NewProductRequest(status, name, AccountManager.getLoggedInAccount().getUsername(), available, number, description, categoryName ));
+    public static String sendAddProductRequest(String status, String name, boolean available, int number, String description, String categoryName, int price){
+        Database.addRequest(new NewProductRequest(status, name, AccountManager.getLoggedInAccount().getUsername(), available, number, description, categoryName, price ));
         return "Your request registered.";
     }
 

@@ -136,6 +136,7 @@ public class Database {
         readArrayOfAccountFromFile("Admins");
         readArrayOfAccountFromFile("Buyers");
         readArrayOfAccountFromFile("Sellers");
+
         readArrayOfProductFromFile("Products");
         for (Account account : allAccounts) {
             if (account instanceof AdminAccount && account.getUsername().equals("Admin"))
