@@ -1,5 +1,6 @@
 package View.Menu.ProductMenus;
 
+import Controller.ProductManager;
 import View.Menu.Menu;
 
 import java.util.regex.Matcher;
@@ -23,6 +24,7 @@ public class ProductMenu extends Menu {
 
             @Override
             public void execute() {
+                System.out.println(ProductManager.showFullInfo());
                 String input = scanner.nextLine();
                 try
                 {
@@ -69,6 +71,9 @@ public class ProductMenu extends Menu {
                     else if(!matcher1.find())
                     {
                         throw new Exception("invalid input");
+                    }
+                    else {
+                        System.out.println(ProductManager.compare(Integer.parseInt(input)));
                     }
                 }
                 catch (Exception e)

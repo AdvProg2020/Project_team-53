@@ -1,5 +1,6 @@
 package View.Menu.ProductMenus;
 
+import Controller.ProductManager;
 import View.Menu.Menu;
 
 import java.util.regex.Matcher;
@@ -21,6 +22,7 @@ public class CommentsMenu extends Menu {
 
             @Override
             public void execute() {
+                System.out.println(ProductManager.showAverageScore());
                 String input = scanner.nextLine();
                 try
                 {

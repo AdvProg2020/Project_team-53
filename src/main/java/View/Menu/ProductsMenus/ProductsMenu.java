@@ -1,7 +1,9 @@
 package View.Menu.ProductsMenus;
 
-import View.Menu.AdminMenus.ManageAllProductsMenu;
+import Controller.Database;
+import Controller.ProductManager;
 import View.Menu.Menu;
+import View.Menu.ProductMenus.ProductMenu;
 
 import java.util.regex.Matcher;
 
@@ -92,7 +94,7 @@ public class ProductsMenu extends Menu {
                 String input = scanner.nextLine();
                 try
                 {
-                    Matcher matcher1 = getMatcher(input, "");
+                    Matcher matcher1 = getMatcher(input, "\\s*(\\d+)\\s*");
                     Matcher matcher2 = getMatcher(input, "^\\s*back\\s*$");
                     if(matcher2.find())
                     {
@@ -103,6 +105,14 @@ public class ProductsMenu extends Menu {
                     else if(!matcher1.find())
                     {
                         throw new Exception("invalid input");
+                    }
+                    else
+                    {
+                        ProductManager.setProduct(Database.getProductByID(Integer.parseInt(input)));
+                        ProductMenu productMenu = new ProductMenu(this);
+                        productMenu.show();
+                        productMenu.execute();
+                        return;
                     }
                 }
                 catch (Exception e)

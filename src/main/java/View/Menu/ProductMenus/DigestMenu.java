@@ -1,5 +1,6 @@
 package View.Menu.ProductMenus;
 
+import Controller.ProductManager;
 import View.Menu.Menu;
 
 import java.util.regex.Matcher;
@@ -22,6 +23,7 @@ public class DigestMenu extends Menu {
 
             @Override
             public void execute() {
+                System.out.println(ProductManager.digest());
                 String input = scanner.nextLine();
                 try
                 {
