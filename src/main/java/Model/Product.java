@@ -13,9 +13,10 @@ public class Product {
     String description;
     double averageScore;
     String categoryName;
+    int price;
     ArrayList<Score> scores = new ArrayList<>();
 
-    public Product(String status, String name, String sellerUsername, boolean available, int number, String description , String categoryName) {
+    public Product(String status, String name, String sellerUsername, boolean available, int number, String description , String categoryName , int price) {
         this.status = status;
         this.name = name;
         this.sellerUsername = sellerUsername;
@@ -24,12 +25,21 @@ public class Product {
         this.description = description;
         this.productId = numberOfAllProducts;
         this.categoryName = categoryName;
+        this.price = price;
         numberOfAllProducts++;
         averageScore = 0;
     }
 
     public int getProductId() {
         return productId;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
     }
 
     public String getSellerUsername() {
