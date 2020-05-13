@@ -23,7 +23,7 @@ public class SellerManager {
     public static String deleteProduct(int productId){
         Product product = Database.getProductByID(productId);
         if (!product.getSellerUsername().equalsIgnoreCase(AccountManager.getLoggedInAccount().getUsername())){
-            return "You can't edit this product.";
+            return "You can't remove this product.";
         }
         Database.removeProduct(product);
         return "Product removed successfully";
