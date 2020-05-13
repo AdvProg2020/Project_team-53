@@ -57,7 +57,7 @@ public class AccountManagerTest {
     public void editTest2() throws Exception
     {
         Database.initialize();
-        AccountManager.logIn("test", "testing");
+        AccountManager.logIn("test", "tested");
         String result = AccountManager.edit("firstName", "tested");
         String expected = "changed successfully";
         AccountManager.logOut();
@@ -69,7 +69,7 @@ public class AccountManagerTest {
     public void editTest3() throws Exception
     {
         Database.initialize();
-        AccountManager.logIn("test", "testing");
+        AccountManager.logIn("test", "tested");
         String result = AccountManager.edit("lastName", "tested");
         String expected = "changed successfully";
         AccountManager.logOut();
@@ -81,7 +81,7 @@ public class AccountManagerTest {
     public void editTest4() throws Exception
     {
         Database.initialize();
-        AccountManager.logIn("test", "testing");
+        AccountManager.logIn("test", "tested");
         String result = AccountManager.edit("password", "tested");
         String expected = "changed successfully";
         AccountManager.logOut();

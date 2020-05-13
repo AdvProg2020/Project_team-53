@@ -7,7 +7,7 @@ import org.junit.Test;
 public class AdminManagerTest {
 
     @Test
-    public void showAccountWithUsernameTest()
+    public void showAccountWithUsernameTest1()
     {
         String expected = "No user with this username.";
         String result = AdminManager.showAccountWithUsername("TestUsername");
