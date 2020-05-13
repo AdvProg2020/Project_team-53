@@ -1,7 +1,7 @@
 package View.Menu;
 
 import Controller.AccountManager;
-import Controller.AdminManager;
+import Model.AdminAccount;
 import Model.BuyerAccount;
 import Model.SellerAccount;
 import View.Menu.AdminMenus.AdminMenu;
@@ -28,9 +28,13 @@ public class UserMenu extends Menu {
         {
             sellerMenu.show();
         }
-        else
+        else if(AccountManager.getLoggedInAccount() instanceof AdminAccount)
         {
             adminMenu.show();
+        }
+        else if(AccountManager.getLoggedInAccount() == null)
+        {
+            System.out.println("You have to login first");
         }
     }
 
@@ -45,9 +49,13 @@ public class UserMenu extends Menu {
         {
             sellerMenu.execute();
         }
-        else
+        else if(AccountManager.getLoggedInAccount() instanceof AdminAccount)
         {
             adminMenu.execute();
+        }
+        else if(AccountManager.getLoggedInAccount() == null)
+        {
+            super.parentMenu.execute();
         }
     }
 }

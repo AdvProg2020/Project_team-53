@@ -26,7 +26,7 @@ public class Cart {
     {
         int cost = 0;
         for (Integer productId : productsID) {
-            cost += Database.getProductByID(productId).getPrice() * muchOfProductID.get(productId);
+     //       cost += Database.getProductByID(productId).getPrice() * muchOfProductID.get(productId);
         }
         return  cost;
     }
