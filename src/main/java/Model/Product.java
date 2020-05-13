@@ -1,7 +1,5 @@
 package Model;
 
-import java.util.ArrayList;
-
 public class Product {
     static int numberOfAllProducts=1;
     int productId;
@@ -13,10 +11,8 @@ public class Product {
     String description;
     double averageScore;
     String categoryName;
-    int price;
-    ArrayList<Score> scores = new ArrayList<>();
 
-    public Product(String status, String name, String sellerUsername, boolean available, int number, String description , String categoryName, int price) {
+    public Product(String status, String name, String sellerUsername, boolean available, int number, String description , String categoryName) {
         this.status = status;
         this.name = name;
         this.sellerUsername = sellerUsername;
@@ -25,7 +21,6 @@ public class Product {
         this.description = description;
         this.productId = numberOfAllProducts;
         this.categoryName = categoryName;
-        this.price = price;
         numberOfAllProducts++;
         averageScore = 0;
     }
@@ -66,23 +61,11 @@ public class Product {
         this.categoryName = categoryName;
     }
 
-    public void setPrice(int price) {
-        this.price = price;
-    }
-
     public String getName() {
         return name;
     }
 
-    public int getPrice() {
-        return price;
+    public int getNumber() {
+        return number;
     }
-
-    public void giveScore(Score score){
-        double sum = averageScore*scores.size();
-        scores.add(score);
-        sum += score.getScore();
-        averageScore = sum/scores.size();
-    }
-
 }

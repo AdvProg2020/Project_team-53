@@ -43,12 +43,30 @@ public class Cart {
 
     public boolean increaseProduct(int productID)
     {
+        if(!muchOfProductID.containsKey(productID))
+        {
+            return false;
+        }
+        if(muchOfProductID.get(productID) + 1 > Database.getProductByID(productID).getNumber())
+        {
+            return false;
+        }
         muchOfProductID.replace(productID, muchOfProductID.get(productID) + 1);
         return true;
     }
 
     public boolean decreaseProduct(int productID)
     {
+        if(!muchOfProductID.containsKey(productID))
+        {
+            return false;
+        }
+        else if(muchOfProductID.get(productID) - 1 == 0)
+        {
+            productsID.remove(productID);
+            muchOfProductID.remove(productID);
+            return true;
+        }
         muchOfProductID.replace(productID, muchOfProductID.get(productID) - 1);
         return true;
     }
