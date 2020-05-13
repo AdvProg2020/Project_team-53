@@ -82,10 +82,63 @@ public class Product {
         return number;
     }
 
+    public boolean isAvailable() {
+        return available;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public String getCategoryName() {
+        return categoryName;
+    }
+
     public void giveScore(Score score) {
         double sum = averageScore * scores.size();
         sum += score.getScore();
         scores.add(score);
         averageScore = sum/scores.size();
+    }
+
+    public double getAverageScore() {
+        return averageScore;
+    }
+
+    public String digest() {
+        return  "   ID= " + productId + '\n' +
+                "   name= " + name + '\n' +
+                "   sellerUsername= " + sellerUsername + '\n' +
+                "   description= " + description + '\n' +
+                "   averageScore= " + averageScore + '\n' +
+                "   price= " + price + '\n';
+
+    }
+
+    public String showAllInfo() {
+        // TODO: 14-May-20 After adding comments
+        return "productId=" + productId + '\n' +
+                "status=" + status + '\n' +
+                "name=" + name + '\n' +
+                "sellerUsername=" + sellerUsername + '\n' +
+                "available=" + available + '\n'+
+                "number=" + number + '\n' +
+                "description=" + description + '\n' +
+                "averageScore=" + averageScore + '\n' +
+                "categoryName=" + categoryName + '\n' +
+                "price=" + price + '\n' ;
+
+    }
+
+    public String compareWith(Product secondPro) {
+        return  "name : " + this.getName() + " ---- " + secondPro.getName() +'\n' +
+                "sellers : " + this.getSellerUsername() + " ---- " + secondPro.getSellerUsername() +'\n' +
+                "number : " + this.getNumber() + " ---- " + secondPro.getNumber() +'\n' +
+                "available : " + this.isAvailable() + " ---- " + secondPro.isAvailable() +'\n' +
+                "description : " + this.getDescription() + " ---- " + secondPro.getDescription() +'\n' +
+                "averageScore : " + this.getAverageScore() + " ---- " + secondPro.getAverageScore() +'\n' +
+                "categoryName : " + this.getCategoryName() + " ---- " + secondPro.getCategoryName() +'\n' +
+                "price : " + this.getPrice() + " ---- " + secondPro.getPrice() +'\n' ;
+
     }
 }

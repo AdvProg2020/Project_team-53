@@ -5,7 +5,7 @@ import Model.Product;
 import Model.Score;
 
 public class ProductManager {
-    private static Product product;
+    private static Product product = null;
 
     public static void setProduct(Product setTo) {
         product = setTo;
@@ -24,5 +24,20 @@ public class ProductManager {
         return "Your Score submitted.";
     }
 
+    public static double showAverageScore(){
+        return product.getAverageScore();
+    }
 
+    public static String digest(){
+        return product.digest();
+    }
+
+    public static String showFullInfo(){
+        return product.showAllInfo();
+    }
+
+    public static String compare(int productId){
+        Product secondPro = Database.getProductByID(productId);
+        return product.compareWith(secondPro);
+    }
 }
