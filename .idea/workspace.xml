@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9610a36b-aa98-4cc2-966a-bf2d86b17a51" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Cart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Cart.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Request/EditProductRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Request/EditProductRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/View/Menu/UserMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/View/Menu/UserMenu.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,7 +65,7 @@
   <component name="RunManager" selected="Application.Main">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
-      <module name="Project" />
+      <module name="Project_team-53" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -240,6 +236,8 @@
       <workItem from="1589274061221" duration="1765000" />
       <workItem from="1589275895622" duration="1761000" />
       <workItem from="1589399324688" duration="784000" />
+      <workItem from="1589406600010" duration="7000" />
+      <workItem from="1589406800125" duration="99000" />
     </task>
     <task id="LOCAL-00001" summary="get ready">
       <created>1587239260289</created>
@@ -518,11 +516,11 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="280" y="18" key="#AdminManagerTest.showAccountWithUsernameTest/0.0.1366.738@0.0.1366.738" timestamp="1589226965973" />
-    <state x="400" y="26" key="#Main" timestamp="1589400425852">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state x="400" y="26" key="#Main" timestamp="1589406896897">
+      <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="400" y="26" key="#Main/0.0.1366.728@0.0.1366.728" timestamp="1589400425852" />
-    <state x="400" y="26" key="#Main/0.0.1366.738@0.0.1366.738" timestamp="1588661011460" />
+    <state x="400" y="26" key="#Main/0.0.1366.738@0.0.1366.738" timestamp="1589406896897" />
     <state x="275" y="21" key="#Project_Structure" timestamp="1588882477025">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -567,11 +565,11 @@
     </state>
     <state x="412" y="149" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1366.728@0.0.1366.728" timestamp="1589388879706" />
     <state x="412" y="151" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1366.738@0.0.1366.738" timestamp="1589230109625" />
-    <state x="531" y="251" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1589291584731">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state x="531" y="254" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1589406837012">
+      <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="531" y="251" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1366.728@0.0.1366.728" timestamp="1589291584731" />
-    <state x="531" y="254" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1366.738@0.0.1366.738" timestamp="1589271279312" />
+    <state x="531" y="254" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1366.738@0.0.1366.738" timestamp="1589406837012" />
     <state x="263" y="17" key="#com.intellij.openapi.projectRoots.ui.ProjectJdksEditor" timestamp="1587840031430">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -659,11 +657,17 @@
     <state x="346" y="59" width="672" height="678" key="search.everywhere.popup/0.0.1366.738@0.0.1366.738" timestamp="1589233519653" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/Project_team_53$AdminManagerTest.ic" NAME="AdminManagerTest Coverage Results" MODIFIED="1589226535228" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/Project$AccountManagerTest.ic" NAME="AccountManagerTest Coverage Results" MODIFIED="1588943574745" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>ControllerTest.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/Project_team_53$AccountTest.ic" NAME="AccountTest Coverage Results" MODIFIED="1589230660323" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>ControllerTest.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Project_team_53$AccountManagerTest.ic" NAME="AccountManagerTest Coverage Results" MODIFIED="1589229190334" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Project$SellerAccountTest.ic" NAME="SellerAccountTest Coverage Results" MODIFIED="1589388843464" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>ModelTest.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/Project_team_53$AccountManagerTest_registerTest1.ic" NAME="AccountManagerTest.registerTest1 Coverage Results" MODIFIED="1589228895297" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>ControllerTest.*</FILTER>
@@ -675,13 +679,7 @@
     <SUITE FILE_PATH="coverage/Project_team_53$AdminManagerTest_showRequestWithIDTest.ic" NAME="AdminManagerTest.showRequestWithIDTest Coverage Results" MODIFIED="1589226973100" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>ControllerTest.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/Project_team_53$AccountManagerTest.ic" NAME="AccountManagerTest Coverage Results" MODIFIED="1589229190334" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>*</FILTER>
-    </SUITE>
-    <SUITE FILE_PATH="coverage/Project$SellerAccountTest.ic" NAME="SellerAccountTest Coverage Results" MODIFIED="1589388843464" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>ModelTest.*</FILTER>
-    </SUITE>
-    <SUITE FILE_PATH="coverage/Project$AccountManagerTest.ic" NAME="AccountManagerTest Coverage Results" MODIFIED="1588943574745" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/Project_team_53$AdminManagerTest.ic" NAME="AdminManagerTest Coverage Results" MODIFIED="1589226535228" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>ControllerTest.*</FILTER>
     </SUITE>
   </component>
