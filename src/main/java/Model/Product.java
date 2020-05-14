@@ -7,7 +7,6 @@ public class Product {
     int productId;
     String status;
     String name;
-    String sellerUsername;
     boolean available;
     int number;
     String description;
@@ -15,11 +14,12 @@ public class Product {
     String categoryName;
     int price;
     ArrayList<Score> scores = new ArrayList<>();
+    ArrayList<String> sellerUsernames = new ArrayList<>();
 
     public Product(String status, String name, String sellerUsername, boolean available, int number, String description , String categoryName , int price) {
         this.status = status;
         this.name = name;
-        this.sellerUsername = sellerUsername;
+        this.sellerUsernames.add(sellerUsername);
         this.available = available;
         this.number = number;
         this.description = description;
@@ -42,8 +42,8 @@ public class Product {
         this.price = price;
     }
 
-    public String getSellerUsername() {
-        return sellerUsername;
+    public ArrayList<String> getSellerUsername() {
+        return sellerUsernames;
     }
 
     public void setStatus(String status) {
@@ -108,7 +108,7 @@ public class Product {
     public String digest() {
         return  "   ID= " + productId + '\n' +
                 "   name= " + name + '\n' +
-                "   sellerUsername= " + sellerUsername + '\n' +
+                "   sellerUsernames= " + sellerUsernames + '\n' +
                 "   description= " + description + '\n' +
                 "   averageScore= " + averageScore + '\n' +
                 "   price= " + price + '\n';
@@ -120,7 +120,7 @@ public class Product {
         return "productId=" + productId + '\n' +
                 "status=" + status + '\n' +
                 "name=" + name + '\n' +
-                "sellerUsername=" + sellerUsername + '\n' +
+                "sellerUsernames=" + sellerUsernames + '\n' +
                 "available=" + available + '\n'+
                 "number=" + number + '\n' +
                 "description=" + description + '\n' +
@@ -140,5 +140,17 @@ public class Product {
                 "categoryName : " + this.getCategoryName() + " ---- " + secondPro.getCategoryName() +'\n' +
                 "price : " + this.getPrice() + " ---- " + secondPro.getPrice() +'\n' ;
 
+    }
+
+    public void addSeller(String changeTo) {
+        sellerUsernames.add(changeTo);
+    }
+
+    public boolean isSeller(String username) {
+        for (String seller : sellerUsernames) {
+            if (username.equalsIgnoreCase(seller))
+                return true;
+        }
+        return false;
     }
 }
