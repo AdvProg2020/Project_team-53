@@ -117,7 +117,6 @@ public class Product {
     }
 
     public String showAllInfo() {
-         //TODO: 14-May-20 After adding comments
         StringBuilder allComments = new StringBuilder();
         for (Comment comment : comments) {
             allComments.append(comment.showComment());
