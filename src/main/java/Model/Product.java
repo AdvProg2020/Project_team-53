@@ -14,6 +14,7 @@ public class Product {
     String categoryName;
     int price;
     ArrayList<Score> scores = new ArrayList<>();
+    ArrayList<Comment> comments = new ArrayList<>();
     ArrayList<String> sellerUsernames = new ArrayList<>();
 
     public Product(String status, String name, String sellerUsername, boolean available, int number, String description , String categoryName , int price) {
@@ -116,7 +117,12 @@ public class Product {
     }
 
     public String showAllInfo() {
-        // TODO: 14-May-20 After adding comments
+         //TODO: 14-May-20 After adding comments
+        StringBuilder allComments = new StringBuilder();
+        for (Comment comment : comments) {
+            allComments.append(comment.showComment());
+            allComments.append("-----------------------");
+        }
         return "productId=" + productId + '\n' +
                 "status=" + status + '\n' +
                 "name=" + name + '\n' +
@@ -126,8 +132,8 @@ public class Product {
                 "description=" + description + '\n' +
                 "averageScore=" + averageScore + '\n' +
                 "categoryName=" + categoryName + '\n' +
-                "price=" + price + '\n' ;
-
+                "price=" + price + '\n' +
+                "comments=" + allComments + '\n' ;
     }
 
     public String compareWith(Product secondPro) {
@@ -152,5 +158,9 @@ public class Product {
                 return true;
         }
         return false;
+    }
+
+    public void addComment(Comment comment) {
+        comments.add(comment);
     }
 }

@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9610a36b-aa98-4cc2-966a-bf2d86b17a51" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/Model/Comment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/SellerManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/SellerManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/ProductManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/ProductManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Model/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Product.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Request/EditProductRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Request/EditProductRequest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -242,7 +242,9 @@
       <workItem from="1589406600010" duration="7000" />
       <workItem from="1589406800125" duration="381000" />
       <workItem from="1589464226132" duration="580000" />
-      <workItem from="1589477626478" duration="626000" />
+      <workItem from="1589477626478" duration="1864000" />
+      <workItem from="1589479979030" duration="1759000" />
+      <workItem from="1589481790575" duration="514000" />
     </task>
     <task id="LOCAL-00001" summary="get ready">
       <created>1587239260289</created>
@@ -468,14 +470,20 @@
       <option name="project" value="LOCAL" />
       <updated>1589407020034</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="multiple seller for product handled">
+      <created>1589478297604</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1589478297604</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="add AdminMenu and ManageUsersMenu and make some changes" />
     <MESSAGE value="add ViewDiscountCodeMenu and create discount method to AdminMenu" />
     <MESSAGE value="add ManageRequestsMenu and make some changes in ViewDiscountCodeMenu" />
     <MESSAGE value="add ManageCategoriesMenu and make some changes" />
@@ -500,7 +508,8 @@
     <MESSAGE value="make little changes" />
     <MESSAGE value="give Score added" />
     <MESSAGE value="ProductManaer and AllProductManager Started" />
-    <option name="LAST_COMMIT_MESSAGE" value="ProductManaer and AllProductManager Started" />
+    <MESSAGE value="multiple seller for product handled" />
+    <option name="LAST_COMMIT_MESSAGE" value="multiple seller for product handled" />
   </component>
   <component name="WindowStateProjectService">
     <state x="280" y="20" key="#AccountManagerTest" timestamp="1589226101281">
@@ -563,11 +572,11 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="92" y="92" width="1182" height="544" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog/0.0.1366.728@0.0.1366.728" timestamp="1589035445292" />
-    <state x="488" y="73" key="#com.intellij.ide.util.MemberChooser" timestamp="1589400055305">
+    <state x="488" y="73" key="#com.intellij.ide.util.MemberChooser" timestamp="1589482239515">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="488" y="72" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1589308684318" />
-    <state x="488" y="73" key="#com.intellij.ide.util.MemberChooser/0.0.1366.738@0.0.1366.738" timestamp="1589400055305" />
+    <state x="488" y="73" key="#com.intellij.ide.util.MemberChooser/0.0.1366.738@0.0.1366.738" timestamp="1589482239515" />
     <state x="412" y="143" key="#com.intellij.ide.util.PackageChooserDialog" timestamp="1589230984213">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
@@ -594,11 +603,11 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="280" y="6" key="#null./0.0.1366.738@0.0.1366.738" timestamp="1589226532697" />
-    <state x="470" y="0" key="CommitChangelistDialog2" timestamp="1589407017988">
+    <state x="470" y="0" key="CommitChangelistDialog2" timestamp="1589478294953">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="458" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1589387404233" />
-    <state x="470" y="0" key="CommitChangelistDialog2/0.0.1366.738@0.0.1366.738" timestamp="1589407017988" />
+    <state x="470" y="0" key="CommitChangelistDialog2/0.0.1366.738@0.0.1366.738" timestamp="1589478294953" />
     <state x="92" y="93" width="1182" height="552" key="DiffContextDialog" timestamp="1589235790734">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
@@ -608,26 +617,26 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="463" y="122" key="FileChooserDialogImpl/0.0.1366.738@0.0.1366.738" timestamp="1589229857106" />
-    <state width="1322" height="121" key="GridCell.Tab.0.bottom" timestamp="1589407184319">
+    <state width="1322" height="121" key="GridCell.Tab.0.bottom" timestamp="1589482449078">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state width="1322" height="174" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1589400513637" />
-    <state width="1322" height="121" key="GridCell.Tab.0.bottom/0.0.1366.738@0.0.1366.738" timestamp="1589407184319" />
-    <state width="1322" height="121" key="GridCell.Tab.0.center" timestamp="1589407184319">
+    <state width="1322" height="121" key="GridCell.Tab.0.bottom/0.0.1366.738@0.0.1366.738" timestamp="1589482449078" />
+    <state width="1322" height="121" key="GridCell.Tab.0.center" timestamp="1589482449078">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state width="1322" height="174" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1589400513637" />
-    <state width="1322" height="121" key="GridCell.Tab.0.center/0.0.1366.738@0.0.1366.738" timestamp="1589407184319" />
-    <state width="1322" height="121" key="GridCell.Tab.0.left" timestamp="1589407184319">
+    <state width="1322" height="121" key="GridCell.Tab.0.center/0.0.1366.738@0.0.1366.738" timestamp="1589482449078" />
+    <state width="1322" height="121" key="GridCell.Tab.0.left" timestamp="1589482449078">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state width="1322" height="174" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1589400513637" />
-    <state width="1322" height="121" key="GridCell.Tab.0.left/0.0.1366.738@0.0.1366.738" timestamp="1589407184319" />
-    <state width="1322" height="121" key="GridCell.Tab.0.right" timestamp="1589407184319">
+    <state width="1322" height="121" key="GridCell.Tab.0.left/0.0.1366.738@0.0.1366.738" timestamp="1589482449078" />
+    <state width="1322" height="121" key="GridCell.Tab.0.right" timestamp="1589482449078">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state width="1322" height="174" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1589400513637" />
-    <state width="1322" height="121" key="GridCell.Tab.0.right/0.0.1366.738@0.0.1366.738" timestamp="1589407184319" />
+    <state width="1322" height="121" key="GridCell.Tab.0.right/0.0.1366.738@0.0.1366.738" timestamp="1589482449078" />
     <state x="213" y="22" key="Maven.ArtifactSearchDialog" timestamp="1589017820205">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
