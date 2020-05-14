@@ -8,6 +8,7 @@ public class AllProductManager {
 
     private static ArrayList<Product> allProducts = Database.getAllProducts();
     private static String sortedBy = "default sort.";
+    private static ArrayList<String> filterOptions = new ArrayList<>();
 
     public static String goToProduct(int productId){
         if (Database.getProductByID(productId) == null){
@@ -22,6 +23,17 @@ public class AllProductManager {
     }
 
     public static String showAllProduct(){
+
+        allProducts = Database.getAllProducts();
+
+        doFiltering();
+        if (sortedBy.endsWith("name."))
+            allProducts.sort(AllProductManager::compareWithName);
+        else if (sortedBy.endsWith("price."))
+            allProducts.sort(AllProductManager::compareWithPrice);
+        else if (sortedBy.endsWith("score."))
+            allProducts.sort(AllProductManager::compareWithScore);
+
         StringBuilder ans = new StringBuilder();
         for (Product product : allProducts) {
             ans.append(product.digest());
@@ -30,43 +42,39 @@ public class AllProductManager {
         return ans.toString();
     }
 
-    public static String ignoreAllFilterAndSort(){
+    public static String ignoreSort(){
         sortedBy = "default sort.";
-        allProducts = Database.getAllProducts();
-        return  showAllProduct();
+        return  "sort ignored";
     }
 
     public static String sortByName(){
         sortedBy = "Sorted by name.";
-        allProducts.sort(AllProductManager::compareWithName);
-        return showAllProduct();
+        return "sorted with name.";
     }
 
     public static String sortByPrice(){
         sortedBy = "Sorted by price.";
-        allProducts.sort(AllProductManager::compareWithPrice);
-        return showAllProduct();
+        return "sorted with price.";
     }
 
     public static String sortByScore(){
         sortedBy = "Sorted by score.";
-        allProducts.sort(AllProductManager::compareWithScore);
-        return showAllProduct();
+        return "sorted with score.";
     }
 
-    public static int compareWithPrice(Product p1, Product p2){
+    private static int compareWithPrice(Product p1, Product p2){
         return p1.getPrice() > p2.getPrice() ? 1 : -1;
     }
 
-    public static int compareWithName(Product p1, Product p2){
+    private static int compareWithName(Product p1, Product p2){
         return p1.getName().compareTo(p2.getName());
     }
 
-    public static int compareWithScore(Product p1, Product p2){
+    private static int compareWithScore(Product p1, Product p2){
         return p1.getAverageScore() > p2.getAverageScore() ? 1 : -1;
     }
 
-    public static String sortOption(){
+    public static String showSortOption(){
         return "Name \n Price \n Score \n";
     }
 
@@ -74,11 +82,28 @@ public class AllProductManager {
         return sortedBy;
     }
 
-    public static String filterOption(){
-        return "sellerUsername \n rangeOfPrice \n categoryName \n available \n rangeOfScore";
+    public static String showFilterOption(){
+        return "sellerUsername (a username) \n rangeOfPrice (lower bound , upper bound) \n categoryName (category name) \n available \n rangeOfScore (double more than)";
     }
 
-    public static String filterWithSellerUsername(String username){
+    public static String getFilterOptions() {
+        return filterOptions.toString();
+    }
+
+    public static String addFilterOption(String filter){
+        filterOptions.add(filter);
+        return "Done!";
+    }
+
+    public static String removeFilterOption(String filter){
+        if (filterOptions.contains(filter)){
+            filterOptions.remove(filter);
+            return "done";
+        }
+        return "no such filter.";
+    }
+
+    private static void filterWithSellerUsername(String username){
         ArrayList<Product> tempArray = new ArrayList<>();
         for (Product product : allProducts) {
             if (product.isSeller(username)){
@@ -86,10 +111,9 @@ public class AllProductManager {
             }
         }
         allProducts = tempArray;
-        return showAllProduct();
     }
 
-    public static String filterWithRangeOfPrice(int lower, int higher){
+    private static void filterWithRangeOfPrice(int lower, int higher){
         ArrayList<Product> tempArray = new ArrayList<>();
         for (Product product : allProducts) {
             if (product.getPrice() >= lower && product.getPrice() <= higher){
@@ -97,10 +121,9 @@ public class AllProductManager {
             }
         }
         allProducts = tempArray;
-        return showAllProduct();
     }
 
-    public static String filterWithCategoryName(String categoryName){
+    private static void filterWithCategoryName(String categoryName){
         ArrayList<Product> tempArray = new ArrayList<>();
         for (Product product : allProducts) {
             if (product.getCategoryName().equalsIgnoreCase(categoryName)){
@@ -108,10 +131,9 @@ public class AllProductManager {
             }
         }
         allProducts = tempArray;
-        return showAllProduct();
     }
 
-    public static String filterWithAvailable(){
+    private static void filterWithAvailable(){
         ArrayList<Product> tempArray = new ArrayList<>();
         for (Product product : allProducts) {
             if (product.isAvailable()){
@@ -119,10 +141,9 @@ public class AllProductManager {
             }
         }
         allProducts = tempArray;
-        return showAllProduct();
     }
 
-    public static String filterWitRangeOfScore(double moreThan){
+    private static void filterWitRangeOfScore(double moreThan){
         ArrayList<Product> tempArray = new ArrayList<>();
         for (Product product : allProducts) {
             if (product.getAverageScore() >= moreThan){
@@ -130,8 +151,29 @@ public class AllProductManager {
             }
         }
         allProducts = tempArray;
-        return showAllProduct();
     }
 
+    private static void doFiltering(){
 
+        for (String filterOption : filterOptions) {
+            if (filterOption.startsWith("sellerUsername")){
+                filterWithSellerUsername(filterOption.split(" ")[1]);
+            }
+            else if (filterOption.startsWith("rangeOfPrice")){
+                int x = Integer.parseInt(filterOption.split(" ")[1]);
+                int y = Integer.parseInt(filterOption.split(" ")[2]);
+                filterWithRangeOfPrice(x, y);
+            }
+            else if (filterOption.startsWith("available")){
+                filterWithAvailable();
+            }
+            else if (filterOption.startsWith("categoryName")){
+                filterWithCategoryName(filterOption.split(" ")[1]);
+            }
+            else if (filterOption.startsWith("rangeOfScore")){
+                double x = Double.parseDouble(filterOption.split(" ")[1]);
+                filterWitRangeOfScore(x);
+            }
+        }
+    }
 }

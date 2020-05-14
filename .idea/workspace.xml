@@ -4,7 +4,6 @@
     <list default="true" id="9610a36b-aa98-4cc2-966a-bf2d86b17a51" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Controller/AllProductManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/AllProductManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Product.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -245,7 +244,8 @@
       <workItem from="1589479979030" duration="1759000" />
       <workItem from="1589481790575" duration="1377000" />
       <workItem from="1589484407266" duration="1755000" />
-      <workItem from="1589486593246" duration="1405000" />
+      <workItem from="1589486593246" duration="1774000" />
+      <workItem from="1589491291686" duration="1775000" />
     </task>
     <task id="LOCAL-00001" summary="get ready">
       <created>1587239260289</created>
@@ -499,14 +499,20 @@
       <option name="project" value="LOCAL" />
       <updated>1589485588801</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="Filter and sortedBy added">
+      <created>1589488036818</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1589488036818</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="add ManageCategoriesMenu and make some changes" />
     <MESSAGE value="write Account on file &amp; showInfo" />
     <MESSAGE value="Request &amp; AdminManager added" />
     <MESSAGE value="complete login menu" />
@@ -531,7 +537,8 @@
     <MESSAGE value="multiple seller for product handled" />
     <MESSAGE value="Comment added" />
     <MESSAGE value="Sort added" />
-    <option name="LAST_COMMIT_MESSAGE" value="Sort added" />
+    <MESSAGE value="Filter and sortedBy added" />
+    <option name="LAST_COMMIT_MESSAGE" value="Filter and sortedBy added" />
   </component>
   <component name="WindowStateProjectService">
     <state x="280" y="20" key="#AccountManagerTest" timestamp="1589226101281">
@@ -598,11 +605,11 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="92" y="92" width="1182" height="544" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog/0.0.1366.728@0.0.1366.728" timestamp="1589035445292" />
-    <state x="488" y="73" key="#com.intellij.ide.util.MemberChooser" timestamp="1589487117263">
+    <state x="488" y="73" key="#com.intellij.ide.util.MemberChooser" timestamp="1589492197586">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="488" y="72" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1589308684318" />
-    <state x="488" y="73" key="#com.intellij.ide.util.MemberChooser/0.0.1366.738@0.0.1366.738" timestamp="1589487117263" />
+    <state x="488" y="73" key="#com.intellij.ide.util.MemberChooser/0.0.1366.738@0.0.1366.738" timestamp="1589492197586" />
     <state x="412" y="143" key="#com.intellij.ide.util.PackageChooserDialog" timestamp="1589230984213">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
@@ -629,11 +636,11 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="280" y="6" key="#null./0.0.1366.738@0.0.1366.738" timestamp="1589226532697" />
-    <state x="470" y="0" key="CommitChangelistDialog2" timestamp="1589485586893">
+    <state x="470" y="0" key="CommitChangelistDialog2" timestamp="1589488034735">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="458" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1589387404233" />
-    <state x="470" y="0" key="CommitChangelistDialog2/0.0.1366.738@0.0.1366.738" timestamp="1589485586893" />
+    <state x="470" y="0" key="CommitChangelistDialog2/0.0.1366.738@0.0.1366.738" timestamp="1589488034735" />
     <state x="92" y="93" width="1182" height="552" key="DiffContextDialog" timestamp="1589235790734">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
@@ -676,11 +683,11 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="184" y="0" key="SettingsEditor/0.0.1366.738@0.0.1366.738" timestamp="1589230363466" />
-    <state x="275" y="96" key="Vcs.Push.Dialog.v2" timestamp="1589482566025">
+    <state x="275" y="96" key="Vcs.Push.Dialog.v2" timestamp="1589488193738">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="275" y="95" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1589387409554" />
-    <state x="275" y="96" key="Vcs.Push.Dialog.v2/0.0.1366.738@0.0.1366.738" timestamp="1589482566025" />
+    <state x="275" y="96" key="Vcs.Push.Dialog.v2/0.0.1366.738@0.0.1366.738" timestamp="1589488193738" />
     <state x="378" y="186" key="com.intellij.ide.util.TipDialog" timestamp="1589363230671">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
