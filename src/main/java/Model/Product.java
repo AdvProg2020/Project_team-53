@@ -127,7 +127,6 @@ public class Product {
                 "averageScore=" + averageScore + '\n' +
                 "categoryName=" + categoryName + '\n' +
                 "price=" + price + '\n' ;
-
     }
 
     public String compareWith(Product secondPro) {
