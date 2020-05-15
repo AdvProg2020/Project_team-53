@@ -20,13 +20,14 @@ public class Cart {
     public void addToCart(Product product)
     {
         productsID.add(product.getProductId());
+        muchOfProductID.put(product.getProductId(), 1);
     }
 
     public long getCost()
     {
         int cost = 0;
         for (Integer productId : productsID) {
-     //       cost += Database.getProductByID(productId).getPrice() * muchOfProductID.get(productId);
+            cost += Database.getProductByID(productId).getPrice() * muchOfProductID.get(productId);
         }
         return  cost;
     }
@@ -36,7 +37,7 @@ public class Cart {
         String allProductsNameAndId = "";
         for (Integer productID : productsID) {
             Product product = Database.getProductByID(productID);
-            allProductsNameAndId.concat("Name : " + product.getName() + "_ID : " + product.getProductId() + '\n');
+            allProductsNameAndId = allProductsNameAndId + "Name : " + product.getName() + "_ID : " + product.getProductId() + "\n";
         }
         return allProductsNameAndId;
     }
@@ -63,7 +64,7 @@ public class Cart {
         }
         else if(muchOfProductID.get(productID) - 1 == 0)
         {
-            productsID.remove(productID);
+            productsID.remove(productsID.indexOf(productID));
             muchOfProductID.remove(productID);
             return true;
         }
