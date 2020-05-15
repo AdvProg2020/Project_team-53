@@ -1,5 +1,6 @@
 package View.Menu.ProductsMenus;
 
+import Controller.AllProductManager;
 import View.Menu.Menu;
 
 import java.util.regex.Matcher;
@@ -24,6 +25,7 @@ public class FilteringMenu extends Menu {
 
             @Override
             public void execute() {
+                System.out.println(AllProductManager.showFilterOption());
                 String input = scanner.nextLine();
                 try
                 {
@@ -59,15 +61,39 @@ public class FilteringMenu extends Menu {
                 String input = scanner.nextLine();
                 try
                 {
-                    Matcher matcher1 = getMatcher(input, "");
-                    Matcher matcher2 = getMatcher(input, "^\\s*back\\s*$");
-                    if(matcher2.find())
+                    Matcher matcher1 = getMatcher(input, "\\s*sellerUsername\\s+(\\S+)\\s*");
+                    Matcher matcher2 = getMatcher(input, "\\s*rangeOfPrice\\s+(\\d+)\\s+(\\d+)\\s*");
+                    Matcher matcher3 = getMatcher(input, "\\s*categoryName\\s+(\\S+)\\s*");
+                    Matcher matcher4 = getMatcher(input, "\\s*available\\s*");
+                    Matcher matcher5 = getMatcher(input, "\\s*rangeOfScore\\s+(\\d[\\.\\d+]?)");
+                    Matcher matcher6 = getMatcher(input, "^\\s*back\\s*$");
+                    if(matcher6.find())
                     {
                         this.parentMenu.show();
                         this.parentMenu.execute();
                         return;
                     }
-                    else if(!matcher1.find())
+                    else if(matcher1.find())
+                    {
+                        System.out.println(AllProductManager.addFilterOption("sellerUsername " + matcher1.group(1)));
+                    }
+                    else if(matcher2.find())
+                    {
+                        System.out.println(AllProductManager.addFilterOption("rangeOfPrice " + matcher2.group(1) + " " + matcher2.group(2)));
+                    }
+                    else if(matcher3.find())
+                    {
+                        System.out.println(AllProductManager.addFilterOption("categoryName " + matcher3.group(1)));
+                    }
+                    else if(matcher4.find())
+                    {
+                        System.out.println(AllProductManager.addFilterOption("available"));
+                    }
+                    else if(matcher5.find())
+                    {
+                        System.out.println(AllProductManager.addFilterOption("rangeOfScore " + matcher5.group(1)));
+                    }
+                    else
                     {
                         throw new Exception("invalid input");
                     }
@@ -91,6 +117,7 @@ public class FilteringMenu extends Menu {
 
             @Override
             public void execute() {
+                System.out.println(AllProductManager.getFilterOptions());
                 String input = scanner.nextLine();
                 try
                 {
@@ -126,7 +153,6 @@ public class FilteringMenu extends Menu {
                 String input = scanner.nextLine();
                 try
                 {
-                    Matcher matcher1 = getMatcher(input, "");
                     Matcher matcher2 = getMatcher(input, "^\\s*back\\s*$");
                     if(matcher2.find())
                     {
@@ -134,9 +160,9 @@ public class FilteringMenu extends Menu {
                         this.parentMenu.execute();
                         return;
                     }
-                    else if(!matcher1.find())
+                    else
                     {
-                        throw new Exception("invalid input");
+                        System.out.println(AllProductManager.removeFilterOption(input));
                     }
                 }
                 catch (Exception e)
