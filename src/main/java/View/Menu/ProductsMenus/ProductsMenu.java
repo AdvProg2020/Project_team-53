@@ -1,5 +1,6 @@
 package View.Menu.ProductsMenus;
 
+import Controller.AllProductManager;
 import Controller.Database;
 import Controller.ProductManager;
 import View.Menu.Menu;
@@ -59,6 +60,7 @@ public class ProductsMenu extends Menu {
 
             @Override
             public void execute() {
+                System.out.println(AllProductManager.showAllProduct());
                 String input = scanner.nextLine();
                 try
                 {
