@@ -15,7 +15,7 @@ public class AllProductManager {
             return "No product with this Id";
         }
         ProductManager.setProduct(Database.getProductByID(productId));
-        return ProductManager.digest();
+        return "Here is product menu";
     }
 
     public static void backToAll(){
