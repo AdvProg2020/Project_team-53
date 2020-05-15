@@ -23,8 +23,8 @@ public class AdminManagerTest {
     public void showAccountWithUsernameTest2()
     {
         Database.initialize();
-        String expected = Database.getAccountByUsername("test").showInfo();
-        String result = AdminManager.showAccountWithUsername("test");
+        String expected = Database.getAccountByUsername("parham").showInfo();
+        String result = AdminManager.showAccountWithUsername("parham");
 
         Assert.assertEquals(expected, result);
     }
@@ -34,7 +34,7 @@ public class AdminManagerTest {
     {
         Database.initialize();
         String expected = "Exist account with this username.";
-        String result = AdminManager.addNewAdminAccount("test", "a", "b", "c@c.c", "021", "123456", 1000);
+        String result = AdminManager.addNewAdminAccount("Admin", "a", "b", "c@c.c", "021", "123456", 1000);
 
         Assert.assertEquals(expected, result);
     }

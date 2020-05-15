@@ -165,7 +165,7 @@ public class AccountManagerTest {
     public void loginTest4()
     {
         Database.initialize();
-        String result = AccountManager.logIn("test", "testing");
+        String result = AccountManager.logIn("parham", "testing");
         String expected = "Wrong Password";
 
         Assert.assertEquals(expected, result);
