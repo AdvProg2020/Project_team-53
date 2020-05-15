@@ -9,4 +9,17 @@ public class BuyLog extends Log{
         this.discountValue = discountValue;
         this.sellerUsername = sellerUsername;
     }
+
+    @Override
+    public String toString() {
+        return "BuyLog{" +
+                "   logId=" + logId + '\n' +
+                "   productId=" + productId +'\n' +
+                "   discountValue=" + discountValue + '\n' +
+                "   sellerUsername='" + sellerUsername + '\n' +
+                "   date='" + date + '\n' +
+                "   price=" + price + '\n' +
+                "   deliveryStatus='" + deliveryStatus + '\n' +
+                '}';
+    }
 }

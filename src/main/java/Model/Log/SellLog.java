@@ -9,4 +9,17 @@ public class SellLog extends Log {
         OffValue = offValue;
         this.buyerUsername = buyerUsername;
     }
+
+    @Override
+    public String toString() {
+        return "SellLog{" +
+                "   logId=" + logId + '\n' +
+                "   productId=" + productId + '\n' +
+                "   OffValue=" + OffValue + '\n' +
+                "   buyerUsername='" + buyerUsername + '\n' +
+                "   date='" + date + '\n' +
+                "   price=" + price + '\n' +
+                "   deliveryStatus='" + deliveryStatus + '\n' +
+                '}';
+    }
 }

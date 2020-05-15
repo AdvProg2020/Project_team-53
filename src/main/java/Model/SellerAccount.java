@@ -34,4 +34,13 @@ public class SellerAccount extends Account{
     public void addSellLog(SellLog sellLog){
         sellLogs.add(sellLog);
     }
+
+
+    public String showAllLog(){
+        StringBuilder ans = new StringBuilder();
+        for (SellLog log : sellLogs) {
+            ans.append(log.toString());
+        }
+        return ans.toString();
+    }
 }

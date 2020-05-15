@@ -107,5 +107,11 @@ public class AccountManager {
         return loggedInAccount.showInfo();
     }
 
-
+    public static String viewLogs(){
+        if (loggedInAccount instanceof BuyerAccount)
+            return ((BuyerAccount) loggedInAccount).showAllLog();
+        else if (loggedInAccount instanceof SellerAccount)
+            return ((SellerAccount) loggedInAccount).showAllLog();
+        return "nothing to show.";
+    }
 }

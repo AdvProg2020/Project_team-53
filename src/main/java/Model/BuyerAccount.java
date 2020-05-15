@@ -23,4 +23,12 @@ public class BuyerAccount extends Account {
     public void addBuyLog(BuyLog buyLog){
         buyLogs.add(buyLog);
     }
+
+    public String showAllLog(){
+        StringBuilder ans = new StringBuilder();
+        for (BuyLog log : buyLogs) {
+            ans.append(log.toString());
+        }
+        return ans.toString();
+    }
 }
