@@ -18,6 +18,7 @@ public class SellerManagerTest {
         String expected = "Your request registered.";
         String result = SellerManager.sendAddProductRequest("test", "test", true, 10, "test", "test", 1000);
         AccountManager.logOut();
+        Database.removeAccount(sellerAccount);
 
         Assert.assertEquals(expected, result);
     }

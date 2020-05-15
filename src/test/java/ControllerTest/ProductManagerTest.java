@@ -90,6 +90,7 @@ public class ProductManagerTest {
                 "categoryName : " + ProductManager.getProduct().getCategoryName() + " ---- " + product.getCategoryName() +'\n' +
                 "price : " + ProductManager.getProduct().getPrice() + " ---- " + product.getPrice() +'\n' ;
         String result = ProductManager.compare(product.getProductId());
+        Database.removeProduct(product);
 
         Assert.assertEquals(expected, result);
     }
