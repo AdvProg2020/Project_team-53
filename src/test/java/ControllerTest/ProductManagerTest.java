@@ -94,4 +94,18 @@ public class ProductManagerTest {
 
         Assert.assertEquals(expected, result);
     }
+
+    @Test
+    public void giveCommentTest()
+    {
+        AccountManager.logIn("buyer", "buyer");
+        Product product1 = new Product("test1", "test1", "test1", true, 20, "test1", "test1", 2000);
+        ProductManager.setProduct(product1);
+        String expected = "Your comment registered.";
+        String result = ProductManager.giveComment("test", "test");
+        AccountManager.logOut();
+
+        Assert.assertEquals(expected, result);
+
+    }
 }
