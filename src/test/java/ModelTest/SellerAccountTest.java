@@ -156,4 +156,46 @@ public class SellerAccountTest {
 
         Assert.assertEquals(expected, result);
     }
+
+    @Test
+    public void getCompanyTest() throws Exception
+    {
+        SellerAccount sellerAccount = new SellerAccount("testUN", "testFN", "testLN", "testing", "test@gmail.com", "091211111111", 10000, "tester");
+        String expected = "tester";
+        String result = sellerAccount.getCompany();
+
+        Assert.assertEquals(expected, result);
+    }
+
+    @Test
+    public void setCompanyTest()
+    {
+        try {
+            SellerAccount sellerAccount = new SellerAccount("testUN", "testFN", "testLN", "testing", "test@gmail.com", "091211111111", 10000, "tester");
+            sellerAccount.setCompany("    ");
+        }
+        catch (Exception e)
+        {
+            String expected = "Invalid Company Name";
+            String result = e.getMessage();
+
+            Assert.assertEquals(expected, result);
+        }
+    }
+
+    @Test
+    public void showInfoTest() throws Exception
+    {
+        SellerAccount sellerAccount = new SellerAccount("testUN", "testFN", "testLN", "testing", "test@gmail.com", "091211111111", 10000, "tester");
+        String expected = "username='" + "testUN" + "'\n" +
+                "firstName='" + "testFN" + "'\n" +
+                "lastName='" + "testLN" + "'\n" +
+                "email='" + "test@gmail.com" + "'\n" +
+                "phoneNumber='" + "091211111111" + "'\n" +
+                "credit='" + "10000" + "'" + "\n" +
+        "company=" + "tester";
+        String result = sellerAccount.showInfo();
+
+        Assert.assertEquals(expected, result);
+    }
 }
