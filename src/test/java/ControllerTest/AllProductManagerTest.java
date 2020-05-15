@@ -143,7 +143,7 @@ public class AllProductManagerTest {
         Database.addAllProduct(product1);
         Database.addAllProduct(product2);
         AllProductManager.sortByPrice();
-        //AllProductManager.addFilterOption("sellerUsername test1");
+        AllProductManager.addFilterOption("sellerUsername test1");
         AllProductManager.addFilterOption("rangeOfPrice 0 3000");
         AllProductManager.addFilterOption("categoryName test1");
         AllProductManager.addFilterOption("available");
@@ -165,7 +165,7 @@ public class AllProductManagerTest {
         Database.addAllProduct(product1);
         Database.addAllProduct(product2);
         AllProductManager.sortByScore();
-        //AllProductManager.addFilterOption("sellerUsername test1");
+        AllProductManager.addFilterOption("sellerUsername test1");
         AllProductManager.addFilterOption("rangeOfPrice 0 3000");
         AllProductManager.addFilterOption("categoryName test1");
         AllProductManager.addFilterOption("available");

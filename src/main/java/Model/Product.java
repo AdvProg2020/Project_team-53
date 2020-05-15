@@ -7,7 +7,6 @@ public class Product {
     int productId;
     String status;
     String name;
-    String sellerUsername;
     boolean available;
     int number;
     String description;
@@ -21,7 +20,7 @@ public class Product {
     public Product(String status, String name, String sellerUsername, boolean available, int number, String description, String categoryName, int price) {
         this.status = status;
         this.name = name;
-        this.sellerUsername = sellerUsername;
+        this.sellerUsernames.add(sellerUsername);
         this.available = available;
         this.number = number;
         this.description = description;
@@ -44,8 +43,8 @@ public class Product {
         this.price = price;
     }
 
-    public String getSellerUsername() {
-        return sellerUsername;
+    public String getSellerUsernames() {
+        return sellerUsernames.toString();
     }
 
     public void setStatus(String status) {
@@ -110,7 +109,7 @@ public class Product {
     public String digest() {
         return "   ID= " + productId + '\n' +
                 "   name= " + name + '\n' +
-                "   sellerUsername= " + sellerUsername + '\n' +
+                "   sellerUsername= " + sellerUsernames.toString() + '\n' +
                 "   description= " + description + '\n' +
                 "   averageScore= " + averageScore + '\n' +
                 "   price= " + price + '\n';
@@ -122,7 +121,7 @@ public class Product {
         return "productId=" + productId + '\n' +
                 "status=" + status + '\n' +
                 "name=" + name + '\n' +
-                "sellerUsername=" + sellerUsername + '\n' +
+                "sellerUsername=" + sellerUsernames.toString() + '\n' +
                 "available=" + available + '\n' +
                 "number=" + number + '\n' +
                 "description=" + description + '\n' +
@@ -134,7 +133,7 @@ public class Product {
 
     public String compareWith(Product secondPro) {
         return "name : " + this.getName() + " ---- " + secondPro.getName() + '\n' +
-                "sellers : " + this.getSellerUsername() + " ---- " + secondPro.getSellerUsername() + '\n' +
+                "sellers : " + this.getSellerUsernames() + " ---- " + secondPro.getSellerUsernames() + '\n' +
                 "number : " + this.getNumber() + " ---- " + secondPro.getNumber() + '\n' +
                 "available : " + this.isAvailable() + " ---- " + secondPro.isAvailable() + '\n' +
                 "description : " + this.getDescription() + " ---- " + secondPro.getDescription() + '\n' +

@@ -13,7 +13,7 @@ public class SellerManager {
 
     public static String sendEditProductRequest(int productId, String field, String changeTo){
         Product product = Database.getProductByID(productId);
-        if (!product.getSellerUsername().equalsIgnoreCase(AccountManager.getLoggedInAccount().getUsername())){
+        if (!product.isSeller(AccountManager.getLoggedInAccount().getUsername())){
             return "You can't edit this product.";
         }
         Database.addRequest(new EditProductRequest(field, changeTo, productId));
@@ -22,7 +22,7 @@ public class SellerManager {
 
     public static String deleteProduct(int productId){
         Product product = Database.getProductByID(productId);
-        if (!product.getSellerUsername().equalsIgnoreCase(AccountManager.getLoggedInAccount().getUsername())){
+        if (!product.isSeller(AccountManager.getLoggedInAccount().getUsername())){
             return "You can't remove this product.";
         }
         Database.removeProduct(product);

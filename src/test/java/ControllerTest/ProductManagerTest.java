@@ -82,7 +82,7 @@ public class ProductManagerTest {
         Product product = new Product("test1", "test1", "test1", true, 10, "test1", "test", 1000);
         Database.addAllProduct(product);
         String expected =  "name : " + ProductManager.getProduct().getName() + " ---- " + product.getName() +'\n' +
-                "sellers : " + ProductManager.getProduct().getSellerUsername() + " ---- " + product.getSellerUsername() +'\n' +
+                "sellers : " + ProductManager.getProduct().getSellerUsernames() + " ---- " + product.getSellerUsernames() +'\n' +
                 "number : " + ProductManager.getProduct().getNumber() + " ---- " + product.getNumber() +'\n' +
                 "available : " + ProductManager.getProduct().isAvailable() + " ---- " + product.isAvailable() +'\n' +
                 "description : " + ProductManager.getProduct().getDescription() + " ---- " + product.getDescription() +'\n' +
