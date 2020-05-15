@@ -24,7 +24,7 @@ public class ProductManagerTest {
     {
         ProductManager.setProduct(new Product("test", "test", "test", true, 10, "test", "test", 1000));
         Database.initialize();
-        AccountManager.logIn("buyer", "buyer");
+        AccountManager.logIn("Buyer", "Buyer");
         String expected = "You have to buy product to give score.";
         String result = ProductManager.giveScore(2);
         AccountManager.logOut();
@@ -48,7 +48,7 @@ public class ProductManagerTest {
         ProductManager.setProduct(new Product("test", "test", "test", true, 10, "test", "test", 1000));
         String expected = "   ID= " + ProductManager.getProduct().getProductId() + '\n' +
                 "   name= " + "test" + '\n' +
-                "   sellerUsername= " + "test" + '\n' +
+                "   sellerUsername= " + "[test]" + '\n' +
                 "   description= " + "test" + '\n' +
                 "   averageScore= " + "0.0" + '\n' +
                 "   price= " + "1000" + '\n';
@@ -63,7 +63,7 @@ public class ProductManagerTest {
         String expected = "productId=" + ProductManager.getProduct().getProductId()  + '\n' +
                 "status=" + "test" + '\n' +
                 "name=" + "test" + '\n' +
-                "sellerUsername=" + "test" + '\n' +
+                "sellerUsername=" + "[test]" + '\n' +
                 "available=" + "true" + '\n'+
                 "number=" + "10" + '\n' +
                 "description=" + "test" + '\n' +
@@ -98,7 +98,7 @@ public class ProductManagerTest {
     @Test
     public void giveCommentTest()
     {
-        AccountManager.logIn("buyer", "buyer");
+        AccountManager.logIn("Buyer", "Buyer");
         Product product1 = new Product("test1", "test1", "test1", true, 20, "test1", "test1", 2000);
         ProductManager.setProduct(product1);
         String expected = "Your comment registered.";

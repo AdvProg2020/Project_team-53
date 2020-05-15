@@ -45,6 +45,7 @@ public class AdminManagerTest {
         Database.initialize();
         String expected = "New admin account registered.";
         String result = AdminManager.addNewAdminAccount("test1", "a", "b", "c@c.c", "021", "123456", 1000);
+        AdminManager.deleteUsername("test1");
 
         Assert.assertEquals(expected, result);
     }
