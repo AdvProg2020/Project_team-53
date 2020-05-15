@@ -61,11 +61,11 @@ public class FilteringMenu extends Menu {
                 String input = scanner.nextLine();
                 try
                 {
-                    Matcher matcher1 = getMatcher(input, "\\s*sellerUsername\\s+(\\S+)\\s*");
-                    Matcher matcher2 = getMatcher(input, "\\s*rangeOfPrice\\s+(\\d+)\\s+(\\d+)\\s*");
-                    Matcher matcher3 = getMatcher(input, "\\s*categoryName\\s+(\\S+)\\s*");
-                    Matcher matcher4 = getMatcher(input, "\\s*available\\s*");
-                    Matcher matcher5 = getMatcher(input, "\\s*rangeOfScore\\s+(\\d[\\.\\d+]?)");
+                    Matcher matcher1 = getMatcher(input, "^\\s*sellerUsername\\s+(\\S+)\\s*$");
+                    Matcher matcher2 = getMatcher(input, "^\\s*rangeOfPrice\\s+(\\d+)\\s+(\\d+)\\s*$");
+                    Matcher matcher3 = getMatcher(input, "^\\s*categoryName\\s+(\\S+)\\s*$");
+                    Matcher matcher4 = getMatcher(input, "^\\s*available\\s*$");
+                    Matcher matcher5 = getMatcher(input, "^\\s*rangeOfScore\\s+(\\d[\\.\\d+]?)$");
                     Matcher matcher6 = getMatcher(input, "^\\s*back\\s*$");
                     if(matcher6.find())
                     {

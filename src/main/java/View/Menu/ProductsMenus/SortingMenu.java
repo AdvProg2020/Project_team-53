@@ -1,5 +1,6 @@
 package View.Menu.ProductsMenus;
 
+import Controller.AllProductManager;
 import View.Menu.Menu;
 
 import java.util.regex.Matcher;
@@ -23,6 +24,7 @@ public class SortingMenu extends Menu {
 
             @Override
             public void execute() {
+                System.out.println(AllProductManager.showSortOption());
                 String input = scanner.nextLine();
                 try
                 {
@@ -58,7 +60,7 @@ public class SortingMenu extends Menu {
                 String input = scanner.nextLine();
                 try
                 {
-                    Matcher matcher1 = getMatcher(input, "");
+                    Matcher matcher1 = getMatcher(input, "^\\s*(Name|Price|Score)\\s*$");
                     Matcher matcher2 = getMatcher(input, "^\\s*back\\s*$");
                     if(matcher2.find())
                     {
@@ -66,7 +68,23 @@ public class SortingMenu extends Menu {
                         this.parentMenu.execute();
                         return;
                     }
-                    else if(!matcher1.find())
+                    else if(matcher1.find())
+                    {
+                        String sortBy = matcher1.group(1);
+                        if(sortBy.equalsIgnoreCase("name"))
+                        {
+                            System.out.println(AllProductManager.sortByName());
+                        }
+                        else if (sortBy.equalsIgnoreCase("price"))
+                        {
+                            System.out.println(AllProductManager.sortByPrice());
+                        }
+                        else if(sortBy.equalsIgnoreCase("score"))
+                        {
+                            System.out.println(AllProductManager.sortByScore());
+                        }
+                    }
+                    else
                     {
                         throw new Exception("invalid input");
                     }
@@ -90,6 +108,7 @@ public class SortingMenu extends Menu {
 
             @Override
             public void execute() {
+                System.out.println(AllProductManager.getSortedBy());
                 String input = scanner.nextLine();
                 try
                 {
@@ -117,10 +136,12 @@ public class SortingMenu extends Menu {
         return new Menu("Disable Sort Menu", this) {
             @Override
             public void show() {
+                System.out.println("Enter back to return");
             }
 
             @Override
             public void execute() {
+                System.out.println(AllProductManager.ignoreSort());
                 String input = scanner.nextLine();
                 try
                 {

@@ -4,6 +4,7 @@
     <list default="true" id="9610a36b-aa98-4cc2-966a-bf2d86b17a51" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/View/Menu/ProductsMenus/FilteringMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/View/Menu/ProductsMenus/FilteringMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/View/Menu/ProductsMenus/SortingMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/View/Menu/ProductsMenus/SortingMenu.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -522,14 +523,20 @@
       <option name="project" value="LOCAL" />
       <updated>1589546395444</updated>
     </task>
-    <option name="localTasksCounter" value="40" />
+    <task id="LOCAL-00040" summary="complete FilteringMenu">
+      <created>1589548368843</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1589548368843</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="complete login menu" />
     <MESSAGE value="complete ManageRequestsMenu" />
     <MESSAGE value="complete ManageRequestsMenu and ManageUsersMenu" />
     <MESSAGE value="correct little problems" />
@@ -554,7 +561,8 @@
     <MESSAGE value="Filter and sortedBy added" />
     <MESSAGE value="complete SellerManagerTest" />
     <MESSAGE value="add AllProductManagerTest" />
-    <option name="LAST_COMMIT_MESSAGE" value="add AllProductManagerTest" />
+    <MESSAGE value="complete FilteringMenu" />
+    <option name="LAST_COMMIT_MESSAGE" value="complete FilteringMenu" />
   </component>
   <component name="WindowStateProjectService">
     <state x="280" y="20" key="#AccountManagerTest" timestamp="1589226101281">
@@ -652,10 +660,10 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="280" y="6" key="#null./0.0.1366.738@0.0.1366.738" timestamp="1589226532697" />
-    <state x="509" y="0" key="CommitChangelistDialog2" timestamp="1589546393380">
+    <state x="509" y="0" key="CommitChangelistDialog2" timestamp="1589548367989">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="509" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1589546393380" />
+    <state x="509" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1589548367989" />
     <state x="470" y="0" key="CommitChangelistDialog2/0.0.1366.738@0.0.1366.738" timestamp="1589488034735" />
     <state x="92" y="93" width="1182" height="552" key="DiffContextDialog" timestamp="1589235790734">
       <screen x="0" y="0" width="1366" height="738" />
