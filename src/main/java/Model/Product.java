@@ -3,7 +3,7 @@ package Model;
 import java.util.ArrayList;
 
 public class Product {
-    static int numberOfAllProducts=1;
+    static int numberOfAllProducts = 1;
     int productId;
     String status;
     String name;
@@ -18,7 +18,7 @@ public class Product {
     ArrayList<Comment> comments = new ArrayList<>();
     ArrayList<String> sellerUsernames = new ArrayList<>();
 
-    public Product(String status, String name, String sellerUsername, boolean available, int number, String description , String categoryName , int price) {
+    public Product(String status, String name, String sellerUsername, boolean available, int number, String description, String categoryName, int price) {
         this.status = status;
         this.name = name;
         this.sellerUsername = sellerUsername;
@@ -100,7 +100,7 @@ public class Product {
         double sum = averageScore * scores.size();
         sum += score.getScore();
         scores.add(score);
-        averageScore = sum/scores.size();
+        averageScore = sum / scores.size();
     }
 
     public double getAverageScore() {
@@ -108,7 +108,7 @@ public class Product {
     }
 
     public String digest() {
-        return  "   ID= " + productId + '\n' +
+        return "   ID= " + productId + '\n' +
                 "   name= " + name + '\n' +
                 "   sellerUsername= " + sellerUsername + '\n' +
                 "   description= " + description + '\n' +
@@ -123,24 +123,41 @@ public class Product {
                 "status=" + status + '\n' +
                 "name=" + name + '\n' +
                 "sellerUsername=" + sellerUsername + '\n' +
-                "available=" + available + '\n'+
+                "available=" + available + '\n' +
                 "number=" + number + '\n' +
                 "description=" + description + '\n' +
                 "averageScore=" + averageScore + '\n' +
                 "categoryName=" + categoryName + '\n' +
-                "price=" + price + '\n' ;
+                "price=" + price + '\n';
 
     }
 
     public String compareWith(Product secondPro) {
-        return  "name : " + this.getName() + " ---- " + secondPro.getName() +'\n' +
-                "sellers : " + this.getSellerUsername() + " ---- " + secondPro.getSellerUsername() +'\n' +
-                "number : " + this.getNumber() + " ---- " + secondPro.getNumber() +'\n' +
-                "available : " + this.isAvailable() + " ---- " + secondPro.isAvailable() +'\n' +
-                "description : " + this.getDescription() + " ---- " + secondPro.getDescription() +'\n' +
-                "averageScore : " + this.getAverageScore() + " ---- " + secondPro.getAverageScore() +'\n' +
-                "categoryName : " + this.getCategoryName() + " ---- " + secondPro.getCategoryName() +'\n' +
-                "price : " + this.getPrice() + " ---- " + secondPro.getPrice() +'\n' ;
+        return "name : " + this.getName() + " ---- " + secondPro.getName() + '\n' +
+                "sellers : " + this.getSellerUsername() + " ---- " + secondPro.getSellerUsername() + '\n' +
+                "number : " + this.getNumber() + " ---- " + secondPro.getNumber() + '\n' +
+                "available : " + this.isAvailable() + " ---- " + secondPro.isAvailable() + '\n' +
+                "description : " + this.getDescription() + " ---- " + secondPro.getDescription() + '\n' +
+                "averageScore : " + this.getAverageScore() + " ---- " + secondPro.getAverageScore() + '\n' +
+                "categoryName : " + this.getCategoryName() + " ---- " + secondPro.getCategoryName() + '\n' +
+                "price : " + this.getPrice() + " ---- " + secondPro.getPrice() + '\n';
+
+    }
+
+    public void addSeller(String changeTo) {
+        sellerUsernames.add(changeTo);
+    }
+
+    public boolean isSeller(String username) {
+        for (String seller : sellerUsernames) {
+            if (username.equalsIgnoreCase(seller))
+                return true;
+        }
+        return false;
+    }
+
+    public void addComment(Comment comment) {
+        comments.add(comment);
 
     }
 }
