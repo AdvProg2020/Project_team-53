@@ -1,6 +1,7 @@
 package Controller;
 
 import Model.BuyerAccount;
+import Model.Comment;
 import Model.Product;
 import Model.Score;
 
@@ -39,5 +40,11 @@ public class ProductManager {
     public static String compare(int productId){
         Product secondPro = Database.getProductByID(productId);
         return product.compareWith(secondPro);
+    }
+
+    public static String giveComment(String title, String content){
+        BuyerAccount buyerAccount = (BuyerAccount) AccountManager.getLoggedInAccount();
+        product.addComment(new Comment(title, content, buyerAccount.getUsername(), buyerAccount.buyedProduct(product.getProductId())));
+        return "Your comment registered.";
     }
 }

@@ -15,6 +15,8 @@ public class Product {
     String categoryName;
     int price;
     ArrayList<Score> scores = new ArrayList<>();
+    ArrayList<Comment> comments = new ArrayList<>();
+    ArrayList<String> sellerUsernames = new ArrayList<>();
 
     public Product(String status, String name, String sellerUsername, boolean available, int number, String description , String categoryName , int price) {
         this.status = status;
@@ -127,6 +129,7 @@ public class Product {
                 "averageScore=" + averageScore + '\n' +
                 "categoryName=" + categoryName + '\n' +
                 "price=" + price + '\n' ;
+
     }
 
     public String compareWith(Product secondPro) {
