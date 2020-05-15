@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9610a36b-aa98-4cc2-966a-bf2d86b17a51" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Data/Products/Products.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/Accounts/Buyers.json" beforeDir="false" afterPath="$PROJECT_DIR$/Data/Accounts/Buyers.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/ControllerTest/DataBaseTest.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,6 +29,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="parham" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="UPDATE_TYPE" value="MERGE" />
   </component>
@@ -186,9 +193,9 @@
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.All in Project" />
-        <item itemvalue="Application.Main" />
-        <item itemvalue="JUnit.AdminManagerTest.addNewAdminAccountTest2" />
         <item itemvalue="JUnit.DataBaseTest.readAndWriteOnFileTest" />
+        <item itemvalue="JUnit.AdminManagerTest.addNewAdminAccountTest2" />
+        <item itemvalue="Application.Main" />
         <item itemvalue="JUnit.AllProductManagerTest.showAllProductsTest3" />
       </list>
     </recent_temporary>
@@ -561,14 +568,20 @@
       <option name="project" value="LOCAL" />
       <updated>1589574963877</updated>
     </task>
-    <option name="localTasksCounter" value="46" />
+    <task id="LOCAL-00046" summary="add Product.json">
+      <created>1589575201762</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1589575201762</updated>
+    </task>
+    <option name="localTasksCounter" value="47" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="add JMockit library and add new test" />
     <MESSAGE value="add MangeProductsMenu" />
     <MESSAGE value="Account constructor modified" />
     <MESSAGE value="Account constructor handled" />
@@ -593,7 +606,8 @@
     <MESSAGE value="make big problem" />
     <MESSAGE value="add json" />
     <MESSAGE value="correct problems" />
-    <option name="LAST_COMMIT_MESSAGE" value="correct problems" />
+    <MESSAGE value="add Product.json" />
+    <option name="LAST_COMMIT_MESSAGE" value="add Product.json" />
   </component>
   <component name="WindowStateProjectService">
     <state x="280" y="20" key="#AccountManagerTest" timestamp="1589226101281">
@@ -703,10 +717,10 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="280" y="6" key="#null./0.0.1366.738@0.0.1366.738" timestamp="1589226532697" />
-    <state x="509" y="0" key="CommitChangelistDialog2" timestamp="1589574963240">
+    <state x="509" y="0" key="CommitChangelistDialog2" timestamp="1589575201090">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="509" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1589574963240" />
+    <state x="509" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1589575201090" />
     <state x="470" y="0" key="CommitChangelistDialog2/0.0.1366.738@0.0.1366.738" timestamp="1589567992585" />
     <state x="92" y="93" width="1182" height="552" key="DiffContextDialog" timestamp="1589235790734">
       <screen x="0" y="0" width="1366" height="738" />
@@ -717,25 +731,25 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="463" y="122" key="FileChooserDialogImpl/0.0.1366.738@0.0.1366.738" timestamp="1589229857106" />
-    <state width="1322" height="174" key="GridCell.Tab.0.bottom" timestamp="1589574938670">
+    <state width="1322" height="174" key="GridCell.Tab.0.bottom" timestamp="1589576883811">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1322" height="174" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1589574938670" />
+    <state width="1322" height="174" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1589576883811" />
     <state width="1322" height="121" key="GridCell.Tab.0.bottom/0.0.1366.738@0.0.1366.738" timestamp="1589568222172" />
-    <state width="1322" height="174" key="GridCell.Tab.0.center" timestamp="1589574938670">
+    <state width="1322" height="174" key="GridCell.Tab.0.center" timestamp="1589576883811">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1322" height="174" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1589574938670" />
+    <state width="1322" height="174" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1589576883811" />
     <state width="1322" height="121" key="GridCell.Tab.0.center/0.0.1366.738@0.0.1366.738" timestamp="1589568222172" />
-    <state width="1322" height="174" key="GridCell.Tab.0.left" timestamp="1589574938669">
+    <state width="1322" height="174" key="GridCell.Tab.0.left" timestamp="1589576883811">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1322" height="174" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1589574938669" />
+    <state width="1322" height="174" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1589576883811" />
     <state width="1322" height="121" key="GridCell.Tab.0.left/0.0.1366.738@0.0.1366.738" timestamp="1589568222172" />
-    <state width="1322" height="174" key="GridCell.Tab.0.right" timestamp="1589574938670">
+    <state width="1322" height="174" key="GridCell.Tab.0.right" timestamp="1589576883811">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1322" height="174" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1589574938670" />
+    <state width="1322" height="174" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1589576883811" />
     <state width="1322" height="121" key="GridCell.Tab.0.right/0.0.1366.738@0.0.1366.738" timestamp="1589568222172" />
     <state width="1322" height="217" key="GridCell.Tab.1.bottom" timestamp="1589566470549">
       <screen x="0" y="0" width="1366" height="728" />
@@ -766,10 +780,10 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="184" y="0" key="SettingsEditor/0.0.1366.738@0.0.1366.738" timestamp="1589230363466" />
-    <state x="275" y="95" key="Vcs.Push.Dialog.v2" timestamp="1589574976793">
+    <state x="275" y="95" key="Vcs.Push.Dialog.v2" timestamp="1589575219275">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="275" y="95" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1589574976793" />
+    <state x="275" y="95" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1589575219275" />
     <state x="275" y="96" key="Vcs.Push.Dialog.v2/0.0.1366.738@0.0.1366.738" timestamp="1589488193738" />
     <state x="378" y="186" key="com.intellij.ide.util.TipDialog" timestamp="1589363230671">
       <screen x="0" y="0" width="1366" height="728" />
@@ -816,7 +830,7 @@
     <SUITE FILE_PATH="coverage/Project$AllProductManagerTest.ic" NAME="AllProductManagerTest Coverage Results" MODIFIED="1589544649151" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>ControllerTest.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/Project$All_in_Project.ic" NAME="All in Project Coverage Results" MODIFIED="1589574938644" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/Project$All_in_Project.ic" NAME="All in Project Coverage Results" MODIFIED="1589576877191" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/Project_team_53$AccountManagerTest.ic" NAME="AccountManagerTest Coverage Results" MODIFIED="1589229190334" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>*</FILTER>
     </SUITE>
