@@ -96,7 +96,8 @@ public class CategoryTest {
 
         Assert.assertNull(Database.getCategoryByName("test"));
         Database.removeProduct(product);
-        //Database.removeCategory(category);
+        //Database.removeC
+        // category(category);
     }
 
     @Test
