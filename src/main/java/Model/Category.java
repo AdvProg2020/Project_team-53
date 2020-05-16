@@ -1,29 +1,29 @@
 package Model;
 
+import Controller.Database;
+
 import java.util.ArrayList;
 
 public class Category {
-    private static ArrayList<Category> allCategories = new ArrayList<>();
     private String name;
     private String feature;
     private ArrayList<String> allSubCategoryNames;
-    private Category parent;
+    private String parent;
     private ArrayList<Integer> allProductIds;
 
-    public Category(String name, String feature, Category parent, ArrayList<Integer> allProductIds) {
+    public Category(String name, String feature, String parent) {
         this.name = name;
         this.feature = feature;
         this.parent = parent;
-        this.allProductIds = allProductIds;
+        this.allProductIds = new ArrayList<>();
         allSubCategoryNames = new ArrayList<>();
-        allCategories.add(this);
     }
 
     public ArrayList<String> getAllSubCategoryNames() {
         return allSubCategoryNames;
     }
 
-    public Category getParent() {
+    public String getParent() {
         return parent;
     }
 
@@ -39,14 +39,6 @@ public class Category {
         return name;
     }
 
-    public static Category getCategoryByName(String categoryName){
-        for (Category category : allCategories) {
-            if (category.name.equals(categoryName))
-                return category;
-        }
-        return null;
-    }
-
     public void setName(String name) {
         this.name = name;
     }
@@ -55,11 +47,13 @@ public class Category {
         this.feature = feature;
     }
 
-    public void setParent(Category parent) {
+    public void setParent(String parent) {
         this.parent = parent;
     }
 
     public void addProduct(int productId){
+        Product product = Database.getProductByID(productId);
+        product.setCategoryName(this.name);
         allProductIds.add(productId);
     }
 
@@ -68,9 +62,15 @@ public class Category {
     }
 
     public void removeProduct(int productId){
-        for (Integer Id : allProductIds) {
-            if (Id == productId)
-                allProductIds.remove(Id);
-        }
+        allProductIds.remove(productId);
     }
+
+    public String showThisCategory(){
+        return "Category{" +
+                "   name=" + name + '\n' +
+                "   feature='" + feature + '\n' +
+                "   parent='" + parent + '\n' +
+                '}';
+    }
+
 }

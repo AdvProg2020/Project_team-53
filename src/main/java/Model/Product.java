@@ -1,5 +1,7 @@
 package Model;
 
+import Controller.Database;
+
 import java.util.ArrayList;
 
 public class Product {
@@ -26,6 +28,9 @@ public class Product {
         this.description = description;
         this.productId = numberOfAllProducts;
         this.categoryName = categoryName;
+        Category category = Database.getCategoryByName(categoryName);
+        if (category != null)
+            category.addProduct(this.getProductId());
         this.price = price;
         numberOfAllProducts++;
         averageScore = 0;
@@ -69,9 +74,9 @@ public class Product {
 
     public void setCategoryName(String categoryName) {
         // TODO: 12-May-20
-        Category category = Category.getCategoryByName(this.categoryName);
+        Category category = Database.getCategoryByName(this.categoryName);
         category.removeProduct(this.productId);
-        Category.getCategoryByName(categoryName).addProduct(this.productId);
+        Database.getCategoryByName(categoryName).addProduct(this.productId);
         this.categoryName = categoryName;
     }
 

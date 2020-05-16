@@ -2,6 +2,8 @@ package Controller;
 
 import Model.Account;
 import Model.AdminAccount;
+import Model.Category;
+import Model.Product;
 import Model.Request.Request;
 
 import java.util.ArrayList;
@@ -71,4 +73,47 @@ public class AdminManager {
         Database.removeAccount(account);
         return "Account deleted";
     }
+
+    public static String addNewCategory(String name, String feature, String parentName){
+        Database.addAllCategory(new Category(name, feature, parentName));
+        return "New category added";
+    }
+
+    public static String editCategory(String categoryName, String field, String changeTo){
+        Category category = Database.getCategoryByName(categoryName);
+        if (category == null)
+            return "no such category";
+        if (field.equalsIgnoreCase("parentName")){
+            category.setParent(changeTo);
+        }
+        else if (field.equalsIgnoreCase("name")){
+            category.setName(changeTo);
+        }
+        else if (field.equalsIgnoreCase("feature")){
+            category.setFeature(changeTo);
+        }
+        else if (field.equalsIgnoreCase("addNewSubCategory")){
+            category.addSubCategory(changeTo);
+        }
+        else if (field.equalsIgnoreCase("addNewProduct")){
+            category.addProduct(Integer.parseInt(changeTo));
+        }
+        return "changed successfully";
+    }
+
+    public static String deleteCategory(String categoryName){
+        Category category = Database.getCategoryByName(categoryName);
+        if (category == null)
+            return "no such category.";
+        Database.removeCategory(category);
+        return "category deleted";
+    }
+
+    public static String deleteProduct(int productId){
+        Product product = Database.getProductByID(productId);
+        Database.removeProduct(product);
+        return "Product removed successfully";
+    }
+
+
 }
