@@ -1,5 +1,6 @@
 package Controller;
 
+import Model.Category;
 import Model.Product;
 
 import java.util.ArrayList;
@@ -113,6 +114,15 @@ public class AllProductManager {
         allProducts = tempArray;
     }
 
+    public static String showAllCategories(){
+        ArrayList<Category> allCategories = Database.getAllCategories();
+        StringBuilder res = new StringBuilder();
+        for (Category category : allCategories) {
+            res.append(category.showThisCategory());
+        }
+        return res.toString();
+    }
+
     private static void filterWithRangeOfPrice(int lower, int higher){
         ArrayList<Product> tempArray = new ArrayList<>();
         for (Product product : allProducts) {
@@ -176,4 +186,5 @@ public class AllProductManager {
             }
         }
     }
+
 }

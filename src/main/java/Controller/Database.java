@@ -13,6 +13,7 @@ public class Database {
     private static ArrayList<Account> allAccounts = new ArrayList<>();
     private static ArrayList<Request> allRequest = new ArrayList<>();
     private static ArrayList<Product> allProducts= new ArrayList<>();
+    private static ArrayList<Category> allCategories = new ArrayList<>();
 
     public static ArrayList<Account> getAllAccounts() {
         return allAccounts;
@@ -24,6 +25,10 @@ public class Database {
 
     public static ArrayList<Product> getAllProducts() {
         return allProducts;
+    }
+
+    public static ArrayList<Category> getAllCategories() {
+        return allCategories;
     }
 
     public static Account getAccountByUsername(String username) {
@@ -50,6 +55,14 @@ public class Database {
         return null;
     }
 
+    public static Category getCategoryByName(String categoryName){
+        for (Category category : allCategories) {
+            if (category.getName().equals(categoryName))
+                return category;
+        }
+        return null;
+    }
+
     public static void addAllAccounts(Account account) {
         allAccounts.add(account);
     }
@@ -60,6 +73,33 @@ public class Database {
 
     public static void addAllProduct(Product product) {
         allProducts.add(product);
+    }
+
+    public static void addAllCategory(Category category){
+        allCategories.add(category);
+    }
+
+
+    public static void removeRequest(Request request) {
+        allRequest.remove(request);
+    }
+
+    public static void removeAccount(Account account) {
+        allAccounts.remove(account);
+    }
+
+    public static void removeProduct(Product product) {
+        allProducts.remove(product);
+    }
+
+    public static void removeCategory(Category category){
+        allCategories.remove(category);
+        for (Integer productId : category.getAllProductIds()) {
+            Product product = getProductByID(productId);
+            if (product != null){
+                product.setCategoryName("no category");
+            }
+        }
     }
 
     public static void writeDataOnFile() {
@@ -118,18 +158,6 @@ public class Database {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    public static void removeRequest(Request request) {
-        allRequest.remove(request);
-    }
-
-    public static void removeAccount(Account account) {
-        allAccounts.remove(account);
-    }
-
-    public static void removeProduct(Product product) {
-        allProducts.remove(product);
     }
 
     public static void initialize() {
