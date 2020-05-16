@@ -6,21 +6,24 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Cart {
-    Account owner;
-    ArrayList<Integer> productsID;
-    HashMap<Integer, Integer> muchOfProductID;
+    private Account owner;
+    private ArrayList<Integer> productsID;
+    private HashMap<Integer, String> productsSellerUsername;
+    private HashMap<Integer, Integer> muchOfProductID;
 
     public Cart(Account account)
     {
         owner = account;
         productsID = new ArrayList<>();
+        productsSellerUsername = new HashMap<>();
         muchOfProductID = new HashMap<>();
     }
 
-    public void addToCart(Product product)
+    public void addToCart(Product product, String sellerUsername)
     {
         productsID.add(product.getProductId());
         muchOfProductID.put(product.getProductId(), 1);
+        productsSellerUsername.put(product.getProductId(), sellerUsername);
     }
 
     public long getCost()

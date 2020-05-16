@@ -6,10 +6,12 @@ import java.util.ArrayList;
 
 public class BuyerAccount extends Account {
     private ArrayList<BuyLog> buyLogs = new ArrayList<>();
+    private Cart cart;
 
     public BuyerAccount(String username, String firstName, String lastName, String password, String email, String phoneNumber, int credit) throws Exception {
         super(username, firstName, lastName, password, email, phoneNumber, credit);
         this.buyLogs = new ArrayList<>();
+        cart = new Cart(this);
     }
 
     public boolean buyedProduct(int productId){

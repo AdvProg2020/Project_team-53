@@ -2,5 +2,5 @@ package Controller;
 
 public class BuyerManager {
 
-public void show
+//public void show
 }
