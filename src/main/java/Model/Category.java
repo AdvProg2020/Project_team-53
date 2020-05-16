@@ -62,7 +62,7 @@ public class Category {
     }
 
     public void removeProduct(int productId){
-        allProductIds.remove(productId);
+        allProductIds.remove(allProductIds.indexOf(productId));
     }
 
     public String showThisCategory(){
