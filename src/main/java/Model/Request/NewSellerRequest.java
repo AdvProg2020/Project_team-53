@@ -38,6 +38,7 @@ public class NewSellerRequest extends Request {
     @Override
     public String show() {
         return "NewSellerRequest" + '{' + '\n' +
+                "   requestId="+ getId()+'\n'+
                 "   username=" + username + '\n' +
                 "   firstName=" + firstName + '\n' +
                 "   lastName=" + lastName + '\n' +

@@ -34,6 +34,7 @@ public class NewProductRequest extends Request {
     @Override
     public String show() {
         return "NewProductRequest{" + "\n" +
+                "   requestId="+ getId()+'\n'+
                 "   status=" + status + '\n' +
                 "   name=" + name + '\n' +
                 "   sellerUsername=" + sellerUsername + '\n' +
