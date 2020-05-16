@@ -1,5 +1,6 @@
 package View.Menu.AdminMenus;
 
+import Controller.AdminManager;
 import View.Menu.Menu;
 
 import java.util.regex.Matcher;
@@ -23,13 +24,21 @@ public class ManageAllProductsMenu extends Menu {
                 String input = scanner.nextLine();
                 try
                 {
-                    Matcher matcher1 = getMatcher(input, "");
+                    Matcher matcher1 = getMatcher(input, "^\\s*(\\d+)\\s*$");
                     Matcher matcher2 = getMatcher(input, "^\\s*back\\s*$");
                     if(matcher2.find())
                     {
                         this.parentMenu.show();
                         this.parentMenu.execute();
                         return;
+                    }
+                    else if(!matcher1.find())
+                    {
+                        throw new Exception("invalid input");
+                    }
+                    else
+                    {
+                        System.out.println(AdminManager.deleteProduct(Integer.parseInt(matcher1.group(1))));
                     }
                 }
                 catch (Exception e)
