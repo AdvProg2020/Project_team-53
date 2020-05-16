@@ -3,9 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="9610a36b-aa98-4cc2-966a-bf2d86b17a51" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Request/EditProductRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Request/EditProductRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Request/NewProductRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Request/NewProductRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Request/NewSellerRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Request/NewSellerRequest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -269,14 +266,7 @@
       <workItem from="1589618615317" duration="1326000" />
       <workItem from="1589620469137" duration="593000" />
       <workItem from="1589624300416" duration="1479000" />
-      <workItem from="1589630912279" duration="237000" />
-    </task>
-    <task id="LOCAL-00002" summary="add Menu class">
-      <created>1587400446831</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1587400446831</updated>
+      <workItem from="1589630912279" duration="603000" />
     </task>
     <task id="LOCAL-00003" summary="add LoginMenu and make some changes in Menu class &amp; MainMenu class">
       <created>1587413240872</created>
@@ -614,14 +604,20 @@
       <option name="project" value="LOCAL" />
       <updated>1589617224337</updated>
     </task>
-    <option name="localTasksCounter" value="51" />
+    <task id="LOCAL-00051" summary="Edit Request show">
+      <created>1589631190283</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1589631190283</updated>
+    </task>
+    <option name="localTasksCounter" value="52" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="login test added" />
     <MESSAGE value="add new Product added" />
     <MESSAGE value="Category added" />
     <MESSAGE value="Category fixed" />
@@ -646,7 +642,8 @@
     <MESSAGE value="Logs added" />
     <MESSAGE value="show Logs added" />
     <MESSAGE value="Category reCode" />
-    <option name="LAST_COMMIT_MESSAGE" value="Category reCode" />
+    <MESSAGE value="Edit Request show" />
+    <option name="LAST_COMMIT_MESSAGE" value="Edit Request show" />
   </component>
   <component name="WindowStateProjectService">
     <state x="280" y="20" key="#AccountManagerTest" timestamp="1589226101281">
@@ -760,11 +757,11 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="280" y="6" key="#null./0.0.1366.738@0.0.1366.738" timestamp="1589226532697" />
-    <state x="470" y="0" key="CommitChangelistDialog2" timestamp="1589617222448">
+    <state x="470" y="0" key="CommitChangelistDialog2" timestamp="1589631187830">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="509" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1589575201090" />
-    <state x="470" y="0" key="CommitChangelistDialog2/0.0.1366.738@0.0.1366.738" timestamp="1589617222448" />
+    <state x="470" y="0" key="CommitChangelistDialog2/0.0.1366.738@0.0.1366.738" timestamp="1589631187830" />
     <state x="92" y="93" width="1182" height="552" key="DiffContextDialog" timestamp="1589235790734">
       <screen x="0" y="0" width="1366" height="738" />
     </state>

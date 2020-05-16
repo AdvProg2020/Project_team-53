@@ -27,7 +27,9 @@ public class NewProductRequest extends Request {
 
     @Override
     public String acceptRequest() {
-        Database.addAllProduct(new Product(status, name, sellerUsername, available, number, description , categoryName, price));
+        Product product = new Product(status, name, sellerUsername, available, number, description , categoryName, price);
+        Database.addAllProduct(product);
+        Database.getCategoryByName(product.getCategoryName()).addProduct(product.getProductId());
         return "product added successfully.";
     }
 
