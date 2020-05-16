@@ -49,6 +49,7 @@ public class EditProductRequest extends Request{
     @Override
     public String show() {
         return "EditProductRequest{" + '\n' +
+                "   requestId="+ getId()+'\n'+
                 "   field='" + field + '\n' +
                 "   changeTo='" + changeTo + '\n' +
                 "   produtId=" + productId +'\n' +

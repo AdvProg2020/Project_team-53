@@ -28,9 +28,6 @@ public class Product {
         this.description = description;
         this.productId = numberOfAllProducts;
         this.categoryName = categoryName;
-        Category category = Database.getCategoryByName(categoryName);
-        if (category != null)
-            category.addProduct(this.getProductId());
         this.price = price;
         numberOfAllProducts++;
         averageScore = 0;
