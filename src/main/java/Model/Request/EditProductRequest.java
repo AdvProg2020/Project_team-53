@@ -40,9 +40,6 @@ public class EditProductRequest extends Request{
         else if (field.equalsIgnoreCase("price")){
             product.setPrice(Integer.parseInt(changeTo));
         }
-        else if (field.equalsIgnoreCase("addSeller")){
-            product.addSeller(changeTo);
-        }
         return "Product changed successfully";
     }
 
