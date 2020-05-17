@@ -1,7 +1,5 @@
 package Model;
 
-import Controller.Database;
-
 import java.util.ArrayList;
 
 public class Category {
@@ -51,11 +49,7 @@ public class Category {
         this.parent = parent;
     }
 
-    public void addProduct(int productId){
-        Product product = Database.getProductByID(productId);
-        product.setCategoryName(this.name);
-        allProductIds.add(productId);
-    }
+
 
     public void addSubCategory(String categoryName){
         allSubCategoryNames.add(categoryName);
@@ -73,4 +67,7 @@ public class Category {
                 '}';
     }
 
+    public void addProduct(int productId) {
+        allProductIds.add(productId);
+    }
 }
