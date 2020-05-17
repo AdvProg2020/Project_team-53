@@ -47,4 +47,10 @@ public class ProductManager {
         product.addComment(new Comment(title, content, buyerAccount.getUsername(), buyerAccount.buyedProduct(product.getProductId())));
         return "Your comment registered.";
     }
+
+    public static String viewAllComments(){
+        if (product == null)
+            return "You have to choose product first";
+        return product.showComments();
+    }
 }

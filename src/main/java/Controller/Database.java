@@ -11,6 +11,7 @@ public class Database {
     static ArrayList<Product> allProducts= new ArrayList<>();
     static ArrayList<Category> allCategories = new ArrayList<>();
     static ArrayList<Discount> allDiscounts = new ArrayList<>();
+    static ArrayList<Off> allOffs = new ArrayList<>();
 
     public static ArrayList<Account> getAllAccounts() {
         return allAccounts;
@@ -30,6 +31,10 @@ public class Database {
 
     public static ArrayList<Discount> getAllDiscounts() {
         return allDiscounts;
+    }
+
+    public static ArrayList<Off> getAllOffs() {
+        return allOffs;
     }
 
 
@@ -73,6 +78,14 @@ public class Database {
         return null;
     }
 
+    public static Off getOffById(int offId){
+        for (Off off : allOffs) {
+            if (off.getOffId() == offId){
+                return off;
+            }
+        }
+        return null;
+    }
 
     public static void addAllAccounts(Account account) {
         allAccounts.add(account);
@@ -92,6 +105,10 @@ public class Database {
 
     public static void addAllDiscount(Discount discount){
         allDiscounts.add(discount);
+    }
+
+    public static void addAllOff(Off off){
+        allOffs.add(off);
     }
 
     public static void removeRequest(Request request) {
@@ -118,6 +135,10 @@ public class Database {
 
     public static void removeDiscount(Discount discount){
         allDiscounts.remove(discount);
+    }
+
+    public static void removeOff(Off off){
+        allOffs.remove(off);
     }
 
     public static void writeDataOnFile() {
