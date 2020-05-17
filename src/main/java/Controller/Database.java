@@ -14,6 +14,7 @@ public class Database {
     private static ArrayList<Request> allRequest = new ArrayList<>();
     private static ArrayList<Product> allProducts= new ArrayList<>();
     private static ArrayList<Category> allCategories = new ArrayList<>();
+    private static ArrayList<Discount> allDiscounts = new ArrayList<>();
 
     public static ArrayList<Account> getAllAccounts() {
         return allAccounts;
@@ -29,6 +30,10 @@ public class Database {
 
     public static ArrayList<Category> getAllCategories() {
         return allCategories;
+    }
+
+    public static ArrayList<Discount> getAllDiscounts() {
+        return allDiscounts;
     }
 
     public static Account getAccountByUsername(String username) {
@@ -63,6 +68,15 @@ public class Database {
         return null;
     }
 
+    public static Discount getDiscountById(int discountId){
+        for (Discount discount : allDiscounts) {
+            if (discount.getDiscountId() == discountId)
+                return discount;
+        }
+        return null;
+    }
+
+
     public static void addAllAccounts(Account account) {
         allAccounts.add(account);
     }
@@ -79,6 +93,9 @@ public class Database {
         allCategories.add(category);
     }
 
+    public static void addAllDiscount(Discount discount){
+        allDiscounts.add(discount);
+    }
 
     public static void removeRequest(Request request) {
         allRequest.remove(request);
@@ -97,9 +114,13 @@ public class Database {
         for (Integer productId : category.getAllProductIds()) {
             Product product = getProductByID(productId);
             if (product != null){
-                product.setCategoryName("no category");
+                product.setCategoryNameWithoutAddToCategory("no category");
             }
         }
+    }
+
+    public static void removeDiscount(Discount discount){
+        allDiscounts.remove(discount);
     }
 
     public static void writeDataOnFile() {

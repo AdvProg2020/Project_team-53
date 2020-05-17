@@ -48,7 +48,7 @@ public class ProductManagerTest {
         ProductManager.setProduct(new Product("test", "test", "test", true, 10, "test", "test", 1000));
         String expected = "   ID= " + ProductManager.getProduct().getProductId() + '\n' +
                 "   name= " + "test" + '\n' +
-                "   sellerUsername= " + "[test]" + '\n' +
+                "   sellerUsername= " + "test" + '\n' +
                 "   description= " + "test" + '\n' +
                 "   averageScore= " + "0.0" + '\n' +
                 "   price= " + "1000" + '\n';
@@ -63,7 +63,7 @@ public class ProductManagerTest {
         String expected = "productId=" + ProductManager.getProduct().getProductId()  + '\n' +
                 "status=" + "test" + '\n' +
                 "name=" + "test" + '\n' +
-                "sellerUsername=" + "[test]" + '\n' +
+                "sellerUsername=" + "test" + '\n' +
                 "available=" + "true" + '\n'+
                 "number=" + "10" + '\n' +
                 "description=" + "test" + '\n' +
@@ -82,7 +82,7 @@ public class ProductManagerTest {
         Product product = new Product("test1", "test1", "test1", true, 10, "test1", "test", 1000);
         Database.addAllProduct(product);
         String expected =  "name : " + ProductManager.getProduct().getName() + " ---- " + product.getName() +'\n' +
-                "sellers : " + ProductManager.getProduct().getSellerUsernames() + " ---- " + product.getSellerUsernames() +'\n' +
+                "seller : " + ProductManager.getProduct().getSellerUsername() + " ---- " + product.getSellerUsername() +'\n' +
                 "number : " + ProductManager.getProduct().getNumber() + " ---- " + product.getNumber() +'\n' +
                 "available : " + ProductManager.getProduct().isAvailable() + " ---- " + product.isAvailable() +'\n' +
                 "description : " + ProductManager.getProduct().getDescription() + " ---- " + product.getDescription() +'\n' +
