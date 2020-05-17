@@ -96,6 +96,10 @@ public class AdminManager {
             Product product = Database.getProductByID(Integer.parseInt(changeTo));
             product.setCategoryNameAndChangeCategory(category.getName());
         }
+        else
+        {
+            return "no such field";
+        }
         return "changed successfully";
     }
 
@@ -150,6 +154,10 @@ public class AdminManager {
         }
         else if (field.equalsIgnoreCase("endDate")){
             discount.setEndDate(changTo);
+        }
+        else
+        {
+            return "no such field";
         }
         return "changed successfully";
     }
