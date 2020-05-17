@@ -27,7 +27,7 @@ public class AdminMenu extends Menu {
             public void show()
             {
                 System.out.println("Please enter max value(with numbers), percent(without % sign), start date, " +
-                        "end date(both in format YYYY-MM-DDhh:mm) and how much it can use(with numbers) in first line and " +
+                        "end date(both in format YYYY-MM-DD_hh:mm) and how much it can use(with numbers) in first line and " +
                         "user names in second line\n(Enter back to return)");
             }
             @Override
