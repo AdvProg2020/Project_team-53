@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="9610a36b-aa98-4cc2-966a-bf2d86b17a51" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/ControllerTest/AdminManagerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ControllerTest/AdminManagerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/ControllerTest/AccountManagerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ControllerTest/AccountManagerTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,7 +18,7 @@
   </component>
   <component name="CoverageViewManager">
     <option name="myFlattenPackages" value="true" />
-    <option name="myElementSize" value="172" />
+    <option name="myElementSize" value="171" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -71,7 +71,54 @@
     <property name="project.structure.side.proportion" value="0.0" />
     <property name="settings.editor.selected.configurable" value="coverage" />
   </component>
-  <component name="RunManager" selected="JUnit.All in Project">
+  <component name="RunManager" selected="JUnit.AccountManagerTest">
+    <configuration name="AccountManagerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Project" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ControllerTest.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ControllerTest" />
+      <option name="MAIN_CLASS_NAME" value="ControllerTest.AccountManagerTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AccountManagerTest.showLogTest2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Project" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ControllerTest.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ControllerTest" />
+      <option name="MAIN_CLASS_NAME" value="ControllerTest.AccountManagerTest" />
+      <option name="METHOD_NAME" value="showLogTest2" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AccountManagerTest.showLogTest3" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Project" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ControllerTest.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ControllerTest" />
+      <option name="MAIN_CLASS_NAME" value="ControllerTest.AccountManagerTest" />
+      <option name="METHOD_NAME" value="showLogTest3" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="AdminManagerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Project" />
       <extension name="coverage">
@@ -83,54 +130,6 @@
       <option name="PACKAGE_NAME" value="ControllerTest" />
       <option name="MAIN_CLASS_NAME" value="ControllerTest.AdminManagerTest" />
       <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="AdminManagerTest.editDiscountsTest1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Project" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ControllerTest.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="ControllerTest" />
-      <option name="MAIN_CLASS_NAME" value="ControllerTest.AdminManagerTest" />
-      <option name="METHOD_NAME" value="editDiscountsTest1" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="AdminManagerTest.removeDiscountTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Project" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ControllerTest.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="ControllerTest" />
-      <option name="MAIN_CLASS_NAME" value="ControllerTest.AdminManagerTest" />
-      <option name="METHOD_NAME" value="removeDiscountTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="AdminManagerTest.showAllDiscountsTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Project" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ControllerTest.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="ControllerTest" />
-      <option name="MAIN_CLASS_NAME" value="ControllerTest.AdminManagerTest" />
-      <option name="METHOD_NAME" value="showAllDiscountsTest" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -189,19 +188,19 @@
     </configuration>
     <list>
       <item itemvalue="JUnit.ControllerTest.*" />
-      <item itemvalue="JUnit.AdminManagerTest.removeDiscountTest" />
-      <item itemvalue="JUnit.AdminManagerTest.showAllDiscountsTest" />
-      <item itemvalue="JUnit.AdminManagerTest.editDiscountsTest1" />
       <item itemvalue="JUnit.AdminManagerTest" />
       <item itemvalue="JUnit.All in Project" />
+      <item itemvalue="JUnit.AccountManagerTest.showLogTest2" />
+      <item itemvalue="JUnit.AccountManagerTest.showLogTest3" />
+      <item itemvalue="JUnit.AccountManagerTest" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.AccountManagerTest" />
         <item itemvalue="JUnit.All in Project" />
+        <item itemvalue="JUnit.AccountManagerTest.showLogTest2" />
+        <item itemvalue="JUnit.AccountManagerTest.showLogTest3" />
         <item itemvalue="JUnit.AdminManagerTest" />
-        <item itemvalue="JUnit.AdminManagerTest.editDiscountsTest1" />
-        <item itemvalue="JUnit.AdminManagerTest.showAllDiscountsTest" />
-        <item itemvalue="JUnit.AdminManagerTest.removeDiscountTest" />
       </list>
     </recent_temporary>
   </component>
@@ -276,13 +275,6 @@
       <workItem from="1589697349823" duration="1586000" />
       <workItem from="1589699369738" duration="1766000" />
       <workItem from="1589701200657" duration="1915000" />
-    </task>
-    <task id="LOCAL-00006" summary="add Account Constructor">
-      <created>1587844054620</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1587844054620</updated>
     </task>
     <task id="LOCAL-00007" summary="add AdminMenu and ManageUsersMenu and make some changes">
       <created>1588354848210</created>
@@ -620,14 +612,20 @@
       <option name="project" value="LOCAL" />
       <updated>1589708565480</updated>
     </task>
-    <option name="localTasksCounter" value="55" />
+    <task id="LOCAL-00055" summary="add test to AdminManagerTest">
+      <created>1589746774298</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1589746774298</updated>
+    </task>
+    <option name="localTasksCounter" value="56" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="add Cart class" />
     <MESSAGE value="complete SellerMenu" />
     <MESSAGE value="make little changes" />
     <MESSAGE value="give Score added" />
@@ -652,7 +650,8 @@
     <MESSAGE value="Discount Added" />
     <MESSAGE value="multiple seller removed" />
     <MESSAGE value="BuyerManager, showAllDiscount and showCostOfCart added" />
-    <option name="LAST_COMMIT_MESSAGE" value="BuyerManager, showAllDiscount and showCostOfCart added" />
+    <MESSAGE value="add test to AdminManagerTest" />
+    <option name="LAST_COMMIT_MESSAGE" value="add test to AdminManagerTest" />
   </component>
   <component name="WindowStateProjectService">
     <state x="280" y="20" key="#AccountManagerTest" timestamp="1589226101281">
@@ -727,10 +726,10 @@
     </state>
     <state x="137" y="22" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.728@0.0.1366.728" timestamp="1589296639634" />
     <state x="137" y="22" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.738@0.0.1366.738" timestamp="1589230895243" />
-    <state x="130" y="260" width="1182" height="544" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog" timestamp="1589572713892">
+    <state x="130" y="260" width="1182" height="544" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog" timestamp="1589748488596">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="130" y="260" width="1182" height="544" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog/0.0.1366.728@0.0.1366.728" timestamp="1589572713892" />
+    <state x="130" y="260" width="1182" height="544" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog/0.0.1366.728@0.0.1366.728" timestamp="1589748488596" />
     <state x="488" y="72" key="#com.intellij.ide.util.MemberChooser" timestamp="1589708435163">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -766,10 +765,10 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="280" y="6" key="#null./0.0.1366.738@0.0.1366.738" timestamp="1589226532697" />
-    <state x="509" y="0" key="CommitChangelistDialog2" timestamp="1589713765563">
+    <state x="509" y="0" key="CommitChangelistDialog2" timestamp="1589746773234">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="509" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1589713765563" />
+    <state x="509" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1589746773234" />
     <state x="470" y="0" key="CommitChangelistDialog2/0.0.1366.738@0.0.1366.738" timestamp="1589699820317" />
     <state x="92" y="93" width="1182" height="552" key="DiffContextDialog" timestamp="1589235790734">
       <screen x="0" y="0" width="1366" height="738" />
@@ -780,25 +779,25 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="463" y="122" key="FileChooserDialogImpl/0.0.1366.738@0.0.1366.738" timestamp="1589229857106" />
-    <state width="1322" height="174" key="GridCell.Tab.0.bottom" timestamp="1589746702861">
+    <state width="1322" height="174" key="GridCell.Tab.0.bottom" timestamp="1589748490951">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1322" height="174" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1589746702861" />
+    <state width="1322" height="174" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1589748490951" />
     <state width="1322" height="179" key="GridCell.Tab.0.bottom/0.0.1366.738@0.0.1366.738" timestamp="1589702291282" />
-    <state width="1322" height="174" key="GridCell.Tab.0.center" timestamp="1589746702861">
+    <state width="1322" height="174" key="GridCell.Tab.0.center" timestamp="1589748490951">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1322" height="174" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1589746702861" />
+    <state width="1322" height="174" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1589748490951" />
     <state width="1322" height="179" key="GridCell.Tab.0.center/0.0.1366.738@0.0.1366.738" timestamp="1589702291282" />
-    <state width="1322" height="174" key="GridCell.Tab.0.left" timestamp="1589746702861">
+    <state width="1322" height="174" key="GridCell.Tab.0.left" timestamp="1589748490951">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1322" height="174" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1589746702861" />
+    <state width="1322" height="174" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1589748490951" />
     <state width="1322" height="179" key="GridCell.Tab.0.left/0.0.1366.738@0.0.1366.738" timestamp="1589702291282" />
-    <state width="1322" height="174" key="GridCell.Tab.0.right" timestamp="1589746702861">
+    <state width="1322" height="174" key="GridCell.Tab.0.right" timestamp="1589748490951">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1322" height="174" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1589746702861" />
+    <state width="1322" height="174" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1589748490951" />
     <state width="1322" height="179" key="GridCell.Tab.0.right/0.0.1366.738@0.0.1366.738" timestamp="1589702291282" />
     <state width="1322" height="217" key="GridCell.Tab.1.bottom" timestamp="1589566470549">
       <screen x="0" y="0" width="1366" height="728" />
@@ -893,7 +892,7 @@
     <SUITE FILE_PATH="coverage/Project$AllProductManagerTest.ic" NAME="AllProductManagerTest Coverage Results" MODIFIED="1589544649151" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>ControllerTest.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/Project$All_in_Project.ic" NAME="All in Project Coverage Results" MODIFIED="1589746702841" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/Project$All_in_Project.ic" NAME="All in Project Coverage Results" MODIFIED="1589748408448" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/Project_2$All_in_Project_2.ic" NAME="All in Project-2 Coverage Results" MODIFIED="1589699730030" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/Project$SellerAccountTest.ic" NAME="SellerAccountTest Coverage Results" MODIFIED="1589388843464" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>ModelTest.*</FILTER>

@@ -2,6 +2,8 @@ package ControllerTest;
 
 import Controller.AccountManager;
 import Controller.Database;
+import Model.BuyerAccount;
+import Model.SellerAccount;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -114,6 +116,30 @@ public class AccountManagerTest {
     }
 
     @Test
+    public void editTest7()
+    {
+        Database.initialize();
+        AccountManager.logIn("Seller", "Seller");
+        String expected = "changed successfully";
+        String result = AccountManager.edit("company", "justTest");
+        AccountManager.logOut();
+
+        Assert.assertEquals(expected, result);
+    }
+
+    @Test
+    public void editTest8()
+    {
+        Database.initialize();
+        AccountManager.logIn("Seller", "Seller");
+        String expected = "Invalid Company Name";
+        String result = AccountManager.edit("company", "just test");
+        AccountManager.logOut();
+
+        Assert.assertEquals(expected, result);
+    }
+
+    @Test
     public void logoutTest1() {
         AccountManager.logOut();
         String expected = "You haven't logged in";
@@ -167,6 +193,46 @@ public class AccountManagerTest {
         Database.initialize();
         String result = AccountManager.logIn("parham", "testing");
         String expected = "Wrong Password";
+
+        Assert.assertEquals(expected, result);
+    }
+
+    @Test
+    public void showLogTest1()
+    {
+        Database.initialize();
+        AccountManager.logIn("Admin", "Admin");
+        String expected = "nothing to show.";
+        String result = AccountManager.viewLogs();
+        AccountManager.logOut();
+
+        Assert.assertEquals(expected, result);
+    }
+
+    @Test
+    public void showLogTest2() throws Exception
+    {
+        BuyerAccount buyerAccount = new BuyerAccount("test", "test", "test", "testing", "test@gmail.com", "021", 1000);
+        Database.addAllAccounts(buyerAccount);
+        AccountManager.logIn("test", "testing");
+        String expected = "";
+        String result = AccountManager.viewLogs();
+        AccountManager.logOut();
+        Database.removeAccount(buyerAccount);
+
+        Assert.assertEquals(expected, result);
+    }
+
+    @Test
+    public void showLogTest3() throws Exception
+    {
+        SellerAccount sellerAccount = new SellerAccount("test", "test", "test", "testing", "test@gmail.com", "021", 1000, "test");
+        Database.addAllAccounts(sellerAccount);
+        AccountManager.logIn("test", "testing");
+        String expected = "";
+        String result = AccountManager.viewLogs();
+        AccountManager.logOut();
+        Database.removeAccount(sellerAccount);
 
         Assert.assertEquals(expected, result);
     }
