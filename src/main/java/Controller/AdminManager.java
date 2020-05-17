@@ -1,9 +1,6 @@
 package Controller;
 
-import Model.Account;
-import Model.AdminAccount;
-import Model.Category;
-import Model.Product;
+import Model.*;
 import Model.Request.Request;
 
 import java.util.ArrayList;
@@ -96,7 +93,8 @@ public class AdminManager {
             category.addSubCategory(changeTo);
         }
         else if (field.equalsIgnoreCase("addNewProduct")){
-            category.addProduct(Integer.parseInt(changeTo));
+            Product product = Database.getProductByID(Integer.parseInt(changeTo));
+            product.setCategoryNameAndChangeCategory(category.getName());
         }
         return "changed successfully";
     }
@@ -115,5 +113,44 @@ public class AdminManager {
         return "Product removed successfully";
     }
 
+    public static String addNewDiscount(int maxValue, int percent, String startDate, String endDate, int numberOfTimes, ArrayList<String> usernames){
+        Discount discount = new Discount(maxValue , percent, startDate, endDate, numberOfTimes);
+        Database.addAllDiscount(discount);
+        for (String username : usernames) {
+            BuyerAccount buyer = (BuyerAccount) Database.getAccountByUsername(username);
+            buyer.addNewDiscount(discount.getDiscountId());
+        }
+        return "New discount added";
+    }
 
+    public static String removeDiscount(int discountId){
+        Database.removeDiscount(Database.getDiscountById(discountId));
+        return "discount deleted";
+    }
+
+    public static String showAllDiscount(){
+        ArrayList<Discount> allDiscounts = Database.getAllDiscounts();
+        StringBuilder res = new StringBuilder();
+        for (Discount discount : allDiscounts) {
+            res.append(discount.showInfo() + "\n------------------------\n");
+        }
+        return res.toString();
+    }
+
+    public static String editDiscount(int discountId, String field , String changTo){
+        Discount discount = Database.getDiscountById(discountId);
+        if (field.equalsIgnoreCase("maxValue")){
+            discount.setMaxValue(Integer.parseInt(changTo));
+        }
+        else if (field.equalsIgnoreCase("percent")){
+            discount.setPercent(Integer.parseInt(changTo));
+        }
+        else if (field.equalsIgnoreCase("startDate")){
+            discount.setStartDate(changTo);
+        }
+        else if (field.equalsIgnoreCase("endDate")){
+            discount.setEndDate(changTo);
+        }
+        return "changed successfully";
+    }
 }

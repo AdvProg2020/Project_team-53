@@ -69,11 +69,15 @@ public class Product {
         this.description = description;
     }
 
-    public void setCategoryName(String categoryName) {
-        // TODO: 12-May-20
-        Category category = Database.getCategoryByName(this.categoryName);
-        category.removeProduct(this.productId);
-        Database.getCategoryByName(categoryName).addProduct(this.productId);
+
+    public void setCategoryNameAndChangeCategory(String categoryName) {
+        if (Database.getCategoryByName(this.getCategoryName()) != null)
+            Database.getCategoryByName(this.getCategoryName()).removeProduct(this.getProductId());
+        Category category = Database.getCategoryByName(categoryName);
+        category.addProduct(this.getProductId());
+    }
+
+    public void setCategoryNameWithoutAddToCategory(String categoryName) {
         this.categoryName = categoryName;
     }
 
@@ -161,4 +165,5 @@ public class Product {
         comments.add(comment);
 
     }
+
 }

@@ -35,7 +35,7 @@ public class EditProductRequest extends Request{
             product.setDescription(changeTo);
         }
         else if (field.equalsIgnoreCase("categoryName")){
-            product.setCategoryName(changeTo);
+            product.setCategoryNameAndChangeCategory(changeTo);
         }
         else if (field.equalsIgnoreCase("price")){
             product.setPrice(Integer.parseInt(changeTo));
