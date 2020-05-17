@@ -19,7 +19,7 @@ public class LoginMenu extends Menu{
             @Override
             public void show()
             {
-                System.out.println("Please enter role,username,first name,last name,email,phone number,password,credit, (company name) in order");
+                System.out.println("Please enter role,username,first name,last name,email,phone number,password and credit in order");
                 System.out.println("(Enter back to return)");
             }
             @Override
@@ -28,7 +28,7 @@ public class LoginMenu extends Menu{
                 String input = scanner.nextLine();
                 try
                 {
-                    Matcher matcher1 = getMatcher(input, "^\\s*(\\S+)\\s+(\\S+)\\s+(\\S+)\\s+(\\S+)\\s+(\\S+)\\s+(\\S+)\\s+(\\S+)\\s+(\\S+)\\s*");
+                    Matcher matcher1 = getMatcher(input, "^\\s*(\\S+)\\s+(\\S+)\\s+(\\S+)\\s+(\\S+)\\s+(\\S+)\\s+(\\S+)\\s+(\\S+)\\s+(\\S+)\\s*$");
                     Matcher matcher2 = getMatcher(input, "^\\s*back\\s*$");
                     if(matcher2.find())
                     {
@@ -46,8 +46,9 @@ public class LoginMenu extends Menu{
                     }
                     else if(matcher1.group(1).equalsIgnoreCase("seller"))
                     {
-                        System.out.println(AccountManager.register(matcher1.group(1),matcher1.group(2),matcher1.group(3),matcher1.group(4),matcher1.group(5),matcher1.group(6),matcher1.group(7),Integer.parseInt(matcher1.group(8)), matcher1.group(9)));
-
+                        System.out.println("Please enter your company name");
+                        String companyName = scanner.nextLine();
+                        System.out.println(AccountManager.register(matcher1.group(1),matcher1.group(2),matcher1.group(3),matcher1.group(4),matcher1.group(5),matcher1.group(6),matcher1.group(7),Integer.parseInt(matcher1.group(8)), companyName));
                     }
                     else {
                         throw new Exception("invalid input");
