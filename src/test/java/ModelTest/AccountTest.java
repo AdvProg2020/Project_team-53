@@ -1,5 +1,7 @@
 package ModelTest;
 
+import Controller.Database;
+import Model.Account;
 import Model.BuyerAccount;
 import org.junit.Assert;
 import org.junit.Test;
@@ -87,5 +89,17 @@ public class AccountTest {
             actual = e.getMessage();
         }
         Assert.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void setCreditTest()
+    {
+        Database.initialize();
+        Account account = Database.getAccountByUsername("parham");
+        account.setCredit(1000000);
+        long expected = 1000000;
+        long result = account.getCredit();
+
+        Assert.assertEquals(expected, result);
     }
 }

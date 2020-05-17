@@ -140,6 +140,91 @@ public class AccountManagerTest {
     }
 
     @Test
+    public void editTest9()
+    {
+        Database.initialize();
+        AccountManager.logIn("parham", "parham");
+        try {
+            AccountManager.edit("firstname", "@@@");
+        }
+        catch (Exception e)
+        {
+            String expected = "Invalid FirstName";
+            String result = e.getMessage();
+            Assert.assertEquals(expected, result);
+        }
+        AccountManager.logOut();
+    }
+
+    @Test
+    public void editTest10()
+    {
+        Database.initialize();
+        AccountManager.logIn("parham", "parham");
+        try {
+            AccountManager.edit("lastname", "@@@");
+        }
+        catch (Exception e)
+        {
+            String expected = "Invalid LastName";
+            String result = e.getMessage();
+            Assert.assertEquals(expected, result);
+        }
+        AccountManager.logOut();
+    }
+
+    @Test
+    public void editTest11()
+    {
+        Database.initialize();
+        AccountManager.logIn("parham", "parham");
+        try {
+            AccountManager.edit("password", "@@@");
+        }
+        catch (Exception e)
+        {
+            String expected = "Weak or Invalid Password";
+            String result = e.getMessage();
+            Assert.assertEquals(expected, result);
+        }
+        AccountManager.logOut();
+    }
+
+    @Test
+    public void editTest12()
+    {
+        Database.initialize();
+        AccountManager.logIn("parham", "parham");
+        try {
+            AccountManager.edit("email", "aaaa");
+        }
+        catch (Exception e)
+        {
+            String expected = "Invalid Email";
+            String result = e.getMessage();
+            Assert.assertEquals(expected, result);
+        }
+        AccountManager.logOut();
+    }
+
+    @Test
+    public void editTest13()
+    {
+        Database.initialize();
+        AccountManager.logIn("parham", "parham");
+        try {
+            AccountManager.edit("phoneNumber", "@@@@@");
+        }
+        catch (Exception e)
+        {
+            String expected = "Invalid PhoneNumber";
+            String result = e.getMessage();
+            Assert.assertEquals(expected, result);
+        }
+        AccountManager.logOut();
+    }
+
+    @Test
     public void logoutTest1() {
         AccountManager.logOut();
         String expected = "You haven't logged in";
@@ -155,6 +240,7 @@ public class AccountManagerTest {
         AccountManager.logIn("Admin", "Admin");
         String expected = "logged out successfully";
         String result = AccountManager.logOut();
+        AccountManager.logOut();
 
         Assert.assertEquals(expected, result);
     }
