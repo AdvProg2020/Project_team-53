@@ -8,22 +8,19 @@ import java.util.HashMap;
 public class Cart {
     private Account owner;
     private ArrayList<Integer> productsID;
-    private HashMap<Integer, String> productsSellerUsername;
     private HashMap<Integer, Integer> muchOfProductID;
 
     public Cart(Account account)
     {
         owner = account;
         productsID = new ArrayList<>();
-        productsSellerUsername = new HashMap<>();
         muchOfProductID = new HashMap<>();
     }
 
-    public void addToCart(Product product, String sellerUsername)
+    public void addToCart(Product product)
     {
         productsID.add(product.getProductId());
         muchOfProductID.put(product.getProductId(), 1);
-        productsSellerUsername.put(product.getProductId(), sellerUsername);
     }
 
     public long getCost()
