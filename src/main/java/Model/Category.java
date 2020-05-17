@@ -56,14 +56,15 @@ public class Category {
     }
 
     public void removeProduct(int productId){
-        allProductIds.remove(allProductIds.indexOf(productId));
+        if(allProductIds.contains(productId))
+            allProductIds.remove(allProductIds.indexOf(productId));
     }
 
     public String showThisCategory(){
         return "Category{" +
                 "   name=" + name + '\n' +
-                "   feature='" + feature + '\n' +
-                "   parent='" + parent + '\n' +
+                "   feature=" + feature + '\n' +
+                "   parent=" + parent + '\n' +
                 '}';
     }
 
