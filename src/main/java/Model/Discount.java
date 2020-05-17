@@ -18,12 +18,12 @@ public class Discount {
         this.maxValue = maxValue;
         this.percent = percent;
         try {
-            this.startDate = new SimpleDateFormat("yyyy-MM-ddHH:mm").parse(startDate);
+            this.startDate = new SimpleDateFormat("yyyy-MM-dd_HH:mm").parse(startDate);
         } catch (ParseException e) {
             e.printStackTrace();
         }
         try {
-            this.endDate = new SimpleDateFormat("yyyy-MM-ddHH:mm").parse(endDate);
+            this.endDate = new SimpleDateFormat("yyyy-MM-dd_HH:mm").parse(endDate);
         } catch (ParseException e) {
             e.printStackTrace();
         }
@@ -66,7 +66,7 @@ public class Discount {
 
     public void setStartDate(String startDate) {
         try {
-            this.startDate = new SimpleDateFormat("yyyy-MM-ddHH:mm").parse(startDate);
+            this.startDate = new SimpleDateFormat("yyyy-MM-dd_HH:mm").parse(startDate);
         } catch (ParseException e) {
             e.printStackTrace();
         }
@@ -74,7 +74,7 @@ public class Discount {
 
     public void setEndDate(String endDate) {
         try {
-            this.endDate = new SimpleDateFormat("yyyy-MM-ddHH:mm").parse(endDate);
+            this.endDate = new SimpleDateFormat("yyyy-MM-dd_HH:mm").parse(endDate);
         } catch (ParseException e) {
             e.printStackTrace();
         }

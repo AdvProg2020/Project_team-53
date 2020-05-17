@@ -21,12 +21,12 @@ public class Off {
         this.maxValue = maxValue;
         this.percent = percent;
         try {
-            this.startDate = new SimpleDateFormat("yyyy-MM-ddHH:mm:ss").parse(startDate);
+            this.startDate = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss").parse(startDate);
         } catch (ParseException e) {
             e.printStackTrace();
         }
         try {
-            this.endDate = new SimpleDateFormat("yyyy-MM-ddHH:mm:ss").parse(endDate);
+            this.endDate = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss").parse(endDate);
         } catch (ParseException e) {
             e.printStackTrace();
         }
@@ -83,7 +83,7 @@ public class Off {
 
     public void setStartDate(String startDate) {
         try {
-            this.startDate = new SimpleDateFormat("yyyy-MM-ddHH:mm").parse(startDate);
+            this.startDate = new SimpleDateFormat("yyyy-MM-dd_HH:mm").parse(startDate);
         } catch (ParseException e) {
             e.printStackTrace();
         }
@@ -91,7 +91,7 @@ public class Off {
 
     public void setEndDate(String endDate) {
         try {
-            this.endDate = new SimpleDateFormat("yyyy-MM-ddHH:mm").parse(endDate);
+            this.endDate = new SimpleDateFormat("yyyy-MM-dd_HH:mm").parse(endDate);
         } catch (ParseException e) {
             e.printStackTrace();
         }
