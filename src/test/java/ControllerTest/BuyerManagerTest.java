@@ -42,12 +42,31 @@ public class BuyerManagerTest {
     {
         BuyerAccount buyerAccount = new BuyerAccount("test", "test", "test", "testing", "test@gmail.com", "021", 1000);
         Database.addAllAccounts(buyerAccount);
+        AccountManager.logIn("test", "testing");
         Cart cart = new Cart(buyerAccount);
         Product product = new Product("product", "product", "product", true, 10, "product", "pro", 1000);
         Database.addAllProduct(product);
         cart.addToCart(product);
 
         Assert.assertTrue(BuyerManager.canIncreaseProduct(product.getProductId()));
+        AccountManager.logOut();
+        Database.removeProduct(product);
+        Database.removeAccount(buyerAccount);
+    }
+
+    @Test
+    public void canDecreaseProductTest() throws  Exception
+    {
+        BuyerAccount buyerAccount = new BuyerAccount("test", "test", "test", "testing", "test@gmail.com", "021", 1000);
+        Database.addAllAccounts(buyerAccount);
+        AccountManager.logIn("test", "testing");
+        Cart cart = new Cart(buyerAccount);
+        Product product = new Product("product", "product", "product", true, 10, "product", "pro", 1000);
+        Database.addAllProduct(product);
+        cart.addToCart(product);
+
+        Assert.assertTrue(BuyerManager.DecreaseProduct(product.getProductId()));
+        AccountManager.logOut();
         Database.removeProduct(product);
         Database.removeAccount(buyerAccount);
     }
