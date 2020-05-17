@@ -31,6 +31,10 @@ public class BuyerAccount extends Account {
         return cart;
     }
 
+    public void setCart(Cart cart) {
+        this.cart = cart;
+    }
+
     public void addBuyLog(BuyLog buyLog){
         buyLogs.add(buyLog);
     }
@@ -64,7 +68,7 @@ public class BuyerAccount extends Account {
         return true;
     }
 
-    public void UseDiscount(int discountId){
+    public void useDiscount(int discountId){
         numberOfUse.replace(discountId , numberOfUse.get(discountId)+1 );
         return;
     }

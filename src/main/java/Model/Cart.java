@@ -23,6 +23,14 @@ public class Cart {
         muchOfProductID.put(product.getProductId(), 1);
     }
 
+    public ArrayList<Integer> getProductsID() {
+        return productsID;
+    }
+
+    public HashMap<Integer, Integer> getMuchOfProductID() {
+        return muchOfProductID;
+    }
+
     public long getCost()
     {
         int cost = 0;

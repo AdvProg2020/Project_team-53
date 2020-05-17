@@ -2,6 +2,7 @@ package Controller;
 
 import Model.BuyerAccount;
 import Model.Cart;
+import Model.Discount;
 import Model.Product;
 
 public class BuyerManager {
@@ -38,5 +39,33 @@ public class BuyerManager {
             addNewProductToCart(product);
     }
 
+    public boolean canBuy(int discountId){
+        BuyerAccount buyerAccount = (BuyerAccount) AccountManager.getLoggedInAccount();
+        long cost = buyerAccount.getCart().getCost();
+        //Todo: complete the conditions
+    }
+
+    public void buy(int discountId){
+        BuyerAccount buyerAccount = (BuyerAccount) AccountManager.getLoggedInAccount();
+        long cost = buyerAccount.getCart().getCost();
+        buyerAccount.setCredit((int) (buyerAccount.getCredit() - cost));
+        // Todo: get the seller cost
+        buyerAccount.setCart(new Cart(buyerAccount));
+        if (buyerAccount.canUseDiscount(discountId)){
+            buyerAccount.useDiscount(discountId);
+            Discount discount = Database.getDiscountById(discountId);
+            buyerAccount.setCredit(buyerAccount.getCredit() + (int)cost*discount.getPercent());
+            // Todo: check up the line above
+        }
+    }
+
+    public boolean pay(int discountId){
+        if (!canBuy(discountId))
+            return false;
+        else {
+            buy(discountId);
+            return true;
+        }
+    }
 
 }
