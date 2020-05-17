@@ -2,8 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9610a36b-aa98-4cc2-966a-bf2d86b17a51" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/test/java/ControllerTest/BuyerManagerTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/ControllerTest/AccountManagerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ControllerTest/AccountManagerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/Accounts/Buyers.json" beforeDir="false" afterPath="$PROJECT_DIR$/Data/Accounts/Buyers.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/BuyerManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/BuyerManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Cart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Cart.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/View/Menu/LoginMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/View/Menu/LoginMenu.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,7 +75,14 @@
     <property name="project.structure.side.proportion" value="0.0" />
     <property name="settings.editor.selected.configurable" value="coverage" />
   </component>
-  <component name="RunManager" selected="JUnit.AccountManagerTest">
+  <component name="RunManager" selected="JUnit.BuyerManagerTest.canIncreaseProductTest">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Main" />
+      <module name="Project" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="AccountManagerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Project" />
       <extension name="coverage">
@@ -87,7 +98,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AccountManagerTest.showLogTest2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="BuyerManagerTest.canIncreaseProductTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Project" />
       <extension name="coverage">
         <pattern>
@@ -96,14 +107,14 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="ControllerTest" />
-      <option name="MAIN_CLASS_NAME" value="ControllerTest.AccountManagerTest" />
-      <option name="METHOD_NAME" value="showLogTest2" />
+      <option name="MAIN_CLASS_NAME" value="ControllerTest.BuyerManagerTest" />
+      <option name="METHOD_NAME" value="canIncreaseProductTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AccountManagerTest.showLogTest3" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="BuyerManagerTest.showAllDiscountTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Project" />
       <extension name="coverage">
         <pattern>
@@ -112,14 +123,14 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="ControllerTest" />
-      <option name="MAIN_CLASS_NAME" value="ControllerTest.AccountManagerTest" />
-      <option name="METHOD_NAME" value="showLogTest3" />
+      <option name="MAIN_CLASS_NAME" value="ControllerTest.BuyerManagerTest" />
+      <option name="METHOD_NAME" value="showAllDiscountTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="AdminManagerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="BuyerManagerTest.showCostOfCartTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Project" />
       <extension name="coverage">
         <pattern>
@@ -128,16 +139,9 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="ControllerTest" />
-      <option name="MAIN_CLASS_NAME" value="ControllerTest.AdminManagerTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="All in Project" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Project" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="TEST_OBJECT" value="package" />
+      <option name="MAIN_CLASS_NAME" value="ControllerTest.BuyerManagerTest" />
+      <option name="METHOD_NAME" value="showCostOfCartTest" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -188,19 +192,19 @@
     </configuration>
     <list>
       <item itemvalue="JUnit.ControllerTest.*" />
-      <item itemvalue="JUnit.AdminManagerTest" />
-      <item itemvalue="JUnit.All in Project" />
-      <item itemvalue="JUnit.AccountManagerTest.showLogTest2" />
-      <item itemvalue="JUnit.AccountManagerTest.showLogTest3" />
       <item itemvalue="JUnit.AccountManagerTest" />
+      <item itemvalue="Application.Main" />
+      <item itemvalue="JUnit.BuyerManagerTest.showAllDiscountTest" />
+      <item itemvalue="JUnit.BuyerManagerTest.showCostOfCartTest" />
+      <item itemvalue="JUnit.BuyerManagerTest.canIncreaseProductTest" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.BuyerManagerTest.canIncreaseProductTest" />
+        <item itemvalue="Application.Main" />
+        <item itemvalue="JUnit.BuyerManagerTest.showCostOfCartTest" />
+        <item itemvalue="JUnit.BuyerManagerTest.showAllDiscountTest" />
         <item itemvalue="JUnit.AccountManagerTest" />
-        <item itemvalue="JUnit.All in Project" />
-        <item itemvalue="JUnit.AccountManagerTest.showLogTest2" />
-        <item itemvalue="JUnit.AccountManagerTest.showLogTest3" />
-        <item itemvalue="JUnit.AdminManagerTest" />
       </list>
     </recent_temporary>
   </component>
@@ -275,13 +279,6 @@
       <workItem from="1589697349823" duration="1586000" />
       <workItem from="1589699369738" duration="1766000" />
       <workItem from="1589701200657" duration="1915000" />
-    </task>
-    <task id="LOCAL-00007" summary="add AdminMenu and ManageUsersMenu and make some changes">
-      <created>1588354848210</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1588354848210</updated>
     </task>
     <task id="LOCAL-00008" summary="add ViewDiscountCodeMenu and create discount method to AdminMenu">
       <created>1588357658152</created>
@@ -619,14 +616,20 @@
       <option name="project" value="LOCAL" />
       <updated>1589746774298</updated>
     </task>
-    <option name="localTasksCounter" value="56" />
+    <task id="LOCAL-00056" summary="add test to AccountManagerTest">
+      <created>1589748627546</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1589748627546</updated>
+    </task>
+    <option name="localTasksCounter" value="57" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="complete SellerMenu" />
     <MESSAGE value="make little changes" />
     <MESSAGE value="give Score added" />
     <MESSAGE value="ProductManaer and AllProductManager Started" />
@@ -651,7 +654,8 @@
     <MESSAGE value="multiple seller removed" />
     <MESSAGE value="BuyerManager, showAllDiscount and showCostOfCart added" />
     <MESSAGE value="add test to AdminManagerTest" />
-    <option name="LAST_COMMIT_MESSAGE" value="add test to AdminManagerTest" />
+    <MESSAGE value="add test to AccountManagerTest" />
+    <option name="LAST_COMMIT_MESSAGE" value="add test to AccountManagerTest" />
   </component>
   <component name="WindowStateProjectService">
     <state x="280" y="20" key="#AccountManagerTest" timestamp="1589226101281">
@@ -765,10 +769,10 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="280" y="6" key="#null./0.0.1366.738@0.0.1366.738" timestamp="1589226532697" />
-    <state x="509" y="0" key="CommitChangelistDialog2" timestamp="1589746773234">
+    <state x="509" y="0" key="CommitChangelistDialog2" timestamp="1589748626875">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="509" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1589746773234" />
+    <state x="509" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1589748626875" />
     <state x="470" y="0" key="CommitChangelistDialog2/0.0.1366.738@0.0.1366.738" timestamp="1589699820317" />
     <state x="92" y="93" width="1182" height="552" key="DiffContextDialog" timestamp="1589235790734">
       <screen x="0" y="0" width="1366" height="738" />
@@ -779,25 +783,25 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="463" y="122" key="FileChooserDialogImpl/0.0.1366.738@0.0.1366.738" timestamp="1589229857106" />
-    <state width="1322" height="174" key="GridCell.Tab.0.bottom" timestamp="1589748490951">
+    <state width="1322" height="174" key="GridCell.Tab.0.bottom" timestamp="1589752116268">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1322" height="174" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1589748490951" />
+    <state width="1322" height="174" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1589752116268" />
     <state width="1322" height="179" key="GridCell.Tab.0.bottom/0.0.1366.738@0.0.1366.738" timestamp="1589702291282" />
-    <state width="1322" height="174" key="GridCell.Tab.0.center" timestamp="1589748490951">
+    <state width="1322" height="174" key="GridCell.Tab.0.center" timestamp="1589752116268">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1322" height="174" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1589748490951" />
+    <state width="1322" height="174" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1589752116268" />
     <state width="1322" height="179" key="GridCell.Tab.0.center/0.0.1366.738@0.0.1366.738" timestamp="1589702291282" />
-    <state width="1322" height="174" key="GridCell.Tab.0.left" timestamp="1589748490951">
+    <state width="1322" height="174" key="GridCell.Tab.0.left" timestamp="1589752116268">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1322" height="174" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1589748490951" />
+    <state width="1322" height="174" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1589752116268" />
     <state width="1322" height="179" key="GridCell.Tab.0.left/0.0.1366.738@0.0.1366.738" timestamp="1589702291282" />
-    <state width="1322" height="174" key="GridCell.Tab.0.right" timestamp="1589748490951">
+    <state width="1322" height="174" key="GridCell.Tab.0.right" timestamp="1589752116268">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1322" height="174" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1589748490951" />
+    <state width="1322" height="174" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1589752116268" />
     <state width="1322" height="179" key="GridCell.Tab.0.right/0.0.1366.738@0.0.1366.738" timestamp="1589702291282" />
     <state width="1322" height="217" key="GridCell.Tab.1.bottom" timestamp="1589566470549">
       <screen x="0" y="0" width="1366" height="728" />
@@ -837,10 +841,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="378" y="186" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1589363230671" />
-    <state x="492" y="283" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1589624333826">
-      <screen x="0" y="0" width="1366" height="738" />
+    <state x="492" y="279" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1589752288603">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="492" y="279" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.728@0.0.1366.728" timestamp="1589570209335" />
+    <state x="492" y="279" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.728@0.0.1366.728" timestamp="1589752288603" />
     <state x="492" y="283" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.738@0.0.1366.738" timestamp="1589624333826" />
     <state x="389" y="0" key="refactoring.ChangeSignatureDialog" timestamp="1589710761386">
       <screen x="0" y="0" width="1366" height="728" />
