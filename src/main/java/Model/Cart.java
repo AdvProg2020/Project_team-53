@@ -6,13 +6,13 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Cart {
-    private Account owner;
+    //private Account owner;
     private ArrayList<Integer> productsID;
     private HashMap<Integer, Integer> muchOfProductID;
 
     public Cart(Account account)
     {
-        owner = account;
+        //owner = account;
         productsID = new ArrayList<>();
         muchOfProductID = new HashMap<>();
     }

@@ -1,8 +1,13 @@
 package Controller;
 
+import Model.Off;
 import Model.Product;
+import Model.Request.AddNewOffRequest;
+import Model.Request.EditOffRequest;
 import Model.Request.EditProductRequest;
 import Model.Request.NewProductRequest;
+
+import java.util.ArrayList;
 
 public class SellerManager {
 
@@ -13,6 +18,9 @@ public class SellerManager {
 
     public static String sendEditProductRequest(int productId, String field, String changeTo){
         Product product = Database.getProductByID(productId);
+        if (product == null){
+            return "no such product";
+        }
         if (!product.isSeller(AccountManager.getLoggedInAccount().getUsername())){
             return "You can't edit this product.";
         }
@@ -27,5 +35,32 @@ public class SellerManager {
         }
         Database.removeProduct(product);
         return "Product removed successfully";
+    }
+
+    public static String addNewOff(int maxValue, int percent, String startDate, String endDate , ArrayList<Integer>productIds){
+        for (Integer productId : productIds) {
+            Product product = Database.getProductByID(productId);
+            if (product == null)
+                return "no such product";
+            if (!product.getSellerUsername().equalsIgnoreCase(AccountManager.getLoggedInAccount().getUsername()))
+                return "You can add off only on your products";
+        }
+        Off off = new Off(maxValue, percent, startDate, endDate, AccountManager.getLoggedInAccount().getUsername(), productIds);
+        Database.addAllOff(off);
+
+        Database.addRequest(new AddNewOffRequest(off.getOffId()));
+
+        return "Your request registered";
+    }
+
+    public static String editOff(int offId, String field, String changeTo){
+        Off off = Database.getOffById(offId);
+        if (off == null)
+            return "no such off";
+        if (!off.getSellerUsername().equalsIgnoreCase(AccountManager.getLoggedInAccount().getUsername())){
+            return "You can't edit this off";
+        }
+        Database.addRequest(new EditOffRequest(field, changeTo, offId));
+        return "Your request registered.";
     }
 }

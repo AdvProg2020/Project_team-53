@@ -2,38 +2,47 @@ package Model;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
-public class Discount {
-    private static int allDiscountId = 1;
+public class Off {
+    private static int allOffIds = 1;
 
-    private int discountId;
+    private int offId;
     private int maxValue;
     private int percent;
     private Date startDate;
     private Date endDate;
-    private int numberOfTimes;
+    private ArrayList<Integer> productIds;
+    private String status;
+    private String sellerUsername;
 
-    public Discount(int maxValue, int percent, String startDate, String endDate, int numberOfTimes) {
+    public Off(int maxValue, int percent, String startDate, String endDate, String sellerUsername, ArrayList<Integer> productIds) {
         this.maxValue = maxValue;
         this.percent = percent;
         try {
-            this.startDate = new SimpleDateFormat("yyyy-MM-dd_HH:mm").parse(startDate);
+            this.startDate = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss").parse(startDate);
         } catch (ParseException e) {
             e.printStackTrace();
         }
         try {
-            this.endDate = new SimpleDateFormat("yyyy-MM-dd_HH:mm").parse(endDate);
+            this.endDate = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss").parse(endDate);
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        this.numberOfTimes = numberOfTimes;
-        this.discountId = allDiscountId;
-        allDiscountId++;
+        this.sellerUsername = sellerUsername;
+        this.productIds = productIds;
+        this.offId = allOffIds;
+        allOffIds++;
+        this.status = "Waiting to add...";
     }
 
-    public int getDiscountId() {
-        return discountId;
+    public int getOffId() {
+        return offId;
+    }
+
+    public ArrayList<Integer> getProductIds() {
+        return productIds;
     }
 
     public int getMaxValue() {
@@ -52,8 +61,16 @@ public class Discount {
         return endDate;
     }
 
-    public int getNumberOfTimes() {
-        return numberOfTimes;
+    public String getStatus() {
+        return status;
+    }
+
+    public String getSellerUsername() {
+        return sellerUsername;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public void setMaxValue(int maxValue) {
@@ -80,15 +97,16 @@ public class Discount {
         }
     }
 
-    public String showInfo() {
-        return  "Discount{" + '\n' +
-                "   discountId=" + discountId + '\n' +
-                "   maxValue=" + maxValue + '\n'+
+    public String showInfo(){
+        return "Off{" + '\n' +
+                "   offId=" + offId + '\n' +
+                "   maxValue=" + maxValue + '\n' +
                 "   percent=" + percent + '\n' +
                 "   startDate=" + startDate + '\n' +
-                "   endDate=" + endDate + '\n'+
-                "   numberOfTimes=" + numberOfTimes + '\n'+
-                '}';
+                "   endDate=" + endDate + '\n' +
+                "   productIds=" + productIds + '\n' +
+                "   status=" + status + '\n' +
+                "   sellerUsername=" + sellerUsername + '\n' +
+                '}' ;
     }
-
 }

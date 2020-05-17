@@ -2,6 +2,7 @@ package ControllerTest;
 
 import Controller.AdminManager;
 import Controller.Database;
+import Model.Discount;
 import Model.Product;
 import Model.Request.Request;
 import org.junit.Assert;
@@ -224,6 +225,108 @@ public class AdminManagerTest {
         Assert.assertEquals(expected, result);
     }
 
+    @Test
+    public void  addNewDiscountTest()
+    {
+        Database.initialize();
+        ArrayList<String> test = new  ArrayList<>();
+        test.add("Buyer");
+        String expected = "New discount added";
+        String result = AdminManager.addNewDiscount(2000, 20, "2018-06-2012:30:00", "2019-06-2012:30:00", 23, test);
+
+        Assert.assertEquals(expected, result);
+    }
+
+    @Test
+    public void removeDiscountTest()
+    {
+        Discount discount = new Discount(2000, 20, "2018-06-2012:30:00", "2019-06-2012:30:00", 10);
+        Database.addAllDiscount(discount);
+        String expected = "discount deleted";
+        String result = AdminManager.removeDiscount(discount.getDiscountId());
+        Database.removeDiscount(discount);
+
+        Assert.assertEquals(expected, result);
+    }
+
+    @Test
+    public void showAllDiscountsTest()
+    {
+        Discount discount = new Discount(2000, 20, "2018-06-2012:30:00", "2019-06-2012:30:00", 10);
+        Database.addAllDiscount(discount);
+        String expected = "Discount{" + '\n' +
+                "   discountId=" + discount.getDiscountId() + '\n' +
+                "   maxValue=" + discount.getMaxValue() + '\n'+
+                "   percent=" + discount.getPercent() + '\n' +
+                "   startDate=" + discount.getStartDate() + '\n' +
+                "   endDate=" + discount.getEndDate() + '\n'+
+                "   numberOfTimes=" + discount.getNumberOfTimes() + '\n'+
+                '}' + "\n------------------------\n";
+        String result = AdminManager.showAllDiscount();
+        Database.removeDiscount(discount);
+
+        Assert.assertEquals(expected, result);
+    }
+
+    @Test
+    public void editDiscountsTest1()
+    {
+        Discount discount = new Discount(2000, 20, "2018-06-2012:30:00", "2019-06-2012:30:00", 10);
+        Database.addAllDiscount(discount);
+        String expected = "changed successfully";
+        String result = AdminManager.editDiscount(discount.getDiscountId(), "maxValue", "1500");
+        Database.removeDiscount(discount);
+
+        Assert.assertEquals(expected, result);
+    }
+
+    @Test
+    public void editDiscountsTest2()
+    {
+        Discount discount = new Discount(2000, 20, "2018-06-2012:30:00", "2019-06-2012:30:00", 10);
+        Database.addAllDiscount(discount);
+        String expected = "changed successfully";
+        String result = AdminManager.editDiscount(discount.getDiscountId(), "percent", "5");
+        Database.removeDiscount(discount);
+
+        Assert.assertEquals(expected, result);
+    }
+
+    @Test
+    public void editDiscountsTest3()
+    {
+        Discount discount = new Discount(2000, 20, "2018-06-2012:30:00", "2019-06-2012:30:00", 10);
+        Database.addAllDiscount(discount);
+        String expected = "changed successfully";
+        String result = AdminManager.editDiscount(discount.getDiscountId(), "startDate", "2018-06-2012:30:00");
+        Database.removeDiscount(discount);
+
+        Assert.assertEquals(expected, result);
+    }
+
+    @Test
+    public void editDiscountsTest4()
+    {
+        Discount discount = new Discount(2000, 20, "2018-06-2012:30:00", "2019-06-2012:30:00", 10);
+        Database.addAllDiscount(discount);
+        String expected = "changed successfully";
+        String result = AdminManager.editDiscount(discount.getDiscountId(), "endDate", "2019-06-2012:30:00");
+        Database.removeDiscount(discount);
+
+        Assert.assertEquals(expected, result);
+    }
+
+    @Test
+    public void editDiscountsTest5()
+    {
+        Discount discount = new Discount(2000, 20, "2018-06-2012:30:00", "2019-06-2012:30:00", 10);
+        Database.addAllDiscount(discount);
+        String expected = "no such field";
+        String result = AdminManager.editDiscount(discount.getDiscountId(), "testing", "2019-06-2012:30:00");
+        Database.removeDiscount(discount);
+
+        Assert.assertEquals(expected, result);
+    }
 }
 
 

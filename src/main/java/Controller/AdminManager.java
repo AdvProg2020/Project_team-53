@@ -141,6 +141,13 @@ public class AdminManager {
         return res.toString();
     }
 
+    public static String showDiscountWithId(int discountId){
+        Discount discount = Database.getDiscountById(discountId);
+        if (discount == null)
+            return "no such discount";
+        return discount.showInfo();
+    }
+
     public static String editDiscount(int discountId, String field , String changTo){
         Discount discount = Database.getDiscountById(discountId);
         if (field.equalsIgnoreCase("maxValue")){

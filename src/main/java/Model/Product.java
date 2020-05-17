@@ -3,6 +3,7 @@ package Model;
 import Controller.Database;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 public class Product {
     static int numberOfAllProducts = 1;
@@ -18,6 +19,7 @@ public class Product {
     String sellerUsername;
     ArrayList<Score> scores = new ArrayList<>();
     ArrayList<Comment> comments = new ArrayList<>();
+    int offId;
 
     public Product(String status, String name, String sellerUsername, boolean available, int number, String description, String categoryName, int price) {
         this.status = status;
@@ -31,6 +33,7 @@ public class Product {
         this.price = price;
         numberOfAllProducts++;
         averageScore = 0;
+        this.offId = -1;
     }
 
     public int getProductId() {
@@ -69,10 +72,14 @@ public class Product {
         this.description = description;
     }
 
+    public void setOffId(int offId) {
+        this.offId = offId;
+    }
 
     public void setCategoryNameAndChangeCategory(String categoryName) {
-        if (Database.getCategoryByName(this.getCategoryName()) != null)
+        if (Database.getCategoryByName(this.getCategoryName()) != null){
             Database.getCategoryByName(this.getCategoryName()).removeProduct(this.getProductId());
+        }
         Category category = Database.getCategoryByName(categoryName);
         category.addProduct(this.getProductId());
     }
@@ -137,6 +144,15 @@ public class Product {
 
     }
 
+    public String showComments(){
+        StringBuilder res = new StringBuilder();
+
+        for (Comment comment : comments) {
+            res.append(comment.showComment() + "\n----------------\n");
+        }
+        return res.toString();
+    }
+
     public String compareWith(Product secondPro) {
         return "name : " + this.getName() + " ---- " + secondPro.getName() + '\n' +
                 "seller : " + this.getSellerUsername() + " ---- " + secondPro.getSellerUsername() + '\n' +
@@ -158,4 +174,19 @@ public class Product {
 
     }
 
+    public boolean doesHaveOff(){
+        Off off = Database.getOffById(offId);
+        if (off == null)
+            return false;
+        Date date = new Date();
+        if (date.compareTo(off.getEndDate()) < 0 && date.compareTo(off.getStartDate()) > 0)
+            return false;
+        if (!off.getStatus().equalsIgnoreCase("accepted"))
+            return false;
+        return true;
+    }
+
+    public Off getOff(){
+        return Database.getOffById(offId);
+    }
 }
