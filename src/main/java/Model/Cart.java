@@ -6,9 +6,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Cart {
-    Account owner;
-    ArrayList<Integer> productsID;
-    HashMap<Integer, Integer> muchOfProductID;
+    private Account owner;
+    private ArrayList<Integer> productsID;
+    private HashMap<Integer, Integer> muchOfProductID;
 
     public Cart(Account account)
     {
