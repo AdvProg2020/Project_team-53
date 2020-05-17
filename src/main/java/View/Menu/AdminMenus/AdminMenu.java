@@ -1,8 +1,10 @@
 package View.Menu.AdminMenus;
 
+import Controller.AdminManager;
 import View.Menu.Menu;
 import View.Menu.PersonalInfoMenu;
 
+import java.util.ArrayList;
 import java.util.regex.Matcher;
 
 public class AdminMenu extends Menu {
@@ -24,21 +26,42 @@ public class AdminMenu extends Menu {
             @Override
             public void show()
             {
-                System.out.println("Please enter features\n(Enter back to return)");
+                System.out.println("Please enter max value(with numbers), percent(without % sign), start date, " +
+                        "end date(both in format YYYY-MM-DDhh:mm) and how much it can use(with numbers) in first line and " +
+                        "user names in second line\n(Enter back to return)");
             }
             @Override
             public void execute() {
                 String input = scanner.nextLine();
+                String name = scanner.nextLine();
                 try
                 {
-                    Matcher matcher1 = getMatcher(input, "");
+                    Matcher matcher1 = getMatcher(input, "^\\s*(\\d+)\\s+(\\d+)\\s+(\\S+)\\s+(\\S+)\\s+(\\d+)\\s*$");
                     Matcher matcher2 = getMatcher(input, "^\\s*back\\s*$");
-                    if(matcher2.find())
+                    Matcher matcher3 = getMatcher(name, "\\s*(\\S+)\\s*");
+                    Matcher matcher4 = getMatcher(name, "^\\s*back\\s*$");
+                    if(matcher2.find() || matcher4.find())
                     {
                         this.parentMenu.show();
                         this.parentMenu.execute();
                         return;
                     }
+                    else if(!matcher1.find())
+                    {
+                        throw new Exception("invalid input");
+                    }
+                    ArrayList<String> allNames = new ArrayList<>();
+                    while (matcher3.find())
+                    {
+                        String username = matcher3.group();
+                        username = username.trim();
+                        allNames.add(username);
+                    }
+                    if(allNames.isEmpty())
+                    {
+                        throw new Exception("invalid input");
+                    }
+                    System.out.println(AdminManager.addNewDiscount(Integer.parseInt(matcher1.group(1)), Integer.parseInt(matcher1.group(2)), matcher1.group(3), matcher1.group(4), Integer.parseInt(matcher1.group(5)), allNames));
                 }
                 catch (Exception e)
                 {
