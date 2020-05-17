@@ -1,5 +1,6 @@
 package View.Menu.AdminMenus;
 
+import Controller.AdminManager;
 import View.Menu.Menu;
 
 import java.util.regex.Matcher;
@@ -24,6 +25,7 @@ public class ViewDiscountCodeMenu extends Menu {
             }
             @Override
             public void execute() {
+                System.out.println(AdminManager.showAllDiscount());
                 String input = scanner.nextLine();
                 try
                 {
@@ -82,14 +84,14 @@ public class ViewDiscountCodeMenu extends Menu {
             @Override
             public void show()
             {
-                System.out.println("Please enter the code\n(Enter back tp return)");
+                System.out.println("Please enter the discountID, field and new value of field\n(Enter back tp return)");
             }
             @Override
             public void execute() {
                 String input = scanner.nextLine();
                 try
                 {
-                    Matcher matcher1 = getMatcher(input, "");
+                    Matcher matcher1 = getMatcher(input, "^\\s*(\\d+)\\s+(\\S+)\\s+(\\S+)\\s*$");
                     Matcher matcher2 = getMatcher(input, "^\\s*back\\s*$");
                     if(matcher2.find())
                     {
@@ -97,6 +99,11 @@ public class ViewDiscountCodeMenu extends Menu {
                         this.parentMenu.execute();
                         return;
                     }
+                    else if (!matcher1.find())
+                    {
+                        throw new Exception("invalid input");
+                    }
+                    System.out.println(AdminManager.editDiscount(Integer.parseInt(matcher1.group(1)), matcher1.group(2), matcher1.group(3)));
                 }
                 catch (Exception e)
                 {
@@ -113,14 +120,14 @@ public class ViewDiscountCodeMenu extends Menu {
             @Override
             public void show()
             {
-                System.out.println("Please enter the code\n(Enter back tp return)");
+                System.out.println("Please enter discountID\n(Enter back tp return)");
             }
             @Override
             public void execute() {
                 String input = scanner.nextLine();
                 try
                 {
-                    Matcher matcher1 = getMatcher(input, "");
+                    Matcher matcher1 = getMatcher(input, "^\\s*(\\d+)\\s*$");
                     Matcher matcher2 = getMatcher(input, "^\\s*back\\s*$");
                     if(matcher2.find())
                     {
@@ -128,6 +135,11 @@ public class ViewDiscountCodeMenu extends Menu {
                         this.parentMenu.execute();
                         return;
                     }
+                    else if(!matcher1.find())
+                    {
+                        throw new Exception("invalid input");
+                    }
+                    System.out.println(AdminManager.removeDiscount(Integer.parseInt(matcher1.group(1))));
                 }
                 catch (Exception e)
                 {

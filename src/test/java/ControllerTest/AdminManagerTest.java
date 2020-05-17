@@ -2,6 +2,7 @@ package ControllerTest;
 
 import Controller.AdminManager;
 import Controller.Database;
+import Model.Product;
 import Model.Request.Request;
 import org.junit.Assert;
 import org.junit.Test;
@@ -119,6 +120,110 @@ public class AdminManagerTest {
 
         Assert.assertEquals(expected, result);
     }
+
+    @Test
+    public void editCategoryTest1()
+    {
+        String expected = "no such category";
+        String result = AdminManager.editCategory("test", "name", "new");
+
+        Assert.assertEquals(expected, result);
+    }
+
+    @Test
+    public void editCategoryTest2()
+    {
+        String expected = "";
+    }
+
+    @Test
+    public void editCategoryTest3()
+    {
+        AdminManager.addNewCategory("Category", "Category", "Category");
+        String expected = "changed successfully";
+        String result = AdminManager.editCategory("Category", "name", "Category");
+        Database.removeCategory(Database.getCategoryByName("Category"));
+
+        Assert.assertEquals(expected, result);
+    }
+
+    @Test
+    public void editCategoryTest4()
+    {
+        AdminManager.addNewCategory("Category", "Category", "Category");
+        String expected = "changed successfully";
+        String result = AdminManager.editCategory("Category", "parentName", "Category");
+        Database.removeCategory(Database.getCategoryByName("Category"));
+
+        Assert.assertEquals(expected, result);
+    }
+
+    @Test
+    public void editCategoryTest5()
+    {
+        AdminManager.addNewCategory("Category", "Category", "Category");
+        String expected = "changed successfully";
+        String result = AdminManager.editCategory("Category", "feature", "Category");
+        Database.removeCategory(Database.getCategoryByName("Category"));
+
+        Assert.assertEquals(expected, result);
+    }
+
+    @Test
+    public void editCategoryTest6()
+    {
+        AdminManager.addNewCategory("Category", "Category", "Category");
+        String expected = "changed successfully";
+        String result = AdminManager.editCategory("Category", "addNewSubCategory", "category");
+        Database.removeCategory(Database.getCategoryByName("Category"));
+
+        Assert.assertEquals(expected, result);
+    }
+
+    @Test
+    public void editCategoryTest7()
+    {
+        Product product = new Product("test", "test", "test", true, 10, "test", "Category", 10000);
+        Database.addAllProduct(product);
+        AdminManager.addNewCategory("Category", "Category", "Category");
+        String expected = "changed successfully";
+        String result = AdminManager.editCategory("Category", "addNewProduct", Integer.toString(product.getProductId()));
+        Database.removeProduct(product);
+        Database.removeCategory(Database.getCategoryByName("Category"));
+
+        Assert.assertEquals(expected, result);
+    }
+
+    @Test
+    public void deleteCategoryTest1()
+    {
+        String expected = "no such category.";
+        String result = AdminManager.deleteCategory("test");
+
+        Assert.assertEquals(expected, result);
+    }
+
+    @Test
+    public void deleteCategoryTest2()
+    {
+        AdminManager.addNewCategory("Category", "Category", "Category");
+        String expected = "category deleted";
+        String result = AdminManager.deleteCategory("Category");
+
+        Assert.assertEquals(expected, result);
+    }
+
+    @Test
+    public void deleteProductTest()
+    {
+        Product product = new Product("test", "test", "test", true, 10, "test", "Category", 10000);
+        Database.addAllProduct(product);
+        String expected = "Product removed successfully";
+        String result = AdminManager.deleteProduct(product.getProductId());
+
+        Assert.assertEquals(expected, result);
+    }
+
 }
 
 
