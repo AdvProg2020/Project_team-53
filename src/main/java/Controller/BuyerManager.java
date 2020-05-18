@@ -22,9 +22,12 @@ public class BuyerManager {
         return buyerAccount.getCart().increaseProduct(productId);
     }
 
-    public static boolean DecreaseProduct(int productId){
+    public static String DecreaseProduct(int productId){
         BuyerAccount buyerAccount = (BuyerAccount) AccountManager.getLoggedInAccount();
-        return buyerAccount.getCart().decreaseProduct(productId);
+        if (!buyerAccount.getCart().decreaseProduct(productId))
+            return "you haven't choosen this product yet";
+        Database.getProductByID(productId).setNumber(Database.getProductByID(productId).getNumber() + 1);
+        return "product eliminated successfully";
     }
 
     public static void addNewProductToCart(Product product){
@@ -32,11 +35,15 @@ public class BuyerManager {
         buyerAccount.getCart().addToCart(product);
     }
 
-    public static void addProductToCart(Product product){
+    public static String addProductToCart(Product product){
+        if (product.getNumber() < 1)
+            return "unfortunately we don't have this product now";
+        product.setNumber(product.getNumber() - 1);
         BuyerAccount buyerAccount = (BuyerAccount) AccountManager.getLoggedInAccount();
         Cart cart = buyerAccount.getCart();
         if (!cart.increaseProduct(product.getProductId()))
             addNewProductToCart(product);
+        return "product added to cart";
     }
 
     public boolean canBuy(int discountId){
@@ -51,21 +58,21 @@ public class BuyerManager {
         long cost = buyerAccount.getCart().getCost();
         buyerAccount.setCredit((int) (buyerAccount.getCredit() - cost));
         // Todo: get the seller cost
-        buyerAccount.setCart(new Cart(buyerAccount));
         if (buyerAccount.canUseDiscount(discountId)){
             buyerAccount.useDiscount(discountId);
             Discount discount = Database.getDiscountById(discountId);
             buyerAccount.setCredit(buyerAccount.getCredit() + (int)cost*discount.getPercent());
             // Todo: check up the line above
         }
+        buyerAccount.setCart(new Cart(buyerAccount));
     }
 
-    public boolean pay(int discountId){
+    public String pay(int discountId){
         if (!canBuy(discountId))
-            return false;
+            return "there is a problem in process";
         else {
             buy(discountId);
-            return true;
+            return "product bought successfully";
         }
     }
 
