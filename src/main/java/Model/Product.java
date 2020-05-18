@@ -76,6 +76,10 @@ public class Product {
         this.offId = offId;
     }
 
+    public String getStatus() {
+        return status;
+    }
+
     public void setCategoryNameAndChangeCategory(String categoryName) {
         if (Database.getCategoryByName(this.getCategoryName()) != null){
             Database.getCategoryByName(this.getCategoryName()).removeProduct(this.getProductId());
