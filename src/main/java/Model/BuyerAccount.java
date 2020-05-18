@@ -53,16 +53,17 @@ public class BuyerAccount extends Account {
     }
 
     public boolean canUseDiscount(int discountId){
-        if (!discountIds.contains(discountId))
-            return false;
         Discount discount = Database.getDiscountById(discountId);
         if (discount == null)
+            return false;
+
+        if (!discountIds.contains(discountId))
             return false;
 
         if (numberOfUse.get(discountId) >= discount.getNumberOfTimes())
             return false;
         Date date = new Date();
-        if (date.compareTo(discount.getEndDate()) < 0 && date.compareTo(discount.getStartDate()) > 0)
+        if (date.compareTo(discount.getEndDate()) > 0 && date.compareTo(discount.getStartDate()) < 0)
             return false;
 
         return true;

@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="aeefa500-3a99-4ed0-98cf-a7157d1fa89a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/test/java/ModelTest/LogTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/ModelTest/BuyerAccountTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Product.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/BuyerAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/BuyerAccount.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,11 +72,74 @@
     <property name="project.structure.side.proportion" value="0.0" />
     <property name="settings.editor.selected.configurable" value="coverage" />
   </component>
-  <component name="RunManager" selected="JUnit.ProductTest">
+  <component name="RunManager" selected="JUnit.All in Project">
     <configuration name="All in Project" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Project" />
       <option name="PACKAGE_NAME" value="" />
       <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BuyerAccountTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Project" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ModelTest.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ModelTest" />
+      <option name="MAIN_CLASS_NAME" value="ModelTest.BuyerAccountTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BuyerAccountTest.canUseDiscountTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Project" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ModelTest.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ModelTest" />
+      <option name="MAIN_CLASS_NAME" value="ModelTest.BuyerAccountTest" />
+      <option name="METHOD_NAME" value="canUseDiscountTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BuyerAccountTest.showAllDiscountTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Project" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ModelTest.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ModelTest" />
+      <option name="MAIN_CLASS_NAME" value="ModelTest.BuyerAccountTest" />
+      <option name="METHOD_NAME" value="showAllDiscountTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BuyerAccountTest.showAllLOgTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Project" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ModelTest.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ModelTest" />
+      <option name="MAIN_CLASS_NAME" value="ModelTest.BuyerAccountTest" />
+      <option name="METHOD_NAME" value="showAllLOgTest" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -125,83 +188,21 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="LogTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Project" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ModelTest.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="ModelTest" />
-      <option name="MAIN_CLASS_NAME" value="ModelTest.LogTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="LogTest.toStringTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Project" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ModelTest.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="ModelTest" />
-      <option name="MAIN_CLASS_NAME" value="ModelTest.LogTest" />
-      <option name="METHOD_NAME" value="toStringTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ProductTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Project" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ModelTest.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="ModelTest" />
-      <option name="MAIN_CLASS_NAME" value="ModelTest.ProductTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ProductTest.doesHaveOffTest4" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Project" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ModelTest.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="ModelTest" />
-      <option name="MAIN_CLASS_NAME" value="ModelTest.ProductTest" />
-      <option name="METHOD_NAME" value="doesHaveOffTest4" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <list>
       <item itemvalue="JUnit.ControllerTest.*" />
+      <item itemvalue="JUnit.BuyerAccountTest.showAllLOgTest" />
+      <item itemvalue="JUnit.BuyerAccountTest.showAllDiscountTest" />
+      <item itemvalue="JUnit.BuyerAccountTest.canUseDiscountTest" />
+      <item itemvalue="JUnit.BuyerAccountTest" />
       <item itemvalue="JUnit.All in Project" />
-      <item itemvalue="JUnit.ProductTest" />
-      <item itemvalue="JUnit.ProductTest.doesHaveOffTest4" />
-      <item itemvalue="JUnit.LogTest.toStringTest" />
-      <item itemvalue="JUnit.LogTest" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.ProductTest" />
-        <item itemvalue="JUnit.ProductTest.doesHaveOffTest4" />
         <item itemvalue="JUnit.All in Project" />
-        <item itemvalue="JUnit.LogTest" />
-        <item itemvalue="JUnit.LogTest.toStringTest" />
+        <item itemvalue="JUnit.BuyerAccountTest" />
+        <item itemvalue="JUnit.BuyerAccountTest.canUseDiscountTest" />
+        <item itemvalue="JUnit.BuyerAccountTest.showAllDiscountTest" />
+        <item itemvalue="JUnit.BuyerAccountTest.showAllLOgTest" />
       </list>
     </recent_temporary>
   </component>
@@ -276,13 +277,6 @@
       <workItem from="1589697349823" duration="1586000" />
       <workItem from="1589699369738" duration="1766000" />
       <workItem from="1589701200657" duration="1915000" />
-    </task>
-    <task id="LOCAL-00008" summary="add ViewDiscountCodeMenu and create discount method to AdminMenu">
-      <created>1588357658152</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1588357658152</updated>
     </task>
     <task id="LOCAL-00009" summary="add ManageRequestsMenu and make some changes in ViewDiscountCodeMenu">
       <created>1588522207329</created>
@@ -620,14 +614,20 @@
       <option name="project" value="LOCAL" />
       <updated>1589795870327</updated>
     </task>
-    <option name="localTasksCounter" value="57" />
+    <task id="LOCAL-00057" summary="add LogTest">
+      <created>1589797853343</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1589797853343</updated>
+    </task>
+    <option name="localTasksCounter" value="58" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="make little changes" />
     <MESSAGE value="give Score added" />
     <MESSAGE value="ProductManaer and AllProductManager Started" />
     <MESSAGE value="multiple seller for product handled" />
@@ -652,7 +652,8 @@
     <MESSAGE value="BuyerManager, showAllDiscount and showCostOfCart added" />
     <MESSAGE value="add Test to SellerManagerTest" />
     <MESSAGE value="add ProductTest" />
-    <option name="LAST_COMMIT_MESSAGE" value="add ProductTest" />
+    <MESSAGE value="add LogTest" />
+    <option name="LAST_COMMIT_MESSAGE" value="add LogTest" />
   </component>
   <component name="WindowStateProjectService">
     <state x="280" y="20" key="#AccountManagerTest" timestamp="1589226101281">
@@ -766,10 +767,10 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="280" y="6" key="#null./0.0.1366.738@0.0.1366.738" timestamp="1589226532697" />
-    <state x="549" y="0" key="CommitChangelistDialog2" timestamp="1589795868374">
+    <state x="549" y="0" key="CommitChangelistDialog2" timestamp="1589797851549">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="549" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1589795868374" />
+    <state x="549" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1589797851549" />
     <state x="470" y="0" key="CommitChangelistDialog2/0.0.1366.738@0.0.1366.738" timestamp="1589699820317" />
     <state x="92" y="93" width="1182" height="552" key="DiffContextDialog" timestamp="1589235790734">
       <screen x="0" y="0" width="1366" height="738" />
@@ -780,25 +781,25 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="463" y="122" key="FileChooserDialogImpl/0.0.1366.738@0.0.1366.738" timestamp="1589229857106" />
-    <state width="1322" height="174" key="GridCell.Tab.0.bottom" timestamp="1589797408348">
+    <state width="1322" height="174" key="GridCell.Tab.0.bottom" timestamp="1589803221395">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1322" height="174" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1589797408348" />
+    <state width="1322" height="174" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1589803221395" />
     <state width="1322" height="179" key="GridCell.Tab.0.bottom/0.0.1366.738@0.0.1366.738" timestamp="1589702291282" />
-    <state width="1322" height="174" key="GridCell.Tab.0.center" timestamp="1589797408347">
+    <state width="1322" height="174" key="GridCell.Tab.0.center" timestamp="1589803221395">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1322" height="174" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1589797408347" />
+    <state width="1322" height="174" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1589803221395" />
     <state width="1322" height="179" key="GridCell.Tab.0.center/0.0.1366.738@0.0.1366.738" timestamp="1589702291282" />
-    <state width="1322" height="174" key="GridCell.Tab.0.left" timestamp="1589797408347">
+    <state width="1322" height="174" key="GridCell.Tab.0.left" timestamp="1589803221394">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1322" height="174" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1589797408347" />
+    <state width="1322" height="174" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1589803221394" />
     <state width="1322" height="179" key="GridCell.Tab.0.left/0.0.1366.738@0.0.1366.738" timestamp="1589702291282" />
-    <state width="1322" height="174" key="GridCell.Tab.0.right" timestamp="1589797408348">
+    <state width="1322" height="174" key="GridCell.Tab.0.right" timestamp="1589803221395">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1322" height="174" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1589797408348" />
+    <state width="1322" height="174" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1589803221395" />
     <state width="1322" height="179" key="GridCell.Tab.0.right/0.0.1366.738@0.0.1366.738" timestamp="1589702291282" />
     <state width="1322" height="217" key="GridCell.Tab.1.bottom" timestamp="1589566470549">
       <screen x="0" y="0" width="1366" height="728" />
@@ -893,7 +894,7 @@
     <SUITE FILE_PATH="coverage/Project$AllProductManagerTest.ic" NAME="AllProductManagerTest Coverage Results" MODIFIED="1589544649151" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>ControllerTest.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/Project$All_in_Project.ic" NAME="All in Project Coverage Results" MODIFIED="1589797165035" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/Project$All_in_Project.ic" NAME="All in Project Coverage Results" MODIFIED="1589803221370" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/Project_2$All_in_Project_2.ic" NAME="All in Project-2 Coverage Results" MODIFIED="1589699730030" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/Project$SellerAccountTest.ic" NAME="SellerAccountTest Coverage Results" MODIFIED="1589388843464" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>ModelTest.*</FILTER>
