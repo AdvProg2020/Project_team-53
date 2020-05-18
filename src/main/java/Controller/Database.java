@@ -146,6 +146,9 @@ public class Database {
         WorkWithFile.writeProductsOnFile();
         WorkWithFile.writeCategoriesOnFile();
         WorkWithFile.writeDiscountsOnFile();
+        WorkWithFile.writeOffsOnFile();
+        WorkWithFile.writeRequestsOnFile();
+        WorkWithFile.writeIDOnFile();
     }
 
     public static void initialize() {

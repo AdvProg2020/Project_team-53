@@ -17,6 +17,14 @@ public class Off {
     private String status;
     private String sellerUsername;
 
+    public static int getAllOffIds() {
+        return allOffIds;
+    }
+
+    public static void setAllOffIds(int allOffIds) {
+        Off.allOffIds = allOffIds;
+    }
+
     public Off(int maxValue, int percent, String startDate, String endDate, String sellerUsername, ArrayList<Integer> productIds) {
         this.maxValue = maxValue;
         this.percent = percent;
@@ -109,4 +117,18 @@ public class Off {
                 "   sellerUsername=" + sellerUsername + '\n' +
                 '}' ;
     }
+
+    public String showOff(){
+        return "Off{" + '\n' +
+                "   offId=" + offId + '\n' +
+                "   maxValue=" + maxValue + '\n' +
+                "   percent=" + percent +'\n' +
+                "   startDate=" + startDate +'\n' +
+                "   endDate=" + endDate +'\n' +
+                "   productIds=" + productIds + '\n' +
+                "   status=" + status + '\n' +
+                "   sellerUsername=" + sellerUsername + '\n' +
+                '}';
+    }
+
 }

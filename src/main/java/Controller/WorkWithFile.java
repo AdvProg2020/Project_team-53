@@ -1,6 +1,8 @@
 package Controller;
 
 import Model.*;
+import Model.Log.Log;
+import Model.Request.*;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -20,6 +22,34 @@ public class WorkWithFile {
         readArrayOfAllThingFromFile("Products\\Products");
         readArrayOfAllThingFromFile("Products\\Categories");
         readArrayOfAllThingFromFile("DisAndOff\\Discounts");
+        readArrayOfAllThingFromFile("DisAndOff\\Offs");
+
+        readArrayOfRequestFromFile("AddNewOffRequests");
+        readArrayOfRequestFromFile("EditOffRequests");
+        readArrayOfRequestFromFile("EditProductRequests");
+        readArrayOfRequestFromFile("NewProductRequests");
+        readArrayOfRequestFromFile("NewSellerRequests");
+
+        readIdsFromFile();
+    }
+
+    private static void readIdsFromFile() {
+        Gson gson = new Gson();
+        File file = new File("Data\\IDs\\Id.json");
+        BufferedReader br = null;
+        try {
+            br = new BufferedReader(new FileReader(file));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        Type type = new TypeToken<ArrayList<Integer>>(){}.getType();
+        ArrayList<Integer> arr = gson.fromJson(br, type);
+        Log.setAllLogId(arr.get(0));
+        Request.setAllRequestId(arr.get(1));
+        Discount.setAllDiscountId(arr.get(2));
+        Off.setAllOffIds(arr.get(3));
+        Product.setNumberOfAllProducts(arr.get(4));
     }
 
     public static void readArrayOfAllThingFromFile(String place) {
@@ -43,8 +73,11 @@ public class WorkWithFile {
             Type type = new TypeToken<ArrayList<Discount>>(){}.getType();
             allDiscounts = gson.fromJson(br, type);
         }
+        else if (place.endsWith("Offs")){
+            Type type = new TypeToken<ArrayList<Off>>(){}.getType();
+            allOffs = gson.fromJson(br, type);
+        }
     }
-
 
     public static void readArrayOfAccountFromFile(String place) {
         Gson gson = new Gson();
@@ -56,7 +89,7 @@ public class WorkWithFile {
             e.printStackTrace();
         }
 
-        ArrayList<Account> arr = new ArrayList<>();
+        ArrayList<Account> arr;
         Type type ;
         if (place.equals("Admins")) {
             type = new TypeToken<ArrayList<AdminAccount>>(){}.getType();
@@ -72,28 +105,48 @@ public class WorkWithFile {
         allAccounts.addAll(arr);
     }
 
-
-    public static void writeProductsOnFile() {
-        File file = new File("Data\\Products\\Products.json");
-        file.getParentFile().mkdirs();
-        FileWriter fileWriter = null;
-
+    public static void readArrayOfRequestFromFile(String place){
+        Gson gson = new Gson();
+        File file = new File("Data\\Requests\\"+place+".json");
+        BufferedReader br = null;
         try {
-            fileWriter = new FileWriter(file);
-            Gson gson = new Gson();
-            String json = gson.toJson(allProducts);
-            fileWriter.write(json);
-            fileWriter.flush();
-
-        } catch (IOException e) {
+            br = new BufferedReader(new FileReader(file));
+        } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
+
+        ArrayList<Request> arr;
+        Type type ;
+        if (place.equals("AddNewOffRequests")) {
+            type = new TypeToken<ArrayList<AddNewOffRequest>>(){}.getType();
+        }
+        else if (place.equals("EditOffRequests")){
+            type = new TypeToken<ArrayList<EditOffRequest>>(){}.getType();
+        }
+        else if (place.equals("EditProductRequests")){
+            type = new TypeToken<ArrayList<EditProductRequest>>(){}.getType();
+        }
+        else if (place.equals("NewProductRequests")){
+            type = new TypeToken<ArrayList<NewProductRequest>>(){}.getType();
+        }
+        else {
+            type = new TypeToken<ArrayList<NewSellerRequest>>(){}.getType();
+        }
+
+        arr = gson.fromJson(br, type);
+
+        allRequest.addAll(arr);
+    }
+
+    public static void writeProductsOnFile() {
+        ArrayList<Object> arr = new ArrayList<>(allProducts);
+        writeArrayOnFile(arr, "Products\\Products");
     }
 
     public static void writeAccountsOnFile(){
-        ArrayList<Account> sellers = new ArrayList<>();
-        ArrayList<Account> admins = new ArrayList<>();
-        ArrayList<Account> buyers = new ArrayList<>();
+        ArrayList<Object> sellers = new ArrayList<>();
+        ArrayList<Object> admins = new ArrayList<>();
+        ArrayList<Object> buyers = new ArrayList<>();
         for (Account account : allAccounts) {
             if (account instanceof AdminAccount)
                 admins.add(account);
@@ -104,12 +157,55 @@ public class WorkWithFile {
             else
                 System.out.println("What the hell");
         }
-        writeArrayAccountOnFile(admins, "Accounts\\Admins");
-        writeArrayAccountOnFile(sellers, "Accounts\\Sellers");
-        writeArrayAccountOnFile(buyers, "Accounts\\Buyers");
+        writeArrayOnFile(admins, "Accounts\\Admins");
+        writeArrayOnFile(sellers, "Accounts\\Sellers");
+        writeArrayOnFile(buyers, "Accounts\\Buyers");
     }
 
-    private static void writeArrayAccountOnFile(ArrayList<Account> arr, String name) {
+    public static void writeCategoriesOnFile() {
+        ArrayList<Object> arr = new ArrayList<>(allCategories);
+        writeArrayOnFile(arr, "Products\\Categories");
+    }
+
+    public static void writeDiscountsOnFile() {
+        ArrayList<Object> arr = new ArrayList<>(allDiscounts);
+        writeArrayOnFile(arr, "DisAndOff\\Discounts");
+    }
+
+    public static void writeOffsOnFile() {
+        ArrayList<Object> arr = new ArrayList<>(allOffs);
+        writeArrayOnFile(arr, "DisAndOff\\Offs");
+    }
+
+    public static void writeRequestsOnFile(){
+        ArrayList<Object> addNewOff = new ArrayList<>();
+        ArrayList<Object> editOff = new ArrayList<>();
+        ArrayList<Object> editProduct = new ArrayList<>();
+        ArrayList<Object> newProduct = new ArrayList<>();
+        ArrayList<Object> newSeller = new ArrayList<>();
+
+        for (Request request : allRequest) {
+            if (request instanceof AddNewOffRequest)
+                addNewOff.add(request);
+            else if (request instanceof EditOffRequest)
+                editOff.add(request);
+            else if (request instanceof EditProductRequest)
+                editProduct.add(request);
+            else if (request instanceof NewProductRequest)
+                newProduct.add(request);
+            else if (request instanceof NewSellerRequest)
+                newSeller.add(request);
+        }
+
+        writeArrayOnFile(addNewOff, "Requests\\AddNewOffRequests");
+        writeArrayOnFile(editOff, "Requests\\EditOffRequests");
+        writeArrayOnFile(editProduct, "Requests\\EditProductRequests");
+        writeArrayOnFile(newProduct, "Requests\\NewProductRequests");
+        writeArrayOnFile(newSeller, "Requests\\NewSellerRequests");
+
+    }
+
+    private static void writeArrayOnFile(ArrayList<Object> arr, String name) {
         File file = new File("Data\\" + name + ".json");
         file.getParentFile().mkdirs();
         FileWriter fileWriter = null;
@@ -126,37 +222,13 @@ public class WorkWithFile {
         }
     }
 
-    public static void writeCategoriesOnFile() {
-        File file = new File("Data\\Products\\Categories.json");
-        file.getParentFile().mkdirs();
-        FileWriter fileWriter = null;
-
-        try {
-            fileWriter = new FileWriter(file);
-            Gson gson = new Gson();
-            String json = gson.toJson(allCategories);
-            fileWriter.write(json);
-            fileWriter.flush();
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public static void writeDiscountsOnFile() {
-        File file = new File("Data\\DisAndOff\\Discounts.json");
-        file.getParentFile().mkdirs();
-        FileWriter fileWriter = null;
-
-        try {
-            fileWriter = new FileWriter(file);
-            Gson gson = new Gson();
-            String json = gson.toJson(allDiscounts);
-            fileWriter.write(json);
-            fileWriter.flush();
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    public static void writeIDOnFile(){
+        ArrayList<Object> arr = new ArrayList<>();
+        arr.add(Log.getAllLogId());
+        arr.add(Request.getAllRequestId());
+        arr.add(Discount.getAllDiscountId());
+        arr.add(Off.getAllOffIds());
+        arr.add(Product.getNumberOfAllProducts());
+        writeArrayOnFile(arr, "IDs\\Id");
     }
 }

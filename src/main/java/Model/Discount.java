@@ -14,6 +14,14 @@ public class Discount {
     private Date endDate;
     private int numberOfTimes;
 
+    public static int getAllDiscountId() {
+        return allDiscountId;
+    }
+
+    public static void setAllDiscountId(int allDiscountId) {
+        Discount.allDiscountId = allDiscountId;
+    }
+
     public Discount(int maxValue, int percent, String startDate, String endDate, int numberOfTimes) {
         this.maxValue = maxValue;
         this.percent = percent;

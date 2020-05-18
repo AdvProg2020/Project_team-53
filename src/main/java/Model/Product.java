@@ -21,6 +21,14 @@ public class Product {
     ArrayList<Comment> comments = new ArrayList<>();
     int offId;
 
+    public static int getNumberOfAllProducts() {
+        return numberOfAllProducts;
+    }
+
+    public static void setNumberOfAllProducts(int numberOfAllProducts) {
+        Product.numberOfAllProducts = numberOfAllProducts;
+    }
+
     public Product(String status, String name, String sellerUsername, boolean available, int number, String description, String categoryName, int price) {
         this.status = status;
         this.name = name;
