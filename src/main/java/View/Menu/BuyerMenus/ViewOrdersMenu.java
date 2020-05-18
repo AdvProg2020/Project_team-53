@@ -21,6 +21,7 @@ public class ViewOrdersMenu extends Menu {
 
             @Override
             public void execute() {
+                System.out.println();
                 String input = scanner.nextLine();
                 try
                 {

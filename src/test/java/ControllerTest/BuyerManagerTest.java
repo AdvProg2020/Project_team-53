@@ -55,21 +55,42 @@ public class BuyerManagerTest {
     }
 
     @Test
-    public void canDecreaseProductTest() throws  Exception
+    public void canDecreaseProductTest1() throws  Exception
     {
         BuyerAccount buyerAccount = new BuyerAccount("test", "test", "test", "testing", "test@gmail.com", "021", 1000);
         Database.addAllAccounts(buyerAccount);
         AccountManager.logIn("test", "testing");
         Cart cart = new Cart(buyerAccount);
+        buyerAccount.setCart(cart);
         Product product = new Product("product", "product", "product", true, 10, "product", "pro", 1000);
         Database.addAllProduct(product);
         cart.addToCart(product);
+        String expected = "product eliminated successfully";
+        String result = BuyerManager.DecreaseProduct(product.getProductId());
 
-        Assert.assertTrue(BuyerManager.DecreaseProduct(product.getProductId()));
+        Assert.assertEquals(expected, result);
         AccountManager.logOut();
         Database.removeProduct(product);
         Database.removeAccount(buyerAccount);
     }
 
+    @Test
+    public void canDecreaseProductTest2() throws  Exception
+    {
+        BuyerAccount buyerAccount = new BuyerAccount("test", "test", "test", "testing", "test@gmail.com", "021", 1000);
+        Database.addAllAccounts(buyerAccount);
+        AccountManager.logIn("test", "testing");
+        Cart cart = new Cart(buyerAccount);
+        buyerAccount.setCart(cart);
+        Product product = new Product("product", "product", "product", true, 10, "product", "pro", 1000);
+        Database.addAllProduct(product);
+        String expected = "you haven't choosen this product yet";
+        String result = BuyerManager.DecreaseProduct(product.getProductId());
+
+        Assert.assertEquals(expected, result);
+        AccountManager.logOut();
+        Database.removeProduct(product);
+        Database.removeAccount(buyerAccount);
+    }
 
 }
