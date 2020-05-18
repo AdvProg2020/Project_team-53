@@ -2,6 +2,7 @@ package View.Menu.ProductMenus;
 
 import Controller.Database;
 import Controller.ProductManager;
+import View.Menu.LoginMenu;
 import View.Menu.Menu;
 
 import java.util.regex.Matcher;
@@ -13,6 +14,7 @@ public class ProductMenu extends Menu {
         super.addToSubMenus(2, this.getAttributesMenu());
         super.addToSubMenus(3, this.getCompareMenu());
         super.addToSubMenus(4, new CommentsMenu(this));
+        super.addToSubMenus(5, new LoginMenu(this));
     }
 
     private Menu getAttributesMenu()

@@ -1,4 +1,4 @@
-package Controller;
+ package Controller;
 
 import Model.Off;
 
@@ -43,7 +43,7 @@ public class AllOffManager {
         return sortedBy;
     }
 
-    public static String showAllProduct(){
+    public static String showAllOffs(){
 
         allOffs = Database.getAllOffs();
 
