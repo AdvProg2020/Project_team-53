@@ -121,7 +121,6 @@ public class AllProductManagerTest {
         Database.addAllProduct(product1);
         Database.addAllProduct(product2);
         AllProductManager.sortByName();
-        //AllProductManager.addFilterOption("sellerUsername test1");
         AllProductManager.addFilterOption("rangeOfPrice 0 3000");
         AllProductManager.addFilterOption("categoryName test1");
         AllProductManager.addFilterOption("available");

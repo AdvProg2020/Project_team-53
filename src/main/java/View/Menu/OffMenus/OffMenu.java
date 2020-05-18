@@ -28,7 +28,7 @@ public class OffMenu extends Menu {
 
             @Override
             public void execute() {
-                System.out.println(AllOffManager.showAllProduct());
+                System.out.println(AllOffManager.showAllOffs());
                 String input = scanner.nextLine();
                 try
                 {
