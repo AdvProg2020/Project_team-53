@@ -84,4 +84,8 @@ public abstract class Menu {
             this.subMenus.get(input).execute();
         }
     }
+
+    public HashMap<Integer, Menu> getSubMenus() {
+        return subMenus;
+    }
 }
