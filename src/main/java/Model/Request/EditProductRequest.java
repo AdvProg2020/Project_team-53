@@ -49,7 +49,7 @@ public class EditProductRequest extends Request{
                 "   requestId="+ getId()+'\n'+
                 "   field='" + field + '\n' +
                 "   changeTo='" + changeTo + '\n' +
-                "   produtId=" + productId +'\n' +
+                "   productId=" + productId +'\n' +
                 '}';
     }
 
