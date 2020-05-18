@@ -1,6 +1,7 @@
 package View.Menu.OffMenus;
 
 import Controller.AllOffManager;
+import View.Menu.LoginMenu;
 import View.Menu.Menu;
 
 import java.util.regex.Matcher;
@@ -13,6 +14,7 @@ public class SortingMenu extends Menu {
         super.addToSubMenus(2, this.getSortMenu());
         super.addToSubMenus(3, this.getCurrentSortMenu());
         super.addToSubMenus(4, this.getDisableSortMenu());
+        super.addToSubMenus(5, new LoginMenu(this));
     }
 
     private Menu getShowAvailableSortsMenu()

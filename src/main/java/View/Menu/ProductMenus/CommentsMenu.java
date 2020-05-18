@@ -1,6 +1,7 @@
 package View.Menu.ProductMenus;
 
 import Controller.ProductManager;
+import View.Menu.LoginMenu;
 import View.Menu.Menu;
 
 import java.util.regex.Matcher;
@@ -10,6 +11,7 @@ public class CommentsMenu extends Menu {
         super("Comments Menu", parentMenu);
         super.addToSubMenus(1, this.getShowCommentsAndScoreMenu());
         super.addToSubMenus(2, this.getAddCommentMenu());
+        super.addToSubMenus(3, new LoginMenu(this));
     }
 
     private Menu getShowCommentsAndScoreMenu()

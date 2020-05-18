@@ -3,6 +3,7 @@ package View.Menu.OffMenus;
 import Controller.AllOffManager;
 import Controller.Database;
 import Controller.ProductManager;
+import View.Menu.LoginMenu;
 import View.Menu.Menu;
 import View.Menu.ProductMenus.ProductMenu;
 
@@ -16,6 +17,7 @@ public class OffMenu extends Menu {
         super.addToSubMenus(2, this.getProductMenu());
         super.addToSubMenus(3, new FilteringMenu(this));
         super.addToSubMenus(4, new SortingMenu(this));
+        super.addToSubMenus(5, new LoginMenu(this));
     }
 
     private Menu getShowAllProductMenu()

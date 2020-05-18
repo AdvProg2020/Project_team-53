@@ -1,6 +1,7 @@
 package View.Menu.ProductsMenus;
 
 import Controller.AllProductManager;
+import View.Menu.LoginMenu;
 import View.Menu.Menu;
 
 import java.util.regex.Matcher;
@@ -13,6 +14,7 @@ public class FilteringMenu extends Menu {
         super.addToSubMenus(2, this.getAddFilterMenu());
         super.addToSubMenus(3, this.getCurrentFiltersMenu());
         super.addToSubMenus(4, this.getDisableFilterMenu());
+        super.addToSubMenus(5, new LoginMenu(this));
     }
 
     private Menu getShowAvailableFiltersMenu()
