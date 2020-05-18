@@ -43,6 +43,7 @@ public class BuyerManager {
         BuyerAccount buyerAccount = (BuyerAccount) AccountManager.getLoggedInAccount();
         long cost = buyerAccount.getCart().getCost();
         //Todo: complete the conditions
+        return true;//just for make ok compile error
     }
 
     public void buy(int discountId){
@@ -67,5 +68,4 @@ public class BuyerManager {
             return true;
         }
     }
-
 }
