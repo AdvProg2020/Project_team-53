@@ -1,5 +1,6 @@
 package View.Menu.ProductMenus;
 
+import Controller.Database;
 import Controller.ProductManager;
 import View.Menu.Menu;
 
@@ -83,6 +84,41 @@ public class ProductMenu extends Menu {
                 this.execute();
             }
         };
+    }
+
+    @Override
+    public void execute(){
+        int input;
+        try {
+            String inputInString = scanner.nextLine();
+            input = Integer.parseInt(inputInString);
+            if((input > parentMenu.getSubMenus().size() + 1) || (input < 1))
+            {
+                throw new Exception("invalid input");
+            }
+        }
+        catch (Exception e){
+            System.out.println("your input is invalid");
+            this.execute();
+            return;
+        }
+        if(input == parentMenu.getSubMenus().size() + 1)
+        {
+            if(this.parentMenu == null)
+            {
+                Database.writeDataOnFile();
+                System.exit(1);
+            }
+            else {
+                ProductManager.setProduct(null);
+                this.parentMenu.show();
+                this.parentMenu.execute();
+            }
+        }
+        else{
+            parentMenu.getSubMenus().get(input).show();
+            parentMenu.getSubMenus().get(input).execute();
+        }
     }
 
 

@@ -53,14 +53,14 @@ public class ViewDiscountCodeMenu extends Menu {
             @Override
             public void show()
             {
-                System.out.println("Please enter the code\n(Enter back tp return)");
+                System.out.println("Please enter the discountID\n(Enter back to return)");
             }
             @Override
             public void execute() {
                 String input = scanner.nextLine();
                 try
                 {
-                    Matcher matcher1 = getMatcher(input, "");
+                    Matcher matcher1 = getMatcher(input, "\\s*(\\d+)\\s*");
                     Matcher matcher2 = getMatcher(input, "^\\s*back\\s*$");
                     if(matcher2.find())
                     {
@@ -68,6 +68,11 @@ public class ViewDiscountCodeMenu extends Menu {
                         this.parentMenu.execute();
                         return;
                     }
+                    if(!matcher1.find())
+                    {
+                        throw new Exception("invalid input");
+                    }
+                    System.out.println(AdminManager.showDiscountWithId(Integer.parseInt(matcher1.group(1))));
                 }
                 catch (Exception e)
                 {
@@ -84,7 +89,7 @@ public class ViewDiscountCodeMenu extends Menu {
             @Override
             public void show()
             {
-                System.out.println("Please enter the discountID, field and new value of field\n(Enter back tp return)");
+                System.out.println("Please enter the discountID, field and new value of field\n(Enter back to return)");
             }
             @Override
             public void execute() {
@@ -120,7 +125,7 @@ public class ViewDiscountCodeMenu extends Menu {
             @Override
             public void show()
             {
-                System.out.println("Please enter discountID\n(Enter back tp return)");
+                System.out.println("Please enter discountID\n(Enter back to return)");
             }
             @Override
             public void execute() {

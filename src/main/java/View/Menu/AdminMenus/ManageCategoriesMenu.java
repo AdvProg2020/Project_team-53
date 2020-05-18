@@ -1,6 +1,7 @@
 package View.Menu.AdminMenus;
 
 import Controller.AdminManager;
+import Controller.AllProductManager;
 import View.Menu.Menu;
 
 import java.util.regex.Matcher;
@@ -24,6 +25,7 @@ public class ManageCategoriesMenu extends Menu {
             }
             @Override
             public void execute() {
+                System.out.println(AllProductManager.showAllCategories());
                 String input = scanner.nextLine();
                 try
                 {

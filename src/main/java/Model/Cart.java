@@ -17,6 +17,14 @@ public class Cart {
         muchOfProductID = new HashMap<>();
     }
 
+    public String showCart(){
+        String result = new String() ;
+        for (Integer productId : productsID) {
+            result += Database.getProductByID(productId).getName() + " " + muchOfProductID.get(productId) + "\n";
+        }
+        return result;
+    }
+
     public void addToCart(Product product)
     {
         productsID.add(product.getProductId());
@@ -27,15 +35,22 @@ public class Cart {
         return productsID;
     }
 
-    public HashMap<Integer, Integer> getMuchOfProductID() {
-        return muchOfProductID;
+    public int getMuchOfProductID(int productId) {
+        for (Integer productIdS : muchOfProductID.keySet()) {
+            if (productIdS == productId)
+                return muchOfProductID.get(productIdS);
+        }
+        return 0;
     }
 
     public long getCost()
-    {
+    { // Todo: impress the off in price
         int cost = 0;
         for (Integer productId : productsID) {
-            cost += Database.getProductByID(productId).getPrice() * muchOfProductID.get(productId);
+            Product product = Database.getProductByID(productId);
+            cost += product.getPrice() * muchOfProductID.get(productId);
+            cost -= muchOfProductID.get(productId)*(Math.min(product.getPrice()*product.getOff().getPercent()/100, product.getOff().getMaxValue()));
+            // check up the line above
         }
         return  cost;
     }
@@ -79,6 +94,5 @@ public class Cart {
         muchOfProductID.replace(productID, muchOfProductID.get(productID) - 1);
         return true;
     }
-
 
 }
