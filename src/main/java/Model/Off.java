@@ -17,6 +17,14 @@ public class Off {
     private String status;
     private String sellerUsername;
 
+    public static int getAllOffIds() {
+        return allOffIds;
+    }
+
+    public static void setAllOffIds(int allOffIds) {
+        Off.allOffIds = allOffIds;
+    }
+
     public Off(int maxValue, int percent, String startDate, String endDate, String sellerUsername, ArrayList<Integer> productIds) {
         this.maxValue = maxValue;
         this.percent = percent;

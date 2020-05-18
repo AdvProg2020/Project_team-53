@@ -15,6 +15,14 @@ public abstract class Log {
     int logId;
     int productId;
 
+    public static int getAllLogId() {
+        return allLogId;
+    }
+
+    public static void setAllLogId(int allLogId) {
+        Log.allLogId = allLogId;
+    }
+
     public Log(String date, int price, String deliveryStatus, int logId, int productId) {
         this.date = date;
         this.price = price;

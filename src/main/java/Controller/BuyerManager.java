@@ -43,6 +43,7 @@ public class BuyerManager {
         BuyerAccount buyerAccount = (BuyerAccount) AccountManager.getLoggedInAccount();
         long cost = buyerAccount.getCart().getCost();
         //Todo: complete the conditions
+        return true;
     }
 
     public void buy(int discountId){
