@@ -11,6 +11,38 @@ public class ViewOrdersMenu extends Menu {
         super.addToSubMenus(2, this.getGiveRateMenu());
     }
 
+    private Menu getShowAllOrdersMenu()
+    {
+        return new Menu("Show All Orders Menu", this) {
+            @Override
+            public void show() {
+                System.out.println("All orders are:\n(Enter back to return)");
+            }
+
+            @Override
+            public void execute() {
+                String input = scanner.nextLine();
+                try
+                {
+                    Matcher matcher2 = getMatcher(input, "^\\s*back\\s*$");
+                    if(matcher2.find())
+                    {
+                        this.parentMenu.show();
+                        this.parentMenu.execute();
+                        return;
+                    }
+                    else
+                        throw new Exception("Invalid Input");
+                }
+                catch (Exception e)
+                {
+                    System.out.println(e.getMessage());
+                }
+                this.execute();
+            }
+        };
+    }
+
     private Menu getShowOrderMenu()
     {
         return new Menu("Show Order Menu", this) {
@@ -55,6 +87,7 @@ public class ViewOrdersMenu extends Menu {
                         throw new Exception("invalid input");
                     }
                     else {
+                        System.out.println();
                     }
                 }
                 catch (Exception e)

@@ -23,6 +23,7 @@ public class CommentsMenu extends Menu {
             @Override
             public void execute() {
                 System.out.println(ProductManager.showAverageScore());
+                System.out.println(ProductManager.viewAllComments());
                 String input = scanner.nextLine();
                 try
                 {
@@ -60,9 +61,7 @@ public class CommentsMenu extends Menu {
                 String content = scanner.nextLine();
                 try
                 {
-                    Matcher matcher1 = getMatcher(title, "");
                     Matcher matcher2 = getMatcher(title, "^\\s*back\\s*$");
-                    Matcher matcher3 = getMatcher(content, "");
                     Matcher matcher4 = getMatcher(content, "^\\s*back\\s*$");
                     if(matcher2.find() || matcher4.find())
                     {
@@ -70,9 +69,11 @@ public class CommentsMenu extends Menu {
                         this.parentMenu.execute();
                         return;
                     }
-                    else if(!matcher1.find() || !matcher3.find())
+                    else
                     {
-                        throw new Exception("invalid input");
+                        title = title.trim();
+                        content = content.trim();
+                        System.out.println(ProductManager.giveComment(title, content));
                     }
                 }
                 catch (Exception e)

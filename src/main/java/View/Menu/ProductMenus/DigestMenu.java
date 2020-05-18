@@ -1,5 +1,6 @@
 package View.Menu.ProductMenus;
 
+import Controller.BuyerManager;
 import Controller.ProductManager;
 import View.Menu.Menu;
 
@@ -51,32 +52,11 @@ public class DigestMenu extends Menu {
         return new Menu("Add To Cart Menu", this) {
             @Override
             public void show() {
-                System.out.println("Please enter seller:\n(Enter back to return");
             }
 
             @Override
             public void execute() {
-                String input = scanner.nextLine();
-                try
-                {
-                    Matcher matcher1 = getMatcher(input, "");
-                    Matcher matcher2 = getMatcher(input, "^\\s*back\\s*$");
-                    if(matcher2.find())
-                    {
-                        this.parentMenu.show();
-                        this.parentMenu.execute();
-                        return;
-                    }
-                    else if(!matcher1.find())
-                    {
-                        throw new Exception("invalid input");
-                    }
-                }
-                catch (Exception e)
-                {
-                    System.out.println(e.getMessage());
-                }
-                this.execute();
+                BuyerManager.addNewProductToCart(ProductManager.getProduct());
             }
         };
     }

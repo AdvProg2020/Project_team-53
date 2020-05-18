@@ -1,5 +1,6 @@
 package View.Menu.SellerMenus;
 
+import Controller.AllProductManager;
 import Controller.SellerManager;
 import View.Menu.Menu;
 import View.Menu.PersonalInfoMenu;
@@ -30,6 +31,7 @@ public class SellerMenu extends Menu {
 
             @Override
             public void execute() {
+                System.out.println();
                 String input = scanner.nextLine();
                 try
                 {
@@ -173,6 +175,7 @@ public class SellerMenu extends Menu {
             }
             @Override
             public void execute() {
+                System.out.println(AllProductManager.showAllCategories());
                 String input = scanner.nextLine();
                 try
                 {

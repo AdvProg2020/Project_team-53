@@ -3,6 +3,7 @@ package View.Menu.ProductsMenus;
 import Controller.AllProductManager;
 import Controller.Database;
 import Controller.ProductManager;
+import View.Menu.LoginMenu;
 import View.Menu.Menu;
 import View.Menu.ProductMenus.ProductMenu;
 
@@ -16,6 +17,7 @@ public class ProductsMenu extends Menu {
         super.addToSubMenus(3, new SortingMenu(this));
         super.addToSubMenus(4, this.getShowProductsMenu());
         super.addToSubMenus(5, this.getProductMenu());
+        super.addToSubMenus(6, new LoginMenu(this));
     }
 
     private Menu getViewAllCategoriesMenu()
@@ -28,6 +30,7 @@ public class ProductsMenu extends Menu {
             }
             @Override
             public void execute() {
+                System.out.println(AllProductManager.showAllCategories());
                 String input = scanner.nextLine();
                 try
                 {
@@ -110,7 +113,7 @@ public class ProductsMenu extends Menu {
                     }
                     else
                     {
-                        ProductManager.setProduct(Database.getProductByID(Integer.parseInt(input)));
+                        ProductManager.setProduct(Database.getProductByID(Integer.parseInt(matcher1.group(1))));
                         ProductMenu productMenu = new ProductMenu(this);
                         productMenu.show();
                         productMenu.execute();

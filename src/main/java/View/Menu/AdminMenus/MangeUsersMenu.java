@@ -26,7 +26,6 @@ public class MangeUsersMenu extends Menu {
             @Override
             public void execute() {
                 System.out.println(AdminManager.showAllAccount());
-                System.out.println(AdminManager.showAllRequests());
                 String input = scanner.nextLine();
                 try
                 {
@@ -62,7 +61,7 @@ public class MangeUsersMenu extends Menu {
             {
                 String input = scanner.nextLine();
                 try {
-                    Matcher matcher1 = getMatcher(input, "\\s*(\\S+)\\s*");
+                    Matcher matcher1 = getMatcher(input, "^\\s*(\\S+)\\s*$");
                     Matcher matcher2 = getMatcher(input, "^\\s*back\\s*$");
                     if (matcher2.find()) {
                         this.parentMenu.show();
