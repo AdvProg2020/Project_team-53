@@ -117,4 +117,18 @@ public class Off {
                 "   sellerUsername=" + sellerUsername + '\n' +
                 '}' ;
     }
+
+    public String showOff(){
+        return "Off{" + '\n' +
+                "   offId=" + offId + '\n' +
+                "   maxValue=" + maxValue + '\n' +
+                "   percent=" + percent +'\n' +
+                "   startDate=" + startDate +'\n' +
+                "   endDate=" + endDate +'\n' +
+                "   productIds=" + productIds + '\n' +
+                "   status=" + status + '\n' +
+                "   sellerUsername=" + sellerUsername + '\n' +
+                '}';
+    }
+
 }
