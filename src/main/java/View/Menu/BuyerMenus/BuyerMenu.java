@@ -28,6 +28,7 @@ public class BuyerMenu extends Menu {
 
             @Override
             public void execute(){
+                System.out.println(AccountManager.viewCredit());
                 String input = scanner.nextLine();
                 try
                 {

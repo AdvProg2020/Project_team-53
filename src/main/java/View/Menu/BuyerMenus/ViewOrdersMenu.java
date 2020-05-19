@@ -1,5 +1,6 @@
 package View.Menu.BuyerMenus;
 
+import Controller.AccountManager;
 import View.Menu.Menu;
 
 import java.util.regex.Matcher;
@@ -21,7 +22,7 @@ public class ViewOrdersMenu extends Menu {
 
             @Override
             public void execute() {
-                System.out.println();
+                System.out.println(AccountManager.viewLogs());
                 String input = scanner.nextLine();
                 try
                 {
@@ -56,7 +57,28 @@ public class ViewOrdersMenu extends Menu {
             public void execute()
             {
                 String input = scanner.nextLine();
-                //todo
+                try
+                {
+                    Matcher matcher1 = getMatcher(input, "^\\s*(\\d+)\\s*$");
+                    Matcher matcher2 = getMatcher(input, "^\\s*back\\s*$");
+                    if(matcher2.find())
+                    {
+                        this.parentMenu.show();
+                        this.parentMenu.execute();
+                        return;
+                    }
+                    else if(!matcher1.find())
+                    {
+                        throw new Exception("invalid input");
+                    }
+                    else {
+                        System.out.println(AccountManager.viewLogsWithId(Integer.parseInt(matcher1.group(1))));
+                    }
+                }
+                catch (Exception e)
+                {
+                    System.out.println(e.getMessage());
+                }
                 this.execute();
             }
         };

@@ -1,5 +1,6 @@
 package View.Menu.SellerMenus;
 
+import Controller.AccountManager;
 import Controller.AllProductManager;
 import Controller.SellerManager;
 import View.Menu.Menu;
@@ -31,7 +32,7 @@ public class SellerMenu extends Menu {
 
             @Override
             public void execute() {
-                System.out.println();
+                System.out.println(SellerManager.viewCompany());
                 String input = scanner.nextLine();
                 try
                 {
@@ -59,11 +60,12 @@ public class SellerMenu extends Menu {
         return new Menu("View Sales History Menu", this) {
             @Override
             public void show() {
-                System.out.println("Sales history is:\n(Enter back to return");
+                System.out.println("Sales history are:\n(Enter back to return");
             }
 
             @Override
             public void execute() {
+                System.out.println(AccountManager.viewLogs());
                 String input = scanner.nextLine();
                 try
                 {
