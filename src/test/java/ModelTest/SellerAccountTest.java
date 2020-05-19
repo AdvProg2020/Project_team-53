@@ -1,5 +1,7 @@
 package ModelTest;
 
+import Model.Log.Log;
+import Model.Log.SellLog;
 import Model.SellerAccount;
 import org.junit.Assert;
 import org.junit.Test;
@@ -195,6 +197,19 @@ public class SellerAccountTest {
                 "credit='" + "10000" + "'" + "\n" +
         "company=" + "tester";
         String result = sellerAccount.showInfo();
+
+        Assert.assertEquals(expected, result);
+    }
+
+    @Test
+    public void showAllLogTest() throws Exception
+    {
+        SellerAccount sellerAccount = new SellerAccount("testUN", "testFN", "testLN", "testing", "test@gmail.com", "091211111111", 10000, "tester");
+        SellLog sellLog = new SellLog("2018-07-19_12:54:00", 1000, "test", 1, 1, 20,  "Test");
+        sellerAccount.addSellLog(sellLog);
+        Log log = sellLog;
+        String expected = sellerAccount.showAllLog();
+        String result = log.toString();
 
         Assert.assertEquals(expected, result);
     }

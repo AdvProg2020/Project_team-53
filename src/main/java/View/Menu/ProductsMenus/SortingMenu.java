@@ -138,7 +138,7 @@ public class SortingMenu extends Menu {
         return new Menu("Disable Sort Menu", this) {
             @Override
             public void show() {
-                System.out.println("Enter back to return");
+                System.out.println("(Enter back to return)");
             }
 
             @Override

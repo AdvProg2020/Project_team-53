@@ -104,7 +104,7 @@ public class ProductMenu extends Menu {
             this.execute();
             return;
         }
-        if(input == parentMenu.getSubMenus().size() + 1)
+        if(input == this.getSubMenus().size() + 1)
         {
             if(this.parentMenu == null)
             {
@@ -118,8 +118,8 @@ public class ProductMenu extends Menu {
             }
         }
         else{
-            parentMenu.getSubMenus().get(input).show();
-            parentMenu.getSubMenus().get(input).execute();
+            this.getSubMenus().get(input).show();
+            this.getSubMenus().get(input).execute();
         }
     }
 

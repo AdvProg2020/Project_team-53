@@ -26,7 +26,7 @@ public class ProductsMenu extends Menu {
             @Override
             public void show()
             {
-                System.out.println("All categories are:\n(Enter back to return");
+                System.out.println("All categories are:\n(Enter back to return)");
             }
             @Override
             public void execute() {
@@ -58,7 +58,7 @@ public class ProductsMenu extends Menu {
         return new Menu("Show Products Menu", this) {
             @Override
             public void show() {
-                System.out.println("All products are:\n(Enter back to return");
+                System.out.println("All products are:\n(Enter back to return)");
             }
 
             @Override
@@ -91,7 +91,7 @@ public class ProductsMenu extends Menu {
         return new Menu("Product Menu", this) {
             @Override
             public void show() {
-                System.out.println("Please enter productID\n(Enter back to return");
+                System.out.println("Please enter productID\n(Enter back to return)");
             }
 
             @Override
@@ -114,7 +114,7 @@ public class ProductsMenu extends Menu {
                     else
                     {
                         ProductManager.setProduct(Database.getProductByID(Integer.parseInt(matcher1.group(1))));
-                        ProductMenu productMenu = new ProductMenu(this);
+                        ProductMenu productMenu = new ProductMenu(this.parentMenu);
                         productMenu.show();
                         productMenu.execute();
                         return;

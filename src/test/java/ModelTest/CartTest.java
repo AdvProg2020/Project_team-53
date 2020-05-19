@@ -111,5 +111,31 @@ public class CartTest {
         Database.removeProduct(product);
     }
 
+    @Test
+    public void getMuchOfProductIDTest1()
+    {
+        Database.initialize();
+        Account account = Database.getAccountByUsername("parham");
+        Cart cart = new Cart(account);
+        Product product = new Product("product", "product", "product", true, 2, "product", "pro", 1000);
+        Database.addAllProduct(product);
+        cart.addToCart(product);
+        int result = cart.getMuchOfProductID(product.getProductId());
+        int expected = 1;
 
+        Assert.assertEquals(expected, result);
+        Database.removeProduct(product);
+    }
+
+    @Test
+    public void getMuchOfProductIDTest2()
+    {
+        Database.initialize();
+        Account account = Database.getAccountByUsername("parham");
+        Cart cart = new Cart(account);
+        int result = cart.getMuchOfProductID(-1);
+        int expected = 0;
+
+        Assert.assertEquals(expected, result);
+    }
 }
