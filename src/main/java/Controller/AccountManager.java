@@ -117,6 +117,14 @@ public class AccountManager {
         return "nothing to show.";
     }
 
+    public static String viewLogsWithId(int logId){
+        if (loggedInAccount instanceof BuyerAccount)
+            return ((BuyerAccount) loggedInAccount).showLogById(logId);
+        else if (loggedInAccount instanceof SellerAccount)
+            return ((SellerAccount) loggedInAccount).showLogById(logId);
+        return "nothing to show.";
+    }
+
     public static String viewCredit(){
         return String.valueOf(loggedInAccount.getCredit());
     }

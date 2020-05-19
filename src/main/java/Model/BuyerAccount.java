@@ -47,6 +47,14 @@ public class BuyerAccount extends Account {
         return ans.toString();
     }
 
+    public String showLogById(int logId){
+        for (BuyLog buyLog : buyLogs) {
+            if (buyLog.getLogId() == logId)
+                return buyLog.toString();
+        }
+        return "nothing to show";
+    }
+
     public void addNewDiscount(int discountId){
         discountIds.add(discountId);
         numberOfUse.put(discountId , 0);
