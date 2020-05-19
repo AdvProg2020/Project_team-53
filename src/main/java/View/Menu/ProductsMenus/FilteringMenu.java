@@ -68,8 +68,11 @@ public class FilteringMenu extends Menu {
                     Matcher matcher3 = getMatcher(input, "^\\s*categoryName\\s+(\\S+)\\s*$");
                     Matcher matcher4 = getMatcher(input, "^\\s*available\\s*$");
                     Matcher matcher5 = getMatcher(input, "^\\s*rangeOfScore\\s+(\\d[\\.\\d+]?)$");
-                    Matcher matcher6 = getMatcher(input, "^\\s*back\\s*$");
-                    if(matcher6.find())
+                    Matcher matcher6 = getMatcher(input, "^\\s*companyName\\s+(\\S+)\\s*$");
+                    Matcher matcher7 = getMatcher(input, "^\\s*productName\\s+(\\S+)\\s*$");
+                    Matcher matcher8 = getMatcher(input, "^\\s*categoryFeature\\s+(\\S+)\\s*$");
+                    Matcher matcher9 = getMatcher(input, "^\\s*back\\s*$");
+                    if(matcher9.find())
                     {
                         this.parentMenu.show();
                         this.parentMenu.execute();
@@ -94,6 +97,18 @@ public class FilteringMenu extends Menu {
                     else if(matcher5.find())
                     {
                         System.out.println(AllProductManager.addFilterOption("rangeOfScore " + matcher5.group(1)));
+                    }
+                    else if (matcher6.find())
+                    {
+                        System.out.println(AllProductManager.addFilterOption("companyName " + matcher6.group(1)));
+                    }
+                    else if (matcher7.find())
+                    {
+                        System.out.println(AllProductManager.addFilterOption("productName " + matcher7.group(1)));
+                    }
+                    else if (matcher8.find())
+                    {
+                        System.out.println(AllProductManager.addFilterOption("categoryFeature " + matcher8.group(1)));
                     }
                     else
                     {

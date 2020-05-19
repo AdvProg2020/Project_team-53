@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="aeefa500-3a99-4ed0-98cf-a7157d1fa89a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/AccountManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/AccountManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/BuyerAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/BuyerAccount.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Log/Log.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Log/Log.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/SellerAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/SellerAccount.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/View/Menu/ProductsMenus/FilteringMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/View/Menu/ProductsMenus/FilteringMenu.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -289,13 +285,6 @@
       <workItem from="1589879347908" duration="1839000" />
       <workItem from="1589881297836" duration="2317000" />
       <workItem from="1589883788360" duration="418000" />
-    </task>
-    <task id="LOCAL-00015" summary="correct little problems">
-      <created>1588891450755</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1588891450755</updated>
     </task>
     <task id="LOCAL-00016" summary="add SellerMenu">
       <created>1588892729882</created>
@@ -633,14 +622,20 @@
       <option name="project" value="LOCAL" />
       <updated>1589881974881</updated>
     </task>
-    <option name="localTasksCounter" value="64" />
+    <task id="LOCAL-00064" summary="debug menus">
+      <created>1589884717933</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1589884717933</updated>
+    </task>
+    <option name="localTasksCounter" value="65" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="complete SellerManagerTest" />
     <MESSAGE value="add AllProductManagerTest" />
     <MESSAGE value="complete FilteringMenu" />
     <MESSAGE value="complete SortingMenu" />
@@ -665,7 +660,8 @@
     <MESSAGE value="fix bug v1.1" />
     <MESSAGE value="fix bug v1.2" />
     <MESSAGE value="fix bug v1.3 (add some filter in product)" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix bug v1.3 (add some filter in product)" />
+    <MESSAGE value="debug menus" />
+    <option name="LAST_COMMIT_MESSAGE" value="debug menus" />
   </component>
   <component name="WindowStateProjectService">
     <state x="280" y="20" key="#AccountManagerTest" timestamp="1589226101281">
@@ -780,10 +776,10 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="280" y="6" key="#null./0.0.1366.738@0.0.1366.738" timestamp="1589226532697" />
-    <state x="470" y="0" key="CommitChangelistDialog2" timestamp="1589881971222">
-      <screen x="0" y="0" width="1366" height="738" />
+    <state x="509" y="0" key="CommitChangelistDialog2" timestamp="1589884716485">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="509" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1589836130872" />
+    <state x="509" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1589884716485" />
     <state x="470" y="0" key="CommitChangelistDialog2/0.0.1366.738@0.0.1366.738" timestamp="1589881971222" />
     <state x="92" y="93" width="1182" height="552" key="DiffContextDialog" timestamp="1589235790734">
       <screen x="0" y="0" width="1366" height="738" />
@@ -847,10 +843,10 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="184" y="0" key="SettingsEditor/0.0.1366.738@0.0.1366.738" timestamp="1589230363466" />
-    <state x="275" y="96" key="Vcs.Push.Dialog.v2" timestamp="1589882231184">
-      <screen x="0" y="0" width="1366" height="738" />
+    <state x="275" y="95" key="Vcs.Push.Dialog.v2" timestamp="1589884913526">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="275" y="95" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1589836133950" />
+    <state x="275" y="95" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1589884913526" />
     <state x="275" y="96" key="Vcs.Push.Dialog.v2/0.0.1366.738@0.0.1366.738" timestamp="1589882231184" />
     <state x="378" y="186" key="com.intellij.ide.util.TipDialog" timestamp="1589363230671">
       <screen x="0" y="0" width="1366" height="728" />
