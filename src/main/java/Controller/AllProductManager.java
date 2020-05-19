@@ -2,6 +2,7 @@ package Controller;
 
 import Model.Category;
 import Model.Product;
+import Model.SellerAccount;
 
 import java.util.ArrayList;
 
@@ -85,7 +86,14 @@ public class AllProductManager {
     }
 
     public static String showFilterOption(){
-        return "sellerUsername (a username) \n rangeOfPrice (lower bound , upper bound) \n categoryName (category name) \n available \n rangeOfScore (double more than)";
+        return " sellerUsername (a username) \n" +
+                " rangeOfPrice (lower bound , upper bound) \n" +
+                " categoryName (category name) \n" +
+                " available \n" +
+                " rangeOfScore (double more than) " + '\n' +
+                " companyName (name of a company) \n" +
+                " productName (name of a product) \n" +
+                " categoryFeature (feature of a category)";
     }
 
     public static String getFilterOptions() {
@@ -164,6 +172,43 @@ public class AllProductManager {
         allProducts = tempArray;
     }
 
+
+    private static void filterWithCompanyName(String companyName) {
+        ArrayList<Product> tempArray = new ArrayList<>();
+        for (Product product : allProducts) {
+            SellerAccount sellerAccount = (SellerAccount)Database.getAccountByUsername(product.getSellerUsername());
+            if (sellerAccount != null && sellerAccount.getCompany().equalsIgnoreCase(companyName)){
+                tempArray.add(product);
+            }
+        }
+        allProducts = tempArray;
+    }
+
+
+    private static void filterWithProductName(String productName) {
+        ArrayList<Product> tempArray = new ArrayList<>();
+        for (Product product : allProducts) {
+            if (product.getName().equalsIgnoreCase(productName)){
+                tempArray.add(product);
+            }
+        }
+        allProducts = tempArray;
+
+    }
+
+
+    private static void filterWithCategoryFeature(String feature) {
+        ArrayList<Product> tempArray = new ArrayList<>();
+        for (Product product : allProducts) {
+            Category category = Database.getCategoryByName(product.getCategoryName());
+            if (category.getFeature().equalsIgnoreCase(feature)){
+                tempArray.add(product);
+            }
+        }
+        allProducts = tempArray;
+
+    }
+
     private static void doFiltering(){
 
         for (String filterOption : filterOptions) {
@@ -184,6 +229,15 @@ public class AllProductManager {
             else if (filterOption.startsWith("rangeOfScore")){
                 double x = Double.parseDouble(filterOption.split(" ")[1]);
                 filterWitRangeOfScore(x);
+            }
+            else if (filterOption.startsWith("companyName")){
+                filterWithCompanyName(filterOption.split(" ")[1]);
+            }
+            else if (filterOption.startsWith("productName")){
+                filterWithProductName(filterOption.split(" ")[1]);
+            }
+            else if (filterOption.startsWith("categoryFeature")){
+                filterWithCategoryFeature(filterOption.split(" ")[1]);
             }
         }
     }

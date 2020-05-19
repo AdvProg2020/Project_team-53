@@ -52,4 +52,8 @@ public abstract class Log {
         allLogId++;
 
     }
+
+    public int getLogId() {
+        return logId;
+    }
 }

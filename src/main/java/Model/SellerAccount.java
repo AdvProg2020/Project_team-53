@@ -43,4 +43,13 @@ public class SellerAccount extends Account{
         }
         return ans.toString();
     }
+
+
+    public String showLogById(int logId){
+        for (SellLog sellLog: sellLogs) {
+            if (sellLog.getLogId() == logId)
+                return sellLog.toString();
+        }
+        return "nothing to show";
+    }
 }
