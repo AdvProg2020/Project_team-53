@@ -116,4 +116,8 @@ public class AccountManager {
             return ((SellerAccount) loggedInAccount).showAllLog();
         return "nothing to show.";
     }
+
+    public static String viewCredit(){
+        return String.valueOf(loggedInAccount.getCredit());
+    }
 }
