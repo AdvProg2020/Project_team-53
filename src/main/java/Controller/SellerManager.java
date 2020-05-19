@@ -6,6 +6,7 @@ import Model.Request.AddNewOffRequest;
 import Model.Request.EditOffRequest;
 import Model.Request.EditProductRequest;
 import Model.Request.NewProductRequest;
+import Model.SellerAccount;
 
 import java.util.ArrayList;
 
@@ -62,5 +63,9 @@ public class SellerManager {
         }
         Database.addRequest(new EditOffRequest(field, changeTo, offId));
         return "Your request registered.";
+    }
+
+    public static String viewCompany(){
+        return ((SellerAccount) AccountManager.getLoggedInAccount()).getCompany();
     }
 }
