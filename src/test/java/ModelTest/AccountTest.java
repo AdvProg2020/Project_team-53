@@ -1,8 +1,8 @@
 package ModelTest;
 
 import Controller.Database;
-import Model.Account;
-import Model.BuyerAccount;
+import Model.Account.Account;
+import Model.Account.BuyerAccount;
 import org.junit.Assert;
 import org.junit.Test;
 

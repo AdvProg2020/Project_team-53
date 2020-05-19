@@ -6,7 +6,7 @@ import Model.Request.AddNewOffRequest;
 import Model.Request.EditOffRequest;
 import Model.Request.EditProductRequest;
 import Model.Request.NewProductRequest;
-import Model.SellerAccount;
+import Model.Account.SellerAccount;
 
 import java.util.ArrayList;
 

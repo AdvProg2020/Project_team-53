@@ -5,7 +5,7 @@ import Controller.Database;
 import Controller.SellerManager;
 import Model.Off;
 import Model.Product;
-import Model.SellerAccount;
+import Model.Account.SellerAccount;
 import org.junit.Assert;
 import org.junit.Test;
 

@@ -1,8 +1,8 @@
 package Model.Log;
 
 import Controller.Database;
-import Model.BuyerAccount;
-import Model.SellerAccount;
+import Model.Account.BuyerAccount;
+import Model.Account.SellerAccount;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;

@@ -2,8 +2,8 @@ package ControllerTest;
 
 import Controller.AccountManager;
 import Controller.Database;
-import Model.BuyerAccount;
-import Model.SellerAccount;
+import Model.Account.BuyerAccount;
+import Model.Account.SellerAccount;
 import org.junit.Assert;
 import org.junit.Test;
 

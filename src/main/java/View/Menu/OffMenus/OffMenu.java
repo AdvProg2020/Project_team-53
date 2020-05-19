@@ -13,16 +13,16 @@ public class OffMenu extends Menu {
 
     public OffMenu(Menu parentMenu) {
         super("Off Menu", parentMenu);
-        super.addToSubMenus(1, this.getShowAllProductMenu());
+        super.addToSubMenus(1, this.getShowAllOffMenu());
         super.addToSubMenus(2, this.getProductMenu());
         super.addToSubMenus(3, new FilteringMenu(this));
         super.addToSubMenus(4, new SortingMenu(this));
         super.addToSubMenus(5, new LoginMenu(this));
     }
 
-    private Menu getShowAllProductMenu()
+    private Menu getShowAllOffMenu()
     {
-        return new Menu("Show All Products Menu", this) {
+        return new Menu("Show All Off Menu", this) {
             @Override
             public void show() {
                 System.out.println("All products are:\n(Enter back to return)");

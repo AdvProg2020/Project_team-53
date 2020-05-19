@@ -2,7 +2,7 @@ package Controller;
 
 import Model.Category;
 import Model.Product;
-import Model.SellerAccount;
+import Model.Account.SellerAccount;
 
 import java.util.ArrayList;
 

@@ -2,7 +2,7 @@ package ModelTest;
 
 import Model.Log.Log;
 import Model.Log.SellLog;
-import Model.SellerAccount;
+import Model.Account.SellerAccount;
 import org.junit.Assert;
 import org.junit.Test;
 

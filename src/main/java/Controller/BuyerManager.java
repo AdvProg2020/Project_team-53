@@ -1,6 +1,8 @@
 package Controller;
 
 import Model.*;
+import Model.Account.BuyerAccount;
+import Model.Account.SellerAccount;
 import Model.Log.Log;
 
 public class BuyerManager {

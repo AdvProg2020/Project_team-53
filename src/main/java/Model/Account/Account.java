@@ -1,6 +1,4 @@
-package Model;
-
-import Controller.Database;
+package Model.Account;
 
 public abstract class Account {
     protected String username;

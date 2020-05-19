@@ -1,9 +1,9 @@
 package Controller;
 
-import Model.Account;
-import Model.BuyerAccount;
+import Model.Account.Account;
+import Model.Account.BuyerAccount;
 import Model.Request.NewSellerRequest;
-import Model.SellerAccount;
+import Model.Account.SellerAccount;
 
 public class AccountManager {
     private static Account loggedInAccount = null ;

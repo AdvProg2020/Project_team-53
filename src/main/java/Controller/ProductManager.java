@@ -1,6 +1,6 @@
 package Controller;
 
-import Model.BuyerAccount;
+import Model.Account.BuyerAccount;
 import Model.Comment;
 import Model.Product;
 import Model.Score;

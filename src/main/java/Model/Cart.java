@@ -1,6 +1,7 @@
 package Model;
 
 import Controller.Database;
+import Model.Account.Account;
 
 import java.util.ArrayList;
 import java.util.HashMap;

@@ -1,7 +1,7 @@
 package Model.Request;
 
 import Controller.Database;
-import Model.SellerAccount;
+import Model.Account.SellerAccount;
 
 public class NewSellerRequest extends Request {
 

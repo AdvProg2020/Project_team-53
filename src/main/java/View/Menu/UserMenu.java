@@ -1,9 +1,9 @@
 package View.Menu;
 
 import Controller.AccountManager;
-import Model.AdminAccount;
-import Model.BuyerAccount;
-import Model.SellerAccount;
+import Model.Account.AdminAccount;
+import Model.Account.BuyerAccount;
+import Model.Account.SellerAccount;
 import View.Menu.AdminMenus.AdminMenu;
 import View.Menu.BuyerMenus.BuyerMenu;
 import View.Menu.SellerMenus.SellerMenu;

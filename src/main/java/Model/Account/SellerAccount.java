@@ -1,10 +1,10 @@
-package Model;
+package Model.Account;
 
 import Model.Log.SellLog;
 
 import java.util.ArrayList;
 
-public class SellerAccount extends Account{
+public class SellerAccount extends Account {
     private String company;
     private ArrayList<SellLog> sellLogs ;
     public SellerAccount(String username, String firstName, String lastName, String password, String email, String phoneNumber, int credit, String company) throws Exception{

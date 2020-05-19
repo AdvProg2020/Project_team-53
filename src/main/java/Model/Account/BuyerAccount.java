@@ -1,6 +1,8 @@
-package Model;
+package Model.Account;
 
 import Controller.Database;
+import Model.Cart;
+import Model.Discount;
 import Model.Log.BuyLog;
 
 import java.util.ArrayList;

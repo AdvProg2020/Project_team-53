@@ -1,7 +1,7 @@
 package ModelTest;
 
 import Controller.Database;
-import Model.BuyerAccount;
+import Model.Account.BuyerAccount;
 import Model.Cart;
 import Model.Discount;
 import Model.Log.BuyLog;

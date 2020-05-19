@@ -1,7 +1,7 @@
 package ModelTest;
 
 import Controller.Database;
-import Model.Account;
+import Model.Account.Account;
 import Model.Cart;
 import Model.Product;
 import org.junit.Assert;
