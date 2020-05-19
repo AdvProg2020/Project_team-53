@@ -103,8 +103,8 @@ public class EditProductRequestTest {
         Database.addRequest(editProductRequest);
         String expected = "EditProductRequest{" + '\n' +
                 "   requestId="+ editProductRequest.getId()+'\n'+
-                "   field='" + "price" + '\n' +
-                "   changeTo='" + "500" + '\n' +
+                "   field=" + "price" + '\n' +
+                "   changeTo=" + "500" + '\n' +
                 "   productId=" + "1" +'\n' +
                 '}';
         String result = editProductRequest.show();

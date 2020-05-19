@@ -142,7 +142,6 @@ public class Product {
     }
 
     public String showAllInfo() {
-        // TODO: 14-May-20 After adding comments
         return "productId=" + productId + '\n' +
                 "status=" + status + '\n' +
                 "name=" + name + '\n' +

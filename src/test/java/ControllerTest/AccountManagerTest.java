@@ -32,6 +32,8 @@ public class AccountManagerTest {
     @Test
     public void registerTest3() throws Exception
     {
+        Database.removeAccount(Database.getAccountByUsername("test"));
+
         String expected = "New buyer account registered.";
         String result = AccountManager.register("Buyer", "test", "test", "test", "test@gmail.com", "0919", "testing", 10000, "");
 
@@ -41,9 +43,13 @@ public class AccountManagerTest {
     @Test
     public void registerTest4() throws Exception
     {
+        Database.removeAccount(Database.getAccountByUsername("test"));
         String expected = "Your Request registered";
         String result = AccountManager.register("Seller", "test", "test", "test", "test@gmail.com", "0919", "testing", 10000, "");
-
+//        for (Account account : Database.getAllAccounts()) {
+//            result = result + account.getUsername() + "\n";
+//        }
+//        result = result + Database.getAccountByUsername("test").getUsername();
         Assert.assertEquals(expected, result);
     }
 

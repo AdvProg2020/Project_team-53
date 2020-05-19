@@ -40,8 +40,8 @@ public class NewProductRequest extends Request {
                 "   status=" + status + '\n' +
                 "   name=" + name + '\n' +
                 "   sellerUsername=" + sellerUsername + '\n' +
-                "   available=" + available +
-                "   number=" + number +
+                "   available=" + available + '\n' +
+                "   number=" + number + '\n' +
                 "   description=" + description + '\n' +
                 "   categoryName=" + categoryName + '\n' +
                 '}';

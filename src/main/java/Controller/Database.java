@@ -152,6 +152,12 @@ public class Database {
     }
 
     public static void initialize() {
+        allCategories = new ArrayList<>();
+        allOffs = new ArrayList<>();
+        allDiscounts = new ArrayList<>();
+        allProducts = new ArrayList<>();
+        allAccounts = new ArrayList<>();
+        allRequest = new ArrayList<>();
         WorkWithFile.initialize();
 
         for (Account account : allAccounts) {

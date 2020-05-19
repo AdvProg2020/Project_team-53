@@ -56,7 +56,8 @@ public class AdminManager {
             return "No request with this id";
 
         if (accept){
-            request.acceptRequest();
+            Database.removeRequest(request);
+            return request.acceptRequest();
         }
         Database.removeRequest(request);
         return "done!";
@@ -118,6 +119,10 @@ public class AdminManager {
     }
 
     public static String addNewDiscount(int maxValue, int percent, String startDate, String endDate, int numberOfTimes, ArrayList<String> usernames){
+        for (String username : usernames) {
+            if (Database.getAccountByUsername(username) ==null || !(Database.getAccountByUsername(username) instanceof BuyerAccount))
+                return "No buyer user with this username";
+        }
         Discount discount = new Discount(maxValue , percent, startDate, endDate, numberOfTimes);
         Database.addAllDiscount(discount);
         for (String username : usernames) {
@@ -161,6 +166,9 @@ public class AdminManager {
         }
         else if (field.equalsIgnoreCase("endDate")){
             discount.setEndDate(changTo);
+        }
+        else if (field.equalsIgnoreCase("numberOfTime")){
+            discount.setNumberOfTimes(Integer.parseInt(changTo));
         }
         else
         {

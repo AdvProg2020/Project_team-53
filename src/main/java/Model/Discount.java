@@ -88,6 +88,10 @@ public class Discount {
         }
     }
 
+    public void setNumberOfTimes(int numberOfTimes) {
+        this.numberOfTimes = numberOfTimes;
+    }
+
     public String showInfo() {
         return  "Discount{" + '\n' +
                 "   discountId=" + discountId + '\n' +

@@ -47,8 +47,8 @@ public class EditProductRequest extends Request{
     public String show() {
         return "EditProductRequest{" + '\n' +
                 "   requestId="+ getId()+'\n'+
-                "   field='" + field + '\n' +
-                "   changeTo='" + changeTo + '\n' +
+                "   field=" + field + '\n' +
+                "   changeTo=" + changeTo + '\n' +
                 "   productId=" + productId +'\n' +
                 '}';
     }

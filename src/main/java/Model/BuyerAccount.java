@@ -63,7 +63,7 @@ public class BuyerAccount extends Account {
         if (numberOfUse.get(discountId) >= discount.getNumberOfTimes())
             return false;
         Date date = new Date();
-        if (date.compareTo(discount.getEndDate()) > 0 && date.compareTo(discount.getStartDate()) < 0)
+        if (date.compareTo(discount.getEndDate()) > 0 || date.compareTo(discount.getStartDate()) < 0)
             return false;
 
         return true;

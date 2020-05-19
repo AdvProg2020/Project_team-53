@@ -25,7 +25,8 @@ public class AllProductManager {
 
     public static String showAllProduct(){
 
-        allProducts = Database.getAllProducts();
+        allProducts = new ArrayList<>();
+        allProducts.addAll(Database.getAllProducts());
 
         doFiltering();
         if (sortedBy.endsWith("name."))

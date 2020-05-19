@@ -61,8 +61,9 @@ public class Category {
     }
 
     public String showThisCategory(){
-        return "Category{" +
+        return "Category{" + '\n' +
                 "   name=" + name + '\n' +
+                "   allSubCategories=" + allSubCategoryNames + '\n'+
                 "   feature=" + feature + '\n' +
                 "   parent=" + parent + '\n' +
                 '}';

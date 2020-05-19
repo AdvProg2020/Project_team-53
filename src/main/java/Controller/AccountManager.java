@@ -91,6 +91,8 @@ public class AccountManager {
     }
 
     public static String register(String role,String username, String firstName, String lastName, String email, String phoneNumber, String password, int credit, String company) throws Exception {
+        if (Database.getAccountByUsername(username) != null)
+            return "Exist account with this username.";
         if (role.equalsIgnoreCase("Buyer")) {
             Database.addAllAccounts(new BuyerAccount(username, firstName, lastName, password, email, phoneNumber, credit));
             return "New buyer account registered.";

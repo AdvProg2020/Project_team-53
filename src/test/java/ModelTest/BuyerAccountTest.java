@@ -27,7 +27,7 @@ public class BuyerAccountTest {
     public void showAllDiscountTest() throws Exception
     {
         BuyerAccount buyerAccount = new BuyerAccount("test", "test", "test", "testing", "test@gmail.com", "021", 1000);
-        Discount discount = new Discount(2000, 20, "2018-06-20_12:30", "2019-06-20_12:30", 10);
+        Discount discount = new Discount(2000, 20, "2018-06-20_12:30", "2020-06-20_12:30", 10);
         Database.addAllDiscount(discount);
         buyerAccount.addNewDiscount(discount.getDiscountId());
         String expected = discount.showInfo() + "\n----------------------\n";
