@@ -48,7 +48,7 @@ public class BuyerManager {
         return "product added to cart";
     }
 
-    public boolean canBuy(int discountId){
+    public static boolean canBuy(int discountId){
         BuyerAccount buyerAccount = (BuyerAccount) AccountManager.getLoggedInAccount();
         long cost = buyerAccount.getCart().getCost();
         if (buyerAccount.canUseDiscount(discountId))
@@ -59,7 +59,7 @@ public class BuyerManager {
         return true;//just for make ok compile error
     }
 
-    public void buy(int discountId){
+    public static void buy(int discountId){
         BuyerAccount buyerAccount = (BuyerAccount) AccountManager.getLoggedInAccount();
         long cost = buyerAccount.getCart().getCost();
         buyerAccount.setCredit((int) (buyerAccount.getCredit() - cost));
@@ -75,12 +75,12 @@ public class BuyerManager {
         buyerAccount.setCart(new Cart(buyerAccount));
     }
 
-    public String showCart(){
+    public static String showCart(){
         BuyerAccount buyerAccount = (BuyerAccount) AccountManager.getLoggedInAccount();
         return buyerAccount.getCart().showCart();
     }
 
-    public String pay(int discountId){
+    public static String pay(int discountId){
         if (Database.getDiscountById(discountId) == null)
             return " your discount is not valid";
         if (!canBuy(discountId))
@@ -91,7 +91,7 @@ public class BuyerManager {
         }
     }
 
-    public void payToSeller(int discountId){
+    public static void payToSeller(int discountId){
         BuyerAccount buyerAccount = (BuyerAccount) AccountManager.getLoggedInAccount();
         int discountValue = 0;
         if (buyerAccount.canUseDiscount(discountId))

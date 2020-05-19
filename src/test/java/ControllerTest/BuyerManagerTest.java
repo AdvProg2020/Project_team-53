@@ -93,4 +93,80 @@ public class BuyerManagerTest {
         Database.removeAccount(buyerAccount);
     }
 
+    @Test
+    public void addNewProductToCart()
+    {
+        Database.initialize();
+        BuyerAccount buyerAccount = (BuyerAccount) Database.getAccountByUsername("Buyer");
+        AccountManager.logIn("Buyer", "Buyer");
+        Cart cart = new Cart(buyerAccount);
+        buyerAccount.setCart(cart);
+        Product product = new Product("test", "test", "test", true, 10, "test", "test", 1000);
+        Database.addAllProduct(product);
+        BuyerManager.addNewProductToCart(product);
+
+        Assert.assertFalse(cart.getAllProducts().isEmpty());
+        AccountManager.logOut();
+        cart.decreaseProduct(product.getProductId());
+        Database.removeProduct(product);
+    }
+
+    @Test
+    public void addProductToCartTest1()
+    {
+        Database.initialize();
+        BuyerAccount buyerAccount = (BuyerAccount) Database.getAccountByUsername("Buyer");
+        AccountManager.logIn("Buyer", "Buyer");
+        Cart cart = new Cart(buyerAccount);
+        buyerAccount.setCart(cart);
+        Product product = new Product("test", "test", "test", true, 0, "test", "test", 1000);
+        Database.addAllProduct(product);
+        BuyerManager.addNewProductToCart(product);
+        String expected = "unfortunately we don't have this product now";
+        String result = BuyerManager.addProductToCart(product);
+
+        AccountManager.logOut();
+        cart.decreaseProduct(product.getProductId());
+        Database.removeProduct(product);
+    }
+
+    @Test
+    public void addProductToCartTest2()
+    {
+        Database.initialize();
+        BuyerAccount buyerAccount = (BuyerAccount) Database.getAccountByUsername("Buyer");
+        AccountManager.logIn("Buyer", "Buyer");
+        Cart cart = new Cart(buyerAccount);
+        buyerAccount.setCart(cart);
+        Product product = new Product("test", "test", "test", true, 10, "test", "test", 1000);
+        Database.addAllProduct(product);
+        BuyerManager.addNewProductToCart(product);
+        String expected = "product added to cart";
+        String result = BuyerManager.addProductToCart(product);
+
+        Assert.assertEquals(expected, result);
+        AccountManager.logOut();
+        cart.decreaseProduct(product.getProductId());
+        Database.removeProduct(product);
+    }
+
+    @Test
+    public void showCartTest()
+    {
+        Database.initialize();
+        BuyerAccount buyerAccount = (BuyerAccount) Database.getAccountByUsername("Buyer");
+        AccountManager.logIn("Buyer", "Buyer");
+        Cart cart = new Cart(buyerAccount);
+        buyerAccount.setCart(cart);
+        Product product = new Product("test", "test", "test", true, 10, "test", "test", 1000);
+        Database.addAllProduct(product);
+        BuyerManager.addNewProductToCart(product);
+        String expected = cart.showCart();
+        String result = BuyerManager.showCart();
+
+        AccountManager.logOut();
+        cart.decreaseProduct(product.getProductId());
+        Database.removeProduct(product);
+    }
+
 }

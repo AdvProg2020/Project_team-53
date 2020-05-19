@@ -2,35 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="aeefa500-3a99-4ed0-98cf-a7157d1fa89a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/AdminManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/AdminManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/AllOffManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/AllOffManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/AllProductManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/AllProductManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Controller/BuyerManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/BuyerManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/Database.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/ProductManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/ProductManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/SellerManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/SellerManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/WorkWithFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/WorkWithFile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Account/BuyerAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Account/BuyerAccount.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Cart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Cart.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Category.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Product/Category.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Comment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Product/CommentAndScore/Comment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Discount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Product/DiscountAndOff/Discount.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Off.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Product/DiscountAndOff/Off.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Product/Product.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Score.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Product/CommentAndScore/Score.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/ControllerTest/AdminManagerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ControllerTest/AdminManagerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/ControllerTest/AllOffManagerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ControllerTest/AllOffManagerTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/ControllerTest/AllProductManagerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ControllerTest/AllProductManagerTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/ControllerTest/BuyerManagerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ControllerTest/BuyerManagerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/ControllerTest/ProductManagerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ControllerTest/ProductManagerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/ControllerTest/SellerManagerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ControllerTest/SellerManagerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/ModelTest/AddNewOffRequestTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ModelTest/AddNewOffRequestTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/ModelTest/BuyerAccountTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ModelTest/BuyerAccountTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/ModelTest/CartTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ModelTest/CartTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/ModelTest/CategoryTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ModelTest/CategoryTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/ModelTest/EditOffRequestTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ModelTest/EditOffRequestTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/ModelTest/EditProductRequestTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ModelTest/EditProductRequestTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/ModelTest/ProductTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ModelTest/ProductTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/ViewTest/MenuTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ViewTest/MenuTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -99,40 +75,17 @@
     <property name="project.structure.side.proportion" value="0.0" />
     <property name="settings.editor.selected.configurable" value="coverage" />
   </component>
-  <component name="RunManager" selected="Application.Main">
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Main" />
+  <component name="RunManager" selected="JUnit.All in Project">
+    <configuration name="All in Project" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Project" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="All in Project-2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Project-2" />
       <option name="PACKAGE_NAME" value="" />
       <option name="TEST_OBJECT" value="package" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="BuyerAccountTest.showAllDiscountTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Project-2" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ModelTest.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="ModelTest" />
-      <option name="MAIN_CLASS_NAME" value="ModelTest.BuyerAccountTest" />
-      <option name="METHOD_NAME" value="showAllDiscountTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="BuyerManagerTest.canIncreaseProductTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Project-2" />
+    <configuration name="BuyerManagerTest.addNewProductToCart" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Project" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="ControllerTest.*" />
@@ -141,7 +94,55 @@
       </extension>
       <option name="PACKAGE_NAME" value="ControllerTest" />
       <option name="MAIN_CLASS_NAME" value="ControllerTest.BuyerManagerTest" />
-      <option name="METHOD_NAME" value="canIncreaseProductTest" />
+      <option name="METHOD_NAME" value="addNewProductToCart" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BuyerManagerTest.addProductToCartTest1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Project" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ControllerTest.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ControllerTest" />
+      <option name="MAIN_CLASS_NAME" value="ControllerTest.BuyerManagerTest" />
+      <option name="METHOD_NAME" value="addProductToCartTest1" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BuyerManagerTest.addProductToCartTest2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Project" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ControllerTest.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ControllerTest" />
+      <option name="MAIN_CLASS_NAME" value="ControllerTest.BuyerManagerTest" />
+      <option name="METHOD_NAME" value="addProductToCartTest2" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BuyerManagerTest.showCartTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Project" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ControllerTest.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ControllerTest" />
+      <option name="MAIN_CLASS_NAME" value="ControllerTest.BuyerManagerTest" />
+      <option name="METHOD_NAME" value="showCartTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -191,37 +192,21 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="EditProductRequestTest.showTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Project-2" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ModelTest.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="ModelTest" />
-      <option name="MAIN_CLASS_NAME" value="ModelTest.EditProductRequestTest" />
-      <option name="METHOD_NAME" value="showTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <list>
-      <item itemvalue="Application.Main" />
       <item itemvalue="JUnit.ControllerTest.*" />
-      <item itemvalue="JUnit.All in Project-2" />
-      <item itemvalue="JUnit.EditProductRequestTest.showTest" />
-      <item itemvalue="JUnit.BuyerManagerTest.canIncreaseProductTest" />
-      <item itemvalue="JUnit.BuyerAccountTest.showAllDiscountTest" />
+      <item itemvalue="JUnit.All in Project" />
+      <item itemvalue="JUnit.BuyerManagerTest.addNewProductToCart" />
+      <item itemvalue="JUnit.BuyerManagerTest.addProductToCartTest1" />
+      <item itemvalue="JUnit.BuyerManagerTest.addProductToCartTest2" />
+      <item itemvalue="JUnit.BuyerManagerTest.showCartTest" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Main" />
-        <item itemvalue="JUnit.All in Project-2" />
-        <item itemvalue="JUnit.BuyerAccountTest.showAllDiscountTest" />
-        <item itemvalue="JUnit.BuyerManagerTest.canIncreaseProductTest" />
-        <item itemvalue="JUnit.EditProductRequestTest.showTest" />
+        <item itemvalue="JUnit.All in Project" />
+        <item itemvalue="JUnit.BuyerManagerTest.showCartTest" />
+        <item itemvalue="JUnit.BuyerManagerTest.addProductToCartTest2" />
+        <item itemvalue="JUnit.BuyerManagerTest.addProductToCartTest1" />
+        <item itemvalue="JUnit.BuyerManagerTest.addNewProductToCart" />
       </list>
     </recent_temporary>
   </component>
@@ -313,13 +298,6 @@
       <workItem from="1589879347908" duration="1839000" />
       <workItem from="1589881297836" duration="2317000" />
       <workItem from="1589883788360" duration="418000" />
-    </task>
-    <task id="LOCAL-00018" summary="add JMockit library and add new test">
-      <created>1588943445242</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1588943445242</updated>
     </task>
     <task id="LOCAL-00019" summary="add MangeProductsMenu">
       <created>1588962772411</created>
@@ -657,14 +635,20 @@
       <option name="project" value="LOCAL" />
       <updated>1589892897797</updated>
     </task>
-    <option name="localTasksCounter" value="67" />
+    <task id="LOCAL-00067" summary="make better package">
+      <created>1589895211449</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1589895211449</updated>
+    </task>
+    <option name="localTasksCounter" value="68" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="complete SortingMenu" />
     <MESSAGE value="complete ProductsMenu" />
     <MESSAGE value="make big problem" />
     <MESSAGE value="add json" />
@@ -689,7 +673,8 @@
     <MESSAGE value="debug menus" />
     <MESSAGE value="complete FilteringMenu" />
     <MESSAGE value="debug Menus" />
-    <option name="LAST_COMMIT_MESSAGE" value="debug Menus" />
+    <MESSAGE value="make better package" />
+    <option name="LAST_COMMIT_MESSAGE" value="make better package" />
   </component>
   <component name="WindowStateProjectService">
     <state x="280" y="20" key="#AccountManagerTest" timestamp="1589226101281">
@@ -764,10 +749,10 @@
     </state>
     <state x="137" y="22" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.728@0.0.1366.728" timestamp="1589296639634" />
     <state x="137" y="22" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.738@0.0.1366.738" timestamp="1589230895243" />
-    <state x="130" y="264" width="1182" height="552" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog" timestamp="1589873795730">
-      <screen x="0" y="0" width="1366" height="738" />
+    <state x="130" y="260" width="1182" height="544" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog" timestamp="1589918033880">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="130" y="260" width="1182" height="544" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog/0.0.1366.728@0.0.1366.728" timestamp="1589840360041" />
+    <state x="130" y="260" width="1182" height="544" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog/0.0.1366.728@0.0.1366.728" timestamp="1589918033880" />
     <state x="130" y="264" width="1182" height="552" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog/0.0.1366.738@0.0.1366.738" timestamp="1589873795730" />
     <state x="488" y="73" key="#com.intellij.ide.util.MemberChooser" timestamp="1589884044616">
       <screen x="0" y="0" width="1366" height="738" />
@@ -808,10 +793,10 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="280" y="6" key="#null./0.0.1366.738@0.0.1366.738" timestamp="1589226532697" />
-    <state x="377" y="0" key="CommitChangelistDialog2" timestamp="1589895148852">
+    <state x="377" y="0" key="CommitChangelistDialog2" timestamp="1589895209086">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="377" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1589895148852" />
+    <state x="377" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1589895209086" />
     <state x="470" y="0" key="CommitChangelistDialog2/0.0.1366.738@0.0.1366.738" timestamp="1589881971222" />
     <state x="92" y="93" width="1182" height="552" key="DiffContextDialog" timestamp="1589235790734">
       <screen x="0" y="0" width="1366" height="738" />
@@ -822,25 +807,25 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="463" y="122" key="FileChooserDialogImpl/0.0.1366.738@0.0.1366.738" timestamp="1589788466029" />
-    <state width="1322" height="174" key="GridCell.Tab.0.bottom" timestamp="1589892745876">
+    <state width="1322" height="174" key="GridCell.Tab.0.bottom" timestamp="1589921803819">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1322" height="174" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1589892745876" />
+    <state width="1322" height="174" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1589921803819" />
     <state width="1322" height="192" key="GridCell.Tab.0.bottom/0.0.1366.738@0.0.1366.738" timestamp="1589876234145" />
-    <state width="1322" height="174" key="GridCell.Tab.0.center" timestamp="1589892745876">
+    <state width="1322" height="174" key="GridCell.Tab.0.center" timestamp="1589921803818">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1322" height="174" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1589892745876" />
+    <state width="1322" height="174" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1589921803818" />
     <state width="1322" height="192" key="GridCell.Tab.0.center/0.0.1366.738@0.0.1366.738" timestamp="1589876234145" />
-    <state width="1322" height="174" key="GridCell.Tab.0.left" timestamp="1589892745876">
+    <state width="1322" height="174" key="GridCell.Tab.0.left" timestamp="1589921803818">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1322" height="174" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1589892745876" />
+    <state width="1322" height="174" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1589921803818" />
     <state width="1322" height="192" key="GridCell.Tab.0.left/0.0.1366.738@0.0.1366.738" timestamp="1589876234145" />
-    <state width="1322" height="174" key="GridCell.Tab.0.right" timestamp="1589892745876">
+    <state width="1322" height="174" key="GridCell.Tab.0.right" timestamp="1589921803818">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1322" height="174" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1589892745876" />
+    <state width="1322" height="174" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1589921803818" />
     <state width="1322" height="192" key="GridCell.Tab.0.right/0.0.1366.738@0.0.1366.738" timestamp="1589876234145" />
     <state width="1322" height="221" key="GridCell.Tab.1.bottom" timestamp="1589873506234">
       <screen x="0" y="0" width="1366" height="738" />
@@ -940,7 +925,7 @@
     <SUITE FILE_PATH="coverage/Project$AllProductManagerTest.ic" NAME="AllProductManagerTest Coverage Results" MODIFIED="1589544649151" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>ControllerTest.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/Project$All_in_Project.ic" NAME="All in Project Coverage Results" MODIFIED="1589838825857" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/Project$All_in_Project.ic" NAME="All in Project Coverage Results" MODIFIED="1589921803728" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/Project$SellerAccountTest.ic" NAME="SellerAccountTest Coverage Results" MODIFIED="1589388843464" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>ModelTest.*</FILTER>
     </SUITE>
