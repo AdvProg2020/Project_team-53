@@ -1,4 +1,4 @@
-package Model;
+package Model.Product.CommentAndScore;
 
 public class Comment {
     String title;

@@ -3,7 +3,7 @@ package ModelTest;
 import Controller.Database;
 import Model.Account.BuyerAccount;
 import Model.Cart;
-import Model.Discount;
+import Model.Product.DiscountAndOff.Discount;
 import Model.Log.BuyLog;
 import org.junit.Assert;
 import org.junit.Test;

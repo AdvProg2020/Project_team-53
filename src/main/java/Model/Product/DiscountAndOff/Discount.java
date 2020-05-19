@@ -1,4 +1,4 @@
-package Model;
+package Model.Product.DiscountAndOff;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

@@ -1,9 +1,9 @@
 package Controller;
 
 import Model.Account.BuyerAccount;
-import Model.Comment;
-import Model.Product;
-import Model.Score;
+import Model.Product.CommentAndScore.Comment;
+import Model.Product.Product;
+import Model.Product.CommentAndScore.Score;
 
 public class ProductManager {
     private static Product product = null;

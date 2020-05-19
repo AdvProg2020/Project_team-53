@@ -1,7 +1,7 @@
 package Model.Request;
 
 import Controller.Database;
-import Model.Off;
+import Model.Product.DiscountAndOff.Off;
 
 public class EditOffRequest extends Request{
     String field;

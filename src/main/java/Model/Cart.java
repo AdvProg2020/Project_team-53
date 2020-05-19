@@ -2,6 +2,7 @@ package Model;
 
 import Controller.Database;
 import Model.Account.Account;
+import Model.Product.Product;
 
 import java.util.ArrayList;
 import java.util.HashMap;

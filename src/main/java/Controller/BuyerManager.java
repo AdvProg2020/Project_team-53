@@ -4,6 +4,8 @@ import Model.*;
 import Model.Account.BuyerAccount;
 import Model.Account.SellerAccount;
 import Model.Log.Log;
+import Model.Product.DiscountAndOff.Discount;
+import Model.Product.Product;
 
 public class BuyerManager {
 

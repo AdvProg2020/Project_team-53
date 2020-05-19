@@ -3,7 +3,7 @@ package ControllerTest;
 import Controller.AccountManager;
 import Controller.Database;
 import Controller.ProductManager;
-import Model.Product;
+import Model.Product.Product;
 import org.junit.Assert;
 import org.junit.Test;
 

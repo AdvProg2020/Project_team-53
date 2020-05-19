@@ -1,4 +1,4 @@
-package Model;
+package Model.Product.CommentAndScore;
 
 public class Score {
     int score;

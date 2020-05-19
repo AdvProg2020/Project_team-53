@@ -1,8 +1,8 @@
 package ModelTest;
 
 import Controller.Database;
-import Model.Category;
-import Model.Product;
+import Model.Product.Category;
+import Model.Product.Product;
 import org.junit.Assert;
 import org.junit.Test;
 

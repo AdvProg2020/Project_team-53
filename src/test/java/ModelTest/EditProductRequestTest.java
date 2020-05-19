@@ -1,7 +1,7 @@
 package ModelTest;
 
 import Controller.Database;
-import Model.Product;
+import Model.Product.Product;
 import Model.Request.EditProductRequest;
 import org.junit.Assert;
 import org.junit.Test;

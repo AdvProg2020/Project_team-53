@@ -1,9 +1,9 @@
 package ModelTest;
 
 import Controller.Database;
-import Model.Off;
-import Model.Product;
-import Model.Score;
+import Model.Product.DiscountAndOff.Off;
+import Model.Product.Product;
+import Model.Product.CommentAndScore.Score;
 import org.junit.Assert;
 import org.junit.Test;
 

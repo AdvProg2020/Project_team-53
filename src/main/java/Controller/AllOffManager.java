@@ -1,6 +1,6 @@
  package Controller;
 
-import Model.Off;
+import Model.Product.DiscountAndOff.Off;
 
 import java.util.ArrayList;
 

@@ -3,7 +3,7 @@ package ModelTest;
 import Controller.Database;
 import Model.Account.Account;
 import Model.Cart;
-import Model.Product;
+import Model.Product.Product;
 import org.junit.Assert;
 import org.junit.Test;
 

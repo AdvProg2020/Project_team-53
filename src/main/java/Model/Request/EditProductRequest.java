@@ -1,7 +1,7 @@
 package Model.Request;
 
 import Controller.Database;
-import Model.Product;
+import Model.Product.Product;
 
 public class EditProductRequest extends Request{
     String field;

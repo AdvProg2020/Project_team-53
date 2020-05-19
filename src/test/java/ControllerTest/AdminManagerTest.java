@@ -2,8 +2,8 @@ package ControllerTest;
 
 import Controller.AdminManager;
 import Controller.Database;
-import Model.Discount;
-import Model.Product;
+import Model.Product.DiscountAndOff.Discount;
+import Model.Product.Product;
 import Model.Request.Request;
 import org.junit.Assert;
 import org.junit.Test;

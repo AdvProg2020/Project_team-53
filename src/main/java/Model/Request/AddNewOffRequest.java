@@ -1,8 +1,8 @@
 package Model.Request;
 
 import Controller.Database;
-import Model.Off;
-import Model.Product;
+import Model.Product.DiscountAndOff.Off;
+import Model.Product.Product;
 
 public class AddNewOffRequest extends Request {
 

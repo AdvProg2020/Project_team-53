@@ -1,7 +1,7 @@
 package Controller;
 
-import Model.Off;
-import Model.Product;
+import Model.Product.DiscountAndOff.Off;
+import Model.Product.Product;
 import Model.Request.AddNewOffRequest;
 import Model.Request.EditOffRequest;
 import Model.Request.EditProductRequest;

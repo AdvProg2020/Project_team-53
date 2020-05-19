@@ -1,7 +1,7 @@
 package ModelTest;
 
 import Controller.Database;
-import Model.Off;
+import Model.Product.DiscountAndOff.Off;
 import Model.Request.EditOffRequest;
 import org.junit.Assert;
 import org.junit.Test;

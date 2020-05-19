@@ -3,7 +3,7 @@ package ControllerTest;
 import Controller.AllOffManager;
 import Controller.AllProductManager;
 import Controller.Database;
-import Model.Off;
+import Model.Product.DiscountAndOff.Off;
 import org.junit.Assert;
 import org.junit.Test;
 

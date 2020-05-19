@@ -1,8 +1,8 @@
 package ModelTest;
 
 import Controller.Database;
-import Model.Off;
-import Model.Product;
+import Model.Product.DiscountAndOff.Off;
+import Model.Product.Product;
 import Model.Request.AddNewOffRequest;
 import org.junit.Assert;
 import org.junit.Test;

@@ -1,6 +1,9 @@
-package Model;
+package Model.Product;
 
 import Controller.Database;
+import Model.Product.CommentAndScore.Comment;
+import Model.Product.DiscountAndOff.Off;
+import Model.Product.CommentAndScore.Score;
 
 import java.util.ArrayList;
 import java.util.Date;
