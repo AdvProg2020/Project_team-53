@@ -54,11 +54,22 @@ public class DigestMenu extends Menu {
         return new Menu("Add To Cart Menu", this) {
             @Override
             public void show() {
+                System.out.println("\n(Enter back to return)");
             }
 
             @Override
-            public void execute() {
-                BuyerManager.addNewProductToCart(ProductManager.getProduct());
+            public void execute()
+            {
+                System.out.println(BuyerManager.addProductToCart(ProductManager.getProduct()));
+                String input = scanner.nextLine();
+                Matcher matcher2 = getMatcher(input, "^\\s*back\\s*$");
+                if (matcher2.find()) {
+                    this.parentMenu.show();
+                    this.parentMenu.execute();
+                    return;
+                }
+                this.show();
+                this.execute();
             }
         };
     }

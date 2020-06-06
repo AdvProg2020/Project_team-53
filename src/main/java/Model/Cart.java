@@ -1,7 +1,6 @@
 package Model;
 
 import Controller.Database;
-import Model.Account.Account;
 import Model.Product.Product;
 
 import java.util.ArrayList;
@@ -12,7 +11,7 @@ public class Cart {
     private ArrayList<Integer> productsID;
     private HashMap<Integer, Integer> muchOfProductID;
 
-    public Cart(Account account)
+    public Cart()
     {
         //owner = account;
         productsID = new ArrayList<>();
@@ -51,7 +50,8 @@ public class Cart {
         for (Integer productId : productsID) {
             Product product = Database.getProductByID(productId);
             cost += product.getPrice() * muchOfProductID.get(productId);
-            cost -= muchOfProductID.get(productId)*(Math.min(product.getPrice()*product.getOff().getPercent()/100, product.getOff().getMaxValue()));
+            if (product.doesHaveOff())
+                cost -= muchOfProductID.get(productId)*(Math.min(product.getPrice()*product.getOff().getPercent()/100, product.getOff().getMaxValue()));
             // check up the line above
         }
         return  cost;

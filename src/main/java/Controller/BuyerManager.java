@@ -72,7 +72,7 @@ public class BuyerManager {
             buyerAccount.setCredit(buyerAccount.getCredit() + Math.min((int)cost*discount.getPercent()/100, discount.getMaxValue()));
             // Todo: check up the line above
         }
-        buyerAccount.setCart(new Cart(buyerAccount));
+        buyerAccount.setCart(new Cart());
     }
 
     public static String showCart(){

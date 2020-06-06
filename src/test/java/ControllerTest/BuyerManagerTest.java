@@ -43,11 +43,12 @@ public class BuyerManagerTest {
         BuyerAccount buyerAccount = new BuyerAccount("test", "test", "test", "testing", "test@gmail.com", "021", 1000);
         Database.addAllAccounts(buyerAccount);
         AccountManager.logIn("test", "testing");
-        Cart cart = new Cart(buyerAccount);
+        Cart cart = new Cart();
+        buyerAccount.setCart(cart);
         Product product = new Product("product", "product", "product", true, 10, "product", "pro", 1000);
         Database.addAllProduct(product);
         cart.addToCart(product);
-
+        System.out.println(cart.showCart());
         Assert.assertTrue(BuyerManager.canIncreaseProduct(product.getProductId()));
         AccountManager.logOut();
         Database.removeProduct(product);
@@ -60,7 +61,7 @@ public class BuyerManagerTest {
         BuyerAccount buyerAccount = new BuyerAccount("test", "test", "test", "testing", "test@gmail.com", "021", 1000);
         Database.addAllAccounts(buyerAccount);
         AccountManager.logIn("test", "testing");
-        Cart cart = new Cart(buyerAccount);
+        Cart cart = new Cart();
         buyerAccount.setCart(cart);
         Product product = new Product("product", "product", "product", true, 10, "product", "pro", 1000);
         Database.addAllProduct(product);
@@ -80,7 +81,7 @@ public class BuyerManagerTest {
         BuyerAccount buyerAccount = new BuyerAccount("test", "test", "test", "testing", "test@gmail.com", "021", 1000);
         Database.addAllAccounts(buyerAccount);
         AccountManager.logIn("test", "testing");
-        Cart cart = new Cart(buyerAccount);
+        Cart cart = new Cart();
         buyerAccount.setCart(cart);
         Product product = new Product("product", "product", "product", true, 10, "product", "pro", 1000);
         Database.addAllProduct(product);
@@ -99,7 +100,7 @@ public class BuyerManagerTest {
         Database.initialize();
         BuyerAccount buyerAccount = (BuyerAccount) Database.getAccountByUsername("Buyer");
         AccountManager.logIn("Buyer", "Buyer");
-        Cart cart = new Cart(buyerAccount);
+        Cart cart = new Cart();
         buyerAccount.setCart(cart);
         Product product = new Product("test", "test", "test", true, 10, "test", "test", 1000);
         Database.addAllProduct(product);
@@ -117,7 +118,7 @@ public class BuyerManagerTest {
         Database.initialize();
         BuyerAccount buyerAccount = (BuyerAccount) Database.getAccountByUsername("Buyer");
         AccountManager.logIn("Buyer", "Buyer");
-        Cart cart = new Cart(buyerAccount);
+        Cart cart = new Cart();
         buyerAccount.setCart(cart);
         Product product = new Product("test", "test", "test", true, 0, "test", "test", 1000);
         Database.addAllProduct(product);
@@ -136,7 +137,7 @@ public class BuyerManagerTest {
         Database.initialize();
         BuyerAccount buyerAccount = (BuyerAccount) Database.getAccountByUsername("Buyer");
         AccountManager.logIn("Buyer", "Buyer");
-        Cart cart = new Cart(buyerAccount);
+        Cart cart = new Cart();
         buyerAccount.setCart(cart);
         Product product = new Product("test", "test", "test", true, 10, "test", "test", 1000);
         Database.addAllProduct(product);
@@ -156,7 +157,7 @@ public class BuyerManagerTest {
         Database.initialize();
         BuyerAccount buyerAccount = (BuyerAccount) Database.getAccountByUsername("Buyer");
         AccountManager.logIn("Buyer", "Buyer");
-        Cart cart = new Cart(buyerAccount);
+        Cart cart = new Cart();
         buyerAccount.setCart(cart);
         Product product = new Product("test", "test", "test", true, 10, "test", "test", 1000);
         Database.addAllProduct(product);

@@ -114,7 +114,7 @@ public class ViewCartMenu extends Menu {
                     {
                         throw new Exception("invalid input");
                     }
-                    System.out.println();
+                    System.out.println("not yet");
                 }
                 catch (Exception e)
                 {

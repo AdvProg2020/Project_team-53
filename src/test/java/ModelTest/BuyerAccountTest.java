@@ -15,7 +15,7 @@ public class BuyerAccountTest {
     {
         BuyLog buyLog = new BuyLog("2018-07-19_12:54:00", 1000, "test", 1, 1, 10, "Seller");
         BuyerAccount buyerAccount = new BuyerAccount("test", "test", "test", "testing", "test@gmail.com", "021", 1000);
-        buyerAccount.setCart(new Cart(buyerAccount));
+        buyerAccount.setCart(new Cart());
         buyerAccount.addBuyLog(buyLog);
         String expected = buyLog.toString();
         String result = buyerAccount.showAllLog();

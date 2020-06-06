@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class AllOffManager {
 
-    private static String sortedBy;
+    private static String sortedBy = "default sort.";
     private static ArrayList<Off> allOffs = new ArrayList<>();
     private static ArrayList<String> filterOptions = new ArrayList<>();
 

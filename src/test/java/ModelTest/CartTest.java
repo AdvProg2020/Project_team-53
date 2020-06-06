@@ -14,7 +14,7 @@ public class CartTest {
     {
         Database.initialize();
         Account account = Database.getAccountByUsername("parham");
-        Cart cart = new Cart(account);
+        Cart cart = new Cart();
         Product product =new Product("product", "product", "product", true, 10, "product", "pro", 1000);
         Database.addAllProduct(product);
         cart.addToCart(product);
@@ -30,7 +30,7 @@ public class CartTest {
     {
         Database.initialize();
         Account account = Database.getAccountByUsername("parham");
-        Cart cart = new Cart(account);
+        Cart cart = new Cart();
         Product product = new Product("product", "product", "product", true, 10, "product", "pro", 1000);
         Database.addAllProduct(product);
         cart.addToCart(product);
@@ -46,7 +46,7 @@ public class CartTest {
     {
         Database.initialize();
         Account account = Database.getAccountByUsername("parham");
-        Cart cart = new Cart(account);
+        Cart cart = new Cart();
         Product product = new Product("product", "product", "product", true, 1, "product", "pro", 1000);
         Database.addAllProduct(product);
         cart.addToCart(product);
@@ -60,7 +60,7 @@ public class CartTest {
     {
         Database.initialize();
         Account account = Database.getAccountByUsername("parham");
-        Cart cart = new Cart(account);
+        Cart cart = new Cart();
         Product product = new Product("product", "product", "product", true, 1, "product", "pro", 1000);
         Database.addAllProduct(product);
         cart.addToCart(product);
@@ -74,7 +74,7 @@ public class CartTest {
     {
         Database.initialize();
         Account account = Database.getAccountByUsername("parham");
-        Cart cart = new Cart(account);
+        Cart cart = new Cart();
         Product product = new Product("product", "product", "product", true, 2, "product", "pro", 1000);
         Database.addAllProduct(product);
         cart.addToCart(product);
@@ -88,7 +88,7 @@ public class CartTest {
     {
         Database.initialize();
         Account account = Database.getAccountByUsername("parham");
-        Cart cart = new Cart(account);
+        Cart cart = new Cart();
         Product product = new Product("product", "product", "product", true, 2, "product", "pro", 1000);
         Database.addAllProduct(product);
         cart.addToCart(product);
@@ -102,7 +102,7 @@ public class CartTest {
     {
         Database.initialize();
         Account account = Database.getAccountByUsername("parham");
-        Cart cart = new Cart(account);
+        Cart cart = new Cart();
         Product product = new Product("product", "product", "product", true, 2, "product", "pro", 1000);
         Database.addAllProduct(product);
         cart.addToCart(product);
@@ -116,7 +116,7 @@ public class CartTest {
     {
         Database.initialize();
         Account account = Database.getAccountByUsername("parham");
-        Cart cart = new Cart(account);
+        Cart cart = new Cart();
         Product product = new Product("product", "product", "product", true, 2, "product", "pro", 1000);
         Database.addAllProduct(product);
         cart.addToCart(product);
@@ -132,7 +132,7 @@ public class CartTest {
     {
         Database.initialize();
         Account account = Database.getAccountByUsername("parham");
-        Cart cart = new Cart(account);
+        Cart cart = new Cart();
         int result = cart.getMuchOfProductID(-1);
         int expected = 0;
 
