@@ -1,6 +1,10 @@
 package View.Menu;
 
 import Controller.Database;
+import javafx.scene.control.Button;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
+import javafx.stage.Stage;
 
 import java.util.HashMap;
 import java.util.Scanner;
@@ -13,6 +17,8 @@ public abstract class Menu {
     protected Menu parentMenu;
     private HashMap<Integer, Menu> subMenus;
     protected static Scanner scanner;
+    protected static BorderPane mainPane = new BorderPane();
+    protected static Stage window;
 
     protected static Matcher getMatcher(String input, String regex)
     {
@@ -32,24 +38,31 @@ public abstract class Menu {
         Menu.scanner = scanner;
     }
 
+    public static void setWindow(Stage window) {
+        Menu.window = window;
+    }
+
     public void addToSubMenus(int menuNumber, Menu menu)
     {
         subMenus.put(menuNumber, menu);
     }
 
+    public void setPane(){
+        mainPane = new BorderPane();
+        HBox mainButtons = new HBox();
+        Button userButton = new Button("User");
+        Button productButton = new Button("Products");
+        Button offButton = new Button("Offs");
+
+        mainButtons.getChildren().addAll(userButton, productButton, offButton);
+
+        mainPane.setTop(mainButtons);
+
+    }
+
     public void show()
     {
-        System.out.println(this.name + ":");
-        for (Integer menuNumber : subMenus.keySet()) {
-            System.out.println(menuNumber + ") " + subMenus.get(menuNumber).name);
-        }
-        if(parentMenu == null)
-        {
-            System.out.println(Integer.toString(this.subMenus.size() + 1) + ") exit");
-        }
-        else{
-            System.out.println(Integer.toString(this.subMenus.size() + 1) + ") back");
-        }
+        //setPane();
     }
 
     public void execute(){
