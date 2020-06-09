@@ -12,5 +12,8 @@
         <module name="Project" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="info" target="1.5" />
+    </bytecodeTargetLevel>
   </component>
 </project>

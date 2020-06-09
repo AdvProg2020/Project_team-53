@@ -163,7 +163,7 @@ public class Database {
         allProducts = new ArrayList<>();
         allAccounts = new ArrayList<>();
         allRequest = new ArrayList<>();
-        WorkWithFile.initialize();
+        //WorkWithFile.initialize();
 
         for (Account account : allAccounts) {
             if (account instanceof AdminAccount && account.getUsername().equals("Admin"))

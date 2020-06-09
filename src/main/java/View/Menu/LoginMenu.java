@@ -1,118 +1,119 @@
 package View.Menu;
 
 import Controller.AccountManager;
-
-import java.util.regex.Matcher;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
 
 public class LoginMenu extends Menu{
 
     public LoginMenu(Menu parentMenu) {
         super("Login Menu", parentMenu);
-        super.addToSubMenus(1, this.getRegisterMenu());
-        super.addToSubMenus(2, this.getLoginMenu());
-        super.addToSubMenus(3, this.getLogoutMenu());
     }
 
-    private Menu getRegisterMenu()
+    @Override
+    public void show() {
+        VBox vBox = new VBox();
+        vBox.setAlignment(Pos.CENTER);
+        vBox.setSpacing(10);
+        Scene scene = new Scene(vBox, 500, 500);
+        Button loginButton = new Button("Login");
+        loginButton.setOnAction(e -> {
+            handleLogin();
+        });
+        Button registerButton = new Button("Register");
+        registerButton.setOnAction(e -> {
+            handleRegister();
+        });
+        Button logoutButton = new Button("Logout");
+        logoutButton.setOnAction(e -> {
+            handleLogout();
+        });
+        Button back = new Button("back");
+        back.setOnAction(e -> {
+            parentMenu.show();
+        });
+        vBox.getChildren().addAll(loginButton, registerButton, logoutButton, back);
+
+        Menu.window.setScene(scene);
+    }
+
+    public void handleLogin()
     {
-        return new Menu("Register Menu", this) {
-            @Override
-            public void show()
-            {
-                System.out.println("Please enter role,username,first name,last name,email,phone number,password and credit in order");
-                System.out.println("(Enter back to return)");
-            }
-            @Override
-            public void execute()
-            {
-                String input = scanner.nextLine();
-                try
-                {
-                    Matcher matcher1 = getMatcher(input, "^\\s*(\\S+)\\s+(\\S+)\\s+(\\S+)\\s+(\\S+)\\s+(\\S+)\\s+(\\S+)\\s+(\\S+)\\s+(\\S+)\\s*$");
-                    Matcher matcher2 = getMatcher(input, "^\\s*back\\s*$");
-                    if(matcher2.find())
-                    {
-                        this.parentMenu.show();
-                        this.parentMenu.execute();
-                        return;
-                    }
-                    else if(!matcher1.find())
-                    {
-                        throw new Exception("invalid input");
-                    }
-                    if (matcher1.group(1).equalsIgnoreCase("buyer"))
-                    {
-                        System.out.println(AccountManager.register(matcher1.group(1),matcher1.group(2),matcher1.group(3),matcher1.group(4),matcher1.group(5),matcher1.group(6),matcher1.group(7),Integer.parseInt(matcher1.group(8)), ""));
-                    }
-                    else if(matcher1.group(1).equalsIgnoreCase("seller"))
-                    {
-                        System.out.println("Please enter your company name");
-                        String companyName = scanner.nextLine();
-                        System.out.println(AccountManager.register(matcher1.group(1),matcher1.group(2),matcher1.group(3),matcher1.group(4),matcher1.group(5),matcher1.group(6),matcher1.group(7),Integer.parseInt(matcher1.group(8)), companyName));
-                    }
-                    else {
-                        throw new Exception("invalid input");
-                    }
-                }
-                catch (Exception e)
-                {
-                    System.out.println(e.getMessage());
-                }
-                this.execute();
-            }
-        };
+        VBox vBox = new VBox();
+        vBox.setAlignment(Pos.CENTER);
+        vBox.setSpacing(10);
+        Scene scene = new Scene(vBox, 500, 500);
+        Label status = new Label();
+        status.setFont(Font.font(20));
+        TextField userName = new TextField();
+        userName.setPromptText("username");
+        PasswordField password = new PasswordField();
+        password.setPromptText("password");
+        Button login = new Button("login");
+        login.setOnAction(e -> {
+            status.setText(AccountManager.logIn(userName.getText(), password.getText()));
+        });
+        Button back = new Button("back");
+        back.setOnAction(e -> {
+            show();
+        });
+        vBox.getChildren().addAll(userName, password, login, back, status);
+
+        Menu.window.setScene(scene);
     }
 
-    private Menu getLoginMenu()
+    public void handleRegister()
     {
-        return new Menu("Login Menu", this) {
-            @Override
-            public void show()
-            {
-                System.out.println("Please enter username and password\n(enter back to return)");
+        VBox vBox = new VBox();
+        vBox.setAlignment(Pos.CENTER);
+        vBox.setSpacing(10);
+        Scene scene = new Scene(vBox, 500, 500);
+        Label status = new Label();
+        status.setFont(Font.font(20));
+        TextField role = new TextField();
+        role.setPromptText("role");
+        TextField userName = new TextField();
+        userName.setPromptText("username");
+        TextField firstName = new TextField();
+        firstName.setPromptText("first name");
+        TextField lastName = new TextField();
+        lastName.setPromptText("last name");
+        TextField email = new TextField();
+        email.setPromptText("email");
+        TextField phoneNumber = new TextField();
+        phoneNumber.setPromptText("phone number");
+        TextField password = new TextField();
+        password.setPromptText("password");
+        TextField credit = new TextField();
+        credit.setPromptText("credit");
+        TextField company = new TextField();
+        company.setPromptText("company(only for seller)");
+        Button register = new Button("register");
+        register.setOnAction(e -> {
+            try {
+                status.setText(AccountManager.register(role.getText(), userName.getText(), firstName.getText(), lastName.getText(), email.getText(),
+                        phoneNumber.getText(), password.getText(), Integer.parseInt(credit.getText()), company.getText()));
+            } catch (Exception ex) {
+                status.setText(ex.getMessage());
             }
-            @Override
-            public void execute() {
-                String input = scanner.nextLine();
-                try{
-                    Matcher matcher1 = Menu.getMatcher(input, "^\\s*(\\S+)\\s+(\\S+)\\s*$");
-                    Matcher matcher2 = Menu.getMatcher(input, "^\\s*back\\s*$");
-                    if(matcher2.find())
-                    {
-                        this.parentMenu.show();
-                        this.parentMenu.execute();
-                        return;
-                    }
-                    else if(!matcher1.find())
-                    {
-                        throw new Exception("invalid input");
-                    }
-                    System.out.println(AccountManager.logIn(matcher1.group(1), matcher1.group(2)));
-                }
-                catch (Exception e)
-                {
-                    System.out.println(e.getMessage());
-                }
-                this.execute();
-            }
-        };
+        });
+        Button back = new Button("back");
+        back.setOnAction(e -> {
+            show();
+        });
+        vBox.getChildren().addAll(role, userName, firstName, lastName, email, phoneNumber, password, credit, company, register, back, status);
+
+        Menu.window.setScene(scene);
     }
 
-    private Menu getLogoutMenu()
+    public void handleLogout()
     {
-        return new Menu("Logout Menu", this) {
-            @Override
-            public void show() {
-            }
-
-            @Override
-            public void execute()
-            {
-                System.out.println(AccountManager.logOut());
-                this.parentMenu.show();
-                this.parentMenu.execute();
-            }
-        };
+        AccountManager.logOut();
     }
-
 }

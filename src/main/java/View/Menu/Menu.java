@@ -11,7 +11,7 @@ import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public abstract class Menu {
+public abstract class Menu{
 
     private String name;
     protected Menu parentMenu;
@@ -50,11 +50,17 @@ public abstract class Menu {
     public void setPane(){
         mainPane = new BorderPane();
         HBox mainButtons = new HBox();
+        Button loginButton = new Button("Login");
+        loginButton.setOnAction(e -> {
+            handleLogin();
+        });
         Button userButton = new Button("User");
         Button productButton = new Button("Products");
         Button offButton = new Button("Offs");
+        Button exitButton = new Button("exit");
 
-        mainButtons.getChildren().addAll(userButton, productButton, offButton);
+
+        mainButtons.getChildren().addAll(loginButton, userButton, productButton, offButton, exitButton);
 
         mainPane.setTop(mainButtons);
 
@@ -101,4 +107,11 @@ public abstract class Menu {
     public HashMap<Integer, Menu> getSubMenus() {
         return subMenus;
     }
+
+    public void handleLogin()
+    {
+        LoginMenu loginMenu = new LoginMenu(this);
+        loginMenu.show();
+    }
+
 }

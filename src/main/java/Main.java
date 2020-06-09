@@ -4,8 +4,6 @@ import View.Menu.Menu;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
-import java.util.Scanner;
-
 public class Main extends Application {
     public static Stage window = new Stage();
 
@@ -17,7 +15,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
 
-        Menu.setScanner(new Scanner(System.in));
+        //Menu.setScanner(new Scanner(System.in));
         Menu.setWindow(window);
         MainMenu mainMenu = new MainMenu();
         Database.initialize();
