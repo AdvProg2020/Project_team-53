@@ -74,8 +74,8 @@ public class LoginMenu extends Menu{
         Scene scene = new Scene(super.mainPane, 1000, 600);
         Label status = new Label();
         status.setFont(Font.font(20));
-        TextField role = new TextField();
-        role.setPromptText("role");
+        ChoiceBox<String> role = new ChoiceBox<>();
+        role.getItems().addAll("Buyer", "Seller");
         TextField userName = new TextField();
         userName.setPromptText("username");
         TextField firstName = new TextField();
@@ -91,12 +91,30 @@ public class LoginMenu extends Menu{
         TextField credit = new TextField();
         credit.setPromptText("credit");
         TextField company = new TextField();
-        company.setPromptText("company(only for seller)");
+        company.setPromptText("company");
+        role.getSelectionModel().selectedItemProperty().addListener((v, oldValue, newValue) -> {
+            if (newValue.equalsIgnoreCase("Buyer"))
+            {
+                company.setDisable(true);
+            }
+            else if (newValue.equalsIgnoreCase("Seller"))
+            {
+                company.setDisable(false);
+            }
+        });
         Button register = new Button("register");
         register.setOnAction(e -> {
             try {
-                status.setText(AccountManager.register(role.getText(), userName.getText(), firstName.getText(), lastName.getText(), email.getText(),
-                        phoneNumber.getText(), password.getText(), Integer.parseInt(credit.getText()), company.getText()));
+                if (role.getValue().equalsIgnoreCase("Buyer"))
+                {
+                    status.setText(AccountManager.register(role.getValue(), userName.getText(), firstName.getText(), lastName.getText(), email.getText(),
+                            phoneNumber.getText(), password.getText(), Integer.parseInt(credit.getText()), ""));
+                }
+                else if (role.getValue().equalsIgnoreCase("Seller"))
+                {
+                    status.setText(AccountManager.register(role.getValue(), userName.getText(), firstName.getText(), lastName.getText(), email.getText(),
+                            phoneNumber.getText(), password.getText(), Integer.parseInt(credit.getText()), company.getText()));
+                }
             } catch (Exception ex) {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Error");

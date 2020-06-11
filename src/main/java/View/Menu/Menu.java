@@ -52,6 +52,7 @@ public abstract class Menu{
         window.setResizable(false);
         mainPane = new BorderPane();
         HBox mainButtons = new HBox();
+        mainButtons.setSpacing(20);
         mainButtons.setAlignment(Pos.CENTER);
         Button userButton = new Button("User");
         userButton.setOnAction(e -> {
@@ -67,9 +68,19 @@ public abstract class Menu{
         mainPane.setTop(mainButtons);
     }
 
+    public HashMap<Integer, Menu> getSubMenus() {
+        return subMenus;
+    }
+
+
+    public void handleUser()
+    {
+        UserMenu userMenu = new UserMenu(this);
+        userMenu.show();
+    }
+
     public void show()
     {
-        //setPane();
     }
 
     public void execute(){
@@ -104,16 +115,4 @@ public abstract class Menu{
             this.subMenus.get(input).execute();
         }
     }
-
-    public HashMap<Integer, Menu> getSubMenus() {
-        return subMenus;
-    }
-
-
-    public void handleUser()
-    {
-        UserMenu userMenu = new UserMenu(this);
-        userMenu.show();
-    }
-
 }

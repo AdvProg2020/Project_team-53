@@ -1,6 +1,8 @@
 package View.Menu.AdminMenus;
 
 import Controller.AccountManager;
+import Controller.Database;
+import Model.Request.Request;
 import View.Menu.Menu;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -9,6 +11,8 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
+
+import java.util.ArrayList;
 
 public class AdminMenu extends Menu {
 
@@ -53,6 +57,12 @@ public class AdminMenu extends Menu {
     public void handleLogout()
     {
         AccountManager.logOut();
+    }
+
+    public void handleManageRequest()
+    {
+        ArrayList<Request> allRequest = Database.getAllRequest();
+
     }
 
 }
