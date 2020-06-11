@@ -3,10 +3,7 @@ package View.Menu;
 import Controller.AccountManager;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 
@@ -18,13 +15,14 @@ public class LoginMenu extends Menu{
 
     @Override
     public void show() {
+        super.setPane();
         VBox vBox = new VBox();
         vBox.setAlignment(Pos.CENTER);
         vBox.setSpacing(10);
-        Scene scene = new Scene(vBox, 500, 500);
+        Scene scene = new Scene(super.mainPane, 1000, 600);
         Button loginButton = new Button("Login");
         loginButton.setOnAction(e -> {
-            handleLogin();
+            handleLoginChild();
         });
         Button registerButton = new Button("Register");
         registerButton.setOnAction(e -> {
@@ -39,16 +37,18 @@ public class LoginMenu extends Menu{
             parentMenu.show();
         });
         vBox.getChildren().addAll(loginButton, registerButton, logoutButton, back);
+        super.mainPane.setCenter(vBox);
 
         Menu.window.setScene(scene);
     }
 
-    public void handleLogin()
+    public void handleLoginChild()
     {
+        super.setPane();
         VBox vBox = new VBox();
         vBox.setAlignment(Pos.CENTER);
         vBox.setSpacing(10);
-        Scene scene = new Scene(vBox, 500, 500);
+        Scene scene = new Scene(super.mainPane, 1000, 600);
         Label status = new Label();
         status.setFont(Font.font(20));
         TextField userName = new TextField();
@@ -64,16 +64,18 @@ public class LoginMenu extends Menu{
             show();
         });
         vBox.getChildren().addAll(userName, password, login, back, status);
+        super.mainPane.setCenter(vBox);
 
         Menu.window.setScene(scene);
     }
 
     public void handleRegister()
     {
+        super.setPane();
         VBox vBox = new VBox();
         vBox.setAlignment(Pos.CENTER);
         vBox.setSpacing(10);
-        Scene scene = new Scene(vBox, 500, 500);
+        Scene scene = new Scene(super.mainPane, 1000, 600);
         Label status = new Label();
         status.setFont(Font.font(20));
         TextField role = new TextField();
@@ -100,7 +102,12 @@ public class LoginMenu extends Menu{
                 status.setText(AccountManager.register(role.getText(), userName.getText(), firstName.getText(), lastName.getText(), email.getText(),
                         phoneNumber.getText(), password.getText(), Integer.parseInt(credit.getText()), company.getText()));
             } catch (Exception ex) {
-                status.setText(ex.getMessage());
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error");
+                alert.setHeaderText("Register Fail");
+                alert.setContentText(ex.getMessage());
+
+                alert.showAndWait();
             }
         });
         Button back = new Button("back");
@@ -108,6 +115,7 @@ public class LoginMenu extends Menu{
             show();
         });
         vBox.getChildren().addAll(role, userName, firstName, lastName, email, phoneNumber, password, credit, company, register, back, status);
+        super.mainPane.setCenter(vBox);
 
         Menu.window.setScene(scene);
     }

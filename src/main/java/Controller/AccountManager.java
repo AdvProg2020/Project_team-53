@@ -4,6 +4,8 @@ import Model.Account.Account;
 import Model.Account.BuyerAccount;
 import Model.Request.NewSellerRequest;
 import Model.Account.SellerAccount;
+import javafx.geometry.Pos;
+import javafx.scene.layout.VBox;
 
 public class AccountManager {
     private static Account loggedInAccount = null ;
@@ -107,6 +109,14 @@ public class AccountManager {
 
     public static String viewPersonalInfo(){
         return loggedInAccount.showInfo();
+    }
+
+    public static VBox viewPersonalInfoInGraphic()
+    {
+        VBox vBox = new VBox();
+        vBox.setAlignment(Pos.CENTER);
+        vBox.setSpacing(10);
+        return vBox;
     }
 
     public static String viewLogs(){

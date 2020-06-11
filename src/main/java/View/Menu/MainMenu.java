@@ -28,7 +28,7 @@ public class MainMenu extends Menu{
     @Override
     public void show() {
         setPane();
-        Scene scene = new Scene(mainPane ,500 ,500);
+        Scene scene = new Scene(mainPane ,1000 ,600);
         Menu.window.setScene(scene);
         Menu.window.show();
     }

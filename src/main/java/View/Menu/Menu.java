@@ -1,6 +1,7 @@
 package View.Menu;
 
 import Controller.Database;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
@@ -17,7 +18,7 @@ public abstract class Menu{
     protected Menu parentMenu;
     private HashMap<Integer, Menu> subMenus;
     protected static Scanner scanner;
-    protected static BorderPane mainPane = new BorderPane();
+    protected BorderPane mainPane = new BorderPane();
     protected static Stage window;
 
     protected static Matcher getMatcher(String input, String regex)
@@ -48,13 +49,18 @@ public abstract class Menu{
     }
 
     public void setPane(){
+        window.setResizable(false);
         mainPane = new BorderPane();
         HBox mainButtons = new HBox();
+        mainButtons.setAlignment(Pos.CENTER);
         Button loginButton = new Button("Login");
         loginButton.setOnAction(e -> {
             handleLogin();
         });
         Button userButton = new Button("User");
+        userButton.setOnAction(e -> {
+            handleUser();
+        });
         Button productButton = new Button("Products");
         Button offButton = new Button("Offs");
         Button exitButton = new Button("exit");
@@ -63,7 +69,6 @@ public abstract class Menu{
         mainButtons.getChildren().addAll(loginButton, userButton, productButton, offButton, exitButton);
 
         mainPane.setTop(mainButtons);
-
     }
 
     public void show()
@@ -112,6 +117,12 @@ public abstract class Menu{
     {
         LoginMenu loginMenu = new LoginMenu(this);
         loginMenu.show();
+    }
+
+    public void handleUser()
+    {
+        PersonalInfoMenu personalInfoMenu = new PersonalInfoMenu(this);
+        personalInfoMenu.show();
     }
 
 }
