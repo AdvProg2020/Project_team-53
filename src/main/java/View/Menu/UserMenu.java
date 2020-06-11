@@ -16,6 +16,7 @@ public class UserMenu extends Menu {
     BuyerMenu buyerMenu = new BuyerMenu(this.parentMenu);
     SellerMenu sellerMenu = new SellerMenu(this.parentMenu);
     AdminMenu adminMenu = new AdminMenu(this.parentMenu);
+    LoginMenu loginMenu = new LoginMenu(this.parentMenu);
 
     @Override
     public void show()
@@ -34,28 +35,7 @@ public class UserMenu extends Menu {
         }
         else if(AccountManager.getLoggedInAccount() == null)
         {
-            System.out.println("You have to login first");
-        }
-    }
-
-    @Override
-    public void execute()
-    {
-        if(AccountManager.getLoggedInAccount() instanceof BuyerAccount)
-        {
-            buyerMenu.execute();
-        }
-        else if(AccountManager.getLoggedInAccount() instanceof SellerAccount)
-        {
-            sellerMenu.execute();
-        }
-        else if(AccountManager.getLoggedInAccount() instanceof AdminAccount)
-        {
-            adminMenu.execute();
-        }
-        else if(AccountManager.getLoggedInAccount() == null)
-        {
-            super.parentMenu.execute();
+            loginMenu.show();
         }
     }
 }

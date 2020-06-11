@@ -28,15 +28,11 @@ public class LoginMenu extends Menu{
         registerButton.setOnAction(e -> {
             handleRegister();
         });
-        Button logoutButton = new Button("Logout");
-        logoutButton.setOnAction(e -> {
-            handleLogout();
-        });
         Button back = new Button("back");
         back.setOnAction(e -> {
             parentMenu.show();
         });
-        vBox.getChildren().addAll(loginButton, registerButton, logoutButton, back);
+        vBox.getChildren().addAll(loginButton, registerButton, back);
         super.mainPane.setCenter(vBox);
 
         Menu.window.setScene(scene);
@@ -118,10 +114,5 @@ public class LoginMenu extends Menu{
         super.mainPane.setCenter(vBox);
 
         Menu.window.setScene(scene);
-    }
-
-    public void handleLogout()
-    {
-        AccountManager.logOut();
     }
 }

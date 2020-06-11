@@ -53,10 +53,6 @@ public abstract class Menu{
         mainPane = new BorderPane();
         HBox mainButtons = new HBox();
         mainButtons.setAlignment(Pos.CENTER);
-        Button loginButton = new Button("Login");
-        loginButton.setOnAction(e -> {
-            handleLogin();
-        });
         Button userButton = new Button("User");
         userButton.setOnAction(e -> {
             handleUser();
@@ -66,7 +62,7 @@ public abstract class Menu{
         Button exitButton = new Button("exit");
 
 
-        mainButtons.getChildren().addAll(loginButton, userButton, productButton, offButton, exitButton);
+        mainButtons.getChildren().addAll(userButton, productButton, offButton, exitButton);
 
         mainPane.setTop(mainButtons);
     }
@@ -113,16 +109,11 @@ public abstract class Menu{
         return subMenus;
     }
 
-    public void handleLogin()
-    {
-        LoginMenu loginMenu = new LoginMenu(this);
-        loginMenu.show();
-    }
 
     public void handleUser()
     {
-        PersonalInfoMenu personalInfoMenu = new PersonalInfoMenu(this);
-        personalInfoMenu.show();
+        UserMenu userMenu = new UserMenu(this);
+        userMenu.show();
     }
 
 }

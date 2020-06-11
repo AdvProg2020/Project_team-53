@@ -1,9 +1,9 @@
 package View.Menu;
 
-import Controller.AccountManager;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
@@ -50,13 +50,13 @@ public class PersonalInfoMenu  extends Menu{
         vBox.setAlignment(Pos.CENTER);
         vBox.setSpacing(10);
         Label status = new Label();
-        TextField field = new TextField();
-        field.setPromptText("field");
+        ChoiceBox<String> field = new ChoiceBox<>();
+        field.getItems().addAll("first name", "last name", "password", "email", "phone number");
         TextField changeTo = new TextField();
         changeTo.setPromptText("change to");
         Button edit = new Button("edit");
         edit.setOnAction(e -> {
-            status.setText(AccountManager.edit(field.getText(), changeTo.getText()));
+            //status.setText(AccountManager.edit(field.getText(), changeTo.getText()));
         });
         Button back = new Button("back");
         back.setOnAction(e -> {

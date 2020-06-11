@@ -1,104 +1,57 @@
 package View.Menu.BuyerMenus;
 
 import Controller.AccountManager;
-import Controller.BuyerManager;
-import View.Menu.*;
-
-import java.util.regex.Matcher;
+import View.Menu.Menu;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.VBox;
 
 public class BuyerMenu extends Menu {
 
     public BuyerMenu(Menu parentMenu) {
         super("Buyer Menu", parentMenu);
-        super.addToSubMenus(1,new PersonalInfoMenu(this));
-        super.addToSubMenus(2, new ViewCartMenu(this));
-        super.addToSubMenus(3, new ViewOrdersMenu(this));
-        super.addToSubMenus(4, this.getViewBalanceMenu());
-        super.addToSubMenus(5, this.getViewDiscountCodesMenu());
-        super.addToSubMenus(6, this.getLogoutMenu());
+        //super.addToSubMenus(1,new PersonalInfoMenu(this));
+        //super.addToSubMenus(2, new ViewCartMenu(this));
+        //super.addToSubMenus(3, new ViewOrdersMenu(this));
+        //super.addToSubMenus(4, this.getViewBalanceMenu());
+        //super.addToSubMenus(5, this.getViewDiscountCodesMenu());
+        //super.addToSubMenus(6, this.getLogoutMenu());
     }
 
-    private Menu getViewBalanceMenu()
+    public void handleEdit()
     {
-        return new Menu("View Balance Menu", this) {
-            @Override
-            public void show() {
-                System.out.println("Your Balance Is :\n(Enter back to return)");
-            }
+        super.setPane();
+        VBox vBox = new VBox();
+        Scene scene = new Scene(super.mainPane, 1000, 600);
+        vBox.setAlignment(Pos.CENTER);
+        vBox.setSpacing(10);
+        Label status = new Label();
+        ChoiceBox<String> field = new ChoiceBox<>();
+        field.getItems().addAll("FirstName", "LastName", "password", "email", "PhoneNumber");
+        field.setValue("first name");
+        TextField changeTo = new TextField();
+        changeTo.setPromptText("change to");
+        Button edit = new Button("edit");
+        edit.setOnAction(e -> {
+            status.setText(AccountManager.edit(field.getValue(), changeTo.getText()));
+        });
+        Button back = new Button("back");
+        back.setOnAction(e -> {
+            show();
+        });
+        vBox.getChildren().addAll(field, changeTo, edit, back, status);
+        super.mainPane.setCenter(vBox);
 
-            @Override
-            public void execute(){
-                System.out.println(AccountManager.viewCredit());
-                String input = scanner.nextLine();
-                try
-                {
-                    Matcher matcher2 = getMatcher(input, "^\\s*back\\s*$");
-                    if(matcher2.find())
-                    {
-                        this.parentMenu.show();
-                        this.parentMenu.execute();
-                        return;
-                    }
-                    else
-                        throw new Exception("Invalid Input");
-                }
-                catch (Exception e)
-                {
-                    System.out.println(e.getMessage());
-                }
-                this.execute();
-            }
-
-        };
+        Menu.window.setScene(scene);
     }
 
-    private Menu getViewDiscountCodesMenu()
+    public void handleLogout()
     {
-        return new Menu("View Discount Menu", this) {
-            @Override
-            public void show() {
-                System.out.println("Your discount codes are :\n(Enter back to return)");
-            }
-            @Override
-            public void execute()
-            {
-                System.out.println(BuyerManager.showAllDiscounts());
-                String input = scanner.nextLine();
-                try
-                {
-                    Matcher matcher2 = getMatcher(input, "^\\s*back\\s*$");
-                    if(matcher2.find())
-                    {
-                        this.parentMenu.show();
-                        this.parentMenu.execute();
-                        return;
-                    }
-                    else
-                        throw new Exception("Invalid Input");
-                }
-                catch (Exception e)
-                {
-                    System.out.println(e.getMessage());
-                }
-                this.execute();
-            }
-        };
+        AccountManager.logOut();
     }
 
-    private Menu getLogoutMenu()
-    {
-        return new Menu("Logout Menu", this) {
-            @Override
-            public void show() {
-            }
-
-            @Override
-            public void execute()
-            {
-                System.out.println(AccountManager.logOut());
-                this.parentMenu.show();
-                this.parentMenu.execute();
-            }
-        };
-    }
 }
