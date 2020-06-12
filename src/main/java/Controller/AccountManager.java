@@ -2,10 +2,16 @@ package Controller;
 
 import Model.Account.Account;
 import Model.Account.BuyerAccount;
-import Model.Request.NewSellerRequest;
 import Model.Account.SellerAccount;
-import javafx.geometry.Pos;
-import javafx.scene.layout.VBox;
+import Model.Request.NewSellerRequest;
+import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 
 public class AccountManager {
     private static Account loggedInAccount = null ;
@@ -111,12 +117,43 @@ public class AccountManager {
         return loggedInAccount.showInfo();
     }
 
-    public static VBox viewPersonalInfoInGraphic()
-    {
-        VBox vBox = new VBox();
-        vBox.setAlignment(Pos.CENTER);
-        vBox.setSpacing(10);
-        return vBox;
+    public static Pane viewPersonalInfoInGraphic() {
+        GridPane gridPane = new GridPane();
+        gridPane.setVgap(10);
+        gridPane.setHgap(10);
+
+        Image image = null;
+        try {
+            image = new Image(new FileInputStream("src\\resource\\ProfileImages\\" + loggedInAccount.getUsername() + ".png"));
+        }catch (Exception e){
+            try {
+                image = new Image(new FileInputStream("src\\resource\\ProfileImages\\notFound.png"));
+            } catch (FileNotFoundException ex) {
+                ex.printStackTrace();
+            }
+        }
+        ImageView profileImage = new ImageView(image);
+        profileImage.setFitHeight(100);
+        profileImage.setFitWidth(100);
+
+        Label username = new Label("Username : " + loggedInAccount.getUsername());
+        Label firstName = new Label("First Name : " + loggedInAccount.getFirstName());
+        Label lastName = new Label("Last Name : " + loggedInAccount.getLastName());
+        Label email = new Label("Email : " + loggedInAccount.getEmail());
+        Label phoneNumber = new Label("Phone : " + loggedInAccount.getPhoneNumber());
+        Label credit = new Label("Credit : " + loggedInAccount.getCredit());
+
+        GridPane.setConstraints(profileImage, 0, 0, 2, 6);
+        GridPane.setConstraints(username, 2, 0);
+        GridPane.setConstraints(firstName, 2, 1);
+        GridPane.setConstraints(lastName, 2,2);
+        GridPane.setConstraints(email, 2, 3);
+        GridPane.setConstraints(phoneNumber , 2, 4);
+        GridPane.setConstraints(credit , 2, 5);
+
+        gridPane.getChildren().addAll(profileImage, username, firstName, lastName, email, phoneNumber, credit);
+
+        return gridPane;
     }
 
     public static String viewLogs(){

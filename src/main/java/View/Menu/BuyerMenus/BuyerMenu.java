@@ -8,6 +8,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 public class BuyerMenu extends Menu {
@@ -20,6 +21,30 @@ public class BuyerMenu extends Menu {
         //super.addToSubMenus(4, this.getViewBalanceMenu());
         //super.addToSubMenus(5, this.getViewDiscountCodesMenu());
         //super.addToSubMenus(6, this.getLogoutMenu());
+    }
+
+    public void show(){
+        super.setPane();
+
+        VBox allButtons = new VBox();
+        allButtons.setSpacing(10);
+
+        Button editInfoButton = new Button("Edit");
+        editInfoButton.setOnAction(e -> handleEdit());
+
+        Button logout = new Button("Logout");
+        logout.setOnAction(e -> handleLogout());
+
+        allButtons.getChildren().addAll(editInfoButton, logout);
+
+        HBox hBox = new HBox(AccountManager.viewPersonalInfoInGraphic() , allButtons);
+        hBox.setSpacing(20);
+
+        Scene scene = new Scene(super.mainPane, 1000, 600);
+        super.mainPane.setCenter(hBox);
+
+        window.setScene(scene);
+
     }
 
     public void handleEdit()

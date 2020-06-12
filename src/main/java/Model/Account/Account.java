@@ -62,6 +62,10 @@ public abstract class Account {
         return credit;
     }
 
+    public String getFirstName() {
+        return firstName;
+    }
+
     public void setUsername(String username) throws Exception{
         if (!username.matches("[A-Za-z_0-9]+")){
             throw new Exception("Invalid Username");

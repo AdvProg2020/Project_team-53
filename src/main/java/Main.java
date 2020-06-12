@@ -8,6 +8,7 @@ public class Main extends Application {
     public static Stage window = new Stage();
 
     public static void main(String[] args){
+        Database.initialize();
         launch(args);
         //mainMenu.execute();
     }
@@ -15,10 +16,10 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
 
+
         //Menu.setScanner(new Scanner(System.in));
         Menu.setWindow(window);
         MainMenu mainMenu = new MainMenu();
-        Database.initialize();
         mainMenu.show();
 
     }
