@@ -20,6 +20,8 @@ public abstract class Menu{
     protected static Scanner scanner;
     protected BorderPane mainPane = new BorderPane();
     protected static Stage window;
+    protected double width;
+    protected double height;
 
     protected static Matcher getMatcher(String input, String regex)
     {
@@ -33,6 +35,8 @@ public abstract class Menu{
         this.name = name;
         this.parentMenu = parentMenu;
         subMenus = new HashMap<Integer, Menu>();
+        width = 1000;
+        height = 600;
     }
 
     public static void setScanner(Scanner scanner) {

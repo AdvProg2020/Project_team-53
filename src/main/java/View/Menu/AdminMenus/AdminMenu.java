@@ -15,6 +15,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
@@ -32,6 +33,42 @@ public class AdminMenu extends Menu {
         //super.addToSubMenus(5, new ViewDiscountCodeMenu(this));
         //super.addToSubMenus(6, new ManageRequestsMenu(this));
         //super.addToSubMenus(7, new ManageCategoriesMenu(this));
+    }
+
+    @Override
+    public void show() {
+        super.setPane();
+
+        VBox allButtons = new VBox();
+        allButtons.setSpacing(10);
+
+        Button editInfoButton = new Button("Edit");
+        editInfoButton.setOnAction(e -> handleEdit());
+
+        Button logout = new Button("Logout");
+        logout.setOnAction(e -> handleLogout());
+
+        Button manageRequest = new Button("Manage Request");
+        manageRequest.setOnAction(e -> handleManageRequest());
+
+        Button manageProduct = new Button("Manage Product");
+        manageProduct.setOnAction(e -> handleManageProduct());
+
+        Button manageUser = new Button("Manage Users");
+        manageUser.setOnAction(e -> handleManageUsers());
+
+        Button back = new Button("Back");
+        back.setOnAction(e -> parentMenu.show());
+
+        allButtons.getChildren().addAll(editInfoButton, manageUser, manageRequest, manageProduct, logout, back);
+
+        HBox hBox = new HBox(AccountManager.viewPersonalInfoInGraphic() , allButtons);
+        hBox.setSpacing(20);
+
+        Scene scene = new Scene(super.mainPane, super.width, super.height);
+        super.mainPane.setCenter(hBox);
+
+        window.setScene(scene);
     }
 
     public void handleEdit()
@@ -72,12 +109,13 @@ public class AdminMenu extends Menu {
         super.setPane();
         ArrayList<Request> allRequest = Database.getAllRequest();
         Scene scene = new Scene(super.mainPane, 1000, 600);
-        VBox info = new VBox();
-        info.setSpacing(10);
+        GridPane gridPane = new GridPane();
+        gridPane.setHgap(20);
+        gridPane.setVgap(10);
+        gridPane.setAlignment(Pos.CENTER);
+        int i = 0;
         for (Request request : allRequest) {
             String text = "";
-            HBox hBox = new HBox();
-            hBox.setSpacing(50);
             Label label = new Label();
             text = text + request.getId() + ":";
             if(request instanceof NewSellerRequest)
@@ -101,12 +139,20 @@ public class AdminMenu extends Menu {
                 text = text + "Edit Off";
             }
             label.setText(text);
-            label.setFont(Font.font(20));
+            label.setFont(Font.font(15));
             Button button = new Button("show");
-            hBox.getChildren().addAll(label, button);
-            info.getChildren().add(hBox);
+            button.setAlignment(Pos.CENTER);
+            GridPane.setConstraints(label, 0, i);
+            GridPane.setConstraints(button, 2, i);
+            gridPane.getChildren().addAll(label, button);
         }
-        super.mainPane.setCenter(info);
+        Button back = new Button("back");
+        back.setOnAction(e -> show());
+        GridPane.setConstraints(back,1, i);
+        back.setAlignment(Pos.CENTER);
+        gridPane.getChildren().add(back);
+
+        super.mainPane.setCenter(gridPane);
 
         Menu.window.setScene(scene);
     }
@@ -116,21 +162,30 @@ public class AdminMenu extends Menu {
         super.setPane();
         ArrayList<Product> allProduct = Database.getAllProducts();
         Scene scene = new Scene(super.mainPane, 1000, 600);
-        VBox info = new VBox();
-        info.setSpacing(10);
+        GridPane gridPane = new GridPane();
+        gridPane.setHgap(20);
+        gridPane.setVgap(10);
+        gridPane.setAlignment(Pos.CENTER);
+        int i = 0;
         for (Product product : allProduct) {
             String text = "";
-            HBox hBox = new HBox();
-            hBox.setSpacing(50);
             Label label = new Label();
             text = text + product.getProductId() + ":" + product.getName();
             label.setText(text);
-            label.setFont(Font.font(20));
+            label.setFont(Font.font(15));
             Button button = new Button("show");
-            hBox.getChildren().addAll(label, button);
-            info.getChildren().add(hBox);
+            button.setAlignment(Pos.CENTER);
+            GridPane.setConstraints(label, 0, i);
+            GridPane.setConstraints(button, 2, i);
+            gridPane.getChildren().addAll(label, button);
         }
-        super.mainPane.setCenter(info);
+        Button back = new Button("back");
+        back.setOnAction(e -> show());
+        GridPane.setConstraints(back,1, i);
+        back.setAlignment(Pos.CENTER);
+        gridPane.getChildren().add(back);
+
+        super.mainPane.setCenter(gridPane);
 
         Menu.window.setScene(scene);
     }
@@ -140,12 +195,13 @@ public class AdminMenu extends Menu {
         super.setPane();
         ArrayList<Account> allAccount = Database.getAllAccounts();
         Scene scene = new Scene(super.mainPane, 1000, 600);
-        VBox info = new VBox();
-        info.setSpacing(10);
+        GridPane gridPane = new GridPane();
+        gridPane.setHgap(20);
+        gridPane.setVgap(10);
+        gridPane.setAlignment(Pos.CENTER);
+        int i = 0;
         for (Account account : allAccount) {
             String text = "";
-            HBox hBox = new HBox();
-            hBox.setSpacing(50);
             Label label = new Label();
             text = text + account.getUsername() + ":";
             if (account instanceof AdminAccount)
@@ -161,15 +217,22 @@ public class AdminMenu extends Menu {
                 text = text + "Seller";
             }
             label.setText(text);
-            label.setFont(Font.font(20));
+            label.setFont(Font.font(15));
             Button button = new Button("show");
-            hBox.getChildren().addAll(label, button);
-            info.getChildren().add(hBox);
+            button.setAlignment(Pos.CENTER);
+            GridPane.setConstraints(label, 0, i);
+            GridPane.setConstraints(button, 2, i);
+            gridPane.getChildren().addAll(label, button);
+            i++;
         }
-        super.mainPane.setCenter(info);
+        Button back = new Button("back");
+        back.setOnAction(e -> show());
+        GridPane.setConstraints(back,1, i);
+        back.setAlignment(Pos.CENTER);
+        gridPane.getChildren().add(back);
+
+        super.mainPane.setCenter(gridPane);
 
         Menu.window.setScene(scene);
     }
-
-
 }
