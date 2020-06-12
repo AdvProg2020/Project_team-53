@@ -1,5 +1,7 @@
 package Model.Request;
 
+import javafx.scene.layout.Pane;
+
 public abstract class Request {
     private static int allRequestId=1;
     private int id;
@@ -23,4 +25,5 @@ public abstract class Request {
 
     public abstract String acceptRequest();
     public abstract String show();
+    public abstract Pane showGraphical();
 }

@@ -2,6 +2,9 @@ package Model.Request;
 
 import Controller.Database;
 import Model.Account.SellerAccount;
+import javafx.scene.control.Label;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
 
 public class NewSellerRequest extends Request {
 
@@ -50,4 +53,32 @@ public class NewSellerRequest extends Request {
                 '}';
     }
 
+    @Override
+    public Pane showGraphical() {
+        GridPane gridPane = new GridPane();
+        gridPane.setVgap(10);
+        gridPane.setHgap(10);
+
+        Label reqID = new Label("RequestID : " + super.getId());
+        Label userNameLabel = new Label("Username : " + username);
+        Label firstNameLabel = new Label("First Name : " + firstName);
+        Label lastNameLabel = new Label("Last Name : " + lastName);
+        Label emailLabel = new Label("Email : " + email);
+        Label phoneNumberLabel = new Label("Phone Number : " + phoneNumber);
+        Label companyLabel = new Label("Company : " + company);
+        Label creditLabel = new Label("Credit : " + credit);
+
+        GridPane.setConstraints(reqID, 0 , 0);
+        GridPane.setConstraints(userNameLabel, 0, 1);
+        GridPane.setConstraints(firstNameLabel, 0, 2);
+        GridPane.setConstraints(lastNameLabel, 0, 3);
+        GridPane.setConstraints(emailLabel, 0, 4);
+        GridPane.setConstraints(phoneNumberLabel, 0, 5);
+        GridPane.setConstraints(companyLabel, 0, 6);
+        GridPane.setConstraints(creditLabel, 0, 7);
+
+        gridPane.getChildren().addAll(reqID, userNameLabel, firstNameLabel, lastNameLabel, emailLabel, phoneNumberLabel, companyLabel, creditLabel);
+
+        return gridPane;
+    }
 }

@@ -7,6 +7,7 @@ import Model.Product.Category;
 import Model.Product.DiscountAndOff.Discount;
 import Model.Product.Product;
 import Model.Request.Request;
+import javafx.scene.layout.Pane;
 
 import java.util.ArrayList;
 
@@ -37,6 +38,13 @@ public class AdminManager {
             return e.getMessage();
         }
         return "New admin account registered.";
+    }
+
+    public static Pane showRequestByIdInGraphic(int id)
+    {
+        Request request = Database.getRequestById(id);
+
+        return request.showGraphical();
     }
 
     public static String showRequestByiId(int id){

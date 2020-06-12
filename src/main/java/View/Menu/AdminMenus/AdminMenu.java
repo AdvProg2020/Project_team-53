@@ -156,6 +156,7 @@ public class AdminMenu extends Menu {
             label.setFont(Font.font(15));
             Button button = new Button("show");
             button.setAlignment(Pos.CENTER);
+            button.setOnAction(e -> handleShowRequest(request.getId()));
             GridPane.setConstraints(label, 0, i);
             GridPane.setConstraints(button, 2, i);
             gridPane.getChildren().addAll(label, button);
@@ -371,4 +372,29 @@ public class AdminMenu extends Menu {
         newWindow.showAndWait();
 
     }
+
+    public void handleShowRequest(int id)
+    {
+        Stage newWindow = new Stage();
+        Pane pane = AdminManager.showRequestByIdInGraphic(id);
+        ((GridPane)pane).setAlignment(Pos.CENTER);
+        Scene scene = new Scene(pane, 600, 400);
+
+        Button accept = new Button("Accept");
+        accept.setOnAction(e -> AdminManager.acceptOrRejectRequest(id, true));
+
+        Button reject = new Button("Reject");
+        reject.setOnAction(e -> AdminManager.acceptOrRejectRequest(id, false));
+
+        GridPane.setConstraints(accept, 3, 0);
+        GridPane.setConstraints(reject, 3, 1);
+
+        pane.getChildren().addAll(accept, reject);
+
+        newWindow.setScene(scene);
+        newWindow.initModality(Modality.APPLICATION_MODAL);
+        newWindow.setOnCloseRequest(e -> handleManageUsers());
+        newWindow.showAndWait();
+    }
+
 }
