@@ -3,6 +3,7 @@ package View.Menu.AdminMenus;
 import Controller.AccountManager;
 import Controller.AdminManager;
 import Controller.Database;
+import Controller.ProductManager;
 import Model.Account.Account;
 import Model.Account.AdminAccount;
 import Model.Account.BuyerAccount;
@@ -123,6 +124,7 @@ public class AdminMenu extends Menu {
         gridPane.setAlignment(Pos.CENTER);
         Label info = new Label("All Requests");
         info.setFont(Font.font(25));
+        info.setAlignment(Pos.CENTER);
         GridPane.setConstraints(info, 1, 0);
         gridPane.getChildren().add(info);
         int i = 1;
@@ -157,8 +159,10 @@ public class AdminMenu extends Menu {
             GridPane.setConstraints(label, 0, i);
             GridPane.setConstraints(button, 2, i);
             gridPane.getChildren().addAll(label, button);
+            i++;
         }
         Button back = new Button("back");
+        back.setAlignment(Pos.CENTER);
         back.setOnAction(e -> show());
         GridPane.setConstraints(back,1, i);
         back.setAlignment(Pos.CENTER);
@@ -180,22 +184,26 @@ public class AdminMenu extends Menu {
         gridPane.setAlignment(Pos.CENTER);
         Label info = new Label("All Products");
         info.setFont(Font.font(25));
+        info.setAlignment(Pos.CENTER);
         GridPane.setConstraints(info, 1, 0);
         gridPane.getChildren().add(info);
         int i = 1;
         for (Product product : allProduct) {
             String text = "";
             Label label = new Label();
-            text = text + product.getProductId() + ":" + product.getName();
+            text = text + "ID(" + product.getProductId() + "):" + product.getName();
             label.setText(text);
             label.setFont(Font.font(15));
             Button button = new Button("show");
+            button.setOnAction(e -> handleShowProduct(product.getProductId()));
             button.setAlignment(Pos.CENTER);
             GridPane.setConstraints(label, 0, i);
             GridPane.setConstraints(button, 2, i);
             gridPane.getChildren().addAll(label, button);
+            i++;
         }
         Button back = new Button("back");
+        back.setAlignment(Pos.CENTER);
         back.setOnAction(e -> show());
         GridPane.setConstraints(back,1, i);
         back.setAlignment(Pos.CENTER);
@@ -217,6 +225,7 @@ public class AdminMenu extends Menu {
         gridPane.setAlignment(Pos.CENTER);
         Label info = new Label("All Users");
         info.setFont(Font.font(25));
+        info.setAlignment(Pos.CENTER);
         GridPane.setConstraints(info, 1, 0);
         gridPane.getChildren().add(info);
         int i = 1;
@@ -249,6 +258,7 @@ public class AdminMenu extends Menu {
             i++;
         }
         Button back = new Button("back");
+        back.setAlignment(Pos.CENTER);
         back.setOnAction(e -> show());
         GridPane.setConstraints(back,1, i);
         back.setAlignment(Pos.CENTER);
@@ -270,6 +280,7 @@ public class AdminMenu extends Menu {
         gridPane.setAlignment(Pos.CENTER);
         Label info = new Label("All Categories");
         info.setFont(Font.font(25));
+        info.setAlignment(Pos.CENTER);
         GridPane.setConstraints(info, 1, 0);
         gridPane.getChildren().add(info);
         int i = 1;
@@ -284,8 +295,10 @@ public class AdminMenu extends Menu {
             GridPane.setConstraints(label, 0, i);
             GridPane.setConstraints(button, 2, i);
             gridPane.getChildren().addAll(label, button);
+            i++;
         }
         Button back = new Button("back");
+        back.setAlignment(Pos.CENTER);
         back.setOnAction(e -> show());
         GridPane.setConstraints(back,1, i);
         back.setAlignment(Pos.CENTER);
@@ -335,5 +348,27 @@ public class AdminMenu extends Menu {
         newWindow.initModality(Modality.APPLICATION_MODAL);
         newWindow.setOnCloseRequest(e -> handleManageUsers());
         newWindow.showAndWait();
+    }
+
+    public void handleShowProduct(int productID)
+    {
+        Stage newWindow = new Stage();
+        Pane pane = ProductManager.showFullInfoGraphic(productID);
+        ((GridPane)pane).setAlignment(Pos.CENTER);
+        Scene scene = new Scene(pane, 600, 400);
+        Button remove = new Button("Remove");
+        remove.setOnAction(e -> {
+            AdminManager.deleteProduct(productID);
+            handleManageProduct();
+            newWindow.close();
+        });
+        GridPane.setConstraints(remove, 4, 0);
+        pane.getChildren().add(remove);
+
+        newWindow.setScene(scene);
+        newWindow.initModality(Modality.APPLICATION_MODAL);
+        newWindow.setOnCloseRequest(e -> handleManageProduct());
+        newWindow.showAndWait();
+
     }
 }
