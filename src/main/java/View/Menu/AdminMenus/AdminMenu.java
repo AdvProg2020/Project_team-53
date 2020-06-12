@@ -1,11 +1,13 @@
 package View.Menu.AdminMenus;
 
 import Controller.AccountManager;
+import Controller.AdminManager;
 import Controller.Database;
 import Model.Account.Account;
 import Model.Account.AdminAccount;
 import Model.Account.BuyerAccount;
 import Model.Account.SellerAccount;
+import Model.Product.Category;
 import Model.Product.Product;
 import Model.Request.*;
 import View.Menu.Menu;
@@ -17,8 +19,11 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
 import java.util.ArrayList;
 
@@ -57,12 +62,15 @@ public class AdminMenu extends Menu {
         Button manageUser = new Button("Manage Users");
         manageUser.setOnAction(e -> handleManageUsers());
 
+        Button manageCategories = new Button("Manage Categories");
+        manageCategories.setOnAction(e -> handleManageCategories());
+
         Button back = new Button("Back");
         back.setOnAction(e -> parentMenu.show());
 
         allButtons.getChildren().addAll(editInfoButton, manageUser, manageRequest, manageProduct, logout, back);
 
-        HBox hBox = new HBox(AccountManager.viewPersonalInfoInGraphic() , allButtons);
+        HBox hBox = new HBox(AccountManager.viewPersonalInfoInGraphic(AccountManager.getLoggedInAccount().getUsername()) , allButtons);
         hBox.setSpacing(20);
 
         Scene scene = new Scene(super.mainPane, super.width, super.height);
@@ -232,6 +240,9 @@ public class AdminMenu extends Menu {
             label.setFont(Font.font(15));
             Button button = new Button("show");
             button.setAlignment(Pos.CENTER);
+            button.setOnAction(e -> {
+                handleShowUser(account.getUsername());
+            });
             GridPane.setConstraints(label, 0, i);
             GridPane.setConstraints(button, 2, i);
             gridPane.getChildren().addAll(label, button);
@@ -246,5 +257,83 @@ public class AdminMenu extends Menu {
         super.mainPane.setCenter(gridPane);
 
         Menu.window.setScene(scene);
+    }
+
+    public void handleManageCategories()
+    {
+        super.setPane();
+        ArrayList<Category> allCategories = Database.getAllCategories();
+        Scene scene = new Scene(super.mainPane, 1000, 600);
+        GridPane gridPane = new GridPane();
+        gridPane.setHgap(20);
+        gridPane.setVgap(10);
+        gridPane.setAlignment(Pos.CENTER);
+        Label info = new Label("All Categories");
+        info.setFont(Font.font(25));
+        GridPane.setConstraints(info, 1, 0);
+        gridPane.getChildren().add(info);
+        int i = 1;
+        for (Category category : allCategories) {
+            String text = "";
+            Label label = new Label();
+            text = text + category.getName();
+            label.setText(text);
+            label.setFont(Font.font(15));
+            Button button = new Button("show");
+            button.setAlignment(Pos.CENTER);
+            GridPane.setConstraints(label, 0, i);
+            GridPane.setConstraints(button, 2, i);
+            gridPane.getChildren().addAll(label, button);
+        }
+        Button back = new Button("back");
+        back.setOnAction(e -> show());
+        GridPane.setConstraints(back,1, i);
+        back.setAlignment(Pos.CENTER);
+        gridPane.getChildren().add(back);
+
+        super.mainPane.setCenter(gridPane);
+
+        Menu.window.setScene(scene);
+    }
+
+    public void handleShowUser(String username)
+    {
+        Stage newWindow = new Stage();
+        Pane pane = AccountManager.viewPersonalInfoInGraphic(username);
+        ((GridPane)pane).setAlignment(Pos.CENTER);
+        Scene scene = new Scene(pane, 600, 400);
+        ChoiceBox<String> choiceBox = new ChoiceBox<>();
+        choiceBox.getItems().addAll("Admin", "Seller", "Buyer");
+        Account account = Database.getAccountByUsername(username);
+        if (account instanceof AdminAccount)
+        {
+            choiceBox.setValue("Admin");
+        }
+        else if (account instanceof BuyerAccount)
+        {
+            choiceBox.setValue("Buyer");
+        }
+        else if (account instanceof SellerAccount)
+        {
+            choiceBox.setValue("Seller");
+        }
+        Button changeRole = new Button("Change Role");
+        changeRole.setOnAction(e -> {
+        });
+        Button remove = new Button("Remove");
+        remove.setOnAction(e -> {
+            AdminManager.deleteUsername(username);
+            handleManageProduct();
+            newWindow.close();
+        });
+        GridPane.setConstraints(choiceBox, 4, 0);
+        GridPane.setConstraints(changeRole, 4, 1);
+        GridPane.setConstraints(remove, 4, 2);
+        pane.getChildren().addAll(choiceBox, changeRole, remove);
+
+        newWindow.setScene(scene);
+        newWindow.initModality(Modality.APPLICATION_MODAL);
+        newWindow.setOnCloseRequest(e -> handleManageUsers());
+        newWindow.showAndWait();
     }
 }
