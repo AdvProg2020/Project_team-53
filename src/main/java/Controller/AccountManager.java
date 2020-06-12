@@ -117,14 +117,16 @@ public class AccountManager {
         return loggedInAccount.showInfo();
     }
 
-    public static Pane viewPersonalInfoInGraphic() {
+    public static Pane viewPersonalInfoInGraphic(String name) {
+        Account account = Database.getAccountByUsername(name);
+
         GridPane gridPane = new GridPane();
         gridPane.setVgap(10);
         gridPane.setHgap(10);
 
         Image image = null;
         try {
-            image = new Image(new FileInputStream("src\\resource\\ProfileImages\\" + loggedInAccount.getUsername() + ".png"));
+            image = new Image(new FileInputStream("src\\resource\\ProfileImages\\" + account.getUsername() + ".png"));
         }catch (Exception e){
             try {
                 image = new Image(new FileInputStream("src\\resource\\ProfileImages\\notFound.png"));
@@ -136,12 +138,12 @@ public class AccountManager {
         profileImage.setFitHeight(100);
         profileImage.setFitWidth(100);
 
-        Label username = new Label("Username : " + loggedInAccount.getUsername());
-        Label firstName = new Label("First Name : " + loggedInAccount.getFirstName());
-        Label lastName = new Label("Last Name : " + loggedInAccount.getLastName());
-        Label email = new Label("Email : " + loggedInAccount.getEmail());
-        Label phoneNumber = new Label("Phone : " + loggedInAccount.getPhoneNumber());
-        Label credit = new Label("Credit : " + loggedInAccount.getCredit());
+        Label username = new Label("Username : " + account.getUsername());
+        Label firstName = new Label("First Name : " + account.getFirstName());
+        Label lastName = new Label("Last Name : " + account.getLastName());
+        Label email = new Label("Email : " + account.getEmail());
+        Label phoneNumber = new Label("Phone : " + account.getPhoneNumber());
+        Label credit = new Label("Credit : " + account.getCredit());
 
         GridPane.setConstraints(profileImage, 0, 0, 2, 6);
         GridPane.setConstraints(username, 2, 0);

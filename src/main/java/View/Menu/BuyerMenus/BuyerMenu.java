@@ -37,7 +37,7 @@ public class BuyerMenu extends Menu {
 
         allButtons.getChildren().addAll(editInfoButton, logout);
 
-        HBox hBox = new HBox(AccountManager.viewPersonalInfoInGraphic() , allButtons);
+        HBox hBox = new HBox(AccountManager.viewPersonalInfoInGraphic(AccountManager.getLoggedInAccount().getUsername()) , allButtons);
         hBox.setSpacing(20);
 
         Scene scene = new Scene(super.mainPane, 1000, 600);
@@ -77,6 +77,7 @@ public class BuyerMenu extends Menu {
     public void handleLogout()
     {
         AccountManager.logOut();
+        parentMenu.show();
     }
 
 }

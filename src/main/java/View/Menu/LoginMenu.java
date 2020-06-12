@@ -57,7 +57,8 @@ public class LoginMenu extends Menu{
         });
         Button back = new Button("back");
         back.setOnAction(e -> {
-            show();
+            UserMenu userMenu = new UserMenu(this);
+            userMenu.show();
         });
         vBox.getChildren().addAll(userName, password, login, back, status);
         super.mainPane.setCenter(vBox);
@@ -126,7 +127,8 @@ public class LoginMenu extends Menu{
         });
         Button back = new Button("back");
         back.setOnAction(e -> {
-            show();
+            UserMenu userMenu = new UserMenu(this);
+            userMenu.show();
         });
         vBox.getChildren().addAll(role, userName, firstName, lastName, email, phoneNumber, password, credit, company, register, back, status);
         super.mainPane.setCenter(vBox);
