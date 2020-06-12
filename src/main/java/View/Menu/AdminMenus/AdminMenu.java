@@ -113,7 +113,11 @@ public class AdminMenu extends Menu {
         gridPane.setHgap(20);
         gridPane.setVgap(10);
         gridPane.setAlignment(Pos.CENTER);
-        int i = 0;
+        Label info = new Label("All Requests");
+        info.setFont(Font.font(25));
+        GridPane.setConstraints(info, 1, 0);
+        gridPane.getChildren().add(info);
+        int i = 1;
         for (Request request : allRequest) {
             String text = "";
             Label label = new Label();
@@ -166,7 +170,11 @@ public class AdminMenu extends Menu {
         gridPane.setHgap(20);
         gridPane.setVgap(10);
         gridPane.setAlignment(Pos.CENTER);
-        int i = 0;
+        Label info = new Label("All Products");
+        info.setFont(Font.font(25));
+        GridPane.setConstraints(info, 1, 0);
+        gridPane.getChildren().add(info);
+        int i = 1;
         for (Product product : allProduct) {
             String text = "";
             Label label = new Label();
@@ -199,7 +207,11 @@ public class AdminMenu extends Menu {
         gridPane.setHgap(20);
         gridPane.setVgap(10);
         gridPane.setAlignment(Pos.CENTER);
-        int i = 0;
+        Label info = new Label("All Users");
+        info.setFont(Font.font(25));
+        GridPane.setConstraints(info, 1, 0);
+        gridPane.getChildren().add(info);
+        int i = 1;
         for (Account account : allAccount) {
             String text = "";
             Label label = new Label();
