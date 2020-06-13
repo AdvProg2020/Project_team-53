@@ -3,6 +3,7 @@ package Controller;
 import Model.Account.Account;
 import Model.Account.AdminAccount;
 import Model.Account.BuyerAccount;
+import Model.Account.SellerAccount;
 import Model.Product.Category;
 import Model.Product.DiscountAndOff.Discount;
 import Model.Product.Product;
@@ -188,5 +189,42 @@ public class AdminManager {
             return "no such field";
         }
         return "changed successfully";
+    }
+
+    public static String changeRole(String username , String changeTo){
+        Account account = Database.getAccountByUsername(username);
+        Database.removeAccount(account);
+        if (changeTo.equalsIgnoreCase("Buyer")){
+            try {
+                Database.addAllAccounts(new BuyerAccount(account.getUsername(), account.getFirstName(),
+                        account.getLastName(), account.getPassword(), account.getEmail(), account.getPhoneNumber(),
+                        account.getCredit()));
+            } catch (Exception e) {
+                return e.getMessage();
+            }
+        }
+
+        if (changeTo.equalsIgnoreCase("Admin")){
+            try {
+                Database.addAllAccounts(new AdminAccount(account.getUsername(), account.getFirstName(),
+                        account.getLastName(), account.getPassword(), account.getEmail(), account.getPhoneNumber(),
+                        account.getCredit()));
+            } catch (Exception e) {
+                return e.getMessage();
+            }
+        }
+
+
+        if (changeTo.equalsIgnoreCase("Seller")){
+            try {
+                Database.addAllAccounts(new SellerAccount(account.getUsername(), account.getFirstName(),
+                        account.getLastName(), account.getPassword(), account.getEmail(), account.getPhoneNumber(),
+                        account.getCredit(), "No Company"));
+            } catch (Exception e) {
+                return e.getMessage();
+            }
+        }
+
+        return "Changed successfully";
     }
 }

@@ -3,7 +3,6 @@ package View.Menu.AdminMenus;
 import Controller.AccountManager;
 import Controller.AdminManager;
 import Controller.Database;
-import Controller.ProductManager;
 import Model.Account.Account;
 import Model.Account.AdminAccount;
 import Model.Account.BuyerAccount;
@@ -12,6 +11,7 @@ import Model.Product.Category;
 import Model.Product.Product;
 import Model.Request.*;
 import View.Menu.Menu;
+import View.Menu.ViewModelsWithGraphic;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -71,7 +71,7 @@ public class AdminMenu extends Menu {
 
         allButtons.getChildren().addAll(editInfoButton, manageUser, manageRequest, manageProduct, logout, back);
 
-        HBox hBox = new HBox(AccountManager.viewPersonalInfoInGraphic(AccountManager.getLoggedInAccount().getUsername()) , allButtons);
+        HBox hBox = new HBox(ViewModelsWithGraphic.viewPersonalInfoInGraphic(AccountManager.getLoggedInAccount().getUsername()) , allButtons);
         hBox.setSpacing(20);
 
         Scene scene = new Scene(super.mainPane, super.width, super.height);
@@ -313,7 +313,7 @@ public class AdminMenu extends Menu {
     public void handleShowUser(String username)
     {
         Stage newWindow = new Stage();
-        Pane pane = AccountManager.viewPersonalInfoInGraphic(username);
+        Pane pane = ViewModelsWithGraphic.viewPersonalInfoInGraphic(username);
         ((GridPane)pane).setAlignment(Pos.CENTER);
         Scene scene = new Scene(pane, 600, 400);
         ChoiceBox<String> choiceBox = new ChoiceBox<>();
@@ -333,11 +333,12 @@ public class AdminMenu extends Menu {
         }
         Button changeRole = new Button("Change Role");
         changeRole.setOnAction(e -> {
+            AdminManager.changeRole(username, choiceBox.getValue());
         });
         Button remove = new Button("Remove");
         remove.setOnAction(e -> {
             AdminManager.deleteUsername(username);
-            handleManageProduct();
+            handleManageUsers();
             newWindow.close();
         });
         GridPane.setConstraints(choiceBox, 4, 0);
@@ -354,7 +355,7 @@ public class AdminMenu extends Menu {
     public void handleShowProduct(int productID)
     {
         Stage newWindow = new Stage();
-        Pane pane = ProductManager.showFullInfoGraphic(productID);
+        Pane pane = ViewModelsWithGraphic.showFullInfoGraphic(productID);
         ((GridPane)pane).setAlignment(Pos.CENTER);
         Scene scene = new Scene(pane, 600, 400);
         Button remove = new Button("Remove");
@@ -381,10 +382,19 @@ public class AdminMenu extends Menu {
         Scene scene = new Scene(pane, 600, 400);
 
         Button accept = new Button("Accept");
-        accept.setOnAction(e -> AdminManager.acceptOrRejectRequest(id, true));
+
+        accept.setOnAction(e -> {
+            AdminManager.acceptOrRejectRequest(id, true);
+            newWindow.close();
+            handleManageRequest();
+        });
 
         Button reject = new Button("Reject");
-        reject.setOnAction(e -> AdminManager.acceptOrRejectRequest(id, false));
+        reject.setOnAction(e -> {
+            AdminManager.acceptOrRejectRequest(id, false);
+            newWindow.close();
+            handleManageRequest();
+        });
 
         GridPane.setConstraints(accept, 3, 0);
         GridPane.setConstraints(reject, 3, 1);
@@ -393,7 +403,6 @@ public class AdminMenu extends Menu {
 
         newWindow.setScene(scene);
         newWindow.initModality(Modality.APPLICATION_MODAL);
-        newWindow.setOnCloseRequest(e -> handleManageUsers());
         newWindow.showAndWait();
     }
 

@@ -3,6 +3,7 @@ package Model.Log;
 import Controller.Database;
 import Model.Account.BuyerAccount;
 import Model.Account.SellerAccount;
+import javafx.scene.layout.Pane;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -56,4 +57,6 @@ public abstract class Log {
     public int getLogId() {
         return logId;
     }
+
+    public abstract Pane showWithGraphic();
 }

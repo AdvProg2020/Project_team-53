@@ -29,6 +29,14 @@ public class BuyerAccount extends Account {
         return false;
     }
 
+    public ArrayList<Integer> getDiscountIds() {
+        return discountIds;
+    }
+
+    public ArrayList<BuyLog> getBuyLogs() {
+        return buyLogs;
+    }
+
     public Cart getCart() {
         return cart;
     }
@@ -60,6 +68,10 @@ public class BuyerAccount extends Account {
     public void addNewDiscount(int discountId){
         discountIds.add(discountId);
         numberOfUse.put(discountId , 0);
+    }
+
+    public int getNumberOfUse(int discountId){
+        return numberOfUse.get(discountId);
     }
 
     public boolean canUseDiscount(int discountId){

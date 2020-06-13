@@ -1,196 +1,128 @@
 package View.Menu.BuyerMenus;
 
+import Controller.AccountManager;
 import Controller.BuyerManager;
 import Controller.Database;
-import Controller.ProductManager;
+import Model.Account.BuyerAccount;
+import Model.Cart;
+import Model.Product.Product;
 import View.Menu.Menu;
-import View.Menu.ProductMenus.ProductMenu;
+import View.Menu.ViewModelsWithGraphic;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
+import javafx.scene.text.Font;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
-import java.util.regex.Matcher;
+import java.util.ArrayList;
 
 public class ViewCartMenu extends Menu {
+    private Label message = new Label("Here is your cart");
 
     public ViewCartMenu(Menu parentMenu) {
         super("View Cart Menu", parentMenu);
-        super.addToSubMenus(1, this.getShowProductsMenu());
-        super.addToSubMenus(2, this.getViewProductMenu());
-        super.addToSubMenus(2, this.getIncreaseProductMenu());
-        super.addToSubMenus(3, this.getDecreaseProductMenu());
-        super.addToSubMenus(4, this.getShowTotalPriceMenu());
+//        super.addToSubMenus(1, this.getShowProductsMenu());
+//        super.addToSubMenus(2, this.getViewProductMenu());
+//        super.addToSubMenus(2, this.getIncreaseProductMenu());
+//        super.addToSubMenus(3, this.getDecreaseProductMenu());
+//        super.addToSubMenus(4, this.getShowTotalPriceMenu());
     }
 
-    private Menu getShowProductsMenu()
+    @Override
+    public void show() {
+        super.setPane();
+        Cart cart = ((BuyerAccount) AccountManager.getLoggedInAccount()).getCart();
+        ArrayList<Integer> allProductIds = cart.getProductsID();
+        Scene scene = new Scene(super.mainPane, 1000, 600);
+        GridPane gridPane = new GridPane();
+        gridPane.setHgap(20);
+        gridPane.setVgap(10);
+        gridPane.setAlignment(Pos.CENTER);
+        Label info = new Label("Cart Products");
+        info.setFont(Font.font(25));
+        info.setAlignment(Pos.CENTER);
+        GridPane.setConstraints(info, 1, 0);
+        gridPane.getChildren().add(info);
+        int i = 1;
+        for (Integer productId : allProductIds) {
+            Product product = Database.getProductByID(productId);
+            String text = "";
+            Label label = new Label();
+            text = text + "ID(" + product.getProductId() + "):" + product.getName();
+            label.setText(text);
+            label.setFont(Font.font(15));
+
+            Label numbers = new Label(String.valueOf(cart.getMuchOfProductID(productId)));
+
+            Button showButton = new Button("show");
+            showButton.setOnAction(e -> handleShowProduct(product.getProductId()));
+            showButton.setAlignment(Pos.CENTER);
+
+            Button increaseButton = new Button("increase");
+            increaseButton.setOnAction(e -> handleIncrease(product.getProductId()));
+            increaseButton.setAlignment(Pos.CENTER);
+
+            Button decreaseButton = new Button("decrease");
+            decreaseButton.setOnAction(e -> handleDecrease(product.getProductId()));
+            decreaseButton.setAlignment(Pos.CENTER);
+
+            GridPane.setConstraints(label, 0, i);
+            GridPane.setConstraints(numbers, 2, i);
+            GridPane.setConstraints(showButton, 3, i);
+            GridPane.setConstraints(increaseButton, 4, i);
+            GridPane.setConstraints(decreaseButton, 5, i);
+
+            gridPane.getChildren().addAll(label, numbers, showButton, increaseButton, decreaseButton);
+            i++;
+        }
+
+        Button back = new Button("back");
+        back.setAlignment(Pos.CENTER);
+        back.setOnAction(e -> parentMenu.show());
+
+        Button payButton = new Button("Pay");
+        // TODO: 13-Jun-20 add function of paying
+
+        Label costOfAll = new Label("cost : " + cart.getCost());
+
+        GridPane.setConstraints(costOfAll, 5 , i);
+        GridPane.setConstraints(back,5, i+1);
+        GridPane.setConstraints(message, 1, i+2 , 5, 1);
+        GridPane.setConstraints(payButton, 4 , i+1);
+
+        gridPane.getChildren().addAll(back, costOfAll, payButton, message);
+
+        super.mainPane.setCenter(gridPane);
+
+        Menu.window.setScene(scene);
+    }
+
+    private void handleDecrease(int productId) {
+        message.setText(BuyerManager.DecreaseProduct(productId));
+        show();
+    }
+
+    private void handleIncrease(int productId) {
+        Product product = Database.getProductByID(productId);
+        message.setText(BuyerManager.addProductToCart(product));
+        show();
+    }
+
+    public void handleShowProduct(int productID)
     {
-        return new Menu("Show Product Menu", this) {
-            @Override
-            public void show()
-            {
-                System.out.println("Your products are :\n(Enter back to return)");
-            }
+        Stage newWindow = new Stage();
+        Pane pane = ViewModelsWithGraphic.showFullInfoGraphic(productID);
+        ((GridPane)pane).setAlignment(Pos.CENTER);
+        Scene scene = new Scene(pane, 600, 400);
 
-            @Override
-            public void execute()
-            {
-                System.out.println();
-                String input = scanner.nextLine();
-                try
-                {
-                    Matcher matcher2 = getMatcher(input, "^\\s*back\\s*$");
-                    if(matcher2.find())
-                    {
-                        this.parentMenu.show();
-                        this.parentMenu.execute();
-                        return;
-                    }
-                    else
-                        throw new Exception("Invalid Input");
-                }
-                catch (Exception e)
-                {
-                    System.out.println(e.getMessage());
-                }
-                this.execute();
-            }
-        };
+        newWindow.setScene(scene);
+        newWindow.initModality(Modality.APPLICATION_MODAL);
+        newWindow.setOnCloseRequest(e -> show());
+        newWindow.showAndWait();
+
     }
-
-    private Menu getViewProductMenu()
-    {
-        return new Menu("View Product Menu", this) {
-            @Override
-            public void show() {
-                System.out.println("Please enter your productID :\n(Enter back to return)");
-            }
-
-            @Override
-            public void execute()
-            {
-                String input = scanner.nextLine();
-                try {
-                    Matcher matcher1 = getMatcher(input, "^\\s*(\\d+)\\s*$");
-                    Matcher matcher2 = getMatcher(input, "^\\s*back\\s*$");
-                    if (matcher2.find()) {
-                        this.parentMenu.show();
-                        this.parentMenu.execute();
-                        return;
-                    } else if (!matcher1.find())
-                    {
-                        throw new Exception("invalid input");
-                    }
-                    ProductManager.setProduct(Database.getProductByID(Integer.parseInt(matcher1.group(1))));
-                    ProductMenu productMenu = new ProductMenu(this);
-                    productMenu.show();
-                    productMenu.execute();
-                }
-                catch (Exception e)
-                {
-                    System.out.println(e.getMessage());
-                }
-                this.execute();
-            }
-        };
-    }
-
-    private Menu getIncreaseProductMenu()
-    {
-        return new Menu("Increase Product Menu", this) {
-            @Override
-            public void show() {
-                System.out.println("Please enter your productID :\n(Enter back to return)");
-            }
-
-            @Override
-            public void execute()
-            {
-                String input = scanner.nextLine();
-                try {
-                    Matcher matcher1 = getMatcher(input, "^\\s*(\\d+)\\s*$");
-                    Matcher matcher2 = getMatcher(input, "^\\s*back\\s*$");
-                    if (matcher2.find()) {
-                        this.parentMenu.show();
-                        this.parentMenu.execute();
-                        return;
-                    } else if (!matcher1.find())
-                    {
-                        throw new Exception("invalid input");
-                    }
-                    System.out.println("not yet");
-                }
-                catch (Exception e)
-                {
-                    System.out.println(e.getMessage());
-                }
-                this.execute();
-            }
-        };
-    }
-
-    private Menu getDecreaseProductMenu()
-    {
-        return new Menu("Increase Product Menu", this) {
-            @Override
-            public void show() {
-                System.out.println("Please enter your productID :\n(Enter back to return)");
-            }
-
-            @Override
-            public void execute()
-            {
-                String input = scanner.nextLine();
-                try {
-                    Matcher matcher1 = getMatcher(input, "^\\s*(\\d+)\\s*$");
-                    Matcher matcher2 = getMatcher(input, "^\\s*back\\s*$");
-                    if (matcher2.find()) {
-                        this.parentMenu.show();
-                        this.parentMenu.execute();
-                        return;
-                    } else if (!matcher1.find())
-                    {
-                        throw new Exception("invalid input");
-                    }
-                    System.out.println(BuyerManager.DecreaseProduct(Integer.parseInt(matcher1.group(1))));
-                }
-                catch (Exception e)
-                {
-                    System.out.println(e.getMessage());
-                }
-                this.execute();
-            }
-        };
-    }
-
-    private Menu getShowTotalPriceMenu()
-    {
-        return new Menu("Show Total Price Menu", this) {
-            @Override
-            public void show() {
-                System.out.println("Your total price is :\n(Enter back to return)");
-            }
-
-            @Override
-            public void execute()
-            {
-                System.out.println(BuyerManager.showCostOfCart());
-                String input = scanner.nextLine();
-                try
-                {
-                    Matcher matcher2 = getMatcher(input, "^\\s*back\\s*$");
-                    if(matcher2.find())
-                    {
-                        this.parentMenu.show();
-                        this.parentMenu.execute();
-                        return;
-                    }
-                    else
-                        throw new Exception("Invalid Input");
-                }
-                catch (Exception e)
-                {
-                    System.out.println(e.getMessage());
-                }
-                this.execute();
-            }
-        };
-    }
-
 }
