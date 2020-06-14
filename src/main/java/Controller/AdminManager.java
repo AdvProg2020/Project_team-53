@@ -6,7 +6,10 @@ import Model.Account.BuyerAccount;
 import Model.Account.SellerAccount;
 import Model.Product.Category;
 import Model.Product.DiscountAndOff.Discount;
+import Model.Product.DiscountAndOff.Off;
 import Model.Product.Product;
+import Model.Request.AddNewOffRequest;
+import Model.Request.EditOffRequest;
 import Model.Request.Request;
 import javafx.scene.layout.Pane;
 
@@ -72,6 +75,14 @@ public class AdminManager {
         if (accept){
             Database.removeRequest(request);
             return request.acceptRequest();
+        }
+        if (!accept && request instanceof AddNewOffRequest){
+            Off off = Database.getOffById(((AddNewOffRequest) request).getOffId());
+            Database.removeOff(off);
+        }
+        if (!accept && request instanceof EditOffRequest){
+            Off off = Database.getOffById(((EditOffRequest) request).getOffId());
+            off.setStatus("Accepted");
         }
         Database.removeRequest(request);
         return "done!";

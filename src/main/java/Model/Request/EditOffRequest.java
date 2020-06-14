@@ -19,6 +19,10 @@ public class EditOffRequest extends Request{
         off.setStatus("Waiting to apply changes...");
     }
 
+    public int getOffId() {
+        return offId;
+    }
+
     @Override
     public String acceptRequest() {
         Off off = Database.getOffById(offId);

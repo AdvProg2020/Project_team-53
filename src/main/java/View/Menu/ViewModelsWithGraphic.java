@@ -4,7 +4,9 @@ import Controller.AccountManager;
 import Controller.Database;
 import Model.Account.Account;
 import Model.Account.BuyerAccount;
+import Model.Account.SellerAccount;
 import Model.Product.DiscountAndOff.Discount;
+import Model.Product.DiscountAndOff.Off;
 import Model.Product.Product;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -85,6 +87,13 @@ public class ViewModelsWithGraphic {
 
         gridPane.getChildren().addAll(profileImage, username, firstName, lastName, email, phoneNumber, credit);
 
+
+        if (account instanceof SellerAccount){
+            Label companyLabel = new Label("Company : " + ((SellerAccount)account).getCompany());
+            GridPane.setConstraints(companyLabel , 2 , 6);
+            gridPane.getChildren().addAll(companyLabel);
+        }
+
         return gridPane;
     }
 
@@ -137,4 +146,36 @@ public class ViewModelsWithGraphic {
         return gridPane;
     }
 
+    public static Pane showOffFullInfoGraphic(int offId) {
+        Off off = Database.getOffById(offId);
+
+        GridPane gridPane = new GridPane();
+        gridPane.setVgap(10);
+        gridPane.setHgap(10);
+
+
+        Label offIdLabel = new Label("OffID : " + off.getOffId());
+        Label sellerUsername = new Label("Seller Username : " + off.getSellerUsername());
+        Label maxValue = new Label("Max Value : " + off.getMaxValue());
+        Label percent = new Label("Percent : " + off.getPercent());
+        Label startDate = new Label("Start Date : " + off.getStartDate());
+        Label endDate = new Label("End Date : " + off.getEndDate());
+        Label status = new Label("Status : " + off.getStatus());
+        Label productIdsTag = new Label("Products : ");
+        Label productIds = new Label(off.getProductIds().toString());
+
+        GridPane.setConstraints(offIdLabel, 0, 1 , 2 , 1);
+        GridPane.setConstraints(sellerUsername, 0, 2 , 2 , 1);
+        GridPane.setConstraints(maxValue, 0, 3 , 2 , 1);
+        GridPane.setConstraints(percent, 0, 4 , 2 , 1);
+        GridPane.setConstraints(startDate, 0, 5 , 2 , 1);
+        GridPane.setConstraints(endDate, 0, 6 , 2 , 1);
+        GridPane.setConstraints(status, 0, 7 , 2 , 1);
+        GridPane.setConstraints(productIdsTag, 0, 9 , 2 , 1);
+        GridPane.setConstraints(productIds, 1, 10 , 2 , 3);
+
+        gridPane.getChildren().addAll(offIdLabel, sellerUsername, maxValue, percent, startDate,endDate,status,productIdsTag,productIds);
+
+        return gridPane;
+    }
 }

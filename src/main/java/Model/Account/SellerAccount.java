@@ -17,6 +17,10 @@ public class SellerAccount extends Account {
         return company;
     }
 
+    public ArrayList<SellLog> getSellLogs() {
+        return sellLogs;
+    }
+
     public void setCompany(String company) throws Exception {
         if (!company.matches("\\S+")){
             throw new Exception("Invalid Company Name");

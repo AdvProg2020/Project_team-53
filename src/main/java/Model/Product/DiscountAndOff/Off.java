@@ -29,12 +29,12 @@ public class Off {
         this.maxValue = maxValue;
         this.percent = percent;
         try {
-            this.startDate = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss").parse(startDate);
+            this.startDate = new SimpleDateFormat("yyyy-MM-dd_HH:mm").parse(startDate);
         } catch (ParseException e) {
             e.printStackTrace();
         }
         try {
-            this.endDate = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss").parse(endDate);
+            this.endDate = new SimpleDateFormat("yyyy-MM-dd_HH:mm").parse(endDate);
         } catch (ParseException e) {
             e.printStackTrace();
         }

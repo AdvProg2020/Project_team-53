@@ -15,6 +15,10 @@ public class AddNewOffRequest extends Request {
         this.offId = offId;
     }
 
+    public int getOffId() {
+        return offId;
+    }
+
     @Override
     public String acceptRequest() {
         Off off = Database.getOffById(offId);
