@@ -77,7 +77,7 @@ public class AdminMenu extends Menu {
         Button back = new Button("Back");
         back.setOnAction(e -> parentMenu.show());
 
-        allButtons.getChildren().addAll(editInfoButton, manageUser, manageRequest, manageProduct, manageAddDiscount, manageAddAdmin, logout, back);
+        allButtons.getChildren().addAll(editInfoButton, manageUser, manageRequest, manageProduct, manageCategories, manageDiscounts, manageAddDiscount, manageAddAdmin, logout, back);
 
         HBox hBox = new HBox(ViewModelsWithGraphic.viewPersonalInfoInGraphic(AccountManager.getLoggedInAccount().getUsername()) , allButtons);
         hBox.setSpacing(20);
@@ -300,6 +300,13 @@ public class AdminMenu extends Menu {
             label.setText(text);
             label.setFont(Font.font(15));
             Button button = new Button("show");
+            button.setOnAction(e -> {
+                Stage newWindow = new Stage();
+                newWindow.initModality(Modality.APPLICATION_MODAL);
+
+                handleShowCategory(category.getName() , newWindow);
+                newWindow.showAndWait();
+            });
             button.setAlignment(Pos.CENTER);
             GridPane.setConstraints(label, 0, i);
             GridPane.setConstraints(button, 2, i);
@@ -309,19 +316,114 @@ public class AdminMenu extends Menu {
         Button back = new Button("back");
         back.setAlignment(Pos.CENTER);
         back.setOnAction(e -> show());
-        GridPane.setConstraints(back,1, i);
+
+        Button addNewCategory = new Button("Add Category");
+        addNewCategory.setOnAction(e -> handleAddNewCategory());
+
+        GridPane.setConstraints(addNewCategory, 1, i);
+        GridPane.setConstraints(back,1, i+1);
+
         back.setAlignment(Pos.CENTER);
-        gridPane.getChildren().add(back);
+        gridPane.getChildren().addAll(back, addNewCategory);
 
         super.mainPane.setCenter(gridPane);
 
         Menu.window.setScene(scene);
     }
 
+    private void handleAddNewCategory() {
+
+        super.setPane();
+        VBox vBox = new VBox();
+        vBox.setAlignment(Pos.CENTER);
+        vBox.setSpacing(10);
+
+        Scene scene = new Scene(super.mainPane, 1000, 600);
+
+        Label status = new Label();
+        status.setFont(Font.font(20));
+
+        TextField name = new TextField();
+        name.setPromptText("Name");
+
+        TextField feature = new TextField();
+        feature.setPromptText("Feature");
+
+        TextField parentName = new TextField();
+        parentName.setPromptText("Parent");
+
+
+        Button addButton = new Button("Add");
+        addButton.setOnAction(e -> {
+            status.setText(AdminManager.addNewCategory(name.getText(), feature.getText(),parentName.getText()));
+            handleManageCategories();
+        });
+
+        Button back = new Button("back");
+        back.setOnAction(e -> {
+            handleManageCategories();
+        });
+
+        vBox.getChildren().addAll(name, feature, parentName, addButton, back, status);
+        super.mainPane.setCenter(vBox);
+
+        Menu.window.setScene(scene);
+
+    }
+
+    private void handleShowCategory(String categoryName , Stage newWindow){
+        Pane pane = ViewModelsWithGraphic.showCategoryGraphic(categoryName);
+        ((GridPane)pane).setAlignment(Pos.CENTER);
+        Scene scene = new Scene(pane, 600, 400);
+
+        Button remove = new Button("Remove");
+        remove.setOnAction(e -> {
+            AdminManager.deleteCategory(categoryName);
+            handleManageCategories();
+            newWindow.close();
+        });
+
+        Button edit = new Button("Edit");
+        edit.setOnAction(e -> handleEditCategory(categoryName, newWindow));
+
+        GridPane.setConstraints(remove, 4, 1);
+        GridPane.setConstraints(edit, 4, 2);
+
+        pane.getChildren().addAll(remove , edit);
+
+        newWindow.setScene(scene);
+        newWindow.setOnCloseRequest(e -> handleManageCategories());
+
+    }
+
+    private void handleEditCategory(String categoryName, Stage newWindow) {
+        super.setPane();
+        VBox vBox = new VBox();
+        Scene scene = new Scene(vBox, 600, 400);
+        vBox.setAlignment(Pos.CENTER);
+        vBox.setSpacing(10);
+        Label status = new Label();
+        ChoiceBox<String> field = new ChoiceBox<>();
+        field.getItems().addAll( "feature", "parentName");
+
+        TextField changeTo = new TextField();
+        changeTo.setPromptText("change to");
+
+        Button edit = new Button("edit");
+        edit.setOnAction(e -> {
+            status.setText(AdminManager.editCategory(categoryName, field.getValue(), changeTo.getText()));
+        });
+        Button back = new Button("back");
+        back.setOnAction(e -> handleShowCategory(categoryName, newWindow));
+        vBox.getChildren().addAll(field, changeTo, edit, back, status);
+
+        newWindow.setScene(scene);
+    }
+
     public void handleManageDiscounts()
     {
         super.setPane();
-        ArrayList<Discount> allDiscounts = new ArrayList<>();
+        ArrayList<Discount> allDiscounts = Database.getAllDiscounts();
         Scene scene = new Scene(super.mainPane, 1000, 600);
         GridPane gridPane = new GridPane();
         gridPane.setHgap(20);
@@ -504,7 +606,8 @@ public class AdminMenu extends Menu {
         startDate.setPromptText("Start Date");
         TextField endDate = new TextField();
         endDate.setPromptText("End Date");
-        TextField numberOfTimes = new TextField("Number Of Times");
+        TextField numberOfTimes = new TextField();
+        numberOfTimes.setPromptText("Number Of Times");
         TextField username = new TextField();
         username.setPromptText("Username(separate with /)");
         Button add = new Button("Add");

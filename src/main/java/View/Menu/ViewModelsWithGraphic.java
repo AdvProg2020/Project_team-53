@@ -5,6 +5,7 @@ import Controller.Database;
 import Model.Account.Account;
 import Model.Account.BuyerAccount;
 import Model.Account.SellerAccount;
+import Model.Product.Category;
 import Model.Product.DiscountAndOff.Discount;
 import Model.Product.DiscountAndOff.Off;
 import Model.Product.Product;
@@ -32,8 +33,10 @@ public class ViewModelsWithGraphic {
         Label percent = new Label("Percent : " + discount.getPercent());
         Label startDate = new Label("Start Date : " + discount.getStartDate());
         Label endDate = new Label("End Date : " + discount.getEndDate());
-        Label remainigTimes = new Label("Remaining Times Of Use : " +
-                (discount.getNumberOfTimes() - ((BuyerAccount) AccountManager.getLoggedInAccount()).getNumberOfUse(discountId)));
+        int x = discount.getNumberOfTimes();
+        if (AccountManager.getLoggedInAccount() instanceof BuyerAccount)
+            x -= ((BuyerAccount) AccountManager.getLoggedInAccount()).getNumberOfUse(discountId);
+        Label remainigTimes = new Label("Times Of Use : " + x);
 
 
         GridPane.setConstraints(disID, 0 , 0);
@@ -175,6 +178,31 @@ public class ViewModelsWithGraphic {
         GridPane.setConstraints(productIds, 1, 10 , 2 , 3);
 
         gridPane.getChildren().addAll(offIdLabel, sellerUsername, maxValue, percent, startDate,endDate,status,productIdsTag,productIds);
+
+        return gridPane;
+    }
+
+    public static Pane showCategoryGraphic(String categoryName) {
+        Category category = Database.getCategoryByName(categoryName);
+
+        GridPane gridPane = new GridPane();
+        gridPane.setVgap(10);
+        gridPane.setHgap(10);
+
+
+        Label name = new Label("Name : " + category.getName());
+        Label parent = new Label("Parent : " + category.getParent());
+        Label feature = new Label("Feature : " + category.getFeature());
+        Label subCategories = new Label("SubCategories : " + category.getAllSubCategoryNames());
+        Label products = new Label("Products : " + category.getAllProductIds());
+
+        GridPane.setConstraints(name, 0, 1 , 2 , 1);
+        GridPane.setConstraints(parent, 0, 2 , 2 , 1);
+        GridPane.setConstraints(feature, 0, 3 , 2 , 1);
+        GridPane.setConstraints(subCategories, 0, 4 , 2 , 1);
+        GridPane.setConstraints(products, 0, 5 , 2 , 1);
+
+        gridPane.getChildren().addAll(name, parent, feature, subCategories, products);
 
         return gridPane;
     }

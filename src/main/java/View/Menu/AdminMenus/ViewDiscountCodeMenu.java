@@ -72,7 +72,7 @@ public class ViewDiscountCodeMenu extends Menu {
                     {
                         throw new Exception("invalid input");
                     }
-                    System.out.println(AdminManager.showDiscountWithId(Integer.parseInt(matcher1.group(1))));
+                  //  System.out.println(AdminManager.showDiscountWithId(Integer.parseInt(matcher1.group(1))));
                 }
                 catch (Exception e)
                 {

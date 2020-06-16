@@ -72,7 +72,7 @@ public class ViewOrdersMenu extends Menu {
                         throw new Exception("invalid input");
                     }
                     else {
-                        System.out.println(AccountManager.viewLogsWithId(Integer.parseInt(matcher1.group(1))));
+                      //  System.out.println(AccountManager.viewLogsWithId(Integer.parseInt(matcher1.group(1))));
                     }
                 }
                 catch (Exception e)
