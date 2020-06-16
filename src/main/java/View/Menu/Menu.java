@@ -1,6 +1,7 @@
 package View.Menu;
 
 import Controller.Database;
+import View.Menu.ProductsMenus.ProductsMenu;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
@@ -63,6 +64,9 @@ public abstract class Menu{
             handleUser();
         });
         Button productButton = new Button("Products");
+        productButton.setOnAction(e -> {
+            handleProduct();
+        });
         Button offButton = new Button("Offs");
         Button exitButton = new Button("exit");
 
@@ -76,6 +80,10 @@ public abstract class Menu{
         return subMenus;
     }
 
+    protected void handleProduct(){
+        ProductsMenu productsMenu = new ProductsMenu(this);
+        productsMenu.show();
+    }
 
     public void handleUser()
     {
