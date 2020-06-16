@@ -12,7 +12,7 @@ public class ProductMenu extends Menu {
         super("Product Menu", parentMenu);
         super.addToSubMenus(1, new DigestMenu(this));
         super.addToSubMenus(2, this.getAttributesMenu());
-        super.addToSubMenus(3, this.getCompareMenu());
+        super.addToSubMenus(3, this.getCompareMenu()); //
         super.addToSubMenus(4, new CommentsMenu(this));
         super.addToSubMenus(5, new LoginMenu(this));
     }
