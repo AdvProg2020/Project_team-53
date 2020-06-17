@@ -11,7 +11,6 @@ import Model.Product.Product;
 import Model.Request.AddNewOffRequest;
 import Model.Request.EditOffRequest;
 import Model.Request.Request;
-import javafx.scene.layout.Pane;
 
 import java.util.ArrayList;
 
@@ -35,11 +34,7 @@ public class AdminManager {
         return "New admin account registered.";
     }
 
-    public static Pane showRequestByIdInGraphic(int id)
-    {
-        Request request = Database.getRequestById(id);
-        return request.showGraphical();
-    }
+
 
     public static String showRequestByiId(int id){
         Request request = Database.getRequestById(id);

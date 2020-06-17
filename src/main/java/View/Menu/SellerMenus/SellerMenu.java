@@ -395,7 +395,7 @@ public class SellerMenu extends Menu {
 
     private void handleShowLog(SellLog sellLog) {
         Stage newWindow = new Stage();
-        Pane pane = sellLog.showWithGraphic();
+        Pane pane = ViewModelsWithGraphic.showLogWithGraphic(sellLog);
         ((GridPane)pane).setAlignment(Pos.CENTER);
         Scene scene = new Scene(pane, 600, 400);
 

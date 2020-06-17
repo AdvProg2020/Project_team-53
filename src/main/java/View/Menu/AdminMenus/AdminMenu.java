@@ -528,7 +528,8 @@ public class AdminMenu extends Menu {
     public void handleShowRequest(int id)
     {
         Stage newWindow = new Stage();
-        Pane pane = AdminManager.showRequestByIdInGraphic(id);
+        Request request = Database.getRequestById(id);
+        Pane pane = ViewModelsWithGraphic.showRequestGraphic(request);
         ((GridPane)pane).setAlignment(Pos.CENTER);
         Scene scene = new Scene(pane, 600, 400);
 
