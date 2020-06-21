@@ -504,7 +504,8 @@ public class AdminMenu extends Menu {
         startDate.setPromptText("Start Date");
         TextField endDate = new TextField();
         endDate.setPromptText("End Date");
-        TextField numberOfTimes = new TextField("Number Of Times");
+        TextField numberOfTimes = new TextField();
+        numberOfTimes.setPromptText("Number Of Times");
         TextField username = new TextField();
         username.setPromptText("Username(separate with /)");
         Button add = new Button("Add");
