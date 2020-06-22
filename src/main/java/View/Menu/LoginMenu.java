@@ -88,6 +88,7 @@ public class LoginMenu extends Menu{
         gridPane.setAlignment(Pos.CENTER);
         gridPane.setVgap(10);
         Scene scene = new Scene(super.mainPane, 1000, 600);
+        scene.getStylesheets().add(this.getClass().getResource("Buttons.css").toExternalForm());
         Label status = new Label();
         status.setFont(Font.font(20));
         ChoiceBox<String> role = new ChoiceBox<>();
@@ -119,6 +120,7 @@ public class LoginMenu extends Menu{
             }
         });
         Button register = new Button("register");
+        register.getStyleClass().add("record-sales");
         register.setOnAction(e -> {
             try {
                 if (role.getValue().equalsIgnoreCase("Buyer"))
