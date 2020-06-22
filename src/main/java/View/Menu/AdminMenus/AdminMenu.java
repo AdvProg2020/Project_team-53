@@ -13,6 +13,7 @@ import Model.Product.Product;
 import Model.Request.*;
 import View.Menu.Menu;
 import View.Menu.ViewModelsWithGraphic;
+import javafx.geometry.HPos;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -91,26 +92,46 @@ public class AdminMenu extends Menu {
     public void handleEdit()
     {
         super.setPane();
-        VBox vBox = new VBox();
+        GridPane gridPane = new GridPane();
         Scene scene = new Scene(super.mainPane, 1000, 600);
-        vBox.setAlignment(Pos.CENTER);
-        vBox.setSpacing(10);
+        gridPane.setAlignment(Pos.CENTER);
+        gridPane.setVgap(10);
         Label status = new Label();
         ChoiceBox<String> field = new ChoiceBox<>();
         field.getItems().addAll("FirstName", "LastName", "password", "email", "PhoneNumber");
-        field.setValue("first name");
+        field.setValue("FirstName");
         TextField changeTo = new TextField();
         changeTo.setPromptText("change to");
         Button edit = new Button("edit");
         edit.setOnAction(e -> {
-            status.setText(AccountManager.edit(field.getValue(), changeTo.getText()));
+            try {
+                status.setText(AccountManager.edit(field.getValue(), changeTo.getText()));
+            }
+            catch (Exception ex)
+            {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error");
+                alert.setHeaderText("Process Fail");
+                alert.setContentText("Wrong input for change to");
+
+                alert.showAndWait();
+            }
         });
         Button back = new Button("back");
         back.setOnAction(e -> {
             show();
         });
-        vBox.getChildren().addAll(field, changeTo, edit, back, status);
-        super.mainPane.setCenter(vBox);
+        GridPane.setConstraints(field, 0, 0 );
+        GridPane.setConstraints(changeTo, 0, 1);
+        GridPane.setConstraints(edit, 0, 2);
+        GridPane.setConstraints(back, 0, 3);
+        GridPane.setConstraints(status, 0, 4);
+        GridPane.setHalignment(edit, HPos.CENTER);
+        GridPane.setHalignment(back, HPos.CENTER);
+        GridPane.setHalignment(field, HPos.CENTER);
+        GridPane.setHalignment(status, HPos.CENTER);
+        gridPane.getChildren().addAll(field, changeTo, edit, back, status);
+        super.mainPane.setCenter(gridPane);
 
         Menu.window.setScene(scene);
     }
@@ -132,7 +153,7 @@ public class AdminMenu extends Menu {
         gridPane.setAlignment(Pos.CENTER);
         Label info = new Label("All Requests");
         info.setFont(Font.font(25));
-        info.setAlignment(Pos.CENTER);
+        GridPane.setHalignment(info, HPos.CENTER);
         GridPane.setConstraints(info, 1, 0);
         gridPane.getChildren().add(info);
         int i = 1;
@@ -174,6 +195,7 @@ public class AdminMenu extends Menu {
         back.setAlignment(Pos.CENTER);
         back.setOnAction(e -> show());
         GridPane.setConstraints(back,1, i);
+        GridPane.setHalignment(back, HPos.CENTER);
         back.setAlignment(Pos.CENTER);
         gridPane.getChildren().add(back);
 
@@ -193,7 +215,7 @@ public class AdminMenu extends Menu {
         gridPane.setAlignment(Pos.CENTER);
         Label info = new Label("All Products");
         info.setFont(Font.font(25));
-        info.setAlignment(Pos.CENTER);
+        GridPane.setHalignment(info, HPos.CENTER);
         GridPane.setConstraints(info, 1, 0);
         gridPane.getChildren().add(info);
         int i = 1;
@@ -215,6 +237,7 @@ public class AdminMenu extends Menu {
         back.setAlignment(Pos.CENTER);
         back.setOnAction(e -> show());
         GridPane.setConstraints(back,1, i);
+        GridPane.setHalignment(back, HPos.CENTER);
         back.setAlignment(Pos.CENTER);
         gridPane.getChildren().add(back);
 
@@ -234,6 +257,7 @@ public class AdminMenu extends Menu {
         gridPane.setAlignment(Pos.CENTER);
         Label info = new Label("All Users");
         info.setFont(Font.font(25));
+        GridPane.setHalignment(info, HPos.CENTER);
         info.setAlignment(Pos.CENTER);
         GridPane.setConstraints(info, 1, 0);
         gridPane.getChildren().add(info);
@@ -268,6 +292,7 @@ public class AdminMenu extends Menu {
         }
         Button back = new Button("back");
         back.setAlignment(Pos.CENTER);
+        GridPane.setHalignment(back, HPos.CENTER);
         back.setOnAction(e -> show());
         GridPane.setConstraints(back,1, i);
         back.setAlignment(Pos.CENTER);
@@ -431,6 +456,7 @@ public class AdminMenu extends Menu {
         gridPane.setAlignment(Pos.CENTER);
         Label info = new Label("All Discounts");
         info.setFont(Font.font(25));
+        GridPane.setHalignment(info, HPos.CENTER);
         info.setAlignment(Pos.CENTER);
         GridPane.setConstraints(info, 1, 0);
         gridPane.getChildren().add(info);
@@ -451,6 +477,7 @@ public class AdminMenu extends Menu {
         }
         Button back = new Button("back");
         back.setAlignment(Pos.CENTER);
+        GridPane.setHalignment(back, HPos.CENTER);
         back.setOnAction(e -> show());
         GridPane.setConstraints(back,1, i);
         back.setAlignment(Pos.CENTER);
@@ -522,7 +549,6 @@ public class AdminMenu extends Menu {
         newWindow.initModality(Modality.APPLICATION_MODAL);
         newWindow.setOnCloseRequest(e -> handleManageProduct());
         newWindow.showAndWait();
-
     }
 
     public void handleShowRequest(int id)
@@ -641,6 +667,9 @@ public class AdminMenu extends Menu {
         GridPane.setConstraints(add, 0, 6);
         GridPane.setConstraints(back, 0, 7);
         GridPane.setConstraints(status, 0, 8);
+        GridPane.setHalignment(add, HPos.CENTER);
+        GridPane.setHalignment(back, HPos.CENTER);
+        GridPane.setHalignment(status, HPos.CENTER);
 
         gridPane.getChildren().addAll(maxValue, percent, startDate, endDate, numberOfTimes, username, add, back, status);
 
@@ -703,6 +732,9 @@ public class AdminMenu extends Menu {
         GridPane.setConstraints(register, 0, 7);
         GridPane.setConstraints(back, 0, 8);
         GridPane.setConstraints(status, 0, 9);
+        GridPane.setHalignment(register, HPos.CENTER);
+        GridPane.setHalignment(back, HPos.CENTER);
+        GridPane.setHalignment(status, HPos.CENTER);
 
         gridPane.getChildren().addAll(userName, firstName, lastName, email, phoneNumber, password, credit, register, back, status);
 

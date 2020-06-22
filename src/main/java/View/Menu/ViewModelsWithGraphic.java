@@ -5,6 +5,7 @@ import Controller.Database;
 import Model.Account.Account;
 import Model.Account.BuyerAccount;
 import Model.Account.SellerAccount;
+import Model.Product.CommentAndScore.Comment;
 import Model.Log.BuyLog;
 import Model.Log.Log;
 import Model.Log.SellLog;
@@ -14,13 +15,17 @@ import Model.Product.DiscountAndOff.Off;
 import Model.Product.Product;
 import Model.Request.*;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.Objects;
 
 public class ViewModelsWithGraphic {
 
@@ -186,193 +191,23 @@ public class ViewModelsWithGraphic {
         return gridPane;
     }
 
-    public static Pane showCategoryGraphic(String categoryName) {
-        Category category = Database.getCategoryByName(categoryName);
+    public static ScrollPane showCommentsOfProduct(int productId)
+    {
+        VBox vBox = new VBox();
+        vBox.setSpacing(10);
+        ArrayList<Comment> comments = Objects.requireNonNull(Database.getProductByID(productId)).getComments();
+        for (Comment comment : comments) {
+            Label label = new Label(comment.showComment());
+            vBox.getChildren().add(label);
+        }
+        ScrollPane scrollPane = new ScrollPane(vBox);
+        scrollPane.setPannable(true);
+        scrollPane.setPrefSize(200, 50);
+        scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED);
+        scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.ALWAYS);
 
-        GridPane gridPane = new GridPane();
-        gridPane.setVgap(10);
-        gridPane.setHgap(10);
-
-
-        Label name = new Label("Name : " + category.getName());
-        Label parent = new Label("Parent : " + category.getParent());
-        Label feature = new Label("Feature : " + category.getFeature());
-        Label subCategories = new Label("SubCategories : " + category.getAllSubCategoryNames());
-        Label products = new Label("Products : " + category.getAllProductIds());
-
-        GridPane.setConstraints(name, 0, 1 , 2 , 1);
-        GridPane.setConstraints(parent, 0, 2 , 2 , 1);
-        GridPane.setConstraints(feature, 0, 3 , 2 , 1);
-        GridPane.setConstraints(subCategories, 0, 4 , 2 , 1);
-        GridPane.setConstraints(products, 0, 5 , 2 , 1);
-
-        gridPane.getChildren().addAll(name, parent, feature, subCategories, products);
-
-        return gridPane;
+        return scrollPane;
     }
 
-    public static Pane showLogWithGraphic(Log log) {
-        GridPane gridPane = new GridPane();
-        gridPane.setVgap(10);
-        gridPane.setHgap(10);
 
-        if (log instanceof SellLog){
-
-            Label logId = new Label("Log ID : " + log.getLogId());
-            Label dateLabel = new Label("Date : " + log.getDate());
-            Label priceLabel = new Label("Price : " + log.getPrice());
-            Label delivered = new Label("Delivery Status : " + log.getDeliveryStatus());
-            Label productIdLabel = new Label("Product Id : " + log.getProductId());
-            Label offLabel = new Label("Off Value : " + ((SellLog) log).getOffValue());
-            Label buyerUsernameLabel = new Label("Buyer Username : " + ((SellLog) log).getBuyerUsername());
-
-
-            GridPane.setConstraints(logId, 0 , 0);
-            GridPane.setConstraints(dateLabel, 0, 1);
-            GridPane.setConstraints(priceLabel, 0, 2);
-            GridPane.setConstraints(delivered, 0, 3);
-            GridPane.setConstraints(productIdLabel, 0, 4);
-            GridPane.setConstraints(offLabel, 0, 5);
-            GridPane.setConstraints(buyerUsernameLabel, 0, 6);
-
-            gridPane.getChildren().addAll(logId, dateLabel, priceLabel, delivered, productIdLabel, offLabel, buyerUsernameLabel);
-
-        }
-        else if (log instanceof BuyLog){
-            Label logId = new Label("Log ID : " + log.getLogId());
-            Label dateLabel = new Label("Date : " + log.getDate());
-            Label priceLabel = new Label("Price : " + log.getPrice());
-            Label delivered = new Label("Delivery Status : " + log.getDeliveryStatus());
-            Label productIdLabel = new Label("Product Id : " + log.getProductId());
-            Label discountLabel = new Label("Discount Value : " + ((BuyLog) log).getDiscountValue());
-            Label sellerUsernameLabel = new Label("Seller Username : " + ((BuyLog) log).getSellerUsername());
-
-
-            GridPane.setConstraints(logId, 0 , 0);
-            GridPane.setConstraints(dateLabel, 0, 1);
-            GridPane.setConstraints(priceLabel, 0, 2);
-            GridPane.setConstraints(delivered, 0, 3);
-            GridPane.setConstraints(productIdLabel, 0, 4);
-            GridPane.setConstraints(discountLabel, 0, 5);
-            GridPane.setConstraints(sellerUsernameLabel, 0, 6);
-
-            gridPane.getChildren().addAll(logId, dateLabel, priceLabel, delivered, productIdLabel, discountLabel, sellerUsernameLabel);
-
-
-        }
-        return gridPane;
-    }
-
-    public static Pane showRequestGraphic(Request request){
-        GridPane gridPane = new GridPane();
-        gridPane.setVgap(10);
-        gridPane.setHgap(10);
-
-        if (request instanceof AddNewOffRequest){
-            Off off = Database.getOffById(((AddNewOffRequest) request).getOffId());
-
-            Label reqID = new Label("RequestID : " + request.getId());
-            Label offID = new Label("OffID : " + off.getOffId());
-            Label maxValue = new Label("Off Max Value : " + off.getMaxValue());
-            Label percent = new Label("Off Percent : " + off.getPercent());
-            Label startDate = new Label("Start Date : " + off.getStartDate());
-            Label endDate = new Label("End Date : " + off.getEndDate());
-            Label productId = new Label("productID's : " + off.getProductIds());
-            Label status = new Label("Status : " + off.getStatus());
-            Label sellerUsername = new Label("Seller Username : " + off.getSellerUsername());
-
-            GridPane.setConstraints(reqID, 0, 0);
-            GridPane.setConstraints(offID, 0,1);
-            GridPane.setConstraints(maxValue, 0, 2);
-            GridPane.setConstraints(percent, 0, 3);
-            GridPane.setConstraints(startDate, 0, 4);
-            GridPane.setConstraints(endDate, 0, 5);
-            GridPane.setConstraints(productId, 0, 6);
-            GridPane.setConstraints(status, 0, 7);
-            GridPane.setConstraints(sellerUsername, 0, 8);
-
-            gridPane.getChildren().addAll(reqID, offID, maxValue, percent, startDate, endDate, productId, status, sellerUsername);
-
-        }
-
-        else if (request instanceof EditOffRequest){
-            Label reqID = new Label("RequestID : " + request.getId());
-            Label offID = new Label("OffID : " + ((EditOffRequest) request).getOffId());
-            Label changeField = new Label("Field : " + ((EditOffRequest) request).getField());
-            Label changeToLabel = new Label("Change To : " + ((EditOffRequest) request).getChangeTo());
-
-            GridPane.setConstraints(reqID, 0, 0);
-            GridPane.setConstraints(offID, 0,1);
-            GridPane.setConstraints(changeField, 0, 2);
-            GridPane.setConstraints(changeToLabel, 0, 3);
-
-            gridPane.getChildren().addAll(reqID, offID, changeField, changeToLabel);
-
-        }
-
-        else if (request instanceof EditProductRequest){
-            Label reqID = new Label("RequestID : " + request.getId());
-            Label productID = new Label("ProductID : " +((EditProductRequest) request).getProductId());
-            Label changeField = new Label("Field : " + ((EditProductRequest) request).getField());
-            Label changeToLabel = new Label("Change To : " + ((EditProductRequest) request).getChangeTo());
-
-            GridPane.setConstraints(reqID, 0, 0);
-            GridPane.setConstraints(productID, 0,1);
-            GridPane.setConstraints(changeField, 0, 2);
-            GridPane.setConstraints(changeToLabel, 0, 3);
-
-            gridPane.getChildren().addAll(reqID, productID, changeField, changeToLabel);
-
-        }
-
-        else if (request instanceof NewProductRequest){
-
-            Label reqID = new Label("RequestID : " + request.getId());
-            Label statusLabel = new Label("Status : " + ((NewProductRequest) request).getStatus());
-            Label nameLabel = new Label("Name : " + ((NewProductRequest) request).getName());
-            Label sellUsernameLabel = new Label("Seller Username : " + ((NewProductRequest) request).getSellerUsername());
-            Label availableLabel = new Label("Available : " + ((NewProductRequest) request).isAvailable());
-            Label numberLabel = new Label("Number : " + ((NewProductRequest) request).getNumber());
-            Label descriptionLabel = new Label("Description : " + ((NewProductRequest) request).getDescription());
-            Label categoryNameLabel = new Label("Category Name : " + ((NewProductRequest) request).getCategoryName());
-
-            GridPane.setConstraints(reqID, 0, 0);
-            GridPane.setConstraints(statusLabel, 0, 1);
-            GridPane.setConstraints(nameLabel, 0, 2);
-            GridPane.setConstraints(sellUsernameLabel, 0, 3);
-            GridPane.setConstraints(availableLabel, 0, 4);
-            GridPane.setConstraints(numberLabel, 0, 5);
-            GridPane.setConstraints(descriptionLabel, 0, 6);
-            GridPane.setConstraints(categoryNameLabel, 0, 7);
-
-            gridPane.getChildren().addAll(reqID, statusLabel, nameLabel, sellUsernameLabel, availableLabel, numberLabel, descriptionLabel, categoryNameLabel);
-
-        }
-
-        else if (request instanceof NewSellerRequest){
-
-            Label reqID = new Label("RequestID : " + request.getId());
-            Label userNameLabel = new Label("Username : " + ((NewSellerRequest) request).getUsername());
-            Label firstNameLabel = new Label("First Name : " + ((NewSellerRequest) request).getFirstName());
-            Label lastNameLabel = new Label("Last Name : " + ((NewSellerRequest) request).getLastName());
-            Label emailLabel = new Label("Email : " + ((NewSellerRequest) request).getEmail());
-            Label phoneNumberLabel = new Label("Phone Number : " + ((NewSellerRequest) request).getPhoneNumber());
-            Label companyLabel = new Label("Company : " + ((NewSellerRequest) request).getCompany());
-            Label creditLabel = new Label("Credit : " + ((NewSellerRequest) request).getCredit());
-
-            GridPane.setConstraints(reqID, 0 , 0);
-            GridPane.setConstraints(userNameLabel, 0, 1);
-            GridPane.setConstraints(firstNameLabel, 0, 2);
-            GridPane.setConstraints(lastNameLabel, 0, 3);
-            GridPane.setConstraints(emailLabel, 0, 4);
-            GridPane.setConstraints(phoneNumberLabel, 0, 5);
-            GridPane.setConstraints(companyLabel, 0, 6);
-            GridPane.setConstraints(creditLabel, 0, 7);
-
-            gridPane.getChildren().addAll(reqID, userNameLabel, firstNameLabel, lastNameLabel, emailLabel, phoneNumberLabel, companyLabel, creditLabel);
-
-        }
-
-        return gridPane;
-    }
 }

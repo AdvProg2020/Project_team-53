@@ -203,4 +203,8 @@ public class Product {
     public Off getOff(){
         return Database.getOffById(offId);
     }
+
+    public ArrayList<Comment> getComments() {
+        return comments;
+    }
 }
