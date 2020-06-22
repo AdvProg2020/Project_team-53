@@ -5,17 +5,22 @@ import Controller.Database;
 import Model.Account.Account;
 import Model.Account.BuyerAccount;
 import Model.Account.SellerAccount;
+import Model.Product.CommentAndScore.Comment;
 import Model.Product.DiscountAndOff.Discount;
 import Model.Product.DiscountAndOff.Off;
 import Model.Product.Product;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.Objects;
 
 public class ViewModelsWithGraphic {
 
@@ -178,4 +183,24 @@ public class ViewModelsWithGraphic {
 
         return gridPane;
     }
+
+    public static ScrollPane showCommentsOfProduct(int productId)
+    {
+        VBox vBox = new VBox();
+        vBox.setSpacing(10);
+        ArrayList<Comment> comments = Objects.requireNonNull(Database.getProductByID(productId)).getComments();
+        for (Comment comment : comments) {
+            Label label = new Label(comment.showComment());
+            vBox.getChildren().add(label);
+        }
+        ScrollPane scrollPane = new ScrollPane(vBox);
+        scrollPane.setPannable(true);
+        scrollPane.setPrefSize(200, 50);
+        scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED);
+        scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.ALWAYS);
+
+        return scrollPane;
+    }
+
+
 }

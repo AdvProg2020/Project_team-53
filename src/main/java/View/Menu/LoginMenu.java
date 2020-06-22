@@ -1,6 +1,7 @@
 package View.Menu;
 
 import Controller.AccountManager;
+import javafx.geometry.HPos;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -65,11 +66,15 @@ public class LoginMenu extends Menu{
             UserMenu userMenu = new UserMenu(this);
             userMenu.show();
         });
+
         GridPane.setConstraints(userName, 0, 0);
         GridPane.setConstraints(password, 0, 1);
         GridPane.setConstraints(login, 0, 2);
         GridPane.setConstraints(back, 0, 3);
         GridPane.setConstraints(status, 0, 4);
+
+        GridPane.setHalignment(login, HPos.CENTER);
+        GridPane.setHalignment(back, HPos.CENTER);
         gridPane.getChildren().addAll(userName, password, login, back, status);
         super.mainPane.setCenter(gridPane);
 
@@ -152,6 +157,9 @@ public class LoginMenu extends Menu{
         GridPane.setConstraints(register, 0, 9);
         GridPane.setConstraints(back, 0, 10);
         GridPane.setConstraints(status, 0, 11);
+        GridPane.setHalignment(register, HPos.CENTER);
+        GridPane.setHalignment(back, HPos.CENTER);
+        GridPane.setHalignment(role, HPos.CENTER);
 
         gridPane.getChildren().addAll(role, userName, firstName, lastName, email, phoneNumber, password, credit, company, register, back, status);
         super.mainPane.setCenter(gridPane);

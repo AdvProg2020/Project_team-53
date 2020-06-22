@@ -6,12 +6,10 @@ import Controller.Database;
 import Controller.ProductManager;
 import View.Menu.Menu;
 import View.Menu.ViewModelsWithGraphic;
+import javafx.geometry.HPos;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Modality;
@@ -34,6 +32,9 @@ public class ProductMenu extends Menu {
     public void show() {
         newWindow = new Stage();
         newWindow.setScene(setScene());
+
+        newWindow.initModality(Modality.APPLICATION_MODAL);
+        newWindow.showAndWait();
     }
 
     public Scene setScene()
@@ -47,8 +48,8 @@ public class ProductMenu extends Menu {
         Button showComments = new Button("Show Comments");
         Button giveScore = new Button("Give Score");
         giveScore.setOnAction(e -> handleGiveScore());
-        Button giveComment = new Button("Give Comment");
-        giveComment.setOnAction(e -> handleGiveComment());
+        Button comment = new Button("Comment");
+        comment.setOnAction(e -> handleComment());
         TextField productID = new TextField();
         productID.setPromptText("productID to compare");
         Button compare = new Button("Compare");
@@ -67,13 +68,13 @@ public class ProductMenu extends Menu {
             }
         });
 
-        GridPane.setConstraints(addToCart, 3, 0);
-        GridPane.setConstraints(giveScore, 3, 1);
-        GridPane.setConstraints(giveComment, 3,2);
-        GridPane.setConstraints(productID, 4, 0);
-        GridPane.setConstraints(compare, 4, 1);
+        GridPane.setConstraints(addToCart, 3, 2);
+        GridPane.setConstraints(giveScore, 3, 3);
+        GridPane.setConstraints(comment, 3,4);
+        GridPane.setConstraints(productID, 4, 2);
+        GridPane.setConstraints(compare, 4, 3);
 
-        gridPane.getChildren().addAll(addToCart, giveScore, giveComment, productID, compare);
+        gridPane.getChildren().addAll(addToCart, giveScore, comment, productID, compare);
 
         return scene;
     }
@@ -99,7 +100,7 @@ public class ProductMenu extends Menu {
         alert.showAndWait();
     }
 
-    public void handleGiveComment()
+    public void handleComment()
     {
         GridPane gridPane = new GridPane();
         gridPane.setVgap(10);
@@ -118,14 +119,17 @@ public class ProductMenu extends Menu {
         back.setOnAction(e -> {
             newWindow.setScene(setScene());
         });
+        ScrollPane scrollPane = ViewModelsWithGraphic.showCommentsOfProduct(ProductManager.getProduct().getProductId());
+        GridPane.setConstraints(scrollPane, 0, 0);
+        GridPane.setConstraints(title, 0, 1);
+        GridPane.setConstraints(content, 0, 2);
+        GridPane.setConstraints(comment, 0, 3);
+        GridPane.setConstraints(back, 0, 4);
+        GridPane.setConstraints(status, 0, 5);
+        GridPane.setHalignment(comment, HPos.CENTER);
+        GridPane.setHalignment(back, HPos.CENTER);
 
-        GridPane.setConstraints(title, 0, 0);
-        GridPane.setConstraints(content, 0, 1);
-        GridPane.setConstraints(comment, 0, 2);
-        GridPane.setConstraints(back, 0, 3);
-        GridPane.setConstraints(status, 0, 4);
-
-        gridPane.getChildren().addAll(title, content, comment, back, status);
+        gridPane.getChildren().addAll(scrollPane, title, content, comment, back, status);
 
         Scene scene = new Scene(gridPane, 600, 400);
         newWindow.setScene(scene);
