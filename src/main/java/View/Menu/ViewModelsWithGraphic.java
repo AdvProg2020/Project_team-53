@@ -21,6 +21,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -83,11 +84,17 @@ public class ViewModelsWithGraphic {
         profileImage.setFitWidth(100);
 
         Label username = new Label("Username : " + account.getUsername());
+        username.setFont(Font.font(15));
         Label firstName = new Label("First Name : " + account.getFirstName());
+        firstName.setFont(Font.font(15));
         Label lastName = new Label("Last Name : " + account.getLastName());
+        lastName.setFont(Font.font(15));
         Label email = new Label("Email : " + account.getEmail());
+        email.setFont(Font.font(15));
         Label phoneNumber = new Label("Phone : " + account.getPhoneNumber());
+        phoneNumber.setFont(Font.font(15));
         Label credit = new Label("Credit : " + account.getCredit());
+        credit.setFont(Font.font(15));
 
         GridPane.setConstraints(profileImage, 0, 0, 2, 6);
         GridPane.setConstraints(username, 2, 0);

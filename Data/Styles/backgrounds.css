@@ -2,3 +2,8 @@
     -fx-background-image: url("images/register.jpg");
     -fx-background-size:  cover;
 }
+
+.admin-background{
+    -fx-background-image: url("images/admin.jpg");
+    -fx-background-size:  cover;
+}

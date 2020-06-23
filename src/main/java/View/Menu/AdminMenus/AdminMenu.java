@@ -18,13 +18,13 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -44,44 +44,81 @@ public class AdminMenu extends Menu {
     @Override
     public void show() {
         super.setPane();
+        Scene scene = new Scene(super.mainPane, super.width, super.height);
+        scene.getStylesheets().add(new File("Data/Styles/Buttons.css").toURI().toString());
+        scene.getStylesheets().add(new File("Data/Styles/textfield.css").toURI().toString());
+        scene.getStylesheets().add(new File("Data/Styles/backgrounds.css").toURI().toString());
+        super.mainPane.getStyleClass().add("admin-background");
 
-        VBox allButtons = new VBox();
-        allButtons.setSpacing(10);
+        GridPane allButtons = new GridPane();
+        allButtons.setVgap(10);
 
         Button editInfoButton = new Button("Edit");
         editInfoButton.setOnAction(e -> handleEdit());
+        editInfoButton.getStyleClass().add("dark-blue");
 
         Button logout = new Button("Logout");
         logout.setOnAction(e -> handleLogout());
+        logout.getStyleClass().add("dark-blue");
 
         Button manageRequest = new Button("Manage Request");
         manageRequest.setOnAction(e -> handleManageRequest());
+        manageRequest.getStyleClass().add("dark-blue");
 
         Button manageProduct = new Button("Manage Product");
         manageProduct.setOnAction(e -> handleManageProduct());
+        manageProduct.getStyleClass().add("dark-blue");
 
         Button manageUser = new Button("Manage Users");
         manageUser.setOnAction(e -> handleManageUsers());
+        manageUser.getStyleClass().add("dark-blue");
 
         Button manageCategories = new Button("Manage Categories");
         manageCategories.setOnAction(e -> handleManageCategories());
+        manageCategories.getStyleClass().add("dark-blue");
 
         Button manageDiscounts = new Button("Manage Discounts");
         manageDiscounts.setOnAction(e -> handleManageDiscounts());
+        manageDiscounts.getStyleClass().add("dark-blue");
 
         Button manageAddAdmin = new Button("Add Manager");
         manageAddAdmin.setOnAction(e -> handleAddAdmin());
+        manageAddAdmin.getStyleClass().add("dark-blue");
 
         Button back = new Button("Back");
         back.setOnAction(e -> parentMenu.show());
+        back.getStyleClass().add("dark-blue");
+
+        GridPane.setConstraints(editInfoButton, 0, 0);
+        GridPane.setConstraints(manageUser, 0, 1);
+        GridPane.setConstraints(manageRequest, 0, 2);
+        GridPane.setConstraints(manageProduct, 0, 3);
+        GridPane.setConstraints(manageCategories, 0, 4);
+        GridPane.setConstraints(manageDiscounts, 0, 5);
+        GridPane.setConstraints(manageAddAdmin, 0, 6);
+        GridPane.setConstraints(logout, 0, 7);
+        GridPane.setConstraints(back, 0, 8);
+        GridPane.setHalignment(editInfoButton, HPos.CENTER);
+        GridPane.setHalignment(manageUser, HPos.CENTER);
+        GridPane.setHalignment(manageRequest, HPos.CENTER);
+        GridPane.setHalignment(manageProduct, HPos.CENTER);
+        GridPane.setHalignment(manageCategories, HPos.CENTER);
+        GridPane.setHalignment(manageDiscounts, HPos.CENTER);
+        GridPane.setHalignment(manageAddAdmin, HPos.CENTER);
+        GridPane.setHalignment(logout, HPos.CENTER);
+        GridPane.setHalignment(back, HPos.CENTER);
 
         allButtons.getChildren().addAll(editInfoButton, manageUser, manageRequest, manageProduct, manageCategories, manageDiscounts, manageAddAdmin, logout, back);
 
-        HBox hBox = new HBox(ViewModelsWithGraphic.viewPersonalInfoInGraphic(AccountManager.getLoggedInAccount().getUsername()) , allButtons);
-        hBox.setSpacing(20);
+        Pane pane = ViewModelsWithGraphic.viewPersonalInfoInGraphic(AccountManager.getLoggedInAccount().getUsername());
+        GridPane.setConstraints(pane, 0 , 0);
+        GridPane.setConstraints(allButtons, 3 ,0);
+        GridPane gridPane = new GridPane();
+        gridPane.getChildren().addAll(pane, allButtons);
+        gridPane.setAlignment(Pos.CENTER);
+        gridPane.setHgap(25);
 
-        Scene scene = new Scene(super.mainPane, super.width, super.height);
-        super.mainPane.setCenter(hBox);
+        super.mainPane.setCenter(gridPane);
 
         window.setScene(scene);
     }
