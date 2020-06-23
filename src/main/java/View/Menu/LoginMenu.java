@@ -9,6 +9,8 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 
+import java.io.File;
+
 public class LoginMenu extends Menu{
 
     public LoginMenu(Menu parentMenu) {
@@ -88,7 +90,7 @@ public class LoginMenu extends Menu{
         gridPane.setAlignment(Pos.CENTER);
         gridPane.setVgap(10);
         Scene scene = new Scene(super.mainPane, 1000, 600);
-        scene.getStylesheets().add(this.getClass().getResource("Buttons.css").toExternalForm());
+        scene.getStylesheets().add(new File("Data/Styles/Buttons.css").toURI().toString());
         Label status = new Label();
         status.setFont(Font.font(20));
         ChoiceBox<String> role = new ChoiceBox<>();
