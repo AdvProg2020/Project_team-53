@@ -11,10 +11,14 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 
@@ -100,13 +104,28 @@ public class ProductsMenu extends Menu {
             }
 
             private Pane getProductPane(Product product) {
-                Pane pane = new Pane();
-                //Image image = new Image("./src/resource/ProductImages/notFound.png");
-                ImageView imageView = new ImageView();
+                VBox vBox = new VBox();
+                Image image = null;
+                try {
+                    image = new Image(new FileInputStream("src\\resource\\ProductImages\\" + product.getProductId() + ".png"));
+                }catch (Exception e){
+                    try {
+                        image = new Image(new FileInputStream("src\\resource\\ProductImages\\notFound.png"));
+                    } catch (FileNotFoundException ex) {
+                        ex.printStackTrace();
+                    }
+                }
+                ImageView imageView = new ImageView(image);
+                imageView.setFitWidth(100);
+                imageView.setFitHeight(100);
                 Button button = new Button("show");
+                button.setOnAction(e -> {
+                    ProductManager.setProduct(product);
+                    new ProductMenu(this).show();
+                });
                 Label label = new Label(product.getName());
-                pane.getChildren().addAll(imageView, label, button);
-                return pane;
+                vBox.getChildren().addAll(imageView, label, button);
+                return vBox;
             }
         };
     }
