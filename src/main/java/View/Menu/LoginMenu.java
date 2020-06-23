@@ -107,6 +107,7 @@ public class LoginMenu extends Menu{
         scene.getStylesheets().add(new File("Data/Styles/Buttons.css").toURI().toString());
         scene.getStylesheets().add(new File("Data/Styles/textfield.css").toURI().toString());
         scene.getStylesheets().add(new File("Data/Styles/backgrounds.css").toURI().toString());
+        scene.getStylesheets().add(new File("Data/Styles/choicebox.css").toURI().toString());
         super.mainPane.getStyleClass().add("register-background");
         Label name = new Label("Register");
         name.setFont(Font.font(40));
@@ -115,7 +116,7 @@ public class LoginMenu extends Menu{
         status.setFont(Font.font(20));
         ChoiceBox<String> role = new ChoiceBox<>();
         role.getItems().addAll("Buyer", "Seller");
-        role.setValue("Buyer");
+        role.getStyleClass().add("choice-box");
         TextField userName = new TextField();
         userName.setPromptText("username");
         userName.getStyleClass().add("text-field");
@@ -145,6 +146,7 @@ public class LoginMenu extends Menu{
         });
         Button register = new Button("register");
         register.getStyleClass().add("dark-blue");
+        register.setMaxWidth(Double.MAX_VALUE);
         register.setOnAction(e -> {
             try {
                 if (role.getValue().equalsIgnoreCase("Buyer"))
@@ -167,6 +169,7 @@ public class LoginMenu extends Menu{
             }
         });
         Button back = new Button("back");
+        back.setMaxWidth(Double.MAX_VALUE);
         back.getStyleClass().add("dark-blue");
         back.setOnAction(e -> {
             UserMenu userMenu = new UserMenu(this);

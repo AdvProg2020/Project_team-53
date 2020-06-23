@@ -56,38 +56,47 @@ public class AdminMenu extends Menu {
         Button editInfoButton = new Button("Edit");
         editInfoButton.setOnAction(e -> handleEdit());
         editInfoButton.getStyleClass().add("dark-blue");
+        editInfoButton.setMaxWidth(Double.MAX_VALUE);
 
         Button logout = new Button("Logout");
         logout.setOnAction(e -> handleLogout());
         logout.getStyleClass().add("dark-blue");
+        logout.setMaxWidth(Double.MAX_VALUE);
 
         Button manageRequest = new Button("Manage Request");
         manageRequest.setOnAction(e -> handleManageRequest());
         manageRequest.getStyleClass().add("dark-blue");
+        manageRequest.setMaxWidth(Double.MAX_VALUE);
 
         Button manageProduct = new Button("Manage Product");
         manageProduct.setOnAction(e -> handleManageProduct());
         manageProduct.getStyleClass().add("dark-blue");
+        manageProduct.setMaxWidth(Double.MAX_VALUE);
 
         Button manageUser = new Button("Manage Users");
         manageUser.setOnAction(e -> handleManageUsers());
         manageUser.getStyleClass().add("dark-blue");
+        manageUser.setMaxWidth(Double.MAX_VALUE);
 
         Button manageCategories = new Button("Manage Categories");
         manageCategories.setOnAction(e -> handleManageCategories());
         manageCategories.getStyleClass().add("dark-blue");
+        manageCategories.setMaxWidth(Double.MAX_VALUE);
 
         Button manageDiscounts = new Button("Manage Discounts");
         manageDiscounts.setOnAction(e -> handleManageDiscounts());
         manageDiscounts.getStyleClass().add("dark-blue");
+        manageDiscounts.setMaxWidth(Double.MAX_VALUE);
 
         Button manageAddAdmin = new Button("Add Manager");
         manageAddAdmin.setOnAction(e -> handleAddAdmin());
         manageAddAdmin.getStyleClass().add("dark-blue");
+        manageAddAdmin.setMaxWidth(Double.MAX_VALUE);
 
         Button back = new Button("Back");
         back.setOnAction(e -> parentMenu.show());
         back.getStyleClass().add("dark-blue");
+        back.setMaxWidth(Double.MAX_VALUE);
 
         GridPane.setConstraints(editInfoButton, 0, 0);
         GridPane.setConstraints(manageUser, 0, 1);
@@ -128,15 +137,24 @@ public class AdminMenu extends Menu {
         super.setPane();
         GridPane gridPane = new GridPane();
         Scene scene = new Scene(super.mainPane, 1000, 600);
+        scene.getStylesheets().add(new File("Data/Styles/Buttons.css").toURI().toString());
+        scene.getStylesheets().add(new File("Data/Styles/textfield.css").toURI().toString());
+        scene.getStylesheets().add(new File("Data/Styles/backgrounds.css").toURI().toString());
+        scene.getStylesheets().add(new File("Data/Styles/choicebox.css").toURI().toString());
+        super.mainPane.getStyleClass().add("admin-page");
         gridPane.setAlignment(Pos.CENTER);
         gridPane.setVgap(10);
         Label status = new Label();
         ChoiceBox<String> field = new ChoiceBox<>();
         field.getItems().addAll("FirstName", "LastName", "password", "email", "PhoneNumber");
         field.setValue("FirstName");
+        field.getStyleClass().add("choice-box");
         TextField changeTo = new TextField();
         changeTo.setPromptText("change to");
+        changeTo.getStyleClass().add("textfield.css");
         Button edit = new Button("edit");
+        edit.getStyleClass().add("dark-blue");
+        edit.setMaxWidth(Double.MAX_VALUE);
         edit.setOnAction(e -> {
             try {
                 status.setText(AccountManager.edit(field.getValue(), changeTo.getText()));
@@ -152,6 +170,8 @@ public class AdminMenu extends Menu {
             }
         });
         Button back = new Button("back");
+        back.getStyleClass().add("dark-blue");
+        back.setMaxWidth(Double.MAX_VALUE);
         back.setOnAction(e -> {
             show();
         });
@@ -181,6 +201,11 @@ public class AdminMenu extends Menu {
         super.setPane();
         ArrayList<Request> allRequest = Database.getAllRequest();
         Scene scene = new Scene(super.mainPane, 1000, 600);
+        scene.getStylesheets().add(new File("Data/Styles/Buttons.css").toURI().toString());
+        scene.getStylesheets().add(new File("Data/Styles/textfield.css").toURI().toString());
+        scene.getStylesheets().add(new File("Data/Styles/backgrounds.css").toURI().toString());
+        scene.getStylesheets().add(new File("Data/Styles/choicebox.css").toURI().toString());
+        super.mainPane.getStyleClass().add("admin-page");
         GridPane gridPane = new GridPane();
         gridPane.setHgap(20);
         gridPane.setVgap(10);
@@ -219,6 +244,8 @@ public class AdminMenu extends Menu {
             label.setFont(Font.font(15));
             Button button = new Button("show");
             button.setAlignment(Pos.CENTER);
+            button.setMaxWidth(Double.MAX_VALUE);
+            button.getStyleClass().add("dark-blue");
             button.setOnAction(e -> handleShowRequest(request.getId()));
             GridPane.setConstraints(label, 0, i);
             GridPane.setConstraints(button, 2, i);
@@ -228,6 +255,8 @@ public class AdminMenu extends Menu {
         Button back = new Button("back");
         back.setAlignment(Pos.CENTER);
         back.setOnAction(e -> show());
+        back.setMaxWidth(Double.MAX_VALUE);
+        back.getStyleClass().add("dark-blue");
         GridPane.setConstraints(back,1, i);
         GridPane.setHalignment(back, HPos.CENTER);
         back.setAlignment(Pos.CENTER);
@@ -243,6 +272,11 @@ public class AdminMenu extends Menu {
         super.setPane();
         ArrayList<Product> allProduct = Database.getAllProducts();
         Scene scene = new Scene(super.mainPane, 1000, 600);
+        scene.getStylesheets().add(new File("Data/Styles/Buttons.css").toURI().toString());
+        scene.getStylesheets().add(new File("Data/Styles/textfield.css").toURI().toString());
+        scene.getStylesheets().add(new File("Data/Styles/backgrounds.css").toURI().toString());
+        scene.getStylesheets().add(new File("Data/Styles/choicebox.css").toURI().toString());
+        super.mainPane.getStyleClass().add("admin-page");
         GridPane gridPane = new GridPane();
         gridPane.setHgap(20);
         gridPane.setVgap(10);
@@ -262,6 +296,8 @@ public class AdminMenu extends Menu {
             Button button = new Button("show");
             button.setOnAction(e -> handleShowProduct(product.getProductId()));
             button.setAlignment(Pos.CENTER);
+            button.getStyleClass().add("dark-blue");
+            button.setMaxWidth(Double.MAX_VALUE);
             GridPane.setConstraints(label, 0, i);
             GridPane.setConstraints(button, 2, i);
             gridPane.getChildren().addAll(label, button);
@@ -269,6 +305,8 @@ public class AdminMenu extends Menu {
         }
         Button back = new Button("back");
         back.setAlignment(Pos.CENTER);
+        back.getStyleClass().add("dark-blue");
+        back.setMaxWidth(Double.MAX_VALUE);
         back.setOnAction(e -> show());
         GridPane.setConstraints(back,1, i);
         GridPane.setHalignment(back, HPos.CENTER);
@@ -285,6 +323,11 @@ public class AdminMenu extends Menu {
         super.setPane();
         ArrayList<Account> allAccount = Database.getAllAccounts();
         Scene scene = new Scene(super.mainPane, 1000, 600);
+        scene.getStylesheets().add(new File("Data/Styles/Buttons.css").toURI().toString());
+        scene.getStylesheets().add(new File("Data/Styles/textfield.css").toURI().toString());
+        scene.getStylesheets().add(new File("Data/Styles/backgrounds.css").toURI().toString());
+        scene.getStylesheets().add(new File("Data/Styles/choicebox.css").toURI().toString());
+        super.mainPane.getStyleClass().add("admin-page");
         GridPane gridPane = new GridPane();
         gridPane.setHgap(20);
         gridPane.setVgap(10);
@@ -316,6 +359,8 @@ public class AdminMenu extends Menu {
             label.setFont(Font.font(15));
             Button button = new Button("show");
             button.setAlignment(Pos.CENTER);
+            button.setMaxWidth(Double.MAX_VALUE);
+            button.getStyleClass().add("dark-blue");
             button.setOnAction(e -> {
                 handleShowUser(account.getUsername());
             });
@@ -326,6 +371,8 @@ public class AdminMenu extends Menu {
         }
         Button back = new Button("back");
         back.setAlignment(Pos.CENTER);
+        back.getStyleClass().add("dark-blue");
+        back.setMaxWidth(Double.MAX_VALUE);
         GridPane.setHalignment(back, HPos.CENTER);
         back.setOnAction(e -> show());
         GridPane.setConstraints(back,1, i);
@@ -342,6 +389,11 @@ public class AdminMenu extends Menu {
         super.setPane();
         ArrayList<Category> allCategories = Database.getAllCategories();
         Scene scene = new Scene(super.mainPane, 1000, 600);
+        scene.getStylesheets().add(new File("Data/Styles/Buttons.css").toURI().toString());
+        scene.getStylesheets().add(new File("Data/Styles/textfield.css").toURI().toString());
+        scene.getStylesheets().add(new File("Data/Styles/backgrounds.css").toURI().toString());
+        scene.getStylesheets().add(new File("Data/Styles/choicebox.css").toURI().toString());
+        super.mainPane.getStyleClass().add("admin-page");
         GridPane gridPane = new GridPane();
         gridPane.setHgap(20);
         gridPane.setVgap(10);
@@ -359,6 +411,8 @@ public class AdminMenu extends Menu {
             label.setText(text);
             label.setFont(Font.font(15));
             Button button = new Button("show");
+            button.setMaxWidth(Double.MAX_VALUE);
+            button.getStyleClass().add("dark-blue");
             button.setOnAction(e -> {
                 Stage newWindow = new Stage();
                 newWindow.initModality(Modality.APPLICATION_MODAL);
@@ -374,9 +428,14 @@ public class AdminMenu extends Menu {
         }
         Button back = new Button("back");
         back.setAlignment(Pos.CENTER);
+        back.getStyleClass().add("dark-blue");
+        back.setMaxWidth(Double.MAX_VALUE);
         back.setOnAction(e -> show());
 
         Button addNewCategory = new Button("Add Category");
+        addNewCategory.setMaxWidth(Double.MAX_VALUE);
+        addNewCategory.getStyleClass().add("dark-blue");
+        addNewCategory.setAlignment(Pos.CENTER);
         addNewCategory.setOnAction(e -> handleAddNewCategory());
 
         GridPane.setConstraints(addNewCategory, 1, i);
@@ -393,17 +452,23 @@ public class AdminMenu extends Menu {
     private void handleAddNewCategory() {
 
         super.setPane();
-        VBox vBox = new VBox();
-        vBox.setAlignment(Pos.CENTER);
-        vBox.setSpacing(10);
+        GridPane gridPane = new GridPane();
+        gridPane.setVgap(10);
+        gridPane.setAlignment(Pos.CENTER);
 
         Scene scene = new Scene(super.mainPane, 1000, 600);
+        scene.getStylesheets().add(new File("Data/Styles/Buttons.css").toURI().toString());
+        scene.getStylesheets().add(new File("Data/Styles/textfield.css").toURI().toString());
+        scene.getStylesheets().add(new File("Data/Styles/backgrounds.css").toURI().toString());
+        scene.getStylesheets().add(new File("Data/Styles/choicebox.css").toURI().toString());
+        super.mainPane.getStyleClass().add("admin-page");
 
         Label status = new Label();
         status.setFont(Font.font(20));
 
         TextField name = new TextField();
         name.setPromptText("Name");
+        name.getStyleClass().add("text-field");
 
         TextField feature = new TextField();
         feature.setPromptText("Feature");
@@ -413,21 +478,34 @@ public class AdminMenu extends Menu {
 
 
         Button addButton = new Button("Add");
+        addButton.getStyleClass().add("dark-blue");
+        addButton.setMaxWidth(Double.MAX_VALUE);
         addButton.setOnAction(e -> {
             status.setText(AdminManager.addNewCategory(name.getText(), feature.getText(),parentName.getText()));
             handleManageCategories();
         });
 
         Button back = new Button("back");
+        back.getStyleClass().add("dark-blue");
+        back.setMaxWidth(Double.MAX_VALUE);
         back.setOnAction(e -> {
             handleManageCategories();
         });
 
-        vBox.getChildren().addAll(name, feature, parentName, addButton, back, status);
-        super.mainPane.setCenter(vBox);
+        GridPane.setConstraints(name, 0, 0);
+        GridPane.setConstraints(feature, 0, 1);
+        GridPane.setConstraints(parentName, 0, 2);
+        GridPane.setConstraints(addButton, 0, 3);
+        GridPane.setConstraints(back, 0, 4);
+        GridPane.setConstraints(status, 0, 5);
+        GridPane.setHalignment(addButton, HPos.CENTER);
+        GridPane.setHalignment(back, HPos.CENTER);
+        GridPane.setHalignment(status, HPos.CENTER);
+
+        gridPane.getChildren().addAll(name, feature, parentName, addButton, back, status);
+        super.mainPane.setCenter(gridPane);
 
         Menu.window.setScene(scene);
-
     }
 
     private void handleShowCategory(String categoryName , Stage newWindow){
@@ -484,6 +562,11 @@ public class AdminMenu extends Menu {
         super.setPane();
         ArrayList<Discount> allDiscounts = Database.getAllDiscounts();
         Scene scene = new Scene(super.mainPane, 1000, 600);
+        scene.getStylesheets().add(new File("Data/Styles/Buttons.css").toURI().toString());
+        scene.getStylesheets().add(new File("Data/Styles/textfield.css").toURI().toString());
+        scene.getStylesheets().add(new File("Data/Styles/backgrounds.css").toURI().toString());
+        scene.getStylesheets().add(new File("Data/Styles/choicebox.css").toURI().toString());
+        super.mainPane.getStyleClass().add("admin-page");
         GridPane gridPane = new GridPane();
         gridPane.setHgap(20);
         gridPane.setVgap(10);
@@ -503,6 +586,7 @@ public class AdminMenu extends Menu {
             label.setFont(Font.font(15));
             Button button = new Button("show");
             button.setAlignment(Pos.CENTER);
+            button.getStyleClass().add("dark-blue");
             button.setOnAction(e -> {
                 Stage newWindow = new Stage();
                 handleShowDiscount(discount.getDiscountId(),newWindow);
@@ -516,10 +600,14 @@ public class AdminMenu extends Menu {
         }
         Button back = new Button("back");
         back.setAlignment(Pos.CENTER);
+        back.setMaxWidth(Double.MAX_VALUE);
+        back.getStyleClass().add("dark-blue");
         GridPane.setHalignment(back, HPos.CENTER);
         back.setOnAction(e -> show());
 
         Button addNewDiscount = new Button("Add New Discount");
+        addNewDiscount.getStyleClass().add("dark-blue");
+        addNewDiscount.setMaxWidth(Double.MAX_VALUE);
         addNewDiscount.setOnAction(e -> handleAddDiscount());
 
         GridPane.setConstraints(addNewDiscount, 1, i);
@@ -539,8 +627,14 @@ public class AdminMenu extends Menu {
         Pane pane = ViewModelsWithGraphic.viewPersonalInfoInGraphic(username);
         ((GridPane)pane).setAlignment(Pos.CENTER);
         Scene scene = new Scene(pane, 600, 400);
+        scene.getStylesheets().add(new File("Data/Styles/Buttons.css").toURI().toString());
+        scene.getStylesheets().add(new File("Data/Styles/textfield.css").toURI().toString());
+        scene.getStylesheets().add(new File("Data/Styles/backgrounds.css").toURI().toString());
+        scene.getStylesheets().add(new File("Data/Styles/choicebox.css").toURI().toString());
+        pane.getStyleClass().add("admin-popup");
         ChoiceBox<String> choiceBox = new ChoiceBox<>();
         choiceBox.getItems().addAll("Admin", "Seller", "Buyer");
+        choiceBox.getStyleClass().add("choice-box");
         Account account = Database.getAccountByUsername(username);
         if (account instanceof AdminAccount)
         {
@@ -555,10 +649,14 @@ public class AdminMenu extends Menu {
             choiceBox.setValue("Seller");
         }
         Button changeRole = new Button("Change Role");
+        changeRole.setMaxWidth(Double.MAX_VALUE);
+        changeRole.getStyleClass().add("dark-blue");
         changeRole.setOnAction(e -> {
             AdminManager.changeRole(username, choiceBox.getValue());
         });
         Button remove = new Button("Remove");
+        remove.setMaxWidth(Double.MAX_VALUE);
+        remove.getStyleClass().add("record-sales");
         remove.setOnAction(e -> {
             AdminManager.deleteUsername(username);
             handleManageUsers();
@@ -581,7 +679,14 @@ public class AdminMenu extends Menu {
         Pane pane = ViewModelsWithGraphic.showFullInfoGraphic(productID);
         ((GridPane)pane).setAlignment(Pos.CENTER);
         Scene scene = new Scene(pane, 600, 400);
+        scene.getStylesheets().add(new File("Data/Styles/Buttons.css").toURI().toString());
+        scene.getStylesheets().add(new File("Data/Styles/textfield.css").toURI().toString());
+        scene.getStylesheets().add(new File("Data/Styles/backgrounds.css").toURI().toString());
+        scene.getStylesheets().add(new File("Data/Styles/choicebox.css").toURI().toString());
+        pane.getStyleClass().add("admin-popup");
         Button remove = new Button("Remove");
+        remove.setMaxWidth(Double.MAX_VALUE);
+        remove.getStyleClass().add("record-sales");
         remove.setOnAction(e -> {
             AdminManager.deleteProduct(productID);
             handleManageProduct();
@@ -603,8 +708,15 @@ public class AdminMenu extends Menu {
         Pane pane = ViewModelsWithGraphic.showRequestGraphic(request);
         ((GridPane)pane).setAlignment(Pos.CENTER);
         Scene scene = new Scene(pane, 600, 400);
+        scene.getStylesheets().add(new File("Data/Styles/Buttons.css").toURI().toString());
+        scene.getStylesheets().add(new File("Data/Styles/textfield.css").toURI().toString());
+        scene.getStylesheets().add(new File("Data/Styles/backgrounds.css").toURI().toString());
+        scene.getStylesheets().add(new File("Data/Styles/choicebox.css").toURI().toString());
+        pane.getStyleClass().add("admin-popup");
 
         Button accept = new Button("Accept");
+        accept.setMaxWidth(Double.MAX_VALUE);
+        accept.getStyleClass().add("dark-blue");
 
         accept.setOnAction(e -> {
             AdminManager.acceptOrRejectRequest(id, true);
@@ -613,6 +725,8 @@ public class AdminMenu extends Menu {
         });
 
         Button reject = new Button("Reject");
+        reject.setMaxWidth(Double.MAX_VALUE);
+        reject.getStyleClass().add("dark-blue");
         reject.setOnAction(e -> {
             AdminManager.acceptOrRejectRequest(id, false);
             newWindow.close();
@@ -634,11 +748,20 @@ public class AdminMenu extends Menu {
         Pane pane = ViewModelsWithGraphic.viewDiscount(id);
         ((GridPane)pane).setAlignment(Pos.CENTER);
         Scene scene = new Scene(pane, 600, 400);
+        scene.getStylesheets().add(new File("Data/Styles/Buttons.css").toURI().toString());
+        scene.getStylesheets().add(new File("Data/Styles/textfield.css").toURI().toString());
+        scene.getStylesheets().add(new File("Data/Styles/backgrounds.css").toURI().toString());
+        scene.getStylesheets().add(new File("Data/Styles/choicebox.css").toURI().toString());
+        pane.getStyleClass().add("admin-popup");
         Button edit = new Button("Edit");
+        edit.setMaxWidth(Double.MAX_VALUE);
+        edit.getStyleClass().add("dark-blue");
         edit.setOnAction(e -> {
             handleEditDiscount(id , newWindow);
         });
         Button remove = new Button("Remove");
+        remove.setMaxWidth(Double.MAX_VALUE);
+        remove.getStyleClass().add("record-sales");
         remove.setOnAction(e -> {
             AdminManager.removeDiscount(id);
             newWindow.close();
@@ -656,24 +779,46 @@ public class AdminMenu extends Menu {
 
     private void handleEditDiscount(int discountId, Stage newWindow) {
         super.setPane();
-        VBox vBox = new VBox();
-        Scene scene = new Scene(vBox, 600, 400);
-        vBox.setAlignment(Pos.CENTER);
-        vBox.setSpacing(10);
+        GridPane gridPane = new GridPane();
+        Scene scene = new Scene(gridPane, 600, 400);
+        scene.getStylesheets().add(new File("Data/Styles/Buttons.css").toURI().toString());
+        scene.getStylesheets().add(new File("Data/Styles/textfield.css").toURI().toString());
+        scene.getStylesheets().add(new File("Data/Styles/backgrounds.css").toURI().toString());
+        scene.getStylesheets().add(new File("Data/Styles/choicebox.css").toURI().toString());
+        gridPane.getStyleClass().add("admin-popup");
+        gridPane.setAlignment(Pos.CENTER);
+        gridPane.setVgap(10);
         Label status = new Label();
         ChoiceBox<String> field = new ChoiceBox<>();
-
         field.getItems().addAll("MaxValue", "Percent", "StartDate", "EndDate", "NumberOfTime");
+        field.getStyleClass().add("choice-box");
+
         TextField changeTo = new TextField();
         changeTo.setPromptText("change to");
+        changeTo.getStyleClass().add("text-field");
 
         Button edit = new Button("edit");
+        edit.setMaxWidth(Double.MAX_VALUE);
+        edit.getStyleClass().add("dark-blue");
         edit.setOnAction(e -> {
             status.setText(AdminManager.editDiscount(discountId, field.getValue(), changeTo.getText()));
         });
         Button back = new Button("back");
+        back.getStyleClass().add("dark-blue");
+        back.setMaxWidth(Double.MAX_VALUE);
         back.setOnAction(e -> handleShowDiscount(discountId, newWindow));
-        vBox.getChildren().addAll(field, changeTo, edit, back, status);
+
+        GridPane.setConstraints(field, 0, 0);
+        GridPane.setConstraints(changeTo, 0, 1);
+        GridPane.setConstraints(edit, 0, 2);
+        GridPane.setConstraints(back, 0, 3);
+        GridPane.setConstraints(status, 0, 4);
+        GridPane.setHalignment(field, HPos.CENTER);
+        GridPane.setHalignment(edit, HPos.CENTER);
+        GridPane.setHalignment(back, HPos.CENTER);
+        GridPane.setHalignment(status, HPos.CENTER);
+
+        gridPane.getChildren().addAll(field, changeTo, edit, back, status);
 
         newWindow.setScene(scene);
     }
@@ -683,6 +828,11 @@ public class AdminMenu extends Menu {
     {
         super.setPane();
         Scene scene = new Scene(super.mainPane, 1000, 600);
+        scene.getStylesheets().add(new File("Data/Styles/Buttons.css").toURI().toString());
+        scene.getStylesheets().add(new File("Data/Styles/textfield.css").toURI().toString());
+        scene.getStylesheets().add(new File("Data/Styles/backgrounds.css").toURI().toString());
+        scene.getStylesheets().add(new File("Data/Styles/choicebox.css").toURI().toString());
+        super.mainPane.getStyleClass().add("admin-page");
         GridPane gridPane = new GridPane();
         gridPane.setHgap(20);
         gridPane.setVgap(10);
@@ -690,6 +840,7 @@ public class AdminMenu extends Menu {
         Label status = new Label();
         TextField maxValue = new TextField();
         maxValue.setPromptText("Max Value");
+        maxValue.getStyleClass().add("text-field");
         TextField percent = new TextField();
         percent.setPromptText("Percent");
         TextField startDate = new TextField();
@@ -718,8 +869,13 @@ public class AdminMenu extends Menu {
                 alert.showAndWait();
             }
         });
+        add.getStyleClass().add("dark-blue");
+        add.setMaxWidth(Double.MAX_VALUE);
+
         Button back = new Button("Back");
         back.setOnAction(e -> handleManageDiscounts());
+        back.getStyleClass().add("dark-blue");
+        back.setMaxWidth(Double.MAX_VALUE);
 
         GridPane.setConstraints(maxValue, 0, 0);
         GridPane.setConstraints(percent, 0, 1);
@@ -745,12 +901,19 @@ public class AdminMenu extends Menu {
     {
         super.setPane();
         Scene scene = new Scene(super.mainPane, 1000, 600);
+        scene.getStylesheets().add(new File("Data/Styles/Buttons.css").toURI().toString());
+        scene.getStylesheets().add(new File("Data/Styles/textfield.css").toURI().toString());
+        scene.getStylesheets().add(new File("Data/Styles/backgrounds.css").toURI().toString());
+        scene.getStylesheets().add(new File("Data/Styles/choicebox.css").toURI().toString());
+        super.mainPane.getStyleClass().add("admin-page");
+
         GridPane gridPane = new GridPane();
         gridPane.setHgap(20);
         gridPane.setVgap(10);
         gridPane.setAlignment(Pos.CENTER);
         Label status = new Label();
         TextField userName = new TextField();
+        userName.getStyleClass().add("text-field");
         userName.setPromptText("username");
         TextField firstName = new TextField();
         firstName.setPromptText("first name");
@@ -766,6 +929,8 @@ public class AdminMenu extends Menu {
         credit.setPromptText("credit");
 
         Button register = new Button("Register");
+        register.getStyleClass().add("dark-blue");
+        register.setMaxWidth(Double.MAX_VALUE);
         register.setOnAction(e -> {
             try
             {
@@ -782,7 +947,10 @@ public class AdminMenu extends Menu {
                 alert.showAndWait();
             }
         });
+
         Button back = new Button("Back");
+        back.getStyleClass().add("dark-blue");
+        back.setMaxWidth(Double.MAX_VALUE);
         back.setOnAction(e -> show());
 
         GridPane.setConstraints(userName, 0, 0);

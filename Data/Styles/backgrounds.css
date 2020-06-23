@@ -7,3 +7,13 @@
     -fx-background-image: url("images/admin.jpg");
     -fx-background-size:  cover;
 }
+
+.admin-page{
+    -fx-background-image: url("images/adminPages.jpg");
+    -fx-background-size:  cover;
+}
+
+.admin-popup{
+    -fx-background-image: url("images/adminPopup.jpg");
+    -fx-background-size:  cover;
+}
