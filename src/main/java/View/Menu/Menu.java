@@ -8,6 +8,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.Scanner;
 import java.util.regex.Matcher;
@@ -56,19 +57,32 @@ public abstract class Menu{
     public void setPane(){
         window.setResizable(false);
         mainPane = new BorderPane();
+        mainPane.getStylesheets().add(new File("Data/Styles/Buttons.css").toURI().toString());
+
         HBox mainButtons = new HBox();
         mainButtons.setSpacing(20);
         mainButtons.setAlignment(Pos.CENTER);
+
         Button userButton = new Button("User");
+        userButton.getStyleClass().add("top-button");
+        userButton.setMaxWidth(Double.MAX_VALUE);
         userButton.setOnAction(e -> {
             handleUser();
         });
         Button productButton = new Button("Products");
+        productButton.getStyleClass().add("top-button");
+        productButton.setMaxWidth(Double.MAX_VALUE);
         productButton.setOnAction(e -> {
             handleProduct();
         });
+
         Button offButton = new Button("Offs");
+        offButton.getStyleClass().add("top-button");
+        offButton.setMaxWidth(Double.MAX_VALUE);
+
         Button exitButton = new Button("exit");
+        exitButton.getStyleClass().add("top-button");
+        exitButton.setMaxWidth(Double.MAX_VALUE);
 
 
         mainButtons.getChildren().addAll(userButton, productButton, offButton, exitButton);

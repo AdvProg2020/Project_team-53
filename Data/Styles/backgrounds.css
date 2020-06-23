@@ -17,3 +17,8 @@
     -fx-background-image: url("images/adminPopup.jpg");
     -fx-background-size:  cover;
 }
+
+.main{
+    -fx-background-image: url("images/main.jpg");
+    -fx-background-size:  cover;
+}

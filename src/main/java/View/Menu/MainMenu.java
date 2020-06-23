@@ -2,10 +2,14 @@ package View.Menu;
 
 import View.Menu.OffMenus.OffMenu;
 import View.Menu.ProductsMenus.ProductsMenu;
+import javafx.geometry.HPos;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.layout.HBox;
+import javafx.scene.layout.GridPane;
+import javafx.scene.text.Font;
 
+import java.io.File;
 
 
 public class MainMenu extends Menu{
@@ -21,8 +25,17 @@ public class MainMenu extends Menu{
     @Override
     public void setPane() {
         super.setPane();
-        Label nothing = new Label("Nothing");
-        mainPane.setCenter(new HBox(nothing));
+        Label welcome = new Label("WELCOME");
+        welcome.setFont(Font.font(75));
+        welcome.setAlignment(Pos.CENTER);
+        GridPane gridPane = new GridPane();
+        super.mainPane.getStylesheets().add(new File("Data/Styles/backgrounds.css").toURI().toString());
+        super.mainPane.getStyleClass().add("main");
+        GridPane.setHalignment(welcome, HPos.CENTER);
+        GridPane.setConstraints(welcome, 0, 0);
+        gridPane.getChildren().add(welcome);
+        gridPane.setAlignment(Pos.CENTER);
+        mainPane.setCenter(gridPane);
     }
 
     @Override

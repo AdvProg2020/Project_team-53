@@ -23,17 +23,23 @@ public class LoginMenu extends Menu{
         super.setPane();
         VBox vBox = new VBox();
         vBox.setAlignment(Pos.CENTER);
-        vBox.setSpacing(10);
+        vBox.setSpacing(50);
         Scene scene = new Scene(super.mainPane, 1000, 600);
+        scene.getStylesheets().add(new File("Data/Styles/Buttons.css").toURI().toString());
+        scene.getStylesheets().add(new File("Data/Styles/backgrounds.css").toURI().toString());
+        super.mainPane.getStyleClass().add("main");
         Button loginButton = new Button("Login");
+        loginButton.getStyleClass().add("top-button");
         loginButton.setOnAction(e -> {
             handleLoginChild();
         });
         Button registerButton = new Button("Register");
+        registerButton.getStyleClass().add("top-button");
         registerButton.setOnAction(e -> {
             handleRegister();
         });
         Button back = new Button("back");
+        back.getStyleClass().add("top-button");
         back.setOnAction(e -> {
             parentMenu.show();
         });
