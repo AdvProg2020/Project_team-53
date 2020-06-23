@@ -835,10 +835,10 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="280" y="6" key="#null./0.0.1366.738@0.0.1366.738" timestamp="1589226532697" />
-    <state x="377" y="0" key="CommitChangelistDialog2" timestamp="1592927777988">
+    <state x="377" y="0" key="CommitChangelistDialog2" timestamp="1592951737290">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="377" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1592927777988" />
+    <state x="377" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1592951737290" />
     <state x="470" y="0" key="CommitChangelistDialog2/0.0.1366.738@0.0.1366.738" timestamp="1592896321602" />
     <state x="92" y="93" width="1182" height="552" key="DiffContextDialog" timestamp="1591440525713">
       <screen x="0" y="0" width="1366" height="738" />
@@ -907,19 +907,23 @@
     </state>
     <state x="184" y="0" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1591902407946" />
     <state x="184" y="0" key="SettingsEditor/0.0.1366.738@0.0.1366.738" timestamp="1591433792246" />
-    <state x="275" y="95" key="Vcs.Push.Dialog.v2" timestamp="1592918808305">
+    <state x="470" y="78" key="VCS.ChangeListViewerDialog" timestamp="1592951772465">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="275" y="95" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1592918808305" />
+    <state x="470" y="78" key="VCS.ChangeListViewerDialog/0.0.1366.728@0.0.1366.728" timestamp="1592951772465" />
+    <state x="275" y="95" key="Vcs.Push.Dialog.v2" timestamp="1592951742868">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="275" y="95" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1592951742868" />
     <state x="275" y="96" key="Vcs.Push.Dialog.v2/0.0.1366.738@0.0.1366.738" timestamp="1591971665989" />
     <state x="378" y="186" key="com.intellij.ide.util.TipDialog" timestamp="1592818500745">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="378" y="186" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1592818500745" />
-    <state x="492" y="283" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1592896326180">
-      <screen x="0" y="0" width="1366" height="738" />
+    <state x="492" y="279" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1592951753011">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="492" y="279" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.728@0.0.1366.728" timestamp="1591874970985" />
+    <state x="492" y="279" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.728@0.0.1366.728" timestamp="1592951753011" />
     <state x="492" y="283" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.738@0.0.1366.738" timestamp="1592896326180" />
     <state x="380" y="100" width="737" height="606" key="find.popup" timestamp="1592295341789">
       <screen x="0" y="0" width="1366" height="728" />
