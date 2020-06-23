@@ -113,7 +113,7 @@ public class BuyerMenu extends Menu {
 
     private void handleShowLog(BuyLog buyLog) {
         Stage newWindow = new Stage();
-        Pane pane = buyLog.showWithGraphic();
+        Pane pane = ViewModelsWithGraphic.showLogWithGraphic(buyLog);
         ((GridPane)pane).setAlignment(Pos.CENTER);
         Scene scene = new Scene(pane, 600, 400);
 

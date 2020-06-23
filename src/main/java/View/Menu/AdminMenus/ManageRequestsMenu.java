@@ -24,7 +24,7 @@ public class ManageRequestsMenu extends Menu {
 
             @Override
             public void execute() {
-                System.out.println(AdminManager.showAllRequests());
+               // System.out.println(AdminManager.showAllRequests());
                 String input = scanner.nextLine();
                 try
                 {
@@ -72,7 +72,7 @@ public class ManageRequestsMenu extends Menu {
                     {
                         throw new Exception("invalid input");
                     }
-                    System.out.println(AdminManager.showRequestByiId(Integer.parseInt(matcher1.group(1))));
+                   // System.out.println(AdminManager.showRequestByiId(Integer.parseInt(matcher1.group(1))));
                 }
                 catch (Exception e)
                 {

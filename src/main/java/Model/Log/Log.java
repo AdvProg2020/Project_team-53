@@ -3,7 +3,6 @@ package Model.Log;
 import Controller.Database;
 import Model.Account.BuyerAccount;
 import Model.Account.SellerAccount;
-import javafx.scene.layout.Pane;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -36,6 +35,18 @@ public abstract class Log {
         return productId;
     }
 
+    public String getDate() {
+        return date;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public String getDeliveryStatus() {
+        return deliveryStatus;
+    }
+
     public static void addLog(String buyerUsername , String sellerUsername , int price, int productId, int offValue, int discountValue){
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
         LocalDateTime now = LocalDateTime.now();
@@ -58,5 +69,4 @@ public abstract class Log {
         return logId;
     }
 
-    public abstract Pane showWithGraphic();
 }

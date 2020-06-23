@@ -328,8 +328,8 @@ public class SellerMenu extends Menu {
         TextField description = new TextField();
         description.setPromptText("Description");
 
-        TextField categoyName = new TextField();
-        categoyName.setPromptText("Category Name");
+        TextField categoryName = new TextField();
+        categoryName.setPromptText("Category Name");
 
         TextField price = new TextField();
         price.setPromptText("Price");
@@ -337,17 +337,17 @@ public class SellerMenu extends Menu {
         Button sendRequest = new Button("Send Request");
         sendRequest.setOnAction(e -> {
             status.setText(SellerManager.sendAddProductRequest(statusTextField.getText(), name.getText(), available.isSelected(),
-                    Integer.parseInt(number.getText()), description.getText(), categoyName.getText(),
+                    Integer.parseInt(number.getText()), description.getText(), categoryName.getText(),
                     Integer.parseInt(price.getText())));
-            show();
+            handleManageProducts();
         });
 
         Button back = new Button("back");
         back.setOnAction(e -> {
-            show();
+            handleManageProducts();
         });
 
-        vBox.getChildren().addAll(statusTextField, name, available, number, description, categoyName, price, sendRequest, back, status);
+        vBox.getChildren().addAll(statusTextField, name, available, number, description, categoryName, price, sendRequest, back, status);
         super.mainPane.setCenter(vBox);
 
         Menu.window.setScene(scene);
@@ -395,7 +395,7 @@ public class SellerMenu extends Menu {
 
     private void handleShowLog(SellLog sellLog) {
         Stage newWindow = new Stage();
-        Pane pane = sellLog.showWithGraphic();
+        Pane pane = ViewModelsWithGraphic.showLogWithGraphic(sellLog);
         ((GridPane)pane).setAlignment(Pos.CENTER);
         Scene scene = new Scene(pane, 600, 400);
 

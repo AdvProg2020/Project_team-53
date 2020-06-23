@@ -69,16 +69,13 @@ public class AdminMenu extends Menu {
         Button manageDiscounts = new Button("Manage Discounts");
         manageDiscounts.setOnAction(e -> handleManageDiscounts());
 
-        Button manageAddDiscount = new Button("Add Discount");
-        manageAddDiscount.setOnAction(e -> handleAddDiscount());
-
         Button manageAddAdmin = new Button("Add Manager");
         manageAddAdmin.setOnAction(e -> handleAddAdmin());
 
         Button back = new Button("Back");
         back.setOnAction(e -> parentMenu.show());
 
-        allButtons.getChildren().addAll(editInfoButton, manageUser, manageRequest, manageProduct, manageAddDiscount, manageAddAdmin, logout, back);
+        allButtons.getChildren().addAll(editInfoButton, manageUser, manageRequest, manageProduct, manageCategories, manageDiscounts, manageAddAdmin, logout, back);
 
         HBox hBox = new HBox(ViewModelsWithGraphic.viewPersonalInfoInGraphic(AccountManager.getLoggedInAccount().getUsername()) , allButtons);
         hBox.setSpacing(20);
@@ -325,6 +322,13 @@ public class AdminMenu extends Menu {
             label.setText(text);
             label.setFont(Font.font(15));
             Button button = new Button("show");
+            button.setOnAction(e -> {
+                Stage newWindow = new Stage();
+                newWindow.initModality(Modality.APPLICATION_MODAL);
+
+                handleShowCategory(category.getName() , newWindow);
+                newWindow.showAndWait();
+            });
             button.setAlignment(Pos.CENTER);
             GridPane.setConstraints(label, 0, i);
             GridPane.setConstraints(button, 2, i);
@@ -334,19 +338,114 @@ public class AdminMenu extends Menu {
         Button back = new Button("back");
         back.setAlignment(Pos.CENTER);
         back.setOnAction(e -> show());
-        GridPane.setConstraints(back,1, i);
+
+        Button addNewCategory = new Button("Add Category");
+        addNewCategory.setOnAction(e -> handleAddNewCategory());
+
+        GridPane.setConstraints(addNewCategory, 1, i);
+        GridPane.setConstraints(back,1, i+1);
+
         back.setAlignment(Pos.CENTER);
-        gridPane.getChildren().add(back);
+        gridPane.getChildren().addAll(back, addNewCategory);
 
         super.mainPane.setCenter(gridPane);
 
         Menu.window.setScene(scene);
     }
 
+    private void handleAddNewCategory() {
+
+        super.setPane();
+        VBox vBox = new VBox();
+        vBox.setAlignment(Pos.CENTER);
+        vBox.setSpacing(10);
+
+        Scene scene = new Scene(super.mainPane, 1000, 600);
+
+        Label status = new Label();
+        status.setFont(Font.font(20));
+
+        TextField name = new TextField();
+        name.setPromptText("Name");
+
+        TextField feature = new TextField();
+        feature.setPromptText("Feature");
+
+        TextField parentName = new TextField();
+        parentName.setPromptText("Parent");
+
+
+        Button addButton = new Button("Add");
+        addButton.setOnAction(e -> {
+            status.setText(AdminManager.addNewCategory(name.getText(), feature.getText(),parentName.getText()));
+            handleManageCategories();
+        });
+
+        Button back = new Button("back");
+        back.setOnAction(e -> {
+            handleManageCategories();
+        });
+
+        vBox.getChildren().addAll(name, feature, parentName, addButton, back, status);
+        super.mainPane.setCenter(vBox);
+
+        Menu.window.setScene(scene);
+
+    }
+
+    private void handleShowCategory(String categoryName , Stage newWindow){
+        Pane pane = ViewModelsWithGraphic.showCategoryGraphic(categoryName);
+        ((GridPane)pane).setAlignment(Pos.CENTER);
+        Scene scene = new Scene(pane, 600, 400);
+
+        Button remove = new Button("Remove");
+        remove.setOnAction(e -> {
+            AdminManager.deleteCategory(categoryName);
+            handleManageCategories();
+            newWindow.close();
+        });
+
+        Button edit = new Button("Edit");
+        edit.setOnAction(e -> handleEditCategory(categoryName, newWindow));
+
+        GridPane.setConstraints(remove, 4, 1);
+        GridPane.setConstraints(edit, 4, 2);
+
+        pane.getChildren().addAll(remove , edit);
+
+        newWindow.setScene(scene);
+        newWindow.setOnCloseRequest(e -> handleManageCategories());
+
+    }
+
+    private void handleEditCategory(String categoryName, Stage newWindow) {
+        super.setPane();
+        VBox vBox = new VBox();
+        Scene scene = new Scene(vBox, 600, 400);
+        vBox.setAlignment(Pos.CENTER);
+        vBox.setSpacing(10);
+        Label status = new Label();
+        ChoiceBox<String> field = new ChoiceBox<>();
+        field.getItems().addAll( "feature", "parentName");
+
+        TextField changeTo = new TextField();
+        changeTo.setPromptText("change to");
+
+        Button edit = new Button("edit");
+        edit.setOnAction(e -> {
+            status.setText(AdminManager.editCategory(categoryName, field.getValue(), changeTo.getText()));
+        });
+        Button back = new Button("back");
+        back.setOnAction(e -> handleShowCategory(categoryName, newWindow));
+        vBox.getChildren().addAll(field, changeTo, edit, back, status);
+
+        newWindow.setScene(scene);
+    }
+
     public void handleManageDiscounts()
     {
         super.setPane();
-        ArrayList<Discount> allDiscounts = new ArrayList<>();
+        ArrayList<Discount> allDiscounts = Database.getAllDiscounts();
         Scene scene = new Scene(super.mainPane, 1000, 600);
         GridPane gridPane = new GridPane();
         gridPane.setHgap(20);
@@ -367,7 +466,12 @@ public class AdminMenu extends Menu {
             label.setFont(Font.font(15));
             Button button = new Button("show");
             button.setAlignment(Pos.CENTER);
-            button.setOnAction(e -> handleShowDiscount(discount.getDiscountId()));
+            button.setOnAction(e -> {
+                Stage newWindow = new Stage();
+                handleShowDiscount(discount.getDiscountId(),newWindow);
+                newWindow.initModality(Modality.APPLICATION_MODAL);
+                newWindow.showAndWait();
+            });
             GridPane.setConstraints(label, 0, i);
             GridPane.setConstraints(button, 2, i);
             gridPane.getChildren().addAll(label, button);
@@ -377,9 +481,15 @@ public class AdminMenu extends Menu {
         back.setAlignment(Pos.CENTER);
         GridPane.setHalignment(back, HPos.CENTER);
         back.setOnAction(e -> show());
-        GridPane.setConstraints(back,1, i);
+
+        Button addNewDiscount = new Button("Add New Discount");
+        addNewDiscount.setOnAction(e -> handleAddDiscount());
+
+        GridPane.setConstraints(addNewDiscount, 1, i);
+        GridPane.setConstraints(back,1, i+1);
+
         back.setAlignment(Pos.CENTER);
-        gridPane.getChildren().add(back);
+        gridPane.getChildren().addAll(back, addNewDiscount);
 
         super.mainPane.setCenter(gridPane);
 
@@ -452,7 +562,8 @@ public class AdminMenu extends Menu {
     public void handleShowRequest(int id)
     {
         Stage newWindow = new Stage();
-        Pane pane = AdminManager.showRequestByIdInGraphic(id);
+        Request request = Database.getRequestById(id);
+        Pane pane = ViewModelsWithGraphic.showRequestGraphic(request);
         ((GridPane)pane).setAlignment(Pos.CENTER);
         Scene scene = new Scene(pane, 600, 400);
 
@@ -481,37 +592,55 @@ public class AdminMenu extends Menu {
         newWindow.showAndWait();
     }
 
-    public void handleShowDiscount(int id)
+    public void handleShowDiscount(int id, Stage newWindow)
     {
-        Stage newWindow = new Stage();
         Pane pane = ViewModelsWithGraphic.viewDiscount(id);
         ((GridPane)pane).setAlignment(Pos.CENTER);
         Scene scene = new Scene(pane, 600, 400);
-        ChoiceBox<String> choiceBox = new ChoiceBox<>();
-        choiceBox.getItems().addAll("MaxValue", "Percent", "StartDate", "EndDate", "NumberOfTime");
-        TextField changeTo = new TextField();
-        changeTo.setPromptText("Change To");
         Button edit = new Button("Edit");
         edit.setOnAction(e -> {
-            AdminManager.editDiscount(id, choiceBox.getValue(), changeTo.getText());
+            handleEditDiscount(id , newWindow);
         });
         Button remove = new Button("Remove");
         remove.setOnAction(e -> {
             AdminManager.removeDiscount(id);
-            handleManageDiscounts();
             newWindow.close();
+            handleManageDiscounts();
         });
-        GridPane.setConstraints(choiceBox, 3, 0);
-        GridPane.setConstraints(changeTo, 3, 1);
         GridPane.setConstraints(edit, 3, 2);
         GridPane.setConstraints(remove, 3, 3);
 
-        pane.getChildren().addAll(choiceBox, changeTo, edit, remove);
+        pane.getChildren().addAll(edit, remove);
 
         newWindow.setScene(scene);
-        newWindow.initModality(Modality.APPLICATION_MODAL);
-        newWindow.showAndWait();
+        newWindow.setOnCloseRequest(e -> handleManageDiscounts());
     }
+
+
+    private void handleEditDiscount(int discountId, Stage newWindow) {
+        super.setPane();
+        VBox vBox = new VBox();
+        Scene scene = new Scene(vBox, 600, 400);
+        vBox.setAlignment(Pos.CENTER);
+        vBox.setSpacing(10);
+        Label status = new Label();
+        ChoiceBox<String> field = new ChoiceBox<>();
+
+        field.getItems().addAll("MaxValue", "Percent", "StartDate", "EndDate", "NumberOfTime");
+        TextField changeTo = new TextField();
+        changeTo.setPromptText("change to");
+
+        Button edit = new Button("edit");
+        edit.setOnAction(e -> {
+            status.setText(AdminManager.editDiscount(discountId, field.getValue(), changeTo.getText()));
+        });
+        Button back = new Button("back");
+        back.setOnAction(e -> handleShowDiscount(discountId, newWindow));
+        vBox.getChildren().addAll(field, changeTo, edit, back, status);
+
+        newWindow.setScene(scene);
+    }
+
 
     public void handleAddDiscount()
     {
@@ -553,7 +682,7 @@ public class AdminMenu extends Menu {
             }
         });
         Button back = new Button("Back");
-        back.setOnAction(e -> show());
+        back.setOnAction(e -> handleManageDiscounts());
 
         GridPane.setConstraints(maxValue, 0, 0);
         GridPane.setConstraints(percent, 0, 1);

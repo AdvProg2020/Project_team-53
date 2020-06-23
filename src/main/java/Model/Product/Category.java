@@ -14,7 +14,7 @@ public class Category {
         this.feature = feature;
         this.parent = parent;
         this.allProductIds = new ArrayList<>();
-        allSubCategoryNames = new ArrayList<>();
+        this.allSubCategoryNames = new ArrayList<>();
     }
 
     public ArrayList<String> getAllSubCategoryNames() {
@@ -50,6 +50,9 @@ public class Category {
     }
 
 
+    public void removeSubCategory(String categoryName){
+        allSubCategoryNames.remove(categoryName);
+    }
 
     public void addSubCategory(String categoryName){
         allSubCategoryNames.add(categoryName);

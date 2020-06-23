@@ -11,20 +11,10 @@ import Model.Product.Product;
 import Model.Request.AddNewOffRequest;
 import Model.Request.EditOffRequest;
 import Model.Request.Request;
-import javafx.scene.layout.Pane;
 
 import java.util.ArrayList;
 
 public class AdminManager {
-
-    public static String showAllAccount() {
-        ArrayList<Account> accounts = Database.getAllAccounts();
-        StringBuilder res = new StringBuilder();
-        for (Account account : accounts) {
-            res.append("\n ++++++++++++++++++++++++++++++ \n").append(account.showInfo());
-        }
-        return res.toString();
-    }
 
     public static String showAccountWithUsername(String username) {
         Account account = Database.getAccountByUsername(username);
@@ -44,12 +34,7 @@ public class AdminManager {
         return "New admin account registered.";
     }
 
-    public static Pane showRequestByIdInGraphic(int id)
-    {
-        Request request = Database.getRequestById(id);
 
-        return request.showGraphical();
-    }
 
     public static String showRequestByiId(int id){
         Request request = Database.getRequestById(id);
@@ -98,7 +83,11 @@ public class AdminManager {
     }
 
     public static String addNewCategory(String name, String feature, String parentName){
-        Database.addAllCategory(new Category(name, feature, parentName));
+        Category category = new Category(name, feature, parentName);
+        Database.addAllCategory(category);
+        Category parentCategory = Database.getCategoryByName(parentName);
+        if (parentCategory != null)
+            parentCategory.addSubCategory(name);
         return "New category added";
     }
 
@@ -107,20 +96,18 @@ public class AdminManager {
         if (category == null)
             return "no such category";
         if (field.equalsIgnoreCase("parentName")){
+            Category parentCategory = Database.getCategoryByName(category.getParent());
+            parentCategory.removeSubCategory(categoryName);
+            Category newParent = Database.getCategoryByName(changeTo);
+            if (newParent == null){
+                category.setParent(null);
+                return "changed successfully";
+            }
             category.setParent(changeTo);
-        }
-        else if (field.equalsIgnoreCase("name")){
-            category.setName(changeTo);
+            newParent.addSubCategory(category.getName());
         }
         else if (field.equalsIgnoreCase("feature")){
             category.setFeature(changeTo);
-        }
-        else if (field.equalsIgnoreCase("addNewSubCategory")){
-            category.addSubCategory(changeTo);
-        }
-        else if (field.equalsIgnoreCase("addNewProduct")){
-            Product product = Database.getProductByID(Integer.parseInt(changeTo));
-            product.setCategoryNameAndChangeCategory(category.getName());
         }
         else
         {
@@ -133,6 +120,12 @@ public class AdminManager {
         Category category = Database.getCategoryByName(categoryName);
         if (category == null)
             return "no such category.";
+        for (Integer productId : category.getAllProductIds()) {
+            deleteProduct(productId);
+        }
+        for (String subCategoryName : category.getAllSubCategoryNames()) {
+            deleteCategory(subCategoryName);
+        }
         Database.removeCategory(category);
         return "category deleted";
     }
@@ -169,13 +162,6 @@ public class AdminManager {
             res.append(discount.showInfo() + "\n------------------------\n");
         }
         return res.toString();
-    }
-
-    public static String showDiscountWithId(int discountId){
-        Discount discount = Database.getDiscountById(discountId);
-        if (discount == null)
-            return "no such discount";
-        return discount.showInfo();
     }
 
     public static String editDiscount(int discountId, String field , String changTo){

@@ -25,7 +25,7 @@ public class MangeUsersMenu extends Menu {
 
             @Override
             public void execute() {
-                System.out.println(AdminManager.showAllAccount());
+               // System.out.println(AdminManager.showAllAccount());
                 String input = scanner.nextLine();
                 try
                 {
@@ -71,7 +71,7 @@ public class MangeUsersMenu extends Menu {
                     {
                         throw new Exception("invalid input");
                     }
-                    System.out.println(AdminManager.showAccountWithUsername(matcher1.group(1)));
+               //     System.out.println(AdminManager.showAccountWithUsername(matcher1.group(1)));
                 }
                 catch (Exception e)
                 {

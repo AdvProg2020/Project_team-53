@@ -105,28 +105,11 @@ public class AccountManager {
             return "Role is invalid!";
     }
 
-    public static String viewPersonalInfo(){
-        return loggedInAccount.showInfo();
-    }
-
-
     public static String viewLogs(){
         if (loggedInAccount instanceof BuyerAccount)
             return ((BuyerAccount) loggedInAccount).showAllLog();
         else if (loggedInAccount instanceof SellerAccount)
             return ((SellerAccount) loggedInAccount).showAllLog();
         return "nothing to show.";
-    }
-
-    public static String viewLogsWithId(int logId){
-        if (loggedInAccount instanceof BuyerAccount)
-            return ((BuyerAccount) loggedInAccount).showLogById(logId);
-        else if (loggedInAccount instanceof SellerAccount)
-            return ((SellerAccount) loggedInAccount).showLogById(logId);
-        return "nothing to show.";
-    }
-
-    public static String viewCredit(){
-        return String.valueOf(loggedInAccount.getCredit());
     }
 }

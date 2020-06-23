@@ -141,7 +141,7 @@ public class AdminManagerTest {
     public void editCategoryTest3()
     {
         AdminManager.addNewCategory("Category", "Category", "Category");
-        String expected = "changed successfully";
+        String expected = "no such field";
         String result = AdminManager.editCategory("Category", "name", "Category");
         Database.removeCategory(Database.getCategoryByName("Category"));
 
@@ -174,7 +174,7 @@ public class AdminManagerTest {
     public void editCategoryTest6()
     {
         AdminManager.addNewCategory("Category", "Category", "Category");
-        String expected = "changed successfully";
+        String expected = "no such field";
         String result = AdminManager.editCategory("Category", "addNewSubCategory", "category");
         Database.removeCategory(Database.getCategoryByName("Category"));
 
@@ -187,7 +187,7 @@ public class AdminManagerTest {
         Product product = new Product("test", "test", "test", true, 10, "test", "Category", 10000);
         Database.addAllProduct(product);
         AdminManager.addNewCategory("Category", "Category", "Category");
-        String expected = "changed successfully";
+        String expected = "no such field";
         String result = AdminManager.editCategory("Category", "addNewProduct", Integer.toString(product.getProductId()));
         Database.removeProduct(product);
         Database.removeCategory(Database.getCategoryByName("Category"));
@@ -207,7 +207,7 @@ public class AdminManagerTest {
     @Test
     public void deleteCategoryTest2()
     {
-        AdminManager.addNewCategory("Category", "Category", "Category");
+        AdminManager.addNewCategory("Category", "Category", null);
         String expected = "category deleted";
         String result = AdminManager.deleteCategory("Category");
 

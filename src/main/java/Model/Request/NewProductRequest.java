@@ -2,9 +2,6 @@ package Model.Request;
 
 import Controller.Database;
 import Model.Product.Product;
-import javafx.scene.control.Label;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Pane;
 
 public class NewProductRequest extends Request {
 
@@ -28,6 +25,38 @@ public class NewProductRequest extends Request {
         this.price = price;
     }
 
+    public String getStatus() {
+        return status;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getSellerUsername() {
+        return sellerUsername;
+    }
+
+    public boolean isAvailable() {
+        return available;
+    }
+
+    public int getNumber() {
+        return number;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public String getCategoryName() {
+        return categoryName;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
     @Override
     public String acceptRequest() {
         Product product = new Product(status, name, sellerUsername, available, number, description , categoryName, price);
@@ -39,43 +68,15 @@ public class NewProductRequest extends Request {
     @Override
     public String show() {
         return "NewProductRequest{" + "\n" +
-                "   requestId="+ getId()+'\n'+
-                "   status=" + status + '\n' +
-                "   name=" + name + '\n' +
-                "   sellerUsername=" + sellerUsername + '\n' +
-                "   available=" + available + '\n' +
-                "   number=" + number + '\n' +
-                "   description=" + description + '\n' +
-                "   categoryName=" + categoryName + '\n' +
+                "   requestId="+ this.getId()+'\n'+
+                "   status=" + this.getStatus() + '\n' +
+                "   name=" + this.getName() + '\n' +
+                "   sellerUsername=" + this.getSellerUsername() + '\n' +
+                "   available=" + this.isAvailable() + '\n' +
+                "   number=" + this.getNumber() + '\n' +
+                "   description=" + this.getDescription() + '\n' +
+                "   categoryName=" + this.getCategoryName() + '\n' +
                 '}';
     }
 
-    @Override
-    public Pane showGraphical() {
-        GridPane gridPane = new GridPane();
-        gridPane.setVgap(10);
-        gridPane.setHgap(10);
-
-        Label reqID = new Label("RequestID : " + super.getId());
-        Label statusLabel = new Label("Status : " + status);
-        Label nameLabel = new Label("Name : " + name);
-        Label sellUsernameLabel = new Label("Seller Username : " + sellerUsername);
-        Label availableLabel = new Label("Available : " + available);
-        Label numberLabel = new Label("Number : " + number);
-        Label descriptionLabel = new Label("Description : " + description);
-        Label categoryNameLabel = new Label("Category Name : " + categoryName);
-
-        GridPane.setConstraints(reqID, 0, 0);
-        GridPane.setConstraints(statusLabel, 0, 1);
-        GridPane.setConstraints(nameLabel, 0, 2);
-        GridPane.setConstraints(sellUsernameLabel, 0, 3);
-        GridPane.setConstraints(availableLabel, 0, 4);
-        GridPane.setConstraints(numberLabel, 0, 5);
-        GridPane.setConstraints(descriptionLabel, 0, 6);
-        GridPane.setConstraints(categoryNameLabel, 0, 7);
-
-        gridPane.getChildren().addAll(reqID, statusLabel, nameLabel, sellUsernameLabel, availableLabel, numberLabel, descriptionLabel, categoryNameLabel);
-
-        return gridPane;
-    }
 }
