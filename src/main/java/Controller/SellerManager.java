@@ -1,5 +1,6 @@
 package Controller;
 
+import Model.Log.SellLog;
 import Model.Product.DiscountAndOff.Off;
 import Model.Product.Product;
 import Model.Request.AddNewOffRequest;
@@ -9,6 +10,8 @@ import Model.Request.NewProductRequest;
 import Model.Account.SellerAccount;
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 public class SellerManager {
 
@@ -67,5 +70,17 @@ public class SellerManager {
 
     public static String viewCompany(){
         return ((SellerAccount) AccountManager.getLoggedInAccount()).getCompany();
+    }
+
+    public static String getSellerOfProduct(int productID) {
+        Set<String> buyerAccounts = new HashSet<>();
+        String res = "" ;
+        for (SellLog sellLog : ((SellerAccount) AccountManager.getLoggedInAccount()).getSellLogs()) {
+            if (sellLog.getProductId() == productID && !buyerAccounts.contains(sellLog.getBuyerUsername())){
+                res = res + "\n" + sellLog.getBuyerUsername();
+                buyerAccounts.add(sellLog.getBuyerUsername());
+            }
+        }
+        return res;
     }
 }

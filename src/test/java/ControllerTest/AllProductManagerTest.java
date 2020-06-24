@@ -37,31 +37,7 @@ public class AllProductManagerTest {
         Assert.assertNull(ProductManager.getProduct());
     }
 
-    @Test
-    public void sortByNameTest()
-    {
-        String expected = "sorted with name.";
-        String result = AllProductManager.sortByName();
 
-        Assert.assertEquals(expected, result);
-    }
-
-    @Test
-    public void sortByPriceTest()
-    {
-        String expected = "sorted with price.";
-        String result = AllProductManager.sortByPrice();
-
-        Assert.assertEquals(expected, result);
-    }
-
-    @Test
-    public void sortByScoreTest(){
-        String expected = "sorted with score.";
-        String result = AllProductManager.sortByScore();
-
-        Assert.assertEquals(expected, result);
-    }
 
     @Test
     public void showSortOptionTest()
@@ -72,15 +48,6 @@ public class AllProductManagerTest {
         Assert.assertEquals(expected, result);
     }
 
-    @Test
-    public void ignoreSortAndGetSortedByTest()
-    {
-        AllProductManager.ignoreSort();
-        String expected = "default sort.";
-        String result = AllProductManager.getSortedBy();
-
-        Assert.assertEquals(expected, result);
-    }
 
     @Test
     public void showFilterOptionTest()
@@ -133,14 +100,14 @@ public class AllProductManagerTest {
         Database.addAllProduct(product1);
         Database.addAllProduct(product2);
         Database.addAllAccounts(sellerAccount);
-        AllProductManager.sortByName();
-        AllProductManager.addFilterOption("rangeOfPrice 0 3000");
-        AllProductManager.addFilterOption("categoryName test1");
-        AllProductManager.addFilterOption("available");
-        AllProductManager.addFilterOption("rangeOfScore -1");
-        AllProductManager.addFilterOption("companyName test");
-        AllProductManager.addFilterOption("productName test1");
-        AllProductManager.addFilterOption("categoryFeature test");
+        AllProductManager.setSortedBy("Name");
+        AllProductManager.addFilterOption("Range Of Price 0 3000");
+        AllProductManager.addFilterOption("Category Name test1");
+        AllProductManager.addFilterOption("Available");
+        AllProductManager.addFilterOption("Range Of Score -1");
+        AllProductManager.addFilterOption("Company Name test");
+        AllProductManager.addFilterOption("Product Name test1");
+        AllProductManager.addFilterOption("Category Feature test");
 
         String expected = product1.digest() + "\n----------------------\n";
         String result = AllProductManager.showAllProduct();
@@ -148,9 +115,9 @@ public class AllProductManagerTest {
         Database.removeProduct(product2);
         Database.removeAccount(sellerAccount);
         Database.removeCategory(category);
-        AllProductManager.removeFilterOption("companyName test");
-        AllProductManager.removeFilterOption("productName test1");
-        AllProductManager.removeFilterOption("categoryFeature test");
+        AllProductManager.removeFilterOption("Company Name test");
+        AllProductManager.removeFilterOption("Product Name test1");
+        AllProductManager.removeFilterOption("Category Feature test");
 
         Assert.assertEquals(expected, result);
     }
@@ -162,12 +129,12 @@ public class AllProductManagerTest {
         Product product2 = new Product("test2", "test2", "test2", true, 10, "test2", "test2", 1000);
         Database.addAllProduct(product1);
         Database.addAllProduct(product2);
-        AllProductManager.sortByPrice();
-        AllProductManager.addFilterOption("sellerUsername test1");
-        AllProductManager.addFilterOption("rangeOfPrice 0 3000");
-        AllProductManager.addFilterOption("categoryName test1");
-        AllProductManager.addFilterOption("available");
-        AllProductManager.addFilterOption("rangeOfScore -1");
+        AllProductManager.setSortedBy("Price");
+        AllProductManager.addFilterOption("Seller Username test1");
+        AllProductManager.addFilterOption("Range Of Price 0 3000");
+        AllProductManager.addFilterOption("Category Name test1");
+        AllProductManager.addFilterOption("Available");
+        AllProductManager.addFilterOption("Range Of Score -1");
 
         String expected = product1.digest() + "\n----------------------\n";
         String result = AllProductManager.showAllProduct();
@@ -184,12 +151,12 @@ public class AllProductManagerTest {
         Product product2 = new Product("test2", "test2", "test2", true, 10, "test2", "test2", 1000);
         Database.addAllProduct(product1);
         Database.addAllProduct(product2);
-        AllProductManager.sortByScore();
-        AllProductManager.addFilterOption("sellerUsername test1");
-        AllProductManager.addFilterOption("rangeOfPrice 0 3000");
-        AllProductManager.addFilterOption("categoryName test1");
-        AllProductManager.addFilterOption("available");
-        AllProductManager.addFilterOption("rangeOfScore -1");
+        AllProductManager.setSortedBy("Score");
+        AllProductManager.addFilterOption("Seller Username test1");
+        AllProductManager.addFilterOption("Range Of Price 0 3000");
+        AllProductManager.addFilterOption("Category Name test1");
+        AllProductManager.addFilterOption("Available");
+        AllProductManager.addFilterOption("Range Of Score -1");
 
 
         String expected = product1.digest() + "\n----------------------\n";

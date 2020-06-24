@@ -8,14 +8,15 @@ import View.Menu.LoginMenu;
 import View.Menu.Menu;
 import View.Menu.ProductMenus.ProductMenu;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -68,7 +69,7 @@ public class ProductsMenu extends Menu {
                 //System.out.println("All products are:\n(Enter back to return)");
                 ScrollPane scrollPane = new ScrollPane();
                 scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED);
-                ArrayList<Product> allProducts = Database.getAllProducts();
+                ArrayList<Product> allProducts = AllProductManager.showProductArray();
                 GridPane gridPane = new GridPane();
                 int row = 0;
                 int column =0;
@@ -78,8 +79,34 @@ public class ProductsMenu extends Menu {
                     column++;
                     row++;
                 }
+                ChoiceBox<String> sortOption = new ChoiceBox<>();
+                sortOption.getItems().setAll("Default", "Name", "Price", "Score");
+                sortOption.setValue(AllProductManager.getSortedBy());
+                sortOption.getSelectionModel().selectedItemProperty().addListener((v, oldValue, newValue) -> {
+                    AllProductManager.setSortedBy(newValue);
+                    show();
+                });
+
+                Button filter = new Button("Filter");
+                filter.setOnAction(e -> {
+
+                    Stage newWindow = new Stage();
+
+                    handleFiltering(newWindow);
+
+                    newWindow.setOnCloseRequest(ee->{
+                        getShowProductsMenu().show();
+                    });
+                    newWindow.initModality(Modality.APPLICATION_MODAL);
+                    newWindow.showAndWait();
+                });
+                HBox button = new HBox(new Label("Sorted by ") , sortOption , filter);
+
                 scrollPane.setContent(gridPane);
-                mainPane.setCenter(scrollPane);
+
+                VBox vBox = new VBox(button, scrollPane);
+
+                mainPane.setCenter(vBox);
                 Scene scene = new Scene(mainPane, 1000, 600);
                 window.setScene(scene);
                 window.show();
@@ -111,9 +138,61 @@ public class ProductsMenu extends Menu {
                 });
                 Label label = new Label(product.getName());
                 vBox.getChildren().addAll(imageView, label, button);
-                return vBox;
+                    return vBox;
             }
         };
+    }
+
+    private void handleFiltering(Stage newWindow) {
+        GridPane gridPane = new GridPane();
+        ArrayList<String> filters = AllProductManager.getFilterOptions();
+        Label allFilter = new Label("All Filters");
+        GridPane.setConstraints(allFilter, 0 , 0);
+        gridPane.getChildren().addAll(allFilter);
+
+        int i=1 ;
+        for (String filter : filters) {
+            Label label = new Label(filter);
+            Button remove = new Button("remove");
+            remove.setOnAction(e -> {
+                AllProductManager.removeFilterOption(filter);
+                handleFiltering(newWindow);
+            });
+            GridPane.setConstraints(label , 0, i, 2, 1);
+            GridPane.setConstraints(remove, 2, i);
+            gridPane.getChildren().addAll(label, remove);
+            i++;
+        }
+
+        TextField newFilter = new TextField();
+        Button addFilter = new Button("add filter");
+
+        ChoiceBox<String> filterOption = new ChoiceBox<>();
+
+        addFilter.setOnAction(e -> {
+            AllProductManager.addFilterOption(filterOption.getValue() + " " + newFilter.getText());
+            handleFiltering(newWindow);
+        });
+        filterOption.getItems().setAll("Seller Username", "Range Of Price", "Available", "Category Name", "Higher Score Than"
+                , "Company Name", "Product Name","Category Feature", "Have Off");
+        filterOption.getSelectionModel().selectedItemProperty().addListener((v, oldValue, newValue) -> {
+            if (newValue.equalsIgnoreCase("Available") || newValue.equalsIgnoreCase("Have Off")){
+                newFilter.setDisable(true);
+            }
+            else if (newValue.equalsIgnoreCase("Range Of Price")){
+                newFilter.setPromptText("Enter lower and higher bound with space");
+            }
+            else
+                newFilter.setPromptText("");
+        });
+
+        GridPane.setConstraints(filterOption, 0 , i);
+        GridPane.setConstraints(newFilter , 1, i);
+        GridPane.setConstraints(addFilter, 2, i);
+        gridPane.getChildren().addAll(filterOption, newFilter, addFilter);
+
+        Scene scene = new Scene(gridPane, 600, 400);
+        newWindow.setScene(scene);
     }
 
     private Menu getProductMenu() {
