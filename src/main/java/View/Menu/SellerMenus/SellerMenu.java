@@ -420,11 +420,13 @@ public class SellerMenu extends Menu {
 
         Button edit = new Button("Edit");
         edit.setOnAction(e -> handleEditProduct(productID, newWindow));
+        Label buyers = new Label("Buyers : " + SellerManager.getSellerOfProduct(productID));
 
         GridPane.setConstraints(remove, 4, 1);
         GridPane.setConstraints(edit, 4, 2);
+        GridPane.setConstraints(buyers, 4 , 3, 1 , 10);
 
-        pane.getChildren().addAll(remove , edit);
+        pane.getChildren().addAll(remove , edit, buyers);
 
         newWindow.setScene(scene);
         newWindow.setOnCloseRequest(e -> handleManageProducts());

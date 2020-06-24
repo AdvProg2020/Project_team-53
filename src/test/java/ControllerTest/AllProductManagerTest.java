@@ -37,31 +37,7 @@ public class AllProductManagerTest {
         Assert.assertNull(ProductManager.getProduct());
     }
 
-    @Test
-    public void sortByNameTest()
-    {
-        String expected = "sorted with name.";
-        String result = AllProductManager.sortByName();
 
-        Assert.assertEquals(expected, result);
-    }
-
-    @Test
-    public void sortByPriceTest()
-    {
-        String expected = "sorted with price.";
-        String result = AllProductManager.sortByPrice();
-
-        Assert.assertEquals(expected, result);
-    }
-
-    @Test
-    public void sortByScoreTest(){
-        String expected = "sorted with score.";
-        String result = AllProductManager.sortByScore();
-
-        Assert.assertEquals(expected, result);
-    }
 
     @Test
     public void showSortOptionTest()
@@ -72,15 +48,6 @@ public class AllProductManagerTest {
         Assert.assertEquals(expected, result);
     }
 
-    @Test
-    public void ignoreSortAndGetSortedByTest()
-    {
-        AllProductManager.ignoreSort();
-        String expected = "default sort.";
-        String result = AllProductManager.getSortedBy();
-
-        Assert.assertEquals(expected, result);
-    }
 
     @Test
     public void showFilterOptionTest()
@@ -133,7 +100,7 @@ public class AllProductManagerTest {
         Database.addAllProduct(product1);
         Database.addAllProduct(product2);
         Database.addAllAccounts(sellerAccount);
-        AllProductManager.sortByName();
+        AllProductManager.setSortedBy("Name");
         AllProductManager.addFilterOption("rangeOfPrice 0 3000");
         AllProductManager.addFilterOption("categoryName test1");
         AllProductManager.addFilterOption("available");
@@ -162,7 +129,7 @@ public class AllProductManagerTest {
         Product product2 = new Product("test2", "test2", "test2", true, 10, "test2", "test2", 1000);
         Database.addAllProduct(product1);
         Database.addAllProduct(product2);
-        AllProductManager.sortByPrice();
+        AllProductManager.setSortedBy("Price");
         AllProductManager.addFilterOption("sellerUsername test1");
         AllProductManager.addFilterOption("rangeOfPrice 0 3000");
         AllProductManager.addFilterOption("categoryName test1");
@@ -184,7 +151,7 @@ public class AllProductManagerTest {
         Product product2 = new Product("test2", "test2", "test2", true, 10, "test2", "test2", 1000);
         Database.addAllProduct(product1);
         Database.addAllProduct(product2);
-        AllProductManager.sortByScore();
+        AllProductManager.setSortedBy("Score");
         AllProductManager.addFilterOption("sellerUsername test1");
         AllProductManager.addFilterOption("rangeOfPrice 0 3000");
         AllProductManager.addFilterOption("categoryName test1");
