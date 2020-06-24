@@ -48,9 +48,4 @@ public class ProductManager {
         return "Your comment registered.";
     }
 
-    public static String viewAllComments(){
-        if (product == null)
-            return "You have to choose product first";
-        return product.showComments();
-    }
 }

@@ -41,6 +41,17 @@ public class AccountManagerTest {
     }
 
     @Test
+    public void registerTestSameUsername() throws Exception
+    {
+        Database.removeAccount(Database.getAccountByUsername("test"));
+        AccountManager.register("Buyer", "test", "test", "test", "test@gmail.com", "0919", "testing", 10000, "");
+        String expected = "Exist account with this username.";
+        String result = AccountManager.register("Buyer", "test", "test", "test", "test@gmail.com", "0919", "testing", 10000, "");
+
+        Assert.assertEquals(expected, result);
+    }
+
+    @Test
     public void registerTest4() throws Exception
     {
         Database.removeAccount(Database.getAccountByUsername("test"));
@@ -150,15 +161,9 @@ public class AccountManagerTest {
     {
         Database.initialize();
         AccountManager.logIn("parham", "parham");
-        try {
-            AccountManager.edit("firstname", "@@@");
-        }
-        catch (Exception e)
-        {
-            String expected = "Invalid FirstName";
-            String result = e.getMessage();
-            Assert.assertEquals(expected, result);
-        }
+        String res = AccountManager.edit("firstName", "12333");
+        String expected = "Invalid FirstName";
+        Assert.assertEquals(expected, res);
         AccountManager.logOut();
     }
 

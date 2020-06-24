@@ -21,6 +21,7 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
@@ -139,6 +140,11 @@ public class ViewModelsWithGraphic {
         ImageView productImage = new ImageView(image);
         productImage.setFitHeight(100);
         productImage.setFitWidth(100);
+        HBox hBox =new HBox(productImage);
+
+        if(Database.getProductByID(productId).doesHaveOff()){
+
+        }
 
         Label name = new Label("Name : " + product.getName());
         Label averageScore = new Label("Average Score : " + product.getAverageScore());
@@ -151,7 +157,6 @@ public class ViewModelsWithGraphic {
         Label descriptionTag = new Label("Description : ");
         Label description = new Label(product.getDescription());
 
-        GridPane.setConstraints(productImage, 0 , 0 , 2 , 1);
         GridPane.setConstraints(name, 0, 1 , 2 , 1);
         GridPane.setConstraints(averageScore, 0, 2 , 2 , 1);
         GridPane.setConstraints(price, 0, 3 , 2 , 1);
@@ -163,9 +168,17 @@ public class ViewModelsWithGraphic {
         GridPane.setConstraints(descriptionTag, 0, 9 , 2 , 1);
         GridPane.setConstraints(description, 1, 10 , 2 , 3);
 
-        gridPane.getChildren().addAll(productImage, name, averageScore, price, category, status,sellerUsername,available,number,descriptionTag,description);
+        gridPane.getChildren().addAll( name, averageScore, price, category, status,sellerUsername,available,number,descriptionTag,description);
 
         if (product.doesHaveOff()){
+            try {
+                Image offImage = new Image(new FileInputStream("src\\resource\\ProductImages\\Off.png"));
+                ImageView offImageView = new ImageView(offImage);
+                hBox.getChildren().addAll(offImageView);
+                hBox.setSpacing(-30);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
             Button viewOffButton = new Button("view off");
             Pane pane = ViewModelsWithGraphic.showOffFullInfoGraphic(product.getOff().getOffId());
             gridPane.getChildren().add(viewOffButton);
@@ -181,8 +194,10 @@ public class ViewModelsWithGraphic {
                     newWindow.close();
                 });
             });
-            gridPane.getChildren().add(viewOffButton);
+//            gridPane.getChildren().add(viewOffButton);
         }
+        GridPane.setConstraints(hBox, 0 , 0 , 2 , 1);
+        gridPane.getChildren().addAll(hBox);
 
         return gridPane;
     }

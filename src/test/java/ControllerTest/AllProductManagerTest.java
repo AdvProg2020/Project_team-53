@@ -104,7 +104,7 @@ public class AllProductManagerTest {
         AllProductManager.addFilterOption("Range Of Price 0 3000");
         AllProductManager.addFilterOption("Category Name test1");
         AllProductManager.addFilterOption("Available");
-        AllProductManager.addFilterOption("Range Of Score -1");
+        AllProductManager.addFilterOption("Higher Score Than -1");
         AllProductManager.addFilterOption("Company Name test");
         AllProductManager.addFilterOption("Product Name test1");
         AllProductManager.addFilterOption("Category Feature test");
@@ -134,7 +134,7 @@ public class AllProductManagerTest {
         AllProductManager.addFilterOption("Range Of Price 0 3000");
         AllProductManager.addFilterOption("Category Name test1");
         AllProductManager.addFilterOption("Available");
-        AllProductManager.addFilterOption("Range Of Score -1");
+        AllProductManager.addFilterOption("Higher Score Than -1");
 
         String expected = product1.digest() + "\n----------------------\n";
         String result = AllProductManager.showAllProduct();
@@ -156,7 +156,7 @@ public class AllProductManagerTest {
         AllProductManager.addFilterOption("Range Of Price 0 3000");
         AllProductManager.addFilterOption("Category Name test1");
         AllProductManager.addFilterOption("Available");
-        AllProductManager.addFilterOption("Range Of Score -1");
+        AllProductManager.addFilterOption("Higher Score Than -1");
 
 
         String expected = product1.digest() + "\n----------------------\n";
@@ -165,6 +165,25 @@ public class AllProductManagerTest {
         Database.removeProduct(product2);
 
         Assert.assertEquals(expected, result);
+    }
+
+    @Test
+    public void showAllProductsTest4()
+    {
+        Product product1 = new Product("test1", "test1", "test1", true, 20, "test1", "test1", 2000);
+        Product product2 = new Product("test2", "test2", "test2", true, 10, "test2", "test2", 1000);
+        Database.addAllProduct(product1);
+        Database.addAllProduct(product2);
+        AllProductManager.setSortedBy("Score");
+        AllProductManager.addFilterOption("Seller Username test1");
+        AllProductManager.addFilterOption("Range Of Price 0 3000");
+        AllProductManager.addFilterOption("Category Name test1");
+        AllProductManager.addFilterOption("Available");
+        AllProductManager.addFilterOption("Higher Score Than -1");
+        AllProductManager.addFilterOption("Have Off");
+
+
+        Assert.assertEquals(0, AllProductManager.showProductArray().size());
     }
 }
 

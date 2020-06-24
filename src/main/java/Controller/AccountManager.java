@@ -28,6 +28,7 @@ public class AccountManager {
     public static String edit(String field , String changeTo){
 
         if (field.equalsIgnoreCase("firstName")) {
+            System.out.println(changeTo);
             try {
                 loggedInAccount.setFirstName(changeTo);
                 return "changed successfully";

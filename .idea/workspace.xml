@@ -1,9 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="aeefa500-3a99-4ed0-98cf-a7157d1fa89a" name="Default Changelist" comment="add filter and sort and buyers">
+    <list default="true" id="aeefa500-3a99-4ed0-98cf-a7157d1fa89a" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/resource/ProductImages/Off.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Account/BuyerAccount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Account/BuyerAccount.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/AccountManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/AccountManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/ProductManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/ProductManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Account/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Account/Account.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/View/Menu/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/View/Menu/Menu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/View/Menu/ProductMenus/CommentsMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/View/Menu/ProductMenus/CommentsMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/View/Menu/ProductsMenus/ProductsMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/View/Menu/ProductsMenus/ProductsMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/View/Menu/ViewModelsWithGraphic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/View/Menu/ViewModelsWithGraphic.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/ControllerTest/AccountManagerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ControllerTest/AccountManagerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/ControllerTest/AdminManagerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ControllerTest/AdminManagerTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/ControllerTest/AllProductManagerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ControllerTest/AllProductManagerTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -19,7 +28,7 @@
   </component>
   <component name="CoverageViewManager">
     <option name="myFlattenPackages" value="true" />
-    <option name="myElementSize" value="171" />
+    <option name="myElementSize" value="174" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -77,14 +86,14 @@
     <property name="settings.editor.selected.configurable" value="coverage" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="F:\university\AP_project\Project\Data\Styles" />
+      <recent name="F:\edu\term2\AP\Project-2\src" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="F:\university\AP_project\Project\src\main\java\View\Menu" />
       <recent name="F:\university\AP_project\Project\src" />
       <recent name="F:\university\AP_project\Project\src\main\java" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="F:\university\AP_project\Project\Data\Styles" />
-      <recent name="F:\edu\term2\AP\Project-2\src" />
     </key>
   </component>
   <component name="RunManager" selected="JUnit.All in Project-2">
@@ -95,58 +104,58 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="AccountManagerTest.editTest10" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Project-2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ControllerTest.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ControllerTest" />
+      <option name="MAIN_CLASS_NAME" value="ControllerTest.AccountManagerTest" />
+      <option name="METHOD_NAME" value="editTest10" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AccountManagerTest.editTest9" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Project-2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ControllerTest.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ControllerTest" />
+      <option name="MAIN_CLASS_NAME" value="ControllerTest.AccountManagerTest" />
+      <option name="METHOD_NAME" value="editTest9" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AdminManagerTest.changeRoleToSeller" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Project-2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ControllerTest.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="ControllerTest" />
+      <option name="MAIN_CLASS_NAME" value="ControllerTest.AdminManagerTest" />
+      <option name="METHOD_NAME" value="changeRoleToSeller" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="All in Project-2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Project-2" />
       <option name="PACKAGE_NAME" value="" />
       <option name="TEST_OBJECT" value="package" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="AllProductManagerTest.showAllProductsTest3" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Project-2" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ControllerTest.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="ControllerTest" />
-      <option name="MAIN_CLASS_NAME" value="ControllerTest.AllProductManagerTest" />
-      <option name="METHOD_NAME" value="showAllProductsTest3" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="BuyerAccountTest.showAllDiscountTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Project-2" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ModelTest.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="ModelTest" />
-      <option name="MAIN_CLASS_NAME" value="ModelTest.BuyerAccountTest" />
-      <option name="METHOD_NAME" value="showAllDiscountTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="BuyerManagerTest.canIncreaseProductTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Project-2" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ControllerTest.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="ControllerTest" />
-      <option name="MAIN_CLASS_NAME" value="ControllerTest.BuyerManagerTest" />
-      <option name="METHOD_NAME" value="canIncreaseProductTest" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -199,17 +208,17 @@
       <item itemvalue="Application.Main" />
       <item itemvalue="JUnit.ControllerTest.*" />
       <item itemvalue="JUnit.All in Project-2" />
-      <item itemvalue="JUnit.BuyerManagerTest.canIncreaseProductTest" />
-      <item itemvalue="JUnit.AllProductManagerTest.showAllProductsTest3" />
-      <item itemvalue="JUnit.BuyerAccountTest.showAllDiscountTest" />
+      <item itemvalue="JUnit.AccountManagerTest.editTest9" />
+      <item itemvalue="JUnit.AccountManagerTest.editTest10" />
+      <item itemvalue="JUnit.AdminManagerTest.changeRoleToSeller" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.All in Project-2" />
-        <item itemvalue="JUnit.BuyerAccountTest.showAllDiscountTest" />
-        <item itemvalue="JUnit.AllProductManagerTest.showAllProductsTest3" />
+        <item itemvalue="JUnit.AdminManagerTest.changeRoleToSeller" />
+        <item itemvalue="JUnit.AccountManagerTest.editTest9" />
+        <item itemvalue="JUnit.AccountManagerTest.editTest10" />
         <item itemvalue="Application.Main" />
-        <item itemvalue="JUnit.BuyerManagerTest.canIncreaseProductTest" />
       </list>
     </recent_temporary>
   </component>
@@ -344,14 +353,13 @@
       <workItem from="1592894464468" duration="1780000" />
       <workItem from="1593007331160" duration="209000" />
       <workItem from="1593007647182" duration="1468000" />
-      <workItem from="1593009460926" duration="665000" />
-    </task>
-    <task id="LOCAL-00034" summary="Comment added">
-      <created>1589482526597</created>
-      <option name="number" value="00034" />
-      <option name="presentableId" value="LOCAL-00034" />
-      <option name="project" value="LOCAL" />
-      <updated>1589482526597</updated>
+      <workItem from="1593009460926" duration="1462000" />
+      <workItem from="1593013176540" duration="1760000" />
+      <workItem from="1593016991613" duration="1571000" />
+      <workItem from="1593018849514" duration="1239000" />
+      <workItem from="1593024663415" duration="1586000" />
+      <workItem from="1593026597546" duration="1773000" />
+      <workItem from="1593028641130" duration="1625000" />
     </task>
     <task id="LOCAL-00035" summary="Comment added">
       <created>1589482547184</created>
@@ -689,14 +697,20 @@
       <option name="project" value="LOCAL" />
       <updated>1593009679499</updated>
     </task>
-    <option name="localTasksCounter" value="83" />
+    <task id="LOCAL-00083" summary="edit tests">
+      <created>1593010302180</created>
+      <option name="number" value="00083" />
+      <option name="presentableId" value="LOCAL-00083" />
+      <option name="project" value="LOCAL" />
+      <updated>1593010302180</updated>
+    </task>
+    <option name="localTasksCounter" value="84" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="complete tests and menus" />
     <MESSAGE value="add OffMenu" />
     <MESSAGE value="Ass AllOffManagerTest" />
     <MESSAGE value="complete menus" />
@@ -721,7 +735,8 @@
     <MESSAGE value="edit something" />
     <MESSAGE value="complete ProductMenu" />
     <MESSAGE value="add filter and sort and buyers" />
-    <option name="LAST_COMMIT_MESSAGE" value="add filter and sort and buyers" />
+    <MESSAGE value="edit tests" />
+    <option name="LAST_COMMIT_MESSAGE" value="edit tests" />
   </component>
   <component name="WindowStateProjectService">
     <state x="280" y="20" key="#AccountManagerTest" timestamp="1589226101281">
@@ -796,11 +811,11 @@
     </state>
     <state x="137" y="22" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.728@0.0.1366.728" timestamp="1589296639634" />
     <state x="137" y="22" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.738@0.0.1366.738" timestamp="1591541107423" />
-    <state x="130" y="264" width="1182" height="552" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog" timestamp="1593010175100">
+    <state x="130" y="264" width="1182" height="552" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog" timestamp="1593029760408">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="130" y="260" width="1182" height="544" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog/0.0.1366.728@0.0.1366.728" timestamp="1589918033880" />
-    <state x="130" y="264" width="1182" height="552" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog/0.0.1366.738@0.0.1366.738" timestamp="1593010175100" />
+    <state x="130" y="264" width="1182" height="552" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog/0.0.1366.738@0.0.1366.738" timestamp="1593029760408" />
     <state x="488" y="72" key="#com.intellij.ide.util.MemberChooser" timestamp="1592819218425">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -828,11 +843,11 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="342" y="288" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.0.1366.728@0.0.1366.728" timestamp="1589895099487" />
-    <state x="479" y="227" width="408" height="293" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1592039604300">
+    <state x="479" y="227" width="408" height="293" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1593024927940">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="479" y="224" width="408" height="288" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1366.728@0.0.1366.728" timestamp="1589019288405" />
-    <state x="479" y="227" width="408" height="293" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1366.738@0.0.1366.738" timestamp="1592039604300" />
+    <state x="479" y="227" width="408" height="293" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1366.738@0.0.1366.738" timestamp="1593024927940" />
     <state x="154" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1589578637076">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
@@ -841,11 +856,11 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="280" y="6" key="#null./0.0.1366.738@0.0.1366.738" timestamp="1589226532697" />
-    <state x="470" y="0" key="CommitChangelistDialog2" timestamp="1593009935685">
+    <state x="470" y="0" key="CommitChangelistDialog2" timestamp="1593010301383">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="377" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1592919009683" />
-    <state x="470" y="0" key="CommitChangelistDialog2/0.0.1366.738@0.0.1366.738" timestamp="1593009935685" />
+    <state x="470" y="0" key="CommitChangelistDialog2/0.0.1366.738@0.0.1366.738" timestamp="1593010301383" />
     <state x="92" y="93" width="1182" height="552" key="DiffContextDialog" timestamp="1591440525713">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
@@ -855,26 +870,26 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="463" y="122" key="FileChooserDialogImpl/0.0.1366.738@0.0.1366.738" timestamp="1592855183500" />
-    <state width="1322" height="285" key="GridCell.Tab.0.bottom" timestamp="1593010274072">
+    <state width="1322" height="4" key="GridCell.Tab.0.bottom" timestamp="1593030286406">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state width="1323" height="179" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1592989162896" />
-    <state width="1322" height="285" key="GridCell.Tab.0.bottom/0.0.1366.738@0.0.1366.738" timestamp="1593010274072" />
-    <state width="1322" height="285" key="GridCell.Tab.0.center" timestamp="1593010274072">
+    <state width="1322" height="4" key="GridCell.Tab.0.bottom/0.0.1366.738@0.0.1366.738" timestamp="1593030286406" />
+    <state width="1322" height="4" key="GridCell.Tab.0.center" timestamp="1593030286406">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state width="1323" height="179" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1592989162896" />
-    <state width="1322" height="285" key="GridCell.Tab.0.center/0.0.1366.738@0.0.1366.738" timestamp="1593010274072" />
-    <state width="1322" height="285" key="GridCell.Tab.0.left" timestamp="1593010274072">
+    <state width="1322" height="4" key="GridCell.Tab.0.center/0.0.1366.738@0.0.1366.738" timestamp="1593030286406" />
+    <state width="1322" height="4" key="GridCell.Tab.0.left" timestamp="1593030286406">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state width="1323" height="179" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1592989162896" />
-    <state width="1322" height="285" key="GridCell.Tab.0.left/0.0.1366.738@0.0.1366.738" timestamp="1593010274072" />
-    <state width="1322" height="285" key="GridCell.Tab.0.right" timestamp="1593010274072">
+    <state width="1322" height="4" key="GridCell.Tab.0.left/0.0.1366.738@0.0.1366.738" timestamp="1593030286406" />
+    <state width="1322" height="4" key="GridCell.Tab.0.right" timestamp="1593030286406">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state width="1323" height="179" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1592989162896" />
-    <state width="1322" height="285" key="GridCell.Tab.0.right/0.0.1366.738@0.0.1366.738" timestamp="1593010274072" />
+    <state width="1322" height="4" key="GridCell.Tab.0.right/0.0.1366.738@0.0.1366.738" timestamp="1593030286406" />
     <state width="1322" height="221" key="GridCell.Tab.1.bottom" timestamp="1589873506234">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
@@ -913,20 +928,20 @@
     </state>
     <state x="184" y="0" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1591902407946" />
     <state x="184" y="0" key="SettingsEditor/0.0.1366.738@0.0.1366.738" timestamp="1591433792246" />
-    <state x="275" y="95" key="Vcs.Push.Dialog.v2" timestamp="1592951976085">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state x="275" y="96" key="Vcs.Push.Dialog.v2" timestamp="1593010339884">
+      <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="275" y="95" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1592951976085" />
-    <state x="275" y="96" key="Vcs.Push.Dialog.v2/0.0.1366.738@0.0.1366.738" timestamp="1591971665989" />
+    <state x="275" y="96" key="Vcs.Push.Dialog.v2/0.0.1366.738@0.0.1366.738" timestamp="1593010339884" />
     <state x="378" y="186" key="com.intellij.ide.util.TipDialog" timestamp="1592941855813">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="378" y="186" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1592941855813" />
-    <state x="492" y="283" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1592896326180">
+    <state x="492" y="283" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1593019346588">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="492" y="279" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.728@0.0.1366.728" timestamp="1591874970985" />
-    <state x="492" y="283" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.738@0.0.1366.738" timestamp="1592896326180" />
+    <state x="492" y="283" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.738@0.0.1366.738" timestamp="1593019346588" />
     <state x="380" y="100" width="737" height="606" key="find.popup" timestamp="1592942937301">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -966,6 +981,9 @@
     <SUITE FILE_PATH="coverage/Project_team_53$AdminManagerTest_showAccountWithUsernameTest.ic" NAME="AdminManagerTest.showAccountWithUsernameTest Coverage Results" MODIFIED="1589226667004" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>ControllerTest.*</FILTER>
     </SUITE>
+    <SUITE FILE_PATH="coverage/Project_2$AdminManagerTest_changeRoleToSeller.ic" NAME="AdminManagerTest.changeRoleToSeller Coverage Results" MODIFIED="1593029818370" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>ControllerTest.*</FILTER>
+    </SUITE>
     <SUITE FILE_PATH="coverage/Project_2$SellerManagerTest_sendDeleteProductTest1.ic" NAME="SellerManagerTest.sendDeleteProductTest1 Coverage Results" MODIFIED="1589580219781" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>ControllerTest.*</FILTER>
     </SUITE>
@@ -975,7 +993,7 @@
     <SUITE FILE_PATH="coverage/Project_team_53$AccountManagerTest.ic" NAME="AccountManagerTest Coverage Results" MODIFIED="1589229190334" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/Project_2$All_in_Project_2.ic" NAME="All in Project-2 Coverage Results" MODIFIED="1593010274041" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/Project_2$All_in_Project_2.ic" NAME="All in Project-2 Coverage Results" MODIFIED="1593030286360" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/Project_team_53$AdminManagerTest_showRequestWithIDTest.ic" NAME="AdminManagerTest.showRequestWithIDTest Coverage Results" MODIFIED="1589226973100" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>ControllerTest.*</FILTER>
     </SUITE>

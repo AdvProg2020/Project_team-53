@@ -74,7 +74,8 @@ public abstract class Account {
     }
 
     public void setFirstName(String firstName) throws Exception{
-        if (!lastName.matches("[A-Za-z]+")){
+        System.out.println(firstName);
+        if (!firstName.matches("[A-Za-z]+")){
             throw new Exception("Invalid FirstName");
         }
         this.firstName = firstName;

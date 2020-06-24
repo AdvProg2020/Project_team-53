@@ -25,7 +25,7 @@ public class CommentsMenu extends Menu {
             @Override
             public void execute() {
                 System.out.println(ProductManager.showAverageScore());
-                System.out.println(ProductManager.viewAllComments());
+
                 String input = scanner.nextLine();
                 try
                 {

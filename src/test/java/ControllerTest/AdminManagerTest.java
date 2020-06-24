@@ -1,5 +1,6 @@
 package ControllerTest;
 
+import Controller.AccountManager;
 import Controller.AdminManager;
 import Controller.Database;
 import Model.Product.DiscountAndOff.Discount;
@@ -324,6 +325,51 @@ public class AdminManagerTest {
         String expected = "no such field";
         String result = AdminManager.editDiscount(discount.getDiscountId(), "testing", "2019-06-2012:30:00");
         Database.removeDiscount(discount);
+
+        Assert.assertEquals(expected, result);
+    }
+
+    @Test
+    public void changeRoleToSeller()
+    {
+        try {
+            AccountManager.register("Buyer", "test", "test", "test", "test@gmail.com", "0919", "testing", 10000, "");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        String result = AdminManager.changeRole("test", "Seller");
+        String expected = "Changed successfully";
+
+
+        Assert.assertEquals(expected, result);
+    }
+
+    @Test
+    public void changeRoleToAdmin()
+    {
+        try {
+            AccountManager.register("Buyer", "test", "test", "test", "test@gmail.com", "0919", "testing", 10000, "");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        String result = AdminManager.changeRole("test", "Admin");
+        String expected = "Changed successfully";
+
+
+        Assert.assertEquals(expected, result);
+    }
+
+    @Test
+    public void changeRoleToBuyer()
+    {
+        try {
+            AccountManager.register("Buyer", "test", "test", "test", "test@gmail.com", "0919", "testing", 10000, "");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        String result = AdminManager.changeRole("test", "Buyer");
+        String expected = "Changed successfully";
+
 
         Assert.assertEquals(expected, result);
     }

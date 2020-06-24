@@ -76,16 +76,13 @@ public abstract class Menu{
             handleProduct();
         });
 
-        Button offButton = new Button("Offs");
-        offButton.getStyleClass().add("top-button");
-        offButton.setMaxWidth(Double.MAX_VALUE);
 
         Button exitButton = new Button("exit");
         exitButton.getStyleClass().add("top-button");
         exitButton.setMaxWidth(Double.MAX_VALUE);
 
 
-        mainButtons.getChildren().addAll(userButton, productButton, offButton, exitButton);
+        mainButtons.getChildren().addAll(userButton, productButton, exitButton);
 
         mainPane.setTop(mainButtons);
     }
