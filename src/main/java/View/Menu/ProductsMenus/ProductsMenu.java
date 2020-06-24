@@ -87,20 +87,6 @@ public class ProductsMenu extends Menu {
 
             @Override
             public void execute() {
-                System.out.println(AllProductManager.showAllProduct());
-                String input = scanner.nextLine();
-                try {
-                    Matcher matcher2 = getMatcher(input, "^\\s*back\\s*$");
-                    if (matcher2.find()) {
-                        this.parentMenu.show();
-                        this.parentMenu.execute();
-                        return;
-                    } else
-                        throw new Exception("Invalid Input");
-                } catch (Exception e) {
-                    System.out.println(e.getMessage());
-                }
-                this.execute();
             }
 
             private Pane getProductPane(Product product) {

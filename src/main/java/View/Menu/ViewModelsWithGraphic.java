@@ -209,7 +209,7 @@ public class ViewModelsWithGraphic {
         }
         ScrollPane scrollPane = new ScrollPane(vBox);
         scrollPane.setPannable(true);
-        scrollPane.setPrefSize(200, 50);
+        scrollPane.setPrefSize(400, 200);
         scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED);
         scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.ALWAYS);
 
