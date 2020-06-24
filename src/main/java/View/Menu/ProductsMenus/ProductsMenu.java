@@ -125,7 +125,7 @@ public class ProductsMenu extends Menu {
                 });
                 Label label = new Label(product.getName());
                 vBox.getChildren().addAll(imageView, label, button);
-                return vBox;
+                    return vBox;
             }
         };
     }
