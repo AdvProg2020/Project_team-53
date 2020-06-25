@@ -183,7 +183,7 @@ public class AllProductManagerTest {
         AllProductManager.addFilterOption("Have Off");
 
 
-        Assert.assertEquals(0, AllProductManager.showProductArray().size());
+        Assert.assertEquals(0, AllProductManager.showProductArray().size()  );
     }
 }
 

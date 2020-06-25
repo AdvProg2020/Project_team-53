@@ -26,7 +26,6 @@ import javafx.stage.Stage;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class AdminMenu extends Menu {
 
@@ -849,13 +848,28 @@ public class AdminMenu extends Menu {
         endDate.setPromptText("End Date");
         TextField numberOfTimes = new TextField();
         numberOfTimes.setPromptText("Number Of Times");
-        TextField username = new TextField();
-        username.setPromptText("Username(separate with /)");
+
+        ArrayList<CheckBox> checkBoxes = new ArrayList<>();
+        ArrayList<Account> allAccounts = Database.getAllAccounts();
+        for (Account account : allAccounts) {
+            if (account instanceof BuyerAccount){
+                CheckBox checkBox = new CheckBox(account.getUsername());
+                checkBox.setId(account.getUsername());
+                checkBoxes.add(checkBox);
+
+            }
+        }
+
         Button add = new Button("Add");
         add.setOnAction(e -> {
             try {
-                String[] usernameInArray = username.getText().split("/");
-                ArrayList<String> unIAL = new ArrayList<>(Arrays.asList(usernameInArray));
+
+                ArrayList<String> unIAL = new ArrayList<>();
+                for (CheckBox checkBox : checkBoxes) {
+                    if (checkBox.isSelected()){
+                        unIAL.add(checkBox.getId());
+                    }
+                }
                 status.setText(AdminManager.addNewDiscount(Integer.parseInt(maxValue.getText()), Integer.parseInt(percent.getText()),
                         startDate.getText(), endDate.getText(), Integer.parseInt(numberOfTimes.getText()), unIAL));
             }
@@ -882,15 +896,20 @@ public class AdminMenu extends Menu {
         GridPane.setConstraints(startDate, 0, 2);
         GridPane.setConstraints(endDate, 0, 3);
         GridPane.setConstraints(numberOfTimes, 0, 4);
-        GridPane.setConstraints(username, 0, 5);
-        GridPane.setConstraints(add, 0, 6);
-        GridPane.setConstraints(back, 0, 7);
-        GridPane.setConstraints(status, 0, 8);
+        int i=5 ;
+        for (CheckBox checkBox : checkBoxes) {
+            GridPane.setConstraints(checkBox, 0, i);
+            i++;
+            gridPane.getChildren().add(checkBox);
+        }
+        GridPane.setConstraints(add, 0, i);
+        GridPane.setConstraints(back, 0, i+1);
+        GridPane.setConstraints(status, 0, i+2);
         GridPane.setHalignment(add, HPos.CENTER);
         GridPane.setHalignment(back, HPos.CENTER);
         GridPane.setHalignment(status, HPos.CENTER);
 
-        gridPane.getChildren().addAll(maxValue, percent, startDate, endDate, numberOfTimes, username, add, back, status);
+        gridPane.getChildren().addAll(maxValue, percent, startDate, endDate, numberOfTimes, add, back, status);
 
         super.mainPane.setCenter(gridPane);
 

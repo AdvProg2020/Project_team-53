@@ -3,10 +3,13 @@ package View.Menu.ProductsMenus;
 import Controller.AllProductManager;
 import Controller.Database;
 import Controller.ProductManager;
+import Model.Product.Category;
 import Model.Product.Product;
 import View.Menu.LoginMenu;
 import View.Menu.Menu;
 import View.Menu.ProductMenus.ProductMenu;
+import View.Menu.ViewModelsWithGraphic;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
@@ -15,6 +18,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -29,7 +33,6 @@ public class ProductsMenu extends Menu {
         super.addToSubMenus(1, this.getViewAllCategoriesMenu());
         super.addToSubMenus(2, new FilteringMenu(this));
         super.addToSubMenus(3, new SortingMenu(this));
-        super.addToSubMenus(4, this.getShowProductsMenu());
         super.addToSubMenus(5, this.getProductMenu());
         super.addToSubMenus(6, new LoginMenu(this));
     }
@@ -61,10 +64,7 @@ public class ProductsMenu extends Menu {
         };
     }
 
-    public Menu getShowProductsMenu() {
-        return new Menu("Show Products Menu", this) {
-            @Override
-            public void show() {
+           public void show() {
                 super.setPane();
                 //System.out.println("All products are:\n(Enter back to return)");
                 ScrollPane scrollPane = new ScrollPane();
@@ -95,12 +95,27 @@ public class ProductsMenu extends Menu {
                     handleFiltering(newWindow);
 
                     newWindow.setOnCloseRequest(ee->{
-                        getShowProductsMenu().show();
+                        show();
                     });
                     newWindow.initModality(Modality.APPLICATION_MODAL);
                     newWindow.showAndWait();
                 });
-                HBox button = new HBox(new Label("Sorted by ") , sortOption , filter);
+
+                Button categoryShow = new Button("Category");
+                categoryShow.setOnAction(e -> {
+
+                    Stage newWindow = new Stage();
+
+                    handleShowCategory(newWindow);
+
+                    newWindow.setOnCloseRequest(ee->{
+                        show();
+                    });
+                    newWindow.initModality(Modality.APPLICATION_MODAL);
+                    newWindow.showAndWait();
+                });
+
+                HBox button = new HBox(new Label("Sorted by ") , sortOption , filter, categoryShow);
 
                 scrollPane.setContent(gridPane);
 
@@ -112,9 +127,6 @@ public class ProductsMenu extends Menu {
                 window.show();
             }
 
-            @Override
-            public void execute() {
-            }
 
             private Pane getProductPane(Product product) {
                 VBox vBox = new VBox();
@@ -151,7 +163,61 @@ public class ProductsMenu extends Menu {
                 vBox.getChildren().addAll(hBox, label, button);
                     return vBox;
             }
-        };
+
+
+    private void handleShowCategory(Stage newWindow) {
+        ArrayList<Category> allCategories = Database.getAllCategories();
+
+        GridPane gridPane = new GridPane();
+        gridPane.setHgap(20);
+        gridPane.setVgap(10);
+        gridPane.setAlignment(Pos.CENTER);
+        Label info = new Label("All Categories");
+        info.setFont(Font.font(25));
+        info.setAlignment(Pos.CENTER);
+        GridPane.setConstraints(info, 1, 0);
+        gridPane.getChildren().add(info);
+        int i = 1;
+        for (Category category : allCategories) {
+            String text = "";
+            Label label = new Label();
+            text = text + category.getName();
+            label.setText(text);
+            label.setFont(Font.font(15));
+            Button button = new Button("show");
+            button.setMaxWidth(Double.MAX_VALUE);
+            button.getStyleClass().add("dark-blue");
+            button.setOnAction(e -> {
+                handleShowOneCategory(category.getName() , newWindow);
+            });
+            button.setAlignment(Pos.CENTER);
+            GridPane.setConstraints(label, 0, i);
+            GridPane.setConstraints(button, 2, i);
+            gridPane.getChildren().addAll(label, button);
+            i++;
+        }
+
+
+        Scene scene = new Scene(gridPane ,1000, 600);
+
+        newWindow.setScene(scene);
+    }
+
+    private void handleShowOneCategory(String categoryName, Stage newWindow) {
+        Pane pane = ViewModelsWithGraphic.showCategoryGraphic(categoryName);
+        ((GridPane)pane).setAlignment(Pos.CENTER);
+        Scene scene = new Scene(pane, 1000, 600);
+
+        Button back = new Button("Back");
+        back.setOnAction(e -> {
+            handleShowCategory(newWindow);
+        });
+
+        GridPane.setConstraints(back, 4, 1);
+
+        pane.getChildren().addAll(back);
+
+        newWindow.setScene(scene);
     }
 
     private void handleFiltering(Stage newWindow) {
@@ -182,6 +248,7 @@ public class ProductsMenu extends Menu {
 
         addFilter.setOnAction(e -> {
             AllProductManager.addFilterOption(filterOption.getValue() + " " + newFilter.getText());
+            show();
             handleFiltering(newWindow);
         });
         filterOption.getItems().setAll("Seller Username", "Range Of Price", "Available", "Category Name", "Higher Score Than"

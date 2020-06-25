@@ -111,15 +111,21 @@ public class ViewCartMenu extends Menu {
     }
 
     private void handlePay(Stage newWindow) {
-        Label message = new Label();
         TextField discountId = new TextField();
+        TextField address = new TextField();
+
         Button submit = new Button("Pay");
         submit.setOnAction(e->{
-            if (discountId.getText() != null);
+            int id = -1;
+            if (discountId.getText() != null && discountId.getText().matches("[0-9]+"))
+                id = Integer.parseInt(discountId.getText());
+            BuyerManager.pay(id);
         });
-        VBox vBox = new VBox(discountId,submit);
+
+        VBox vBox = new VBox(address, discountId,submit);
         Scene scene = new Scene(vBox, 600,400);
 
+        newWindow.setScene(scene);
     }
 
     private void handleDecrease(int productId) {

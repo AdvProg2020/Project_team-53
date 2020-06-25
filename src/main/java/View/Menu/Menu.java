@@ -93,8 +93,7 @@ public abstract class Menu{
 
     protected void handleProduct(){
         ProductsMenu productsMenu = new ProductsMenu(this);
-        Menu showProductsMenu = productsMenu.getShowProductsMenu();
-        showProductsMenu.show();
+        productsMenu.show();
     }
 
     public void handleUser()
