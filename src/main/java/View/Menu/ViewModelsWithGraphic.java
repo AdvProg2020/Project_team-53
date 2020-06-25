@@ -169,7 +169,7 @@ public class ViewModelsWithGraphic {
             Button viewOffButton = new Button("view off");
             Pane pane = ViewModelsWithGraphic.showOffFullInfoGraphic(product.getOff().getOffId());
             gridPane.getChildren().add(viewOffButton);
-            GridPane.setConstraints(viewOffButton, 2, 1);
+            GridPane.setConstraints(viewOffButton, 3, 5);
             viewOffButton.setOnAction(e -> {
                 Button backButton = new Button("back");
                 pane.getChildren().add(backButton);

@@ -21,7 +21,7 @@ public class BuyerAccount extends Account {
         cart = new Cart();
     }
 
-    public boolean buyedProduct(int productId){
+    public boolean buyerProduct(int productId){
         for (BuyLog log : buyLogs) {
             if (log.getProductId() == productId)
                 return true;

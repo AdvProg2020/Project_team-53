@@ -27,7 +27,7 @@ public class BuyerManager {
     public static String DecreaseProduct(int productId){
         BuyerAccount buyerAccount = (BuyerAccount) AccountManager.getLoggedInAccount();
         if (!buyerAccount.getCart().decreaseProduct(productId))
-            return "you haven't choosen this product yet";
+            return "you haven't chosen this product yet";
         Database.getProductByID(productId).setNumber(Database.getProductByID(productId).getNumber() + 1);
         return "product eliminated successfully";
     }
@@ -67,10 +67,14 @@ public class BuyerManager {
         // Todo: get the seller cost
         if (buyerAccount.canUseDiscount(discountId)){
             buyerAccount.useDiscount(discountId);
-            Discount discount = Database.getDiscountById(discountId);
-            // max value
-            buyerAccount.setCredit(buyerAccount.getCredit() + Math.min((int)cost*discount.getPercent()/100, discount.getMaxValue()));
-            // Todo: check up the line above
+                if (discountId != -1) {
+                    Discount discount = Database.getDiscountById(discountId);
+                    // max value
+                    buyerAccount.setCredit(buyerAccount.getCredit() + Math.min((int) cost * discount.getPercent() / 100, discount.getMaxValue()));
+                    // Todo: check up the line above
+                } else {
+                    buyerAccount.setCredit((int) (buyerAccount.getCredit() + cost));
+                }
         }
         buyerAccount.setCart(new Cart());
     }
@@ -81,10 +85,10 @@ public class BuyerManager {
     }
 
     public static String pay(int discountId){
-        if (Database.getDiscountById(discountId) == null)
+        if (Database.getDiscountById(discountId) == null && discountId != -1)
             return " your discount is not valid";
         if (!canBuy(discountId))
-            return "there is a problem in process";
+            return "there is a problem in process and you can't buy";
         else {
             buy(discountId);
             return "product bought successfully";
@@ -96,6 +100,8 @@ public class BuyerManager {
         int discountValue = 0;
         if (buyerAccount.canUseDiscount(discountId))
             discountValue = Database.getDiscountById(discountId).getPercent();
+        if (discountId == -1)
+            discountValue = 0;
         for (Integer productId : buyerAccount.getCart().getProductsID()) {
             Product product = Database.getProductByID(productId);
             SellerAccount sellerAccount = (SellerAccount) Database.getAccountByUsername(product.getSellerUsername());
