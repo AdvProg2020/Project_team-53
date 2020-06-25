@@ -88,17 +88,17 @@ public class ViewModelsWithGraphic {
         profileImage.setFitWidth(100);
 
         Label username = new Label("Username : " + account.getUsername());
-        username.setFont(Font.font(15));
+        username.setFont(Font.font(20));
         Label firstName = new Label("First Name : " + account.getFirstName());
-        firstName.setFont(Font.font(15));
+        firstName.setFont(Font.font(20));
         Label lastName = new Label("Last Name : " + account.getLastName());
-        lastName.setFont(Font.font(15));
+        lastName.setFont(Font.font(20));
         Label email = new Label("Email : " + account.getEmail());
-        email.setFont(Font.font(15));
+        email.setFont(Font.font(20));
         Label phoneNumber = new Label("Phone : " + account.getPhoneNumber());
-        phoneNumber.setFont(Font.font(15));
+        phoneNumber.setFont(Font.font(20));
         Label credit = new Label("Credit : " + account.getCredit());
-        credit.setFont(Font.font(15));
+        credit.setFont(Font.font(20));
 
         GridPane.setConstraints(profileImage, 0, 0, 2, 6);
         GridPane.setConstraints(username, 2, 0);
@@ -113,6 +113,7 @@ public class ViewModelsWithGraphic {
 
         if (account instanceof SellerAccount){
             Label companyLabel = new Label("Company : " + ((SellerAccount)account).getCompany());
+            companyLabel.setFont(Font.font(20));
             GridPane.setConstraints(companyLabel , 2 , 6);
             gridPane.getChildren().addAll(companyLabel);
         }
