@@ -12,8 +12,10 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -86,7 +88,14 @@ public class ViewCartMenu extends Menu {
 
         Button payButton = new Button("Pay");
         // TODO: 13-Jun-20 add function of paying
+        payButton.setOnAction(e ->{
+            Stage newWindow = new Stage();
+            newWindow.initModality(Modality.APPLICATION_MODAL);
 
+            handlePay(newWindow);
+
+            newWindow.showAndWait();
+        });
         Label costOfAll = new Label("cost : " + cart.getCost());
 
         GridPane.setConstraints(costOfAll, 5 , i);
@@ -99,6 +108,18 @@ public class ViewCartMenu extends Menu {
         super.mainPane.setCenter(gridPane);
 
         Menu.window.setScene(scene);
+    }
+
+    private void handlePay(Stage newWindow) {
+        Label message = new Label();
+        TextField discountId = new TextField();
+        Button submit = new Button("Pay");
+        submit.setOnAction(e->{
+            if (discountId.getText() != null);
+        });
+        VBox vBox = new VBox(discountId,submit);
+        Scene scene = new Scene(vBox, 600,400);
+
     }
 
     private void handleDecrease(int productId) {

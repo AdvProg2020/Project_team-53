@@ -72,19 +72,6 @@ public class SortingMenu extends Menu {
                     }
                     else if(matcher1.find())
                     {
-                        String sortBy = matcher1.group(1);
-                        if(sortBy.equalsIgnoreCase("name"))
-                        {
-                            System.out.println(AllProductManager.sortByName());
-                        }
-                        else if (sortBy.equalsIgnoreCase("price"))
-                        {
-                            System.out.println(AllProductManager.sortByPrice());
-                        }
-                        else if(sortBy.equalsIgnoreCase("score"))
-                        {
-                            System.out.println(AllProductManager.sortByScore());
-                        }
                     }
                     else
                     {
@@ -143,7 +130,6 @@ public class SortingMenu extends Menu {
 
             @Override
             public void execute() {
-                System.out.println(AllProductManager.ignoreSort());
                 String input = scanner.nextLine();
                 try
                 {

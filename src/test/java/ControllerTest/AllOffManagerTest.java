@@ -14,8 +14,8 @@ public class AllOffManagerTest {
     @Test
     public void ignoreSortAndGetSortedByTest()
     {
-        AllProductManager.ignoreSort();
-        String expected = "default sort.";
+        AllProductManager.setSortedBy("Default");
+        String expected = "Default";
         String result = AllProductManager.getSortedBy();
 
         Assert.assertEquals(expected, result);
