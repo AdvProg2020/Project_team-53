@@ -169,6 +169,7 @@ public class ViewModelsWithGraphic {
             Button viewOffButton = new Button("view off");
             Pane pane = ViewModelsWithGraphic.showOffFullInfoGraphic(product.getOff().getOffId());
             gridPane.getChildren().add(viewOffButton);
+            GridPane.setConstraints(viewOffButton, 2, 1);
             viewOffButton.setOnAction(e -> {
                 Button backButton = new Button("back");
                 pane.getChildren().add(backButton);
@@ -176,7 +177,7 @@ public class ViewModelsWithGraphic {
                 Scene scene = new Scene(pane, 400, 400);
                 Stage newWindow = new Stage();
                 newWindow.setScene(scene);
-                newWindow.show();
+                newWindow.showAndWait();
                 backButton.setOnAction(event -> {
                     newWindow.close();
                 });
