@@ -51,7 +51,7 @@ public class ProductMenu extends Menu {
         gridPane.setVgap(10);
         gridPane.setHgap(20);
         main.setHgap(25);
-        Scene scene = new Scene(main, 600, 400);
+        Scene scene = new Scene(main, 750, 500);
         scene.getStylesheets().add(new File("Data/Styles/Buttons.css").toURI().toString());
         scene.getStylesheets().add(new File("Data/Styles/textfield.css").toURI().toString());
         scene.getStylesheets().add(new File("Data/Styles/backgrounds.css").toURI().toString());

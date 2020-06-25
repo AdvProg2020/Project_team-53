@@ -14,18 +14,21 @@ import Model.Product.DiscountAndOff.Discount;
 import Model.Product.DiscountAndOff.Off;
 import Model.Product.Product;
 import Model.Request.*;
+import javafx.animation.ScaleTransition;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -139,6 +142,18 @@ public class ViewModelsWithGraphic {
             }
         }
         ImageView productImage = new ImageView(image);
+        productImage.addEventFilter(MouseEvent.MOUSE_ENTERED, e -> {
+            ScaleTransition scaleTransition = new ScaleTransition(Duration.millis(200), productImage);
+            scaleTransition.setToX(1.7f);
+            scaleTransition.setToY(1.7f);
+            scaleTransition.play();
+        });
+        productImage.addEventFilter(MouseEvent.MOUSE_EXITED, e -> {
+            ScaleTransition scaleTransition = new ScaleTransition(Duration.millis(200), productImage);
+            scaleTransition.setToX(1f);
+            scaleTransition.setToY(1f);
+            scaleTransition.play();
+        });
         productImage.setFitHeight(100);
         productImage.setFitWidth(100);
         productImage.setPreserveRatio(true);
