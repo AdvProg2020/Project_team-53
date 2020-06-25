@@ -18,7 +18,7 @@ public class ProductManager {
 
     public static String giveScore(int score){
         BuyerAccount account = (BuyerAccount) AccountManager.getLoggedInAccount();
-        if (!account.buyedProduct(product.getProductId())){
+        if (!account.buyerProduct(product.getProductId())){
             return "You have to buy product to give score.";
         }
         product.giveScore(new Score(score , account.getUsername()));
@@ -44,7 +44,7 @@ public class ProductManager {
 
     public static String giveComment(String title, String content){
         BuyerAccount buyerAccount = (BuyerAccount) AccountManager.getLoggedInAccount();
-        product.addComment(new Comment(title, content, buyerAccount.getUsername(), buyerAccount.buyedProduct(product.getProductId())));
+        product.addComment(new Comment(title, content, buyerAccount.getUsername(), buyerAccount.buyerProduct(product.getProductId())));
         return "Your comment registered.";
     }
 
