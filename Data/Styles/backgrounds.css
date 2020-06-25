@@ -13,6 +13,17 @@
     -fx-background-size:  cover;
 }
 
+.buyer-background{
+    -fx-background-image: url("images/buyer.jpg");
+    -fx-background-size:  cover;
+}
+
+.seller-background{
+    -fx-background-image: url("images/seller.jpg");
+    -fx-background-size:  cover;
+}
+
+
 .admin-popup{
     -fx-background-image: url("images/adminPopup.jpg");
     -fx-background-size:  cover;

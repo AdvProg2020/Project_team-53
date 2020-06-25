@@ -14,6 +14,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -43,14 +44,19 @@ public class ProductMenu extends Menu {
 
     public Scene setScene()
     {
-        GridPane gridPane = (GridPane) ViewModelsWithGraphic.showFullInfoGraphic(ProductManager.getProduct().getProductId());
+        GridPane gridPane = new GridPane();
+        Pane pane = ViewModelsWithGraphic.showFullInfoGraphic(ProductManager.getProduct().getProductId());
         gridPane.setAlignment(Pos.CENTER);
-        Scene scene = new Scene(gridPane, 600, 400);
+        GridPane main = new GridPane();
+        gridPane.setVgap(10);
+        gridPane.setHgap(20);
+        main.setHgap(25);
+        Scene scene = new Scene(main, 600, 400);
         scene.getStylesheets().add(new File("Data/Styles/Buttons.css").toURI().toString());
         scene.getStylesheets().add(new File("Data/Styles/textfield.css").toURI().toString());
         scene.getStylesheets().add(new File("Data/Styles/backgrounds.css").toURI().toString());
         scene.getStylesheets().add(new File("Data/Styles/choicebox.css").toURI().toString());
-        gridPane.getStyleClass().add("admin-popup");
+        main.getStyleClass().add("admin-popup");
 
         Button addToCart = new Button("Add To Cart");
         addToCart.getStyleClass().add("dark-blue");
@@ -86,13 +92,20 @@ public class ProductMenu extends Menu {
             }
         });
 
-        GridPane.setConstraints(addToCart, 3, 2);
-        GridPane.setConstraints(giveScore, 3, 3);
-        GridPane.setConstraints(comment, 3,4);
-        GridPane.setConstraints(productID, 4, 2);
-        GridPane.setConstraints(compare, 4, 3);
+        GridPane.setConstraints(addToCart, 0, 0);
+        GridPane.setConstraints(giveScore, 0, 1);
+        GridPane.setConstraints(comment, 0,2);
+        GridPane.setConstraints(productID, 1, 0);
+        GridPane.setConstraints(compare, 1, 1);
 
         gridPane.getChildren().addAll(addToCart, giveScore, comment, productID, compare);
+
+        GridPane.setConstraints(pane, 1, 0);
+        GridPane.setConstraints(gridPane, 4, 0);
+        GridPane.setHalignment(pane, HPos.CENTER);
+
+
+        main.getChildren().addAll(pane, gridPane);
 
         return scene;
     }
