@@ -385,10 +385,15 @@ public class ViewModelsWithGraphic {
         gridPane.setHgap(10);
 
         Label name = new Label("Name : " + category.getName());
+        name.setFont(Font.font(20));
         Label allSubCategory = new Label("SubCategory : " + category.getAllSubCategoryNames());
+        allSubCategory.setFont(Font.font(20));
         Label feature = new Label("Feature : " + category.getFeature());
+        feature.setFont(Font.font(20));
         Label productIds = new Label("All Products : " + category.getAllProductIds());
+        productIds.setFont(Font.font(20));
         Label parent = new Label("Parent : " + category.getParent());
+        parent.setFont(Font.font(20));
 
         GridPane.setConstraints(name, 0, 1 , 2 , 1);
         GridPane.setConstraints(allSubCategory, 0, 2 , 2 , 1);

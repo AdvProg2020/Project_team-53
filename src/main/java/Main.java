@@ -15,12 +15,8 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-
-
-        //Menu.setScanner(new Scanner(System.in));
         Menu.setWindow(window);
         MainMenu mainMenu = new MainMenu();
         mainMenu.show();
-
     }
 }

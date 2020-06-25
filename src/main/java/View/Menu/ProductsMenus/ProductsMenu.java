@@ -9,161 +9,161 @@ import View.Menu.LoginMenu;
 import View.Menu.Menu;
 import View.Menu.ProductMenus.ProductMenu;
 import View.Menu.ViewModelsWithGraphic;
+import javafx.geometry.HPos;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 import javafx.scene.text.Font;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.regex.Matcher;
 
 public class ProductsMenu extends Menu {
     public ProductsMenu(Menu parentMenu) {
         super("Products Menu", parentMenu);
-        super.addToSubMenus(1, this.getViewAllCategoriesMenu());
         super.addToSubMenus(2, new FilteringMenu(this));
         super.addToSubMenus(3, new SortingMenu(this));
-        super.addToSubMenus(5, this.getProductMenu());
         super.addToSubMenus(6, new LoginMenu(this));
     }
 
-    private Menu getViewAllCategoriesMenu() {
-        return new Menu("View All Categories Menu", this) {
-            @Override
-            public void show() {
-                System.out.println("All categories are:\n(Enter back to return)");
-            }
+    @Override
+    public void show() {
+        super.setPane();
+        ScrollPane scrollPane = new ScrollPane();
+        scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.ALWAYS);
+        scrollPane.setFitToHeight(true);
+        scrollPane.setFitToWidth(true);
+        ArrayList<Product> allProducts = AllProductManager.showProductArray();
+        GridPane gridPane = new GridPane();
+        gridPane.setAlignment(Pos.CENTER);
+        Scene scene = new Scene(mainPane, 1000, 600);
+        scene.getStylesheets().add(new File("Data/Styles/Buttons.css").toURI().toString());
+        scene.getStylesheets().add(new File("Data/Styles/textfield.css").toURI().toString());
+        scene.getStylesheets().add(new File("Data/Styles/backgrounds.css").toURI().toString());
+        scene.getStylesheets().add(new File("Data/Styles/choicebox.css").toURI().toString());
+        scrollPane.getStyleClass().add("scroll-pane");
+        super.mainPane.getStyleClass().add("main");
+        int row = 0;
+        int column =0;
+        for (Product product : allProducts) {
+            gridPane.add(getProductPane(product), column%3, row/3);
+            column++;
+            row++;
+        }
+        ChoiceBox<String> sortOption = new ChoiceBox<>();
+        sortOption.getStyleClass().add("choicebox.css");
+        sortOption.getItems().setAll("Default", "Name", "Price", "Score");
+        sortOption.setValue(AllProductManager.getSortedBy());
+        sortOption.getSelectionModel().selectedItemProperty().addListener((v, oldValue, newValue) -> {
+            AllProductManager.setSortedBy(newValue);
+            show();
+        });
 
-            @Override
-            public void execute() {
-                System.out.println(AllProductManager.showAllCategories());
-                String input = scanner.nextLine();
-                try {
-                    Matcher matcher2 = getMatcher(input, "^\\s*back\\s*$");
-                    if (matcher2.find()) {
-                        this.parentMenu.show();
-                        this.parentMenu.execute();
-                        return;
-                    } else
-                        throw new Exception("Invalid Input");
-                } catch (Exception e) {
-                    System.out.println(e.getMessage());
-                }
-                this.execute();
-            }
-        };
+        Button filter = new Button("Filter");
+        filter.setAlignment(Pos.CENTER);
+        filter.setMaxWidth(Double.MAX_VALUE);
+        filter.getStyleClass().add("dark-blue");
+        filter.setOnAction(e -> {
+
+            Stage newWindow = new Stage();
+
+            handleFiltering(newWindow);
+
+            newWindow.setOnCloseRequest(ee->{
+                show();
+            });
+            newWindow.initModality(Modality.APPLICATION_MODAL);
+            newWindow.showAndWait();
+        });
+
+        Button categoryShow = new Button("Category");
+        categoryShow.setMaxWidth(Double.MAX_VALUE);
+        categoryShow.setAlignment(Pos.CENTER);
+        categoryShow.getStyleClass().add("dark-blue");
+        categoryShow.setOnAction(e -> {
+
+            Stage newWindow = new Stage();
+
+            handleShowCategory(newWindow);
+
+            newWindow.setOnCloseRequest(ee->{
+                show();
+            });
+            newWindow.initModality(Modality.APPLICATION_MODAL);
+            newWindow.showAndWait();
+        });
+
+        HBox button = new HBox(new Label("Sorted by ") , sortOption , filter, categoryShow);
+        button.setSpacing(10);
+        BorderPane borderPane = new BorderPane();
+        gridPane.setAlignment(Pos.CENTER);
+        borderPane.setCenter(gridPane);
+        gridPane.setHgap(100);
+        gridPane.setVgap(50);
+
+        scrollPane.setContent(borderPane);
+
+        VBox vBox = new VBox(button, scrollPane);
+        vBox.setSpacing(15);
+
+        mainPane.setCenter(vBox);
+        window.setScene(scene);
+        window.show();
     }
 
-           public void show() {
-                super.setPane();
-                //System.out.println("All products are:\n(Enter back to return)");
-                ScrollPane scrollPane = new ScrollPane();
-                scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED);
-                ArrayList<Product> allProducts = AllProductManager.showProductArray();
-                GridPane gridPane = new GridPane();
-                int row = 0;
-                int column =0;
-                for (Product product : allProducts) {
-                    //mainPane.getChildren().add(getProductPane(product));
-                    gridPane.add(getProductPane(product), column%3, row/3);
-                    column++;
-                    row++;
-                }
-                ChoiceBox<String> sortOption = new ChoiceBox<>();
-                sortOption.getItems().setAll("Default", "Name", "Price", "Score");
-                sortOption.setValue(AllProductManager.getSortedBy());
-                sortOption.getSelectionModel().selectedItemProperty().addListener((v, oldValue, newValue) -> {
-                    AllProductManager.setSortedBy(newValue);
-                    show();
-                });
-
-                Button filter = new Button("Filter");
-                filter.setOnAction(e -> {
-
-                    Stage newWindow = new Stage();
-
-                    handleFiltering(newWindow);
-
-                    newWindow.setOnCloseRequest(ee->{
-                        show();
-                    });
-                    newWindow.initModality(Modality.APPLICATION_MODAL);
-                    newWindow.showAndWait();
-                });
-
-                Button categoryShow = new Button("Category");
-                categoryShow.setOnAction(e -> {
-
-                    Stage newWindow = new Stage();
-
-                    handleShowCategory(newWindow);
-
-                    newWindow.setOnCloseRequest(ee->{
-                        show();
-                    });
-                    newWindow.initModality(Modality.APPLICATION_MODAL);
-                    newWindow.showAndWait();
-                });
-
-                HBox button = new HBox(new Label("Sorted by ") , sortOption , filter, categoryShow);
-
-                scrollPane.setContent(gridPane);
-
-                VBox vBox = new VBox(button, scrollPane);
-
-                mainPane.setCenter(vBox);
-                Scene scene = new Scene(mainPane, 1000, 600);
-                window.setScene(scene);
-                window.show();
+    private Pane getProductPane(Product product) {
+        GridPane gridPane = new GridPane();
+        Image image = null;
+        try {
+            image = new Image(new FileInputStream("src\\resource\\ProductImages\\" + product.getProductId() + ".png"));
+        }catch (Exception e){
+            try {
+                image = new Image(new FileInputStream("src\\resource\\ProductImages\\notFound.png"));
+            } catch (FileNotFoundException ex) {
+                ex.printStackTrace();
             }
-
-
-            private Pane getProductPane(Product product) {
-                VBox vBox = new VBox();
-                Image image = null;
-                try {
-                    image = new Image(new FileInputStream("src\\resource\\ProductImages\\" + product.getProductId() + ".png"));
-                }catch (Exception e){
-                    try {
-                        image = new Image(new FileInputStream("src\\resource\\ProductImages\\notFound.png"));
-                    } catch (FileNotFoundException ex) {
-                        ex.printStackTrace();
-                    }
-                }
-                ImageView imageView = new ImageView(image);
-                imageView.setFitWidth(100);
-                imageView.setFitHeight(100);
-                Button button = new Button("show");
-                button.setOnAction(e -> {
-                    ProductManager.setProduct(product);
-                    new ProductMenu(this).show();
-                });
-                HBox hBox = new HBox(imageView);
-                if (product.doesHaveOff()) {
-                    try {
-                        Image offImage = new Image(new FileInputStream("src\\resource\\ProductImages\\Off.png"));
-                        ImageView offImageView = new ImageView(offImage);
-                        hBox.getChildren().addAll(offImageView);
-                        hBox.setSpacing(-30);
-                    } catch (FileNotFoundException e) {
-                        e.printStackTrace();
-                    }
-                }
-                Label label = new Label(product.getName());
-                vBox.getChildren().addAll(hBox, label, button);
-                    return vBox;
+        }
+        ImageView imageView = new ImageView(image);
+        imageView.setFitWidth(100);
+        imageView.setFitHeight(100);
+        Button button = new Button("show");
+        button.setAlignment(Pos.CENTER);
+        button.setMaxWidth(Double.MAX_VALUE);
+        button.getStyleClass().add("dark-blue");
+        button.setOnAction(e -> {
+            ProductManager.setProduct(product);
+            new ProductMenu(this).show();
+        });
+        HBox hBox = new HBox(imageView);
+        if (product.doesHaveOff()) {
+            try {
+                Image offImage = new Image(new FileInputStream("src\\resource\\ProductImages\\Off.png"));
+                ImageView offImageView = new ImageView(offImage);
+                hBox.getChildren().addAll(offImageView);
+                hBox.setSpacing(-30);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
             }
+        }
+        Label label = new Label(product.getName());
+        label.setFont(Font.font(20));
 
+        GridPane.setConstraints(hBox, 0, 0);
+        GridPane.setConstraints(label, 0, 1);
+        GridPane.setConstraints(button, 0, 2);
+        GridPane.setHalignment(label, HPos.CENTER);
+        GridPane.setHalignment(button, HPos.CENTER);
+
+        gridPane.getChildren().addAll(hBox, label, button);
+        return gridPane;
+    }
 
     private void handleShowCategory(Stage newWindow) {
         ArrayList<Category> allCategories = Database.getAllCategories();
@@ -172,6 +172,12 @@ public class ProductsMenu extends Menu {
         gridPane.setHgap(20);
         gridPane.setVgap(10);
         gridPane.setAlignment(Pos.CENTER);
+        Scene scene = new Scene(gridPane ,1000, 600);
+        scene.getStylesheets().add(new File("Data/Styles/Buttons.css").toURI().toString());
+        scene.getStylesheets().add(new File("Data/Styles/textfield.css").toURI().toString());
+        scene.getStylesheets().add(new File("Data/Styles/backgrounds.css").toURI().toString());
+        scene.getStylesheets().add(new File("Data/Styles/choicebox.css").toURI().toString());
+        gridPane.getStyleClass().add("main");
         Label info = new Label("All Categories");
         info.setFont(Font.font(25));
         info.setAlignment(Pos.CENTER);
@@ -198,8 +204,6 @@ public class ProductsMenu extends Menu {
         }
 
 
-        Scene scene = new Scene(gridPane ,1000, 600);
-
         newWindow.setScene(scene);
     }
 
@@ -207,8 +211,15 @@ public class ProductsMenu extends Menu {
         Pane pane = ViewModelsWithGraphic.showCategoryGraphic(categoryName);
         ((GridPane)pane).setAlignment(Pos.CENTER);
         Scene scene = new Scene(pane, 1000, 600);
+        scene.getStylesheets().add(new File("Data/Styles/Buttons.css").toURI().toString());
+        scene.getStylesheets().add(new File("Data/Styles/textfield.css").toURI().toString());
+        scene.getStylesheets().add(new File("Data/Styles/backgrounds.css").toURI().toString());
+        scene.getStylesheets().add(new File("Data/Styles/choicebox.css").toURI().toString());
+        pane.getStyleClass().add("main");
 
         Button back = new Button("Back");
+        back.getStyleClass().add("dark-blue");
+        back.setAlignment(Pos.CENTER);
         back.setOnAction(e -> {
             handleShowCategory(newWindow);
         });
@@ -226,11 +237,24 @@ public class ProductsMenu extends Menu {
         Label allFilter = new Label("All Filters");
         GridPane.setConstraints(allFilter, 0 , 0);
         gridPane.getChildren().addAll(allFilter);
+        gridPane.setVgap(10);
+        gridPane.setHgap(10);
+        gridPane.setAlignment(Pos.CENTER);
+        Scene scene = new Scene(gridPane, 450, 450);
+        scene.getStylesheets().add(new File("Data/Styles/Buttons.css").toURI().toString());
+        scene.getStylesheets().add(new File("Data/Styles/textfield.css").toURI().toString());
+        scene.getStylesheets().add(new File("Data/Styles/backgrounds.css").toURI().toString());
+        scene.getStylesheets().add(new File("Data/Styles/choicebox.css").toURI().toString());
+        gridPane.getStyleClass().add("main");
+
 
         int i=1 ;
         for (String filter : filters) {
             Label label = new Label(filter);
             Button remove = new Button("remove");
+            remove.setMaxWidth(Double.MAX_VALUE);
+            remove.setAlignment(Pos.CENTER);
+            remove.getStyleClass().add("record-sales");
             remove.setOnAction(e -> {
                 AllProductManager.removeFilterOption(filter);
                 handleFiltering(newWindow);
@@ -242,9 +266,11 @@ public class ProductsMenu extends Menu {
         }
 
         TextField newFilter = new TextField();
+        newFilter.getStyleClass().add("textfield.css");
         Button addFilter = new Button("add filter");
 
         ChoiceBox<String> filterOption = new ChoiceBox<>();
+        filterOption.getStyleClass().add("choice-box");
 
         addFilter.setOnAction(e -> {
             AllProductManager.addFilterOption(filterOption.getValue() + " " + newFilter.getText());
@@ -269,41 +295,7 @@ public class ProductsMenu extends Menu {
         GridPane.setConstraints(addFilter, 2, i);
         gridPane.getChildren().addAll(filterOption, newFilter, addFilter);
 
-        Scene scene = new Scene(gridPane, 600, 400);
         newWindow.setScene(scene);
     }
 
-    private Menu getProductMenu() {
-        return new Menu("Product Menu", this) {
-            @Override
-            public void show() {
-                System.out.println("Please enter productID\n(Enter back to return)");
-            }
-
-            @Override
-            public void execute() {
-                String input = scanner.nextLine();
-                try {
-                    Matcher matcher1 = getMatcher(input, "\\s*(\\d+)\\s*");
-                    Matcher matcher2 = getMatcher(input, "^\\s*back\\s*$");
-                    if (matcher2.find()) {
-                        this.parentMenu.show();
-                        this.parentMenu.execute();
-                        return;
-                    } else if (!matcher1.find()) {
-                        throw new Exception("invalid input");
-                    } else {
-                        ProductManager.setProduct(Database.getProductByID(Integer.parseInt(matcher1.group(1))));
-                        ProductMenu productMenu = new ProductMenu(this.parentMenu);
-                        productMenu.show();
-                        productMenu.execute();
-                        return;
-                    }
-                } catch (Exception e) {
-                    System.out.println(e.getMessage());
-                }
-                this.execute();
-            }
-        };
-    }
 }
