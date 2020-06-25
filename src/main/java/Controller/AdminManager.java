@@ -123,8 +123,15 @@ public class AdminManager {
         for (Integer productId : category.getAllProductIds()) {
             deleteProduct(productId);
         }
-        for (String subCategoryName : category.getAllSubCategoryNames()) {
+        ArrayList<String> newOne = new ArrayList<>();
+        newOne.addAll(category.getAllSubCategoryNames());
+        for (String subCategoryName : newOne) {
             deleteCategory(subCategoryName);
+        }
+        String parent = category.getParent();
+        Category parentCategory = Database.getCategoryByName(parent);
+        if (parentCategory != null){
+            parentCategory.removeSubCategory(categoryName);
         }
         Database.removeCategory(category);
         return "category deleted";

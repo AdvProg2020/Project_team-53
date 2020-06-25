@@ -122,11 +122,11 @@ public class ProductMenu extends Menu {
             alert.showAndWait();
             return;
         }
-        BuyerManager.addProductToCart(Objects.requireNonNull(Database.getProductByID(productID)));
+        String res = BuyerManager.addProductToCart(Objects.requireNonNull(Database.getProductByID(productID)));
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Information");
         alert.setHeaderText("Process Result");
-        alert.setContentText(BuyerManager.addProductToCart(Objects.requireNonNull(Database.getProductByID(productID))));
+        alert.setContentText(res);
 
         alert.showAndWait();
     }

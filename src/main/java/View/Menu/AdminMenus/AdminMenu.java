@@ -953,8 +953,8 @@ public class AdminMenu extends Menu {
         register.setOnAction(e -> {
             try
             {
-                status.setText(AccountManager.register("Admin", userName.getText(), firstName.getText(), lastName.getText(), email.getText(),
-                        phoneNumber.getText(), password.getText(), Integer.parseInt(credit.getText()), ""));
+                status.setText(AdminManager.addNewAdminAccount( userName.getText(), firstName.getText(), lastName.getText(), email.getText(),
+                        phoneNumber.getText(), password.getText(), Integer.parseInt(credit.getText())));
             }
             catch (Exception ex)
             {
