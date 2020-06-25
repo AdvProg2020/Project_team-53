@@ -121,7 +121,7 @@ public class ViewModelsWithGraphic {
         return gridPane;
     }
 
-    public static Pane showFullInfoGraphic(int productId){
+    public static Pane showProductFullInfoGraphic(int productId){
         Product product = Database.getProductByID(productId);
 
         GridPane gridPane = new GridPane();
@@ -141,6 +141,8 @@ public class ViewModelsWithGraphic {
         ImageView productImage = new ImageView(image);
         productImage.setFitHeight(100);
         productImage.setFitWidth(100);
+        productImage.setPreserveRatio(true);
+        productImage.setSmooth(true);
         HBox hBox =new HBox(productImage);
 
         if(Database.getProductByID(productId).doesHaveOff()){

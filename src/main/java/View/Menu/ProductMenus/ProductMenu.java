@@ -45,7 +45,7 @@ public class ProductMenu extends Menu {
     public Scene setScene()
     {
         GridPane gridPane = new GridPane();
-        Pane pane = ViewModelsWithGraphic.showFullInfoGraphic(ProductManager.getProduct().getProductId());
+        Pane pane = ViewModelsWithGraphic.showProductFullInfoGraphic(ProductManager.getProduct().getProductId());
         gridPane.setAlignment(Pos.CENTER);
         GridPane main = new GridPane();
         gridPane.setVgap(10);
@@ -329,8 +329,8 @@ public class ProductMenu extends Menu {
         scene.getStylesheets().add(new File("Data/Styles/backgrounds.css").toURI().toString());
         scene.getStylesheets().add(new File("Data/Styles/choicebox.css").toURI().toString());
         gridPane.getStyleClass().add("admin-popup");
-        GridPane product1 = (GridPane) ViewModelsWithGraphic.showFullInfoGraphic(ProductManager.getProduct().getProductId());
-        GridPane product2 = (GridPane) ViewModelsWithGraphic.showFullInfoGraphic(productID);
+        GridPane product1 = (GridPane) ViewModelsWithGraphic.showProductFullInfoGraphic(ProductManager.getProduct().getProductId());
+        GridPane product2 = (GridPane) ViewModelsWithGraphic.showProductFullInfoGraphic(productID);
         Button back = new Button("Back");
         back.getStyleClass().add("dark-blue");
         back.setOnAction(e -> newWindow.setScene(setScene()));

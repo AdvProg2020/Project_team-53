@@ -675,7 +675,7 @@ public class AdminMenu extends Menu {
     public void handleShowProduct(int productID)
     {
         Stage newWindow = new Stage();
-        Pane pane = ViewModelsWithGraphic.showFullInfoGraphic(productID);
+        Pane pane = ViewModelsWithGraphic.showProductFullInfoGraphic(productID);
         ((GridPane)pane).setAlignment(Pos.CENTER);
         Scene scene = new Scene(pane, 600, 400);
         scene.getStylesheets().add(new File("Data/Styles/Buttons.css").toURI().toString());

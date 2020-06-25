@@ -587,7 +587,7 @@ public class SellerMenu extends Menu {
 
     public void handleShowProduct(int productID , Stage newWindow)
     {
-        Pane pane = ViewModelsWithGraphic.showFullInfoGraphic(productID);
+        Pane pane = ViewModelsWithGraphic.showProductFullInfoGraphic(productID);
         ((GridPane)pane).setAlignment(Pos.CENTER);
         GridPane gridPane = new GridPane();
         GridPane.setConstraints(pane, 0, 0 );
