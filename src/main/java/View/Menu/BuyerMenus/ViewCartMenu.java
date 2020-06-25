@@ -23,13 +23,10 @@ import javafx.scene.text.Font;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 public class ViewCartMenu extends Menu {
-    private Label message = new Label();
+    private Label message = new Label("Here is your cart");
 
     public ViewCartMenu(Menu parentMenu) {
         super("View Cart Menu", parentMenu);
@@ -46,10 +43,6 @@ public class ViewCartMenu extends Menu {
         Cart cart = ((BuyerAccount) AccountManager.getLoggedInAccount()).getCart();
         ArrayList<Integer> allProductIds = cart.getProductsID();
         Scene scene = new Scene(super.mainPane, 1000, 600);
-        scene.getStylesheets().add(new File("Data/Styles/Buttons.css").toURI().toString());
-        scene.getStylesheets().add(new File("Data/Styles/textfield.css").toURI().toString());
-        scene.getStylesheets().add(new File("Data/Styles/backgrounds.css").toURI().toString());
-        super.mainPane.getStyleClass().add("cart");
         GridPane gridPane = new GridPane();
         gridPane.setHgap(20);
         gridPane.setVgap(10);
@@ -58,7 +51,6 @@ public class ViewCartMenu extends Menu {
         info.setFont(Font.font(25));
         info.setAlignment(Pos.CENTER);
         GridPane.setConstraints(info, 1, 0);
-        GridPane.setHalignment(info, HPos.CENTER);
         gridPane.getChildren().add(info);
         int i = 1;
         for (Integer productId : allProductIds) {
@@ -70,45 +62,16 @@ public class ViewCartMenu extends Menu {
             label.setFont(Font.font(15));
 
             Label numbers = new Label(String.valueOf(cart.getMuchOfProductID(productId)));
-            numbers.setFont(Font.font(15));
 
             Button showButton = new Button("show");
             showButton.setOnAction(e -> handleShowProduct(product.getProductId()));
-            showButton.setMaxWidth(Double.MAX_VALUE);
-            showButton.getStyleClass().add("dark-blue");
             showButton.setAlignment(Pos.CENTER);
 
-            Button increaseButton = new Button();
-            File file1 = new File("Data" + File.separator + "Styles" + File.separator + "images" + File.separator + "plus.png");
-            FileInputStream fileInputStream1 = null;
-            try {
-                fileInputStream1 = new FileInputStream(file1);
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            }
-            Image image1 = new Image(fileInputStream1);
-            ImageView imageView1 = new ImageView(image1);
-            imageView1.setFitWidth(25);
-            imageView1.setFitHeight(25);
-            increaseButton.setGraphic(imageView1);
-            increaseButton.getStyleClass().add("dark-blue");
+            Button increaseButton = new Button("increase");
             increaseButton.setOnAction(e -> handleIncrease(product.getProductId()));
             increaseButton.setAlignment(Pos.CENTER);
 
-            Button decreaseButton = new Button();
-            File file2 = new File("Data" + File.separator + "Styles" + File.separator + "images" + File.separator + "minus.png");
-            FileInputStream fileInputStream2 = null;
-            try {
-                fileInputStream2 = new FileInputStream(file2);
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            }
-            Image image2 = new Image(fileInputStream2);
-            ImageView imageView2 = new ImageView(image2);
-            imageView2.setFitWidth(25);
-            imageView2.setFitHeight(25);
-            decreaseButton.setGraphic(imageView2);
-            decreaseButton.getStyleClass().add("dark-blue");
+            Button decreaseButton = new Button("decrease");
             decreaseButton.setOnAction(e -> handleDecrease(product.getProductId()));
             decreaseButton.setAlignment(Pos.CENTER);
 
@@ -123,15 +86,10 @@ public class ViewCartMenu extends Menu {
         }
 
         Button back = new Button("back");
-        back.setMaxWidth(Double.MAX_VALUE);
-        back.getStyleClass().add("dark-blue");
         back.setAlignment(Pos.CENTER);
         back.setOnAction(e -> parentMenu.show());
 
         Button payButton = new Button("Pay");
-        payButton.setMaxWidth(Double.MAX_VALUE);
-        payButton.getStyleClass().add("dark-blue");
-        payButton.setAlignment(Pos.CENTER);
         // TODO: 13-Jun-20 add function of paying
         payButton.setOnAction(e ->{
             Stage newWindow = new Stage();
@@ -145,8 +103,6 @@ public class ViewCartMenu extends Menu {
 
         GridPane.setConstraints(costOfAll, 5 , i);
         GridPane.setConstraints(back,5, i+1);
-        message.setFont(Font.font(15));
-        GridPane.setHalignment(message, HPos.CENTER);
         GridPane.setConstraints(message, 1, i+2 , 5, 1);
         GridPane.setConstraints(payButton, 4 , i+1);
 
@@ -189,7 +145,7 @@ public class ViewCartMenu extends Menu {
     public void handleShowProduct(int productID)
     {
         Stage newWindow = new Stage();
-        Pane pane = ViewModelsWithGraphic.showProductFullInfoGraphic(productID);
+        Pane pane = ViewModelsWithGraphic.showFullInfoGraphic(productID);
         ((GridPane)pane).setAlignment(Pos.CENTER);
         Scene scene = new Scene(pane, 600, 400);
 

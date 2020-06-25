@@ -73,10 +73,11 @@ public class Cart {
         {
             return false;
         }
-        if(muchOfProductID.get(productID) + 1 > Database.getProductByID(productID).getNumber())
+        if(1 > Database.getProductByID(productID).getNumber())
         {
             return false;
         }
+        System.out.println(muchOfProductID.get(productID));
         muchOfProductID.replace(productID, muchOfProductID.get(productID) + 1);
         return true;
     }
