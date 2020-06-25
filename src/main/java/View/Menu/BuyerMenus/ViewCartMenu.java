@@ -87,7 +87,6 @@ public class ViewCartMenu extends Menu {
         back.setOnAction(e -> parentMenu.show());
 
         Button payButton = new Button("Pay");
-        // TODO: 13-Jun-20 add function of paying
         payButton.setOnAction(e ->{
             Stage newWindow = new Stage();
             newWindow.initModality(Modality.APPLICATION_MODAL);
