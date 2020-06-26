@@ -223,6 +223,7 @@ public class ViewModelsWithGraphic {
             Button viewOffButton = new Button("view off");
             Pane pane = ViewModelsWithGraphic.showOffFullInfoGraphic(product.getOff().getOffId());
             gridPane.getChildren().add(viewOffButton);
+            viewOffButton.getStyleClass().add("top-button");
             GridPane.setConstraints(viewOffButton, 3, 5);
             viewOffButton.setOnAction(e -> {
                 BorderPane newPane = new BorderPane(pane);
