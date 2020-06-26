@@ -46,3 +46,8 @@
 .scroll-pane {
    -fx-background-color: transparent;
 }
+
+.viewOff-Button {
+    -fx-background-image: url("images/buyer.jpg");
+    -fx-background-size:  cover;
+}
