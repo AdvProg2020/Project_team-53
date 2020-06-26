@@ -79,7 +79,6 @@ public class ProductMenu extends Menu {
         compare.setMaxWidth(Double.MAX_VALUE);
         compare.setOnAction(e -> {
             try {
-                System.out.println(productID.getText());
                 handleCompare(Integer.parseInt(productID.getText()));
             }
             catch (Exception ex)
