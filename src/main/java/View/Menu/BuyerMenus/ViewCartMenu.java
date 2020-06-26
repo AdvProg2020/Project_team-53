@@ -18,7 +18,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -160,10 +159,23 @@ public class ViewCartMenu extends Menu {
     }
 
     private void handlePay(Stage newWindow) {
+        GridPane gridPane = new GridPane();
+        Scene scene = new Scene(gridPane, 600,400);
+        scene.getStylesheets().add(new File("Data/Styles/Buttons.css").toURI().toString());
+        scene.getStylesheets().add(new File("Data/Styles/textfield.css").toURI().toString());
+        scene.getStylesheets().add(new File("Data/Styles/backgrounds.css").toURI().toString());
+        gridPane.getStyleClass().add("cart");
+
         TextField discountId = new TextField();
+        discountId.setPromptText("DiscountID");
+        discountId.getStyleClass().add("text-field");
         TextField address = new TextField();
+        address.setPromptText("Address");
+        address.getStyleClass().add("text-field");
 
         Button submit = new Button("Pay");
+        submit.getStyleClass().add("dark-blue");
+        submit.setAlignment(Pos.CENTER);
         submit.setOnAction(e->{
             int id = -1;
             if (discountId.getText() != null && discountId.getText().matches("[0-9]+"))
@@ -171,8 +183,13 @@ public class ViewCartMenu extends Menu {
             BuyerManager.pay(id);
         });
 
-        VBox vBox = new VBox(address, discountId,submit);
-        Scene scene = new Scene(vBox, 600,400);
+        GridPane.setConstraints(discountId, 0, 0);
+        GridPane.setConstraints(address, 0, 1);
+        GridPane.setConstraints(submit, 0, 2);
+        GridPane.setHalignment(submit, HPos.CENTER);
+        gridPane.setAlignment(Pos.CENTER);
+        gridPane.setVgap(10);
+        gridPane.getChildren().addAll(discountId, address, submit);
 
         newWindow.setScene(scene);
     }

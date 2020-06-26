@@ -4,6 +4,7 @@ import Controller.AccountManager;
 import Controller.BuyerManager;
 import Controller.Database;
 import Controller.ProductManager;
+import Model.Account.BuyerAccount;
 import View.Menu.Menu;
 import View.Menu.ViewModelsWithGraphic;
 import javafx.geometry.HPos;
@@ -118,6 +119,16 @@ public class ProductMenu extends Menu {
             alert.setTitle("Error");
             alert.setHeaderText("Process Fail");
             alert.setContentText("You have to login first");
+
+            alert.showAndWait();
+            return;
+        }
+        if (!(AccountManager.getLoggedInAccount() instanceof BuyerAccount))
+        {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Process Fail");
+            alert.setContentText("You have to login as a buyer");
 
             alert.showAndWait();
             return;
