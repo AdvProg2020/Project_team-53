@@ -10,6 +10,8 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.text.Font;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 
 
 public class MainMenu extends Menu{
@@ -26,7 +28,6 @@ public class MainMenu extends Menu{
     public void setPane() {
         super.setPane();
         Label welcome = new Label("WELCOME");
-        welcome.setFont(Font.font(75));
         welcome.setAlignment(Pos.CENTER);
         GridPane gridPane = new GridPane();
         super.mainPane.getStylesheets().add(new File("Data/Styles/backgrounds.css").toURI().toString());
@@ -35,6 +36,16 @@ public class MainMenu extends Menu{
         GridPane.setConstraints(welcome, 0, 0);
         gridPane.getChildren().add(welcome);
         gridPane.setAlignment(Pos.CENTER);
+        try {
+            File file = new File("Data" + File.separator + "Styles" + File.separator + "Fonts" + File.separator + "KenneyBlocks.ttf");
+            FileInputStream fileInputStream = new FileInputStream(file);
+            welcome.setFont(Font.loadFont(fileInputStream, 100));
+
+        }
+        catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
         mainPane.setCenter(gridPane);
     }
 

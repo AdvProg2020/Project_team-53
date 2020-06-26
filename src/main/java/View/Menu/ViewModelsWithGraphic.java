@@ -75,8 +75,8 @@ public class ViewModelsWithGraphic {
         Account account = Database.getAccountByUsername(name);
 
         GridPane gridPane = new GridPane();
-        gridPane.setVgap(10);
-        gridPane.setHgap(10);
+        gridPane.setVgap(20);
+        gridPane.setHgap(20);
 
         Image image = null;
         try {
@@ -92,52 +92,58 @@ public class ViewModelsWithGraphic {
         profileImage.setFitHeight(100);
         profileImage.setFitWidth(100);
 
-        Label role = new Label();
-        role.setFont(Font.font(20));
-        if (account instanceof AdminAccount)
-        {
-            role.setText("Role : Admin");
+        FileInputStream fileInputStream = null;
+        try {
+            File file = new File("Data" + File.separator + "Styles" + File.separator + "Fonts" + File.separator + "KenneyFutureNarrow.ttf");
+            Label role = new Label();
+            role.setFont(Font.loadFont(new FileInputStream(file), 20));
+            if (account instanceof AdminAccount)
+            {
+                role.setText("Role : Admin");
+            }
+            else if (account instanceof BuyerAccount)
+            {
+                role.setText("Role : Buyer");
+            }
+            else if (account instanceof SellerAccount)
+            {
+                role.setText("Role : Seller");
+            }
+            Label username = new Label("Username : " + account.getUsername());
+            username.setFont(Font.loadFont(new FileInputStream(file), 20));
+            Label firstName = new Label("First Name : " + account.getFirstName());
+            firstName.setFont(Font.loadFont(new FileInputStream(file), 20));
+            Label lastName = new Label("Last Name : " + account.getLastName());
+            lastName.setFont(Font.loadFont(new FileInputStream(file), 20));
+            Label email = new Label("Email : " + account.getEmail());
+            email.setFont(Font.loadFont(new FileInputStream(file), 20));
+            Label phoneNumber = new Label("Phone : " + account.getPhoneNumber());
+            phoneNumber.setFont(Font.loadFont(new FileInputStream(file), 20));
+            Label credit = new Label("Credit : " + account.getCredit());
+            credit.setFont(Font.loadFont(new FileInputStream(file), 20));
+
+            GridPane.setConstraints(profileImage, 0, 0, 2, 6);
+            GridPane.setConstraints(role, 2, 0);
+            GridPane.setConstraints(username, 2, 1);
+            GridPane.setConstraints(firstName, 2, 2);
+            GridPane.setConstraints(lastName, 2,3);
+            GridPane.setConstraints(email, 2, 4);
+            GridPane.setConstraints(phoneNumber , 2, 5);
+            GridPane.setConstraints(credit , 2, 6);
+
+            gridPane.getChildren().addAll(profileImage, role, username, firstName, lastName, email, phoneNumber, credit);
+
+
+            if (account instanceof SellerAccount){
+                Label companyLabel = new Label("Company : " + ((SellerAccount)account).getCompany());
+                companyLabel.setFont(Font.loadFont(new FileInputStream(file), 20));
+                GridPane.setConstraints(companyLabel , 2 , 7);
+                gridPane.getChildren().addAll(companyLabel);
+            }
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
         }
-        else if (account instanceof BuyerAccount)
-        {
-            role.setText("Role : Buyer");
-        }
-        else if (account instanceof  SellerAccount)
-        {
-            role.setText("Role : Seller");
-        }
-        Label username = new Label("Username : " + account.getUsername());
-        username.setFont(Font.font(20));
-        Label firstName = new Label("First Name : " + account.getFirstName());
-        firstName.setFont(Font.font(20));
-        Label lastName = new Label("Last Name : " + account.getLastName());
-        lastName.setFont(Font.font(20));
-        Label email = new Label("Email : " + account.getEmail());
-        email.setFont(Font.font(20));
-        Label phoneNumber = new Label("Phone : " + account.getPhoneNumber());
-        phoneNumber.setFont(Font.font(20));
-        Label credit = new Label("Credit : " + account.getCredit());
-        credit.setFont(Font.font(20));
-
-        GridPane.setConstraints(profileImage, 0, 0, 2, 6);
-        GridPane.setConstraints(role, 2, 0);
-        GridPane.setConstraints(username, 2, 1);
-        GridPane.setConstraints(firstName, 2, 2);
-        GridPane.setConstraints(lastName, 2,3);
-        GridPane.setConstraints(email, 2, 4);
-        GridPane.setConstraints(phoneNumber , 2, 5);
-        GridPane.setConstraints(credit , 2, 6);
-
-        gridPane.getChildren().addAll(profileImage, role, username, firstName, lastName, email, phoneNumber, credit);
-
-
-        if (account instanceof SellerAccount){
-            Label companyLabel = new Label("Company : " + ((SellerAccount)account).getCompany());
-            companyLabel.setFont(Font.font(20));
-            GridPane.setConstraints(companyLabel , 2 , 7);
-            gridPane.getChildren().addAll(companyLabel);
-        }
-
         return gridPane;
     }
 
