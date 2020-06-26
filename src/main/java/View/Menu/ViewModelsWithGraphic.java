@@ -3,6 +3,7 @@ package View.Menu;
 import Controller.AccountManager;
 import Controller.Database;
 import Model.Account.Account;
+import Model.Account.AdminAccount;
 import Model.Account.BuyerAccount;
 import Model.Account.SellerAccount;
 import Model.Log.BuyLog;
@@ -30,6 +31,7 @@ import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -90,6 +92,20 @@ public class ViewModelsWithGraphic {
         profileImage.setFitHeight(100);
         profileImage.setFitWidth(100);
 
+        Label role = new Label();
+        role.setFont(Font.font(20));
+        if (account instanceof AdminAccount)
+        {
+            role.setText("Role : Admin");
+        }
+        else if (account instanceof BuyerAccount)
+        {
+            role.setText("Role : Buyer");
+        }
+        else if (account instanceof  SellerAccount)
+        {
+            role.setText("Role : Seller");
+        }
         Label username = new Label("Username : " + account.getUsername());
         username.setFont(Font.font(20));
         Label firstName = new Label("First Name : " + account.getFirstName());
@@ -104,20 +120,21 @@ public class ViewModelsWithGraphic {
         credit.setFont(Font.font(20));
 
         GridPane.setConstraints(profileImage, 0, 0, 2, 6);
-        GridPane.setConstraints(username, 2, 0);
-        GridPane.setConstraints(firstName, 2, 1);
-        GridPane.setConstraints(lastName, 2,2);
-        GridPane.setConstraints(email, 2, 3);
-        GridPane.setConstraints(phoneNumber , 2, 4);
-        GridPane.setConstraints(credit , 2, 5);
+        GridPane.setConstraints(role, 2, 0);
+        GridPane.setConstraints(username, 2, 1);
+        GridPane.setConstraints(firstName, 2, 2);
+        GridPane.setConstraints(lastName, 2,3);
+        GridPane.setConstraints(email, 2, 4);
+        GridPane.setConstraints(phoneNumber , 2, 5);
+        GridPane.setConstraints(credit , 2, 6);
 
-        gridPane.getChildren().addAll(profileImage, username, firstName, lastName, email, phoneNumber, credit);
+        gridPane.getChildren().addAll(profileImage, role, username, firstName, lastName, email, phoneNumber, credit);
 
 
         if (account instanceof SellerAccount){
             Label companyLabel = new Label("Company : " + ((SellerAccount)account).getCompany());
             companyLabel.setFont(Font.font(20));
-            GridPane.setConstraints(companyLabel , 2 , 6);
+            GridPane.setConstraints(companyLabel , 2 , 7);
             gridPane.getChildren().addAll(companyLabel);
         }
 
@@ -164,8 +181,10 @@ public class ViewModelsWithGraphic {
 
         }
 
+
         Label name = new Label("Name : " + product.getName());
         Label averageScore = new Label("Average Score : " + product.getAverageScore());
+        Pane scoreWithStar = getScoreWithStar(product);
         Label price = new Label("Price : " + product.getPrice());
         Label category = new Label("Category : " + product.getCategoryName());
         Label status = new Label("Status : " + product.getStatus());
@@ -177,16 +196,17 @@ public class ViewModelsWithGraphic {
 
         GridPane.setConstraints(name, 0, 1 , 2 , 1);
         GridPane.setConstraints(averageScore, 0, 2 , 2 , 1);
-        GridPane.setConstraints(price, 0, 3 , 2 , 1);
-        GridPane.setConstraints(category, 0, 4 , 2 , 1);
-        GridPane.setConstraints(status, 0, 5 , 2 , 1);
-        GridPane.setConstraints(sellerUsername, 0, 6 , 2 , 1);
-        GridPane.setConstraints(available, 0, 7 , 2 , 1);
-        GridPane.setConstraints(number, 0, 8 , 2 , 1);
-        GridPane.setConstraints(descriptionTag, 0, 9 , 2 , 1);
-        GridPane.setConstraints(description, 1, 10 , 2 , 3);
+        GridPane.setConstraints(scoreWithStar, 0, 3, 2, 1);
+        GridPane.setConstraints(price, 0, 4 , 2 , 1);
+        GridPane.setConstraints(category, 0, 5 , 2 , 1);
+        GridPane.setConstraints(status, 0, 6 , 2 , 1);
+        GridPane.setConstraints(sellerUsername, 0, 7 , 2 , 1);
+        GridPane.setConstraints(available, 0, 8 , 2 , 1);
+        GridPane.setConstraints(number, 0, 9 , 2 , 1);
+        GridPane.setConstraints(descriptionTag, 0, 10 , 2 , 1);
+        GridPane.setConstraints(description, 1, 11 , 2 , 3);
 
-        gridPane.getChildren().addAll( name, averageScore, price, category, status,sellerUsername,available,number,descriptionTag,description);
+        gridPane.getChildren().addAll( name, averageScore, scoreWithStar, price, category, status,sellerUsername,available,number,descriptionTag,description);
 
         if (product.doesHaveOff()){
             try {
@@ -453,5 +473,49 @@ public class ViewModelsWithGraphic {
 
         }
         return gridPane;
+    }
+
+    public static Pane getScoreWithStar(Product product)
+    {
+        int numberOfStars = 0;
+        if(product.getAverageScore() >=0 && product.getAverageScore() < 1)
+        {
+            numberOfStars = 1;
+        }
+        else if(product.getAverageScore() >=1 && product.getAverageScore() < 2)
+        {
+            numberOfStars = 2;
+        }
+        else if(product.getAverageScore() >=2 && product.getAverageScore() < 3)
+        {
+            numberOfStars = 3;
+        }
+        else if(product.getAverageScore() >=3 && product.getAverageScore() < 4)
+        {
+            numberOfStars = 4;
+        }
+        else if(product.getAverageScore() >=4 && product.getAverageScore() <= 5)
+        {
+            numberOfStars = 5;
+        }
+        File file1 = new File("Data" + File.separator + "Styles" + File.separator + "images" + File.separator + "star.jpg");
+        FileInputStream fileInputStream1 = null;
+        try {
+            fileInputStream1 = new FileInputStream(file1);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        Image image1 = new Image(fileInputStream1);
+        ImageView imageView1 = new ImageView(image1);
+        imageView1.setFitWidth(20);
+        imageView1.setFitHeight(20);
+        HBox hBox = new HBox();
+        hBox.setSpacing(5);
+        for (int i = 0; i < numberOfStars; i++)
+        {
+            hBox.getChildren().add(imageView1);
+        }
+        return hBox;
+
     }
 }

@@ -154,14 +154,18 @@ public class ProductsMenu extends Menu {
         }
         Label label = new Label(product.getName());
         label.setFont(Font.font(20));
+        Pane score = ViewModelsWithGraphic.getScoreWithStar(product);
 
         GridPane.setConstraints(hBox, 0, 0);
         GridPane.setConstraints(label, 0, 1);
-        GridPane.setConstraints(button, 0, 2);
+        GridPane.setConstraints(score, 0, 2);
+        GridPane.setConstraints(button, 0, 3);
+        GridPane.setHalignment(score, HPos.CENTER);
         GridPane.setHalignment(label, HPos.CENTER);
         GridPane.setHalignment(button, HPos.CENTER);
 
-        gridPane.getChildren().addAll(hBox, label, button);
+        gridPane.getChildren().addAll(hBox, label, score, button);
+        gridPane.setVgap(10);
         return gridPane;
     }
 
