@@ -85,7 +85,7 @@ public class BuyerManagerTest {
         buyerAccount.setCart(cart);
         Product product = new Product("product", "product", "product", true, 10, "product", "pro", 1000);
         Database.addAllProduct(product);
-        String expected = "you haven't choosen this product yet";
+        String expected = "you haven't chosen this product yet";
         String result = BuyerManager.DecreaseProduct(product.getProductId());
 
         Assert.assertEquals(expected, result);

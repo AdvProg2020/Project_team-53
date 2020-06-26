@@ -1,8 +1,8 @@
 package Controller;
 
-import Model.*;
 import Model.Account.BuyerAccount;
 import Model.Account.SellerAccount;
+import Model.Cart;
 import Model.Log.Log;
 import Model.Product.DiscountAndOff.Discount;
 import Model.Product.Product;
@@ -40,11 +40,11 @@ public class BuyerManager {
     public static String addProductToCart(Product product) {
         if (product.getNumber() < 1)
             return "unfortunately we don't have this product now";
-        product.setNumber(product.getNumber() - 1);
         BuyerAccount buyerAccount = (BuyerAccount) AccountManager.getLoggedInAccount();
         Cart cart = buyerAccount.getCart();
         if (!cart.increaseProduct(product.getProductId()))
             addNewProductToCart(product);
+        product.setNumber(product.getNumber() - 1);
         return "product added to cart";
     }
 
@@ -70,10 +70,8 @@ public class BuyerManager {
             if (discountId != -1) {
                 Discount discount = Database.getDiscountById(discountId);
                 // max value
-                buyerAccount.setCredit(buyerAccount.getCredit() - Math.min((int) cost * discount.getPercent() / 100, discount.getMaxValue()));
+                buyerAccount.setCredit(buyerAccount.getCredit() + Math.min((int) cost * discount.getPercent() / 100, discount.getMaxValue()));
                 // Todo: check up the line above
-            } else {
-                buyerAccount.setCredit((int) (buyerAccount.getCredit() - cost));
             }
         }
         buyerAccount.setCart(new Cart());
@@ -87,8 +85,10 @@ public class BuyerManager {
     public static String pay(int discountId) {
         if (Database.getDiscountById(discountId) == null && discountId != -1)
             return " your discount is not valid";
+        if (discountId!=-1 && !((BuyerAccount) AccountManager.getLoggedInAccount()).canUseDiscount(discountId))
+            return "You can't use this discount";
         if (!canBuy(discountId))
-            return "there is a problem in process and you can't buy";
+            return "Not enough money";
         else {
             buy(discountId);
             return "product bought successfully";
@@ -111,6 +111,7 @@ public class BuyerManager {
             if (product.doesHaveOff()) {
                 maxValue = product.getOff().getMaxValue();
                 offValue = product.getPrice() * product.getOff().getPercent() / 100;
+                sellerAccount.setCredit(sellerAccount.getCredit() - Math.min(offValue, maxValue) * buyerAccount.getCart().getMuchOfProductID(productId));
             }
             Log.addLog(buyerAccount.getUsername(), product.getSellerUsername(), product.getPrice(), productId, Math.min(offValue, maxValue), discountValue * product.getPrice() / 100);
         }

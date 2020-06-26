@@ -3,10 +3,7 @@ package Controller;
 import Model.Log.SellLog;
 import Model.Product.DiscountAndOff.Off;
 import Model.Product.Product;
-import Model.Request.AddNewOffRequest;
-import Model.Request.EditOffRequest;
-import Model.Request.EditProductRequest;
-import Model.Request.NewProductRequest;
+import Model.Request.*;
 import Model.Account.SellerAccount;
 
 import java.util.ArrayList;
@@ -33,12 +30,8 @@ public class SellerManager {
     }
 
     public static String deleteProduct(int productId){
-        Product product = Database.getProductByID(productId);
-        if (!product.isSeller(AccountManager.getLoggedInAccount().getUsername())){
-            return "You can't remove this product.";
-        }
-        Database.removeProduct(product);
-        return "Product removed successfully";
+        Database.addRequest(new DeleteProduct(productId));
+        return "Request send";
     }
 
     public static String addNewOff(int maxValue, int percent, String startDate, String endDate , ArrayList<Integer>productIds){

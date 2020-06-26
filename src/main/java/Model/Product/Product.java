@@ -193,7 +193,7 @@ public class Product {
         if (off == null)
             return false;
         Date date = new Date();
-        if (date.compareTo(off.getEndDate()) > 0 && date.compareTo(off.getStartDate()) < 0)
+        if (date.compareTo(off.getEndDate()) > 0 || date.compareTo(off.getStartDate()) < 0)
             return false;
         if (!off.getStatus().equalsIgnoreCase("accepted"))
             return false;

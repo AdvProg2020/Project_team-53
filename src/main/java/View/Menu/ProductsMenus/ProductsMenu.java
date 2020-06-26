@@ -152,19 +152,21 @@ public class ProductsMenu extends Menu {
                 e.printStackTrace();
             }
         }
-        Label label = new Label(product.getName());
+        Label label = new Label(product.getProductId() + " : " + product.getName());
         label.setFont(Font.font(20));
         Pane score = ViewModelsWithGraphic.getScoreWithStar(product);
-
+        Label price = new Label("Price: " + product.getPrice());
+        price.setFont(Font.font(15));
         GridPane.setConstraints(hBox, 0, 0);
         GridPane.setConstraints(label, 0, 1);
-        GridPane.setConstraints(score, 0, 2);
-        GridPane.setConstraints(button, 0, 3);
+        GridPane.setConstraints(price, 0, 2);
+        GridPane.setConstraints(score, 0, 3);
+        GridPane.setConstraints(button, 0, 4);
         GridPane.setHalignment(score, HPos.CENTER);
         GridPane.setHalignment(label, HPos.CENTER);
         GridPane.setHalignment(button, HPos.CENTER);
 
-        gridPane.getChildren().addAll(hBox, label, score, button);
+        gridPane.getChildren().addAll(hBox, label, price, score, button);
         gridPane.setVgap(10);
         return gridPane;
     }
@@ -262,6 +264,7 @@ public class ProductsMenu extends Menu {
             remove.setOnAction(e -> {
                 AllProductManager.removeFilterOption(filter);
                 handleFiltering(newWindow);
+                show();
             });
             GridPane.setConstraints(label , 0, i, 2, 1);
             GridPane.setConstraints(remove, 2, i);

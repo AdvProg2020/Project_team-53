@@ -36,6 +36,7 @@ public class WorkWithFile {
         readArrayOfRequestFromFile("EditProductRequests");
         readArrayOfRequestFromFile("NewProductRequests");
         readArrayOfRequestFromFile("NewSellerRequests");
+        readArrayOfRequestFromFile("DeleteProduct");
 
         readIdsFromFile();
     }
@@ -136,8 +137,11 @@ public class WorkWithFile {
         else if (place.equals("NewProductRequests")){
             type = new TypeToken<ArrayList<NewProductRequest>>(){}.getType();
         }
-        else {
+        else if (place.equals("NewSellerRequest")){
             type = new TypeToken<ArrayList<NewSellerRequest>>(){}.getType();
+        }
+        else {
+            type = new TypeToken<ArrayList<DeleteProduct>>(){}.getType();
         }
 
         arr = gson.fromJson(br, type);
@@ -190,6 +194,7 @@ public class WorkWithFile {
         ArrayList<Object> editProduct = new ArrayList<>();
         ArrayList<Object> newProduct = new ArrayList<>();
         ArrayList<Object> newSeller = new ArrayList<>();
+        ArrayList<Object> deleteProduct = new ArrayList<>();
 
         for (Request request : allRequest) {
             if (request instanceof AddNewOffRequest)
@@ -202,6 +207,8 @@ public class WorkWithFile {
                 newProduct.add(request);
             else if (request instanceof NewSellerRequest)
                 newSeller.add(request);
+            else if (request instanceof DeleteProduct)
+                deleteProduct.add(request);
         }
 
         writeArrayOnFile(addNewOff, "Requests\\AddNewOffRequests");
@@ -209,7 +216,7 @@ public class WorkWithFile {
         writeArrayOnFile(editProduct, "Requests\\EditProductRequests");
         writeArrayOnFile(newProduct, "Requests\\NewProductRequests");
         writeArrayOnFile(newSeller, "Requests\\NewSellerRequests");
-
+        writeArrayOnFile(deleteProduct, "Requests\\DeleteProduct");
     }
 
     private static void writeArrayOnFile(ArrayList<Object> arr, String name) {

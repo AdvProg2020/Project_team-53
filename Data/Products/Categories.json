@@ -1,1 +1,1 @@
-[{"name":"cleaning","feature":"clean","allSubCategoryNames":["shampoo"],"parent":"null","allProductIds":[3,4]},{"name":"shampoo","feature":"sar","allSubCategoryNames":[],"parent":"cleaning","allProductIds":[1,2,5]}]
+[{"name":"cleaning","feature":"clean","allSubCategoryNames":["shampoo"],"parent":"null","allProductIds":[3,4,7]},{"name":"shampoo","feature":"sar","allSubCategoryNames":[],"parent":"cleaning","allProductIds":[1,2]}]

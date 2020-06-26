@@ -12,6 +12,7 @@ import Model.Product.DiscountAndOff.Discount;
 import Model.Product.Product;
 import Model.Request.*;
 import View.Menu.Menu;
+import View.Menu.UserMenu;
 import View.Menu.ViewModelsWithGraphic;
 import javafx.geometry.HPos;
 import javafx.geometry.Pos;
@@ -192,7 +193,9 @@ public class AdminMenu extends Menu {
     public void handleLogout()
     {
         AccountManager.logOut();
-        parentMenu.show();
+
+        UserMenu userMenu = new UserMenu(this);
+        userMenu.show();
     }
 
     public void handleManageRequest()
@@ -238,6 +241,9 @@ public class AdminMenu extends Menu {
             else if (request instanceof EditOffRequest)
             {
                 text = text + "Edit Off";
+            }
+            else if (request instanceof DeleteProduct){
+                text = text + "Delete Product";
             }
             label.setText(text);
             label.setFont(Font.font(15));
