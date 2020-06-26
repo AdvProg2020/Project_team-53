@@ -212,6 +212,11 @@ public class AdminMenu extends Menu {
         gridPane.setHgap(20);
         gridPane.setVgap(10);
         gridPane.setAlignment(Pos.CENTER);
+        ScrollPane scrollPane = new ScrollPane();
+        scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.ALWAYS);
+        scrollPane.setFitToHeight(true);
+        scrollPane.setFitToWidth(true);
+        scrollPane.getStyleClass().add("scroll-pane");
         Label info = new Label("All Requests");
         info.setFont(Font.font(25));
         GridPane.setHalignment(info, HPos.CENTER);
@@ -267,7 +272,8 @@ public class AdminMenu extends Menu {
         back.setAlignment(Pos.CENTER);
         gridPane.getChildren().add(back);
 
-        super.mainPane.setCenter(gridPane);
+        scrollPane.setContent(gridPane);
+        super.mainPane.setCenter(scrollPane);
 
         Menu.window.setScene(scene);
     }
@@ -286,6 +292,11 @@ public class AdminMenu extends Menu {
         gridPane.setHgap(20);
         gridPane.setVgap(10);
         gridPane.setAlignment(Pos.CENTER);
+        ScrollPane scrollPane = new ScrollPane();
+        scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.ALWAYS);
+        scrollPane.setFitToHeight(true);
+        scrollPane.setFitToWidth(true);
+        scrollPane.getStyleClass().add("scroll-pane");
         Label info = new Label("All Products");
         info.setFont(Font.font(25));
         GridPane.setHalignment(info, HPos.CENTER);
@@ -318,7 +329,8 @@ public class AdminMenu extends Menu {
         back.setAlignment(Pos.CENTER);
         gridPane.getChildren().add(back);
 
-        super.mainPane.setCenter(gridPane);
+        scrollPane.setContent(gridPane);
+        super.mainPane.setCenter(scrollPane);
 
         Menu.window.setScene(scene);
     }
@@ -337,6 +349,11 @@ public class AdminMenu extends Menu {
         gridPane.setHgap(20);
         gridPane.setVgap(10);
         gridPane.setAlignment(Pos.CENTER);
+        ScrollPane scrollPane = new ScrollPane();
+        scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.ALWAYS);
+        scrollPane.setFitToHeight(true);
+        scrollPane.setFitToWidth(true);
+        scrollPane.getStyleClass().add("scroll-pane");
         Label info = new Label("All Users");
         info.setFont(Font.font(25));
         GridPane.setHalignment(info, HPos.CENTER);
@@ -384,7 +401,8 @@ public class AdminMenu extends Menu {
         back.setAlignment(Pos.CENTER);
         gridPane.getChildren().add(back);
 
-        super.mainPane.setCenter(gridPane);
+        scrollPane.setContent(gridPane);
+        super.mainPane.setCenter(scrollPane);
 
         Menu.window.setScene(scene);
     }
@@ -403,6 +421,11 @@ public class AdminMenu extends Menu {
         gridPane.setHgap(20);
         gridPane.setVgap(10);
         gridPane.setAlignment(Pos.CENTER);
+        ScrollPane scrollPane = new ScrollPane();
+        scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.ALWAYS);
+        scrollPane.setFitToHeight(true);
+        scrollPane.setFitToWidth(true);
+        scrollPane.getStyleClass().add("scroll-pane");
         Label info = new Label("All Categories");
         info.setFont(Font.font(25));
         info.setAlignment(Pos.CENTER);
@@ -449,7 +472,8 @@ public class AdminMenu extends Menu {
         back.setAlignment(Pos.CENTER);
         gridPane.getChildren().addAll(back, addNewCategory);
 
-        super.mainPane.setCenter(gridPane);
+        scrollPane.setContent(gridPane);
+        super.mainPane.setCenter(scrollPane);
 
         Menu.window.setScene(scene);
     }
@@ -517,8 +541,16 @@ public class AdminMenu extends Menu {
         Pane pane = ViewModelsWithGraphic.showCategoryGraphic(categoryName);
         ((GridPane)pane).setAlignment(Pos.CENTER);
         Scene scene = new Scene(pane, 600, 400);
+        scene.getStylesheets().add(new File("Data/Styles/Buttons.css").toURI().toString());
+        scene.getStylesheets().add(new File("Data/Styles/textfield.css").toURI().toString());
+        scene.getStylesheets().add(new File("Data/Styles/backgrounds.css").toURI().toString());
+        scene.getStylesheets().add(new File("Data/Styles/choicebox.css").toURI().toString());
+        pane.getStyleClass().add("admin-popup");
 
         Button remove = new Button("Remove");
+        remove.setAlignment(Pos.CENTER);
+        remove.setMaxWidth(Double.MAX_VALUE);
+        remove.getStyleClass().add("record-sales");
         remove.setOnAction(e -> {
             AdminManager.deleteCategory(categoryName);
             handleManageCategories();
@@ -526,6 +558,9 @@ public class AdminMenu extends Menu {
         });
 
         Button edit = new Button("Edit");
+        edit.setAlignment(Pos.CENTER);
+        edit.setMaxWidth(Double.MAX_VALUE);
+        edit.getStyleClass().add("dark-blue");
         edit.setOnAction(e -> handleEditCategory(categoryName, newWindow));
 
         GridPane.setConstraints(remove, 4, 1);
@@ -576,6 +611,11 @@ public class AdminMenu extends Menu {
         gridPane.setHgap(20);
         gridPane.setVgap(10);
         gridPane.setAlignment(Pos.CENTER);
+        ScrollPane scrollPane = new ScrollPane();
+        scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.ALWAYS);
+        scrollPane.setFitToHeight(true);
+        scrollPane.setFitToWidth(true);
+        scrollPane.getStyleClass().add("scroll-pane");
         Label info = new Label("All Discounts");
         info.setFont(Font.font(25));
         GridPane.setHalignment(info, HPos.CENTER);
@@ -621,7 +661,8 @@ public class AdminMenu extends Menu {
         back.setAlignment(Pos.CENTER);
         gridPane.getChildren().addAll(back, addNewDiscount);
 
-        super.mainPane.setCenter(gridPane);
+        scrollPane.setContent(gridPane);
+        super.mainPane.setCenter(scrollPane);
 
         Menu.window.setScene(scene);
     }
