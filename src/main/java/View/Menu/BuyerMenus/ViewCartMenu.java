@@ -60,7 +60,19 @@ public class ViewCartMenu extends Menu {
         GridPane.setHalignment(info, HPos.CENTER);
         GridPane.setConstraints(info, 1, 0);
         gridPane.getChildren().add(info);
-        int i = 1;
+        Label priceOneLabel = new Label("Price of one");
+        Label priceAllLabel = new Label("Price of All");
+        Label numberOf = new Label("Number");
+        priceOneLabel.setStyle("-fx-font-weight: bold");
+        priceAllLabel.setStyle("-fx-font-weight: bold");
+        numberOf.setStyle("-fx-font-weight: bold");
+
+        GridPane.setConstraints(numberOf, 2, 1);
+        GridPane.setConstraints(priceOneLabel, 3, 1);
+        GridPane.setConstraints(priceAllLabel, 4, 1);
+        gridPane.getChildren().addAll(numberOf, priceOneLabel, priceAllLabel);
+
+        int i = 2;
         for (Integer productId : allProductIds) {
             Product product = Database.getProductByID(productId);
             String text = "";
@@ -70,6 +82,14 @@ public class ViewCartMenu extends Menu {
             label.setFont(Font.font(15));
 
             Label numbers = new Label(String.valueOf(cart.getMuchOfProductID(productId)));
+
+            int priceOfOne = product.getPrice();
+            if (product.doesHaveOff())
+                priceOfOne -= (Math.min(product.getPrice()*product.getOff().getPercent()/100, product.getOff().getMaxValue()));
+            Label priceOne = new Label(String.valueOf(priceOfOne));
+            Label priceAll = new Label(String.valueOf(priceOfOne*cart.getMuchOfProductID(productId)));
+            priceOne.setFont(Font.font(15));
+            priceAll.setFont(Font.font(15));
 
             Button showButton = new Button("show");
             showButton.setAlignment(Pos.CENTER);
@@ -116,11 +136,13 @@ public class ViewCartMenu extends Menu {
 
             GridPane.setConstraints(label, 0, i);
             GridPane.setConstraints(numbers, 2, i);
-            GridPane.setConstraints(showButton, 3, i);
-            GridPane.setConstraints(increaseButton, 4, i);
-            GridPane.setConstraints(decreaseButton, 5, i);
+            GridPane.setConstraints(priceOne,3 , i);
+            GridPane.setConstraints(priceAll,4, i);
+            GridPane.setConstraints(showButton, 5, i);
+            GridPane.setConstraints(increaseButton, 6, i);
+            GridPane.setConstraints(decreaseButton, 7, i);
 
-            gridPane.getChildren().addAll(label, numbers, showButton, increaseButton, decreaseButton);
+            gridPane.getChildren().addAll(label, numbers,priceOne, priceAll, showButton, increaseButton, decreaseButton);
             i++;
         }
 
@@ -134,7 +156,6 @@ public class ViewCartMenu extends Menu {
         payButton.setAlignment(Pos.CENTER);
         payButton.setMaxWidth(Double.MAX_VALUE);
         payButton.getStyleClass().add("dark-blue");
-        // TODO: 13-Jun-20 add function of paying
         payButton.setOnAction(e ->{
             Stage newWindow = new Stage();
             newWindow.initModality(Modality.APPLICATION_MODAL);
@@ -144,13 +165,13 @@ public class ViewCartMenu extends Menu {
             newWindow.showAndWait();
         });
         Label costOfAll = new Label("cost : " + cart.getCost());
-
-        GridPane.setConstraints(costOfAll, 5 , i);
-        GridPane.setConstraints(back,5, i+1);
-        GridPane.setConstraints(message, 1, i+2 , 5, 1);
+        costOfAll.setFont(Font.font(20));
+        GridPane.setConstraints(costOfAll, 7 , i);
+        GridPane.setConstraints(back,7, i+1);
+        GridPane.setConstraints(message, 1, i+2 , 7, 1);
         message.setFont(Font.font(15));
         GridPane.setHalignment(message, HPos.CENTER);
-        GridPane.setConstraints(payButton, 4 , i+1);
+        GridPane.setConstraints(payButton, 6 , i+1);
 
         gridPane.getChildren().addAll(back, costOfAll, payButton, message);
 

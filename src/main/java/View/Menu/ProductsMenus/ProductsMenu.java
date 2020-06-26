@@ -141,7 +141,18 @@ public class ProductsMenu extends Menu {
             ProductManager.setProduct(product);
             new ProductMenu(this).show();
         });
-        HBox hBox = new HBox(imageView);
+        HBox hBox = new HBox();
+        if(!product.isAvailable() || product.getNumber() <= 0){
+            try {
+                Image offImage = new Image(new FileInputStream("src\\resource\\ProductImages\\notAvailable.png"));
+                ImageView offImageView = new ImageView(offImage);
+                hBox.getChildren().addAll(offImageView);
+                hBox.setSpacing(-30);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+        }
+        hBox.getChildren().addAll(imageView);
         if (product.doesHaveOff()) {
             try {
                 Image offImage = new Image(new FileInputStream("src\\resource\\ProductImages\\Off.png"));
