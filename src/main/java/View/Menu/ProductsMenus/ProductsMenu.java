@@ -142,23 +142,14 @@ public class ProductsMenu extends Menu {
             new ProductMenu(this).show();
         });
         HBox hBox = new HBox();
-        if(!product.isAvailable() || product.getNumber() <= 0){
-            try {
-                Image offImage = new Image(new FileInputStream("src\\resource\\ProductImages\\notAvailable.png"));
-                ImageView offImageView = new ImageView(offImage);
-                hBox.getChildren().addAll(offImageView);
-                hBox.setSpacing(-30);
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            }
-        }
+        VBox vBox = new VBox();
         hBox.getChildren().addAll(imageView);
         if (product.doesHaveOff()) {
             try {
                 Image offImage = new Image(new FileInputStream("src\\resource\\ProductImages\\Off.png"));
                 ImageView offImageView = new ImageView(offImage);
-                hBox.getChildren().addAll(offImageView);
-                hBox.setSpacing(-30);
+                vBox.getChildren().addAll(offImageView);
+
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
@@ -176,6 +167,21 @@ public class ProductsMenu extends Menu {
         GridPane.setHalignment(score, HPos.CENTER);
         GridPane.setHalignment(label, HPos.CENTER);
         GridPane.setHalignment(button, HPos.CENTER);
+
+        if(!product.isAvailable() || product.getNumber() <= 0){
+            try {
+                Image notImage = new Image(new FileInputStream("src\\resource\\ProductImages\\notAvailable.png"));
+                ImageView notImageView = new ImageView(notImage);
+                notImageView.toFront();
+                vBox.getChildren().addAll(notImageView);
+
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+        }
+        vBox.setSpacing(40);
+        hBox.getChildren().addAll(vBox);
+        hBox.setSpacing(-20);
 
         gridPane.getChildren().addAll(hBox, label, price, score, button);
         gridPane.setVgap(10);

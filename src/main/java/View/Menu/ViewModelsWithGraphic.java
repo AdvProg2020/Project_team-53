@@ -179,17 +179,8 @@ public class ViewModelsWithGraphic {
         productImage.setPreserveRatio(true);
         productImage.setSmooth(true);
         HBox hBox =new HBox();
+        VBox vBox = new VBox();
 
-        if(!Database.getProductByID(productId).isAvailable() || Database.getProductByID(productId).getNumber() <= 0){
-            try {
-                Image offImage = new Image(new FileInputStream("src\\resource\\ProductImages\\notAvailable.png"));
-                ImageView offImageView = new ImageView(offImage);
-                hBox.getChildren().addAll(offImageView);
-                hBox.setSpacing(-30);
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            }
-        }
         hBox.getChildren().add(productImage);
 
         Label name = new Label("Name : " + product.getName());
@@ -222,8 +213,7 @@ public class ViewModelsWithGraphic {
             try {
                 Image offImage = new Image(new FileInputStream("src\\resource\\ProductImages\\Off.png"));
                 ImageView offImageView = new ImageView(offImage);
-                hBox.getChildren().addAll(offImageView);
-                hBox.setSpacing(-30);
+                vBox.getChildren().addAll(offImageView);
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
@@ -231,7 +221,7 @@ public class ViewModelsWithGraphic {
             Pane pane = ViewModelsWithGraphic.showOffFullInfoGraphic(product.getOff().getOffId());
             gridPane.getChildren().add(viewOffButton);
             viewOffButton.getStyleClass().add("top-button");
-            GridPane.setConstraints(viewOffButton, 3, 5);
+            GridPane.setConstraints(viewOffButton, 3, 0);
             viewOffButton.setOnAction(e -> {
                 BorderPane newPane = new BorderPane(pane);
                 Scene scene = new Scene(newPane, 400, 400);
@@ -241,8 +231,22 @@ public class ViewModelsWithGraphic {
                 newWindow.setScene(scene);
                 newWindow.showAndWait();
             });
-//            gridPane.getChildren().add(viewOffButton);
         }
+
+        if(!Database.getProductByID(productId).isAvailable() || Database.getProductByID(productId).getNumber() <= 0){
+            try {
+                Image notImage = new Image(new FileInputStream("src\\resource\\ProductImages\\notAvailable.png"));
+                ImageView notImageView = new ImageView(notImage);
+                notImageView.toFront();
+                vBox.getChildren().addAll(notImageView);
+
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+        }
+        vBox.setSpacing(40);
+        hBox.getChildren().addAll(vBox);
+        hBox.setSpacing(-20);
         GridPane.setConstraints(hBox, 0 , 0 , 2 , 1);
         gridPane.getChildren().addAll(hBox);
 
