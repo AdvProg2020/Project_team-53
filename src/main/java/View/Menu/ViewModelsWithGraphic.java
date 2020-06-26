@@ -23,10 +23,7 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -228,16 +225,13 @@ public class ViewModelsWithGraphic {
             gridPane.getChildren().add(viewOffButton);
             GridPane.setConstraints(viewOffButton, 3, 5);
             viewOffButton.setOnAction(e -> {
-                Button backButton = new Button("back");
-                pane.getChildren().add(backButton);
-
-                Scene scene = new Scene(pane, 400, 400);
+                BorderPane newPane = new BorderPane(pane);
+                Scene scene = new Scene(newPane, 400, 400);
+                scene.getStylesheets().add(new File("Data/Styles/backgrounds.css").toURI().toString());
+                newPane.getStyleClass().add("viewOff-Button");
                 Stage newWindow = new Stage();
                 newWindow.setScene(scene);
                 newWindow.showAndWait();
-                backButton.setOnAction(event -> {
-                    newWindow.close();
-                });
             });
 //            gridPane.getChildren().add(viewOffButton);
         }
