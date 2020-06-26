@@ -38,7 +38,7 @@ public class BuyerManager {
     }
 
     public static String addProductToCart(Product product) {
-        if (product.getNumber() < 1)
+        if (product.getNumber() < 1 || !product.isAvailable())
             return "unfortunately we don't have this product now";
         BuyerAccount buyerAccount = (BuyerAccount) AccountManager.getLoggedInAccount();
         Cart cart = buyerAccount.getCart();

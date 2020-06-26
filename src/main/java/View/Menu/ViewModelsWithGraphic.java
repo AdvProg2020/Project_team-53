@@ -178,12 +178,19 @@ public class ViewModelsWithGraphic {
         productImage.setFitWidth(100);
         productImage.setPreserveRatio(true);
         productImage.setSmooth(true);
-        HBox hBox =new HBox(productImage);
+        HBox hBox =new HBox();
 
-        if(Database.getProductByID(productId).doesHaveOff()){
-
+        if(!Database.getProductByID(productId).isAvailable() || Database.getProductByID(productId).getNumber() <= 0){
+            try {
+                Image offImage = new Image(new FileInputStream("src\\resource\\ProductImages\\notAvailable.png"));
+                ImageView offImageView = new ImageView(offImage);
+                hBox.getChildren().addAll(offImageView);
+                hBox.setSpacing(-30);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
         }
-
+        hBox.getChildren().add(productImage);
 
         Label name = new Label("Name : " + product.getName());
         Label averageScore = new Label("Average Score : " + product.getAverageScore());
