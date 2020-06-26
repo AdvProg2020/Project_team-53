@@ -11,6 +11,7 @@ import View.Menu.ViewModelsWithGraphic;
 import javafx.geometry.HPos;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -168,7 +169,14 @@ public class ViewCartMenu extends Menu {
             int id = -1;
             if (discountId.getText() != null && discountId.getText().matches("[0-9]+"))
                 id = Integer.parseInt(discountId.getText());
-            BuyerManager.pay(id);
+            String res = BuyerManager.pay(id);
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Result");
+            alert.setHeaderText("Process Result");
+            alert.setContentText(res);
+            alert.showAndWait();
+            show();
+            newWindow.close();
         });
 
         VBox vBox = new VBox(address, discountId,submit);

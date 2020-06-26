@@ -394,6 +394,15 @@ public class ViewModelsWithGraphic {
             gridPane.getChildren().addAll(reqID, userNameLabel, firstNameLabel, lastNameLabel, emailLabel, phoneNumberLabel, companyLabel, creditLabel);
 
         }
+        else if (request instanceof DeleteProduct){
+            Label reqID = new Label("RequestID : " + request.getId());
+            Label productId = new Label("Product Id : " + ((DeleteProduct) request).getProductId());
+
+            GridPane.setConstraints(reqID, 0 , 0);
+            GridPane.setConstraints(productId, 0, 1);
+            gridPane.getChildren().addAll(reqID, productId);
+
+        }
         return gridPane;
     }
 

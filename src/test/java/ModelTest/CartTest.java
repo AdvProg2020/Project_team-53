@@ -50,7 +50,7 @@ public class CartTest {
         Product product = new Product("product", "product", "product", true, 1, "product", "pro", 1000);
         Database.addAllProduct(product);
         cart.addToCart(product);
-
+        product.setNumber(product.getNumber()-1);
         Assert.assertFalse(cart.increaseProduct(product.getProductId()));
         Database.removeProduct(product);
     }

@@ -4,6 +4,7 @@ import Controller.AccountManager;
 import Model.Account.BuyerAccount;
 import Model.Log.BuyLog;
 import View.Menu.Menu;
+import View.Menu.UserMenu;
 import View.Menu.ViewModelsWithGraphic;
 import javafx.geometry.HPos;
 import javafx.geometry.Pos;
@@ -230,7 +231,8 @@ public class BuyerMenu extends Menu {
     public void handleLogout()
     {
         AccountManager.logOut();
-        parentMenu.show();
+        UserMenu userMenu = new UserMenu(this);
+        userMenu.show();
     }
 
     public void handleAllDiscountShow()

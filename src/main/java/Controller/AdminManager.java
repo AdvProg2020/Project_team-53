@@ -140,6 +140,10 @@ public class AdminManager {
     public static String deleteProduct(int productId){
         Product product = Database.getProductByID(productId);
         Database.removeProduct(product);
+        Category category = Database.getCategoryByName(product.getCategoryName());
+        if (category != null){
+            category.removeProduct(productId);
+        }
         return "Product removed successfully";
     }
 

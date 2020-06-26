@@ -8,6 +8,7 @@ import Model.Log.SellLog;
 import Model.Product.DiscountAndOff.Off;
 import Model.Product.Product;
 import View.Menu.Menu;
+import View.Menu.UserMenu;
 import View.Menu.ViewModelsWithGraphic;
 import javafx.geometry.HPos;
 import javafx.geometry.Pos;
@@ -747,7 +748,8 @@ public class SellerMenu extends Menu {
     public void handleLogout()
     {
         AccountManager.logOut();
-        parentMenu.show();
+        UserMenu userMenu = new UserMenu(this);
+        userMenu.show();
     }
 
 }

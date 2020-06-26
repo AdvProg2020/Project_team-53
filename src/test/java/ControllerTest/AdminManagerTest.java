@@ -253,7 +253,7 @@ public class AdminManagerTest {
     @Test
     public void showAllDiscountsTest()
     {
-        Discount discount = new Discount(2000, 20, "2018-06-2012:30:00", "2019-06-2012:30:00", 10);
+        Discount discount = new Discount(2000, 20, "2018-06-20_12:30", "2019-06-20_12:30", 10);
         Database.addAllDiscount(discount);
         String expected = "Discount{" + '\n' +
                 "   discountId=" + discount.getDiscountId() + '\n' +

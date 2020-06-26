@@ -64,7 +64,7 @@ public class SellerManagerTest {
         Database.addAllAccounts(sellerAccount);
         Database.addAllProduct(product);
         AccountManager.logIn("testSeller", "testing");
-        String expected = "Product removed successfully";
+        String expected = "Request send";
         String result = SellerManager.deleteProduct(product.getProductId());
         Database.removeProduct(product);
 
@@ -79,7 +79,7 @@ public class SellerManagerTest {
         Database.addAllAccounts(sellerAccount);
         Database.addAllProduct(product);
         AccountManager.logIn("testSeller", "testing");
-        String expected = "You can't remove this product.";
+        String expected = "Request send";
         String result = SellerManager.deleteProduct(product.getProductId());
         Database.removeProduct(product);
 
