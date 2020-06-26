@@ -9,6 +9,7 @@ import View.Menu.Menu;
 import View.Menu.ViewModelsWithGraphic;
 import javafx.geometry.HPos;
 import javafx.geometry.Pos;
+import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
@@ -16,6 +17,9 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import javafx.scene.media.MediaView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -60,14 +64,17 @@ public class ProductMenu extends Menu {
         main.getStyleClass().add("admin-popup");
 
         Button addToCart = new Button("Add To Cart");
+        addToCart.setAlignment(Pos.CENTER);
         addToCart.getStyleClass().add("dark-blue");
         addToCart.setMaxWidth(Double.MAX_VALUE);
         addToCart.setOnAction(e -> handleAddToCart(ProductManager.getProduct().getProductId()));
         Button giveScore = new Button("Give Score");
+        giveScore.setAlignment(Pos.CENTER);
         giveScore.getStyleClass().add("dark-blue");
         giveScore.setMaxWidth(Double.MAX_VALUE);
         giveScore.setOnAction(e -> handleGiveScore());
         Button comment = new Button("Comment");
+        comment.setAlignment(Pos.CENTER);
         comment.getStyleClass().add("dark-blue");
         comment.setMaxWidth(Double.MAX_VALUE);
         comment.setOnAction(e -> handleComment());
@@ -76,6 +83,7 @@ public class ProductMenu extends Menu {
         productID.setPromptText("productID to compare");
         Button compare = new Button("Compare");
         compare.getStyleClass().add("dark-blue");
+        compare.setAlignment(Pos.CENTER);
         compare.setMaxWidth(Double.MAX_VALUE);
         compare.setOnAction(e -> {
             try {
@@ -91,14 +99,50 @@ public class ProductMenu extends Menu {
                 alert.showAndWait();
             }
         });
+        Button showVideo = new Button("Show Video");
+        showVideo.setMaxWidth(Double.MAX_VALUE);
+        showVideo.setAlignment(Pos.CENTER);
+        showVideo.getStyleClass().add("dark-blue");
+        showVideo.setOnAction(e -> {
+            try
+            {
+                Menu.song2.pause();
+                Media media = new Media(new File("src\\resource\\ProductVideos\\" + ProductManager.getProduct().getProductId()+ ".mp4").toURI().toString());
+                MediaPlayer mediaPlayer = new MediaPlayer(media);
+                mediaPlayer.setAutoPlay(true);
+                MediaView mediaView = new MediaView(mediaPlayer);
+
+                Stage newStage = new Stage();
+                Group group = new Group();
+                group.getChildren().add(mediaView);
+                Scene scene1 = new Scene(group, 400, 250);
+
+                newStage.setScene(scene1);
+                newStage.setOnCloseRequest(ee -> song2.play());
+                newStage.setResizable(false);
+                newStage.initModality(Modality.APPLICATION_MODAL);
+                newStage.showAndWait();
+            }
+            catch (Exception e1)
+            {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error");
+                alert.setHeaderText("Process Fail");
+                alert.setContentText("There is no video for this product");
+                alert.setOnCloseRequest(ee -> song2.play());
+
+                alert.showAndWait();
+            }
+        });
 
         GridPane.setConstraints(addToCart, 0, 0);
         GridPane.setConstraints(giveScore, 0, 1);
         GridPane.setConstraints(comment, 0,2);
+        GridPane.setConstraints(showVideo, 0, 3);
         GridPane.setConstraints(productID, 1, 0);
         GridPane.setConstraints(compare, 1, 1);
 
-        gridPane.getChildren().addAll(addToCart, giveScore, comment, productID, compare);
+        gridPane.getChildren().addAll(addToCart, giveScore, comment, showVideo, productID, compare);
 
         GridPane.setConstraints(pane, 1, 0);
         GridPane.setConstraints(gridPane, 4, 0);

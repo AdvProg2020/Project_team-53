@@ -26,8 +26,8 @@ public abstract class Menu{
     protected static Stage window;
     protected double width;
     protected double height;
-    private static MediaPlayer song1;
-    private static MediaPlayer song2;
+    protected static MediaPlayer song1;
+    protected static MediaPlayer song2;
 
     protected static Matcher getMatcher(String input, String regex)
     {
