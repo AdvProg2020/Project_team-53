@@ -16,6 +16,7 @@ import Model.Product.DiscountAndOff.Off;
 import Model.Product.Product;
 import Model.Request.*;
 import javafx.animation.ScaleTransition;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -219,11 +220,13 @@ public class ViewModelsWithGraphic {
             }
             Button viewOffButton = new Button("view off");
             Pane pane = ViewModelsWithGraphic.showOffFullInfoGraphic(product.getOff().getOffId());
+            ((GridPane)pane).setAlignment(Pos.CENTER);
             gridPane.getChildren().add(viewOffButton);
             viewOffButton.getStyleClass().add("top-button");
             GridPane.setConstraints(viewOffButton, 3, 0);
             viewOffButton.setOnAction(e -> {
-                BorderPane newPane = new BorderPane(pane);
+                BorderPane newPane = new BorderPane();
+                newPane.setCenter(pane);
                 Scene scene = new Scene(newPane, 400, 400);
                 scene.getStylesheets().add(new File("Data/Styles/backgrounds.css").toURI().toString());
                 newPane.getStyleClass().add("viewOff-Button");
