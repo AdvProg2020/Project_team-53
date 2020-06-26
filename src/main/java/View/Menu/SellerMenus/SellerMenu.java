@@ -129,6 +129,11 @@ public class SellerMenu extends Menu {
         gridPane.setHgap(20);
         gridPane.setVgap(10);
         gridPane.setAlignment(Pos.CENTER);
+        ScrollPane scrollPane = new ScrollPane();
+        scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.ALWAYS);
+        scrollPane.setFitToHeight(true);
+        scrollPane.setFitToWidth(true);
+        scrollPane.getStyleClass().add("scroll-pane");
         Label info = new Label("Your Offs");
         info.setFont(Font.font(25));
         GridPane.setHalignment(info, HPos.CENTER);
@@ -180,7 +185,8 @@ public class SellerMenu extends Menu {
 
         gridPane.getChildren().addAll(back, addNewOff);
 
-        super.mainPane.setCenter(gridPane);
+        scrollPane.setContent(gridPane);
+        super.mainPane.setCenter(scrollPane);
 
         Menu.window.setScene(scene);
     }
@@ -371,6 +377,11 @@ public class SellerMenu extends Menu {
         gridPane.setHgap(20);
         gridPane.setVgap(10);
         gridPane.setAlignment(Pos.CENTER);
+        ScrollPane scrollPane = new ScrollPane();
+        scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.ALWAYS);
+        scrollPane.setFitToHeight(true);
+        scrollPane.setFitToWidth(true);
+        scrollPane.getStyleClass().add("scroll-pane");
         Label info = new Label("Your Products");
         info.setFont(Font.font(25));
         GridPane.setHalignment(info, HPos.CENTER);
@@ -422,7 +433,8 @@ public class SellerMenu extends Menu {
         back.setAlignment(Pos.CENTER);
         gridPane.getChildren().addAll(back, addNewProduct);
 
-        super.mainPane.setCenter(gridPane);
+        scrollPane.setContent(gridPane);
+        super.mainPane.setCenter(scrollPane);
 
         Menu.window.setScene(scene);
     }
@@ -532,6 +544,11 @@ public class SellerMenu extends Menu {
         gridPane.setHgap(20);
         gridPane.setVgap(10);
         gridPane.setAlignment(Pos.CENTER);
+        ScrollPane scrollPane = new ScrollPane();
+        scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.ALWAYS);
+        scrollPane.setFitToHeight(true);
+        scrollPane.setFitToWidth(true);
+        scrollPane.getStyleClass().add("scroll-pane");
         Label info = new Label("All Sell Logs");
         info.setFont(Font.font(25));
         GridPane.setHalignment(info, HPos.CENTER);
@@ -564,7 +581,8 @@ public class SellerMenu extends Menu {
         back.setAlignment(Pos.CENTER);
         gridPane.getChildren().add(back);
 
-        super.mainPane.setCenter(gridPane);
+        scrollPane.setContent(gridPane);
+        super.mainPane.setCenter(scrollPane);
 
         Menu.window.setScene(scene);
     }

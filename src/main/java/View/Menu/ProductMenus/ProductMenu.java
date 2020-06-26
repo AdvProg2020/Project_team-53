@@ -208,8 +208,19 @@ public class ProductMenu extends Menu {
             alert.showAndWait();
             return;
         }
+        if (!(AccountManager.getLoggedInAccount() instanceof BuyerAccount))
+        {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Process Fail");
+            alert.setContentText("You have to login as a buyer");
+
+            alert.showAndWait();
+            return;
+        }
         try {
             Stage stage = new Stage();
+            stage.setOnCloseRequest(e -> show());
             HBox hBox = new HBox();
             hBox.setAlignment(Pos.CENTER);
             Scene scene = new Scene(hBox, 600, 200);

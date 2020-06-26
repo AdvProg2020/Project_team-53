@@ -507,21 +507,21 @@ public class ViewModelsWithGraphic {
         {
             numberOfStars = 5;
         }
-        File file1 = new File("Data" + File.separator + "Styles" + File.separator + "images" + File.separator + "star.jpg");
-        FileInputStream fileInputStream1 = null;
-        try {
-            fileInputStream1 = new FileInputStream(file1);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-        Image image1 = new Image(fileInputStream1);
-        ImageView imageView1 = new ImageView(image1);
-        imageView1.setFitWidth(20);
-        imageView1.setFitHeight(20);
         HBox hBox = new HBox();
         hBox.setSpacing(5);
         for (int i = 0; i < numberOfStars; i++)
         {
+            File file1 = new File("Data" + File.separator + "Styles" + File.separator + "images" + File.separator + "star.jpg");
+            FileInputStream fileInputStream1 = null;
+            try {
+                fileInputStream1 = new FileInputStream(file1);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+            Image image1 = new Image(fileInputStream1);
+            ImageView imageView1 = new ImageView(image1);
+            imageView1.setFitWidth(20);
+            imageView1.setFitHeight(20);
             hBox.getChildren().add(imageView1);
         }
         return hBox;

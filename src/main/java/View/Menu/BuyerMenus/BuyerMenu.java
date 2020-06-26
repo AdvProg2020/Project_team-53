@@ -115,6 +115,11 @@ public class BuyerMenu extends Menu {
         scene.getStylesheets().add(new File("Data/Styles/backgrounds.css").toURI().toString());
         scene.getStylesheets().add(new File("Data/Styles/choicebox.css").toURI().toString());
         super.mainPane.getStyleClass().add("admin-page");
+        ScrollPane scrollPane = new ScrollPane();
+        scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.ALWAYS);
+        scrollPane.setFitToHeight(true);
+        scrollPane.setFitToWidth(true);
+        scrollPane.getStyleClass().add("scroll-pane");
         GridPane gridPane = new GridPane();
         gridPane.setHgap(20);
         gridPane.setVgap(10);
@@ -150,7 +155,8 @@ public class BuyerMenu extends Menu {
         GridPane.setConstraints(back,1, i);
         gridPane.getChildren().add(back);
 
-        super.mainPane.setCenter(gridPane);
+        scrollPane.setContent(gridPane);
+        super.mainPane.setCenter(scrollPane);
 
         Menu.window.setScene(scene);
     }
@@ -245,6 +251,11 @@ public class BuyerMenu extends Menu {
         scene.getStylesheets().add(new File("Data/Styles/backgrounds.css").toURI().toString());
         scene.getStylesheets().add(new File("Data/Styles/choicebox.css").toURI().toString());
         super.mainPane.getStyleClass().add("admin-page");
+        ScrollPane scrollPane = new ScrollPane();
+        scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.ALWAYS);
+        scrollPane.setFitToHeight(true);
+        scrollPane.setFitToWidth(true);
+        scrollPane.getStyleClass().add("scroll-pane");
         GridPane gridPane = new GridPane();
         gridPane.setHgap(20);
         gridPane.setVgap(10);
@@ -283,7 +294,8 @@ public class BuyerMenu extends Menu {
         GridPane.setConstraints(back,1, i);
         gridPane.getChildren().add(back);
 
-        super.mainPane.setCenter(gridPane);
+        scrollPane.setContent(gridPane);
+        super.mainPane.setCenter(scrollPane);
 
         Menu.window.setScene(scene);
     }
