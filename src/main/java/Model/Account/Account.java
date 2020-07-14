@@ -1,5 +1,9 @@
 package Model.Account;
 
+import Model.Chat;
+
+import java.util.ArrayList;
+
 public abstract class Account {
     protected String username;
     protected String firstName;
@@ -8,7 +12,6 @@ public abstract class Account {
     protected String email;
     protected String phoneNumber;
     protected int credit;
-
 
     public Account(String username, String firstName, String lastName, String password, String email, String phoneNumber, int credit) throws Exception {
         if (!username.matches("[A-Za-z_0-9]+")){

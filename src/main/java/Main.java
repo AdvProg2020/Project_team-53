@@ -17,7 +17,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         Menu.setWindow(window);
-        Menu.setMusic();
+       // Menu.setMusic();
         MainMenu mainMenu = new MainMenu();
         mainMenu.show();
     }

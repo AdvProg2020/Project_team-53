@@ -3,9 +3,6 @@ package Model.Request;
 import Controller.Database;
 import Model.Product.DiscountAndOff.Off;
 import Model.Product.Product;
-import javafx.scene.control.Label;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Pane;
 
 public class AddNewOffRequest extends Request {
 

@@ -17,9 +17,9 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
-import javafx.scene.media.MediaView;
+//import javafx.scene.media.Media;
+//import javafx.scene.media.MediaPlayer;
+//import javafx.scene.media.MediaView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -106,19 +106,19 @@ public class ProductMenu extends Menu {
         showVideo.setOnAction(e -> {
             try
             {
-                Menu.song2.pause();
-                Media media = new Media(new File("src\\resource\\ProductVideos\\" + ProductManager.getProduct().getProductId()+ ".mp4").toURI().toString());
-                MediaPlayer mediaPlayer = new MediaPlayer(media);
-                mediaPlayer.setAutoPlay(true);
-                MediaView mediaView = new MediaView(mediaPlayer);
+                //Menu.song2.pause();
+                //Media media = new Media(new File("src\\resource\\ProductVideos\\" + ProductManager.getProduct().getProductId()+ ".mp4").toURI().toString());
+                //MediaPlayer mediaPlayer = new MediaPlayer(media);
+                //mediaPlayer.setAutoPlay(true);
+                //MediaView mediaView = new MediaView(mediaPlayer);
 
                 Stage newStage = new Stage();
                 Group group = new Group();
-                group.getChildren().add(mediaView);
+                //group.getChildren().add(mediaView);
                 Scene scene1 = new Scene(group, 400, 250);
 
                 newStage.setScene(scene1);
-                newStage.setOnCloseRequest(ee -> song2.play());
+                //newStage.setOnCloseRequest(ee -> song2.play());
                 newStage.setResizable(false);
                 newStage.initModality(Modality.APPLICATION_MODAL);
                 newStage.showAndWait();
@@ -129,7 +129,7 @@ public class ProductMenu extends Menu {
                 alert.setTitle("Error");
                 alert.setHeaderText("Process Fail");
                 alert.setContentText("There is no video for this product");
-                alert.setOnCloseRequest(ee -> song2.play());
+                //alert.setOnCloseRequest(ee -> song2.play());
 
                 alert.showAndWait();
             }
