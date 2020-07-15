@@ -1,26 +1,19 @@
 package View.Menu.OffMenus;
 
-import Controller.AllOffManager;
-import Controller.Database;
-import Controller.ProductManager;
-import View.Menu.LoginMenu;
 import View.Menu.Menu;
-import View.Menu.ProductMenus.ProductMenu;
-
-import java.util.regex.Matcher;
 
 public class OffMenu extends Menu {
 
     public OffMenu(Menu parentMenu) {
         super("Off Menu", parentMenu);
-        super.addToSubMenus(1, this.getShowAllOffMenu());
+        /*super.addToSubMenus(1, this.getShowAllOffMenu());
         super.addToSubMenus(2, this.getProductMenu());
         super.addToSubMenus(3, new FilteringMenu(this));
         super.addToSubMenus(4, new SortingMenu(this));
-        super.addToSubMenus(5, new LoginMenu(this));
+        super.addToSubMenus(5, new LoginMenu(this));*/
     }
 
-    private Menu getShowAllOffMenu()
+    /*private Menu getShowAllOffMenu()
     {
         return new Menu("Show All Off Menu", this) {
             @Override
@@ -94,5 +87,5 @@ public class OffMenu extends Menu {
                 this.execute();
             }
         };
-    }
+    }*/
 }

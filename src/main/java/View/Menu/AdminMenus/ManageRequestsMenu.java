@@ -1,20 +1,17 @@
 package View.Menu.AdminMenus;
 
-import Controller.AdminManager;
 import View.Menu.Menu;
-
-import java.util.regex.Matcher;
 
 public class ManageRequestsMenu extends Menu {
     public ManageRequestsMenu(Menu parentMenu) {
         super("Manage Requests Menu", parentMenu);
-        super.addToSubMenus(1, this.getShowAllRequestsMenu());
+        /*super.addToSubMenus(1, this.getShowAllRequestsMenu());
         super.addToSubMenus(2, this.getRequestsDetailsMenu());
         super.addToSubMenus(3, this.getAcceptRequestsMenu());
-        super.addToSubMenus(4, this.getDeclineRequestsMenu());
+        super.addToSubMenus(4, this.getDeclineRequestsMenu());*/
     }
 
-    private Menu getShowAllRequestsMenu()
+    /*private Menu getShowAllRequestsMenu()
     {
         return new Menu("Show All Requests Menu",this) {
             @Override
@@ -153,5 +150,5 @@ public class ManageRequestsMenu extends Menu {
                 this.execute();
             }
         };
-    }
+    }*/
 }

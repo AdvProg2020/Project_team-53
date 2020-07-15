@@ -1,21 +1,17 @@
 package View.Menu.AdminMenus;
 
-import Controller.AdminManager;
-import Controller.AllProductManager;
 import View.Menu.Menu;
-
-import java.util.regex.Matcher;
 
 public class ManageCategoriesMenu extends Menu {
     public ManageCategoriesMenu(Menu parentMenu) {
         super("Manage Categories Menu ", parentMenu);
-        super.addToSubMenus(1, this.getShowAllCategoriesMenu());
+        /*super.addToSubMenus(1, this.getShowAllCategoriesMenu());
         super.addToSubMenus(2, this.getEditCategoryMenu());
         super.addToSubMenus(3, this.getAddCategoryMenu());
-        super.addToSubMenus(4, this.getRemoveCategoryMenu());
+        super.addToSubMenus(4, this.getRemoveCategoryMenu());*/
     }
 
-    private Menu getShowAllCategoriesMenu()
+    /*private Menu getShowAllCategoriesMenu()
     {
         return new Menu("Show All Categories Menu", this) {
             @Override
@@ -163,5 +159,5 @@ public class ManageCategoriesMenu extends Menu {
                 this.execute();
             }
         };
-    }
+    }*/
 }
