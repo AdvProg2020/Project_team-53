@@ -1,16 +1,19 @@
 package View.Menu;
 
 import Controller.Database;
+import Model.Account.Account;
 import View.Menu.ProductsMenus.ProductsMenu;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
 import java.io.File;
+import java.net.Socket;
 import java.util.HashMap;
 import java.util.Scanner;
 import java.util.regex.Matcher;
@@ -28,6 +31,14 @@ public abstract class Menu{
     protected double height;
     protected static MediaPlayer song1;
     protected static MediaPlayer song2;
+    protected static Socket socket;
+    protected static DataInputStream dataInputStream;
+    protected static DataOutputStream dataOutputStream;
+    protected static Account account;
+
+    public static void setAccount(Account account) {
+        Menu.account = account;
+    }
 
     protected static Matcher getMatcher(String input, String regex)
     {
@@ -71,18 +82,18 @@ public abstract class Menu{
         userButton.getStyleClass().add("top-button");
         userButton.setMaxWidth(Double.MAX_VALUE);
         userButton.setOnAction(e -> {
-            song2.pause();
-            new MediaPlayer(new Media(new File("Data/Styles/music/song3.mp3").toURI().toString())).play();
-            song1.play();
+            //song2.pause();
+            //new MediaPlayer(new Media(new File("Data/Styles/music/song3.mp3").toURI().toString())).play();
+            //song1.play();
             handleUser();
         });
         Button productButton = new Button("Products");
         productButton.getStyleClass().add("top-button");
         productButton.setMaxWidth(Double.MAX_VALUE);
         productButton.setOnAction(e -> {
-            song1.pause();
-            new MediaPlayer(new Media(new File("Data/Styles/music/song3.mp3").toURI().toString())).play();
-            song2.play();
+            //song1.pause();
+            //new MediaPlayer(new Media(new File("Data/Styles/music/song3.mp3").toURI().toString())).play();
+            //song2.play();
             handleProduct();
         });
 
@@ -154,7 +165,19 @@ public abstract class Menu{
         }
     }
 
-    public static void setMusic()
+    public static void setSocket(Socket socket) {
+        Menu.socket = socket;
+    }
+
+    public static void setDataInputStream(DataInputStream dataInputStream) {
+        Menu.dataInputStream = dataInputStream;
+    }
+
+    public static void setDataOutputStream(DataOutputStream dataOutputStream) {
+        Menu.dataOutputStream = dataOutputStream;
+    }
+
+    /*public static void setMusic()
     {
         Media media1 = new Media(new File("Data/Styles/music/song1.mp3").toURI().toString());
         song1 = new MediaPlayer(media1);
@@ -163,5 +186,5 @@ public abstract class Menu{
         Media media2 = new Media(new File("Data/Styles/music/song2.mp3").toURI().toString());
         song2 = new MediaPlayer(media2);
         song2.setCycleCount(MediaPlayer.INDEFINITE);
-    }
+    }*/
 }

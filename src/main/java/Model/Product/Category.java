@@ -1,5 +1,10 @@
 package Model.Product;
 
+import javafx.scene.control.Label;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
+import javafx.scene.text.Font;
+
 import java.util.ArrayList;
 
 public class Category {
@@ -75,4 +80,36 @@ public class Category {
     public void addProduct(int productId) {
         allProductIds.add(productId);
     }
+
+    public Pane showCategoryGraphic() {
+        Category category = this;
+
+        GridPane gridPane = new GridPane();
+        gridPane.setVgap(10);
+        gridPane.setHgap(10);
+
+        Label name = new Label("Name : " + category.getName());
+        name.setFont(Font.font(20));
+        Label allSubCategory = new Label("SubCategory : " + category.getAllSubCategoryNames());
+        allSubCategory.setFont(Font.font(20));
+        Label feature = new Label("Feature : " + category.getFeature());
+        feature.setFont(Font.font(20));
+        Label productIds = new Label("All Products : " + category.getAllProductIds());
+        productIds.setFont(Font.font(20));
+        Label parent = new Label("Parent : " + category.getParent());
+        parent.setFont(Font.font(20));
+
+        GridPane.setConstraints(name, 0, 1 , 2 , 1);
+        GridPane.setConstraints(allSubCategory, 0, 2 , 2 , 1);
+        GridPane.setConstraints(feature, 0, 3 , 2 , 1);
+        GridPane.setConstraints(productIds, 0, 5 , 2 , 1);
+        GridPane.setConstraints(parent, 0, 6 , 2 , 1);
+
+        gridPane.getChildren().addAll(name, allSubCategory, feature, productIds,parent);
+
+        return gridPane;
+    }
+
+
+
 }

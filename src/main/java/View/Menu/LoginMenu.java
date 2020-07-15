@@ -1,6 +1,10 @@
 package View.Menu;
 
-import Controller.AccountManager;
+import Model.Account.AdminAccount;
+import Model.Account.BuyerAccount;
+import Model.Account.SellerAccount;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import javafx.geometry.HPos;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -11,6 +15,8 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 
 import java.io.File;
+import java.io.IOException;
+import java.lang.reflect.Type;
 
 public class LoginMenu extends Menu{
 
@@ -76,7 +82,35 @@ public class LoginMenu extends Menu{
         Button login = new Button("login");
         login.setAlignment(Pos.CENTER);
         login.setOnAction(e -> {
-            status.setText(AccountManager.logIn(userName.getText(), password.getText()));
+            try {
+                dataOutputStream.writeUTF("login " + userName.getText() + " " + password.getText());
+                dataOutputStream.flush();
+                status.setText(dataInputStream.readUTF());
+                dataOutputStream.writeUTF("GetLoggedAccount");
+                dataOutputStream.flush();
+                String data = dataInputStream.readUTF();
+                String role = data.split(" ")[0];
+                Type type;
+                if (role.equalsIgnoreCase("Admin")){
+                    type = new TypeToken<AdminAccount>(){}.getType();
+                    Menu.account = new Gson().fromJson(data.split(" ")[1], type);
+                }
+                else if (role.equalsIgnoreCase("Seller"))
+                {
+                    type = new TypeToken<SellerAccount>(){}.getType();
+                    Menu.account = new Gson().fromJson(data.split(" ")[1], type);
+                }
+                else if (role.equalsIgnoreCase("Buyer"))
+                {
+                    type = new TypeToken<BuyerAccount>(){}.getType();
+                    Menu.account = new Gson().fromJson(data.split(" ")[1], type);
+                }
+                else {
+                    Menu.account = null;
+                }
+            } catch (IOException ex) {
+                System.out.println(ex.getMessage());
+            }
         });
         login.getStyleClass().add("dark-blue");
         Button back = new Button("back");
@@ -157,13 +191,17 @@ public class LoginMenu extends Menu{
             try {
                 if (role.getValue().equalsIgnoreCase("Buyer"))
                 {
-                    status.setText(AccountManager.register(role.getValue(), userName.getText(), firstName.getText(), lastName.getText(), email.getText(),
-                            phoneNumber.getText(), password.getText(), Integer.parseInt(credit.getText()), ""));
+                    dataOutputStream.writeUTF("register " + role.getValue() + " " + userName.getText() + " " + firstName.getText() + " " + lastName.getText() + " " + email.getText() + " "
+                            + phoneNumber.getText() + " " + password.getText() + " " + Integer.parseInt(credit.getText()) + " " + "");
+                    dataOutputStream.flush();
+                    status.setText(dataInputStream.readUTF());
                 }
                 else if (role.getValue().equalsIgnoreCase("Seller"))
                 {
-                    status.setText(AccountManager.register(role.getValue(), userName.getText(), firstName.getText(), lastName.getText(), email.getText(),
-                            phoneNumber.getText(), password.getText(), Integer.parseInt(credit.getText()), company.getText()));
+                    dataOutputStream.writeUTF("register " + role.getValue() + " " + userName.getText() + " " + firstName.getText() + " " + lastName.getText() + " " + email.getText() + " "
+                            + phoneNumber.getText() + " " + password.getText() + " " + Integer.parseInt(credit.getText()) + " " + company.getText());
+                    dataOutputStream.flush();
+                    status.setText(dataInputStream.readUTF());
                 }
             } catch (Exception ex) {
                 Alert alert = new Alert(Alert.AlertType.ERROR);

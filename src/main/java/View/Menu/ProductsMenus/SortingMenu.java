@@ -1,22 +1,18 @@
 package View.Menu.ProductsMenus;
 
-import Controller.AllProductManager;
-import View.Menu.LoginMenu;
 import View.Menu.Menu;
-
-import java.util.regex.Matcher;
 
 public class SortingMenu extends Menu {
     public SortingMenu(Menu parentMenu) {
         super("Sorting Menu", parentMenu);
-        super.addToSubMenus(1, this.getShowAvailableSortsMenu());
+        /*super.addToSubMenus(1, this.getShowAvailableSortsMenu());
         super.addToSubMenus(2, this.getSortMenu());
         super.addToSubMenus(3, this.getCurrentSortMenu());
         super.addToSubMenus(4, this.getDisableSortMenu());
-        super.addToSubMenus(5, new LoginMenu(this));
+        super.addToSubMenus(5, new LoginMenu(this));*/
     }
 
-    private Menu getShowAvailableSortsMenu()
+    /*private Menu getShowAvailableSortsMenu()
     {
         return new Menu("Show Available Sorts Menu", this) {
             @Override
@@ -150,5 +146,5 @@ public class SortingMenu extends Menu {
                 this.execute();
             }
         };
-    }
+    }*/
 }

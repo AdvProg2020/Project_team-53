@@ -1,22 +1,17 @@
 package View.Menu.ProductMenus;
 
-import Controller.BuyerManager;
-import Controller.ProductManager;
-import View.Menu.LoginMenu;
 import View.Menu.Menu;
-
-import java.util.regex.Matcher;
 
 public class DigestMenu extends Menu {
 
     public DigestMenu(Menu parentMenu) {
         super("Digest Menu", parentMenu);
-        super.addToSubMenus(1, this.getProductInformationMenu());
+        /*super.addToSubMenus(1, this.getProductInformationMenu());
         super.addToSubMenus(2, this.getAddToCartMenu());
-        super.addToSubMenus(3, new LoginMenu(this));
+        super.addToSubMenus(3, new LoginMenu(this));*/
     }
 
-    private Menu getProductInformationMenu()
+    /*private Menu getProductInformationMenu()
     {
         return new Menu("Product Information Menu", this) {
             @Override
@@ -72,5 +67,5 @@ public class DigestMenu extends Menu {
                 this.execute();
             }
         };
-    }
+    }*/
 }

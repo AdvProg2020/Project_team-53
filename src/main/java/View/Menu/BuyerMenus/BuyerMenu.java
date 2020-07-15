@@ -200,7 +200,7 @@ public class BuyerMenu extends Menu {
         edit.setMaxWidth(Double.MAX_VALUE);
         edit.setOnAction(e -> {
             try {
-                status.setText(AccountManager.edit(field.getValue(), changeTo.getText()));
+                //status.setText(AccountManager.edit(field.getValue(), changeTo.getText()));
             }
             catch (Exception ex)
             {

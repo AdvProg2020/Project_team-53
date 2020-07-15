@@ -8,11 +8,11 @@ import java.util.ArrayList;
 
 public class AllProductManager {
 
-    private static ArrayList<Product> allProducts = Database.getAllProducts();
-    private static String sortedBy = "Default";
-    private static ArrayList<String> filterOptions = new ArrayList<>();
+    private ArrayList<Product> allProducts = Database.getAllProducts();
+    private String sortedBy = "Default";
+    private ArrayList<String> filterOptions = new ArrayList<>();
 
-    public static String goToProduct(int productId){
+    public String goToProduct(int productId){
         if (Database.getProductByID(productId) == null){
             return "No product with this Id";
         }
@@ -20,22 +20,22 @@ public class AllProductManager {
         return "Here is product menu";
     }
 
-    public static void backToAll(){
+    public void backToAll(){
         ProductManager.setProduct(null);
     }
 
-    public static String showAllProduct(){
+    public String showAllProduct(){
 
         allProducts = new ArrayList<>();
         allProducts.addAll(Database.getAllProducts());
 
         doFiltering();
         if (sortedBy.endsWith("name."))
-            allProducts.sort(AllProductManager::compareWithName);
+            allProducts.sort(this::compareWithName);
         else if (sortedBy.endsWith("price."))
-            allProducts.sort(AllProductManager::compareWithPrice);
+            allProducts.sort(this::compareWithPrice);
         else if (sortedBy.endsWith("score."))
-            allProducts.sort(AllProductManager::compareWithScore);
+            allProducts.sort(this::compareWithScore);
 
         StringBuilder ans = new StringBuilder();
         for (Product product : allProducts) {
@@ -45,46 +45,46 @@ public class AllProductManager {
         return ans.toString();
     }
 
-    public static ArrayList<Product> showProductArray(){
+    public ArrayList<Product> showProductArray(){
         allProducts = new ArrayList<>();
         allProducts.addAll(Database.getAllProducts());
 
         doFiltering();
         if (sortedBy.endsWith("Name"))
-            allProducts.sort(AllProductManager::compareWithName);
+            allProducts.sort(this::compareWithName);
         else if (sortedBy.endsWith("Price"))
-            allProducts.sort(AllProductManager::compareWithPrice);
+            allProducts.sort(this::compareWithPrice);
         else if (sortedBy.endsWith("Score"))
-            allProducts.sort(AllProductManager::compareWithScore);
+            allProducts.sort(this::compareWithScore);
         return  allProducts;
     }
 
-    public static String setSortedBy(String sortedBy) {
-        AllProductManager.sortedBy = sortedBy;
+    public String setSortedBy(String sortedBy) {
+        this.sortedBy = sortedBy;
         return sortedBy;
     }
 
-    private static int compareWithPrice(Product p1, Product p2){
+    private int compareWithPrice(Product p1, Product p2){
         return p1.getPrice() > p2.getPrice() ? 1 : -1;
     }
 
-    private static int compareWithName(Product p1, Product p2){
+    private int compareWithName(Product p1, Product p2){
         return p1.getName().compareTo(p2.getName());
     }
 
-    private static int compareWithScore(Product p1, Product p2){
+    private int compareWithScore(Product p1, Product p2){
         return p1.getAverageScore() > p2.getAverageScore() ? 1 : -1;
     }
 
-    public static String showSortOption(){
+    public String showSortOption(){
         return "Name \n Price \n Score \n";
     }
 
-    public static String getSortedBy(){
+    public String getSortedBy(){
         return sortedBy;
     }
 
-    public static String showFilterOption(){
+    public String showFilterOption(){
         return " sellerUsername (a username) \n" +
                 " rangeOfPrice (lower bound , upper bound) \n" +
                 " categoryName (category name) \n" +
@@ -95,16 +95,16 @@ public class AllProductManager {
                 " categoryFeature (feature of a category)";
     }
 
-    public static ArrayList<String> getFilterOptions() {
+    public ArrayList<String> getFilterOptions() {
         return filterOptions;
     }
 
-    public static String addFilterOption(String filter){
+    public String addFilterOption(String filter){
         filterOptions.add(filter);
         return "Done!";
     }
 
-    public static String removeFilterOption(String filter){
+    public String removeFilterOption(String filter){
         if (filterOptions.contains(filter)){
             filterOptions.remove(filter);
             return "done";
@@ -112,7 +112,7 @@ public class AllProductManager {
         return "no such filter.";
     }
 
-    private static void filterWithSellerUsername(String username){
+    private void filterWithSellerUsername(String username){
         ArrayList<Product> tempArray = new ArrayList<>();
         for (Product product : allProducts) {
             if (product.isSeller(username)){
@@ -122,7 +122,7 @@ public class AllProductManager {
         allProducts = tempArray;
     }
 
-    public static String showAllCategories(){
+    public String showAllCategories(){
         ArrayList<Category> allCategories = Database.getAllCategories();
         StringBuilder res = new StringBuilder();
         for (Category category : allCategories) {
@@ -131,7 +131,7 @@ public class AllProductManager {
         return res.toString();
     }
 
-    private static void filterWithRangeOfPrice(int lower, int higher){
+    private void filterWithRangeOfPrice(int lower, int higher){
         ArrayList<Product> tempArray = new ArrayList<>();
         for (Product product : allProducts) {
             if (product.getPrice() >= lower && product.getPrice() <= higher){
@@ -141,7 +141,7 @@ public class AllProductManager {
         allProducts = tempArray;
     }
 
-    private static void filterWithCategoryName(String categoryName){
+    private void filterWithCategoryName(String categoryName){
         ArrayList<Product> tempArray = new ArrayList<>();
         for (Product product : allProducts) {
             if (product.getCategoryName().equalsIgnoreCase(categoryName)){
@@ -151,7 +151,7 @@ public class AllProductManager {
         allProducts = tempArray;
     }
 
-    private static void filterWithAvailable(){
+    private void filterWithAvailable(){
         ArrayList<Product> tempArray = new ArrayList<>();
         for (Product product : allProducts) {
             if (product.isAvailable()){
@@ -161,7 +161,7 @@ public class AllProductManager {
         allProducts = tempArray;
     }
 
-    private static void filterWitRangeOfScore(double moreThan){
+    private void filterWitRangeOfScore(double moreThan){
         ArrayList<Product> tempArray = new ArrayList<>();
         for (Product product : allProducts) {
             if (product.getAverageScore() >= moreThan){
@@ -171,7 +171,7 @@ public class AllProductManager {
         allProducts = tempArray;
     }
 
-    private static void filterWithCompanyName(String companyName) {
+    private void filterWithCompanyName(String companyName) {
         ArrayList<Product> tempArray = new ArrayList<>();
         for (Product product : allProducts) {
             SellerAccount sellerAccount = (SellerAccount)Database.getAccountByUsername(product.getSellerUsername());
@@ -182,7 +182,7 @@ public class AllProductManager {
         allProducts = tempArray;
     }
 
-    private static void filterWithProductName(String productName) {
+    private void filterWithProductName(String productName) {
         ArrayList<Product> tempArray = new ArrayList<>();
         for (Product product : allProducts) {
             if (product.getName().equalsIgnoreCase(productName)){
@@ -193,7 +193,7 @@ public class AllProductManager {
 
     }
 
-    private static void filterWithCategoryFeature(String feature) {
+    private void filterWithCategoryFeature(String feature) {
         ArrayList<Product> tempArray = new ArrayList<>();
         for (Product product : allProducts) {
             Category category = Database.getCategoryByName(product.getCategoryName());
@@ -205,8 +205,7 @@ public class AllProductManager {
 
     }
 
-
-    private static void filterWithHAveOff() {
+    private void filterWithHAveOff() {
         ArrayList<Product> tempArray = new ArrayList<>();
         for (Product product : allProducts) {
             if (product.doesHaveOff()){
@@ -216,7 +215,7 @@ public class AllProductManager {
         allProducts = tempArray;
     }
 
-    private static void doFiltering(){
+    private void doFiltering(){
 
         for (String filterOption : filterOptions) {
             System.out.println(filterOption);

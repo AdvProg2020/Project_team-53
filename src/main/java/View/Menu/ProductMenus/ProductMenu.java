@@ -1,12 +1,11 @@
 package View.Menu.ProductMenus;
 
-import Controller.AccountManager;
-import Controller.BuyerManager;
 import Controller.Database;
-import Controller.ProductManager;
 import Model.Account.BuyerAccount;
+import Model.Product.Product;
 import View.Menu.Menu;
-import View.Menu.ViewModelsWithGraphic;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import javafx.geometry.HPos;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
@@ -49,114 +48,127 @@ public class ProductMenu extends Menu {
 
     public Scene setScene()
     {
-        GridPane gridPane = new GridPane();
-        Pane pane = ViewModelsWithGraphic.showProductFullInfoGraphic(ProductManager.getProduct().getProductId());
-        gridPane.setAlignment(Pos.CENTER);
-        GridPane main = new GridPane();
-        gridPane.setVgap(10);
-        gridPane.setHgap(20);
-        main.setHgap(25);
-        Scene scene = new Scene(main, 750, 500);
-        scene.getStylesheets().add(new File("Data/Styles/Buttons.css").toURI().toString());
-        scene.getStylesheets().add(new File("Data/Styles/textfield.css").toURI().toString());
-        scene.getStylesheets().add(new File("Data/Styles/backgrounds.css").toURI().toString());
-        scene.getStylesheets().add(new File("Data/Styles/choicebox.css").toURI().toString());
-        main.getStyleClass().add("admin-popup");
+        try{
+            GridPane gridPane = new GridPane();
+            dataOutputStream.writeUTF("GetMainProduct");
+            dataOutputStream.flush();
+            Product product = new Gson().fromJson(dataInputStream.readUTF(), new TypeToken<Product>(){}.getType());
+            Pane pane = product.showProductFullInfoGraphic();
+            gridPane.setAlignment(Pos.CENTER);
+            GridPane main = new GridPane();
+            gridPane.setVgap(10);
+            gridPane.setHgap(20);
+            main.setHgap(25);
+            Scene scene = new Scene(main, 750, 500);
+            scene.getStylesheets().add(new File("Data/Styles/Buttons.css").toURI().toString());
+            scene.getStylesheets().add(new File("Data/Styles/textfield.css").toURI().toString());
+            scene.getStylesheets().add(new File("Data/Styles/backgrounds.css").toURI().toString());
+            scene.getStylesheets().add(new File("Data/Styles/choicebox.css").toURI().toString());
+            main.getStyleClass().add("admin-popup");
 
-        Button addToCart = new Button("Add To Cart");
-        addToCart.setAlignment(Pos.CENTER);
-        addToCart.getStyleClass().add("dark-blue");
-        addToCart.setMaxWidth(Double.MAX_VALUE);
-        addToCart.setOnAction(e -> handleAddToCart(ProductManager.getProduct().getProductId()));
-        Button giveScore = new Button("Give Score");
-        giveScore.setAlignment(Pos.CENTER);
-        giveScore.getStyleClass().add("dark-blue");
-        giveScore.setMaxWidth(Double.MAX_VALUE);
-        giveScore.setOnAction(e -> handleGiveScore());
-        Button comment = new Button("Comment");
-        comment.setAlignment(Pos.CENTER);
-        comment.getStyleClass().add("dark-blue");
-        comment.setMaxWidth(Double.MAX_VALUE);
-        comment.setOnAction(e -> handleComment());
-        TextField productID = new TextField();
-        productID.getStyleClass().add("textfield.css");
-        productID.setPromptText("productID to compare");
-        Button compare = new Button("Compare");
-        compare.getStyleClass().add("dark-blue");
-        compare.setAlignment(Pos.CENTER);
-        compare.setMaxWidth(Double.MAX_VALUE);
-        compare.setOnAction(e -> {
-            try {
-                handleCompare(Integer.parseInt(productID.getText()));
-            }
-            catch (Exception ex)
-            {
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Error");
-                alert.setHeaderText("Process Fail");
-                alert.setContentText("Wrong input for productID");
+            Button addToCart = new Button("Add To Cart");
+            addToCart.setAlignment(Pos.CENTER);
+            addToCart.getStyleClass().add("dark-blue");
+            addToCart.setMaxWidth(Double.MAX_VALUE);
+            addToCart.setOnAction(e -> handleAddToCart());
+            Button giveScore = new Button("Give Score");
+            giveScore.setAlignment(Pos.CENTER);
+            giveScore.getStyleClass().add("dark-blue");
+            giveScore.setMaxWidth(Double.MAX_VALUE);
+            giveScore.setOnAction(e -> handleGiveScore());
+            Button comment = new Button("Comment");
+            comment.setAlignment(Pos.CENTER);
+            comment.getStyleClass().add("dark-blue");
+            comment.setMaxWidth(Double.MAX_VALUE);
+            comment.setOnAction(e -> handleComment());
+            TextField productID = new TextField();
+            productID.getStyleClass().add("textfield.css");
+            productID.setPromptText("productID to compare");
+            Button compare = new Button("Compare");
+            compare.getStyleClass().add("dark-blue");
+            compare.setAlignment(Pos.CENTER);
+            compare.setMaxWidth(Double.MAX_VALUE);
+            compare.setOnAction(e -> {
+                try {
+                    handleCompare(Integer.parseInt(productID.getText()));
+                }
+                catch (Exception ex)
+                {
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Error");
+                    alert.setHeaderText("Process Fail");
+                    alert.setContentText("Wrong input for productID");
 
-                alert.showAndWait();
-            }
-        });
-        Button showVideo = new Button("Show Video");
-        showVideo.setMaxWidth(Double.MAX_VALUE);
-        showVideo.setAlignment(Pos.CENTER);
-        showVideo.getStyleClass().add("dark-blue");
-        showVideo.setOnAction(e -> {
-            try
-            {
-                Menu.song2.pause();
-                Media media = new Media(new File("src\\resource\\ProductVideos\\" + ProductManager.getProduct().getProductId()+ ".mp4").toURI().toString());
-                MediaPlayer mediaPlayer = new MediaPlayer(media);
-                mediaPlayer.setAutoPlay(true);
-                MediaView mediaView = new MediaView(mediaPlayer);
+                    alert.showAndWait();
+                }
+            });
+            Button showVideo = new Button("Show Video");
+            showVideo.setMaxWidth(Double.MAX_VALUE);
+            showVideo.setAlignment(Pos.CENTER);
+            showVideo.getStyleClass().add("dark-blue");
+            showVideo.setOnAction(e -> {
+                try
+                {
+                    //Menu.song2.pause();
+                    dataOutputStream.writeUTF("GetMainProduct");
+                    dataOutputStream.flush();
+                    Product product1 = new Gson().fromJson(dataInputStream.readUTF(), new TypeToken<Product>(){}.getType());
+                    Media media = new Media(new File("src\\resource\\ProductVideos\\" + product.getProductId()+ ".mp4").toURI().toString());
+                    MediaPlayer mediaPlayer = new MediaPlayer(media);
+                    mediaPlayer.setAutoPlay(true);
+                    MediaView mediaView = new MediaView(mediaPlayer);
 
-                Stage newStage = new Stage();
-                Group group = new Group();
-                group.getChildren().add(mediaView);
-                Scene scene1 = new Scene(group, 400, 250);
+                    Stage newStage = new Stage();
+                    Group group = new Group();
+                    group.getChildren().add(mediaView);
+                    Scene scene1 = new Scene(group, 400, 250);
 
-                newStage.setScene(scene1);
-                newStage.setOnCloseRequest(ee -> song2.play());
-                newStage.setResizable(false);
-                newStage.initModality(Modality.APPLICATION_MODAL);
-                newStage.showAndWait();
-            }
-            catch (Exception e1)
-            {
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Error");
-                alert.setHeaderText("Process Fail");
-                alert.setContentText("There is no video for this product");
-                alert.setOnCloseRequest(ee -> song2.play());
+                    newStage.setScene(scene1);
+                    //newStage.setOnCloseRequest(ee -> song2.play());
+                    newStage.setResizable(false);
+                    newStage.initModality(Modality.APPLICATION_MODAL);
+                    newStage.showAndWait();
+                }
+                catch (Exception e1)
+                {
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Error");
+                    alert.setHeaderText("Process Fail");
+                    alert.setContentText("There is no video for this product");
+                    //alert.setOnCloseRequest(ee -> song2.play());
 
-                alert.showAndWait();
-            }
-        });
+                    alert.showAndWait();
+                }
+            });
 
-        GridPane.setConstraints(addToCart, 0, 0);
-        GridPane.setConstraints(giveScore, 0, 1);
-        GridPane.setConstraints(comment, 0,2);
-        GridPane.setConstraints(showVideo, 0, 3);
-        GridPane.setConstraints(productID, 1, 0);
-        GridPane.setConstraints(compare, 1, 1);
+            GridPane.setConstraints(addToCart, 0, 0);
+            GridPane.setConstraints(giveScore, 0, 1);
+            GridPane.setConstraints(comment, 0,2);
+            GridPane.setConstraints(showVideo, 0, 3);
+            GridPane.setConstraints(productID, 1, 0);
+            GridPane.setConstraints(compare, 1, 1);
 
-        gridPane.getChildren().addAll(addToCart, giveScore, comment, showVideo, productID, compare);
+            gridPane.getChildren().addAll(addToCart, giveScore, comment, showVideo, productID, compare);
 
-        GridPane.setConstraints(pane, 1, 0);
-        GridPane.setConstraints(gridPane, 4, 0);
-        GridPane.setHalignment(pane, HPos.CENTER);
+            GridPane.setConstraints(pane, 1, 0);
+            GridPane.setConstraints(gridPane, 4, 0);
+            GridPane.setHalignment(pane, HPos.CENTER);
 
 
-        main.getChildren().addAll(pane, gridPane);
+            main.getChildren().addAll(pane, gridPane);
 
-        return scene;
+            return scene;
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+        return null;
     }
 
-    public void handleAddToCart(int productID)
+    public void handleAddToCart()
     {
-        if (AccountManager.getLoggedInAccount() == null)
+        if (Menu.account == null)
         {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
@@ -166,7 +178,7 @@ public class ProductMenu extends Menu {
             alert.showAndWait();
             return;
         }
-        if (!(AccountManager.getLoggedInAccount() instanceof BuyerAccount))
+        if (!(Menu.account instanceof BuyerAccount))
         {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
@@ -176,7 +188,15 @@ public class ProductMenu extends Menu {
             alert.showAndWait();
             return;
         }
-        String res = BuyerManager.addProductToCart(Objects.requireNonNull(Database.getProductByID(productID)));
+        String res = "";
+        try {
+            dataOutputStream.writeUTF("AddToCart");
+            dataOutputStream.flush();
+            res = dataInputStream.readUTF();
+        }
+        catch (Exception e){
+            System.out.println(e.getMessage());
+        }
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Information");
         alert.setHeaderText("Process Result");
@@ -207,7 +227,7 @@ public class ProductMenu extends Menu {
         Button comment = new Button("Comment");
         comment.getStyleClass().add("dark-blue");
         comment.setOnAction(e -> {
-            if (AccountManager.getLoggedInAccount() == null)
+            if (Menu.account == null)
             {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Error");
@@ -217,14 +237,32 @@ public class ProductMenu extends Menu {
                 alert.showAndWait();
                 return;
             }
-            status.setText(ProductManager.giveComment(title.getText(), content.getText()));
+            try {
+                dataOutputStream.writeUTF("GiveComment " + title.getText() + " " + content.getText());
+                dataOutputStream.flush();
+                status.setText(dataInputStream.readUTF());
+            }
+            catch (Exception e1){
+                System.out.println(e1.getMessage());
+            }
         });
         Button back = new Button("Back");
         back.getStyleClass().add("dark-blue");
         back.setOnAction(e -> {
             newWindow.setScene(setScene());
         });
-        ScrollPane scrollPane = ViewModelsWithGraphic.showCommentsOfProduct(ProductManager.getProduct().getProductId());
+        ScrollPane scrollPane = null;
+        Product product = null;
+        try {
+            dataOutputStream.writeUTF("GetMainProduct");
+            dataOutputStream.flush();
+            product = new Gson().fromJson(dataInputStream.readUTF(), new TypeToken<Product>(){}.getType());
+            scrollPane = product.showCommentsOfProduct();
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+        }
         GridPane.setConstraints(scrollPane, 0, 0);
         GridPane.setConstraints(title, 0, 1);
         GridPane.setConstraints(content, 0, 2);
@@ -241,7 +279,7 @@ public class ProductMenu extends Menu {
 
     public void handleGiveScore()
     {
-        if (AccountManager.getLoggedInAccount() == null)
+        if (Menu.account == null)
         {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
@@ -251,7 +289,7 @@ public class ProductMenu extends Menu {
             alert.showAndWait();
             return;
         }
-        if (!(AccountManager.getLoggedInAccount() instanceof BuyerAccount))
+        if (!(Menu.account instanceof BuyerAccount))
         {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
@@ -285,7 +323,15 @@ public class ProductMenu extends Menu {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Information");
                 alert.setHeaderText("Process Result");
-                alert.setContentText(ProductManager.giveScore(1));
+                try {
+                    dataOutputStream.writeUTF("GiveScore " + 1);
+                    dataOutputStream.flush();
+                    alert.setContentText(dataInputStream.readUTF());
+                }
+                catch (Exception ex)
+                {
+                    System.out.println(ex.getMessage());
+                }
                 stage.close();
 
                 alert.showAndWait();
@@ -303,7 +349,15 @@ public class ProductMenu extends Menu {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Information");
                 alert.setHeaderText("Process Result");
-                alert.setContentText(ProductManager.giveScore(2));
+                try {
+                    dataOutputStream.writeUTF("GiveScore " + 2);
+                    dataOutputStream.flush();
+                    alert.setContentText(dataInputStream.readUTF());
+                }
+                catch (Exception ex)
+                {
+                    System.out.println(ex.getMessage());
+                }
                 stage.close();
 
                 alert.showAndWait();
@@ -321,7 +375,15 @@ public class ProductMenu extends Menu {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Information");
                 alert.setHeaderText("Process Result");
-                alert.setContentText(ProductManager.giveScore(3));
+                try {
+                    dataOutputStream.writeUTF("GiveScore " + 3);
+                    dataOutputStream.flush();
+                    alert.setContentText(dataInputStream.readUTF());
+                }
+                catch (Exception ex)
+                {
+                    System.out.println(ex.getMessage());
+                }
                 stage.close();
 
                 alert.showAndWait();
@@ -339,7 +401,15 @@ public class ProductMenu extends Menu {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Information");
                 alert.setHeaderText("Process Result");
-                alert.setContentText(ProductManager.giveScore(4));
+                try {
+                    dataOutputStream.writeUTF("GiveScore " + 4);
+                    dataOutputStream.flush();
+                    alert.setContentText(dataInputStream.readUTF());
+                }
+                catch (Exception ex)
+                {
+                    System.out.println(ex.getMessage());
+                }
                 stage.close();
 
                 alert.showAndWait();
@@ -357,7 +427,15 @@ public class ProductMenu extends Menu {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Information");
                 alert.setHeaderText("Process Result");
-                alert.setContentText(ProductManager.giveScore(5));
+                try {
+                    dataOutputStream.writeUTF("GiveScore " + 5);
+                    dataOutputStream.flush();
+                    alert.setContentText(dataInputStream.readUTF());
+                }
+                catch (Exception ex)
+                {
+                    System.out.println(ex.getMessage());
+                }
                 stage.close();
 
                 alert.showAndWait();
@@ -376,6 +454,19 @@ public class ProductMenu extends Menu {
 
     public void handleCompare(int productID)
     {
+        Product product1 = null;
+        Product product2 = null;
+        try {
+            dataOutputStream.writeUTF("GetMainProduct");
+            dataOutputStream.flush();
+            product1 = new Gson().fromJson(dataInputStream.readUTF(), new TypeToken<Product>(){}.getType());
+            dataOutputStream.writeUTF("GetProduct " + productID);
+            dataOutputStream.flush();
+            product2 = new Gson().fromJson(dataInputStream.readUTF(), new TypeToken<Product>(){}.getType());
+        }
+        catch (Exception e){
+            System.out.println(e.getMessage());
+        }
         if (Database.getProductByID(productID) == null)
         {
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -394,23 +485,21 @@ public class ProductMenu extends Menu {
         scene.getStylesheets().add(new File("Data/Styles/backgrounds.css").toURI().toString());
         scene.getStylesheets().add(new File("Data/Styles/choicebox.css").toURI().toString());
         gridPane.getStyleClass().add("admin-popup");
-        GridPane product1 = (GridPane) ViewModelsWithGraphic.showProductFullInfoGraphic(ProductManager.getProduct().getProductId());
-        GridPane product2 = (GridPane) ViewModelsWithGraphic.showProductFullInfoGraphic(productID);
+        GridPane product1Pane = (GridPane) Objects.requireNonNull(product1).showProductFullInfoGraphic();
+        GridPane product2Pane = (GridPane) Objects.requireNonNull(product2).showProductFullInfoGraphic();
         Button back = new Button("Back");
         back.getStyleClass().add("dark-blue");
         back.setOnAction(e -> newWindow.setScene(setScene()));
 
-        GridPane.setConstraints(product1, 0, 0);
-        GridPane.setConstraints(product2, 3, 0);
+        GridPane.setConstraints(product1Pane, 0, 0);
+        GridPane.setConstraints(product2Pane, 3, 0);
         GridPane.setConstraints(back, 1, 12);
-        GridPane.setHalignment(product1, HPos.CENTER);
-        GridPane.setHalignment(product2, HPos.CENTER);
+        GridPane.setHalignment(product1Pane, HPos.CENTER);
+        GridPane.setHalignment(product2Pane, HPos.CENTER);
         GridPane.setHalignment(back, HPos.CENTER);
 
-        gridPane.getChildren().addAll(product1, product2, back);
+        gridPane.getChildren().addAll(product1Pane, product2Pane, back);
 
         newWindow.setScene(scene);
     }
-
-
 }

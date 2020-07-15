@@ -64,7 +64,7 @@ public class AccountManagerTest {
         Assert.assertEquals(expected, result);
     }
 
-    @Test
+    /*@Test
     public void editTest1() {
         String expected = "Invalid field";
         String result = AccountManager.edit("username", "test");
@@ -233,7 +233,7 @@ public class AccountManagerTest {
             Assert.assertEquals(expected, result);
         }
         AccountManager.logOut();
-    }
+    }*/
 
     @Test
     public void logoutTest1() {
