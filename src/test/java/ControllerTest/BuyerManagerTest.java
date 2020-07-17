@@ -67,7 +67,7 @@ public class BuyerManagerTest {
         Database.addAllProduct(product);
         cart.addToCart(product);
         String expected = "product eliminated successfully";
-        String result = BuyerManager.DecreaseProduct(product.getProductId());
+        String result = BuyerManager.decreaseProduct(product.getProductId());
 
         Assert.assertEquals(expected, result);
         AccountManager.logOut();
@@ -86,7 +86,7 @@ public class BuyerManagerTest {
         Product product = new Product("product", "product", "product", true, 10, "product", "pro", 1000);
         Database.addAllProduct(product);
         String expected = "you haven't chosen this product yet";
-        String result = BuyerManager.DecreaseProduct(product.getProductId());
+        String result = BuyerManager.decreaseProduct(product.getProductId());
 
         Assert.assertEquals(expected, result);
         AccountManager.logOut();

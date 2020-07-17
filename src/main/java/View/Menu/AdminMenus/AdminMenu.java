@@ -913,7 +913,7 @@ public class AdminMenu extends Menu {
     public void handleShowDiscount(Discount discount, Stage newWindow)
     {
         try {
-            Pane pane = discount.viewDiscountInGraphic();
+            Pane pane = discount.viewDiscountInGraphic(Menu.account);
             ((GridPane)pane).setAlignment(Pos.CENTER);
             Scene scene = new Scene(pane, 600, 400);
             scene.getStylesheets().add(new File("Data/Styles/Buttons.css").toURI().toString());

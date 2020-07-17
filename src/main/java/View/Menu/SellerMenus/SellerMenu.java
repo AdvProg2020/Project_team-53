@@ -6,7 +6,6 @@ import Model.Product.DiscountAndOff.Off;
 import Model.Product.Product;
 import View.Menu.Menu;
 import View.Menu.UserMenu;
-import View.Menu.ViewModelsWithGraphic;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import javafx.geometry.HPos;
@@ -632,7 +631,7 @@ public class SellerMenu extends Menu {
 
     private void handleShowLog(SellLog sellLog) {
         Stage newWindow = new Stage();
-        Pane pane = ViewModelsWithGraphic.showLogWithGraphic(sellLog);
+        Pane pane = sellLog.showLogWithGraphic();
         ((GridPane)pane).setAlignment(Pos.CENTER);
         Scene scene = new Scene(pane, 600, 400);
         scene.getStylesheets().add(new File("Data/Styles/Buttons.css").toURI().toString());

@@ -1,13 +1,10 @@
 package View.Menu.BuyerMenus;
 
-import Controller.AccountManager;
-import Controller.BuyerManager;
 import Controller.Database;
 import Model.Account.BuyerAccount;
 import Model.Cart;
 import Model.Product.Product;
 import View.Menu.Menu;
-import View.Menu.ViewModelsWithGraphic;
 import javafx.geometry.HPos;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -26,6 +23,7 @@ import javafx.stage.Stage;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class ViewCartMenu extends Menu {
@@ -43,7 +41,7 @@ public class ViewCartMenu extends Menu {
     @Override
     public void show() {
         super.setPane();
-        Cart cart = ((BuyerAccount) AccountManager.getLoggedInAccount()).getCart();
+        Cart cart = ((BuyerAccount) Menu.account).getCart();
         ArrayList<Integer> allProductIds = cart.getProductsID();
         Scene scene = new Scene(super.mainPane, 1000, 600);
         scene.getStylesheets().add(new File("Data/Styles/Buttons.css").toURI().toString());
@@ -95,7 +93,7 @@ public class ViewCartMenu extends Menu {
             showButton.setAlignment(Pos.CENTER);
             showButton.setMaxWidth(Double.MAX_VALUE);
             showButton.getStyleClass().add("dark-blue");
-            showButton.setOnAction(e -> handleShowProduct(product.getProductId()));
+            showButton.setOnAction(e -> handleShowProduct(product));
             showButton.setAlignment(Pos.CENTER);
 
             Button increaseButton = new Button();
@@ -202,7 +200,14 @@ public class ViewCartMenu extends Menu {
             int id = -1;
             if (discountId.getText() != null && discountId.getText().matches("[0-9]+"))
                 id = Integer.parseInt(discountId.getText());
-            String res = BuyerManager.pay(id);
+            String res = "";
+            try {
+                dataOutputStream.writeUTF("Pay " + id);
+                dataOutputStream.flush();
+                res = dataInputStream.readUTF();
+            } catch (IOException ex) {
+                System.out.println(ex.getMessage());;
+            }
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Result");
             alert.setHeaderText("Process Result");
@@ -224,20 +229,31 @@ public class ViewCartMenu extends Menu {
     }
 
     private void handleDecrease(int productId) {
-        message.setText(BuyerManager.DecreaseProduct(productId));
+        try {
+            dataOutputStream.writeUTF("DecreaseProduct " + productId);
+            dataOutputStream.flush();
+            message.setText(dataInputStream.readUTF());
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
         show();
     }
 
     private void handleIncrease(int productId) {
-        Product product = Database.getProductByID(productId);
-        message.setText(BuyerManager.addProductToCart(product));
+        try {
+            dataOutputStream.writeUTF("IncreaseProduct");
+            dataOutputStream.flush();
+            message.setText(dataInputStream.readUTF());
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
         show();
     }
 
-    public void handleShowProduct(int productID)
+    public void handleShowProduct(Product product)
     {
         Stage newWindow = new Stage();
-        Pane pane = ViewModelsWithGraphic.showProductFullInfoGraphic(productID);
+        Pane pane = product.showProductFullInfoGraphic();
         ((GridPane)pane).setAlignment(Pos.CENTER);
         Scene scene = new Scene(pane, 600, 400);
 

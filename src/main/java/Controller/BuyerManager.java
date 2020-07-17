@@ -25,7 +25,7 @@ public class BuyerManager {
         return buyerAccount.getCart().increaseProduct(productId);
     }
 
-    public String DecreaseProduct(int productId, Account account) {
+    public String decreaseProduct(int productId, Account account) {
         BuyerAccount buyerAccount = (BuyerAccount) account;
         if (!buyerAccount.getCart().decreaseProduct(productId))
             return "you haven't chosen this product yet";

@@ -184,11 +184,6 @@ public class ClientThread extends Thread {
                     Gson gson = new Gson();
                     output = gson.toJson(Database.getRequestById(Integer.parseInt(input.split(" ")[1])));
                 }
-                else if (input.startsWith("ViewDiscount"))
-                {
-                    Gson gson = new Gson();
-                    output = gson.toJson(Objects.requireNonNull(Database.getDiscountById(Integer.parseInt(input.split(" ")[1]))).viewDiscount());
-                }
                 else if (input.startsWith("EditDiscount"))
                 {
                     details = input.split(" ");
@@ -289,6 +284,22 @@ public class ClientThread extends Thread {
                 else  if (input.startsWith("GetBuyerOfProduct"))
                 {
                     output = sellerManager.getBuyerOfProduct(Integer.parseInt(input.split(" ")[1]), account);
+                }
+                else if (input.startsWith("GetDiscountWithID"))
+                {
+                    output = new Gson().toJson(Database.getDiscountById(Integer.parseInt(input.split(" ")[1])));
+                }
+                else if (input.startsWith("DecreaseProduct"))
+                {
+                    output = buyerManager.decreaseProduct(Integer.parseInt(input.split(" ")[1]), account);
+                }
+                else if (input.startsWith("IncreaseProduct"))
+                {
+                    output = buyerManager.addProductToCart(Objects.requireNonNull(Database.getProductByID(Integer.parseInt(input.split(" ")[1]))), account);
+                }
+                else if (input.startsWith("Pay"))
+                {
+                    output = buyerManager.pay(Integer.parseInt(input.split(" ")[1]), account);
                 }
                 if (output != null)
                 {

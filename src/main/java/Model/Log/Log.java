@@ -3,6 +3,9 @@ package Model.Log;
 import Controller.Database;
 import Model.Account.BuyerAccount;
 import Model.Account.SellerAccount;
+import javafx.scene.control.Label;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -68,5 +71,56 @@ public abstract class Log {
     public int getLogId() {
         return logId;
     }
+
+    public Pane showLogWithGraphic() {
+        Log log = this;
+        GridPane gridPane = new GridPane();
+        gridPane.setVgap(10);
+        gridPane.setHgap(10);
+
+        if (log instanceof BuyLog) {
+            Label logId = new Label("Log ID : " + log.getLogId());
+            Label dateLabel = new Label("Date : " + log.getDate());
+            Label priceLabel = new Label("Price : " + log.getPrice());
+            Label delivered = new Label("Delivery Status : " + log.getDeliveryStatus());
+            Label productIdLabel = new Label("Product Id : " + log.getProductId());
+            Label discountLabel = new Label("Discount Value : " + ((BuyLog) log).getDiscountValue());
+            Label sellerUsernameLabel = new Label("Seller Username : " + ((BuyLog) log).getSellerUsername());
+
+
+            GridPane.setConstraints(logId, 0, 0);
+            GridPane.setConstraints(dateLabel, 0, 1);
+            GridPane.setConstraints(priceLabel, 0, 2);
+            GridPane.setConstraints(delivered, 0, 3);
+            GridPane.setConstraints(productIdLabel, 0, 4);
+            GridPane.setConstraints(discountLabel, 0, 5);
+            GridPane.setConstraints(sellerUsernameLabel, 0, 6);
+
+            gridPane.getChildren().addAll(logId, dateLabel, priceLabel, delivered, productIdLabel, discountLabel, sellerUsernameLabel);
+        }
+        else if (log instanceof SellLog){
+            Label logId = new Label("Log ID : " + log.getLogId());
+            Label dateLabel = new Label("Date : " + log.getDate());
+            Label priceLabel = new Label("Price : " + log.getPrice());
+            Label delivered = new Label("Delivery Status : " + log.getDeliveryStatus());
+            Label productIdLabel = new Label("Product Id : " + log.getProductId());
+            Label offLabel = new Label("Off Value : " + ((SellLog) log).getOffValue());
+            Label buyerUsernameLabel = new Label("Buyer Username : " + ((SellLog) log).getBuyerUsername());
+
+
+            GridPane.setConstraints(logId, 0 , 0);
+            GridPane.setConstraints(dateLabel, 0, 1);
+            GridPane.setConstraints(priceLabel, 0, 2);
+            GridPane.setConstraints(delivered, 0, 3);
+            GridPane.setConstraints(productIdLabel, 0, 4);
+            GridPane.setConstraints(offLabel, 0, 5);
+            GridPane.setConstraints(buyerUsernameLabel, 0, 6);
+
+            gridPane.getChildren().addAll(logId, dateLabel, priceLabel, delivered, productIdLabel, offLabel, buyerUsernameLabel);
+
+        }
+        return gridPane;
+    }
+
 
 }

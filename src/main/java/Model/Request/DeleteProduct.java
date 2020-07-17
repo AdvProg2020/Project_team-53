@@ -14,8 +14,8 @@ public class DeleteProduct extends Request{
     }
 
     @Override
-    public String acceptRequest() {
-        return AdminManager.deleteProduct(productId);
+    public String acceptRequest(AdminManager adminManager) {
+        return adminManager.deleteProduct(productId);
     }
 
     @Override

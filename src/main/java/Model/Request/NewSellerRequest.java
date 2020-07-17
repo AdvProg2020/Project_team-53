@@ -1,5 +1,6 @@
 package Model.Request;
 
+import Controller.AdminManager;
 import Controller.Database;
 import Model.Account.SellerAccount;
 
@@ -58,7 +59,7 @@ public class NewSellerRequest extends Request {
     }
 
     @Override
-    public String acceptRequest() {
+    public String acceptRequest(AdminManager adminManager) {
         try {
             Database.addAllAccounts(new SellerAccount(username, firstName, lastName, password, email, phoneNumber, credit, company));
         } catch (Exception e){

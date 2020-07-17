@@ -12,17 +12,17 @@ public class AllProductManager {
     private String sortedBy = "Default";
     private ArrayList<String> filterOptions = new ArrayList<>();
 
-    public String goToProduct(int productId){
+    /*public String goToProduct(int productId){
         if (Database.getProductByID(productId) == null){
             return "No product with this Id";
         }
         ProductManager.setProduct(Database.getProductByID(productId));
         return "Here is product menu";
-    }
+    }*/
 
-    public void backToAll(){
-        ProductManager.setProduct(null);
-    }
+    /*public void backToAll(){
+        setProduct(null);
+    }*/
 
     public String showAllProduct(){
 

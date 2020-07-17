@@ -1,6 +1,6 @@
 package Model.Product.DiscountAndOff;
 
-import Controller.AccountManager;
+import Model.Account.Account;
 import Model.Account.BuyerAccount;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
@@ -94,38 +94,6 @@ public class Discount {
         }
     }
 
-    public GridPane viewDiscount() {
-        Discount discount = this;
-
-        GridPane gridPane = new GridPane();
-        gridPane.setVgap(10);
-        gridPane.setHgap(10);
-
-        Label disID = new Label("DiscountId : " + discount.getDiscountId());
-        Label maxValue = new Label("Max Value : " + discount.getMaxValue());
-        Label percent = new Label("Percent : " + discount.getPercent());
-        Label startDate = new Label("Start Date : " + discount.getStartDate());
-        Label endDate = new Label("End Date : " + discount.getEndDate());
-        int x = discount.getNumberOfTimes();
-        if (AccountManager.getLoggedInAccount() instanceof BuyerAccount)
-            x -= ((BuyerAccount) AccountManager.getLoggedInAccount()).getNumberOfUse(discountId);
-        Label remainigTimes = new Label("Times Of Use : " + x);
-
-
-        GridPane.setConstraints(disID, 0 , 0);
-        GridPane.setConstraints(maxValue, 0, 1);
-        GridPane.setConstraints(percent, 0, 2);
-        GridPane.setConstraints(startDate, 0, 3);
-        GridPane.setConstraints(endDate, 0, 4);
-        GridPane.setConstraints(remainigTimes, 0, 5);
-
-        gridPane.getChildren().addAll(disID, maxValue, percent, startDate, endDate, remainigTimes);
-
-        return gridPane;
-
-    }
-
-
     public void setNumberOfTimes(int numberOfTimes) {
         this.numberOfTimes = numberOfTimes;
     }
@@ -141,7 +109,7 @@ public class Discount {
                 '}';
     }
 
-    public Pane viewDiscountInGraphic() {
+    public Pane viewDiscountInGraphic(Account account) {
         Discount discount = this;
 
         GridPane gridPane = new GridPane();
@@ -154,8 +122,8 @@ public class Discount {
         Label startDate = new Label("Start Date : " + discount.getStartDate());
         Label endDate = new Label("End Date : " + discount.getEndDate());
         int x = discount.getNumberOfTimes();
-        if (AccountManager.getLoggedInAccount() instanceof BuyerAccount)
-            x -= ((BuyerAccount) AccountManager.getLoggedInAccount()).getNumberOfUse(discountId);
+        if (account instanceof BuyerAccount)
+            x -= ((BuyerAccount) account).getNumberOfUse(discountId);
         Label remainigTimes = new Label("Times Of Use : " + x);
 
 

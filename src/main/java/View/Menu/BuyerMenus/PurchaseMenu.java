@@ -2,18 +2,16 @@ package View.Menu.BuyerMenus;
 
 import View.Menu.Menu;
 
-import java.util.regex.Matcher;
-
 public class PurchaseMenu extends Menu {
 
     private  Menu mySelf;
 
     public PurchaseMenu(Menu parentMenu) {
         super("Purchase Menu", parentMenu);
-        super.addToSubMenus(1, this.getRegisterInfoMenu(this.parentMenu));
+        //super.addToSubMenus(1, this.getRegisterInfoMenu(this.parentMenu));
     }
 
-    private Menu getRegisterInfoMenu(Menu parentMenu)
+    /*private Menu getRegisterInfoMenu(Menu parentMenu)
     {
         return new Menu("Register Information Menu", parentMenu) {
             @Override
@@ -115,5 +113,5 @@ public class PurchaseMenu extends Menu {
                 parentMenu.execute();
             }
         };
-    }
+    }*/
 }

@@ -1,5 +1,6 @@
 package Model.Request;
 
+import Controller.AdminManager;
 import Controller.Database;
 import Model.Product.DiscountAndOff.Off;
 import javafx.scene.control.Label;
@@ -142,7 +143,7 @@ public abstract class Request {
     }
 
 
-    public abstract String acceptRequest();
+    public abstract String acceptRequest(AdminManager adminManager);
     public abstract String show();
 
 }

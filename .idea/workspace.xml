@@ -3,10 +3,24 @@
   <component name="ChangeListManager">
     <list default="true" id="aeefa500-3a99-4ed0-98cf-a7157d1fa89a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/AdminManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/AdminManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/AllProductManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/AllProductManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/BuyerManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/BuyerManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Controller/ClientThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/ClientThread.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/SellerManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/SellerManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Product/DiscountAndOff/Off.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Product/DiscountAndOff/Off.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Log/Log.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Log/Log.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Product/DiscountAndOff/Discount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Product/DiscountAndOff/Discount.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Request/AddNewOffRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Request/AddNewOffRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Request/DeleteProduct.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Request/DeleteProduct.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Request/EditOffRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Request/EditOffRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Request/EditProductRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Request/EditProductRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Request/NewProductRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Request/NewProductRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Request/NewSellerRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Request/NewSellerRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Request/Request.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Request/Request.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/View/Menu/AdminMenus/AdminMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/View/Menu/AdminMenus/AdminMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/View/Menu/BuyerMenus/BuyerMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/View/Menu/BuyerMenus/BuyerMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/View/Menu/BuyerMenus/PurchaseMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/View/Menu/BuyerMenus/PurchaseMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/View/Menu/BuyerMenus/ViewCartMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/View/Menu/BuyerMenus/ViewCartMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/View/Menu/BuyerMenus/ViewOrdersMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/View/Menu/BuyerMenus/ViewOrdersMenu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/View/Menu/SellerMenus/SellerMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/View/Menu/SellerMenus/SellerMenu.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -91,7 +105,7 @@
       <recent name="F:\edu\term2\AP\Project-2\src" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Client">
+  <component name="RunManager" selected="Application.Server">
     <configuration name="Client" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Client" />
       <module name="Project" />
@@ -212,8 +226,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Client" />
         <item itemvalue="Application.Server" />
+        <item itemvalue="Application.Client" />
         <item itemvalue="Application.Main" />
         <item itemvalue="JUnit.All in Project-2" />
         <item itemvalue="JUnit.BuyerAccountTest.showAllDiscountTest" />
@@ -370,13 +384,6 @@
       <workItem from="1593177955371" duration="115000" />
       <workItem from="1593178150008" duration="253000" />
       <workItem from="1593187077572" duration="84000" />
-    </task>
-    <task id="LOCAL-00043" summary="make big problem">
-      <created>1589572953912</created>
-      <option name="number" value="00043" />
-      <option name="presentableId" value="LOCAL-00043" />
-      <option name="project" value="LOCAL" />
-      <updated>1589572953912</updated>
     </task>
     <task id="LOCAL-00044" summary="add json">
       <created>1589573867210</created>
@@ -714,7 +721,14 @@
       <option name="project" value="LOCAL" />
       <updated>1594854339094</updated>
     </task>
-    <option name="localTasksCounter" value="92" />
+    <task id="LOCAL-00092" summary="complete SellerMenu and SellerManager">
+      <created>1594997980083</created>
+      <option name="number" value="00092" />
+      <option name="presentableId" value="LOCAL-00092" />
+      <option name="project" value="LOCAL" />
+      <updated>1594997980085</updated>
+    </task>
+    <option name="localTasksCounter" value="93" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -722,7 +736,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="debug Menus" />
     <MESSAGE value="make better package" />
     <MESSAGE value="fix some bugs v1.5" />
     <MESSAGE value="Add javafx maven dependency" />
@@ -747,7 +760,8 @@
     <MESSAGE value="small edit" />
     <MESSAGE value="make server and client system and many changes on classes" />
     <MESSAGE value="delete extra methods and classes" />
-    <option name="LAST_COMMIT_MESSAGE" value="delete extra methods and classes" />
+    <MESSAGE value="complete SellerMenu and SellerManager" />
+    <option name="LAST_COMMIT_MESSAGE" value="complete SellerMenu and SellerManager" />
   </component>
   <component name="WindowStateProjectService">
     <state x="280" y="20" key="#AccountManagerTest" timestamp="1589226101281">
@@ -880,10 +894,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="438" y="65" key="#xdebugger.evaluate/0.0.1366.728@0.0.1366.728" timestamp="1594728596073" />
-    <state x="377" y="0" key="CommitChangelistDialog2" timestamp="1594854337440">
+    <state x="377" y="0" key="CommitChangelistDialog2" timestamp="1594997977385">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="377" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1594854337440" />
+    <state x="377" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1594997977385" />
     <state x="470" y="0" key="CommitChangelistDialog2/0.0.1366.738@0.0.1366.738" timestamp="1593178423340" />
     <state x="92" y="93" width="1182" height="552" key="DiffContextDialog" timestamp="1593178422199">
       <screen x="0" y="0" width="1366" height="738" />
@@ -976,10 +990,10 @@
     </state>
     <state x="389" y="0" key="refactoring.ChangeSignatureDialog/0.0.1366.728@0.0.1366.728" timestamp="1589710761386" />
     <state x="389" y="0" key="refactoring.ChangeSignatureDialog/0.0.1366.738@0.0.1366.738" timestamp="1589271483679" />
-    <state x="339" y="159" key="run.anything.popup" timestamp="1593009407885">
-      <screen x="0" y="0" width="1366" height="738" />
+    <state x="339" y="157" width="672" height="677" key="run.anything.popup" timestamp="1595015821937">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="339" y="157" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1592913038262" />
+    <state x="339" y="157" width="672" height="677" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1595015821937" />
     <state x="339" y="159" key="run.anything.popup/0.0.1366.738@0.0.1366.738" timestamp="1593009407885" />
     <state x="346" y="58" width="672" height="669" key="search.everywhere.popup" timestamp="1593116152699">
       <screen x="0" y="0" width="1366" height="728" />

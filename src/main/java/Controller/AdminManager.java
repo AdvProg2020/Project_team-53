@@ -57,7 +57,7 @@ public class AdminManager {
 
         if (accept){
             Database.removeRequest(request);
-            return request.acceptRequest();
+            return request.acceptRequest(this);
         }
         if (!accept && request instanceof AddNewOffRequest){
             Off off = Database.getOffById(((AddNewOffRequest) request).getOffId());
