@@ -199,7 +199,7 @@ public class AdminMenu extends Menu {
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
-
+        Menu.account = null;
         UserMenu userMenu = new UserMenu(this);
         userMenu.show();
     }

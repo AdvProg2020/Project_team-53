@@ -2,12 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="aeefa500-3a99-4ed0-98cf-a7157d1fa89a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/View/Menu/AdminMenus/ManageAllProductsMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/View/Menu/AdminMenus/ManageAllProductsMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/View/Menu/AdminMenus/ManageCategoriesMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/View/Menu/AdminMenus/ManageCategoriesMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/View/Menu/AdminMenus/ManageRequestsMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/View/Menu/AdminMenus/ManageRequestsMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/View/Menu/AdminMenus/MangeUsersMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/View/Menu/AdminMenus/MangeUsersMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/View/Menu/AdminMenus/ViewDiscountCodeMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/View/Menu/AdminMenus/ViewDiscountCodeMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/View/Menu/OffMenus/OffMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/View/Menu/OffMenus/OffMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/ClientThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/ClientThread.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/SellerManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/SellerManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Product/DiscountAndOff/Off.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Product/DiscountAndOff/Off.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/View/Menu/AdminMenus/AdminMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/View/Menu/AdminMenus/AdminMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/View/Menu/SellerMenus/SellerMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/View/Menu/SellerMenus/SellerMenu.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -371,13 +371,6 @@
       <workItem from="1593178150008" duration="253000" />
       <workItem from="1593187077572" duration="84000" />
     </task>
-    <task id="LOCAL-00042" summary="complete ProductsMenu">
-      <created>1589549195560</created>
-      <option name="number" value="00042" />
-      <option name="presentableId" value="LOCAL-00042" />
-      <option name="project" value="LOCAL" />
-      <updated>1589549195560</updated>
-    </task>
     <task id="LOCAL-00043" summary="make big problem">
       <created>1589572953912</created>
       <option name="number" value="00043" />
@@ -714,7 +707,14 @@
       <option name="project" value="LOCAL" />
       <updated>1594854094604</updated>
     </task>
-    <option name="localTasksCounter" value="91" />
+    <task id="LOCAL-00091" summary="delete extra methods and classes">
+      <created>1594854339094</created>
+      <option name="number" value="00091" />
+      <option name="presentableId" value="LOCAL-00091" />
+      <option name="project" value="LOCAL" />
+      <updated>1594854339094</updated>
+    </task>
+    <option name="localTasksCounter" value="92" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -722,7 +722,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="complete FilteringMenu" />
     <MESSAGE value="debug Menus" />
     <MESSAGE value="make better package" />
     <MESSAGE value="fix some bugs v1.5" />
@@ -747,7 +746,8 @@
     <MESSAGE value="debug music" />
     <MESSAGE value="small edit" />
     <MESSAGE value="make server and client system and many changes on classes" />
-    <option name="LAST_COMMIT_MESSAGE" value="make server and client system and many changes on classes" />
+    <MESSAGE value="delete extra methods and classes" />
+    <option name="LAST_COMMIT_MESSAGE" value="delete extra methods and classes" />
   </component>
   <component name="WindowStateProjectService">
     <state x="280" y="20" key="#AccountManagerTest" timestamp="1589226101281">
@@ -880,10 +880,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="438" y="65" key="#xdebugger.evaluate/0.0.1366.728@0.0.1366.728" timestamp="1594728596073" />
-    <state x="377" y="0" key="CommitChangelistDialog2" timestamp="1594854086307">
+    <state x="377" y="0" key="CommitChangelistDialog2" timestamp="1594854337440">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="377" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1594854086307" />
+    <state x="377" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1594854337440" />
     <state x="470" y="0" key="CommitChangelistDialog2/0.0.1366.738@0.0.1366.738" timestamp="1593178423340" />
     <state x="92" y="93" width="1182" height="552" key="DiffContextDialog" timestamp="1593178422199">
       <screen x="0" y="0" width="1366" height="738" />
@@ -894,45 +894,45 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="463" y="122" key="FileChooserDialogImpl/0.0.1366.738@0.0.1366.738" timestamp="1592855183500" />
-    <state width="1322" height="244" key="GridCell.Tab.0.bottom" timestamp="1594845881570">
+    <state width="1322" height="244" key="GridCell.Tab.0.bottom" timestamp="1594857163109">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1322" height="244" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1594845881570" />
+    <state width="1322" height="244" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1594857163109" />
     <state width="1322" height="185" key="GridCell.Tab.0.bottom/0.0.1366.738@0.0.1366.738" timestamp="1593178427051" />
-    <state width="1322" height="244" key="GridCell.Tab.0.center" timestamp="1594845881570">
+    <state width="1322" height="244" key="GridCell.Tab.0.center" timestamp="1594857163108">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1322" height="244" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1594845881570" />
+    <state width="1322" height="244" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1594857163108" />
     <state width="1322" height="185" key="GridCell.Tab.0.center/0.0.1366.738@0.0.1366.738" timestamp="1593178427051" />
-    <state width="1322" height="244" key="GridCell.Tab.0.left" timestamp="1594845881570">
+    <state width="1322" height="244" key="GridCell.Tab.0.left" timestamp="1594857163108">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1322" height="244" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1594845881570" />
+    <state width="1322" height="244" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1594857163108" />
     <state width="1322" height="185" key="GridCell.Tab.0.left/0.0.1366.738@0.0.1366.738" timestamp="1593178427051" />
-    <state width="1322" height="244" key="GridCell.Tab.0.right" timestamp="1594845881570">
+    <state width="1322" height="244" key="GridCell.Tab.0.right" timestamp="1594857163109">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1322" height="244" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1594845881570" />
+    <state width="1322" height="244" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1594857163109" />
     <state width="1322" height="185" key="GridCell.Tab.0.right/0.0.1366.738@0.0.1366.738" timestamp="1593178427051" />
-    <state width="1322" height="244" key="GridCell.Tab.1.bottom" timestamp="1594845881570">
+    <state width="1322" height="244" key="GridCell.Tab.1.bottom" timestamp="1594857163110">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1322" height="244" key="GridCell.Tab.1.bottom/0.0.1366.728@0.0.1366.728" timestamp="1594845881570" />
+    <state width="1322" height="244" key="GridCell.Tab.1.bottom/0.0.1366.728@0.0.1366.728" timestamp="1594857163110" />
     <state width="1322" height="221" key="GridCell.Tab.1.bottom/0.0.1366.738@0.0.1366.738" timestamp="1589873506234" />
-    <state width="1322" height="244" key="GridCell.Tab.1.center" timestamp="1594845881570">
+    <state width="1322" height="244" key="GridCell.Tab.1.center" timestamp="1594857163110">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1322" height="244" key="GridCell.Tab.1.center/0.0.1366.728@0.0.1366.728" timestamp="1594845881570" />
+    <state width="1322" height="244" key="GridCell.Tab.1.center/0.0.1366.728@0.0.1366.728" timestamp="1594857163110" />
     <state width="1322" height="221" key="GridCell.Tab.1.center/0.0.1366.738@0.0.1366.738" timestamp="1589873506234" />
-    <state width="1322" height="244" key="GridCell.Tab.1.left" timestamp="1594845881570">
+    <state width="1322" height="244" key="GridCell.Tab.1.left" timestamp="1594857163109">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1322" height="244" key="GridCell.Tab.1.left/0.0.1366.728@0.0.1366.728" timestamp="1594845881570" />
+    <state width="1322" height="244" key="GridCell.Tab.1.left/0.0.1366.728@0.0.1366.728" timestamp="1594857163109" />
     <state width="1322" height="221" key="GridCell.Tab.1.left/0.0.1366.738@0.0.1366.738" timestamp="1589873506234" />
-    <state width="1322" height="244" key="GridCell.Tab.1.right" timestamp="1594845881570">
+    <state width="1322" height="244" key="GridCell.Tab.1.right" timestamp="1594857163110">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1322" height="244" key="GridCell.Tab.1.right/0.0.1366.728@0.0.1366.728" timestamp="1594845881570" />
+    <state width="1322" height="244" key="GridCell.Tab.1.right/0.0.1366.728@0.0.1366.728" timestamp="1594857163110" />
     <state width="1322" height="221" key="GridCell.Tab.1.right/0.0.1366.738@0.0.1366.738" timestamp="1589873506234" />
     <state x="213" y="22" key="Maven.ArtifactSearchDialog" timestamp="1589017820205">
       <screen x="0" y="0" width="1366" height="728" />
@@ -957,10 +957,10 @@
     </state>
     <state x="275" y="95" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1593187894875" />
     <state x="275" y="96" key="Vcs.Push.Dialog.v2/0.0.1366.738@0.0.1366.738" timestamp="1593112604984" />
-    <state x="378" y="186" key="com.intellij.ide.util.TipDialog" timestamp="1594714993410">
+    <state x="378" y="186" key="com.intellij.ide.util.TipDialog" timestamp="1594995612312">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="378" y="186" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1594714993410" />
+    <state x="378" y="186" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1594995612312" />
     <state x="492" y="279" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1593188826525">
       <screen x="0" y="0" width="1366" height="728" />
     </state>

@@ -66,7 +66,7 @@ public class SellerManager {
         return ((SellerAccount) account).getCompany();
     }
 
-    public String getSellerOfProduct(int productID, Account account) {
+    public String getBuyerOfProduct(int productID, Account account) {
         Set<String> buyerAccounts = new HashSet<>();
         String res = "" ;
         for (SellLog sellLog : ((SellerAccount) account).getSellLogs()) {

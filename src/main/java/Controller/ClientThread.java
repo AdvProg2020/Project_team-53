@@ -260,6 +260,36 @@ public class ClientThread extends Thread {
                 {
                     output = productManager.giveScore(Integer.parseInt(input.split(" ")[1]), account);
                 }
+                else if (input.startsWith("EditOff"))
+                {
+                    details = input.split(" ");
+                    output = sellerManager.editOff(Integer.parseInt(details[1]), details[2], details[3], account);
+                }
+                else if (input.startsWith("DeleteProduct"))
+                {
+                    sellerManager.deleteProduct(Integer.parseInt(input.split(" ")[1]));
+                }
+                else if (input.startsWith("EditProduct"))
+                {
+                    details = input.split(" ");
+                    output = sellerManager.sendEditProductRequest(Integer.parseInt(details[1]), details[2], details[3], account);
+                }
+                else if (input.startsWith("AddNewOff"))
+                {
+                    details = input.split(" ");
+                    ArrayList<Integer> productsID = new Gson().fromJson(details[5], new TypeToken<ArrayList<Integer>>(){}.getType());
+                    output = sellerManager.addNewOff(Integer.parseInt(details[1]), Integer.parseInt(details[2]), details[3], details[4], productsID, account);
+                }
+                else if (input.startsWith("AddNewProduct"))
+                {
+                    details = input.split(" ");
+                    output = sellerManager.sendAddProductRequest(details[1], details[2], Boolean.parseBoolean(details[3]),
+                            Integer.parseInt(details[4]), details[5], details[6], Integer.parseInt(details[7]), account);
+                }
+                else  if (input.startsWith("GetBuyerOfProduct"))
+                {
+                    output = sellerManager.getBuyerOfProduct(Integer.parseInt(input.split(" ")[1]), account);
+                }
                 if (output != null)
                 {
                     dataOutputStream.writeUTF(output);
