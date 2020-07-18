@@ -66,6 +66,11 @@ public class SellerMenu extends Menu {
         manageOffs.getStyleClass().add("dark-blue");
         manageOffs.setMaxWidth(Double.MAX_VALUE);
         manageOffs.setOnAction(e -> handleManageOffs());
+
+        Button addAuction = new Button("Add Auction");
+        addAuction.getStyleClass().add("dark-blue");
+        addAuction.setMaxWidth(Double.MAX_VALUE);
+        addAuction.setOnAction(e -> handleAddAuction());
         
         Button editInfoButton = new Button("Edit");
         editInfoButton.getStyleClass().add("dark-blue");
@@ -77,24 +82,19 @@ public class SellerMenu extends Menu {
         logout.setMaxWidth(Double.MAX_VALUE);
         logout.setOnAction(e -> handleLogout());
 
-        Button back = new Button("Back");
-        back.getStyleClass().add("dark-blue");
-        back.setMaxWidth(Double.MAX_VALUE);
-        back.setOnAction(e -> parentMenu.show());
-
         GridPane.setConstraints(viewAllLogs, 0, 0);
         GridPane.setConstraints(manageProducts, 0, 1);
         GridPane.setConstraints(manageOffs, 0, 2);
         GridPane.setConstraints(editInfoButton, 0, 3);
-        GridPane.setConstraints(logout, 0, 4);
-        GridPane.setConstraints(back, 0, 5);
+        GridPane.setConstraints(addAuction, 0, 4);
+        GridPane.setConstraints(logout, 0, 5);
 
         GridPane.setHalignment(viewAllLogs, HPos.CENTER);
         GridPane.setHalignment(manageProducts, HPos.CENTER);
         GridPane.setHalignment(manageOffs, HPos.CENTER);
         GridPane.setHalignment(editInfoButton, HPos.CENTER);
         GridPane.setHalignment(logout, HPos.CENTER);
-        GridPane.setHalignment(back, HPos.CENTER);
+        GridPane.setHalignment(addAuction, HPos.CENTER);
 
         try {
             dataOutputStream.writeUTF("GetLoggedAccount");
@@ -123,7 +123,7 @@ public class SellerMenu extends Menu {
             System.out.println(e.getMessage());
         }
         Pane pane = Objects.requireNonNull(Menu.account).viewPersonalInfoInGraphic();
-        allButtons.getChildren().addAll(viewAllLogs, manageProducts, manageOffs, editInfoButton, logout, back);
+        allButtons.getChildren().addAll(viewAllLogs, manageProducts, manageOffs, editInfoButton, logout, addAuction);
 
         GridPane.setConstraints(pane, 0, 0);
         GridPane.setConstraints(allButtons, 3, 0);
@@ -137,6 +137,68 @@ public class SellerMenu extends Menu {
 
         window.setScene(scene);
 
+    }
+
+    private void handleAddAuction(){
+        super.setPane();
+        GridPane gridPane = new GridPane();
+        gridPane.setAlignment(Pos.CENTER);
+        gridPane.setVgap(10);
+
+        Scene scene = new Scene(super.mainPane, 1000, 600);
+        scene.getStylesheets().add(new File("Data/Styles/Buttons.css").toURI().toString());
+        scene.getStylesheets().add(new File("Data/Styles/textfield.css").toURI().toString());
+        scene.getStylesheets().add(new File("Data/Styles/backgrounds.css").toURI().toString());
+        scene.getStylesheets().add(new File("Data/Styles/choicebox.css").toURI().toString());
+        super.mainPane.getStyleClass().add("admin-page");
+
+        Label status = new Label();
+        status.setFont(Font.font(20));
+
+        TextField productID = new TextField();
+        status.getStyleClass().add("text-field");
+        productID.setPromptText("ProductID");
+
+        TextField endDate = new TextField();
+        endDate.getStyleClass().add("text-field");
+        endDate.setPromptText("EndDate(yyyy-MM-dd_HH:mm)");
+
+        Button create = new Button("Create");
+        create.getStyleClass().add("dark-blue");
+        create.setMaxWidth(Double.MAX_VALUE);
+        create.setAlignment(Pos.CENTER);
+        create.setOnAction(e ->{
+            try {
+                dataOutputStream.writeUTF("AddAuction " + productID.getText() + " " + endDate.getText());
+                dataOutputStream.flush();
+                status.setText(dataInputStream.readUTF());
+            } catch (IOException ex) {
+                System.out.println(ex.getMessage());
+            }
+        });
+
+        Button back = new Button("back");
+        back.getStyleClass().add("dark-blue");
+        back.setMaxWidth(Double.MAX_VALUE);
+        back.setAlignment(Pos.CENTER);
+        back.setOnAction(e -> show());
+
+        GridPane.setConstraints(productID, 0, 0);
+        GridPane.setConstraints(endDate, 0, 1);
+        GridPane.setConstraints(create, 0, 2);
+        GridPane.setConstraints(back, 0, 3);
+        GridPane.setConstraints(status, 0, 4);
+
+        GridPane.setHalignment(productID, HPos.CENTER);
+        GridPane.setHalignment(endDate, HPos.CENTER);
+        GridPane.setHalignment(create, HPos.CENTER);
+        GridPane.setHalignment(back, HPos.CENTER);
+        GridPane.setHalignment(status, HPos.CENTER);
+
+        gridPane.getChildren().addAll(productID, endDate, create, back, status);
+        super.mainPane.setCenter(gridPane);
+
+        Menu.window.setScene(scene);
     }
 
     private void handleManageOffs() {
@@ -599,7 +661,6 @@ public class SellerMenu extends Menu {
         super.mainPane.setCenter(gridPane);
 
         Menu.window.setScene(scene);
-
     }
     
     private void handleAllLogs() {

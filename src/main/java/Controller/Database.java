@@ -2,6 +2,7 @@ package Controller;
 
 import Model.Account.Account;
 import Model.Account.AdminAccount;
+import Model.Product.Auction;
 import Model.Product.Category;
 import Model.Product.DiscountAndOff.Discount;
 import Model.Product.DiscountAndOff.Off;
@@ -17,6 +18,7 @@ public class Database {
     static ArrayList<Category> allCategories = new ArrayList<>();
     static ArrayList<Discount> allDiscounts = new ArrayList<>();
     static ArrayList<Off> allOffs = new ArrayList<>();
+    static ArrayList<Auction> allAuction = new ArrayList<>();
 
     public static ArrayList<Account> getAllAccounts() {
         return allAccounts;
@@ -42,6 +44,9 @@ public class Database {
         return allOffs;
     }
 
+    public static ArrayList<Auction> getAllAuction() {
+        return allAuction;
+    }
 
     public static Account getAccountByUsername(String username) {
         for (Account account : allAccounts) {
@@ -112,6 +117,10 @@ public class Database {
         allDiscounts.add(discount);
     }
 
+    public static void addAllAuction(Auction auction){
+        allAuction.add(auction);
+    }
+
     public static void addAllOff(Off off){
         allOffs.add(off);
     }
@@ -144,6 +153,10 @@ public class Database {
 
     public static void removeOff(Off off){
         allOffs.remove(off);
+    }
+
+    public static void removeAuction(Auction auction){
+        allAuction.remove(auction);
     }
 
     public static void writeDataOnFile() {

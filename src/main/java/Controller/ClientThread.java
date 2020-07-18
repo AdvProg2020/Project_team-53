@@ -299,6 +299,11 @@ public class ClientThread extends Thread {
                 {
                     output = buyerManager.pay(Integer.parseInt(input.split(" ")[1]), account);
                 }
+                else if (input.startsWith("AddAuction"))
+                {
+                    details = input.split(" ");
+                    output = sellerManager.addAuction(Integer.parseInt(details[1]), details[2], account);
+                }
                 if (output != null)
                 {
                     dataOutputStream.writeUTF(output);

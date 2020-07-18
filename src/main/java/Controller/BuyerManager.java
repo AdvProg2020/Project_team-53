@@ -5,6 +5,7 @@ import Model.Account.BuyerAccount;
 import Model.Account.SellerAccount;
 import Model.Cart;
 import Model.Log.Log;
+import Model.Product.Auction;
 import Model.Product.DiscountAndOff.Discount;
 import Model.Product.Product;
 
@@ -116,5 +117,9 @@ public class BuyerManager {
             }
             Log.addLog(buyerAccount.getUsername(), product.getSellerUsername(), product.getPrice(), productId, Math.min(offValue, maxValue), discountValue * product.getPrice() / 100);
         }
+    }
+
+    public void joinAuction(Auction auction, Account account){
+        auction.joinAuction((BuyerAccount) account);
     }
 }

@@ -5,12 +5,13 @@ import Model.Account.BuyerAccount;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class Auction {
+public class Auction extends Thread{
     private ArrayList<BuyerAccount> allBuyers;
     private Product product;
     private long mostPrice;
     private BuyerAccount buyerWithMostPrice;
     private Date endDate;
+    private Date currentDate;
 
     public Auction(Product product, Date endDate)
     {
@@ -18,6 +19,8 @@ public class Auction {
         this.endDate = endDate;
         allBuyers = new ArrayList<>();
         mostPrice = 0;
+        currentDate = new Date();
+        this.start();
     }
 
     public void joinAuction(BuyerAccount buyerAccount)
@@ -27,8 +30,8 @@ public class Auction {
 
     public boolean isAuctionAvailable()
     {
-        Date date = new Date();
-        return endDate.compareTo(date) > 0;
+        currentDate = new Date();
+        return endDate.compareTo(currentDate) > 0;
     }
 
     public boolean setMostPrice(long mostPrice, BuyerAccount buyerAccount)
@@ -45,5 +48,22 @@ public class Auction {
     private boolean canSetPrice(BuyerAccount buyerAccount)
     {
         return true;
+    }
+
+    @Override
+    public void run() {
+        while (true)
+        {
+            if (!isAuctionAvailable())
+            {
+                //todo:buy things
+                break;
+            }
+            try {
+                Thread.sleep(60000);
+            } catch (InterruptedException e) {
+                System.out.println(e.getMessage());
+            }
+        }
     }
 }
