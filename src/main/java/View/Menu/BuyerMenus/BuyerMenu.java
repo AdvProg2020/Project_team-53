@@ -77,24 +77,17 @@ public class BuyerMenu extends Menu {
         logout.setMaxWidth(Double.MAX_VALUE);
         logout.setOnAction(e -> handleLogout());
 
-        Button back = new Button("Back");
-        back.getStyleClass().add("dark-blue");
-        back.setMaxWidth(Double.MAX_VALUE);
-        back.setOnAction(e -> parentMenu.show());
-
         GridPane.setConstraints(viewAllDiscounts, 0, 0);
         GridPane.setConstraints(viewAllLogs, 0, 1);
         GridPane.setConstraints(viewCart,0, 2);
         GridPane.setConstraints(editInfoButton, 0, 3);
         GridPane.setConstraints(logout, 0, 4);
-        GridPane.setConstraints(back, 0, 5);
 
         GridPane.setHalignment(viewAllDiscounts, HPos.CENTER);
         GridPane.setHalignment(viewAllLogs, HPos.CENTER);
         GridPane.setHalignment(viewCart, HPos.CENTER);
         GridPane.setHalignment(editInfoButton, HPos.CENTER);
         GridPane.setHalignment(logout, HPos.CENTER);
-        GridPane.setHalignment(back, HPos.CENTER);
 
         try {
             dataOutputStream.writeUTF("GetLoggedAccount");
@@ -123,7 +116,7 @@ public class BuyerMenu extends Menu {
             System.out.println(e.getMessage());
         }
         Pane pane = Objects.requireNonNull(Menu.account).viewPersonalInfoInGraphic();
-        allButtons.getChildren().addAll(viewAllDiscounts, viewAllLogs, viewCart, editInfoButton, logout, back);
+        allButtons.getChildren().addAll(viewAllDiscounts, viewAllLogs, viewCart, editInfoButton, logout);
 
         GridPane.setConstraints(pane, 0, 0);
         GridPane.setConstraints(allButtons, 3, 0);

@@ -95,10 +95,6 @@ public class AdminMenu extends Menu {
         manageAddAdmin.getStyleClass().add("dark-blue");
         manageAddAdmin.setMaxWidth(Double.MAX_VALUE);
 
-        Button back = new Button("Back");
-        back.setOnAction(e -> parentMenu.show());
-        back.getStyleClass().add("dark-blue");
-        back.setMaxWidth(Double.MAX_VALUE);
 
         GridPane.setConstraints(editInfoButton, 0, 0);
         GridPane.setConstraints(manageUser, 0, 1);
@@ -108,7 +104,6 @@ public class AdminMenu extends Menu {
         GridPane.setConstraints(manageDiscounts, 0, 5);
         GridPane.setConstraints(manageAddAdmin, 0, 6);
         GridPane.setConstraints(logout, 0, 7);
-        GridPane.setConstraints(back, 0, 8);
         GridPane.setHalignment(editInfoButton, HPos.CENTER);
         GridPane.setHalignment(manageUser, HPos.CENTER);
         GridPane.setHalignment(manageRequest, HPos.CENTER);
@@ -117,9 +112,8 @@ public class AdminMenu extends Menu {
         GridPane.setHalignment(manageDiscounts, HPos.CENTER);
         GridPane.setHalignment(manageAddAdmin, HPos.CENTER);
         GridPane.setHalignment(logout, HPos.CENTER);
-        GridPane.setHalignment(back, HPos.CENTER);
 
-        allButtons.getChildren().addAll(editInfoButton, manageUser, manageRequest, manageProduct, manageCategories, manageDiscounts, manageAddAdmin, logout, back);
+        allButtons.getChildren().addAll(editInfoButton, manageUser, manageRequest, manageProduct, manageCategories, manageDiscounts, manageAddAdmin, logout);
 
         try {
             dataOutputStream.writeUTF("GetLoggedAccount");
