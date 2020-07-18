@@ -89,21 +89,24 @@ public class LoginMenu extends Menu{
                 dataOutputStream.writeUTF("GetLoggedAccount");
                 dataOutputStream.flush();
                 String data = dataInputStream.readUTF();
-                String role = data.split(" ")[0];
+                String[]  details = data.split("_");
+                String role = details[0];
+                String accountInJson = details[1];
+
                 Type type;
                 if (role.equalsIgnoreCase("Admin")){
                     type = new TypeToken<AdminAccount>(){}.getType();
-                    Menu.account = new Gson().fromJson(data.split(" ")[1], type);
+                    Menu.account = new Gson().fromJson(accountInJson, type);
                 }
                 else if (role.equalsIgnoreCase("Seller"))
                 {
                     type = new TypeToken<SellerAccount>(){}.getType();
-                    Menu.account = new Gson().fromJson(data.split(" ")[1], type);
+                    Menu.account = new Gson().fromJson(accountInJson, type);
                 }
                 else if (role.equalsIgnoreCase("Buyer"))
                 {
                     type = new TypeToken<BuyerAccount>(){}.getType();
-                    Menu.account = new Gson().fromJson(data.split(" ")[1], type);
+                    Menu.account = new Gson().fromJson(accountInJson, type);
                 }
                 else {
                     Menu.account = null;

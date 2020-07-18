@@ -191,14 +191,12 @@ public class ClientThread extends Thread {
                 }
                 else if (input.startsWith("GetLoggedAccount"))
                 {
-                    String role = "";
                     if (account instanceof AdminAccount)
-                        role = "Admin";
+                        output = "Admin_" + new Gson().toJson((AdminAccount)account);
                     else if (account instanceof SellerAccount)
-                        role = "Seller";
+                        output = "Seller_" + new Gson().toJson((SellerAccount)account);
                     else if (account instanceof BuyerAccount)
-                        role = "Buyer";
-                    output = role + " " + new Gson().toJson(account);
+                        output = "Buyer_" + new Gson().toJson((BuyerAccount)account);
                 }
                 else if (input.startsWith("GetProduct"))
                 {

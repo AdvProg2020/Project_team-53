@@ -100,21 +100,21 @@ public class SellerMenu extends Menu {
             dataOutputStream.writeUTF("GetLoggedAccount");
             dataOutputStream.flush();
             String data = dataInputStream.readUTF();
-            String role = data.split(" ")[0];
+            String role = data.split("_")[0];
             Type type;
             if (role.equalsIgnoreCase("Admin")){
                 type = new TypeToken<AdminAccount>(){}.getType();
-                Menu.account = new Gson().fromJson(data.split(" ")[1], type);
+                Menu.account = new Gson().fromJson(data.split("_")[1], type);
             }
             else if (role.equalsIgnoreCase("Seller"))
             {
                 type = new TypeToken<SellerAccount>(){}.getType();
-                Menu.account = new Gson().fromJson(data.split(" ")[1], type);
+                Menu.account = new Gson().fromJson(data.split("_")[1], type);
             }
             else if (role.equalsIgnoreCase("Buyer"))
             {
                 type = new TypeToken<BuyerAccount>(){}.getType();
-                Menu.account = new Gson().fromJson(data.split(" ")[1], type);
+                Menu.account = new Gson().fromJson(data.split("_")[1], type);
             }
             else {
                 Menu.account = null;
