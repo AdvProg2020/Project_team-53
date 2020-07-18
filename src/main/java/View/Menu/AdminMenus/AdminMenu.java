@@ -26,7 +26,9 @@ import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class AdminMenu extends Menu {
 
@@ -119,7 +121,33 @@ public class AdminMenu extends Menu {
 
         allButtons.getChildren().addAll(editInfoButton, manageUser, manageRequest, manageProduct, manageCategories, manageDiscounts, manageAddAdmin, logout, back);
 
-        Pane pane = account.viewPersonalInfoInGraphic();
+        try {
+            dataOutputStream.writeUTF("GetLoggedAccount");
+            dataOutputStream.flush();
+            String data = dataInputStream.readUTF();
+            String role = data.split(" ")[0];
+            Type type;
+            if (role.equalsIgnoreCase("Admin")){
+                type = new TypeToken<AdminAccount>(){}.getType();
+                Menu.account = new Gson().fromJson(data.split(" ")[1], type);
+            }
+            else if (role.equalsIgnoreCase("Seller"))
+            {
+                type = new TypeToken<SellerAccount>(){}.getType();
+                Menu.account = new Gson().fromJson(data.split(" ")[1], type);
+            }
+            else if (role.equalsIgnoreCase("Buyer"))
+            {
+                type = new TypeToken<BuyerAccount>(){}.getType();
+                Menu.account = new Gson().fromJson(data.split(" ")[1], type);
+            }
+            else {
+                Menu.account = null;
+            }
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
+        Pane pane = Objects.requireNonNull(account).viewPersonalInfoInGraphic();
         GridPane.setConstraints(pane, 0 , 0);
         GridPane.setConstraints(allButtons, 3 ,0);
         GridPane gridPane = new GridPane();
@@ -174,9 +202,7 @@ public class AdminMenu extends Menu {
         Button back = new Button("back");
         back.getStyleClass().add("dark-blue");
         back.setMaxWidth(Double.MAX_VALUE);
-        back.setOnAction(e -> {
-            show();
-        });
+        back.setOnAction(e -> show());
         GridPane.setConstraints(field, 0, 0 );
         GridPane.setConstraints(changeTo, 0, 1);
         GridPane.setConstraints(edit, 0, 2);

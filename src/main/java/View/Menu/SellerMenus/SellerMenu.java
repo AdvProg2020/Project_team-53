@@ -1,5 +1,7 @@
 package View.Menu.SellerMenus;
 
+import Model.Account.AdminAccount;
+import Model.Account.BuyerAccount;
 import Model.Account.SellerAccount;
 import Model.Log.SellLog;
 import Model.Product.DiscountAndOff.Off;
@@ -20,6 +22,7 @@ import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -93,7 +96,33 @@ public class SellerMenu extends Menu {
         GridPane.setHalignment(logout, HPos.CENTER);
         GridPane.setHalignment(back, HPos.CENTER);
 
-        Pane pane = Menu.account.viewPersonalInfoInGraphic();
+        try {
+            dataOutputStream.writeUTF("GetLoggedAccount");
+            dataOutputStream.flush();
+            String data = dataInputStream.readUTF();
+            String role = data.split(" ")[0];
+            Type type;
+            if (role.equalsIgnoreCase("Admin")){
+                type = new TypeToken<AdminAccount>(){}.getType();
+                Menu.account = new Gson().fromJson(data.split(" ")[1], type);
+            }
+            else if (role.equalsIgnoreCase("Seller"))
+            {
+                type = new TypeToken<SellerAccount>(){}.getType();
+                Menu.account = new Gson().fromJson(data.split(" ")[1], type);
+            }
+            else if (role.equalsIgnoreCase("Buyer"))
+            {
+                type = new TypeToken<BuyerAccount>(){}.getType();
+                Menu.account = new Gson().fromJson(data.split(" ")[1], type);
+            }
+            else {
+                Menu.account = null;
+            }
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
+        Pane pane = Objects.requireNonNull(Menu.account).viewPersonalInfoInGraphic();
         allButtons.getChildren().addAll(viewAllLogs, manageProducts, manageOffs, editInfoButton, logout, back);
 
         GridPane.setConstraints(pane, 0, 0);
