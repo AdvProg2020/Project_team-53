@@ -1,15 +1,8 @@
 package ModelTest;
 
-import Controller.Database;
-import Model.Account.Account;
-import Model.Cart;
-import Model.Product.Product;
-import org.junit.Assert;
-import org.junit.Test;
-
 public class CartTest {
 
-    @Test
+    /*@Test
     public void getCostTest()
     {
         Database.initialize();
@@ -137,5 +130,5 @@ public class CartTest {
         int expected = 0;
 
         Assert.assertEquals(expected, result);
-    }
+    }*/
 }

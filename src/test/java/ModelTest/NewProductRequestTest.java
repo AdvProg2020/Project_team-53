@@ -1,11 +1,7 @@
 package ModelTest;
 
-import Model.Request.NewProductRequest;
-import org.junit.Assert;
-import org.junit.Test;
-
 public class NewProductRequestTest {
-    @Test
+    /*@Test
     public void showTest(){
         NewProductRequest request = new NewProductRequest("available", "product", "seller", true, 10 ,"awli", "name" , 100);
 
@@ -26,5 +22,5 @@ public class NewProductRequestTest {
 //    @Test
 //    public void acceptTest(){
 //
-//    }
+//    }*/
 }

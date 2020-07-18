@@ -1,16 +1,8 @@
 package ModelTest;
 
-import Controller.Database;
-import Model.Product.DiscountAndOff.Off;
-import Model.Request.EditOffRequest;
-import org.junit.Assert;
-import org.junit.Test;
-
-import java.util.ArrayList;
-
 public class EditOffRequestTest {
 
-    @Test
+    /*@Test
     public void acceptRequestTest1()
     {
         Off off = new Off(1000, 10, "2018-07-19_12:54:00", "2019-07-19_12:54:00", "Seller", new ArrayList<Integer>());
@@ -93,7 +85,5 @@ public class EditOffRequestTest {
         Assert.assertEquals(expected, result);
         Database.removeRequest(editOffRequest);
         Database.removeOff(off);
-    }
-
-
+    }*/
 }

@@ -1,17 +1,8 @@
 package ModelTest;
 
-import Controller.Database;
-import Model.Product.DiscountAndOff.Off;
-import Model.Product.Product;
-import Model.Request.AddNewOffRequest;
-import org.junit.Assert;
-import org.junit.Test;
-
-import java.util.ArrayList;
-
 public class AddNewOffRequestTest {
 
-    @Test
+    /*@Test
     public void acceptRequestTest1()
     {
         AddNewOffRequest addNewOffRequest = new AddNewOffRequest(-1);
@@ -65,5 +56,5 @@ public class AddNewOffRequestTest {
         Assert.assertEquals(expected, result);
         Database.removeOff(off);
         Database.removeRequest(addNewOffRequest);
-    }
+    }*/
 }

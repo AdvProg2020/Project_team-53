@@ -1,14 +1,8 @@
 package ModelTest;
 
-import Controller.Database;
-import Model.Product.Product;
-import Model.Request.EditProductRequest;
-import org.junit.Assert;
-import org.junit.Test;
-
 public class EditProductRequestTest {
 
-    @Test
+    /*@Test
     public  void acceptRequestTest1()
     {
         EditProductRequest editProductRequest = new EditProductRequest("status", "test", -1);
@@ -111,6 +105,6 @@ public class EditProductRequestTest {
 
         Assert.assertEquals(expected, result);
         Database.removeRequest(editProductRequest);
-    }
+    }*/
 }
 

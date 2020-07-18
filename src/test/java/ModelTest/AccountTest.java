@@ -1,14 +1,8 @@
 package ModelTest;
 
-import Controller.Database;
-import Model.Account.Account;
-import Model.Account.BuyerAccount;
-import org.junit.Assert;
-import org.junit.Test;
-
 public class AccountTest {
 
-    String expected = new String();
+    /*String expected = new String();
     String actual = new String();
 
     @Test
@@ -101,5 +95,5 @@ public class AccountTest {
         long result = account.getCredit();
 
         Assert.assertEquals(expected, result);
-    }
+    }*/
 }

@@ -1,17 +1,8 @@
 package ModelTest;
 
-import Controller.Database;
-import Model.Product.DiscountAndOff.Off;
-import Model.Product.Product;
-import Model.Product.CommentAndScore.Score;
-import org.junit.Assert;
-import org.junit.Test;
-
-import java.util.ArrayList;
-
 public class ProductTest {
 
-    @Test
+    /*@Test
     public void setCategoryNameWithoutAddToCategoryTest()
     {
         Product product = new Product("test", "test", "Seller", true, 10, "test", "test", 1000);
@@ -152,10 +143,5 @@ public class ProductTest {
         product.setOffId(off.getOffId());
         off.setStatus("accepted");
         Assert.assertTrue(product.doesHaveOff());
-    }
-
-
-
-
-
+    }*/
 }
