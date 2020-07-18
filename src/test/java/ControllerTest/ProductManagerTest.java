@@ -1,15 +1,8 @@
 package ControllerTest;
 
-import Controller.AccountManager;
-import Controller.Database;
-import Controller.ProductManager;
-import Model.Product.Product;
-import org.junit.Assert;
-import org.junit.Test;
-
 public class ProductManagerTest {
 
-    @Test
+    /*@Test
     public void setAndGetTest()
     {
         ProductManager.setProduct(new Product("test", "test", "test", true, 10, "test", "test", 1000));
@@ -107,5 +100,5 @@ public class ProductManagerTest {
 
         Assert.assertEquals(expected, result);
 
-    }
+    }*/
 }
