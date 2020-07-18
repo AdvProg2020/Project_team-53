@@ -2,8 +2,10 @@ package View.Menu;
 
 import Controller.Database;
 import Model.Account.Account;
+import Model.Account.BuyerAccount;
 import View.Menu.ProductsMenus.ProductsMenu;
 import javafx.geometry.Pos;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
@@ -87,6 +89,7 @@ public abstract class Menu{
             //song1.play();
             handleUser();
         });
+
         Button productButton = new Button("Products");
         productButton.getStyleClass().add("top-button");
         productButton.setMaxWidth(Double.MAX_VALUE);
@@ -97,18 +100,22 @@ public abstract class Menu{
             handleProduct();
         });
 
+        Button auctionButton = new Button("Auctions");
+        auctionButton.getStyleClass().add("top-button");
+        auctionButton.setMaxWidth(Double.MAX_VALUE);
+        auctionButton.setOnAction(e -> handleAuction());
 
         Button exitButton = new Button("exit");
         exitButton.getStyleClass().add("top-button");
         exitButton.setMaxWidth(Double.MAX_VALUE);
         exitButton.setOnAction(e -> {
             window.close();
-            song1.pause();
-            song2.pause();
+            //song1.pause();
+            //song2.pause();
         });
 
 
-        mainButtons.getChildren().addAll(userButton, productButton, exitButton);
+        mainButtons.getChildren().addAll(userButton, productButton, auctionButton, exitButton);
 
         mainPane.setTop(mainButtons);
     }
@@ -128,9 +135,20 @@ public abstract class Menu{
         userMenu.show();
     }
 
-    public void show()
-    {
+    public void handleAuction() {
+        if (!(Menu.account instanceof BuyerAccount)){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Process Fail");
+            alert.setContentText("You have to login as Buyer first to see this page");
+
+            alert.showAndWait();
+            return;
+        }
+        new AuctionMenu(this).show();
     }
+
+    public void show() {}
 
     public void execute(){
         int input;

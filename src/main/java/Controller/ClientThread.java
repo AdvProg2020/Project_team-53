@@ -116,6 +116,10 @@ public class ClientThread extends Thread {
                     Gson gson = new Gson();
                     output = gson.toJson(Database.getAllOffs());
                 }
+                else if (input.startsWith("AllAuction"))
+                {
+                    output = new Gson().toJson(Database.getAllAuction());
+                }
                 else if (input.startsWith("ChangeRole"))
                 {
                     details = input.split(" ");

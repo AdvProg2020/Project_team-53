@@ -66,4 +66,8 @@ public class Auction extends Thread{
             }
         }
     }
+
+    public Product getProduct() {
+        return product;
+    }
 }
