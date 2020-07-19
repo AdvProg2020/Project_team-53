@@ -70,4 +70,9 @@ public class Auction extends Thread{
     public Product getProduct() {
         return product;
     }
+
+    public boolean containBuyer(BuyerAccount buyerAccount)
+    {
+        return allBuyers.contains(buyerAccount);
+    }
 }
