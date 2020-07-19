@@ -16,9 +16,9 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
-import javafx.scene.media.MediaView;
+//import javafx.scene.media.Media;
+//import javafx.scene.media.MediaPlayer;
+//import javafx.scene.media.MediaView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -113,14 +113,14 @@ public class ProductMenu extends Menu {
                     dataOutputStream.writeUTF("GetMainProduct");
                     dataOutputStream.flush();
                     Product product1 = new Gson().fromJson(dataInputStream.readUTF(), new TypeToken<Product>(){}.getType());
-                    Media media = new Media(new File("src\\resource\\ProductVideos\\" + product.getProductId()+ ".mp4").toURI().toString());
-                    MediaPlayer mediaPlayer = new MediaPlayer(media);
-                    mediaPlayer.setAutoPlay(true);
-                    MediaView mediaView = new MediaView(mediaPlayer);
+                    //Media media = new Media(new File("src\\resource\\ProductVideos\\" + product.getProductId()+ ".mp4").toURI().toString());
+                    //MediaPlayer mediaPlayer = new MediaPlayer(media);
+                   // mediaPlayer.setAutoPlay(true);
+                   // MediaView mediaView = new MediaView(mediaPlayer);
 
                     Stage newStage = new Stage();
                     Group group = new Group();
-                    group.getChildren().add(mediaView);
+                    //group.getChildren().add(mediaView);
                     Scene scene1 = new Scene(group, 400, 250);
 
                     newStage.setScene(scene1);

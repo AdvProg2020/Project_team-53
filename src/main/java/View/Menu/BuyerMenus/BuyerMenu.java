@@ -67,6 +67,13 @@ public class BuyerMenu extends Menu {
             cartMenu.show();
         });
 
+        Button chatScreen = new Button("support chat");
+        chatScreen.setMaxWidth(Double.MAX_VALUE);
+        chatScreen.getStyleClass().add("dark-blue");
+        chatScreen.setOnAction(e -> {
+            // Todo:
+        });
+
         Button editInfoButton = new Button("Edit");
         editInfoButton.getStyleClass().add("dark-blue");
         editInfoButton.setMaxWidth(Double.MAX_VALUE);
@@ -80,14 +87,16 @@ public class BuyerMenu extends Menu {
         GridPane.setConstraints(viewAllDiscounts, 0, 0);
         GridPane.setConstraints(viewAllLogs, 0, 1);
         GridPane.setConstraints(viewCart,0, 2);
-        GridPane.setConstraints(editInfoButton, 0, 3);
-        GridPane.setConstraints(logout, 0, 4);
+        GridPane.setConstraints(chatScreen, 0, 3);
+        GridPane.setConstraints(editInfoButton, 0, 4);
+        GridPane.setConstraints(logout, 0, 5);
 
         GridPane.setHalignment(viewAllDiscounts, HPos.CENTER);
         GridPane.setHalignment(viewAllLogs, HPos.CENTER);
         GridPane.setHalignment(viewCart, HPos.CENTER);
         GridPane.setHalignment(editInfoButton, HPos.CENTER);
         GridPane.setHalignment(logout, HPos.CENTER);
+        GridPane.setHalignment(chatScreen, HPos.CENTER);
 
         try {
             dataOutputStream.writeUTF("GetLoggedAccount");

@@ -2,9 +2,9 @@ package Model.Account;
 
 import Controller.Database;
 import Model.Cart;
-import Model.Chat;
-import Model.Product.DiscountAndOff.Discount;
 import Model.Log.BuyLog;
+import Model.Messaging.Chat;
+import Model.Product.DiscountAndOff.Discount;
 
 import java.util.ArrayList;
 import java.util.Date;

@@ -1,6 +1,6 @@
 package Model.Account;
 
-import Model.Chat;
+import Model.Messaging.Chat;
 
 import java.util.ArrayList;
 
