@@ -16,14 +16,14 @@ import java.util.ArrayList;
 
 public class AdminManager {
 
-    public static String showAccountWithUsername(String username) {
+    public String showAccountWithUsername(String username) {
         Account account = Database.getAccountByUsername(username);
         if (account == null)
             return "No user with this username.";
         return account.showInfo();
     }
 
-    public static String addNewAdminAccount(String username, String firstName, String lastName, String email, String phoneNumber, String password, int credit) {
+    public String addNewAdminAccount(String username, String firstName, String lastName, String email, String phoneNumber, String password, int credit) {
         if (Database.getAccountByUsername(username) != null)
             return "Exist account with this username.";
         try {
@@ -34,16 +34,14 @@ public class AdminManager {
         return "New admin account registered.";
     }
 
-
-
-    public static String showRequestByiId(int id){
+    public String showRequestByiId(int id){
         Request request = Database.getRequestById(id);
         if (request == null)
             return "No request with this id";
         return request.show();
     }
 
-    public static String showAllRequests(){
+    public String showAllRequests(){
         ArrayList<Request> requests = Database.getAllRequest();
         StringBuilder res = new StringBuilder();
         for (Request request : requests) {
@@ -52,14 +50,14 @@ public class AdminManager {
         return res.toString();
     }
 
-    public static String acceptOrRejectRequest(int id, boolean accept){
+    public String acceptOrRejectRequest(int id, boolean accept){
         Request request = Database.getRequestById(id);
         if (request == null)
             return "No request with this id";
 
         if (accept){
             Database.removeRequest(request);
-            return request.acceptRequest();
+            return request.acceptRequest(this);
         }
         if (!accept && request instanceof AddNewOffRequest){
             Off off = Database.getOffById(((AddNewOffRequest) request).getOffId());
@@ -73,7 +71,7 @@ public class AdminManager {
         return "done!";
     }
 
-    public static String deleteUsername(String username){
+    public String deleteUsername(String username){
         Account account = Database.getAccountByUsername(username);
         if (account == null){
             return "No user with this username";
@@ -82,7 +80,7 @@ public class AdminManager {
         return "Account deleted";
     }
 
-    public static String addNewCategory(String name, String feature, String parentName){
+    public String addNewCategory(String name, String feature, String parentName){
         Category category = new Category(name, feature, parentName);
         Database.addAllCategory(category);
         Category parentCategory = Database.getCategoryByName(parentName);
@@ -91,7 +89,7 @@ public class AdminManager {
         return "New category added";
     }
 
-    public static String editCategory(String categoryName, String field, String changeTo){
+    public String editCategory(String categoryName, String field, String changeTo){
         Category category = Database.getCategoryByName(categoryName);
         if (category == null)
             return "no such category";
@@ -116,11 +114,12 @@ public class AdminManager {
         return "changed successfully";
     }
 
-    public static String deleteCategory(String categoryName){
+    public String deleteCategory(String categoryName){
         Category category = Database.getCategoryByName(categoryName);
         if (category == null)
             return "no such category.";
-        for (Integer productId : category.getAllProductIds()) {
+        ArrayList<Integer> temp = category.getAllProductIds();
+        for (Integer productId : temp) {
             deleteProduct(productId);
         }
         ArrayList<String> newOne = new ArrayList<>();
@@ -137,7 +136,7 @@ public class AdminManager {
         return "category deleted";
     }
 
-    public static String deleteProduct(int productId){
+    public String deleteProduct(int productId){
         Product product = Database.getProductByID(productId);
         Database.removeProduct(product);
         Category category = Database.getCategoryByName(product.getCategoryName());
@@ -147,7 +146,7 @@ public class AdminManager {
         return "Product removed successfully";
     }
 
-    public static String addNewDiscount(int maxValue, int percent, String startDate, String endDate, int numberOfTimes, ArrayList<String> usernames){
+    public String addNewDiscount(int maxValue, int percent, String startDate, String endDate, int numberOfTimes, ArrayList<String> usernames){
         for (String username : usernames) {
             if (Database.getAccountByUsername(username) ==null || !(Database.getAccountByUsername(username) instanceof BuyerAccount))
                 return "No buyer user with this username";
@@ -161,12 +160,12 @@ public class AdminManager {
         return "New discount added";
     }
 
-    public static String removeDiscount(int discountId){
+    public String removeDiscount(int discountId){
         Database.removeDiscount(Database.getDiscountById(discountId));
         return "discount deleted";
     }
 
-    public static String showAllDiscount(){
+    public String showAllDiscount(){
         ArrayList<Discount> allDiscounts = Database.getAllDiscounts();
         StringBuilder res = new StringBuilder();
         for (Discount discount : allDiscounts) {
@@ -175,7 +174,7 @@ public class AdminManager {
         return res.toString();
     }
 
-    public static String editDiscount(int discountId, String field , String changTo){
+    public String editDiscount(int discountId, String field , String changTo){
         Discount discount = Database.getDiscountById(discountId);
         if (field.equalsIgnoreCase("maxValue")){
             discount.setMaxValue(Integer.parseInt(changTo));
@@ -199,7 +198,7 @@ public class AdminManager {
         return "changed successfully";
     }
 
-    public static String changeRole(String username , String changeTo){
+    public String changeRole(String username , String changeTo){
         Account account = Database.getAccountByUsername(username);
         Database.removeAccount(account);
         if (changeTo.equalsIgnoreCase("Buyer")){

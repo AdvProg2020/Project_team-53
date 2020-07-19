@@ -1,11 +1,14 @@
 package View.Menu.BuyerMenus;
 
-import Controller.AccountManager;
+import Model.Account.AdminAccount;
 import Model.Account.BuyerAccount;
+import Model.Account.SellerAccount;
 import Model.Log.BuyLog;
+import Model.Product.DiscountAndOff.Discount;
 import View.Menu.Menu;
 import View.Menu.UserMenu;
-import View.Menu.ViewModelsWithGraphic;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import javafx.geometry.HPos;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -17,7 +20,10 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.File;
+import java.io.IOException;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class BuyerMenu extends Menu {
 
@@ -71,27 +77,46 @@ public class BuyerMenu extends Menu {
         logout.setMaxWidth(Double.MAX_VALUE);
         logout.setOnAction(e -> handleLogout());
 
-        Button back = new Button("Back");
-        back.getStyleClass().add("dark-blue");
-        back.setMaxWidth(Double.MAX_VALUE);
-        back.setOnAction(e -> parentMenu.show());
-
         GridPane.setConstraints(viewAllDiscounts, 0, 0);
         GridPane.setConstraints(viewAllLogs, 0, 1);
         GridPane.setConstraints(viewCart,0, 2);
         GridPane.setConstraints(editInfoButton, 0, 3);
         GridPane.setConstraints(logout, 0, 4);
-        GridPane.setConstraints(back, 0, 5);
 
         GridPane.setHalignment(viewAllDiscounts, HPos.CENTER);
         GridPane.setHalignment(viewAllLogs, HPos.CENTER);
         GridPane.setHalignment(viewCart, HPos.CENTER);
         GridPane.setHalignment(editInfoButton, HPos.CENTER);
         GridPane.setHalignment(logout, HPos.CENTER);
-        GridPane.setHalignment(back, HPos.CENTER);
 
-        Pane pane = ViewModelsWithGraphic.viewPersonalInfoInGraphic(AccountManager.getLoggedInAccount().getUsername());
-        allButtons.getChildren().addAll(viewAllDiscounts, viewAllLogs, viewCart, editInfoButton, logout, back);
+        try {
+            dataOutputStream.writeUTF("GetLoggedAccount");
+            dataOutputStream.flush();
+            String data = dataInputStream.readUTF();
+            String role = data.split("_")[0];
+            Type type;
+            if (role.equalsIgnoreCase("Admin")){
+                type = new TypeToken<AdminAccount>(){}.getType();
+                Menu.account = new Gson().fromJson(data.split("_")[1], type);
+            }
+            else if (role.equalsIgnoreCase("Seller"))
+            {
+                type = new TypeToken<SellerAccount>(){}.getType();
+                Menu.account = new Gson().fromJson(data.split("_")[1], type);
+            }
+            else if (role.equalsIgnoreCase("Buyer"))
+            {
+                type = new TypeToken<BuyerAccount>(){}.getType();
+                Menu.account = new Gson().fromJson(data.split("_")[1], type);
+            }
+            else {
+                Menu.account = null;
+            }
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
+        Pane pane = Objects.requireNonNull(Menu.account).viewPersonalInfoInGraphic();
+        allButtons.getChildren().addAll(viewAllDiscounts, viewAllLogs, viewCart, editInfoButton, logout);
 
         GridPane.setConstraints(pane, 0, 0);
         GridPane.setConstraints(allButtons, 3, 0);
@@ -108,7 +133,7 @@ public class BuyerMenu extends Menu {
 
     private void handleAllLogs() {
         super.setPane();
-        ArrayList<BuyLog> allLogs = ((BuyerAccount)AccountManager.getLoggedInAccount()).getBuyLogs();
+        ArrayList<BuyLog> allLogs = ((BuyerAccount)Menu.account).getBuyLogs();
         Scene scene = new Scene(super.mainPane, 1000, 600);
         scene.getStylesheets().add(new File("Data/Styles/Buttons.css").toURI().toString());
         scene.getStylesheets().add(new File("Data/Styles/textfield.css").toURI().toString());
@@ -163,7 +188,7 @@ public class BuyerMenu extends Menu {
 
     private void handleShowLog(BuyLog buyLog) {
         Stage newWindow = new Stage();
-        Pane pane = ViewModelsWithGraphic.showLogWithGraphic(buyLog);
+        Pane pane = buyLog.showLogWithGraphic();
         ((GridPane)pane).setAlignment(Pos.CENTER);
         Scene scene = new Scene(pane, 600, 400);
         scene.getStylesheets().add(new File("Data/Styles/backgrounds.css").toURI().toString());
@@ -200,7 +225,9 @@ public class BuyerMenu extends Menu {
         edit.setMaxWidth(Double.MAX_VALUE);
         edit.setOnAction(e -> {
             try {
-                status.setText(AccountManager.edit(field.getValue(), changeTo.getText()));
+                dataOutputStream.writeUTF("edit " + field.getValue() + " " + changeTo.getText());
+                dataOutputStream.flush();
+                status.setText(dataInputStream.readUTF());
             }
             catch (Exception ex)
             {
@@ -236,7 +263,13 @@ public class BuyerMenu extends Menu {
 
     public void handleLogout()
     {
-        AccountManager.logOut();
+        try {
+            dataOutputStream.writeUTF("logout");
+            dataOutputStream.flush();
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
+        Menu.account = null;
         UserMenu userMenu = new UserMenu(this);
         userMenu.show();
     }
@@ -244,7 +277,7 @@ public class BuyerMenu extends Menu {
     public void handleAllDiscountShow()
     {
         super.setPane();
-        ArrayList<Integer> allDiscountIds = ((BuyerAccount)AccountManager.getLoggedInAccount()).getDiscountIds();
+        ArrayList<Integer> allDiscountIds = ((BuyerAccount)Menu.account).getDiscountIds();
         Scene scene = new Scene(super.mainPane, 1000, 600);
         scene.getStylesheets().add(new File("Data/Styles/Buttons.css").toURI().toString());
         scene.getStylesheets().add(new File("Data/Styles/textfield.css").toURI().toString());
@@ -268,7 +301,7 @@ public class BuyerMenu extends Menu {
         gridPane.getChildren().add(info);
         int i = 1;
         for (Integer discountId : allDiscountIds) {
-            if (!((BuyerAccount)AccountManager.getLoggedInAccount()).canUseDiscount(discountId))
+            if (!((BuyerAccount)Menu.account).canUseDiscount(discountId))
                 continue;
 
             Label label = new Label(discountId.toString());
@@ -302,8 +335,16 @@ public class BuyerMenu extends Menu {
 
     private void handleShowDiscount(Integer discountId)
     {
+        Discount discount = null;
+        try {
+            dataOutputStream.writeUTF("GetDiscountWithID " + discountId);
+            dataOutputStream.flush();
+            discount = new Gson().fromJson(dataInputStream.readUTF(), new TypeToken<Discount>(){}.getType());
+        } catch (IOException e) {
+            System.out.println(e.getMessage());;
+        }
         Stage newWindow = new Stage();
-        Pane pane = ViewModelsWithGraphic.viewDiscount(discountId);
+        Pane pane = Objects.requireNonNull(discount).viewDiscountInGraphic(Menu.account);
         ((GridPane)pane).setAlignment(Pos.CENTER);
         Scene scene = new Scene(pane, 600, 400);
         scene.getStylesheets().add(new File("Data/Styles/backgrounds.css").toURI().toString());

@@ -1,6 +1,5 @@
 package View.Menu;
 
-import Controller.AccountManager;
 import Controller.Database;
 import Model.Account.Account;
 import Model.Account.AdminAccount;
@@ -51,8 +50,8 @@ public class ViewModelsWithGraphic {
         Label startDate = new Label("Start Date : " + discount.getStartDate());
         Label endDate = new Label("End Date : " + discount.getEndDate());
         int x = discount.getNumberOfTimes();
-        if (AccountManager.getLoggedInAccount() instanceof BuyerAccount)
-            x -= ((BuyerAccount) AccountManager.getLoggedInAccount()).getNumberOfUse(discountId);
+        if (Menu.account instanceof BuyerAccount)
+            x -= ((BuyerAccount) Menu.account).getNumberOfUse(discountId);
         Label remainigTimes = new Label("Times Of Use : " + x);
 
 
@@ -289,8 +288,7 @@ public class ViewModelsWithGraphic {
         return gridPane;
     }
 
-    public static ScrollPane showCommentsOfProduct(int productId)
-    {
+    public static ScrollPane showCommentsOfProduct(int productId) {
         VBox vBox = new VBox();
         vBox.setSpacing(10);
         ArrayList<Comment> comments = Objects.requireNonNull(Database.getProductByID(productId)).getComments();
@@ -306,7 +304,6 @@ public class ViewModelsWithGraphic {
 
         return scrollPane;
     }
-
 
     public static Pane showRequestGraphic(Request request) {
         GridPane gridPane = new GridPane();

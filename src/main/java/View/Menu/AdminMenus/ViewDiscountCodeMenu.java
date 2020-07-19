@@ -1,21 +1,18 @@
 package View.Menu.AdminMenus;
 
-import Controller.AdminManager;
 import View.Menu.Menu;
-
-import java.util.regex.Matcher;
 
 public class ViewDiscountCodeMenu extends Menu {
 
     public ViewDiscountCodeMenu(Menu parentMenu) {
         super("View Discount Codes Menu", parentMenu);
-        super.addToSubMenus(1, this.getShowAllDiscountsMenu());
+        /*super.addToSubMenus(1, this.getShowAllDiscountsMenu());
         super.addToSubMenus(2, this.getViewDiscountCodeMenu());
         super.addToSubMenus(3, this.getEditDiscountCodeMenu());
-        super.addToSubMenus(4, this.getRemoveDiscountCodeMenu());
+        super.addToSubMenus(4, this.getRemoveDiscountCodeMenu());*/
     }
 
-    private Menu getShowAllDiscountsMenu()
+    /*private Menu getShowAllDiscountsMenu()
     {
         return new Menu("Show All Discounts Menu", this) {
             @Override
@@ -153,5 +150,5 @@ public class ViewDiscountCodeMenu extends Menu {
                 this.execute();
             }
         };
-    }
+    }*/
 }

@@ -1,23 +1,24 @@
 package Controller;
 
+import Model.Account.Account;
 import Model.Account.BuyerAccount;
 import Model.Product.CommentAndScore.Comment;
 import Model.Product.CommentAndScore.Score;
 import Model.Product.Product;
 
 public class ProductManager {
-    private static Product product = null;
+    private Product product = null;
 
-    public static void setProduct(Product setTo) {
+    public void setProduct(Product setTo) {
         product = setTo;
     }
 
-    public static Product getProduct() {
+    public Product getProduct() {
         return product;
     }
 
-    public static String giveScore(int score){
-        BuyerAccount account = (BuyerAccount) AccountManager.getLoggedInAccount();
+    public String giveScore(int score, Account account1){
+        BuyerAccount account = (BuyerAccount) account1;
         if (!account.buyerProduct(product.getProductId())){
             return "You have to buy product to give score.";
         }
@@ -25,25 +26,25 @@ public class ProductManager {
         return "Your Score submitted.";
     }
 
-    public static double showAverageScore(){
+    public double showAverageScore(){
         return product.getAverageScore();
     }
 
-    public static String digest(){
+    public String digest(){
         return product.digest();
     }
 
-    public static String showFullInfo(){
+    public String showFullInfo(){
         return product.showAllInfo();
     }
 
-    public static String compare(int productId){
+    public String compare(int productId){
         Product secondPro = Database.getProductByID(productId);
         return product.compareWith(secondPro);
     }
 
-    public static String giveComment(String title, String content){
-        BuyerAccount buyerAccount = (BuyerAccount) AccountManager.getLoggedInAccount();
+    public String giveComment(String title, String content, Account account){
+        BuyerAccount buyerAccount = (BuyerAccount) account;
         product.addComment(new Comment(title, content, buyerAccount.getUsername(), buyerAccount.buyerProduct(product.getProductId())));
         return "Your comment registered.";
     }

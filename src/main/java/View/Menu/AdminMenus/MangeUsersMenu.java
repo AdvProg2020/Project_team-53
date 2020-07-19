@@ -1,21 +1,18 @@
 package View.Menu.AdminMenus;
 
-import Controller.AdminManager;
 import View.Menu.Menu;
-
-import java.util.regex.Matcher;
 
 public class MangeUsersMenu extends Menu {
     public MangeUsersMenu(Menu parentMenu) {
         super("Manage Users Menu", parentMenu);
-        super.addToSubMenus(1, this.getVieWAllUsersMenu());
+        /*super.addToSubMenus(1, this.getVieWAllUsersMenu());
         super.addToSubMenus(2, this.getViewUsersMenu());
         super.addToSubMenus(3, this.getChangeTypeMenu());
         super.addToSubMenus(4, this.getDeleteUserMenu());
-        super.addToSubMenus(5, this.getCreateNewManagerMenu());
+        super.addToSubMenus(5, this.getCreateNewManagerMenu());*/
     }
 
-    private Menu getVieWAllUsersMenu()
+    /*private Menu getVieWAllUsersMenu()
     {
         return new Menu("VieW All Users Menu", this) {
             @Override
@@ -185,5 +182,5 @@ public class MangeUsersMenu extends Menu {
                 this.execute();
             }
         };
-    }
+    }*/
 }

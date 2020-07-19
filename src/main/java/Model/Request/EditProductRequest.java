@@ -1,5 +1,6 @@
 package Model.Request;
 
+import Controller.AdminManager;
 import Controller.Database;
 import Model.Product.Product;
 
@@ -27,7 +28,7 @@ public class EditProductRequest extends Request{
     }
 
     @Override
-    public String acceptRequest() {
+    public String acceptRequest(AdminManager adminManager) {
         Product product = Database.getProductByID(productId);
         if (product == null)
             return "Product not found!";

@@ -1,19 +1,8 @@
 package ControllerTest;
 
-import Controller.AccountManager;
-import Controller.AdminManager;
-import Controller.Database;
-import Model.Product.DiscountAndOff.Discount;
-import Model.Product.Product;
-import Model.Request.Request;
-import org.junit.Assert;
-import org.junit.Test;
-
-import java.util.ArrayList;
-
 public class AdminManagerTest {
 
-    @Test
+    /*@Test
     public void showAccountWithUsernameTest1()
     {
         String expected = "No user with this username.";
@@ -372,7 +361,7 @@ public class AdminManagerTest {
 
 
         Assert.assertEquals(expected, result);
-    }
+    }*/
 }
 
 

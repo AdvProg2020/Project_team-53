@@ -1,16 +1,8 @@
 package ModelTest;
 
-import Controller.Database;
-import Model.Account.BuyerAccount;
-import Model.Cart;
-import Model.Product.DiscountAndOff.Discount;
-import Model.Log.BuyLog;
-import org.junit.Assert;
-import org.junit.Test;
-
 public class BuyerAccountTest {
 
-    @Test
+    /*@Test
     public void showAllLOgTest() throws Exception
     {
         BuyLog buyLog = new BuyLog("2018-07-19_12:54:00", 1000, "test", 1, 1, 10, "Seller");
@@ -90,6 +82,6 @@ public class BuyerAccountTest {
 
         Assert.assertFalse(buyerAccount.canUseDiscount(discount.getDiscountId()));
         Database.removeDiscount(discount);
-    }
+    }*/
 
 }

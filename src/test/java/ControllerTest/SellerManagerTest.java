@@ -1,18 +1,7 @@
 package ControllerTest;
 
-import Controller.AccountManager;
-import Controller.Database;
-import Controller.SellerManager;
-import Model.Product.DiscountAndOff.Off;
-import Model.Product.Product;
-import Model.Account.SellerAccount;
-import org.junit.Assert;
-import org.junit.Test;
-
-import java.util.ArrayList;
-
 public class SellerManagerTest {
-    @Test
+    /*@Test
     public void sendAddProductRequestTest() throws Exception
     {
         SellerAccount sellerAccount = new SellerAccount("testSeller", "test", "test", "testing", "test@gmail.com", "021", 1000, "test");
@@ -169,9 +158,6 @@ public class SellerManagerTest {
 
         Assert.assertEquals(expected, result);
         AccountManager.logOut();
-    }
-
-
-
+    }*/
 }
 

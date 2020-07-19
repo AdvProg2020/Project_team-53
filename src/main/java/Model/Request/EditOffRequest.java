@@ -1,9 +1,8 @@
 package Model.Request;
 
+import Controller.AdminManager;
 import Controller.Database;
 import Model.Product.DiscountAndOff.Off;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Pane;
 
 public class EditOffRequest extends Request{
     String field;
@@ -31,7 +30,7 @@ public class EditOffRequest extends Request{
     }
 
     @Override
-    public String acceptRequest() {
+    public String acceptRequest(AdminManager adminManager) {
         Off off = Database.getOffById(offId);
         if (off == null){
             return "off not found";

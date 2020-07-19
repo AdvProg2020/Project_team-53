@@ -1,23 +1,19 @@
 package View.Menu.ProductsMenus;
 
-import Controller.AllProductManager;
-import View.Menu.LoginMenu;
 import View.Menu.Menu;
-
-import java.util.regex.Matcher;
 
 public class FilteringMenu extends Menu {
 
     public FilteringMenu(Menu parentMenu) {
         super("Filtering Menu", parentMenu);
-        super.addToSubMenus(1, this.getShowAvailableFiltersMenu());
+        /*super.addToSubMenus(1, this.getShowAvailableFiltersMenu());
         super.addToSubMenus(2, this.getAddFilterMenu());
         super.addToSubMenus(3, this.getCurrentFiltersMenu());
         super.addToSubMenus(4, this.getDisableFilterMenu());
-        super.addToSubMenus(5, new LoginMenu(this));
+        super.addToSubMenus(5, new LoginMenu(this));*/
     }
 
-    private Menu getShowAvailableFiltersMenu()
+    /*private Menu getShowAvailableFiltersMenu()
     {
         return new Menu("Show Available Filters Menu", this) {
             @Override
@@ -189,5 +185,5 @@ public class FilteringMenu extends Menu {
                 this.execute();
             }
         };
-    }
+    }*/
 }

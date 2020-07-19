@@ -6,9 +6,9 @@ import Model.Account.SellerAccount;
 import Model.Request.NewSellerRequest;
 
 public class AccountManager {
-    private static Account loggedInAccount = null ;
+    private  Account loggedInAccount = null ;
 
-    public static String logIn(String username , String password)  {
+    public  String logIn(String username , String password)  {
         if (loggedInAccount != null){
             return "You have already loggedIn. You have to logout first.";
         }
@@ -21,16 +21,16 @@ public class AccountManager {
         return "Welcome " + account.getUsername();
     }
 
-    public static Account getLoggedInAccount() {
+    public  Account getLoggedInAccount() {
         return loggedInAccount;
     }
 
-    public static String edit(String field , String changeTo){
+    public  String edit(String field , String changeTo, Account account){
 
         if (field.equalsIgnoreCase("firstName")) {
             System.out.println(changeTo);
             try {
-                loggedInAccount.setFirstName(changeTo);
+                account.setFirstName(changeTo);
                 return "changed successfully";
             }
             catch (Exception e) {
@@ -40,7 +40,7 @@ public class AccountManager {
 
         if(field.equalsIgnoreCase("lastName")){
             try {
-                loggedInAccount.setLastName(changeTo);
+                account.setLastName(changeTo);
                 return "changed successfully";
             } catch (Exception e) {
                 return e.getMessage();
@@ -49,7 +49,7 @@ public class AccountManager {
 
         if (field.equalsIgnoreCase("password")){
             try {
-                loggedInAccount.setPassword(changeTo);
+                account.setPassword(changeTo);
                 return "changed successfully";
             } catch (Exception e) {
                 return e.getMessage();
@@ -58,7 +58,7 @@ public class AccountManager {
 
         if(field.equalsIgnoreCase("email")){
             try {
-                loggedInAccount.setEmail(changeTo);
+                account.setEmail(changeTo);
                 return "changed successfully";
             } catch (Exception e) {
                 return e.getMessage();
@@ -67,15 +67,15 @@ public class AccountManager {
 
         if(field.equalsIgnoreCase("phoneNumber")){
             try {
-                loggedInAccount.setPhoneNumber(changeTo);
+                account.setPhoneNumber(changeTo);
                 return "changed successfully";
             } catch (Exception e) {
                 return e.getMessage();
             }
         }
-        if (loggedInAccount instanceof SellerAccount && field.equalsIgnoreCase("company")){
+        if (account instanceof SellerAccount && field.equalsIgnoreCase("company")){
             try {
-                ((SellerAccount) loggedInAccount).setCompany(changeTo);
+                ((SellerAccount) account).setCompany(changeTo);
                 return "changed successfully";
             } catch (Exception e){
                 return e.getMessage();
@@ -84,14 +84,14 @@ public class AccountManager {
         return "Invalid field";
     }
 
-    public static String logOut(){
+    public  String logOut(){
         if (loggedInAccount == null)
             return "You haven't logged in";
         loggedInAccount = null ;
         return "logged out successfully";
     }
 
-    public static String register(String role,String username, String firstName, String lastName, String email, String phoneNumber, String password, int credit, String company) throws Exception {
+    public String register(String role,String username, String firstName, String lastName, String email, String phoneNumber, String password, int credit, String company) throws Exception {
         if (Database.getAccountByUsername(username) != null)
             return "Exist account with this username.";
         if (role.equalsIgnoreCase("Buyer")) {
@@ -106,11 +106,13 @@ public class AccountManager {
             return "Role is invalid!";
     }
 
-    public static String viewLogs(){
+    public String viewLogs(){
         if (loggedInAccount instanceof BuyerAccount)
             return ((BuyerAccount) loggedInAccount).showAllLog();
         else if (loggedInAccount instanceof SellerAccount)
             return ((SellerAccount) loggedInAccount).showAllLog();
         return "nothing to show.";
     }
+
+
 }

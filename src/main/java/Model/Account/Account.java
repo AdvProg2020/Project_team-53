@@ -1,8 +1,15 @@
 package Model.Account;
 
-import Model.Chat;
+import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
+import javafx.scene.text.Font;
 
-import java.util.ArrayList;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 
 public abstract class Account {
     protected String username;
@@ -12,6 +19,7 @@ public abstract class Account {
     protected String email;
     protected String phoneNumber;
     protected int credit;
+
 
     public Account(String username, String firstName, String lastName, String password, String email, String phoneNumber, int credit) throws Exception {
         if (!username.matches("[A-Za-z_0-9]+")){
@@ -123,6 +131,82 @@ public abstract class Account {
                 "phoneNumber='" + phoneNumber + "'\n" +
                 "credit='" + credit + "'"
                 ;
+    }
+
+    public Pane viewPersonalInfoInGraphic() {
+        Account account = this;
+
+        GridPane gridPane = new GridPane();
+        gridPane.setVgap(20);
+        gridPane.setHgap(20);
+
+        Image image = null;
+        try {
+            image = new Image(new FileInputStream("src\\resource\\ProfileImages\\" + account.getUsername() + ".png"));
+        }catch (Exception e){
+            try {
+                image = new Image(new FileInputStream("src\\resource\\ProfileImages\\notFound.png"));
+            } catch (FileNotFoundException ex) {
+                ex.printStackTrace();
+            }
+        }
+        ImageView profileImage = new ImageView(image);
+        profileImage.setFitHeight(100);
+        profileImage.setFitWidth(100);
+
+        FileInputStream fileInputStream = null;
+        try {
+            File file = new File("Data" + File.separator + "Styles" + File.separator + "Fonts" + File.separator + "KenneyFutureNarrow.ttf");
+            Label role = new Label();
+            role.setFont(Font.loadFont(new FileInputStream(file), 20));
+            if (account instanceof AdminAccount)
+            {
+                role.setText("Role : Admin");
+            }
+            else if (account instanceof BuyerAccount)
+            {
+                role.setText("Role : Buyer");
+            }
+            else if (account instanceof SellerAccount)
+            {
+                role.setText("Role : Seller");
+            }
+            Label username = new Label("Username : " + account.getUsername());
+            username.setFont(Font.loadFont(new FileInputStream(file), 20));
+            Label firstName = new Label("First Name : " + account.getFirstName());
+            firstName.setFont(Font.loadFont(new FileInputStream(file), 20));
+            Label lastName = new Label("Last Name : " + account.getLastName());
+            lastName.setFont(Font.loadFont(new FileInputStream(file), 20));
+            Label email = new Label("Email : " + account.getEmail());
+            email.setFont(Font.loadFont(new FileInputStream(file), 20));
+            Label phoneNumber = new Label("Phone : " + account.getPhoneNumber());
+            phoneNumber.setFont(Font.loadFont(new FileInputStream(file), 20));
+            Label credit = new Label("Credit : " + account.getCredit());
+            credit.setFont(Font.loadFont(new FileInputStream(file), 20));
+
+            GridPane.setConstraints(profileImage, 0, 0, 2, 6);
+            GridPane.setConstraints(role, 2, 0);
+            GridPane.setConstraints(username, 2, 1);
+            GridPane.setConstraints(firstName, 2, 2);
+            GridPane.setConstraints(lastName, 2,3);
+            GridPane.setConstraints(email, 2, 4);
+            GridPane.setConstraints(phoneNumber , 2, 5);
+            GridPane.setConstraints(credit , 2, 6);
+
+            gridPane.getChildren().addAll(profileImage, role, username, firstName, lastName, email, phoneNumber, credit);
+
+
+            if (account instanceof SellerAccount){
+                Label companyLabel = new Label("Company : " + ((SellerAccount)account).getCompany());
+                companyLabel.setFont(Font.loadFont(new FileInputStream(file), 20));
+                GridPane.setConstraints(companyLabel , 2 , 7);
+                gridPane.getChildren().addAll(companyLabel);
+            }
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        return gridPane;
     }
 
 }

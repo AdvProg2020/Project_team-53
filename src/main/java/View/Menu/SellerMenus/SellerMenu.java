@@ -1,15 +1,15 @@
 package View.Menu.SellerMenus;
 
-import Controller.AccountManager;
-import Controller.Database;
-import Controller.SellerManager;
+import Model.Account.AdminAccount;
+import Model.Account.BuyerAccount;
 import Model.Account.SellerAccount;
 import Model.Log.SellLog;
 import Model.Product.DiscountAndOff.Off;
 import Model.Product.Product;
 import View.Menu.Menu;
 import View.Menu.UserMenu;
-import View.Menu.ViewModelsWithGraphic;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import javafx.geometry.HPos;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -21,7 +21,10 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.File;
+import java.io.IOException;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class SellerMenu extends Menu {
 
@@ -63,6 +66,11 @@ public class SellerMenu extends Menu {
         manageOffs.getStyleClass().add("dark-blue");
         manageOffs.setMaxWidth(Double.MAX_VALUE);
         manageOffs.setOnAction(e -> handleManageOffs());
+
+        Button addAuction = new Button("Add Auction");
+        addAuction.getStyleClass().add("dark-blue");
+        addAuction.setMaxWidth(Double.MAX_VALUE);
+        addAuction.setOnAction(e -> handleAddAuction());
         
         Button editInfoButton = new Button("Edit");
         editInfoButton.getStyleClass().add("dark-blue");
@@ -74,27 +82,48 @@ public class SellerMenu extends Menu {
         logout.setMaxWidth(Double.MAX_VALUE);
         logout.setOnAction(e -> handleLogout());
 
-        Button back = new Button("Back");
-        back.getStyleClass().add("dark-blue");
-        back.setMaxWidth(Double.MAX_VALUE);
-        back.setOnAction(e -> parentMenu.show());
-
         GridPane.setConstraints(viewAllLogs, 0, 0);
         GridPane.setConstraints(manageProducts, 0, 1);
         GridPane.setConstraints(manageOffs, 0, 2);
         GridPane.setConstraints(editInfoButton, 0, 3);
-        GridPane.setConstraints(logout, 0, 4);
-        GridPane.setConstraints(back, 0, 5);
+        GridPane.setConstraints(addAuction, 0, 4);
+        GridPane.setConstraints(logout, 0, 5);
 
         GridPane.setHalignment(viewAllLogs, HPos.CENTER);
         GridPane.setHalignment(manageProducts, HPos.CENTER);
         GridPane.setHalignment(manageOffs, HPos.CENTER);
         GridPane.setHalignment(editInfoButton, HPos.CENTER);
         GridPane.setHalignment(logout, HPos.CENTER);
-        GridPane.setHalignment(back, HPos.CENTER);
+        GridPane.setHalignment(addAuction, HPos.CENTER);
 
-        Pane pane = ViewModelsWithGraphic.viewPersonalInfoInGraphic(AccountManager.getLoggedInAccount().getUsername());
-        allButtons.getChildren().addAll(viewAllLogs, manageProducts, manageOffs, editInfoButton, logout, back);
+        try {
+            dataOutputStream.writeUTF("GetLoggedAccount");
+            dataOutputStream.flush();
+            String data = dataInputStream.readUTF();
+            String role = data.split("_")[0];
+            Type type;
+            if (role.equalsIgnoreCase("Admin")){
+                type = new TypeToken<AdminAccount>(){}.getType();
+                Menu.account = new Gson().fromJson(data.split("_")[1], type);
+            }
+            else if (role.equalsIgnoreCase("Seller"))
+            {
+                type = new TypeToken<SellerAccount>(){}.getType();
+                Menu.account = new Gson().fromJson(data.split("_")[1], type);
+            }
+            else if (role.equalsIgnoreCase("Buyer"))
+            {
+                type = new TypeToken<BuyerAccount>(){}.getType();
+                Menu.account = new Gson().fromJson(data.split("_")[1], type);
+            }
+            else {
+                Menu.account = null;
+            }
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
+        Pane pane = Objects.requireNonNull(Menu.account).viewPersonalInfoInGraphic();
+        allButtons.getChildren().addAll(viewAllLogs, manageProducts, manageOffs, editInfoButton, logout, addAuction);
 
         GridPane.setConstraints(pane, 0, 0);
         GridPane.setConstraints(allButtons, 3, 0);
@@ -110,12 +139,83 @@ public class SellerMenu extends Menu {
 
     }
 
+    private void handleAddAuction(){
+        super.setPane();
+        GridPane gridPane = new GridPane();
+        gridPane.setAlignment(Pos.CENTER);
+        gridPane.setVgap(10);
+
+        Scene scene = new Scene(super.mainPane, 1000, 600);
+        scene.getStylesheets().add(new File("Data/Styles/Buttons.css").toURI().toString());
+        scene.getStylesheets().add(new File("Data/Styles/textfield.css").toURI().toString());
+        scene.getStylesheets().add(new File("Data/Styles/backgrounds.css").toURI().toString());
+        scene.getStylesheets().add(new File("Data/Styles/choicebox.css").toURI().toString());
+        super.mainPane.getStyleClass().add("admin-page");
+
+        Label status = new Label();
+        status.setFont(Font.font(20));
+
+        TextField productID = new TextField();
+        status.getStyleClass().add("text-field");
+        productID.setPromptText("ProductID");
+
+        TextField endDate = new TextField();
+        endDate.getStyleClass().add("text-field");
+        endDate.setPromptText("EndDate(yyyy-MM-dd_HH:mm)");
+
+        Button create = new Button("Create");
+        create.getStyleClass().add("dark-blue");
+        create.setMaxWidth(Double.MAX_VALUE);
+        create.setAlignment(Pos.CENTER);
+        create.setOnAction(e ->{
+            try {
+                dataOutputStream.writeUTF("AddAuction " + productID.getText() + " " + endDate.getText());
+                dataOutputStream.flush();
+                status.setText(dataInputStream.readUTF());
+            } catch (IOException ex) {
+                System.out.println(ex.getMessage());
+            }
+        });
+
+        Button back = new Button("back");
+        back.getStyleClass().add("dark-blue");
+        back.setMaxWidth(Double.MAX_VALUE);
+        back.setAlignment(Pos.CENTER);
+        back.setOnAction(e -> show());
+
+        GridPane.setConstraints(productID, 0, 0);
+        GridPane.setConstraints(endDate, 0, 1);
+        GridPane.setConstraints(create, 0, 2);
+        GridPane.setConstraints(back, 0, 3);
+        GridPane.setConstraints(status, 0, 4);
+
+        GridPane.setHalignment(productID, HPos.CENTER);
+        GridPane.setHalignment(endDate, HPos.CENTER);
+        GridPane.setHalignment(create, HPos.CENTER);
+        GridPane.setHalignment(back, HPos.CENTER);
+        GridPane.setHalignment(status, HPos.CENTER);
+
+        gridPane.getChildren().addAll(productID, endDate, create, back, status);
+        super.mainPane.setCenter(gridPane);
+
+        Menu.window.setScene(scene);
+    }
+
     private void handleManageOffs() {
         super.setPane();
-        ArrayList<Off> allOff = Database.getAllOffs();
+        ArrayList<Off> allOff = null;
+        try {
+            dataOutputStream.writeUTF("AllOffs");
+            dataOutputStream.flush();
+            allOff = new Gson().fromJson(dataInputStream.readUTF(), new TypeToken<ArrayList<Off>>(){}.getType());
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+        }
         ArrayList<Off> thisSellerOff = new ArrayList<>();
-        for (Off off : allOff) {
-            if (off.getSellerUsername().equalsIgnoreCase(AccountManager.getLoggedInAccount().getUsername())){
+        for (Off off : Objects.requireNonNull(allOff)) {
+            if (off.getSellerUsername().equalsIgnoreCase(Menu.account.getUsername())){
                 thisSellerOff.add(off);
             }
         }
@@ -155,7 +255,7 @@ public class SellerMenu extends Menu {
                 Stage newWindow = new Stage();
                 newWindow.initModality(Modality.APPLICATION_MODAL);
 
-                handleShowOff(off.getOffId(), newWindow);
+                handleShowOff(off, newWindow);
 
                 newWindow.showAndWait();
             });
@@ -225,9 +325,16 @@ public class SellerMenu extends Menu {
         endDate.setPromptText("End Date (YYYY-MM-DD_hh:mm");
         endDate.getStyleClass().add("text-field");
         ArrayList<CheckBox> checkBoxes = new ArrayList<>();
-        ArrayList<Product> allProduct = Database.getAllProducts();
-        for (Product product : allProduct) {
-            if (product.getSellerUsername().equalsIgnoreCase(AccountManager.getLoggedInAccount().getUsername())){
+        ArrayList<Product> allProduct = null;
+        try {
+            dataOutputStream.writeUTF("AllProducts");
+            dataOutputStream.flush();
+            allProduct = new Gson().fromJson(dataInputStream.readUTF(), new TypeToken<ArrayList<Product>>(){}.getType());
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
+        for (Product product : Objects.requireNonNull(allProduct)) {
+            if (product.getSellerUsername().equalsIgnoreCase(Menu.account.getUsername())){
                 CheckBox checkBox = new CheckBox("ID(" + product.getProductId() +")" + product.getName());
                 checkBox.setId(String.valueOf(product.getProductId()));
                 checkBoxes.add(checkBox);
@@ -246,8 +353,15 @@ public class SellerMenu extends Menu {
                     selectedProducts.add(Integer.parseInt(checkBox.getId()));
                 }
             }
-            status.setText(SellerManager.addNewOff(Integer.parseInt(maxValue.getText()), Integer.parseInt(percent.getText()),
-                    startDate.getText(), endDate.getText(), selectedProducts));
+            try {
+                dataOutputStream.writeUTF("AddNewOff " + maxValue.getText() + " " + percent.getText() + " " +
+                        startDate.getText() + " " + endDate.getText() + " " + new Gson().toJson(selectedProducts));
+                dataOutputStream.flush();
+                status.setText(dataInputStream.readUTF());
+            } catch (IOException ex) {
+                System.out.println(ex.getMessage());
+            }
+
             show();
         });
 
@@ -282,8 +396,8 @@ public class SellerMenu extends Menu {
 
     }
 
-    private void handleShowOff(int offId, Stage newWindow) {
-        Pane pane = ViewModelsWithGraphic.showOffFullInfoGraphic(offId);
+    private void handleShowOff(Off off, Stage newWindow) {
+        Pane pane = off.showOffFullInfoGraphic();
         ((GridPane)pane).setAlignment(Pos.CENTER);
         Scene scene = new Scene(pane, 600, 400);
         scene.getStylesheets().add(new File("Data/Styles/Buttons.css").toURI().toString());
@@ -296,7 +410,7 @@ public class SellerMenu extends Menu {
         Button edit = new Button("Edit");
         edit.setAlignment(Pos.CENTER);
         edit.getStyleClass().add("dark-blue");
-        edit.setOnAction(e -> handleEditOff(offId , newWindow));
+        edit.setOnAction(e -> handleEditOff(off , newWindow));
 
         GridPane.setConstraints(edit, 4, 1);
 
@@ -307,7 +421,7 @@ public class SellerMenu extends Menu {
 
     }
 
-    private void handleEditOff(int offId, Stage newWindow) {
+    private void handleEditOff(Off off, Stage newWindow) {
         super.setPane();
         GridPane gridPane = new GridPane();
         Scene scene = new Scene(gridPane, 600, 400);
@@ -333,13 +447,19 @@ public class SellerMenu extends Menu {
         edit.setMaxWidth(Double.MAX_VALUE);
         edit.getStyleClass().add("dark-blue");
         edit.setOnAction(e -> {
-            status.setText(SellerManager.editOff(offId, field.getValue(), changeTo.getText()));
+            try {
+                dataOutputStream.writeUTF("EditOff " + off.getOffId() + " " + field.getValue() + " " + changeTo.getText());
+                dataOutputStream.flush();
+                status.setText(dataInputStream.readUTF());
+            } catch (IOException ex) {
+                System.out.println(ex.getMessage());
+            }
         });
         Button back = new Button("back");
         back.setMaxWidth(Double.MAX_VALUE);
         back.setAlignment(Pos.CENTER);
         back.getStyleClass().add("dark-blue");
-        back.setOnAction(e -> handleShowOff(offId, newWindow));
+        back.setOnAction(e -> handleShowOff(off, newWindow));
 
         GridPane.setConstraints(field, 0, 0);
         GridPane.setConstraints(changeTo, 0, 1);
@@ -360,10 +480,17 @@ public class SellerMenu extends Menu {
     public void handleManageProducts()
     {
         super.setPane();
-        ArrayList<Product> allProduct = Database.getAllProducts();
+        ArrayList<Product> allProduct = null;
+        try {
+            dataOutputStream.writeUTF("AllProducts");
+            dataOutputStream.flush();
+            allProduct = new Gson().fromJson(dataInputStream.readUTF(), new TypeToken<ArrayList<Product>>(){}.getType());
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
         ArrayList<Product> thisSellerProducts = new ArrayList<>();
-        for (Product product : allProduct) {
-            if (product.getSellerUsername().equalsIgnoreCase(AccountManager.getLoggedInAccount().getUsername())){
+        for (Product product : Objects.requireNonNull(allProduct)) {
+            if (product.getSellerUsername().equalsIgnoreCase(Menu.account.getUsername())){
                 thisSellerProducts.add(product);
             }
         }
@@ -402,7 +529,7 @@ public class SellerMenu extends Menu {
                 Stage newWindow = new Stage();
                 newWindow.initModality(Modality.APPLICATION_MODAL);
 
-                handleShowProduct(product.getProductId(), newWindow);
+                handleShowProduct(product, newWindow);
 
                 newWindow.showAndWait();
             });
@@ -488,9 +615,15 @@ public class SellerMenu extends Menu {
         sendRequest.setMaxWidth(Double.MAX_VALUE);
         sendRequest.setAlignment(Pos.CENTER);
         sendRequest.setOnAction(e -> {
-            status.setText(SellerManager.sendAddProductRequest(statusTextField.getText(), name.getText(), available.isSelected(),
-                    Integer.parseInt(number.getText()), description.getText(), categoryName.getText(),
-                    Integer.parseInt(price.getText())));
+            try {
+                dataOutputStream.writeUTF("AddNewProduct " + statusTextField.getText() +  " " + name.getText() +  " "
+                + available.isSelected() + " " + number.getText() + " " + description.getText() + " " + categoryName.getText() + " "
+                + price.getText());
+                dataOutputStream.flush();
+                status.setText(dataInputStream.readUTF());
+            } catch (IOException ex) {
+                System.out.println(ex.getMessage());
+            }
             handleManageProducts();
         });
 
@@ -528,12 +661,11 @@ public class SellerMenu extends Menu {
         super.mainPane.setCenter(gridPane);
 
         Menu.window.setScene(scene);
-
     }
     
     private void handleAllLogs() {
         super.setPane();
-        ArrayList<SellLog> allLogs = ((SellerAccount)AccountManager.getLoggedInAccount()).getSellLogs();
+        ArrayList<SellLog> allLogs = ((SellerAccount)Menu.account).getSellLogs();
         Scene scene = new Scene(super.mainPane, 1000, 600);
         scene.getStylesheets().add(new File("Data/Styles/Buttons.css").toURI().toString());
         scene.getStylesheets().add(new File("Data/Styles/textfield.css").toURI().toString());
@@ -589,7 +721,7 @@ public class SellerMenu extends Menu {
 
     private void handleShowLog(SellLog sellLog) {
         Stage newWindow = new Stage();
-        Pane pane = ViewModelsWithGraphic.showLogWithGraphic(sellLog);
+        Pane pane = sellLog.showLogWithGraphic();
         ((GridPane)pane).setAlignment(Pos.CENTER);
         Scene scene = new Scene(pane, 600, 400);
         scene.getStylesheets().add(new File("Data/Styles/Buttons.css").toURI().toString());
@@ -604,9 +736,9 @@ public class SellerMenu extends Menu {
         newWindow.showAndWait();
     }
 
-    public void handleShowProduct(int productID , Stage newWindow)
+    public void handleShowProduct(Product product, Stage newWindow)
     {
-        Pane pane = ViewModelsWithGraphic.showProductFullInfoGraphic(productID);
+        Pane pane = product.showProductFullInfoGraphic();
         ((GridPane)pane).setAlignment(Pos.CENTER);
         GridPane gridPane = new GridPane();
         GridPane.setConstraints(pane, 0, 0 );
@@ -622,7 +754,12 @@ public class SellerMenu extends Menu {
         remove.setAlignment(Pos.CENTER);
         remove.setMaxWidth(Double.MAX_VALUE);
         remove.setOnAction(e -> {
-            SellerManager.deleteProduct(productID);
+            try {
+                dataOutputStream.writeUTF("DeleteProduct " + product.getProductId());
+                dataOutputStream.flush();
+            } catch (IOException ex) {
+                System.out.println(ex.getMessage());
+            }
             handleManageProducts();
             newWindow.close();
         });
@@ -631,8 +768,15 @@ public class SellerMenu extends Menu {
         edit.getStyleClass().add("dark-blue");
         edit.setMaxWidth(Double.MAX_VALUE);
         edit.setAlignment(Pos.CENTER);
-        edit.setOnAction(e -> handleEditProduct(productID, newWindow));
-        Label buyers = new Label("Buyers : " + SellerManager.getSellerOfProduct(productID));
+        edit.setOnAction(e -> handleEditProduct(product, newWindow));
+        Label buyers = null;
+        try {
+            dataOutputStream.writeUTF("GetBuyerOfProduct " + product.getProductId());
+            dataOutputStream.flush();
+            buyers = new Label("Buyers : " + dataInputStream.readUTF());
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
 
         GridPane.setConstraints(remove, 0, 3);
         GridPane.setConstraints(edit, 0, 4);
@@ -655,7 +799,7 @@ public class SellerMenu extends Menu {
 
     }
 
-    private void handleEditProduct(int productId, Stage newWindow) {
+    private void handleEditProduct(Product product, Stage newWindow) {
         super.setPane();
         GridPane gridPane = new GridPane();
         Scene scene = new Scene(gridPane, 600, 400);
@@ -681,13 +825,19 @@ public class SellerMenu extends Menu {
         edit.setAlignment(Pos.CENTER);
         edit.getStyleClass().add("dark-blue");
         edit.setOnAction(e -> {
-            status.setText(SellerManager.sendEditProductRequest(productId, field.getValue(), changeTo.getText()));
+            try {
+                dataOutputStream.writeUTF("EditProduct " + product.getProductId() + " " + field.getValue() + " " + changeTo.getText());
+                dataOutputStream.flush();
+                status.setText(dataInputStream.readUTF());
+            } catch (IOException ex) {
+                System.out.println(ex.getMessage());
+            }
         });
         Button back = new Button("back");
         back.setAlignment(Pos.CENTER);
         back.setMaxWidth(Double.MAX_VALUE);
         back.getStyleClass().add("dark-blue");
-        back.setOnAction(e -> handleShowProduct(productId, newWindow));
+        back.setOnAction(e -> handleShowProduct(product, newWindow));
 
         GridPane.setConstraints(field, 0, 0);
         GridPane.setConstraints(changeTo, 0, 1);
@@ -730,7 +880,9 @@ public class SellerMenu extends Menu {
         edit.setMaxWidth(Double.MAX_VALUE);
         edit.setOnAction(e -> {
             try {
-                status.setText(AccountManager.edit(field.getValue(), changeTo.getText()));
+                dataOutputStream.writeUTF("edit " + field.getValue() + " " + changeTo.getText());
+                dataOutputStream.flush();
+                status.setText(dataInputStream.readUTF());
             }
             catch (Exception ex)
             {
@@ -765,7 +917,13 @@ public class SellerMenu extends Menu {
 
     public void handleLogout()
     {
-        AccountManager.logOut();
+        try {
+            dataOutputStream.writeUTF("logout");
+            dataOutputStream.flush();
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
+        Menu.account = null;
         UserMenu userMenu = new UserMenu(this);
         userMenu.show();
     }

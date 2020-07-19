@@ -1,5 +1,6 @@
 package Model.Request;
 
+import Controller.AdminManager;
 import Controller.Database;
 import Model.Product.DiscountAndOff.Off;
 import Model.Product.Product;
@@ -17,7 +18,7 @@ public class AddNewOffRequest extends Request {
     }
 
     @Override
-    public String acceptRequest() {
+    public String acceptRequest(AdminManager adminManager) {
         Off off = Database.getOffById(offId);
         if (off == null)
             return "no such off";

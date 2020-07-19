@@ -1,18 +1,15 @@
 package View.Menu.BuyerMenus;
 
-import Controller.AccountManager;
 import View.Menu.Menu;
-
-import java.util.regex.Matcher;
 
 public class ViewOrdersMenu extends Menu {
     public ViewOrdersMenu(Menu parentMenu) {
         super("View Orders Menu", parentMenu);
-        super.addToSubMenus(1, this.getShowOrderMenu());
-        super.addToSubMenus(2, this.getGiveRateMenu());
+        /*super.addToSubMenus(1, this.getShowOrderMenu());
+        super.addToSubMenus(2, this.getGiveRateMenu());*/
     }
 
-    private Menu getShowAllOrdersMenu()
+    /*private Menu getShowAllOrdersMenu()
     {
         return new Menu("Show All Orders Menu", this) {
             @Override
@@ -120,5 +117,5 @@ public class ViewOrdersMenu extends Menu {
                 this.execute();
             }
         };
-    }
+    }*/
 }

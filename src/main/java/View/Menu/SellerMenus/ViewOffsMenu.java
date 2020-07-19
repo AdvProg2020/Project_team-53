@@ -1,20 +1,16 @@
 package View.Menu.SellerMenus;
 
-import Controller.SellerManager;
 import View.Menu.Menu;
-
-import java.util.ArrayList;
-import java.util.regex.Matcher;
 
 public class ViewOffsMenu extends Menu {
     public ViewOffsMenu(Menu parentMenu) {
         super("View Offs Menu", parentMenu);
-        super.addToSubMenus(1, this.getViewOffMenu());
+        /*super.addToSubMenus(1, this.getViewOffMenu());
         super.addToSubMenus(2, this.getAddOffMenu());
-        super.addToSubMenus(3, this.getEditOffMenu());
+        super.addToSubMenus(3, this.getEditOffMenu());*/
     }
 
-    private Menu getViewOffMenu()
+    /*private Menu getViewOffMenu()
     {
         return new Menu("View Off Menu", this) {
             @Override
@@ -135,5 +131,5 @@ public class ViewOffsMenu extends Menu {
                 this.execute();
             }
         };
-    }
+    }*/
 }

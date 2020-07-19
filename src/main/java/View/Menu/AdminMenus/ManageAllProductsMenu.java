@@ -1,17 +1,14 @@
 package View.Menu.AdminMenus;
 
-import Controller.AdminManager;
 import View.Menu.Menu;
-
-import java.util.regex.Matcher;
 
 public class ManageAllProductsMenu extends Menu {
     public ManageAllProductsMenu(Menu parentMenu) {
         super("Manage all products Menu", parentMenu);
-        super.addToSubMenus(1, this.getRemoveProductMenu());
+        //super.addToSubMenus(1, this.getRemoveProductMenu());
     }
 
-    private Menu getRemoveProductMenu()
+    /*private Menu getRemoveProductMenu()
     {
         return new Menu("Remove Product Menu", this) {
             @Override
@@ -48,5 +45,5 @@ public class ManageAllProductsMenu extends Menu {
                 this.execute();
             }
         };
-    }
+    }*/
 }

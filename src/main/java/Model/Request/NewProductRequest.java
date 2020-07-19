@@ -1,5 +1,6 @@
 package Model.Request;
 
+import Controller.AdminManager;
 import Controller.Database;
 import Model.Product.Product;
 
@@ -58,7 +59,7 @@ public class NewProductRequest extends Request {
     }
 
     @Override
-    public String acceptRequest() {
+    public String acceptRequest(AdminManager adminManager) {
         Product product = new Product(status, name, sellerUsername, available, number, description , categoryName, price);
         Database.addAllProduct(product);
         Database.getCategoryByName(product.getCategoryName()).addProduct(product.getProductId());

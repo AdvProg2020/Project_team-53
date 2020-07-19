@@ -1,17 +1,8 @@
 package ControllerTest;
 
-import Controller.AllOffManager;
-import Controller.AllProductManager;
-import Controller.Database;
-import Model.Product.DiscountAndOff.Off;
-import org.junit.Assert;
-import org.junit.Test;
-
-import java.util.ArrayList;
-
 public class AllOffManagerTest {
 
-    @Test
+    /*@Test
     public void ignoreSortAndGetSortedByTest()
     {
         AllProductManager.setSortedBy("Default");
@@ -173,5 +164,5 @@ public class AllOffManagerTest {
         Database.removeOff(off2);
 
         Assert.assertEquals(expected, result);
-    }
+    }*/
 }

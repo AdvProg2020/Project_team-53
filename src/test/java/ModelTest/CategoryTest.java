@@ -1,16 +1,8 @@
 package ModelTest;
 
-import Controller.Database;
-import Model.Product.Category;
-import Model.Product.Product;
-import org.junit.Assert;
-import org.junit.Test;
-
-import java.util.ArrayList;
-
 public class CategoryTest {
 
-    @Test
+    /*@Test
     public void getAllSubCategoryNamesTest()
     {
         Category category = new Category("test", "test", null);
@@ -121,6 +113,6 @@ public class CategoryTest {
         Assert.assertTrue(category.getAllProductIds().isEmpty());
         Database.removeProduct(product);
         Database.removeCategory(category);
-    }
+    }*/
 
 }
