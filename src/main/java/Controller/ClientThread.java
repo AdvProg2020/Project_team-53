@@ -334,6 +334,10 @@ public class ClientThread extends Thread {
                 {
                     output = new Gson().toJson(server.getAllOnlineSellers());
                 }
+                else if (input.startsWith("JoinAuction"))
+                {
+                    Objects.requireNonNull(Database.getAuctionByID(Integer.parseInt(input.split(" ")[1]))).joinAuction((BuyerAccount) account);
+                }
                 else if (input.startsWith("Exit"))
                 {
                     clientSocket.close();

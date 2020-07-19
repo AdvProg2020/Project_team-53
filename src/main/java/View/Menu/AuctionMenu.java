@@ -6,6 +6,7 @@ import com.google.gson.reflect.TypeToken;
 import javafx.geometry.HPos;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
@@ -58,8 +59,8 @@ public class AuctionMenu extends Menu{
             text = text + "ProductName" + auction.getProduct().getName();
             label.setText(text);
             label.setFont(Font.font(15));
-            Button button = new Button("join");
-            //todo:join auction
+            Button button = new Button("Join");
+            button.setOnAction(e -> handleJoinAuction(auction));
             button.setAlignment(Pos.CENTER);
             button.getStyleClass().add("dark-blue");
             button.setMaxWidth(Double.MAX_VALUE);
@@ -73,5 +74,23 @@ public class AuctionMenu extends Menu{
         super.mainPane.setCenter(scrollPane);
 
         Menu.window.setScene(scene);
+    }
+
+    private void handleJoinAuction(Auction auction)
+    {
+        try {
+            dataOutputStream.writeUTF("JoinAuction " + auction.getAuctionID());
+            dataOutputStream.flush();
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Information");
+            alert.setHeaderText("Process Result");
+            alert.setContentText("You joined auction successfully");
+
+            alert.showAndWait();
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+        }
     }
 }

@@ -1,11 +1,14 @@
 package Model.Product;
 
+import Controller.BuyerManager;
 import Model.Account.BuyerAccount;
 
 import java.util.ArrayList;
 import java.util.Date;
 
 public class Auction extends Thread{
+    private int numberOfAllAuctions = 1;
+    private int auctionID;
     private ArrayList<BuyerAccount> allBuyers;
     private Product product;
     private long mostPrice;
@@ -20,7 +23,8 @@ public class Auction extends Thread{
         allBuyers = new ArrayList<>();
         mostPrice = 0;
         currentDate = new Date();
-        this.start();
+        this.auctionID = numberOfAllAuctions;
+        numberOfAllAuctions++;
     }
 
     public void joinAuction(BuyerAccount buyerAccount)
@@ -36,7 +40,7 @@ public class Auction extends Thread{
 
     public boolean setMostPrice(long mostPrice, BuyerAccount buyerAccount)
     {
-        if (!canSetPrice(buyerAccount))
+        if (!canSetPrice(buyerAccount, mostPrice))
             return false;
         if (mostPrice <=  this.mostPrice)
             return false;
@@ -45,26 +49,23 @@ public class Auction extends Thread{
         return true;
     }
 
-    private boolean canSetPrice(BuyerAccount buyerAccount)
+    private boolean canSetPrice(BuyerAccount buyerAccount, long price)
     {
-        return true;
+        return buyerAccount.getCredit() > price;
     }
 
     @Override
     public void run() {
-        while (true)
-        {
-            if (!isAuctionAvailable())
-            {
-                //todo:buy things
-                break;
-            }
+        while (isAuctionAvailable()) {
             try {
                 Thread.sleep(60000);
             } catch (InterruptedException e) {
                 System.out.println(e.getMessage());
             }
         }
+        BuyerManager buyerManager = new BuyerManager();
+        buyerManager.addProductToCart(product, buyerWithMostPrice);
+        buyerManager.pay(-1, buyerWithMostPrice);
     }
 
     public Product getProduct() {
@@ -74,5 +75,9 @@ public class Auction extends Thread{
     public boolean containBuyer(BuyerAccount buyerAccount)
     {
         return allBuyers.contains(buyerAccount);
+    }
+
+    public int getAuctionID() {
+        return auctionID;
     }
 }

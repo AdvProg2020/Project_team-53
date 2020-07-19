@@ -64,6 +64,15 @@ public class Database {
         return null;
     }
 
+    public static Auction getAuctionByID(int auctionId){
+        for (Auction auction : allAuction) {
+            if (auction.getAuctionID() == auctionId)
+                return auction;
+        }
+        return null;
+    }
+
+
     public static Request getRequestById(int id) {
         for (Request request : allRequest) {
             if (request.getId() == id)
