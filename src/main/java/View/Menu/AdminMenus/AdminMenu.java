@@ -80,6 +80,11 @@ public class AdminMenu extends Menu {
         manageUser.getStyleClass().add("dark-blue");
         manageUser.setMaxWidth(Double.MAX_VALUE);
 
+        Button onlineUser = new Button("Online Users");
+        onlineUser.setOnAction(e -> handleOnlineUsers());
+        onlineUser.getStyleClass().add("dark-blue");
+        onlineUser.setMaxWidth(Double.MAX_VALUE);
+
         Button manageCategories = new Button("Manage Categories");
         manageCategories.setOnAction(e -> handleManageCategories());
         manageCategories.getStyleClass().add("dark-blue");
@@ -98,14 +103,16 @@ public class AdminMenu extends Menu {
 
         GridPane.setConstraints(editInfoButton, 0, 0);
         GridPane.setConstraints(manageUser, 0, 1);
-        GridPane.setConstraints(manageRequest, 0, 2);
-        GridPane.setConstraints(manageProduct, 0, 3);
-        GridPane.setConstraints(manageCategories, 0, 4);
-        GridPane.setConstraints(manageDiscounts, 0, 5);
-        GridPane.setConstraints(manageAddAdmin, 0, 6);
-        GridPane.setConstraints(logout, 0, 7);
+        GridPane.setConstraints(onlineUser, 0, 2);
+        GridPane.setConstraints(manageRequest, 0, 3);
+        GridPane.setConstraints(manageProduct, 0, 4);
+        GridPane.setConstraints(manageCategories, 0, 5);
+        GridPane.setConstraints(manageDiscounts, 0, 6);
+        GridPane.setConstraints(manageAddAdmin, 0, 7);
+        GridPane.setConstraints(logout, 0, 8);
         GridPane.setHalignment(editInfoButton, HPos.CENTER);
         GridPane.setHalignment(manageUser, HPos.CENTER);
+        GridPane.setHalignment(onlineUser, HPos.CENTER);
         GridPane.setHalignment(manageRequest, HPos.CENTER);
         GridPane.setHalignment(manageProduct, HPos.CENTER);
         GridPane.setHalignment(manageCategories, HPos.CENTER);
@@ -113,7 +120,7 @@ public class AdminMenu extends Menu {
         GridPane.setHalignment(manageAddAdmin, HPos.CENTER);
         GridPane.setHalignment(logout, HPos.CENTER);
 
-        allButtons.getChildren().addAll(editInfoButton, manageUser, manageRequest, manageProduct, manageCategories, manageDiscounts, manageAddAdmin, logout);
+        allButtons.getChildren().addAll(editInfoButton, manageUser, manageRequest, manageProduct, manageCategories, manageDiscounts, manageAddAdmin, logout, onlineUser);
 
         try {
             dataOutputStream.writeUTF("GetLoggedAccount");
@@ -435,7 +442,93 @@ public class AdminMenu extends Menu {
                 button.setMaxWidth(Double.MAX_VALUE);
                 button.getStyleClass().add("dark-blue");
                 button.setOnAction(e -> {
-                    handleShowUser(account.getUsername());
+                    handleShowUser(account);
+                });
+                GridPane.setConstraints(label, 0, i);
+                GridPane.setConstraints(button, 2, i);
+                gridPane.getChildren().addAll(label, button);
+                i++;
+            }
+            Button back = new Button("back");
+            back.setAlignment(Pos.CENTER);
+            back.getStyleClass().add("dark-blue");
+            back.setMaxWidth(Double.MAX_VALUE);
+            GridPane.setHalignment(back, HPos.CENTER);
+            back.setOnAction(e -> show());
+            GridPane.setConstraints(back,1, i);
+            back.setAlignment(Pos.CENTER);
+            gridPane.getChildren().add(back);
+
+            scrollPane.setContent(gridPane);
+            super.mainPane.setCenter(scrollPane);
+
+            Menu.window.setScene(scene);
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public void handleOnlineUsers()
+    {
+        try {
+            super.setPane();
+            dataOutputStream.writeUTF("GetOnlineAdmins");
+            dataOutputStream.flush();
+            ArrayList<Account> allOnlineAccounts = new ArrayList<>(new Gson().fromJson(dataInputStream.readUTF(), new TypeToken<ArrayList<AdminAccount>>() {}.getType()));
+            dataOutputStream.writeUTF("GetOnlineBuyers");
+            dataOutputStream.flush();
+            allOnlineAccounts.addAll(new Gson().fromJson(dataInputStream.readUTF(), new TypeToken<ArrayList<BuyerAccount>>(){}.getType()));
+            dataOutputStream.writeUTF("GetOnlineSellers");
+            dataOutputStream.flush();
+            allOnlineAccounts.addAll(new Gson().fromJson(dataInputStream.readUTF(), new TypeToken<ArrayList<SellerAccount>>(){}.getType()));
+            Scene scene = new Scene(super.mainPane, 1000, 600);
+            scene.getStylesheets().add(new File("Data/Styles/Buttons.css").toURI().toString());
+            scene.getStylesheets().add(new File("Data/Styles/textfield.css").toURI().toString());
+            scene.getStylesheets().add(new File("Data/Styles/backgrounds.css").toURI().toString());
+            scene.getStylesheets().add(new File("Data/Styles/choicebox.css").toURI().toString());
+            super.mainPane.getStyleClass().add("admin-page");
+            GridPane gridPane = new GridPane();
+            gridPane.setHgap(20);
+            gridPane.setVgap(10);
+            gridPane.setAlignment(Pos.CENTER);
+            ScrollPane scrollPane = new ScrollPane();
+            scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.ALWAYS);
+            scrollPane.setFitToHeight(true);
+            scrollPane.setFitToWidth(true);
+            scrollPane.getStyleClass().add("scroll-pane");
+            Label info = new Label("All Users");
+            info.setFont(Font.font(25));
+            GridPane.setHalignment(info, HPos.CENTER);
+            info.setAlignment(Pos.CENTER);
+            GridPane.setConstraints(info, 1, 0);
+            gridPane.getChildren().add(info);
+            int i = 1;
+            for (Account account : allOnlineAccounts) {
+                String text = "";
+                Label label = new Label();
+                text = text + account.getUsername() + ":";
+                if (account instanceof AdminAccount)
+                {
+                    text = text + "Admin";
+                }
+                else if (account instanceof BuyerAccount)
+                {
+                    text = text + "Buyer";
+                }
+                else if (account instanceof SellerAccount)
+                {
+                    text = text + "Seller";
+                }
+                label.setText(text);
+                label.setFont(Font.font(15));
+                Button button = new Button("show");
+                button.setAlignment(Pos.CENTER);
+                button.setMaxWidth(Double.MAX_VALUE);
+                button.getStyleClass().add("dark-blue");
+                button.setOnAction(e -> {
+                    handleShowUser(account);
                 });
                 GridPane.setConstraints(label, 0, i);
                 GridPane.setConstraints(button, 2, i);
@@ -761,14 +854,11 @@ public class AdminMenu extends Menu {
         }
     }
 
-    public void handleShowUser(String username)
+    public void handleShowUser(Account account)
     {
         try {
             Stage newWindow = new Stage();
-            dataOutputStream.writeUTF("ViewUsername " + username);
-            dataOutputStream.flush();
-            Gson gson = new Gson();
-            Pane pane = gson.fromJson(dataInputStream.readUTF(), new TypeToken<Pane>(){}.getType());
+            Pane pane = account.viewPersonalInfoInGraphic();
             ((GridPane)pane).setAlignment(Pos.CENTER);
             Scene scene = new Scene(pane, 600, 400);
             scene.getStylesheets().add(new File("Data/Styles/Buttons.css").toURI().toString());
@@ -779,9 +869,6 @@ public class AdminMenu extends Menu {
             ChoiceBox<String> choiceBox = new ChoiceBox<>();
             choiceBox.getItems().addAll("Admin", "Seller", "Buyer");
             choiceBox.getStyleClass().add("choice-box");
-            dataOutputStream.writeUTF("GetAccount " + username);
-            dataOutputStream.flush();
-            Account account = gson.fromJson(dataInputStream.readUTF(), new TypeToken<Account>(){}.getType());
             if (account instanceof AdminAccount)
             {
                 choiceBox.setValue("Admin");
@@ -799,7 +886,7 @@ public class AdminMenu extends Menu {
             changeRole.getStyleClass().add("dark-blue");
             changeRole.setOnAction(e -> {
                 try {
-                    dataOutputStream.writeUTF("ChangeRole " + username + " " + choiceBox.getValue());
+                    dataOutputStream.writeUTF("ChangeRole " + account.getUsername() + " " + choiceBox.getValue());
                     dataOutputStream.flush();
                 } catch (IOException ex) {
                     System.out.println(ex.getMessage());
@@ -810,7 +897,7 @@ public class AdminMenu extends Menu {
             remove.getStyleClass().add("record-sales");
             remove.setOnAction(e -> {
                 try {
-                    dataOutputStream.writeUTF("RemoveAccount " + username);
+                    dataOutputStream.writeUTF("RemoveAccount " + account.getUsername());
                     dataOutputStream.flush();
                 } catch (IOException ex) {
                     System.out.println(ex.getMessage());

@@ -14,6 +14,15 @@ public class Client extends Application {
             Socket socket = new Socket("127.0.0.1", 8585);
             DataInputStream dataInputStream = new DataInputStream(new BufferedInputStream(socket.getInputStream()));
             DataOutputStream dataOutputStream = new DataOutputStream(new BufferedOutputStream(socket.getOutputStream()));
+            window.setOnCloseRequest(e -> {
+                try {
+                    dataOutputStream.writeUTF("Exit");
+                    dataOutputStream.flush();
+                } catch (IOException ex) {
+                    System.out.println(ex.getMessage());
+                }
+            });
+
             Menu.setSocket(socket);
             Menu.setDataInputStream(dataInputStream);
             Menu.setDataOutputStream(dataOutputStream);

@@ -14,6 +14,7 @@ import java.util.Objects;
 
 public class ClientThread extends Thread {
     private Account account;
+    private Server server;
     private Socket clientSocket;
     private DataInputStream dataInputStream;
     private DataOutputStream dataOutputStream;
@@ -24,7 +25,8 @@ public class ClientThread extends Thread {
     private SellerManager sellerManager;
     private ProductManager productManager;
 
-    public ClientThread(Socket clientSocket) {
+    public ClientThread(Socket clientSocket, Server server) {
+        this.server = server;
         this.clientSocket = clientSocket;
         try {
             dataInputStream = new DataInputStream(new BufferedInputStream(clientSocket.getInputStream()));
@@ -66,9 +68,21 @@ public class ClientThread extends Thread {
                         this.account = account;
                         output = "Welcome " + account.getUsername();
                     }
+                    if (this.account instanceof AdminAccount)
+                        server.addOnlineAdmin((AdminAccount) account);
+                    else if (this.account instanceof BuyerAccount)
+                        server.addOnlineBuyer((BuyerAccount) account);
+                    else if (this.account instanceof SellerAccount)
+                        server.addOnlineSeller((SellerAccount) account);
                 }
                 else if (input.startsWith("logout"))
                 {
+                    if (this.account instanceof AdminAccount)
+                        server.removeOnlineAdmin((AdminAccount) account);
+                    else if (this.account instanceof BuyerAccount)
+                        server.removeOnlineBuyer((BuyerAccount) account);
+                    else if (this.account instanceof SellerAccount)
+                        server.removeOnlineSeller((SellerAccount) account);
                     account = null;
                 }
                 else if (input.startsWith("register"))
@@ -196,11 +210,11 @@ public class ClientThread extends Thread {
                 else if (input.startsWith("GetLoggedAccount"))
                 {
                     if (account instanceof AdminAccount)
-                        output = "Admin_" + new Gson().toJson((AdminAccount)account);
+                        output = "Admin_" + new Gson().toJson(account);
                     else if (account instanceof SellerAccount)
-                        output = "Seller_" + new Gson().toJson((SellerAccount)account);
+                        output = "Seller_" + new Gson().toJson(account);
                     else if (account instanceof BuyerAccount)
-                        output = "Buyer_" + new Gson().toJson((BuyerAccount)account);
+                        output = "Buyer_" + new Gson().toJson(account);
                 }
                 else if (input.startsWith("GetProduct"))
                 {
@@ -307,6 +321,32 @@ public class ClientThread extends Thread {
                 {
                     details = input.split(" ");
                     output = sellerManager.addAuction(Integer.parseInt(details[1]), details[2], account);
+                }
+                else if (input.startsWith("GetOnlineAdmins"))
+                {
+                    output = new Gson().toJson(server.getAllOnlineAdmins());
+                }
+                else if (input.startsWith("GetOnlineBuyers"))
+                {
+                    output = new Gson().toJson(server.getAllOnlineBuyers());
+                }
+                else if (input.startsWith("GetOnlineSellers"))
+                {
+                    output = new Gson().toJson(server.getAllOnlineSellers());
+                }
+                else if (input.startsWith("Exit"))
+                {
+                    clientSocket.close();
+                    if (account != null)
+                    {
+                        if (this.account instanceof AdminAccount)
+                            server.removeOnlineAdmin((AdminAccount) account);
+                        else if (this.account instanceof BuyerAccount)
+                            server.removeOnlineBuyer((BuyerAccount) account);
+                        else if (this.account instanceof SellerAccount)
+                            server.removeOnlineSeller((SellerAccount) account);
+                    }
+                    break;
                 }
                 if (output != null)
                 {
