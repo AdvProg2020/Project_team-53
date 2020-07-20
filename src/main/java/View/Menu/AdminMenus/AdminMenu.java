@@ -1,6 +1,5 @@
 package View.Menu.AdminMenus;
 
-import Controller.Database;
 import Model.Account.Account;
 import Model.Account.AdminAccount;
 import Model.Account.BuyerAccount;
@@ -1143,14 +1142,14 @@ public class AdminMenu extends Menu {
             numberOfTimes.setPromptText("Number Of Times");
 
             ArrayList<CheckBox> checkBoxes = new ArrayList<>();
-            ArrayList<Account> allAccounts = Database.getAllAccounts();
+            /*ArrayList<Account> allAccounts = Database.getAllAccounts();
             for (Account account : allAccounts) {
                 if (account instanceof BuyerAccount){
                     CheckBox checkBox = new CheckBox(account.getUsername());
                     checkBox.setId(account.getUsername());
                     checkBoxes.add(checkBox);
                 }
-            }
+            }*/
 
             Button add = new Button("Add");
             add.setOnAction(e -> {
