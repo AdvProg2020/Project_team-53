@@ -3,10 +3,13 @@
   <component name="ChangeListManager">
     <list default="true" id="aeefa500-3a99-4ed0-98cf-a7157d1fa89a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Client.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Controller/ClientThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/ClientThread.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Controller/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/Server.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/View/Menu/AdminMenus/AdminMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/View/Menu/AdminMenus/AdminMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Cart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Cart.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/View/Menu/AuctionMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/View/Menu/AuctionMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/View/Menu/BuyerMenus/BuyerMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/View/Menu/BuyerMenus/BuyerMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/View/Menu/BuyerMenus/ViewCartMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/View/Menu/BuyerMenus/ViewCartMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/View/Menu/ProductMenus/ProductMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/View/Menu/ProductMenus/ProductMenu.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,7 +94,7 @@
     </key>
   </component>
   <component name="RunManager" selected="Application.Client">
-    <configuration name="Client" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+    <configuration name="Client" type="Application" factoryName="Application" singleton="false" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Client" />
       <module name="Project" />
       <method v="2">
@@ -202,8 +205,8 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.Main" />
       <item itemvalue="Application.Client" />
+      <item itemvalue="Application.Main" />
       <item itemvalue="Application.Server" />
       <item itemvalue="JUnit.ControllerTest.*" />
       <item itemvalue="JUnit.All in Project-2" />
@@ -211,7 +214,6 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Client" />
         <item itemvalue="Application.Server" />
         <item itemvalue="Application.Main" />
         <item itemvalue="JUnit.All in Project-2" />
@@ -369,27 +371,6 @@
       <workItem from="1593177955371" duration="115000" />
       <workItem from="1593178150008" duration="253000" />
       <workItem from="1593187077572" duration="84000" />
-    </task>
-    <task id="LOCAL-00053" summary="multiple seller removed">
-      <created>1589699822848</created>
-      <option name="number" value="00053" />
-      <option name="presentableId" value="LOCAL-00053" />
-      <option name="project" value="LOCAL" />
-      <updated>1589699822848</updated>
-    </task>
-    <task id="LOCAL-00054" summary="BuyerManager, showAllDiscount and showCostOfCart added">
-      <created>1589708565479</created>
-      <option name="number" value="00054" />
-      <option name="presentableId" value="LOCAL-00054" />
-      <option name="project" value="LOCAL" />
-      <updated>1589708565480</updated>
-    </task>
-    <task id="LOCAL-00055" summary="Save File completed">
-      <created>1589794399645</created>
-      <option name="number" value="00055" />
-      <option name="presentableId" value="LOCAL-00055" />
-      <option name="project" value="LOCAL" />
-      <updated>1589794399645</updated>
     </task>
     <task id="LOCAL-00056" summary="result of Buyer manager methods changed to String">
       <created>1589816017514</created>
@@ -713,7 +694,28 @@
       <option name="project" value="LOCAL" />
       <updated>1595109740771</updated>
     </task>
-    <option name="localTasksCounter" value="102" />
+    <task id="LOCAL-00102" summary="handle show online users">
+      <created>1595156226581</created>
+      <option name="number" value="00102" />
+      <option name="presentableId" value="LOCAL-00102" />
+      <option name="project" value="LOCAL" />
+      <updated>1595156226582</updated>
+    </task>
+    <task id="LOCAL-00103" summary="show auctions for buyer">
+      <created>1595171801312</created>
+      <option name="number" value="00103" />
+      <option name="presentableId" value="LOCAL-00103" />
+      <option name="project" value="LOCAL" />
+      <updated>1595171801312</updated>
+    </task>
+    <task id="LOCAL-00104" summary="complete Auction">
+      <created>1595190322167</created>
+      <option name="number" value="00104" />
+      <option name="presentableId" value="LOCAL-00104" />
+      <option name="project" value="LOCAL" />
+      <updated>1595190322167</updated>
+    </task>
+    <option name="localTasksCounter" value="105" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -721,9 +723,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="register menu completed" />
-    <MESSAGE value="profile menu" />
-    <MESSAGE value="back fix" />
     <MESSAGE value="complete handle user" />
     <MESSAGE value="complete show product for manager" />
     <MESSAGE value="product Menu" />
@@ -746,7 +745,10 @@
     <MESSAGE value="debug" />
     <MESSAGE value="complete Auction and add it for SellerManager and SellerMenu" />
     <MESSAGE value="add AuctionMenu" />
-    <option name="LAST_COMMIT_MESSAGE" value="add AuctionMenu" />
+    <MESSAGE value="handle show online users" />
+    <MESSAGE value="show auctions for buyer" />
+    <MESSAGE value="complete Auction" />
+    <option name="LAST_COMMIT_MESSAGE" value="complete Auction" />
   </component>
   <component name="WindowStateProjectService">
     <state x="280" y="20" key="#AccountManagerTest" timestamp="1589226101281">
@@ -825,20 +827,20 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="280" y="0" key="#asset/0.0.1366.738@0.0.1366.738" timestamp="1589228123035" />
-    <state x="137" y="22" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1591541107423">
-      <screen x="0" y="0" width="1366" height="738" />
+    <state x="137" y="22" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1595171840799">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="137" y="22" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.728@0.0.1366.728" timestamp="1589296639634" />
+    <state x="137" y="22" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.728@0.0.1366.728" timestamp="1595171840799" />
     <state x="137" y="22" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.738@0.0.1366.738" timestamp="1591541107423" />
     <state x="130" y="264" width="1182" height="552" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog" timestamp="1593156646580">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="130" y="260" width="1182" height="544" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog/0.0.1366.728@0.0.1366.728" timestamp="1589918033880" />
     <state x="130" y="264" width="1182" height="552" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog/0.0.1366.738@0.0.1366.738" timestamp="1593156646580" />
-    <state x="488" y="72" key="#com.intellij.ide.util.MemberChooser" timestamp="1595154156592">
+    <state x="488" y="72" key="#com.intellij.ide.util.MemberChooser" timestamp="1595189809635">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="488" y="72" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1595154156592" />
+    <state x="488" y="72" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1595189809635" />
     <state x="488" y="73" key="#com.intellij.ide.util.MemberChooser/0.0.1366.738@0.0.1366.738" timestamp="1593148011683" />
     <state x="412" y="143" key="#com.intellij.ide.util.PackageChooserDialog" timestamp="1589230984213">
       <screen x="0" y="0" width="1366" height="738" />
@@ -879,10 +881,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="438" y="65" key="#xdebugger.evaluate/0.0.1366.728@0.0.1366.728" timestamp="1594728596073" />
-    <state x="499" y="0" key="CommitChangelistDialog2" timestamp="1595109739199">
+    <state x="499" y="0" key="CommitChangelistDialog2" timestamp="1595190320159">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="499" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1595109739199" />
+    <state x="499" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1595190320159" />
     <state x="470" y="0" key="CommitChangelistDialog2/0.0.1366.738@0.0.1366.738" timestamp="1593178423340" />
     <state x="92" y="93" width="1182" height="552" key="DiffContextDialog" timestamp="1593178422199">
       <screen x="0" y="0" width="1366" height="738" />
@@ -893,55 +895,55 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="463" y="122" key="FileChooserDialogImpl/0.0.1366.738@0.0.1366.738" timestamp="1592855183500" />
-    <state width="1322" height="174" key="GridCell.Tab.0.bottom" timestamp="1595156182224">
+    <state width="1322" height="244" key="GridCell.Tab.0.bottom" timestamp="1595245974244">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1322" height="174" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1595156182224" />
+    <state width="1322" height="244" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1595245974244" />
     <state width="1322" height="185" key="GridCell.Tab.0.bottom/0.0.1366.738@0.0.1366.738" timestamp="1593178427051" />
-    <state width="1322" height="174" key="GridCell.Tab.0.center" timestamp="1595156182224">
+    <state width="1322" height="244" key="GridCell.Tab.0.center" timestamp="1595245974244">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1322" height="174" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1595156182224" />
+    <state width="1322" height="244" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1595245974244" />
     <state width="1322" height="185" key="GridCell.Tab.0.center/0.0.1366.738@0.0.1366.738" timestamp="1593178427051" />
-    <state width="1322" height="174" key="GridCell.Tab.0.left" timestamp="1595156182223">
+    <state width="1322" height="244" key="GridCell.Tab.0.left" timestamp="1595245974244">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1322" height="174" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1595156182223" />
+    <state width="1322" height="244" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1595245974244" />
     <state width="1322" height="185" key="GridCell.Tab.0.left/0.0.1366.738@0.0.1366.738" timestamp="1593178427051" />
-    <state width="1322" height="174" key="GridCell.Tab.0.right" timestamp="1595156182224">
+    <state width="1322" height="244" key="GridCell.Tab.0.right" timestamp="1595245974244">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1322" height="174" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1595156182224" />
+    <state width="1322" height="244" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1595245974244" />
     <state width="1322" height="185" key="GridCell.Tab.0.right/0.0.1366.738@0.0.1366.738" timestamp="1593178427051" />
-    <state width="1322" height="244" key="GridCell.Tab.1.bottom" timestamp="1595109751064">
+    <state width="1322" height="244" key="GridCell.Tab.1.bottom" timestamp="1595245974244">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1322" height="244" key="GridCell.Tab.1.bottom/0.0.1366.728@0.0.1366.728" timestamp="1595109751064" />
+    <state width="1322" height="244" key="GridCell.Tab.1.bottom/0.0.1366.728@0.0.1366.728" timestamp="1595245974244" />
     <state width="1322" height="221" key="GridCell.Tab.1.bottom/0.0.1366.738@0.0.1366.738" timestamp="1589873506234" />
-    <state width="1322" height="244" key="GridCell.Tab.1.center" timestamp="1595109751064">
+    <state width="1322" height="244" key="GridCell.Tab.1.center" timestamp="1595245974244">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1322" height="244" key="GridCell.Tab.1.center/0.0.1366.728@0.0.1366.728" timestamp="1595109751064" />
+    <state width="1322" height="244" key="GridCell.Tab.1.center/0.0.1366.728@0.0.1366.728" timestamp="1595245974244" />
     <state width="1322" height="221" key="GridCell.Tab.1.center/0.0.1366.738@0.0.1366.738" timestamp="1589873506234" />
-    <state width="1322" height="244" key="GridCell.Tab.1.left" timestamp="1595109751064">
+    <state width="1322" height="244" key="GridCell.Tab.1.left" timestamp="1595245974244">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1322" height="244" key="GridCell.Tab.1.left/0.0.1366.728@0.0.1366.728" timestamp="1595109751064" />
+    <state width="1322" height="244" key="GridCell.Tab.1.left/0.0.1366.728@0.0.1366.728" timestamp="1595245974244" />
     <state width="1322" height="221" key="GridCell.Tab.1.left/0.0.1366.738@0.0.1366.738" timestamp="1589873506234" />
-    <state width="1322" height="244" key="GridCell.Tab.1.right" timestamp="1595109751064">
+    <state width="1322" height="244" key="GridCell.Tab.1.right" timestamp="1595245974244">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1322" height="244" key="GridCell.Tab.1.right/0.0.1366.728@0.0.1366.728" timestamp="1595109751064" />
+    <state width="1322" height="244" key="GridCell.Tab.1.right/0.0.1366.728@0.0.1366.728" timestamp="1595245974244" />
     <state width="1322" height="221" key="GridCell.Tab.1.right/0.0.1366.738@0.0.1366.738" timestamp="1589873506234" />
     <state x="213" y="22" key="Maven.ArtifactSearchDialog" timestamp="1589017820205">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="213" y="22" key="Maven.ArtifactSearchDialog/0.0.1366.728@0.0.1366.728" timestamp="1589017820205" />
     <state x="213" y="22" key="Maven.ArtifactSearchDialog/0.0.1366.738@0.0.1366.738" timestamp="1587804864740" />
-    <state x="395" y="78" key="MultipleFileMergeDialog" timestamp="1588702867482">
+    <state x="395" y="78" key="MultipleFileMergeDialog" timestamp="1595167663413">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="395" y="78" key="MultipleFileMergeDialog/0.0.1366.728@0.0.1366.728" timestamp="1588702867482" />
+    <state x="395" y="78" key="MultipleFileMergeDialog/0.0.1366.728@0.0.1366.728" timestamp="1595167663413" />
     <state x="348" y="66" key="NewModule_or_Project.wizard" timestamp="1590740672995">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
@@ -951,23 +953,23 @@
     </state>
     <state x="184" y="0" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1594551371835" />
     <state x="184" y="0" key="SettingsEditor/0.0.1366.738@0.0.1366.738" timestamp="1591433792246" />
-    <state x="275" y="95" key="Vcs.Push.Dialog.v2" timestamp="1593187894875">
+    <state x="275" y="95" key="Vcs.Push.Dialog.v2" timestamp="1595167700928">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="275" y="95" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1593187894875" />
+    <state x="275" y="95" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1595167700928" />
     <state x="275" y="96" key="Vcs.Push.Dialog.v2/0.0.1366.738@0.0.1366.738" timestamp="1593112604984" />
     <state width="691" height="372" key="XDebugger.FullValuePopup" timestamp="1595066970216">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state width="691" height="372" key="XDebugger.FullValuePopup/0.0.1366.728@0.0.1366.728" timestamp="1595066970216" />
-    <state x="378" y="186" key="com.intellij.ide.util.TipDialog" timestamp="1595153034567">
+    <state x="378" y="186" key="com.intellij.ide.util.TipDialog" timestamp="1595230342074">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="378" y="186" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1595153034567" />
-    <state x="492" y="279" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1593188826525">
+    <state x="378" y="186" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1595230342074" />
+    <state x="492" y="279" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1595167647792">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="492" y="279" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.728@0.0.1366.728" timestamp="1593188826525" />
+    <state x="492" y="279" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.728@0.0.1366.728" timestamp="1595167647792" />
     <state x="492" y="283" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.738@0.0.1366.738" timestamp="1593112595135" />
     <state x="380" y="100" width="737" height="606" key="find.popup" timestamp="1593190820824">
       <screen x="0" y="0" width="1366" height="728" />
@@ -984,11 +986,27 @@
     </state>
     <state x="339" y="157" width="672" height="677" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1595015821937" />
     <state x="339" y="159" key="run.anything.popup/0.0.1366.738@0.0.1366.738" timestamp="1593009407885" />
-    <state x="346" y="58" width="672" height="669" key="search.everywhere.popup" timestamp="1595109450746">
+    <state x="346" y="58" width="672" height="669" key="search.everywhere.popup" timestamp="1595237231689">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="346" y="58" width="672" height="669" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1595109450746" />
+    <state x="346" y="58" width="672" height="669" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1595237231689" />
     <state x="346" y="59" width="672" height="678" key="search.everywhere.popup/0.0.1366.738@0.0.1366.738" timestamp="1591438296011" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/Model/Cart.java</url>
+          <line>51</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/Model/Cart.java</url>
+          <line>30</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Project_2$SellerManagerTest_sendEditProductRequestTest1.ic" NAME="SellerManagerTest.sendEditProductRequestTest1 Coverage Results" MODIFIED="1589580324813" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">

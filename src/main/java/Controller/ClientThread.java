@@ -4,6 +4,7 @@ import Model.Account.Account;
 import Model.Account.AdminAccount;
 import Model.Account.BuyerAccount;
 import Model.Account.SellerAccount;
+import Model.Product.Auction;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -132,7 +133,12 @@ public class ClientThread extends Thread {
                 }
                 else if (input.startsWith("AllAuction"))
                 {
-                    output = new Gson().toJson(Database.getAllAuction());
+                    ArrayList<Auction> allAuctions = Database.getAllAuction();
+                    ArrayList<String> name = new ArrayList<>();
+                    for (Auction auction : allAuctions) {
+                        name.add("ID:" + auction.getAuctionID() + "_Product:" + auction.getProduct().getName());
+                    }
+                    output = new Gson().toJson(name);
                 }
                 else if (input.startsWith("ChangeRole"))
                 {
@@ -260,6 +266,7 @@ public class ClientThread extends Thread {
                 }
                 else if (input.startsWith("AddToCart"))
                 {
+                    int test = productManager.getProduct().getProductId();
                     output = buyerManager.addProductToCart(productManager.getProduct(), account);
                 }
                 else if (input.startsWith("GiveComment"))
@@ -334,6 +341,22 @@ public class ClientThread extends Thread {
                 {
                     output = new Gson().toJson(server.getAllOnlineSellers());
                 }
+                else if (input.startsWith("JoinAuction"))
+                {
+                    Objects.requireNonNull(Database.getAuctionByID(Integer.parseInt(input.split(" ")[1]))).joinAuction((BuyerAccount) account);
+                }
+                else if (input.startsWith("GetAuctionOfAccount"))
+                {
+                    ArrayList<Auction> allAuctions = Database.getAllAuction();
+                    ArrayList<String> myAuctions = new ArrayList<>();
+                    for (Auction auction : allAuctions) {
+                        if (auction.containBuyer((BuyerAccount) account))
+                        {
+                            myAuctions.add("ID:" + auction.getAuctionID() + "_Product:" + auction.getProduct().getName());
+                        }
+                    }
+                    output = new Gson().toJson(myAuctions);
+                }
                 else if (input.startsWith("Exit"))
                 {
                     clientSocket.close();
@@ -357,7 +380,7 @@ public class ClientThread extends Thread {
         }
         catch (Exception e)
         {
-            System.out.println(e.getMessage());
+            e.printStackTrace();
         }
     }
 }

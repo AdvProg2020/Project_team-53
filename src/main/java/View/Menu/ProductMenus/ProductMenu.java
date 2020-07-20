@@ -1,6 +1,5 @@
 package View.Menu.ProductMenus;
 
-import Controller.Database;
 import Model.Account.BuyerAccount;
 import Model.Product.Product;
 import View.Menu.Menu;
@@ -467,7 +466,7 @@ public class ProductMenu extends Menu {
         catch (Exception e){
             System.out.println(e.getMessage());
         }
-        if (Database.getProductByID(productID) == null)
+        if (product2 == null)
         {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
@@ -479,7 +478,7 @@ public class ProductMenu extends Menu {
         }
         GridPane gridPane = new GridPane();
         gridPane.setAlignment(Pos.CENTER);
-        Scene scene = new Scene(gridPane, 600 , 400);
+        Scene scene = new Scene(gridPane, 800 , 600);
         scene.getStylesheets().add(new File("Data/Styles/Buttons.css").toURI().toString());
         scene.getStylesheets().add(new File("Data/Styles/textfield.css").toURI().toString());
         scene.getStylesheets().add(new File("Data/Styles/backgrounds.css").toURI().toString());

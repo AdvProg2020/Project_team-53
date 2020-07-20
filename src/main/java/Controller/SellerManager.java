@@ -91,7 +91,9 @@ public class SellerManager {
                 return "There is no product with this ID";
             if (!product.getSellerUsername().equals(account.getUsername()))
                 return "You can create auction only for your products";
-            Database.addAllAuction(new Auction(product, endDateAsDate));
+            Auction auction = new Auction(product, endDateAsDate);
+            Database.addAllAuction(auction);
+            auction.start();
             return "New Auction created";
         } catch (ParseException e) {
             return e.getMessage();
