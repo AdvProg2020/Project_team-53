@@ -1,6 +1,5 @@
 package View.Menu.BuyerMenus;
 
-import Model.Account.BuyerAccount;
 import Model.Cart;
 import Model.Product.Product;
 import View.Menu.Menu;
@@ -26,6 +25,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class ViewCartMenu extends Menu {
     private Label message = new Label();
@@ -43,8 +43,17 @@ public class ViewCartMenu extends Menu {
     public void show() {
         try {
             super.setPane();
-            Cart cart = ((BuyerAccount) Menu.account).getCart();
-            ArrayList<Integer> allProductIds = cart.getProductsID();
+            Cart cart = null;
+            try {
+                dataOutputStream.writeUTF("GetCartOfAccount");
+                dataOutputStream.flush();
+                cart = new Gson().fromJson(dataInputStream.readUTF(), new TypeToken<Cart>(){}.getType());
+            }
+            catch (Exception e)
+            {
+                System.out.println(e.getMessage());
+            }
+            ArrayList<Integer> allProductIds = Objects.requireNonNull(cart).getProductsID();
             Scene scene = new Scene(super.mainPane, 1000, 600);
             scene.getStylesheets().add(new File("Data/Styles/Buttons.css").toURI().toString());
             scene.getStylesheets().add(new File("Data/Styles/textfield.css").toURI().toString());
@@ -166,7 +175,17 @@ public class ViewCartMenu extends Menu {
 
                 newWindow.showAndWait();
             });
-            Label costOfAll = new Label("cost : " + cart.getCost());
+            long totalCost = 0;
+            try {
+                dataOutputStream.writeUTF("GetCostOfAccountCart");
+                dataOutputStream.flush();
+                totalCost = Long.parseLong(dataInputStream.readUTF());
+            }
+            catch (Exception e)
+            {
+                System.out.println(e.getMessage());
+            }
+            Label costOfAll = new Label("cost : " + totalCost);
             costOfAll.setFont(Font.font(20));
             GridPane.setConstraints(costOfAll, 7 , i);
             GridPane.setConstraints(back,7, i+1);
@@ -250,7 +269,7 @@ public class ViewCartMenu extends Menu {
 
     private void handleIncrease(int productId) {
         try {
-            dataOutputStream.writeUTF("IncreaseProduct");
+            dataOutputStream.writeUTF("IncreaseProduct " + productId);
             dataOutputStream.flush();
             message.setText(dataInputStream.readUTF());
         } catch (IOException e) {
@@ -259,7 +278,7 @@ public class ViewCartMenu extends Menu {
         show();
     }
 
-    public void handleShowProduct(Product product)
+    private void handleShowProduct(Product product)
     {
         Stage newWindow = new Stage();
         Pane pane = product.showProductFullInfoGraphic();

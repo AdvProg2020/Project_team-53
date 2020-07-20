@@ -357,6 +357,15 @@ public class ClientThread extends Thread {
                     }
                     output = new Gson().toJson(myAuctions);
                 }
+                else if (input.startsWith("GetCostOfAccountCart"))
+                {
+                    output = Long.toString(((BuyerAccount)account).getCart().getCost());
+
+                }
+                else if (input.startsWith("GetCartOfAccount"))
+                {
+                    output = new Gson().toJson(((BuyerAccount)account).getCart());
+                }
                 else if (input.startsWith("Exit"))
                 {
                     clientSocket.close();
