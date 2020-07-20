@@ -28,6 +28,7 @@ public class Cart {
 
     public void addToCart(Product product)
     {
+        int test = product.getProductId();
         productsID.add(product.getProductId());
         muchOfProductID.put(product.getProductId(), 1);
     }

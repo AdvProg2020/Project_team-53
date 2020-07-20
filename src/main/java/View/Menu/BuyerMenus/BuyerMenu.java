@@ -4,7 +4,6 @@ import Model.Account.AdminAccount;
 import Model.Account.BuyerAccount;
 import Model.Account.SellerAccount;
 import Model.Log.BuyLog;
-import Model.Product.Auction;
 import Model.Product.DiscountAndOff.Discount;
 import View.Menu.Menu;
 import View.Menu.UserMenu;
@@ -78,6 +77,11 @@ public class BuyerMenu extends Menu {
         editInfoButton.setMaxWidth(Double.MAX_VALUE);
         editInfoButton.setOnAction(e -> handleEdit());
 
+        Button showSupporterButton = new Button("Show Online Supporters");
+        showSupporterButton.getStyleClass().add("dark-blue");
+        showSupporterButton.setMaxWidth(Double.MAX_VALUE);
+        showSupporterButton.setOnAction(e -> handleShowSupporters());
+
         Button logout = new Button("Logout");
         logout.getStyleClass().add("dark-blue");
         logout.setMaxWidth(Double.MAX_VALUE);
@@ -88,13 +92,15 @@ public class BuyerMenu extends Menu {
         GridPane.setConstraints(viewMyAuctions, 0, 2);
         GridPane.setConstraints(viewCart,0, 3);
         GridPane.setConstraints(editInfoButton, 0, 4);
-        GridPane.setConstraints(logout, 0, 5);
+        GridPane.setConstraints(showSupporterButton, 0, 5);
+        GridPane.setConstraints(logout, 0, 6);
 
         GridPane.setHalignment(viewAllDiscounts, HPos.CENTER);
         GridPane.setHalignment(viewAllLogs, HPos.CENTER);
         GridPane.setHalignment(viewMyAuctions, HPos.CENTER);
         GridPane.setHalignment(viewCart, HPos.CENTER);
         GridPane.setHalignment(editInfoButton, HPos.CENTER);
+        GridPane.setHalignment(showSupporterButton, HPos.CENTER);
         GridPane.setHalignment(logout, HPos.CENTER);
 
         try {
@@ -124,7 +130,7 @@ public class BuyerMenu extends Menu {
             System.out.println(e.getMessage());
         }
         Pane pane = Objects.requireNonNull(Menu.account).viewPersonalInfoInGraphic();
-        allButtons.getChildren().addAll(viewAllDiscounts, viewAllLogs, viewCart, editInfoButton, logout, viewMyAuctions);
+        allButtons.getChildren().addAll(viewAllDiscounts, viewAllLogs, viewCart, editInfoButton, logout, viewMyAuctions, showSupporterButton);
 
         GridPane.setConstraints(pane, 0, 0);
         GridPane.setConstraints(allButtons, 3, 0);
@@ -194,21 +200,19 @@ public class BuyerMenu extends Menu {
         Menu.window.setScene(scene);
     }
 
+    private void handleShowSupporters()
+    {
+
+    }
+
     private void handleMyAuctions()
     {
         try {
             super.setPane();
-            ArrayList<Auction> allAuctions;
-            dataOutputStream.writeUTF("AllAuction");
+            ArrayList<String> allAuctions;
+            dataOutputStream.writeUTF("GetAuctionOfAccount");
             dataOutputStream.flush();
-            allAuctions = new Gson().fromJson(dataInputStream.readUTF(), new TypeToken<ArrayList<Auction>>(){}.getType());
-            ArrayList<Auction> myAuctions = new ArrayList<>();
-            for (Auction auction : allAuctions) {
-                if (auction.containBuyer((BuyerAccount) Menu.account))
-                {
-                    myAuctions.add(auction);
-                }
-            }
+            allAuctions = new Gson().fromJson(dataInputStream.readUTF(), new TypeToken<ArrayList<String>>(){}.getType());
             Scene scene = new Scene(super.mainPane, 1000, 600);
             scene.getStylesheets().add(new File("Data/Styles/Buttons.css").toURI().toString());
             scene.getStylesheets().add(new File("Data/Styles/textfield.css").toURI().toString());
@@ -231,15 +235,15 @@ public class BuyerMenu extends Menu {
             GridPane.setConstraints(info, 1, 0);
             gridPane.getChildren().add(info);
             int i = 1;
-            for (Auction auction : myAuctions) {
-                Label label = new Label(i + ")" + auction.getProduct().getName());
+            for (String string : allAuctions) {
+                Label label = new Label(string);
                 label.setFont(Font.font(15));
                 Button button = new Button("show");
                 button.setMaxWidth(Double.MAX_VALUE);
                 button.getStyleClass().add("dark-blue");
                 button.setAlignment(Pos.CENTER);
                 button.setOnAction(e -> {
-                    handleShowAuction(auction);
+                    handleShowAuction(string);
                 });
                 GridPane.setConstraints(label, 0, i);
                 GridPane.setConstraints(button, 2, i);
@@ -280,7 +284,7 @@ public class BuyerMenu extends Menu {
         newWindow.showAndWait();
     }
 
-    private void handleShowAuction(Auction auction){}
+    private void handleShowAuction(String string){}
 
     public void handleEdit()
     {
