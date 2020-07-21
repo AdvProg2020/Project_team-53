@@ -10,6 +10,8 @@ import View.Menu.Menu;
 import View.Menu.UserMenu;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.geometry.HPos;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -20,9 +22,10 @@ import javafx.scene.text.Font;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 import java.lang.reflect.Type;
+import java.net.ServerSocket;
+import java.net.Socket;
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -41,6 +44,13 @@ public class SellerMenu extends Menu {
     }
 
     public void show(){
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                handleBuyer();
+            }
+        }).start();
+
         super.setPane();
 
         Scene scene = new Scene(super.mainPane, 1000, 600);
@@ -137,6 +147,53 @@ public class SellerMenu extends Menu {
 
         window.setScene(scene);
 
+    }
+
+    private void handleBuyer()
+    {
+        try {
+            ServerSocket sellerServerSocket = new ServerSocket(0);
+            dataOutputStream.writeUTF("SetPortOfSeller " + sellerServerSocket.getLocalPort());
+            dataOutputStream.flush();
+            while (true)
+            {
+                Socket buyerSocket = sellerServerSocket.accept();
+                DataInputStream sellerDataInputStream = new DataInputStream(new BufferedInputStream(buyerSocket.getInputStream()));
+                DataOutputStream sellerDataOutputStream = new DataOutputStream(new BufferedOutputStream(buyerSocket.getOutputStream()));
+                String input = sellerDataInputStream.readUTF();
+                if (input.startsWith("exit"))
+                {
+                    sellerDataInputStream.close();
+                    sellerDataOutputStream.close();
+                    buyerSocket.close();
+                    break;
+                }
+                else if (input.startsWith("GetProduct"))
+                {
+                    dataOutputStream.writeUTF("GetProduct " + input.split(" ")[1]);
+                    Product product = new Gson().fromJson(dataInputStream.readUTF(), new TypeToken<Product>(){}.getType());
+                    String address = product.getAddressOfProduct();
+                    try {
+                        File file = new File(address);
+                        BufferedInputStream fileBufferedInputStream = new BufferedInputStream(new FileInputStream(file));
+                        byte[] fileBytes = new byte[(int) file.length()];
+                        fileBufferedInputStream.read(fileBytes, 0, fileBytes.length);
+                        sellerDataOutputStream.write(fileBytes, 0, fileBytes.length);
+                        sellerDataOutputStream.flush();
+                        fileBufferedInputStream.close();
+                    }
+                    catch (Exception e)
+                    {
+                        System.out.println(e.getMessage());
+                    }
+                    sellerDataInputStream.close();
+                    sellerDataOutputStream.close();
+                    buyerSocket.close();
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private void handleAddAuction(){
@@ -610,6 +667,22 @@ public class SellerMenu extends Menu {
         price.getStyleClass().add("text-field");
         price.setPromptText("Price");
 
+        TextField address = new TextField();
+        address.getStyleClass().add("text-field");
+        address.setPromptText("AddressOfFile");
+        address.setDisable(true);
+
+        CheckBox doesProductHasFile = new CheckBox("DoesProductHasFile");
+        doesProductHasFile.selectedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                if (doesProductHasFile.isSelected())
+                    address.setDisable(false);
+                else if (!doesProductHasFile.isSelected())
+                    address.setDisable(true);
+            }
+        });
+
         Button sendRequest = new Button("Send Request");
         sendRequest.getStyleClass().add("dark-blue");
         sendRequest.setMaxWidth(Double.MAX_VALUE);
@@ -642,9 +715,11 @@ public class SellerMenu extends Menu {
         GridPane.setConstraints(categoryName, 0, 4);
         GridPane.setConstraints(price, 0, 5);
         GridPane.setConstraints(available, 0, 6);
-        GridPane.setConstraints(sendRequest, 0, 7);
-        GridPane.setConstraints(back, 0, 8);
-        GridPane.setConstraints(status, 0, 9);
+        GridPane.setConstraints(doesProductHasFile, 0, 7);
+        GridPane.setConstraints(address, 0, 8);
+        GridPane.setConstraints(sendRequest, 0, 9);
+        GridPane.setConstraints(back, 0, 10);
+        GridPane.setConstraints(status, 0, 11);
 
         GridPane.setHalignment(status, HPos.CENTER);
         GridPane.setHalignment(name, HPos.CENTER);
@@ -654,10 +729,12 @@ public class SellerMenu extends Menu {
         GridPane.setHalignment(categoryName, HPos.CENTER);
         GridPane.setHalignment(price, HPos.CENTER);
         GridPane.setHalignment(sendRequest, HPos.CENTER);
+        GridPane.setHalignment(doesProductHasFile, HPos.CENTER);
+        GridPane.setHalignment(address, HPos.CENTER);
         GridPane.setHalignment(back, HPos.CENTER);
         GridPane.setHalignment(status, HPos.CENTER);
 
-        gridPane.getChildren().addAll(statusTextField, name, available, number, description, categoryName, price, sendRequest, back, status);
+        gridPane.getChildren().addAll(statusTextField, name, available, number, description, categoryName, price, sendRequest, back, status, doesProductHasFile, address);
         super.mainPane.setCenter(gridPane);
 
         Menu.window.setScene(scene);

@@ -196,7 +196,7 @@ public class ClientThread extends Thread {
                 {
                     Account temp = Database.getAccountByUsername(input.split(" ")[1]);
                     Gson gson = new Gson();
-                    output = gson.toJson(temp.viewPersonalInfoInGraphic());
+                    output = gson.toJson(Objects.requireNonNull(temp).viewPersonalInfoInGraphic());
                 }
                 else if (input.startsWith("GetAccount"))
                 {
@@ -228,7 +228,7 @@ public class ClientThread extends Thread {
                 }
                 else if (input.startsWith("ViewProduct"))
                 {
-                    output = new Gson().toJson(Database.getProductByID(Integer.parseInt(input.split(" ")[1])).showProductFullInfoGraphic());
+                    output = new Gson().toJson(Objects.requireNonNull(Database.getProductByID(Integer.parseInt(input.split(" ")[1]))).showProductFullInfoGraphic());
                 }
                 else if (input.startsWith("ShowAllProduct"))
                 {
@@ -266,7 +266,6 @@ public class ClientThread extends Thread {
                 }
                 else if (input.startsWith("AddToCart"))
                 {
-                    int test = productManager.getProduct().getProductId();
                     output = buyerManager.addProductToCart(productManager.getProduct(), account);
                 }
                 else if (input.startsWith("GiveComment"))
@@ -365,6 +364,14 @@ public class ClientThread extends Thread {
                 else if (input.startsWith("GetCartOfAccount"))
                 {
                     output = new Gson().toJson(((BuyerAccount)account).getCart());
+                }
+                else if (input.startsWith("SetPortOfSeller"))
+                {
+                    server.setPortForSeller((SellerAccount) account, Integer.parseInt(input.split(" ")[1]));
+                }
+                else if (input.startsWith("GetPortOfSeller"))
+                {
+                    output = Integer.toString(server.getPortOfSeller(((SellerAccount)Database.getAccountByUsername(input.split(" ")[1]))));
                 }
                 else if (input.startsWith("Exit"))
                 {

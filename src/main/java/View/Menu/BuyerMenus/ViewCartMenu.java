@@ -20,10 +20,8 @@ import javafx.scene.text.Font;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import java.io.*;
+import java.net.Socket;
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -290,5 +288,41 @@ public class ViewCartMenu extends Menu {
         newWindow.setOnCloseRequest(e -> show());
         newWindow.showAndWait();
 
+    }
+
+    private void getFileOfProduct(Product product)
+    {
+        try {
+            dataOutputStream.writeUTF("GetPortOfSeller " + product.getSellerUsername());
+            dataOutputStream.flush();
+            int port = Integer.parseInt(dataInputStream.readUTF());
+            Socket sellerSocket = new Socket("127.0.0.1", port);
+            DataInputStream buyerDataInputStream = new DataInputStream(new BufferedInputStream(sellerSocket.getInputStream()));
+            DataOutputStream buyerDataOutputStream = new DataOutputStream(new BufferedOutputStream(sellerSocket.getOutputStream()));
+            File file = new File("");
+            BufferedOutputStream fileBufferedOutputStream = new BufferedOutputStream(new FileOutputStream(file));
+            buyerDataOutputStream.writeUTF("GetProduct " + product.getProductId());
+            buyerDataOutputStream.flush();
+            int bytesRead;
+            int current = 0;
+            byte[] fileBytes = new byte[6022386];
+            bytesRead = buyerDataInputStream.read(fileBytes, 0, fileBytes.length);
+            current = bytesRead;
+            do {
+                bytesRead = dataInputStream.read(fileBytes, current, (fileBytes.length - current));
+                if (bytesRead >= 0)
+                    current += bytesRead;
+            }while (bytesRead > -1);
+            fileBufferedOutputStream.write(fileBytes, 0, current);
+            fileBufferedOutputStream.flush();
+            fileBufferedOutputStream.close();
+            buyerDataInputStream.close();
+            buyerDataOutputStream.close();
+            sellerSocket.close();
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
     }
 }

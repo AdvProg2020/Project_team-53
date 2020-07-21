@@ -395,4 +395,9 @@ public class Product {
 
         return scrollPane;
     }
+
+    public String getAddressOfProduct()
+    {
+        return "";
+    }
 }
