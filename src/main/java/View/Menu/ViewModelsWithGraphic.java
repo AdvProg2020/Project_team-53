@@ -8,6 +8,7 @@ import Model.Account.SellerAccount;
 import Model.Log.BuyLog;
 import Model.Log.Log;
 import Model.Log.SellLog;
+import Model.Messaging.Chat;
 import Model.Product.Category;
 import Model.Product.CommentAndScore.Comment;
 import Model.Product.DiscountAndOff.Discount;
@@ -20,6 +21,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -539,4 +541,22 @@ public class ViewModelsWithGraphic {
         return hBox;
 
     }
+
+    public static ScrollPane showChat(Chat chat) {
+        ScrollPane chatRoom = new ScrollPane();
+        VBox vBox = new VBox();
+        ArrayList<String> content = chat.getContent();
+        for (String message : content) {
+            vBox.getChildren().add(new Label(message));
+        }
+        TextField textField = new TextField();
+        textField.setOnAction(e -> {
+
+        });
+        vBox.getChildren().add(textField);
+        chatRoom.setContent(vBox);
+        return chatRoom;
+    }
+
+
 }

@@ -5,13 +5,11 @@ import Model.Account.Account;
 import java.util.ArrayList;
 
 public class Chat {
-    ArrayList<Message> messages = new ArrayList<>();
-    private Account user;
-    private Account supporter;
+    private ArrayList<Message> messages = new ArrayList<>();
+    private ArrayList<Account> members;
 
-    public Chat(Account user, Account supporter) {
-        this.user = user;
-        this.supporter = supporter;
+    public Chat(ArrayList<Account> members) {
+        this.members = members;
     }
 
     public void addMessage(Message message) {
@@ -22,11 +20,19 @@ public class Chat {
         return messages;
     }
 
-    public Account getUser() {
-        return user;
+    public void addMember(Account member) {
+        members.add(member);
     }
 
-    public Account getSupporter() {
-        return supporter;
+    public void deleteMember(Account member) {
+        members.remove(member);
+    }
+
+    public ArrayList<String> getContent() {
+        ArrayList<String> content = new ArrayList<>();
+        for (Message message : messages) {
+            content.add(message.getOwner() + ": " + message.getContent());
+        }
+        return content;
     }
 }
