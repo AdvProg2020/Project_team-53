@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="aeefa500-3a99-4ed0-98cf-a7157d1fa89a" name="Default Changelist" comment="">
+    <list default="true" id="aeefa500-3a99-4ed0-98cf-a7157d1fa89a" name="Default Changelist" comment="complete Auction">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Messaging/Chat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Messaging/Chat.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/View/Menu/ViewModelsWithGraphic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/View/Menu/ViewModelsWithGraphic.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/Database.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/Database.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/Server.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,9 +90,9 @@
     </key>
   </component>
   <component name="RunManager" selected="Application.Client">
-    <configuration name="Client" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+    <configuration name="Client" type="Application" factoryName="Application" singleton="false" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Client" />
-      <module name="Project_team-53" />
+      <module name="Project-2" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -105,7 +106,7 @@
     </configuration>
     <configuration name="Server" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Controller.Server" />
-      <module name="Project" />
+      <module name="Project-2" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="Controller.*" />
@@ -118,6 +119,7 @@
     </configuration>
     <configuration name="All in Project-2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Project" />
+      <useClassPathOnly />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="" />
       <option name="METHOD_NAME" value="" />
@@ -199,8 +201,8 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.Main" />
       <item itemvalue="Application.Client" />
+      <item itemvalue="Application.Main" />
       <item itemvalue="Application.Server" />
       <item itemvalue="JUnit.ControllerTest.*" />
       <item itemvalue="JUnit.All in Project-2" />
@@ -208,7 +210,6 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Client" />
         <item itemvalue="Application.Server" />
         <item itemvalue="Application.Main" />
         <item itemvalue="JUnit.All in Project-2" />
@@ -366,20 +367,8 @@
       <workItem from="1593177955371" duration="115000" />
       <workItem from="1593178150008" duration="253000" />
       <workItem from="1593187077572" duration="84000" />
-    </task>
-    <task id="LOCAL-00054" summary="BuyerManager, showAllDiscount and showCostOfCart added">
-      <created>1589708565479</created>
-      <option name="number" value="00054" />
-      <option name="presentableId" value="LOCAL-00054" />
-      <option name="project" value="LOCAL" />
-      <updated>1589708565480</updated>
-    </task>
-    <task id="LOCAL-00055" summary="Save File completed">
-      <created>1589794399645</created>
-      <option name="number" value="00055" />
-      <option name="presentableId" value="LOCAL-00055" />
-      <option name="project" value="LOCAL" />
-      <updated>1589794399645</updated>
+      <workItem from="1595246472217" duration="1537000" />
+      <workItem from="1595398225651" duration="1068000" />
     </task>
     <task id="LOCAL-00056" summary="result of Buyer manager methods changed to String">
       <created>1589816017514</created>
@@ -703,14 +692,28 @@
       <option name="project" value="LOCAL" />
       <updated>1595109740771</updated>
     </task>
-    <task id="LOCAL-00102" summary="add ChatMenu">
-      <created>1595182373865</created>
+    <task id="LOCAL-00102" summary="handle show online users">
+      <created>1595156226581</created>
       <option name="number" value="00102" />
       <option name="presentableId" value="LOCAL-00102" />
       <option name="project" value="LOCAL" />
-      <updated>1595182373880</updated>
+      <updated>1595156226582</updated>
     </task>
-    <option name="localTasksCounter" value="103" />
+    <task id="LOCAL-00103" summary="show auctions for buyer">
+      <created>1595171801312</created>
+      <option name="number" value="00103" />
+      <option name="presentableId" value="LOCAL-00103" />
+      <option name="project" value="LOCAL" />
+      <updated>1595171801312</updated>
+    </task>
+    <task id="LOCAL-00104" summary="complete Auction">
+      <created>1595190322167</created>
+      <option name="number" value="00104" />
+      <option name="presentableId" value="LOCAL-00104" />
+      <option name="project" value="LOCAL" />
+      <updated>1595190322167</updated>
+    </task>
+    <option name="localTasksCounter" value="105" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -718,8 +721,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="profile menu" />
-    <MESSAGE value="back fix" />
     <MESSAGE value="complete handle user" />
     <MESSAGE value="complete show product for manager" />
     <MESSAGE value="product Menu" />
@@ -742,8 +743,10 @@
     <MESSAGE value="debug" />
     <MESSAGE value="complete Auction and add it for SellerManager and SellerMenu" />
     <MESSAGE value="add AuctionMenu" />
-    <MESSAGE value="add ChatMenu" />
-    <option name="LAST_COMMIT_MESSAGE" value="add ChatMenu" />
+    <MESSAGE value="handle show online users" />
+    <MESSAGE value="show auctions for buyer" />
+    <MESSAGE value="complete Auction" />
+    <option name="LAST_COMMIT_MESSAGE" value="complete Auction" />
   </component>
   <component name="WindowStateProjectService">
     <state x="280" y="20" key="#AccountManagerTest" timestamp="1589226101281">
@@ -791,10 +794,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="280" y="0" key="#All_in_Project-2_(1)/0.0.1366.728@0.0.1366.728" timestamp="1593165627201" />
-    <state x="400" y="23" key="#Client" timestamp="1595172411883">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state x="400" y="26" key="#Client" timestamp="1595246541331">
+      <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state x="400" y="23" key="#Client/0.0.1366.728@0.0.1366.728" timestamp="1595172411883" />
+    <state x="400" y="26" key="#Client/0.0.1366.738@0.0.1366.738" timestamp="1595246541331" />
     <state x="275" y="26" key="#Inspections" timestamp="1591540003920">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
@@ -818,6 +821,10 @@
     </state>
     <state x="280" y="29" key="#SellerAccountTest/0.0.1366.728@0.0.1366.728" timestamp="1589388895849" />
     <state x="280" y="29" key="#SellerAccountTest/0.0.1366.738@0.0.1366.738" timestamp="1589400111089" />
+    <state x="400" y="26" key="#Server" timestamp="1595246483846">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state x="400" y="26" key="#Server/0.0.1366.738@0.0.1366.738" timestamp="1595246483846" />
     <state x="280" y="0" key="#Temp_suite" timestamp="1589228140962">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
@@ -826,20 +833,20 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="280" y="0" key="#asset/0.0.1366.738@0.0.1366.738" timestamp="1589228123035" />
-    <state x="137" y="22" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1591541107423">
-      <screen x="0" y="0" width="1366" height="738" />
+    <state x="137" y="22" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1595171840799">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="137" y="22" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.728@0.0.1366.728" timestamp="1589296639634" />
+    <state x="137" y="22" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.728@0.0.1366.728" timestamp="1595171840799" />
     <state x="137" y="22" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.738@0.0.1366.738" timestamp="1591541107423" />
     <state x="130" y="264" width="1182" height="552" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog" timestamp="1593156646580">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="130" y="260" width="1182" height="544" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog/0.0.1366.728@0.0.1366.728" timestamp="1589918033880" />
     <state x="130" y="264" width="1182" height="552" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog/0.0.1366.738@0.0.1366.738" timestamp="1593156646580" />
-    <state x="488" y="72" key="#com.intellij.ide.util.MemberChooser" timestamp="1595154156592">
+    <state x="488" y="72" key="#com.intellij.ide.util.MemberChooser" timestamp="1595189809635">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="488" y="72" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1595154156592" />
+    <state x="488" y="72" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728@0.0.1366.728" timestamp="1595189809635" />
     <state x="488" y="73" key="#com.intellij.ide.util.MemberChooser/0.0.1366.738@0.0.1366.738" timestamp="1593148011683" />
     <state x="412" y="143" key="#com.intellij.ide.util.PackageChooserDialog" timestamp="1589230984213">
       <screen x="0" y="0" width="1366" height="738" />
@@ -880,11 +887,11 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="438" y="65" key="#xdebugger.evaluate/0.0.1366.728@0.0.1366.728" timestamp="1594728596073" />
-    <state x="499" y="0" key="CommitChangelistDialog2" timestamp="1595182369706">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state x="470" y="0" key="CommitChangelistDialog2" timestamp="1595399013745">
+      <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state x="499" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1595182369706" />
-    <state x="470" y="0" key="CommitChangelistDialog2/0.0.1366.738@0.0.1366.738" timestamp="1593178423340" />
+    <state x="499" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1595190320159" />
+    <state x="470" y="0" key="CommitChangelistDialog2/0.0.1366.738@0.0.1366.738" timestamp="1595399013745" />
     <state x="92" y="93" width="1182" height="552" key="DiffContextDialog" timestamp="1593178422199">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
@@ -894,55 +901,55 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="463" y="122" key="FileChooserDialogImpl/0.0.1366.738@0.0.1366.738" timestamp="1592855183500" />
-    <state width="1323" height="179" key="GridCell.Tab.0.bottom" timestamp="1595182386325">
+    <state width="661" height="131" key="GridCell.Tab.0.bottom" timestamp="1595399201822">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state width="1322" height="244" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1595245974244" />
+    <state width="661" height="131" key="GridCell.Tab.0.bottom/0.0.1366.738@0.0.1366.738" timestamp="1595399201822" />
+    <state width="661" height="131" key="GridCell.Tab.0.center" timestamp="1595399201822">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state width="1322" height="244" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1595245974244" />
+    <state width="661" height="131" key="GridCell.Tab.0.center/0.0.1366.738@0.0.1366.738" timestamp="1595399201822" />
+    <state width="661" height="131" key="GridCell.Tab.0.left" timestamp="1595399201821">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state width="1322" height="244" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1595245974244" />
+    <state width="661" height="131" key="GridCell.Tab.0.left/0.0.1366.738@0.0.1366.738" timestamp="1595399201821" />
+    <state width="661" height="131" key="GridCell.Tab.0.right" timestamp="1595399201822">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state width="1322" height="244" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1595245974244" />
+    <state width="661" height="131" key="GridCell.Tab.0.right/0.0.1366.738@0.0.1366.738" timestamp="1595399201822" />
+    <state width="1322" height="244" key="GridCell.Tab.1.bottom" timestamp="1595245974244">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="179" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1595182386325" />
-    <state width="1322" height="185" key="GridCell.Tab.0.bottom/0.0.1366.738@0.0.1366.738" timestamp="1593178427051" />
-    <state width="1323" height="179" key="GridCell.Tab.0.center" timestamp="1595182386325">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state width="1323" height="179" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1595182386325" />
-    <state width="1322" height="185" key="GridCell.Tab.0.center/0.0.1366.738@0.0.1366.738" timestamp="1593178427051" />
-    <state width="1323" height="179" key="GridCell.Tab.0.left" timestamp="1595182386325">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state width="1323" height="179" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1595182386325" />
-    <state width="1322" height="185" key="GridCell.Tab.0.left/0.0.1366.738@0.0.1366.738" timestamp="1593178427051" />
-    <state width="1323" height="179" key="GridCell.Tab.0.right" timestamp="1595182386325">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state width="1323" height="179" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1595182386325" />
-    <state width="1322" height="185" key="GridCell.Tab.0.right/0.0.1366.738@0.0.1366.738" timestamp="1593178427051" />
-    <state width="1322" height="244" key="GridCell.Tab.1.bottom" timestamp="1595109751064">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state width="1322" height="244" key="GridCell.Tab.1.bottom/0.0.1366.728@0.0.1366.728" timestamp="1595109751064" />
+    <state width="1322" height="244" key="GridCell.Tab.1.bottom/0.0.1366.728@0.0.1366.728" timestamp="1595245974244" />
     <state width="1322" height="221" key="GridCell.Tab.1.bottom/0.0.1366.738@0.0.1366.738" timestamp="1589873506234" />
-    <state width="1322" height="244" key="GridCell.Tab.1.center" timestamp="1595109751064">
+    <state width="1322" height="244" key="GridCell.Tab.1.center" timestamp="1595245974244">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1322" height="244" key="GridCell.Tab.1.center/0.0.1366.728@0.0.1366.728" timestamp="1595109751064" />
+    <state width="1322" height="244" key="GridCell.Tab.1.center/0.0.1366.728@0.0.1366.728" timestamp="1595245974244" />
     <state width="1322" height="221" key="GridCell.Tab.1.center/0.0.1366.738@0.0.1366.738" timestamp="1589873506234" />
-    <state width="1322" height="244" key="GridCell.Tab.1.left" timestamp="1595109751064">
+    <state width="1322" height="244" key="GridCell.Tab.1.left" timestamp="1595245974244">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1322" height="244" key="GridCell.Tab.1.left/0.0.1366.728@0.0.1366.728" timestamp="1595109751064" />
+    <state width="1322" height="244" key="GridCell.Tab.1.left/0.0.1366.728@0.0.1366.728" timestamp="1595245974244" />
     <state width="1322" height="221" key="GridCell.Tab.1.left/0.0.1366.738@0.0.1366.738" timestamp="1589873506234" />
-    <state width="1322" height="244" key="GridCell.Tab.1.right" timestamp="1595109751064">
+    <state width="1322" height="244" key="GridCell.Tab.1.right" timestamp="1595245974244">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1322" height="244" key="GridCell.Tab.1.right/0.0.1366.728@0.0.1366.728" timestamp="1595109751064" />
+    <state width="1322" height="244" key="GridCell.Tab.1.right/0.0.1366.728@0.0.1366.728" timestamp="1595245974244" />
     <state width="1322" height="221" key="GridCell.Tab.1.right/0.0.1366.738@0.0.1366.738" timestamp="1589873506234" />
     <state x="213" y="22" key="Maven.ArtifactSearchDialog" timestamp="1589017820205">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="213" y="22" key="Maven.ArtifactSearchDialog/0.0.1366.728@0.0.1366.728" timestamp="1589017820205" />
     <state x="213" y="22" key="Maven.ArtifactSearchDialog/0.0.1366.738@0.0.1366.738" timestamp="1587804864740" />
-    <state x="395" y="78" key="MultipleFileMergeDialog" timestamp="1588702867482">
+    <state x="395" y="78" key="MultipleFileMergeDialog" timestamp="1595167663413">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="395" y="78" key="MultipleFileMergeDialog/0.0.1366.728@0.0.1366.728" timestamp="1588702867482" />
+    <state x="395" y="78" key="MultipleFileMergeDialog/0.0.1366.728@0.0.1366.728" timestamp="1595167663413" />
     <state x="348" y="66" key="NewModule_or_Project.wizard" timestamp="1590740672995">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
@@ -952,24 +959,24 @@
     </state>
     <state x="184" y="0" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1594551371835" />
     <state x="184" y="0" key="SettingsEditor/0.0.1366.738@0.0.1366.738" timestamp="1591433792246" />
-    <state x="275" y="95" key="Vcs.Push.Dialog.v2" timestamp="1593187894875">
+    <state x="275" y="95" key="Vcs.Push.Dialog.v2" timestamp="1595167700928">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="275" y="95" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1593187894875" />
+    <state x="275" y="95" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1595167700928" />
     <state x="275" y="96" key="Vcs.Push.Dialog.v2/0.0.1366.738@0.0.1366.738" timestamp="1593112604984" />
     <state width="691" height="372" key="XDebugger.FullValuePopup" timestamp="1595066970216">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state width="691" height="372" key="XDebugger.FullValuePopup/0.0.1366.728@0.0.1366.728" timestamp="1595066970216" />
-    <state x="378" y="186" key="com.intellij.ide.util.TipDialog" timestamp="1595308854886">
+    <state x="378" y="186" key="com.intellij.ide.util.TipDialog" timestamp="1595230342074">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="378" y="186" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1595308854886" />
-    <state x="492" y="279" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1593188826525">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state x="378" y="186" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1595230342074" />
+    <state x="492" y="283" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1595398283041">
+      <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state x="492" y="279" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.728@0.0.1366.728" timestamp="1593188826525" />
-    <state x="492" y="283" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.738@0.0.1366.738" timestamp="1593112595135" />
+    <state x="492" y="279" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.728@0.0.1366.728" timestamp="1595167647792" />
+    <state x="492" y="283" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.738@0.0.1366.738" timestamp="1595398283041" />
     <state x="380" y="100" width="737" height="606" key="find.popup" timestamp="1593190820824">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -980,60 +987,71 @@
     </state>
     <state x="389" y="0" key="refactoring.ChangeSignatureDialog/0.0.1366.728@0.0.1366.728" timestamp="1589710761386" />
     <state x="389" y="0" key="refactoring.ChangeSignatureDialog/0.0.1366.738@0.0.1366.738" timestamp="1589271483679" />
-    <state x="339" y="157" width="672" height="677" key="run.anything.popup" timestamp="1595172939700">
+    <state x="339" y="157" width="672" height="677" key="run.anything.popup" timestamp="1595015821937">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="339" y="157" width="672" height="677" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1595172939700" />
+    <state x="339" y="157" width="672" height="677" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1595015821937" />
     <state x="339" y="159" key="run.anything.popup/0.0.1366.738@0.0.1366.738" timestamp="1593009407885" />
-    <state x="346" y="58" width="672" height="669" key="search.everywhere.popup" timestamp="1595308912980">
+    <state x="346" y="58" width="672" height="669" key="search.everywhere.popup" timestamp="1595237231689">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="346" y="58" width="672" height="669" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1595308912980" />
+    <state x="346" y="58" width="672" height="669" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1595237231689" />
     <state x="346" y="59" width="672" height="678" key="search.everywhere.popup/0.0.1366.738@0.0.1366.738" timestamp="1591438296011" />
   </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/Model/Cart.java</url>
+          <line>30</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Project$AccountManagerTest.ic" NAME="AccountManagerTest Coverage Results" MODIFIED="1588943574745" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>ControllerTest.*</FILTER>
+    </SUITE>
     <SUITE FILE_PATH="coverage/Project_team_53$AccountTest.ic" NAME="AccountTest Coverage Results" MODIFIED="1589230660323" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>ControllerTest.*</FILTER>
-    </SUITE>
-    <SUITE FILE_PATH="coverage/Project_2$All_in_Project_2__1_.ic" NAME="All in Project-2 (1) Coverage Results" MODIFIED="1593158770773" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/Project_2$All_in_Project_2.ic" NAME="All in Project-2 Coverage Results" MODIFIED="1593010274041" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/Project_2$SellerManagerTest.ic" NAME="SellerManagerTest Coverage Results" MODIFIED="1589580271799" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>ControllerTest.*</FILTER>
-    </SUITE>
-    <SUITE FILE_PATH="coverage/Project_team_53$ControllerTest_in_Project_team_53.ic" NAME="ControllerTest in Project_team-53 Coverage Results" MODIFIED="1589568222105" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>ControllerTest.*</FILTER>
-    </SUITE>
-    <SUITE FILE_PATH="coverage/Project$AllProductManagerTest.ic" NAME="AllProductManagerTest Coverage Results" MODIFIED="1589544649151" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>ControllerTest.*</FILTER>
-    </SUITE>
-    <SUITE FILE_PATH="coverage/Project_team_53$AdminManagerTest_showRequestWithIDTest.ic" NAME="AdminManagerTest.showRequestWithIDTest Coverage Results" MODIFIED="1589226973100" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>ControllerTest.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/Project$SellerAccountTest.ic" NAME="SellerAccountTest Coverage Results" MODIFIED="1589388843464" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>ModelTest.*</FILTER>
     </SUITE>
+    <SUITE FILE_PATH="coverage/Project_2$Main.ic" NAME="Main Coverage Results" MODIFIED="1589874331120" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/Project_team_53$AccountManagerTest_registerTest1.ic" NAME="AccountManagerTest.registerTest1 Coverage Results" MODIFIED="1589228895297" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>ControllerTest.*</FILTER>
+      <FILTER>*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Project_2$All_in_Project_2__1_.ic" NAME="All in Project-2 (1) Coverage Results" MODIFIED="1593158770773" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/Project_team_53$AdminManagerTest_showAccountWithUsernameTest.ic" NAME="AdminManagerTest.showAccountWithUsernameTest Coverage Results" MODIFIED="1589226667004" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>ControllerTest.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/Project_2$Main.ic" NAME="Main Coverage Results" MODIFIED="1589874331120" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/Project_2$SellerManagerTest_sendEditProductRequestTest1.ic" NAME="SellerManagerTest.sendEditProductRequestTest1 Coverage Results" MODIFIED="1589580324813" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/Project_2$SellerManagerTest_sendDeleteProductTest1.ic" NAME="SellerManagerTest.sendDeleteProductTest1 Coverage Results" MODIFIED="1589580219781" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>ControllerTest.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/Project_team_53$AccountManagerTest.ic" NAME="AccountManagerTest Coverage Results" MODIFIED="1589229190334" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/Project_2$SellerManagerTest_sendDeleteProductTest1.ic" NAME="SellerManagerTest.sendDeleteProductTest1 Coverage Results" MODIFIED="1589580219781" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/Project$AllProductManagerTest.ic" NAME="AllProductManagerTest Coverage Results" MODIFIED="1589544649151" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>ControllerTest.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Project_2$All_in_Project_2.ic" NAME="All in Project-2 Coverage Results" MODIFIED="1593010274041" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/Project_team_53$AdminManagerTest_showRequestWithIDTest.ic" NAME="AdminManagerTest.showRequestWithIDTest Coverage Results" MODIFIED="1589226973100" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>ControllerTest.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Project_team_53$AdminManagerTest.ic" NAME="AdminManagerTest Coverage Results" MODIFIED="1589226535228" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>ControllerTest.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Project_2$SellerManagerTest.ic" NAME="SellerManagerTest Coverage Results" MODIFIED="1589580271799" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>ControllerTest.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/Project$All_in_Project.ic" NAME="All in Project Coverage Results" MODIFIED="1589921803728" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
-    <SUITE FILE_PATH="coverage/Project$AccountManagerTest.ic" NAME="AccountManagerTest Coverage Results" MODIFIED="1588943574745" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/Project_team_53$ControllerTest_in_Project_team_53.ic" NAME="ControllerTest in Project_team-53 Coverage Results" MODIFIED="1589568222105" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>ControllerTest.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/Project_team_53$AccountManagerTest_registerTest1.ic" NAME="AccountManagerTest.registerTest1 Coverage Results" MODIFIED="1589228895297" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>ControllerTest.*</FILTER>
-      <FILTER>*</FILTER>
-    </SUITE>
-    <SUITE FILE_PATH="coverage/Project_team_53$AdminManagerTest.ic" NAME="AdminManagerTest Coverage Results" MODIFIED="1589226535228" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/Project_2$SellerManagerTest_sendEditProductRequestTest1.ic" NAME="SellerManagerTest.sendEditProductRequestTest1 Coverage Results" MODIFIED="1589580324813" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>ControllerTest.*</FILTER>
     </SUITE>
   </component>

@@ -1,11 +1,11 @@
 package View.Menu;
 
-import Model.Product.Auction;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import javafx.geometry.HPos;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
@@ -28,11 +28,11 @@ public class AuctionMenu extends Menu{
         scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.ALWAYS);
         scrollPane.setFitToHeight(true);
         scrollPane.setFitToWidth(true);
-        ArrayList<Auction> allAuctions = null;
+        ArrayList<String> allAuctions = null;
         try {
             dataOutputStream.writeUTF("AllAuction");
             dataOutputStream.flush();
-            allAuctions = new Gson().fromJson(dataInputStream.readUTF(), new TypeToken<ArrayList<Auction>>(){}.getType());
+            allAuctions = new Gson().fromJson(dataInputStream.readUTF(), new TypeToken<ArrayList<String>>(){}.getType());
         }
         catch (Exception e){
             System.out.println(e.getMessage());
@@ -52,14 +52,14 @@ public class AuctionMenu extends Menu{
         GridPane.setConstraints(info, 1, 0);
         gridPane.getChildren().add(info);
         int i = 1;
-        for (Auction auction : Objects.requireNonNull(allAuctions)) {
+        for (String string : Objects.requireNonNull(allAuctions)) {
             String text = "";
             Label label = new Label();
-            text = text + "ProductName" + auction.getProduct().getName();
+            text = text + string;
             label.setText(text);
             label.setFont(Font.font(15));
-            Button button = new Button("join");
-            //todo:join auction
+            Button button = new Button("Join");
+            button.setOnAction(e -> handleJoinAuction(string));
             button.setAlignment(Pos.CENTER);
             button.getStyleClass().add("dark-blue");
             button.setMaxWidth(Double.MAX_VALUE);
@@ -73,5 +73,24 @@ public class AuctionMenu extends Menu{
         super.mainPane.setCenter(scrollPane);
 
         Menu.window.setScene(scene);
+    }
+
+    private void handleJoinAuction(String string)
+    {
+        try {
+            String output ="JoinAuction "  + string.split(":")[1].split("_")[0];
+            dataOutputStream.writeUTF(output);
+            dataOutputStream.flush();
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Information");
+            alert.setHeaderText("Process Result");
+            alert.setContentText("You joined auction successfully");
+
+            alert.showAndWait();
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+        }
     }
 }

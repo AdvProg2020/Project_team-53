@@ -23,7 +23,7 @@ public class Server {
 
     public Server() {
         try {
-            this.serverSocket = new ServerSocket(8585);
+            this.serverSocket = new ServerSocket(8080);
             allOnlineAdmins = new ArrayList<>();
             allOnlineBuyers = new ArrayList<>();
             allOnlineSellers = new ArrayList<>();
@@ -73,8 +73,10 @@ public class Server {
         while (true)
         {
             try {
+                System.out.println("Waiting for client ...");
                 Socket clientSocket = serverSocket.accept();
                 new ClientThread(clientSocket, this).start();
+                System.out.println("Client connected");
             } catch (IOException e) {
                 System.out.println(e.getMessage());
             }

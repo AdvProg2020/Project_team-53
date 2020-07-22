@@ -2,12 +2,14 @@ package Controller;
 
 import Model.Account.Account;
 import Model.Account.AdminAccount;
+import Model.Account.BuyerAccount;
+import Model.Account.SellerAccount;
 import Model.Product.Auction;
 import Model.Product.Category;
 import Model.Product.DiscountAndOff.Discount;
 import Model.Product.DiscountAndOff.Off;
 import Model.Product.Product;
-import Model.Request.Request;
+import Model.Request.*;
 
 import java.util.ArrayList;
 
@@ -63,6 +65,15 @@ public class Database {
         }
         return null;
     }
+
+    public static Auction getAuctionByID(int auctionId){
+        for (Auction auction : allAuction) {
+            if (auction.getAuctionID() == auctionId)
+                return auction;
+        }
+        return null;
+    }
+
 
     public static Request getRequestById(int id) {
         for (Request request : allRequest) {
@@ -189,4 +200,93 @@ public class Database {
         }
     }
 
+    public static ArrayList<BuyerAccount> getAllBuyerAccounts(){
+        ArrayList<BuyerAccount> res = new ArrayList<>();
+        for (Account account : allAccounts) {
+            if (account instanceof BuyerAccount)
+                res.add((BuyerAccount) account);
+        }
+        return res;
+    }
+
+    public static ArrayList<SellerAccount> getAllSellerAccounts(){
+        ArrayList<SellerAccount> res = new ArrayList<>();
+        for (Account account : allAccounts) {
+            if (account instanceof SellerAccount)
+                res.add((SellerAccount) account);
+        }
+        return res;
+    }
+
+    public static ArrayList<AdminAccount> getAllAdminAccounts(){
+        ArrayList<AdminAccount> res = new ArrayList<>();
+        for (Account account : allAccounts) {
+            if (account instanceof AdminAccount)
+                res.add((AdminAccount) account);
+        }
+        return res;
+    }
+
+    public static ArrayList<AddNewOffRequest> getAllAddNewOffRequests(){
+        ArrayList<AddNewOffRequest> res = new ArrayList<>();
+        for (Request request : allRequest) {
+            if (request instanceof AddNewOffRequest){
+                res.add((AddNewOffRequest) request);
+            }
+        }
+        return res;
+    }
+
+    public static ArrayList<DeleteProduct> getAllDeleteProductRequests(){
+        ArrayList<DeleteProduct> res = new ArrayList<>();
+        for (Request request : allRequest) {
+            if (request instanceof DeleteProduct){
+                res.add((DeleteProduct) request);
+            }
+        }
+        return res;
+    }
+
+    public static ArrayList<EditOffRequest> getAllEditOffRequests(){
+        ArrayList<EditOffRequest> res = new ArrayList<>();
+        for (Request request : allRequest) {
+            if (request instanceof EditOffRequest){
+                res.add((EditOffRequest) request);
+            }
+        }
+        return res;
+    }
+
+
+    public static ArrayList<EditProductRequest> getAllEditProductRequests(){
+        ArrayList<EditProductRequest> res = new ArrayList<>();
+        for (Request request : allRequest) {
+            if (request instanceof EditProductRequest){
+                res.add((EditProductRequest) request);
+            }
+        }
+        return res;
+    }
+
+
+    public static ArrayList<NewProductRequest> getAllNewProductRequests(){
+        ArrayList<NewProductRequest> res = new ArrayList<>();
+        for (Request request : allRequest) {
+            if (request instanceof NewProductRequest){
+                res.add((NewProductRequest) request);
+            }
+        }
+        return res;
+    }
+
+
+    public static ArrayList<NewSellerRequest> getAllNewSellerRequests(){
+        ArrayList<NewSellerRequest> res = new ArrayList<>();
+        for (Request request : allRequest) {
+            if (request instanceof NewSellerRequest){
+                res.add((NewSellerRequest) request);
+            }
+        }
+        return res;
+    }
 }

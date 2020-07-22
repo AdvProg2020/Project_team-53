@@ -59,6 +59,11 @@ public class BuyerMenu extends Menu {
         viewAllLogs.getStyleClass().add("dark-blue");
         viewAllLogs.setMaxWidth(Double.MAX_VALUE);
 
+        Button viewMyAuctions = new Button("My Auctions");
+        viewMyAuctions.setOnAction(e -> handleMyAuctions());
+        viewMyAuctions.getStyleClass().add("dark-blue");
+        viewMyAuctions.setMaxWidth(Double.MAX_VALUE);
+
         Button viewCart = new Button("Cart");
         viewCart.getStyleClass().add("dark-blue");
         viewCart.setMaxWidth(Double.MAX_VALUE);
@@ -67,17 +72,15 @@ public class BuyerMenu extends Menu {
             cartMenu.show();
         });
 
-        Button chatScreen = new Button("support chat");
-        chatScreen.setMaxWidth(Double.MAX_VALUE);
-        chatScreen.getStyleClass().add("dark-blue");
-        chatScreen.setOnAction(e -> {
-            // Todo:
-        });
-
         Button editInfoButton = new Button("Edit");
         editInfoButton.getStyleClass().add("dark-blue");
         editInfoButton.setMaxWidth(Double.MAX_VALUE);
         editInfoButton.setOnAction(e -> handleEdit());
+
+        Button showSupporterButton = new Button("Show Online Supporters");
+        showSupporterButton.getStyleClass().add("dark-blue");
+        showSupporterButton.setMaxWidth(Double.MAX_VALUE);
+        showSupporterButton.setOnAction(e -> handleShowSupporters());
 
         Button logout = new Button("Logout");
         logout.getStyleClass().add("dark-blue");
@@ -86,17 +89,19 @@ public class BuyerMenu extends Menu {
 
         GridPane.setConstraints(viewAllDiscounts, 0, 0);
         GridPane.setConstraints(viewAllLogs, 0, 1);
-        GridPane.setConstraints(viewCart,0, 2);
-        GridPane.setConstraints(chatScreen, 0, 3);
+        GridPane.setConstraints(viewMyAuctions, 0, 2);
+        GridPane.setConstraints(viewCart,0, 3);
         GridPane.setConstraints(editInfoButton, 0, 4);
-        GridPane.setConstraints(logout, 0, 5);
+        GridPane.setConstraints(showSupporterButton, 0, 5);
+        GridPane.setConstraints(logout, 0, 6);
 
         GridPane.setHalignment(viewAllDiscounts, HPos.CENTER);
         GridPane.setHalignment(viewAllLogs, HPos.CENTER);
+        GridPane.setHalignment(viewMyAuctions, HPos.CENTER);
         GridPane.setHalignment(viewCart, HPos.CENTER);
         GridPane.setHalignment(editInfoButton, HPos.CENTER);
+        GridPane.setHalignment(showSupporterButton, HPos.CENTER);
         GridPane.setHalignment(logout, HPos.CENTER);
-        GridPane.setHalignment(chatScreen, HPos.CENTER);
 
         try {
             dataOutputStream.writeUTF("GetLoggedAccount");
@@ -125,7 +130,7 @@ public class BuyerMenu extends Menu {
             System.out.println(e.getMessage());
         }
         Pane pane = Objects.requireNonNull(Menu.account).viewPersonalInfoInGraphic();
-        allButtons.getChildren().addAll(viewAllDiscounts, viewAllLogs, viewCart, editInfoButton, logout);
+        allButtons.getChildren().addAll(viewAllDiscounts, viewAllLogs, viewCart, editInfoButton, logout, viewMyAuctions, showSupporterButton);
 
         GridPane.setConstraints(pane, 0, 0);
         GridPane.setConstraints(allButtons, 3, 0);
@@ -195,6 +200,76 @@ public class BuyerMenu extends Menu {
         Menu.window.setScene(scene);
     }
 
+    private void handleShowSupporters()
+    {
+
+    }
+
+    private void handleMyAuctions()
+    {
+        try {
+            super.setPane();
+            ArrayList<String> allAuctions;
+            dataOutputStream.writeUTF("GetAuctionOfAccount");
+            dataOutputStream.flush();
+            allAuctions = new Gson().fromJson(dataInputStream.readUTF(), new TypeToken<ArrayList<String>>(){}.getType());
+            Scene scene = new Scene(super.mainPane, 1000, 600);
+            scene.getStylesheets().add(new File("Data/Styles/Buttons.css").toURI().toString());
+            scene.getStylesheets().add(new File("Data/Styles/textfield.css").toURI().toString());
+            scene.getStylesheets().add(new File("Data/Styles/backgrounds.css").toURI().toString());
+            scene.getStylesheets().add(new File("Data/Styles/choicebox.css").toURI().toString());
+            super.mainPane.getStyleClass().add("admin-page");
+            ScrollPane scrollPane = new ScrollPane();
+            scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.ALWAYS);
+            scrollPane.setFitToHeight(true);
+            scrollPane.setFitToWidth(true);
+            scrollPane.getStyleClass().add("scroll-pane");
+            GridPane gridPane = new GridPane();
+            gridPane.setHgap(20);
+            gridPane.setVgap(10);
+            gridPane.setAlignment(Pos.CENTER);
+            Label info = new Label("My Auctions");
+            info.setFont(Font.font(25));
+            GridPane.setHalignment(info, HPos.CENTER);
+            info.setAlignment(Pos.CENTER);
+            GridPane.setConstraints(info, 1, 0);
+            gridPane.getChildren().add(info);
+            int i = 1;
+            for (String string : allAuctions) {
+                Label label = new Label(string);
+                label.setFont(Font.font(15));
+                Button button = new Button("show");
+                button.setMaxWidth(Double.MAX_VALUE);
+                button.getStyleClass().add("dark-blue");
+                button.setAlignment(Pos.CENTER);
+                button.setOnAction(e -> {
+                    handleShowAuction(string);
+                });
+                GridPane.setConstraints(label, 0, i);
+                GridPane.setConstraints(button, 2, i);
+                gridPane.getChildren().addAll(label, button);
+                i++;
+            }
+            Button back = new Button("back");
+            back.setAlignment(Pos.CENTER);
+            back.getStyleClass().add("dark-blue");
+            back.setMaxWidth(Double.MAX_VALUE);
+            GridPane.setHalignment(back, HPos.CENTER);
+            back.setOnAction(e -> show());
+            GridPane.setConstraints(back,1, i);
+            gridPane.getChildren().add(back);
+
+            scrollPane.setContent(gridPane);
+            super.mainPane.setCenter(scrollPane);
+
+            Menu.window.setScene(scene);
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+        }
+    }
+
     private void handleShowLog(BuyLog buyLog) {
         Stage newWindow = new Stage();
         Pane pane = buyLog.showLogWithGraphic();
@@ -208,6 +283,8 @@ public class BuyerMenu extends Menu {
         newWindow.setOnCloseRequest(e -> handleAllLogs());
         newWindow.showAndWait();
     }
+
+    private void handleShowAuction(String string){}
 
     public void handleEdit()
     {
@@ -365,3 +442,4 @@ public class BuyerMenu extends Menu {
         newWindow.showAndWait();
     }
 }
+
