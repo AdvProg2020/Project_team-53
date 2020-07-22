@@ -363,7 +363,6 @@ public class BuyerMenu extends Menu {
     public void handleAllDiscountShow()
     {
         super.setPane();
-        ArrayList<Integer> allDiscountIds = ((BuyerAccount)Menu.account).getDiscountIds();
         Scene scene = new Scene(super.mainPane, 1000, 600);
         scene.getStylesheets().add(new File("Data/Styles/Buttons.css").toURI().toString());
         scene.getStylesheets().add(new File("Data/Styles/textfield.css").toURI().toString());
@@ -385,10 +384,18 @@ public class BuyerMenu extends Menu {
         info.setAlignment(Pos.CENTER);
         GridPane.setConstraints(info, 1, 0);
         gridPane.getChildren().add(info);
+        ArrayList<Integer> allDiscountIds = null;
+        try {
+            dataOutputStream.writeUTF("GetDiscountOfAccount");
+            dataOutputStream.flush();
+            allDiscountIds = new Gson().fromJson(dataInputStream.readUTF(), new TypeToken<ArrayList<Integer>>(){}.getType());
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+        }
         int i = 1;
-        for (Integer discountId : allDiscountIds) {
-            if (!((BuyerAccount)Menu.account).canUseDiscount(discountId))
-                continue;
+        for (Integer discountId : Objects.requireNonNull(allDiscountIds)) {
 
             Label label = new Label(discountId.toString());
             label.setFont(Font.font(15));

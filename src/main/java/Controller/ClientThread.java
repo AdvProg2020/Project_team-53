@@ -101,11 +101,6 @@ public class ClientThread extends Thread {
                     Gson gson = new Gson();
                     output = gson.toJson(account.viewPersonalInfoInGraphic());
                 }
-                else if (input.startsWith("AllAccounts"))
-                {
-                    Gson gson = new Gson();
-                    output = gson.toJson(Database.getAllAccounts());
-                }
                 else if (input.startsWith("AllProducts"))
                 {
                     Gson gson = new Gson();
@@ -115,11 +110,6 @@ public class ClientThread extends Thread {
                 {
                     Gson gson = new Gson();
                     output = gson.toJson(Database.getAllDiscounts());
-                }
-                else if (input.startsWith("AllRequest"))
-                {
-                    Gson gson = new Gson();
-                    output = gson.toJson(Database.getAllRequest());
                 }
                 else if (input.startsWith("AllCategories"))
                 {
@@ -182,8 +172,9 @@ public class ClientThread extends Thread {
                 }
                 else if (input.startsWith("AddDiscount"))
                 {
-                    details = input.split(" ");
+                    details = input.split("\n");
                     Gson gson = new Gson();
+                    String buyers = details[6];
                     ArrayList<String> users = gson.fromJson(details[6], new TypeToken<ArrayList<String>>(){}.getType());
                     output = adminManager.addNewDiscount(Integer.parseInt(details[1]), Integer.parseInt(details[2]), details[3], details[4], Integer.parseInt(details[5]), users);
                 }
@@ -372,6 +363,22 @@ public class ClientThread extends Thread {
                 else if (input.startsWith("GetPortOfSeller"))
                 {
                     output = Integer.toString(server.getPortOfSeller(((SellerAccount)Database.getAccountByUsername(input.split(" ")[1]))));
+                }
+                else if (input.startsWith("GetAllBuyerAccounts"))
+                {
+                    output = new Gson().toJson(Database.getAllBuyerAccounts());
+                }
+                else if (input.startsWith("GetAllSellerAccounts"))
+                {
+                    output = new Gson().toJson(Database.getAllSellerAccounts());
+                }
+                else if (input.startsWith("GetAllAdminAccounts"))
+                {
+                    output = new Gson().toJson(Database.getAllAdminAccounts());
+                }
+                else if (input.startsWith("GetDiscountOfAccount"))
+                {
+                    output = new Gson().toJson(((BuyerAccount)account).getDiscountIds());
                 }
                 else if (input.startsWith("Exit"))
                 {
