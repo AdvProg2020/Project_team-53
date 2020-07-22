@@ -85,32 +85,37 @@ public class LoginMenu extends Menu{
             try {
                 dataOutputStream.writeUTF("login " + userName.getText() + " " + password.getText());
                 dataOutputStream.flush();
-                status.setText(dataInputStream.readUTF());
-                dataOutputStream.writeUTF("GetLoggedAccount");
-                dataOutputStream.flush();
-                String data = dataInputStream.readUTF();
-                String[]  details = data.split("_");
-                String role = details[0];
-                String accountInJson = details[1];
+                String dataOfStatus = dataInputStream.readUTF();
+                status.setText(dataOfStatus);
+                if (dataOfStatus.startsWith("Welcome"))
+                {
+                    dataOutputStream.writeUTF("GetLoggedAccount");
+                    dataOutputStream.flush();
+                    String data = dataInputStream.readUTF();
+                    String[]  details = data.split("_");
+                    String role = details[0];
+                    String accountInJson = details[1];
 
-                Type type;
-                if (role.equalsIgnoreCase("Admin")){
-                    type = new TypeToken<AdminAccount>(){}.getType();
-                    Menu.account = new Gson().fromJson(accountInJson, type);
+                    Type type;
+                    if (role.equalsIgnoreCase("Admin")){
+                        type = new TypeToken<AdminAccount>(){}.getType();
+                        Menu.account = new Gson().fromJson(accountInJson, type);
+                    }
+                    else if (role.equalsIgnoreCase("Seller"))
+                    {
+                        type = new TypeToken<SellerAccount>(){}.getType();
+                        Menu.account = new Gson().fromJson(accountInJson, type);
+                    }
+                    else if (role.equalsIgnoreCase("Buyer"))
+                    {
+                        type = new TypeToken<BuyerAccount>(){}.getType();
+                        Menu.account = new Gson().fromJson(accountInJson, type);
+                    }
+                    else {
+                        Menu.account = null;
+                    }
                 }
-                else if (role.equalsIgnoreCase("Seller"))
-                {
-                    type = new TypeToken<SellerAccount>(){}.getType();
-                    Menu.account = new Gson().fromJson(accountInJson, type);
-                }
-                else if (role.equalsIgnoreCase("Buyer"))
-                {
-                    type = new TypeToken<BuyerAccount>(){}.getType();
-                    Menu.account = new Gson().fromJson(accountInJson, type);
-                }
-                else {
-                    Menu.account = null;
-                }
+
             } catch (IOException ex) {
                 System.out.println(ex.getMessage());
             }
