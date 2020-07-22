@@ -23,7 +23,7 @@ public class Server {
 
     public Server() {
         try {
-            this.serverSocket = new ServerSocket(8585);
+            this.serverSocket = new ServerSocket(8080);
             allOnlineAdmins = new ArrayList<>();
             allOnlineBuyers = new ArrayList<>();
             allOnlineSellers = new ArrayList<>();
