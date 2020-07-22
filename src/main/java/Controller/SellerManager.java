@@ -17,8 +17,8 @@ import java.util.Set;
 
 public class SellerManager {
 
-    public String sendAddProductRequest(String status, String name, boolean available, int number, String description, String categoryName, int price, Account account) {
-        Database.addRequest(new NewProductRequest(status, name, account.getUsername(), available, number, description, categoryName, price));
+    public String sendAddProductRequest(String status, String name, boolean available, int number, String description, String categoryName, int price, Account account, boolean hasFile, String address) {
+        Database.addRequest(new NewProductRequest(status, name, account.getUsername(), available, number, description, categoryName, price, hasFile, address));
         return "Your request registered.";
     }
 

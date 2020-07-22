@@ -689,10 +689,20 @@ public class SellerMenu extends Menu {
         sendRequest.setAlignment(Pos.CENTER);
         sendRequest.setOnAction(e -> {
             try {
-                dataOutputStream.writeUTF("AddNewProduct " + statusTextField.getText() +  " " + name.getText() +  " "
-                + available.isSelected() + " " + number.getText() + " " + description.getText() + " " + categoryName.getText() + " "
-                + price.getText());
-                dataOutputStream.flush();
+                if (doesProductHasFile.isSelected())
+                {
+                    dataOutputStream.writeUTF("AddNewProduct " + statusTextField.getText() +  " " + name.getText() +  " "
+                            + available.isSelected() + " " + number.getText() + " " + description.getText() + " " + categoryName.getText() + " "
+                            + price.getText() + " " + doesProductHasFile.isSelected() + " " + address.getText());
+                    dataOutputStream.flush();
+                }
+                else if (!doesProductHasFile.isSelected())
+                {
+                    dataOutputStream.writeUTF("AddNewProduct " + statusTextField.getText() +  " " + name.getText() +  " "
+                            + available.isSelected() + " " + number.getText() + " " + description.getText() + " " + categoryName.getText() + " "
+                            + price.getText() + " " + doesProductHasFile.isSelected() + " " + "DoesNotHaveFile");
+                    dataOutputStream.flush();
+                }
                 status.setText(dataInputStream.readUTF());
             } catch (IOException ex) {
                 System.out.println(ex.getMessage());

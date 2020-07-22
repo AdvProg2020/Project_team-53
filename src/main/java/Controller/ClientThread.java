@@ -292,7 +292,7 @@ public class ClientThread extends Thread {
                 {
                     details = input.split(" ");
                     output = sellerManager.sendAddProductRequest(details[1], details[2], Boolean.parseBoolean(details[3]),
-                            Integer.parseInt(details[4]), details[5], details[6], Integer.parseInt(details[7]), account);
+                            Integer.parseInt(details[4]), details[5], details[6], Integer.parseInt(details[7]), account, Boolean.parseBoolean(details[8]), details[9]);
                 }
                 else  if (input.startsWith("GetBuyerOfProduct"))
                 {

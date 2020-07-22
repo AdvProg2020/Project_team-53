@@ -14,8 +14,10 @@ public class NewProductRequest extends Request {
     String description;
     String categoryName;
     int price;
+    boolean hasFile;
+    String address;
 
-    public NewProductRequest(String status, String name, String sellerUsername, boolean available, int number, String description, String categoryName, int price) {
+    public NewProductRequest(String status, String name, String sellerUsername, boolean available, int number, String description, String categoryName, int price, boolean hasFile, String addrses) {
         this.status = status;
         this.name = name;
         this.sellerUsername = sellerUsername;
@@ -24,6 +26,8 @@ public class NewProductRequest extends Request {
         this.description = description;
         this.categoryName = categoryName;
         this.price = price;
+        this.hasFile = hasFile;
+        this.address = addrses;
     }
 
     public String getStatus() {
