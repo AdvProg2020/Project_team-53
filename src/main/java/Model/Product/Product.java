@@ -39,6 +39,8 @@ public class Product {
     ArrayList<Score> scores = new ArrayList<>();
     ArrayList<Comment> comments = new ArrayList<>();
     int offId;
+    boolean doesHasFile;
+    String address;
 
     public static int getNumberOfAllProducts() {
         return numberOfAllProducts;
@@ -48,7 +50,7 @@ public class Product {
         Product.numberOfAllProducts = numberOfAllProducts;
     }
 
-    public Product(String status, String name, String sellerUsername, boolean available, int number, String description, String categoryName, int price) {
+    public Product(String status, String name, String sellerUsername, boolean available, int number, String description, String categoryName, int price, boolean doesHasFile, String address) {
         this.status = status;
         this.name = name;
         this.sellerUsername = sellerUsername;
@@ -58,6 +60,8 @@ public class Product {
         this.productId = numberOfAllProducts;
         this.categoryName = categoryName;
         this.price = price;
+        this.doesHasFile = doesHasFile;
+        this.address = address;
         numberOfAllProducts++;
         averageScore = 0;
         this.offId = -1;
@@ -398,6 +402,11 @@ public class Product {
 
     public String getAddressOfProduct()
     {
-        return "";
+        return this.address;
+    }
+
+    public boolean doesHasFile()
+    {
+        return this.doesHasFile;
     }
 }
