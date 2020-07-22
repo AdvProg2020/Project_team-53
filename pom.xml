@@ -81,6 +81,11 @@
             <artifactId>javafx-controls</artifactId>
             <version>11</version>
         </dependency>
+        <dependency>
+            <groupId>org.webjars.npm</groupId>
+            <artifactId>prism-media</artifactId>
+            <version>0.0.3</version>
+        </dependency>
     </dependencies>
 
     <build>

@@ -8,7 +8,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.media.MediaPlayer;
+//import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
 
 import java.io.DataInputStream;
@@ -30,8 +30,8 @@ public abstract class Menu{
     protected static Stage window;
     protected double width;
     protected double height;
-    protected static MediaPlayer song1;
-    protected static MediaPlayer song2;
+   // protected static MediaPlayer song1;
+   // protected static MediaPlayer song2;
     protected static Socket socket;
     protected static DataInputStream dataInputStream;
     protected static DataOutputStream dataOutputStream;

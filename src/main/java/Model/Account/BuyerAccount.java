@@ -2,8 +2,9 @@ package Model.Account;
 
 import Controller.Database;
 import Model.Cart;
-import Model.Product.DiscountAndOff.Discount;
 import Model.Log.BuyLog;
+import Model.Messaging.Chat;
+import Model.Product.DiscountAndOff.Discount;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -14,6 +15,8 @@ public class BuyerAccount extends Account {
     private ArrayList<Integer> discountIds = new ArrayList<>();
     private HashMap<Integer, Integer> numberOfUse = new HashMap<>();
     private Cart cart;
+    private ArrayList<Chat> chats = new ArrayList<>();
+
 
     public BuyerAccount(String username, String firstName, String lastName, String password, String email, String phoneNumber, int credit) throws Exception {
         super(username, firstName, lastName, password, email, phoneNumber, credit);
