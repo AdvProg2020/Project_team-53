@@ -376,6 +376,30 @@ public class ClientThread extends Thread {
                 {
                     output = new Gson().toJson(Database.getAllAdminAccounts());
                 }
+                else if (input.startsWith("GetAllAddNewOffRequest"))
+                {
+                    output = new Gson().toJson(Database.getAllAddNewOffRequests());
+                }
+                else if (input.startsWith("GetAllDeleteProductRequest"))
+                {
+                    output = new Gson().toJson(Database.getAllDeleteProductRequests());
+                }
+                else if (input.startsWith("GetAllEditOffRequest"))
+                {
+                    output = new Gson().toJson(Database.getAllEditOffRequests());
+                }
+                else if (input.startsWith("GetAllEditProductRequest"))
+                {
+                    output = new Gson().toJson(Database.getAllEditProductRequests());
+                }
+                else if (input.startsWith("GetAllNewProductRequest"))
+                {
+                    output = new Gson().toJson(Database.getAllNewProductRequests());
+                }
+                else if (input.startsWith("GetAllNewSellerRequest"))
+                {
+                    output = new Gson().toJson(Database.getAllNewSellerRequests());
+                }
                 else if (input.startsWith("GetDiscountOfAccount"))
                 {
                     output = new Gson().toJson(((BuyerAccount)account).getDiscountIds());

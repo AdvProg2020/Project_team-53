@@ -234,11 +234,30 @@ public class AdminMenu extends Menu {
     {
         try {
             super.setPane();
-            ArrayList<Request> allRequest;
-            dataOutputStream.writeUTF("AllRequest");
+            dataOutputStream.writeUTF("GetAllAddNewOffRequest");
             dataOutputStream.flush();
-            Gson gson = new Gson();
-            allRequest = gson.fromJson(dataInputStream.readUTF(), new TypeToken<ArrayList<Request>>(){}.getType());
+            ArrayList<AddNewOffRequest> addNewOffRequests = new Gson().fromJson(dataInputStream.readUTF(), new TypeToken<ArrayList<AddNewOffRequest>>(){}.getType());
+            dataOutputStream.writeUTF("GetAllDeleteProductRequest");
+            dataOutputStream.flush();
+            ArrayList<DeleteProduct> deleteProducts = new Gson().fromJson(dataInputStream.readUTF(), new TypeToken<ArrayList<DeleteProduct>>(){}.getType());
+            dataOutputStream.writeUTF("GetAllEditOffRequest");
+            dataOutputStream.flush();
+            ArrayList<EditOffRequest> editOffRequests = new Gson().fromJson(dataInputStream.readUTF(), new TypeToken<ArrayList<EditOffRequest>>(){}.getType());
+            dataOutputStream.writeUTF("GetAllEditProductRequest");
+            dataOutputStream.flush();
+            ArrayList<EditProductRequest> editProductRequests = new Gson().fromJson(dataInputStream.readUTF(), new TypeToken<ArrayList<EditProductRequest>>(){}.getType());
+            dataOutputStream.writeUTF("GetAllNewProductRequest");
+            dataOutputStream.flush();
+            ArrayList<NewProductRequest> newProductRequests = new Gson().fromJson(dataInputStream.readUTF(), new TypeToken<ArrayList<NewProductRequest>>(){}.getType());
+            dataOutputStream.writeUTF("GetAllNewSellerRequest");
+            dataOutputStream.flush();
+            ArrayList<NewSellerRequest> newSellerRequests = new Gson().fromJson(dataInputStream.readUTF(), new TypeToken<ArrayList<NewSellerRequest>>(){}.getType());
+            ArrayList<Request> allRequest = new ArrayList<>(addNewOffRequests);
+            allRequest.addAll(deleteProducts);
+            allRequest.addAll(editOffRequests);
+            allRequest.addAll(editProductRequests);
+            allRequest.addAll(newProductRequests);
+            allRequest.addAll(newSellerRequests);
             Scene scene = new Scene(super.mainPane, 1000, 600);
             scene.getStylesheets().add(new File("Data/Styles/Buttons.css").toURI().toString());
             scene.getStylesheets().add(new File("Data/Styles/textfield.css").toURI().toString());
