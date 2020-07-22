@@ -542,21 +542,7 @@ public class ViewModelsWithGraphic {
 
     }
 
-    public static ScrollPane showChat(Chat chat) {
-        ScrollPane chatRoom = new ScrollPane();
-        VBox vBox = new VBox();
-        ArrayList<String> content = chat.getContent();
-        for (String message : content) {
-            vBox.getChildren().add(new Label(message));
-        }
-        TextField textField = new TextField();
-        textField.setOnAction(e -> {
 
-        });
-        vBox.getChildren().add(textField);
-        chatRoom.setContent(vBox);
-        return chatRoom;
-    }
 
 
 }
