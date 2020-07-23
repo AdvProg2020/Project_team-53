@@ -8,12 +8,14 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Server {
     private ServerSocket serverSocket;
     private ArrayList<AdminAccount> allOnlineAdmins;
     private ArrayList<BuyerAccount> allOnlineBuyers;
     private ArrayList<SellerAccount> allOnlineSellers;
+    private HashMap<SellerAccount, Integer> portOfOnlineSellers;
 
     public static void main(String[] args) {
         Server server = new Server();
@@ -27,6 +29,7 @@ public class Server {
             allOnlineAdmins = new ArrayList<>();
             allOnlineBuyers = new ArrayList<>();
             allOnlineSellers = new ArrayList<>();
+            portOfOnlineSellers = new HashMap<>();
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
@@ -81,6 +84,21 @@ public class Server {
                 System.out.println(e.getMessage());
             }
         }
+    }
+
+    public void setPortForSeller(SellerAccount sellerAccount, int port)
+    {
+        portOfOnlineSellers.put(sellerAccount, port);
+    }
+
+    public int getPortOfSeller(SellerAccount sellerAccount)
+    {
+        return portOfOnlineSellers.getOrDefault(sellerAccount, -1);
+    }
+
+    public void writeDataOnFile()
+    {
+        Database.writeDataOnFile();
     }
 
 }
