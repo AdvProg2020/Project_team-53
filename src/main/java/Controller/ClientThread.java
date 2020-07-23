@@ -418,6 +418,10 @@ public class ClientThread extends Thread {
                     details = input.split(" ");
                     output = accountManager.changeCredit(account , Integer.parseInt(details[1]), details[2] , details[3], details[4]);
                 }
+                else if (input.startsWith("changeFinancialSetting")){
+                    details = input.split(" ");
+                    output = adminManager.changeFinancialSetting(details[1] , details[2]);
+                }
                 else if (input.startsWith("Exit"))
                 {
                     clientSocket.close();

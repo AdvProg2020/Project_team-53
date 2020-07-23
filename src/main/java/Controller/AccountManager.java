@@ -123,7 +123,8 @@ public class AccountManager {
             }
         }
         else if (account instanceof SellerAccount){
-//            doish
+            if (account.getCredit() + much < AdminManager.getMinimumValue())
+                return "Not enough money";
             res = WorkWithBank.decreaseCredit(-much , bankUsername , bankPassword, bankId);
             if (res.equalsIgnoreCase("done successfully")){
                 account.setCredit(account.getCredit() + much);

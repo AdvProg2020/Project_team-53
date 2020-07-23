@@ -99,6 +99,10 @@ public class AdminMenu extends Menu {
         manageAddAdmin.getStyleClass().add("dark-blue");
         manageAddAdmin.setMaxWidth(Double.MAX_VALUE);
 
+        Button changeFinancialSetting = new Button("Financial Setting");
+        changeFinancialSetting.setOnAction(e -> handleChangeFinancialSetting());
+        changeFinancialSetting.getStyleClass().add("dark-blue");
+        changeFinancialSetting.setMaxWidth(Double.MAX_VALUE);
 
         GridPane.setConstraints(editInfoButton, 0, 0);
         GridPane.setConstraints(manageUser, 0, 1);
@@ -108,7 +112,8 @@ public class AdminMenu extends Menu {
         GridPane.setConstraints(manageCategories, 0, 5);
         GridPane.setConstraints(manageDiscounts, 0, 6);
         GridPane.setConstraints(manageAddAdmin, 0, 7);
-        GridPane.setConstraints(logout, 0, 8);
+        GridPane.setConstraints(changeFinancialSetting, 0, 8);
+        GridPane.setConstraints(logout, 0, 9);
         GridPane.setHalignment(editInfoButton, HPos.CENTER);
         GridPane.setHalignment(manageUser, HPos.CENTER);
         GridPane.setHalignment(onlineUser, HPos.CENTER);
@@ -118,8 +123,9 @@ public class AdminMenu extends Menu {
         GridPane.setHalignment(manageDiscounts, HPos.CENTER);
         GridPane.setHalignment(manageAddAdmin, HPos.CENTER);
         GridPane.setHalignment(logout, HPos.CENTER);
+        GridPane.setHalignment(changeFinancialSetting, HPos.CENTER);
 
-        allButtons.getChildren().addAll(editInfoButton, manageUser, manageRequest, manageProduct, manageCategories, manageDiscounts, manageAddAdmin, logout, onlineUser);
+        allButtons.getChildren().addAll(editInfoButton, manageUser, manageRequest, manageProduct, manageCategories, manageDiscounts, manageAddAdmin, logout, onlineUser, changeFinancialSetting);
 
         try {
             dataOutputStream.writeUTF("GetLoggedAccount");
@@ -159,6 +165,65 @@ public class AdminMenu extends Menu {
 
         window.setScene(scene);
     }
+
+    private void handleChangeFinancialSetting()
+    {
+            super.setPane();
+            GridPane gridPane = new GridPane();
+            Scene scene = new Scene(super.mainPane, 1000, 600);
+            scene.getStylesheets().add(new File("Data/Styles/Buttons.css").toURI().toString());
+            scene.getStylesheets().add(new File("Data/Styles/textfield.css").toURI().toString());
+            scene.getStylesheets().add(new File("Data/Styles/backgrounds.css").toURI().toString());
+            scene.getStylesheets().add(new File("Data/Styles/choicebox.css").toURI().toString());
+            super.mainPane.getStyleClass().add("admin-page");
+            gridPane.setAlignment(Pos.CENTER);
+            gridPane.setVgap(10);
+            Label status = new Label();
+            ChoiceBox<String> field = new ChoiceBox<>();
+            field.getItems().addAll("minimumValue" , "commission");
+            field.setValue("minimumValue");
+            field.getStyleClass().add("choice-box");
+            TextField changeTo = new TextField();
+            changeTo.setPromptText("change to");
+            changeTo.getStyleClass().add("textfield.css");
+            Button edit = new Button("edit");
+            edit.getStyleClass().add("dark-blue");
+            edit.setMaxWidth(Double.MAX_VALUE);
+            edit.setOnAction(e -> {
+                try {
+                    dataOutputStream.writeUTF("changeFinancialSetting " + field.getValue() + " " + changeTo.getText());
+                    dataOutputStream.flush();
+                    status.setText(dataInputStream.readUTF());
+                }
+                catch (Exception ex)
+                {
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Error");
+                    alert.setHeaderText("Process Fail");
+                    alert.setContentText("Wrong input");
+
+                    alert.showAndWait();
+                }
+            });
+            Button back = new Button("back");
+            back.getStyleClass().add("dark-blue");
+            back.setMaxWidth(Double.MAX_VALUE);
+            back.setOnAction(e -> show());
+            GridPane.setConstraints(field, 0, 0 );
+            GridPane.setConstraints(changeTo, 0, 1);
+            GridPane.setConstraints(edit, 0, 2);
+            GridPane.setConstraints(back, 0, 3);
+            GridPane.setConstraints(status, 0, 4);
+            GridPane.setHalignment(edit, HPos.CENTER);
+            GridPane.setHalignment(back, HPos.CENTER);
+            GridPane.setHalignment(field, HPos.CENTER);
+            GridPane.setHalignment(status, HPos.CENTER);
+            gridPane.getChildren().addAll(field, changeTo, edit, back, status);
+            super.mainPane.setCenter(gridPane);
+
+            Menu.window.setScene(scene);
+        }
+
 
     public void handleEdit()
     {
