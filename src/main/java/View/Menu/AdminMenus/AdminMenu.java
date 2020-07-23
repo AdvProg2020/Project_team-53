@@ -1323,4 +1323,6 @@ public class AdminMenu extends Menu {
 
         Menu.window.setScene(scene);
     }
+
+
 }

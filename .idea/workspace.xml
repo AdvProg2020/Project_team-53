@@ -2,18 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="aeefa500-3a99-4ed0-98cf-a7157d1fa89a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Data/test.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Data/Accounts/Buyers.json" beforeDir="false" afterPath="$PROJECT_DIR$/Data/Accounts/Buyers.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Data/Accounts/Sellers.json" beforeDir="false" afterPath="$PROJECT_DIR$/Data/Accounts/Sellers.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Data/IDs/Id.json" beforeDir="false" afterPath="$PROJECT_DIR$/Data/IDs/Id.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/Products/Categories.json" beforeDir="false" afterPath="$PROJECT_DIR$/Data/Products/Categories.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Data/Products/Products.json" beforeDir="false" afterPath="$PROJECT_DIR$/Data/Products/Products.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/Requests/NewProductRequests.json" beforeDir="false" afterPath="$PROJECT_DIR$/Data/Requests/NewProductRequests.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/ClientThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/ClientThread.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/Server.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/View/Menu/BuyerMenus/ViewCartMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/View/Menu/BuyerMenus/ViewCartMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/View/Menu/SellerMenus/SellerMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/View/Menu/SellerMenus/SellerMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Model/Product/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Model/Product/Product.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/View/Menu/AdminMenus/AdminMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/View/Menu/AdminMenus/AdminMenu.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -376,13 +371,6 @@
       <workItem from="1593178150008" duration="253000" />
       <workItem from="1593187077572" duration="84000" />
     </task>
-    <task id="LOCAL-00065" summary="complete FilteringMenu">
-      <created>1589886526890</created>
-      <option name="number" value="00065" />
-      <option name="presentableId" value="LOCAL-00065" />
-      <option name="project" value="LOCAL" />
-      <updated>1589886526891</updated>
-    </task>
     <task id="LOCAL-00066" summary="debug Menus">
       <created>1589892897797</created>
       <option name="number" value="00066" />
@@ -719,7 +707,14 @@
       <option name="project" value="LOCAL" />
       <updated>1595448623948</updated>
     </task>
-    <option name="localTasksCounter" value="114" />
+    <task id="LOCAL-00114" summary="debug sending files">
+      <created>1595502320820</created>
+      <option name="number" value="00114" />
+      <option name="presentableId" value="LOCAL-00114" />
+      <option name="project" value="LOCAL" />
+      <updated>1595502320821</updated>
+    </task>
+    <option name="localTasksCounter" value="115" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -727,7 +722,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="zoom picture" />
     <MESSAGE value="ProductsMenu styles" />
     <MESSAGE value="debug music" />
     <MESSAGE value="small edit" />
@@ -752,7 +746,8 @@
     <MESSAGE value="debug login" />
     <MESSAGE value="edit NewProductRequest for file products" />
     <MESSAGE value="edit Product for file Product" />
-    <option name="LAST_COMMIT_MESSAGE" value="edit Product for file Product" />
+    <MESSAGE value="debug sending files" />
+    <option name="LAST_COMMIT_MESSAGE" value="debug sending files" />
   </component>
   <component name="WindowStateProjectService">
     <state x="280" y="20" key="#AccountManagerTest" timestamp="1589226101281">
@@ -885,10 +880,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="438" y="65" key="#xdebugger.evaluate/0.0.1366.728@0.0.1366.728" timestamp="1595501308315" />
-    <state x="499" y="0" key="CommitChangelistDialog2" timestamp="1595448621930">
+    <state x="499" y="0" key="CommitChangelistDialog2" timestamp="1595502319432">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="499" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1595448621930" />
+    <state x="499" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1595502319432" />
     <state x="470" y="0" key="CommitChangelistDialog2/0.0.1366.738@0.0.1366.738" timestamp="1593178423340" />
     <state x="92" y="93" width="1182" height="552" key="DiffContextDialog" timestamp="1593178422199">
       <screen x="0" y="0" width="1366" height="738" />
@@ -899,25 +894,25 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="463" y="122" key="FileChooserDialogImpl/0.0.1366.738@0.0.1366.738" timestamp="1592855183500" />
-    <state width="1322" height="174" key="GridCell.Tab.0.bottom" timestamp="1595502246975">
+    <state width="1322" height="174" key="GridCell.Tab.0.bottom" timestamp="1595521669170">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1322" height="174" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1595502246975" />
+    <state width="1322" height="174" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1595521669170" />
     <state width="1322" height="185" key="GridCell.Tab.0.bottom/0.0.1366.738@0.0.1366.738" timestamp="1593178427051" />
-    <state width="1322" height="174" key="GridCell.Tab.0.center" timestamp="1595502246975">
+    <state width="1322" height="174" key="GridCell.Tab.0.center" timestamp="1595521669169">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1322" height="174" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1595502246975" />
+    <state width="1322" height="174" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1595521669169" />
     <state width="1322" height="185" key="GridCell.Tab.0.center/0.0.1366.738@0.0.1366.738" timestamp="1593178427051" />
-    <state width="1322" height="174" key="GridCell.Tab.0.left" timestamp="1595502246975">
+    <state width="1322" height="174" key="GridCell.Tab.0.left" timestamp="1595521669169">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1322" height="174" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1595502246975" />
+    <state width="1322" height="174" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1595521669169" />
     <state width="1322" height="185" key="GridCell.Tab.0.left/0.0.1366.738@0.0.1366.738" timestamp="1593178427051" />
-    <state width="1322" height="174" key="GridCell.Tab.0.right" timestamp="1595502246975">
+    <state width="1322" height="174" key="GridCell.Tab.0.right" timestamp="1595521669169">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1322" height="174" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1595502246975" />
+    <state width="1322" height="174" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1595521669169" />
     <state width="1322" height="185" key="GridCell.Tab.0.right/0.0.1366.738@0.0.1366.738" timestamp="1593178427051" />
     <state width="1322" height="244" key="GridCell.Tab.1.bottom" timestamp="1595502161406">
       <screen x="0" y="0" width="1366" height="728" />
@@ -957,10 +952,10 @@
     </state>
     <state x="184" y="0" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1594551371835" />
     <state x="184" y="0" key="SettingsEditor/0.0.1366.738@0.0.1366.738" timestamp="1591433792246" />
-    <state x="275" y="95" key="Vcs.Push.Dialog.v2" timestamp="1595246035246">
+    <state x="275" y="95" key="Vcs.Push.Dialog.v2" timestamp="1595520867666">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="275" y="95" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1595246035246" />
+    <state x="275" y="95" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1595520867666" />
     <state x="275" y="96" key="Vcs.Push.Dialog.v2/0.0.1366.738@0.0.1366.738" timestamp="1593112604984" />
     <state width="691" height="372" key="XDebugger.FullValuePopup" timestamp="1595066970216">
       <screen x="0" y="0" width="1366" height="728" />
@@ -970,10 +965,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="378" y="186" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1595497346786" />
-    <state x="492" y="279" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1595409531168">
+    <state x="492" y="279" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1595520856503">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="492" y="279" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.728@0.0.1366.728" timestamp="1595409531168" />
+    <state x="492" y="279" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.728@0.0.1366.728" timestamp="1595520856503" />
     <state x="492" y="283" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.738@0.0.1366.738" timestamp="1593112595135" />
     <state x="380" y="100" width="737" height="606" key="find.popup" timestamp="1593190820824">
       <screen x="0" y="0" width="1366" height="728" />
@@ -1003,11 +998,6 @@
           <url>file://$PROJECT_DIR$/src/main/java/View/Menu/BuyerMenus/BuyerMenu.java</url>
           <line>386</line>
           <option name="timeStamp" value="13" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/View/Menu/BuyerMenus/ViewCartMenu.java</url>
-          <line>331</line>
-          <option name="timeStamp" value="19" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

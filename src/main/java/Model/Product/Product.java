@@ -278,6 +278,7 @@ public class Product {
         Label number = new Label("Number : " + product.getNumber());
         Label descriptionTag = new Label("Description : ");
         Label description = new Label(product.getDescription());
+        Label hasFile = new Label("HasFile : " + doesHasFile);
 
         GridPane.setConstraints(name, 0, 1 , 2 , 1);
         GridPane.setConstraints(averageScore, 0, 2 , 2 , 1);
@@ -290,8 +291,9 @@ public class Product {
         GridPane.setConstraints(number, 0, 9 , 2 , 1);
         GridPane.setConstraints(descriptionTag, 0, 10 , 2 , 1);
         GridPane.setConstraints(description, 1, 11 , 2 , 3);
+        GridPane.setConstraints(hasFile, 0, 15, 2, 1);
 
-        gridPane.getChildren().addAll( name, averageScore, scoreWithStar, price, category, status,sellerUsername,available,number,descriptionTag,description);
+        gridPane.getChildren().addAll( name, averageScore, scoreWithStar, price, category, status,sellerUsername,available,number,descriptionTag,description, hasFile);
 
         if (product.doesHaveOff()){
             try {
