@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="aeefa500-3a99-4ed0-98cf-a7157d1fa89a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/AccountManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/AccountManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/AdminManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/AdminManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/ClientThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/ClientThread.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/View/Menu/AdminMenus/AdminMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/View/Menu/AdminMenus/AdminMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/IDs/Id.json" beforeDir="false" afterPath="$PROJECT_DIR$/Data/IDs/Id.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/Requests/NewProductRequests.json" beforeDir="false" afterPath="$PROJECT_DIR$/Data/Requests/NewProductRequests.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
