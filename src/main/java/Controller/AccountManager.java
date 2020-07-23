@@ -124,6 +124,10 @@ public class AccountManager {
         }
         else if (account instanceof SellerAccount){
 //            doish
+            res = WorkWithBank.decreaseCredit(-much , bankUsername , bankPassword, bankId);
+            if (res.equalsIgnoreCase("done successfully")){
+                account.setCredit(account.getCredit() + much);
+            }
         }
         return res;
     }

@@ -51,4 +51,13 @@ public class WorkWithBank {
     private static String get_token(String bankUsername, String bankPassword) {
         return sendMessage("get_token " + bankUsername + " " + bankPassword);
     }
+
+    public static String decreaseCredit(int much, String bankUsername, String bankPassword, String bankId) {
+        String token = get_token(AdminBankUsername , AdminBankPassword);
+        String res = sendMessage("create_receipt " + token + " move " + much + " " + AdminBankId + " " + bankId +  " decreaseCredit");
+        if (res.matches("[0-9]+")){
+            res = sendMessage("pay " + res) ;
+        }
+        return res ;
+    }
 }

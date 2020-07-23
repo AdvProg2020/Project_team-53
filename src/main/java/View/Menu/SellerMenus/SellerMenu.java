@@ -87,6 +87,11 @@ public class SellerMenu extends Menu {
         editInfoButton.setMaxWidth(Double.MAX_VALUE);
         editInfoButton.setOnAction(e -> handleEdit());
 
+        Button changeCredit = new Button("Change Credit");
+        changeCredit.getStyleClass().add("dark-blue");
+        changeCredit.setMaxWidth(Double.MAX_VALUE);
+        changeCredit.setOnAction(e -> handleChangeCredit());
+
         Button logout = new Button("Logout");
         logout.getStyleClass().add("dark-blue");
         logout.setMaxWidth(Double.MAX_VALUE);
@@ -97,7 +102,8 @@ public class SellerMenu extends Menu {
         GridPane.setConstraints(manageOffs, 0, 2);
         GridPane.setConstraints(editInfoButton, 0, 3);
         GridPane.setConstraints(addAuction, 0, 4);
-        GridPane.setConstraints(logout, 0, 5);
+        GridPane.setConstraints(changeCredit , 0 , 5);
+        GridPane.setConstraints(logout, 0, 6);
 
         GridPane.setHalignment(viewAllLogs, HPos.CENTER);
         GridPane.setHalignment(manageProducts, HPos.CENTER);
@@ -105,6 +111,7 @@ public class SellerMenu extends Menu {
         GridPane.setHalignment(editInfoButton, HPos.CENTER);
         GridPane.setHalignment(logout, HPos.CENTER);
         GridPane.setHalignment(addAuction, HPos.CENTER);
+        GridPane.setHalignment(changeCredit, HPos.CENTER);
 
         try {
             dataOutputStream.writeUTF("GetLoggedAccount");
@@ -133,7 +140,7 @@ public class SellerMenu extends Menu {
             System.out.println(e.getMessage());
         }
         Pane pane = Objects.requireNonNull(Menu.account).viewPersonalInfoInGraphic();
-        allButtons.getChildren().addAll(viewAllLogs, manageProducts, manageOffs, editInfoButton, logout, addAuction);
+        allButtons.getChildren().addAll(viewAllLogs, manageProducts, manageOffs, editInfoButton, logout, addAuction , changeCredit);
 
         GridPane.setConstraints(pane, 0, 0);
         GridPane.setConstraints(allButtons, 3, 0);
@@ -195,6 +202,83 @@ public class SellerMenu extends Menu {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    private void handleChangeCredit() {
+        super.setPane();
+        GridPane gridPane = new GridPane();
+        Scene scene = new Scene(super.mainPane, 1000, 600);
+        scene.getStylesheets().add(new File("Data/Styles/Buttons.css").toURI().toString());
+        scene.getStylesheets().add(new File("Data/Styles/textfield.css").toURI().toString());
+        scene.getStylesheets().add(new File("Data/Styles/backgrounds.css").toURI().toString());
+        scene.getStylesheets().add(new File("Data/Styles/choicebox.css").toURI().toString());
+        super.mainPane.getStyleClass().add("admin-page");
+        gridPane.setAlignment(Pos.CENTER);
+        gridPane.setVgap(10);
+        Label status = new Label();
+
+        TextField much = new TextField();
+        much.setPromptText("amount (negative for decrease)");
+        much.getStyleClass().add("textfield.css");
+
+
+        TextField bankUsername = new TextField();
+        bankUsername.setPromptText("Bank Username");
+        bankUsername.getStyleClass().add("textfield.css");
+
+        TextField bankPassword = new TextField();
+        bankPassword.setPromptText("Bank Password");
+        bankPassword.getStyleClass().add("textfield.css");
+
+
+        TextField bankId = new TextField();
+        bankId.setPromptText("Bank Id");
+        bankId.getStyleClass().add("textfield.css");
+
+        Button edit = new Button("edit");
+        edit.getStyleClass().add("dark-blue");
+        edit.setMaxWidth(Double.MAX_VALUE);
+        edit.setOnAction(e -> {
+            try {
+                dataOutputStream.writeUTF("changeCredit " +  much.getText() + " " + bankUsername.getText() + " " + bankPassword.getText() + " " + bankId.getText());
+                dataOutputStream.flush();
+                status.setText(dataInputStream.readUTF());
+            }
+            catch (Exception ex)
+            {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error");
+                alert.setHeaderText("Process Fail");
+                alert.setContentText("Wrong input for change to");
+
+                alert.showAndWait();
+            }
+        });
+        Button back = new Button("back");
+        back.getStyleClass().add("dark-blue");
+        back.setMaxWidth(Double.MAX_VALUE);
+        back.setOnAction(e -> {
+            show();
+        });
+        GridPane.setConstraints(much, 0, 1);
+        GridPane.setConstraints(bankUsername, 0 , 2);
+        GridPane.setConstraints(bankPassword, 0 , 3);
+        GridPane.setConstraints(bankId, 0 , 4);
+
+        GridPane.setConstraints(edit, 0, 5);
+        GridPane.setConstraints(back, 0, 6);
+        GridPane.setConstraints(status, 0, 7);
+        GridPane.setHalignment(edit, HPos.CENTER);
+        GridPane.setHalignment(back, HPos.CENTER);
+        GridPane.setHalignment(bankUsername, HPos.CENTER);
+
+        GridPane.setHalignment(bankPassword, HPos.CENTER);
+        GridPane.setHalignment(bankId, HPos.CENTER);
+        GridPane.setHalignment(status, HPos.CENTER);
+        gridPane.getChildren().addAll(much, bankUsername , bankPassword , bankId , edit, back, status);
+        super.mainPane.setCenter(gridPane);
+
+        Menu.window.setScene(scene);
     }
 
     private void handleAddAuction(){
