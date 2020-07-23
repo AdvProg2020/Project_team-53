@@ -1,13 +1,17 @@
 package Model.Log;
 
 public class BuyLog extends Log{
-    int discountValue;
-    String sellerUsername;
+    private int discountValue;
+    private String sellerUsername;
+    private String addressOfBuyer;
+    private boolean wasProductHasFile;
 
-    public BuyLog(String date, int price, String deliveryStatus, int logId, int productId, int discountValue, String sellerUsername) {
+    public BuyLog(String date, int price, String deliveryStatus, int logId, int productId, int discountValue, String sellerUsername, String addressOfBuyer, boolean wasProductHasFile) {
         super(date, price, deliveryStatus, logId, productId);
         this.discountValue = discountValue;
         this.sellerUsername = sellerUsername;
+        this.addressOfBuyer = addressOfBuyer;
+        this.wasProductHasFile = wasProductHasFile;
     }
 
     public int getDiscountValue() {
@@ -31,4 +35,11 @@ public class BuyLog extends Log{
                 '}';
     }
 
+    public boolean isWasProductHasFile() {
+        return wasProductHasFile;
+    }
+
+    public String getAddressOfBuyer() {
+        return addressOfBuyer;
+    }
 }

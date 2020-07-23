@@ -313,7 +313,8 @@ public class ClientThread extends Thread {
                 }
                 else if (input.startsWith("Pay"))
                 {
-                    output = buyerManager.pay(Integer.parseInt(input.split(" ")[1]), account);
+                    details = input.split(" ");
+                    output = buyerManager.pay(Integer.parseInt(details[1]), account, details[2]);
                 }
                 else if (input.startsWith("AddAuction"))
                 {
@@ -421,6 +422,10 @@ public class ClientThread extends Thread {
                 else if (input.startsWith("changeFinancialSetting")){
                     details = input.split(" ");
                     output = adminManager.changeFinancialSetting(details[1] , details[2]);
+                }
+                else if (input.startsWith("ReceivedBuyLog"))
+                {
+                    Objects.requireNonNull(Database.getBuyLogByID(Integer.parseInt(input.split(" ")[1]))).setDeliveryStatus("Received");
                 }
                 else if (input.startsWith("Exit"))
                 {

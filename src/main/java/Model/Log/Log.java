@@ -50,13 +50,13 @@ public abstract class Log {
         return deliveryStatus;
     }
 
-    public static void addLog(String buyerUsername , String sellerUsername , int price, int productId, int offValue, int discountValue){
+    public static void addLog(String buyerUsername , String sellerUsername , int price, int productId, int offValue, int discountValue, String address, boolean wasProductFile){
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
         LocalDateTime now = LocalDateTime.now();
         System.out.println(dtf.format(now));
 
         SellLog sellLog = new SellLog(dtf.format(now), price, "preparing...", allLogId, productId, offValue, buyerUsername);
-        BuyLog buyLog = new BuyLog(dtf.format(now), price, "preparing...", allLogId, productId, discountValue, sellerUsername);
+        BuyLog buyLog = new BuyLog(dtf.format(now), price, "preparing...", allLogId, productId, discountValue, sellerUsername, address, wasProductFile);
 
         BuyerAccount buyerAccount = (BuyerAccount)Database.getAccountByUsername(buyerUsername);
         SellerAccount sellerAccount = (SellerAccount)Database.getAccountByUsername(sellerUsername);
@@ -78,7 +78,26 @@ public abstract class Log {
         gridPane.setVgap(10);
         gridPane.setHgap(10);
 
-        if (log instanceof BuyLog) {
+        if (log instanceof BuyLog && ((BuyLog)log).isWasProductHasFile()) {
+            Label logId = new Label("Log ID : " + log.getLogId());
+            Label dateLabel = new Label("Date : " + log.getDate());
+            Label priceLabel = new Label("Price : " + log.getPrice());
+            Label productIdLabel = new Label("Product Id : " + log.getProductId());
+            Label discountLabel = new Label("Discount Value : " + ((BuyLog) log).getDiscountValue());
+            Label sellerUsernameLabel = new Label("Seller Username : " + ((BuyLog) log).getSellerUsername());
+
+
+            GridPane.setConstraints(logId, 0, 0);
+            GridPane.setConstraints(dateLabel, 0, 1);
+            GridPane.setConstraints(priceLabel, 0, 2);
+            GridPane.setConstraints(productIdLabel, 0, 4);
+            GridPane.setConstraints(discountLabel, 0, 5);
+            GridPane.setConstraints(sellerUsernameLabel, 0, 6);
+
+            gridPane.getChildren().addAll(logId, dateLabel, priceLabel, productIdLabel, discountLabel, sellerUsernameLabel);
+        }
+        else if (log instanceof BuyLog && !((BuyLog)log).isWasProductHasFile())
+        {
             Label logId = new Label("Log ID : " + log.getLogId());
             Label dateLabel = new Label("Date : " + log.getDate());
             Label priceLabel = new Label("Price : " + log.getPrice());
@@ -86,6 +105,7 @@ public abstract class Log {
             Label productIdLabel = new Label("Product Id : " + log.getProductId());
             Label discountLabel = new Label("Discount Value : " + ((BuyLog) log).getDiscountValue());
             Label sellerUsernameLabel = new Label("Seller Username : " + ((BuyLog) log).getSellerUsername());
+            Label address = new Label("Address : " + ((BuyLog)log).getAddressOfBuyer());
 
 
             GridPane.setConstraints(logId, 0, 0);
@@ -95,8 +115,9 @@ public abstract class Log {
             GridPane.setConstraints(productIdLabel, 0, 4);
             GridPane.setConstraints(discountLabel, 0, 5);
             GridPane.setConstraints(sellerUsernameLabel, 0, 6);
+            GridPane.setConstraints(address, 0, 7);
 
-            gridPane.getChildren().addAll(logId, dateLabel, priceLabel, delivered, productIdLabel, discountLabel, sellerUsernameLabel);
+            gridPane.getChildren().addAll(logId, dateLabel, priceLabel, delivered, productIdLabel, discountLabel, sellerUsernameLabel, address);
         }
         else if (log instanceof SellLog){
             Label logId = new Label("Log ID : " + log.getLogId());
@@ -122,5 +143,7 @@ public abstract class Log {
         return gridPane;
     }
 
-
+    public void setDeliveryStatus(String deliveryStatus) {
+        this.deliveryStatus = deliveryStatus;
+    }
 }

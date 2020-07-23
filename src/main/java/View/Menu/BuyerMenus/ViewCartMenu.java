@@ -232,7 +232,7 @@ public class ViewCartMenu extends Menu {
                 dataOutputStream.writeUTF("PrOfCart");
                 dataOutputStream.flush();
                 allProducts = new Gson().fromJson(dataInputStream.readUTF(), new TypeToken<ArrayList<Product>>(){}.getType());
-                dataOutputStream.writeUTF("Pay " + id);
+                dataOutputStream.writeUTF("Pay " + id + " " + address.getText());
                 dataOutputStream.flush();
                 res = dataInputStream.readUTF();
             } catch (IOException ex) {

@@ -65,7 +65,7 @@ public class Auction extends Thread{
         }
         BuyerManager buyerManager = new BuyerManager();
         buyerManager.addProductToCart(product, buyerWithMostPrice);
-        buyerManager.pay(-1, buyerWithMostPrice);
+        buyerManager.pay(-1, buyerWithMostPrice, "");
     }
 
     public Product getProduct() {

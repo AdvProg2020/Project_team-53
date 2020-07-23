@@ -61,11 +61,11 @@ public class BuyerManager {
         return true;//just for make ok compile error
     }
 
-    public void buy(int discountId, Account account) {
+    public void buy(int discountId, Account account, String addressOfBuyer) {
         BuyerAccount buyerAccount = (BuyerAccount) account;
         long cost = buyerAccount.getCart().getCost();
         buyerAccount.setCredit((int) (buyerAccount.getCredit() - cost));
-        payToSeller(discountId, account);
+        payToSeller(discountId, account, addressOfBuyer);
         // Todo: get the seller cost
         if (buyerAccount.canUseDiscount(discountId)) {
             buyerAccount.useDiscount(discountId);
@@ -84,7 +84,7 @@ public class BuyerManager {
         return buyerAccount.getCart().showCart();
     }
 
-    public String pay(int discountId, Account account) {
+    public String pay(int discountId, Account account, String addressOfBuyer) {
         if (Database.getDiscountById(discountId) == null && discountId != -1)
             return " your discount is not valid";
         if (discountId!=-1 && !((BuyerAccount) account).canUseDiscount(discountId))
@@ -92,12 +92,12 @@ public class BuyerManager {
         if (!canBuy(discountId, account))
             return "Not enough money";
         else {
-            buy(discountId,account);
+            buy(discountId,account, addressOfBuyer);
             return "product bought successfully";
         }
     }
 
-    public void payToSeller(int discountId, Account account) {
+    public void payToSeller(int discountId, Account account, String addressOfBuyer) {
         BuyerAccount buyerAccount = (BuyerAccount) account;
         int discountValue = 0;
         if (buyerAccount.canUseDiscount(discountId))
@@ -115,7 +115,7 @@ public class BuyerManager {
                 offValue = product.getPrice() * product.getOff().getPercent() / 100;
                 sellerAccount.setCredit(sellerAccount.getCredit() - Math.min(offValue, maxValue) * buyerAccount.getCart().getMuchOfProductID(productId));
             }
-            Log.addLog(buyerAccount.getUsername(), product.getSellerUsername(), product.getPrice(), productId, Math.min(offValue, maxValue), discountValue * product.getPrice() / 100);
+            Log.addLog(buyerAccount.getUsername(), product.getSellerUsername(), product.getPrice(), productId, Math.min(offValue, maxValue), discountValue * product.getPrice() / 100, addressOfBuyer, product.doesHasFile());
         }
     }
 

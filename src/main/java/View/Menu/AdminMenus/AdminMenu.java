@@ -312,7 +312,28 @@ public class AdminMenu extends Menu {
         ((GridPane)pane).setAlignment(Pos.CENTER);
         Scene scene = new Scene(pane, 600, 400);
         scene.getStylesheets().add(new File("Data/Styles/backgrounds.css").toURI().toString());
+        scene.getStylesheets().add(new File("Data/Styles/Buttons.css").toURI().toString());
         pane.getStyleClass().add("admin-popup");
+        if (!buyLog.isWasProductHasFile() && !buyLog.getDeliveryStatus().equalsIgnoreCase("Received"))
+        {
+            Button receive = new Button("Received");
+            receive.getStyleClass().add("dark-blue");
+            receive.setMaxWidth(Double.MAX_VALUE);
+            GridPane.setConstraints(receive, 3, 0);
+            pane.getChildren().add(receive);
+            receive.setOnAction(event -> {
+                try {
+                    dataOutputStream.writeUTF("ReceivedBuyLog " + buyLog.getLogId());
+                    dataOutputStream.flush();
+                }
+                catch (Exception e)
+                {
+                    System.out.println(e.getMessage());
+                }
+                handleAllLogs();
+                newWindow.close();
+            });
+        }
 
         newWindow.setScene(scene);
         newWindow.initModality(Modality.APPLICATION_MODAL);

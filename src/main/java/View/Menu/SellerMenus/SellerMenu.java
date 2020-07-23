@@ -280,7 +280,6 @@ public class SellerMenu extends Menu {
         Menu.window.setScene(scene);
     }
 
-
     private void handleAddAuction(){
         super.setPane();
         GridPane gridPane = new GridPane();
