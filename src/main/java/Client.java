@@ -11,7 +11,7 @@ public class Client extends Application {
 
     public static void main(String[] args){
         try {
-            Socket socket = new Socket("127.0.0.1", 8080);
+            Socket socket = new Socket("127.0.0.1", 9595);
             DataInputStream dataInputStream = new DataInputStream(new BufferedInputStream(socket.getInputStream()));
             DataOutputStream dataOutputStream = new DataOutputStream(new BufferedOutputStream(socket.getOutputStream()));
             window.setOnCloseRequest(e -> {

@@ -114,5 +114,18 @@ public class AccountManager {
         return "nothing to show.";
     }
 
+    public String changeCredit(Account account , int much , String bankUsername , String bankPassword , String bankId){
+        String res = "not available";
+        if (much > 0){
+            res = WorkWithBank.increaseCredit(much , bankUsername, bankPassword, bankId);
+            if (res.equalsIgnoreCase("done successfully")){
+                account.setCredit(account.getCredit() + much);
+            }
+        }
+        else if (account instanceof SellerAccount){
+//            doish
+        }
+        return res;
+    }
 
 }

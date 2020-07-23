@@ -414,6 +414,10 @@ public class ClientThread extends Thread {
                     }
                     output = new Gson().toJson(allProducts);
                 }
+                else if (input.startsWith("changeCredit")){
+                    details = input.split(" ");
+                    output = accountManager.changeCredit(account , Integer.parseInt(details[1]), details[2] , details[3], details[4]);
+                }
                 else if (input.startsWith("Exit"))
                 {
                     clientSocket.close();
