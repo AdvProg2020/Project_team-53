@@ -1,6 +1,5 @@
 package View.Menu.AdminMenus;
 
-import Controller.Database;
 import Model.Account.Account;
 import Model.Account.AdminAccount;
 import Model.Account.BuyerAccount;
@@ -235,11 +234,30 @@ public class AdminMenu extends Menu {
     {
         try {
             super.setPane();
-            ArrayList<Request> allRequest;
-            dataOutputStream.writeUTF("AllRequest");
+            dataOutputStream.writeUTF("GetAllAddNewOffRequest");
             dataOutputStream.flush();
-            Gson gson = new Gson();
-            allRequest = gson.fromJson(dataInputStream.readUTF(), new TypeToken<ArrayList<Request>>(){}.getType());
+            ArrayList<AddNewOffRequest> addNewOffRequests = new Gson().fromJson(dataInputStream.readUTF(), new TypeToken<ArrayList<AddNewOffRequest>>(){}.getType());
+            dataOutputStream.writeUTF("GetAllDeleteProductRequest");
+            dataOutputStream.flush();
+            ArrayList<DeleteProduct> deleteProducts = new Gson().fromJson(dataInputStream.readUTF(), new TypeToken<ArrayList<DeleteProduct>>(){}.getType());
+            dataOutputStream.writeUTF("GetAllEditOffRequest");
+            dataOutputStream.flush();
+            ArrayList<EditOffRequest> editOffRequests = new Gson().fromJson(dataInputStream.readUTF(), new TypeToken<ArrayList<EditOffRequest>>(){}.getType());
+            dataOutputStream.writeUTF("GetAllEditProductRequest");
+            dataOutputStream.flush();
+            ArrayList<EditProductRequest> editProductRequests = new Gson().fromJson(dataInputStream.readUTF(), new TypeToken<ArrayList<EditProductRequest>>(){}.getType());
+            dataOutputStream.writeUTF("GetAllNewProductRequest");
+            dataOutputStream.flush();
+            ArrayList<NewProductRequest> newProductRequests = new Gson().fromJson(dataInputStream.readUTF(), new TypeToken<ArrayList<NewProductRequest>>(){}.getType());
+            dataOutputStream.writeUTF("GetAllNewSellerRequest");
+            dataOutputStream.flush();
+            ArrayList<NewSellerRequest> newSellerRequests = new Gson().fromJson(dataInputStream.readUTF(), new TypeToken<ArrayList<NewSellerRequest>>(){}.getType());
+            ArrayList<Request> allRequest = new ArrayList<>(addNewOffRequests);
+            allRequest.addAll(deleteProducts);
+            allRequest.addAll(editOffRequests);
+            allRequest.addAll(editProductRequests);
+            allRequest.addAll(newProductRequests);
+            allRequest.addAll(newSellerRequests);
             Scene scene = new Scene(super.mainPane, 1000, 600);
             scene.getStylesheets().add(new File("Data/Styles/Buttons.css").toURI().toString());
             scene.getStylesheets().add(new File("Data/Styles/textfield.css").toURI().toString());
@@ -392,11 +410,22 @@ public class AdminMenu extends Menu {
     {
         try {
             super.setPane();
-            ArrayList<Account> allAccount;
-            dataOutputStream.writeUTF("AllAccounts");
+            ArrayList<BuyerAccount> allBuyerAccount;
+            ArrayList<SellerAccount> allSellerAccount;
+            ArrayList<AdminAccount> allAdminAccount;
+            dataOutputStream.writeUTF("GetAllBuyerAccounts");
             dataOutputStream.flush();
             Gson gson = new Gson();
-            allAccount = gson.fromJson(dataInputStream.readUTF(), new TypeToken<ArrayList<Account>>(){}.getType());
+            allBuyerAccount = gson.fromJson(dataInputStream.readUTF(), new TypeToken<ArrayList<BuyerAccount>>(){}.getType());
+            dataOutputStream.writeUTF("GetAllSellerAccounts");
+            dataOutputStream.flush();
+            allSellerAccount = new Gson().fromJson(dataInputStream.readUTF(), new TypeToken<ArrayList<SellerAccount>>(){}.getType());
+            dataOutputStream.writeUTF("GetAllAdminAccounts");
+            dataOutputStream.flush();
+            allAdminAccount = new Gson().fromJson(dataInputStream.readUTF(), new TypeToken<ArrayList<AdminAccount>>(){}.getType());
+            ArrayList<Account> allAccount = new ArrayList<>(allAdminAccount);
+            allAccount.addAll(allSellerAccount);
+            allAccount.addAll(allBuyerAccount);
             Scene scene = new Scene(super.mainPane, 1000, 600);
             scene.getStylesheets().add(new File("Data/Styles/Buttons.css").toURI().toString());
             scene.getStylesheets().add(new File("Data/Styles/textfield.css").toURI().toString());
@@ -1143,13 +1172,14 @@ public class AdminMenu extends Menu {
             numberOfTimes.setPromptText("Number Of Times");
 
             ArrayList<CheckBox> checkBoxes = new ArrayList<>();
-            ArrayList<Account> allAccounts = Database.getAllAccounts();
+            ArrayList<Account> allAccounts;
+            dataOutputStream.writeUTF("GetAllBuyerAccounts");
+            dataOutputStream.flush();
+            allAccounts = new Gson().fromJson(dataInputStream.readUTF(), new TypeToken<ArrayList<BuyerAccount>>(){}.getType());
             for (Account account : allAccounts) {
-                if (account instanceof BuyerAccount){
-                    CheckBox checkBox = new CheckBox(account.getUsername());
-                    checkBox.setId(account.getUsername());
-                    checkBoxes.add(checkBox);
-                }
+                CheckBox checkBox = new CheckBox(account.getUsername());
+                checkBox.setId(account.getUsername());
+                checkBoxes.add(checkBox);
             }
 
             Button add = new Button("Add");
@@ -1162,8 +1192,8 @@ public class AdminMenu extends Menu {
                             unIAL.add(checkBox.getId());
                         }
                     }
-                    dataOutputStream.writeUTF("AddDiscount " + Integer.parseInt(maxValue.getText()) + " " + Integer.parseInt(percent.getText()) + " " +
-                            startDate.getText() + " " + endDate.getText() + " " + Integer.parseInt(numberOfTimes.getText()) + " " + new Gson().toJson(unIAL));
+                    dataOutputStream.writeUTF("AddDiscount\n" + Integer.parseInt(maxValue.getText()) + "\n" + Integer.parseInt(percent.getText()) + "\n" +
+                            startDate.getText() + "\n" + endDate.getText() + "\n" + Integer.parseInt(numberOfTimes.getText()) + "\n" + new Gson().toJson(unIAL));
                     dataOutputStream.flush();
                     status.setText(dataInputStream.readUTF());
                 }

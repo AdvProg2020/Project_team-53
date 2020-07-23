@@ -5,6 +5,7 @@ import Model.Account.AdminAccount;
 import Model.Account.BuyerAccount;
 import Model.Account.SellerAccount;
 import Model.Product.Auction;
+import Model.Product.Product;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -101,11 +102,6 @@ public class ClientThread extends Thread {
                     Gson gson = new Gson();
                     output = gson.toJson(account.viewPersonalInfoInGraphic());
                 }
-                else if (input.startsWith("AllAccounts"))
-                {
-                    Gson gson = new Gson();
-                    output = gson.toJson(Database.getAllAccounts());
-                }
                 else if (input.startsWith("AllProducts"))
                 {
                     Gson gson = new Gson();
@@ -115,11 +111,6 @@ public class ClientThread extends Thread {
                 {
                     Gson gson = new Gson();
                     output = gson.toJson(Database.getAllDiscounts());
-                }
-                else if (input.startsWith("AllRequest"))
-                {
-                    Gson gson = new Gson();
-                    output = gson.toJson(Database.getAllRequest());
                 }
                 else if (input.startsWith("AllCategories"))
                 {
@@ -182,8 +173,9 @@ public class ClientThread extends Thread {
                 }
                 else if (input.startsWith("AddDiscount"))
                 {
-                    details = input.split(" ");
+                    details = input.split("\n");
                     Gson gson = new Gson();
+                    String buyers = details[6];
                     ArrayList<String> users = gson.fromJson(details[6], new TypeToken<ArrayList<String>>(){}.getType());
                     output = adminManager.addNewDiscount(Integer.parseInt(details[1]), Integer.parseInt(details[2]), details[3], details[4], Integer.parseInt(details[5]), users);
                 }
@@ -196,7 +188,7 @@ public class ClientThread extends Thread {
                 {
                     Account temp = Database.getAccountByUsername(input.split(" ")[1]);
                     Gson gson = new Gson();
-                    output = gson.toJson(temp.viewPersonalInfoInGraphic());
+                    output = gson.toJson(Objects.requireNonNull(temp).viewPersonalInfoInGraphic());
                 }
                 else if (input.startsWith("GetAccount"))
                 {
@@ -228,7 +220,7 @@ public class ClientThread extends Thread {
                 }
                 else if (input.startsWith("ViewProduct"))
                 {
-                    output = new Gson().toJson(Database.getProductByID(Integer.parseInt(input.split(" ")[1])).showProductFullInfoGraphic());
+                    output = new Gson().toJson(Objects.requireNonNull(Database.getProductByID(Integer.parseInt(input.split(" ")[1]))).showProductFullInfoGraphic());
                 }
                 else if (input.startsWith("ShowAllProduct"))
                 {
@@ -266,7 +258,6 @@ public class ClientThread extends Thread {
                 }
                 else if (input.startsWith("AddToCart"))
                 {
-                    int test = productManager.getProduct().getProductId();
                     output = buyerManager.addProductToCart(productManager.getProduct(), account);
                 }
                 else if (input.startsWith("GiveComment"))
@@ -302,7 +293,7 @@ public class ClientThread extends Thread {
                 {
                     details = input.split(" ");
                     output = sellerManager.sendAddProductRequest(details[1], details[2], Boolean.parseBoolean(details[3]),
-                            Integer.parseInt(details[4]), details[5], details[6], Integer.parseInt(details[7]), account);
+                            Integer.parseInt(details[4]), details[5], details[6], Integer.parseInt(details[7]), account, Boolean.parseBoolean(details[8]), details[9]);
                 }
                 else  if (input.startsWith("GetBuyerOfProduct"))
                 {
@@ -357,9 +348,76 @@ public class ClientThread extends Thread {
                     }
                     output = new Gson().toJson(myAuctions);
                 }
+                else if (input.startsWith("GetCostOfAccountCart"))
+                {
+                    output = Long.toString(((BuyerAccount)account).getCart().getCost());
+
+                }
+                else if (input.startsWith("GetCartOfAccount"))
+                {
+                    output = new Gson().toJson(((BuyerAccount)account).getCart());
+                }
+                else if (input.startsWith("SetPortOfSeller"))
+                {
+                    server.setPortForSeller((SellerAccount) account, Integer.parseInt(input.split(" ")[1]));
+                }
+                else if (input.startsWith("GetPortOfSeller"))
+                {
+                    output = Integer.toString(server.getPortOfSeller(((SellerAccount)Database.getAccountByUsername(input.split(" ")[1]))));
+                }
+                else if (input.startsWith("GetAllBuyerAccounts"))
+                {
+                    output = new Gson().toJson(Database.getAllBuyerAccounts());
+                }
+                else if (input.startsWith("GetAllSellerAccounts"))
+                {
+                    output = new Gson().toJson(Database.getAllSellerAccounts());
+                }
+                else if (input.startsWith("GetAllAdminAccounts"))
+                {
+                    output = new Gson().toJson(Database.getAllAdminAccounts());
+                }
+                else if (input.startsWith("GetAllAddNewOffRequest"))
+                {
+                    output = new Gson().toJson(Database.getAllAddNewOffRequests());
+                }
+                else if (input.startsWith("GetAllDeleteProductRequest"))
+                {
+                    output = new Gson().toJson(Database.getAllDeleteProductRequests());
+                }
+                else if (input.startsWith("GetAllEditOffRequest"))
+                {
+                    output = new Gson().toJson(Database.getAllEditOffRequests());
+                }
+                else if (input.startsWith("GetAllEditProductRequest"))
+                {
+                    output = new Gson().toJson(Database.getAllEditProductRequests());
+                }
+                else if (input.startsWith("GetAllNewProductRequest"))
+                {
+                    output = new Gson().toJson(Database.getAllNewProductRequests());
+                }
+                else if (input.startsWith("GetAllNewSellerRequest"))
+                {
+                    output = new Gson().toJson(Database.getAllNewSellerRequests());
+                }
+                else if (input.startsWith("GetDiscountOfAccount"))
+                {
+                    output = new Gson().toJson(((BuyerAccount)account).getDiscountIds());
+                }
+                else if (input.startsWith("PrOfCart"))
+                {
+                    ArrayList<Integer> productsID = ((BuyerAccount)account).getCart().getProductsID();
+                    ArrayList<Product> allProducts = new ArrayList<>();
+                    for (Integer integer : productsID) {
+                        allProducts.add(Database.getProductByID(integer));
+                    }
+                    output = new Gson().toJson(allProducts);
+                }
                 else if (input.startsWith("Exit"))
                 {
                     clientSocket.close();
+                    server.writeDataOnFile();
                     if (account != null)
                     {
                         if (this.account instanceof AdminAccount)
