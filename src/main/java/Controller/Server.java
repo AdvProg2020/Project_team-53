@@ -93,7 +93,12 @@ public class Server {
 
     public int getPortOfSeller(SellerAccount sellerAccount)
     {
-        return portOfOnlineSellers.get(sellerAccount);
+        return portOfOnlineSellers.getOrDefault(sellerAccount, -1);
+    }
+
+    public void writeDataOnFile()
+    {
+        Database.writeDataOnFile();
     }
 
 }

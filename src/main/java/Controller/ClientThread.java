@@ -5,6 +5,7 @@ import Model.Account.AdminAccount;
 import Model.Account.BuyerAccount;
 import Model.Account.SellerAccount;
 import Model.Product.Auction;
+import Model.Product.Product;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -404,9 +405,19 @@ public class ClientThread extends Thread {
                 {
                     output = new Gson().toJson(((BuyerAccount)account).getDiscountIds());
                 }
+                else if (input.startsWith("PrOfCart"))
+                {
+                    ArrayList<Integer> productsID = ((BuyerAccount)account).getCart().getProductsID();
+                    ArrayList<Product> allProducts = new ArrayList<>();
+                    for (Integer integer : productsID) {
+                        allProducts.add(Database.getProductByID(integer));
+                    }
+                    output = new Gson().toJson(allProducts);
+                }
                 else if (input.startsWith("Exit"))
                 {
                     clientSocket.close();
+                    server.writeDataOnFile();
                     if (account != null)
                     {
                         if (this.account instanceof AdminAccount)

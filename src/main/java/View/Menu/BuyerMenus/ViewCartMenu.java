@@ -227,7 +227,11 @@ public class ViewCartMenu extends Menu {
             if (discountId.getText() != null && discountId.getText().matches("[0-9]+"))
                 id = Integer.parseInt(discountId.getText());
             String res = "";
+            ArrayList<Product> allProducts = null;
             try {
+                dataOutputStream.writeUTF("PrOfCart");
+                dataOutputStream.flush();
+                allProducts = new Gson().fromJson(dataInputStream.readUTF(), new TypeToken<ArrayList<Product>>(){}.getType());
                 dataOutputStream.writeUTF("Pay " + id);
                 dataOutputStream.flush();
                 res = dataInputStream.readUTF();
@@ -239,6 +243,15 @@ public class ViewCartMenu extends Menu {
             alert.setHeaderText("Process Result");
             alert.setContentText(res);
             alert.showAndWait();
+            if (res.equalsIgnoreCase("product bought successfully"))
+            {
+                for (Product product : allProducts) {
+                    if (product.doesHasFile())
+                    {
+                        getFileOfProduct(product);
+                    }
+                }
+            }
             show();
             newWindow.close();
         });
@@ -292,37 +305,51 @@ public class ViewCartMenu extends Menu {
 
     private void getFileOfProduct(Product product)
     {
-        try {
-            dataOutputStream.writeUTF("GetPortOfSeller " + product.getSellerUsername());
-            dataOutputStream.flush();
-            int port = Integer.parseInt(dataInputStream.readUTF());
-            Socket sellerSocket = new Socket("127.0.0.1", port);
-            DataInputStream buyerDataInputStream = new DataInputStream(new BufferedInputStream(sellerSocket.getInputStream()));
-            DataOutputStream buyerDataOutputStream = new DataOutputStream(new BufferedOutputStream(sellerSocket.getOutputStream()));
-            File file = new File("");
-            BufferedOutputStream fileBufferedOutputStream = new BufferedOutputStream(new FileOutputStream(file));
-            buyerDataOutputStream.writeUTF("GetProduct " + product.getProductId());
-            buyerDataOutputStream.flush();
-            int bytesRead;
-            int current = 0;
-            byte[] fileBytes = new byte[6022386];
-            bytesRead = buyerDataInputStream.read(fileBytes, 0, fileBytes.length);
-            current = bytesRead;
-            do {
-                bytesRead = dataInputStream.read(fileBytes, current, (fileBytes.length - current));
-                if (bytesRead >= 0)
-                    current += bytesRead;
-            }while (bytesRead > -1);
-            fileBufferedOutputStream.write(fileBytes, 0, current);
-            fileBufferedOutputStream.flush();
-            fileBufferedOutputStream.close();
-            buyerDataInputStream.close();
-            buyerDataOutputStream.close();
-            sellerSocket.close();
-        }
-        catch (Exception e)
-        {
-            e.printStackTrace();
-        }
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    dataOutputStream.writeUTF("GetPortOfSeller " + product.getSellerUsername());
+                    dataOutputStream.flush();
+                    int port = Integer.parseInt(dataInputStream.readUTF());
+                    if (port == -1)
+                    {
+                        Alert alert = new Alert(Alert.AlertType.ERROR);
+                        alert.setTitle("Failure");
+                        alert.setHeaderText("Process Failed");
+                        alert.setContentText("The Seller is not online now");
+                        alert.showAndWait();
+                    }
+                    Socket sellerSocket = new Socket("127.0.0.1", port);
+                    DataInputStream buyerDataInputStream = new DataInputStream(new BufferedInputStream(sellerSocket.getInputStream()));
+                    DataOutputStream buyerDataOutputStream = new DataOutputStream(new BufferedOutputStream(sellerSocket.getOutputStream()));
+                    String nameAndFormat = product.getAddressOfProduct().split("/")[product.getAddressOfProduct().split("/").length - 1];
+                    File file = new File("F:/downloads/" + nameAndFormat);
+                    BufferedOutputStream fileBufferedOutputStream = new BufferedOutputStream(new FileOutputStream(file));
+                    buyerDataOutputStream.writeUTF("GetProduct " + product.getProductId());
+                    buyerDataOutputStream.flush();
+                    int bytesRead;
+                    int current = 0;
+                    byte[] fileBytes = new byte[6022386];
+                    bytesRead = buyerDataInputStream.read(fileBytes, 0, fileBytes.length);
+                    current = bytesRead;
+                    do {
+                        bytesRead = buyerDataInputStream.read(fileBytes, current, (fileBytes.length - current));
+                        if (bytesRead >= 0)
+                            current += bytesRead;
+                    }while (bytesRead > -1);
+                    fileBufferedOutputStream.write(fileBytes, 0, current);
+                    fileBufferedOutputStream.flush();
+                    fileBufferedOutputStream.close();
+                    buyerDataInputStream.close();
+                    buyerDataOutputStream.close();
+                    sellerSocket.close();
+                }
+                catch (Exception e)
+                {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
     }
 }

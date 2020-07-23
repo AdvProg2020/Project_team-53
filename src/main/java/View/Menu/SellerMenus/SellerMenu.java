@@ -171,6 +171,7 @@ public class SellerMenu extends Menu {
                 else if (input.startsWith("GetProduct"))
                 {
                     dataOutputStream.writeUTF("GetProduct " + input.split(" ")[1]);
+                    dataOutputStream.flush();
                     Product product = new Gson().fromJson(dataInputStream.readUTF(), new TypeToken<Product>(){}.getType());
                     String address = product.getAddressOfProduct();
                     try {
@@ -534,7 +535,7 @@ public class SellerMenu extends Menu {
         newWindow.setScene(scene);
     }
 
-    public void handleManageProducts()
+    private void handleManageProducts()
     {
         super.setPane();
         ArrayList<Product> allProduct = null;
@@ -823,7 +824,7 @@ public class SellerMenu extends Menu {
         newWindow.showAndWait();
     }
 
-    public void handleShowProduct(Product product, Stage newWindow)
+    private void handleShowProduct(Product product, Stage newWindow)
     {
         Pane pane = product.showProductFullInfoGraphic();
         ((GridPane)pane).setAlignment(Pos.CENTER);
@@ -942,7 +943,7 @@ public class SellerMenu extends Menu {
         newWindow.setScene(scene);
     }
 
-    public void handleEdit()
+    private void handleEdit()
     {
         super.setPane();
         GridPane gridPane = new GridPane();
@@ -1002,9 +1003,16 @@ public class SellerMenu extends Menu {
         Menu.window.setScene(scene);
     }
 
-    public void handleLogout()
+    private void handleLogout()
     {
         try {
+            dataOutputStream.writeUTF("GetPortOfSeller " + account.getUsername());
+            dataOutputStream.flush();
+            Socket socket = new Socket("127.0.0.1", Integer.parseInt(dataInputStream.readUTF()));
+            DataOutputStream temp = new DataOutputStream(new BufferedOutputStream(socket.getOutputStream()));
+            temp.writeUTF("exit");
+            temp.flush();
+            temp.close();
             dataOutputStream.writeUTF("logout");
             dataOutputStream.flush();
         } catch (IOException e) {
