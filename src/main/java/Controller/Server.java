@@ -20,11 +20,11 @@ public class Server {
     public static void main(String[] args) {
         Server server = new Server();
         Database.initialize();
-        try {
+        /*try {
             WorkWithBank.ConnectToBankServer();
         } catch (IOException e) {
             e.printStackTrace();
-        }
+        }*/
         server.waitForClient();
     }
 

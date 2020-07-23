@@ -366,13 +366,6 @@
       <workItem from="1593178150008" duration="253000" />
       <workItem from="1593187077572" duration="84000" />
     </task>
-    <task id="LOCAL-00067" summary="make better package">
-      <created>1589895211449</created>
-      <option name="number" value="00067" />
-      <option name="presentableId" value="LOCAL-00067" />
-      <option name="project" value="LOCAL" />
-      <updated>1589895211449</updated>
-    </task>
     <task id="LOCAL-00068" summary="fix some bugs v1.5">
       <created>1591440442743</created>
       <option name="number" value="00068" />
@@ -709,7 +702,14 @@
       <option name="project" value="LOCAL" />
       <updated>1595521720550</updated>
     </task>
-    <option name="localTasksCounter" value="116" />
+    <task id="LOCAL-00116" summary="show logs for admin">
+      <created>1595532095229</created>
+      <option name="number" value="00116" />
+      <option name="presentableId" value="LOCAL-00116" />
+      <option name="project" value="LOCAL" />
+      <updated>1595532095229</updated>
+    </task>
+    <option name="localTasksCounter" value="117" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -728,7 +728,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="debug music" />
     <MESSAGE value="small edit" />
     <MESSAGE value="make server and client system and many changes on classes" />
     <MESSAGE value="delete extra methods and classes" />
@@ -753,7 +752,8 @@
     <MESSAGE value="edit Product for file Product" />
     <MESSAGE value="debug sending files" />
     <MESSAGE value="show does product has file" />
-    <option name="LAST_COMMIT_MESSAGE" value="show does product has file" />
+    <MESSAGE value="show logs for admin" />
+    <option name="LAST_COMMIT_MESSAGE" value="show logs for admin" />
   </component>
   <component name="WindowStateProjectService">
     <state x="280" y="20" key="#AccountManagerTest" timestamp="1589226101281">
@@ -886,39 +886,39 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="438" y="65" key="#xdebugger.evaluate/0.0.1366.728@0.0.1366.728" timestamp="1595501308315" />
-    <state x="499" y="0" key="CommitChangelistDialog2" timestamp="1595521718553">
+    <state x="499" y="0" key="CommitChangelistDialog2" timestamp="1595532093287">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="499" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1595521718553" />
+    <state x="499" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1595532093287" />
     <state x="470" y="0" key="CommitChangelistDialog2/0.0.1366.738@0.0.1366.738" timestamp="1593178423340" />
-    <state x="92" y="93" width="1182" height="552" key="DiffContextDialog" timestamp="1593178422199">
-      <screen x="0" y="0" width="1366" height="738" />
+    <state x="92" y="92" width="1182" height="544" key="DiffContextDialog" timestamp="1595532894497">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="92" y="92" width="1182" height="544" key="DiffContextDialog/0.0.1366.728@0.0.1366.728" timestamp="1589020586896" />
+    <state x="92" y="92" width="1182" height="544" key="DiffContextDialog/0.0.1366.728@0.0.1366.728" timestamp="1595532894497" />
     <state x="92" y="93" width="1182" height="552" key="DiffContextDialog/0.0.1366.738@0.0.1366.738" timestamp="1593178422199" />
     <state x="463" y="122" key="FileChooserDialogImpl" timestamp="1592855183500">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="463" y="122" key="FileChooserDialogImpl/0.0.1366.738@0.0.1366.738" timestamp="1592855183500" />
-    <state width="1322" height="174" key="GridCell.Tab.0.bottom" timestamp="1595532070378">
+    <state width="1322" height="174" key="GridCell.Tab.0.bottom" timestamp="1595533015214">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1322" height="174" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1595532070378" />
+    <state width="1322" height="174" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1595533015214" />
     <state width="1322" height="185" key="GridCell.Tab.0.bottom/0.0.1366.738@0.0.1366.738" timestamp="1593178427051" />
-    <state width="1322" height="174" key="GridCell.Tab.0.center" timestamp="1595532070377">
+    <state width="1322" height="174" key="GridCell.Tab.0.center" timestamp="1595533015214">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1322" height="174" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1595532070377" />
+    <state width="1322" height="174" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1595533015214" />
     <state width="1322" height="185" key="GridCell.Tab.0.center/0.0.1366.738@0.0.1366.738" timestamp="1593178427051" />
-    <state width="1322" height="174" key="GridCell.Tab.0.left" timestamp="1595532070377">
+    <state width="1322" height="174" key="GridCell.Tab.0.left" timestamp="1595533015214">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1322" height="174" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1595532070377" />
+    <state width="1322" height="174" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1595533015214" />
     <state width="1322" height="185" key="GridCell.Tab.0.left/0.0.1366.738@0.0.1366.738" timestamp="1593178427051" />
-    <state width="1322" height="174" key="GridCell.Tab.0.right" timestamp="1595532070377">
+    <state width="1322" height="174" key="GridCell.Tab.0.right" timestamp="1595533015214">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1322" height="174" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1595532070377" />
+    <state width="1322" height="174" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1595533015214" />
     <state width="1322" height="185" key="GridCell.Tab.0.right/0.0.1366.738@0.0.1366.738" timestamp="1593178427051" />
     <state width="1322" height="244" key="GridCell.Tab.1.bottom" timestamp="1595502161406">
       <screen x="0" y="0" width="1366" height="728" />
@@ -945,10 +945,14 @@
     </state>
     <state x="213" y="22" key="Maven.ArtifactSearchDialog/0.0.1366.728@0.0.1366.728" timestamp="1589017820205" />
     <state x="213" y="22" key="Maven.ArtifactSearchDialog/0.0.1366.738@0.0.1366.738" timestamp="1587804864740" />
-    <state x="395" y="78" key="MultipleFileMergeDialog" timestamp="1595409550298">
+    <state x="129" y="53" key="MergeDialog" timestamp="1595532185466">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="395" y="78" key="MultipleFileMergeDialog/0.0.1366.728@0.0.1366.728" timestamp="1595409550298" />
+    <state x="129" y="53" key="MergeDialog/0.0.1366.728@0.0.1366.728" timestamp="1595532185466" />
+    <state x="395" y="78" key="MultipleFileMergeDialog" timestamp="1595532187997">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="395" y="78" key="MultipleFileMergeDialog/0.0.1366.728@0.0.1366.728" timestamp="1595532187997" />
     <state x="348" y="66" key="NewModule_or_Project.wizard" timestamp="1590740672995">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
@@ -958,6 +962,10 @@
     </state>
     <state x="184" y="0" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1594551371835" />
     <state x="184" y="0" key="SettingsEditor/0.0.1366.738@0.0.1366.738" timestamp="1591433792246" />
+    <state x="470" y="78" key="VCS.ChangeListViewerDialog" timestamp="1595532117478">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="470" y="78" key="VCS.ChangeListViewerDialog/0.0.1366.728@0.0.1366.728" timestamp="1595532117478" />
     <state x="275" y="95" key="Vcs.Push.Dialog.v2" timestamp="1595520867666">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -971,10 +979,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="378" y="186" key="com.intellij.ide.util.TipDialog/0.0.1366.728@0.0.1366.728" timestamp="1595497346786" />
-    <state x="492" y="279" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1595520856503">
+    <state x="492" y="279" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1595532123077">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="492" y="279" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.728@0.0.1366.728" timestamp="1595520856503" />
+    <state x="492" y="279" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.728@0.0.1366.728" timestamp="1595532123077" />
     <state x="492" y="283" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.738@0.0.1366.738" timestamp="1593112595135" />
     <state x="380" y="100" width="737" height="606" key="find.popup" timestamp="1593190820824">
       <screen x="0" y="0" width="1366" height="728" />
@@ -1002,7 +1010,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/View/Menu/BuyerMenus/BuyerMenu.java</url>
-          <line>386</line>
+          <line>470</line>
           <option name="timeStamp" value="13" />
         </line-breakpoint>
       </breakpoints>
