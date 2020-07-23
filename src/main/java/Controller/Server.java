@@ -20,12 +20,17 @@ public class Server {
     public static void main(String[] args) {
         Server server = new Server();
         Database.initialize();
+        try {
+            WorkWithBank.ConnectToBankServer();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         server.waitForClient();
     }
 
     public Server() {
         try {
-            this.serverSocket = new ServerSocket(8080);
+            this.serverSocket = new ServerSocket(9595);
             allOnlineAdmins = new ArrayList<>();
             allOnlineBuyers = new ArrayList<>();
             allOnlineSellers = new ArrayList<>();

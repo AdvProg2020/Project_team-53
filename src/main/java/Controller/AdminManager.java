@@ -15,6 +15,39 @@ import Model.Request.Request;
 import java.util.ArrayList;
 
 public class AdminManager {
+    private static int commission = 5 ;
+    private static int minimumValue = 100;
+
+    public static int getCommission() {
+        return commission;
+    }
+
+    public static void setCommission(int commission) {
+        AdminManager.commission = commission;
+    }
+
+    public static int getMinimumValue() {
+        return minimumValue;
+    }
+
+    public static void setMinimumValue(int minimumValue) {
+        AdminManager.minimumValue = minimumValue;
+    }
+
+    public String changeFinancialSetting(String field, String changTo){
+        if (field.equalsIgnoreCase("minimumValue")){
+            setMinimumValue(Integer.parseInt(changTo));
+            return "Done" ;
+        }
+        else if (field.equalsIgnoreCase("commission")){
+            if (Integer.parseInt(changTo) > 100)
+                return "Should be less than 100" ;
+            setCommission(Integer.parseInt(changTo));
+            return "Done";
+        }
+        else
+            return "Invalid field";
+    }
 
     public String showAccountWithUsername(String username) {
         Account account = Database.getAccountByUsername(username);

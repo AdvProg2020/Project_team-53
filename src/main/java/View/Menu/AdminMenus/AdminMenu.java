@@ -95,11 +95,6 @@ public class AdminMenu extends Menu {
         manageDiscounts.getStyleClass().add("dark-blue");
         manageDiscounts.setMaxWidth(Double.MAX_VALUE);
 
-        Button manageLogs = new Button("Manage Logs");
-        manageLogs.setOnAction(e -> handleAllLogs());
-        manageLogs.getStyleClass().add("dark-blue");
-        manageLogs.setMaxWidth(Double.MAX_VALUE);
-
         Button manageAddAdmin = new Button("Add Manager");
         manageAddAdmin.setOnAction(e -> handleAddAdmin());
         manageAddAdmin.getStyleClass().add("dark-blue");
@@ -113,9 +108,8 @@ public class AdminMenu extends Menu {
         GridPane.setConstraints(manageProduct, 0, 4);
         GridPane.setConstraints(manageCategories, 0, 5);
         GridPane.setConstraints(manageDiscounts, 0, 6);
-        GridPane.setConstraints(manageLogs, 0, 7);
-        GridPane.setConstraints(manageAddAdmin, 0, 8);
-        GridPane.setConstraints(logout, 0, 9);
+        GridPane.setConstraints(manageAddAdmin, 0, 7);
+        GridPane.setConstraints(logout, 0, 8);
         GridPane.setHalignment(editInfoButton, HPos.CENTER);
         GridPane.setHalignment(manageUser, HPos.CENTER);
         GridPane.setHalignment(onlineUser, HPos.CENTER);
@@ -124,10 +118,9 @@ public class AdminMenu extends Menu {
         GridPane.setHalignment(manageCategories, HPos.CENTER);
         GridPane.setHalignment(manageDiscounts, HPos.CENTER);
         GridPane.setHalignment(manageAddAdmin, HPos.CENTER);
-        GridPane.setHalignment(manageLogs, HPos.CENTER);
         GridPane.setHalignment(logout, HPos.CENTER);
 
-        allButtons.getChildren().addAll(editInfoButton, manageUser, manageRequest, manageProduct, manageCategories, manageDiscounts, manageAddAdmin, logout, onlineUser, manageLogs);
+        allButtons.getChildren().addAll(editInfoButton, manageUser, manageRequest, manageProduct, manageCategories, manageDiscounts, manageAddAdmin, logout, onlineUser);
 
         try {
             dataOutputStream.writeUTF("GetLoggedAccount");
@@ -412,88 +405,6 @@ public class AdminMenu extends Menu {
         {
             System.out.println(e.getMessage());
         }
-    }
-
-    private void handleAllLogs()
-    {
-        try {
-            super.setPane();
-            dataOutputStream.writeUTF("GetAllBuyerAccounts");
-            dataOutputStream.flush();
-            ArrayList<BuyerAccount> allBuyers = new Gson().fromJson(dataInputStream.readUTF(), new TypeToken<ArrayList<BuyerAccount>>(){}.getType());
-            ArrayList<BuyLog> allLogs = new ArrayList<>();
-            for (BuyerAccount buyer : allBuyers) {
-                allLogs.addAll(buyer.getBuyLogs());
-            }
-            Scene scene = new Scene(super.mainPane, 1000, 600);
-            scene.getStylesheets().add(new File("Data/Styles/Buttons.css").toURI().toString());
-            scene.getStylesheets().add(new File("Data/Styles/textfield.css").toURI().toString());
-            scene.getStylesheets().add(new File("Data/Styles/backgrounds.css").toURI().toString());
-            scene.getStylesheets().add(new File("Data/Styles/choicebox.css").toURI().toString());
-            super.mainPane.getStyleClass().add("admin-page");
-            ScrollPane scrollPane = new ScrollPane();
-            scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.ALWAYS);
-            scrollPane.setFitToHeight(true);
-            scrollPane.setFitToWidth(true);
-            scrollPane.getStyleClass().add("scroll-pane");
-            GridPane gridPane = new GridPane();
-            gridPane.setHgap(20);
-            gridPane.setVgap(10);
-            gridPane.setAlignment(Pos.CENTER);
-            Label info = new Label("All Buy Logs");
-            info.setFont(Font.font(25));
-            GridPane.setHalignment(info, HPos.CENTER);
-            info.setAlignment(Pos.CENTER);
-            GridPane.setConstraints(info, 1, 0);
-            gridPane.getChildren().add(info);
-            int i = 1;
-            for (BuyLog buyLog : allLogs) {
-                Label label = new Label(String.valueOf(buyLog.getLogId()));
-                label.setFont(Font.font(15));
-                Button button = new Button("show");
-                button.setMaxWidth(Double.MAX_VALUE);
-                button.getStyleClass().add("dark-blue");
-                button.setAlignment(Pos.CENTER);
-                button.setOnAction(e -> {
-                    handleShowLog(buyLog);
-                });
-                GridPane.setConstraints(label, 0, i);
-                GridPane.setConstraints(button, 2, i);
-                gridPane.getChildren().addAll(label, button);
-                i++;
-            }
-            Button back = new Button("back");
-            back.setAlignment(Pos.CENTER);
-            back.getStyleClass().add("dark-blue");
-            back.setMaxWidth(Double.MAX_VALUE);
-            GridPane.setHalignment(back, HPos.CENTER);
-            back.setOnAction(e -> show());
-            GridPane.setConstraints(back,1, i);
-            gridPane.getChildren().add(back);
-
-            scrollPane.setContent(gridPane);
-            super.mainPane.setCenter(scrollPane);
-
-            Menu.window.setScene(scene);
-        }
-        catch (Exception e)
-        {
-            e.printStackTrace();
-        }
-    }
-
-    private void handleShowLog(BuyLog buyLog) {
-        Stage newWindow = new Stage();
-        Pane pane = buyLog.showLogWithGraphic();
-        ((GridPane)pane).setAlignment(Pos.CENTER);
-        Scene scene = new Scene(pane, 600, 400);
-        scene.getStylesheets().add(new File("Data/Styles/backgrounds.css").toURI().toString());
-        pane.getStyleClass().add("admin-popup");
-
-        newWindow.setScene(scene);
-        newWindow.initModality(Modality.APPLICATION_MODAL);
-        newWindow.setOnCloseRequest(e -> handleAllLogs());
-        newWindow.showAndWait();
     }
 
     public void handleManageUsers()
@@ -1413,6 +1324,4 @@ public class AdminMenu extends Menu {
 
         Menu.window.setScene(scene);
     }
-
-
 }
