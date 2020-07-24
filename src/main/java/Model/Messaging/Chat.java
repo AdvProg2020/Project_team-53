@@ -1,6 +1,7 @@
 package Model.Messaging;
 
 import Model.Account.Account;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
@@ -14,6 +15,7 @@ public class Chat {
     private ArrayList<Account> members;
     private TextField textField;
     private int id;
+    private Button back = new Button("Back");
 
     public TextField getTextField() {
         return textField;
@@ -62,8 +64,13 @@ public class Chat {
         }
         TextField textField = new TextField();
         this.textField = textField;
+        vBox.getChildren().add(back);
         vBox.getChildren().add(textField);
         chatRoom.setContent(vBox);
         return chatRoom;
+    }
+
+    public Button getBackButton() {
+        return back;
     }
 }

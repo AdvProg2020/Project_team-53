@@ -30,8 +30,13 @@ public class ChatMenu extends Menu {
         window.setScene(scene);
     }
 
-    public void run() {
+    @Override
+    public void execute() {
         TextField textField = chat.getTextField();
+        chat.getBackButton().setOnAction(e -> {
+            parentMenu.show();
+            parentMenu.execute();
+        });
         textField.setOnAction(e -> {
             // if e == enter.key
             chat.addMessage(new Message(account, textField.getText()));
@@ -51,6 +56,7 @@ public class ChatMenu extends Menu {
         try {
             dataOutputStream.writeUTF("getChatById " + chatId);
             String input = dataInputStream.readUTF();
+            if (input == null) return;
             Type type = new TypeToken<Chat>(){}.getType();
             Chat updatedChat = new Gson().fromJson(input, type);
             chat = updatedChat;
