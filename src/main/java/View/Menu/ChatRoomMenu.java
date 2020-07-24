@@ -30,7 +30,7 @@ public class ChatRoomMenu extends Menu {
             String input = dataInputStream.readUTF();
             String[] splitInput = input.split("\\n");
             for (String s : splitInput) {
-                Button button = new Button( "SupporterName: " + s);
+                Button button = new Button( "User: " + s);
                 vBox.getChildren().add(button);
                 button.setOnAction(e -> {
                     String[] split = button.getText().split(" ");

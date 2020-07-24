@@ -105,6 +105,11 @@ public class AdminMenu extends Menu {
         manageAddAdmin.getStyleClass().add("dark-blue");
         manageAddAdmin.setMaxWidth(Double.MAX_VALUE);
 
+        Button manageAddSupporter = new Button("Add Supporter");
+        manageAddSupporter.setOnAction(e -> handleAddSupporter());
+        manageAddSupporter.getStyleClass().add("dark-blue");
+        manageAddSupporter.setMaxWidth(Double.MAX_VALUE);
+
 
         GridPane.setConstraints(editInfoButton, 0, 0);
         GridPane.setConstraints(manageUser, 0, 1);
@@ -116,6 +121,7 @@ public class AdminMenu extends Menu {
         GridPane.setConstraints(manageAddAdmin, 0, 7);
         GridPane.setConstraints(manageLogs, 0, 8);
         GridPane.setConstraints(logout, 0, 9);
+        GridPane.setConstraints(manageAddSupporter,0,10);
         GridPane.setHalignment(manageLogs, HPos.CENTER);
         GridPane.setHalignment(editInfoButton, HPos.CENTER);
         GridPane.setHalignment(manageUser, HPos.CENTER);
@@ -126,7 +132,7 @@ public class AdminMenu extends Menu {
         GridPane.setHalignment(manageDiscounts, HPos.CENTER);
         GridPane.setHalignment(manageAddAdmin, HPos.CENTER);
         GridPane.setHalignment(logout, HPos.CENTER);
-
+        GridPane.setHalignment(manageAddSupporter, HPos.CENTER);
         allButtons.getChildren().addAll(editInfoButton, manageUser, manageRequest, manageProduct, manageCategories, manageDiscounts, manageAddAdmin, logout, onlineUser, manageLogs);
 
         try {
@@ -1394,6 +1400,85 @@ public class AdminMenu extends Menu {
             try
             {
                 dataOutputStream.writeUTF("AddAdmin " + userName.getText() + " " + firstName.getText() + " " + lastName.getText() + " " + email.getText() + " "
+                        + phoneNumber.getText() + " " + password.getText() + " " + credit.getText());
+                dataOutputStream.flush();
+                status.setText(dataInputStream.readUTF());
+            }
+            catch (Exception ex)
+            {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error");
+                alert.setHeaderText("Register Fail");
+                alert.setContentText(ex.getMessage());
+
+                alert.showAndWait();
+            }
+        });
+
+        Button back = new Button("Back");
+        back.getStyleClass().add("dark-blue");
+        back.setMaxWidth(Double.MAX_VALUE);
+        back.setOnAction(e -> show());
+
+        GridPane.setConstraints(userName, 0, 0);
+        GridPane.setConstraints(firstName, 0, 1);
+        GridPane.setConstraints(lastName, 0, 2);
+        GridPane.setConstraints(email, 0, 3);
+        GridPane.setConstraints(phoneNumber, 0, 4);
+        GridPane.setConstraints(password, 0, 5);
+        GridPane.setConstraints(credit, 0, 6);
+        GridPane.setConstraints(register, 0, 7);
+        GridPane.setConstraints(back, 0, 8);
+        GridPane.setConstraints(status, 0, 9);
+        GridPane.setHalignment(register, HPos.CENTER);
+        GridPane.setHalignment(back, HPos.CENTER);
+        GridPane.setHalignment(status, HPos.CENTER);
+
+        gridPane.getChildren().addAll(userName, firstName, lastName, email, phoneNumber, password, credit, register, back, status);
+
+        super.mainPane.setCenter(gridPane);
+
+        Menu.window.setScene(scene);
+    }
+
+    public void handleAddSupporter()
+    {
+        super.setPane();
+        Scene scene = new Scene(super.mainPane, 1000, 600);
+        scene.getStylesheets().add(new File("Data/Styles/Buttons.css").toURI().toString());
+        scene.getStylesheets().add(new File("Data/Styles/textfield.css").toURI().toString());
+        scene.getStylesheets().add(new File("Data/Styles/backgrounds.css").toURI().toString());
+        scene.getStylesheets().add(new File("Data/Styles/choicebox.css").toURI().toString());
+        super.mainPane.getStyleClass().add("admin-page");
+
+        GridPane gridPane = new GridPane();
+        gridPane.setHgap(20);
+        gridPane.setVgap(10);
+        gridPane.setAlignment(Pos.CENTER);
+        Label status = new Label();
+        TextField userName = new TextField();
+        userName.getStyleClass().add("text-field");
+        userName.setPromptText("username");
+        TextField firstName = new TextField();
+        firstName.setPromptText("first name");
+        TextField lastName = new TextField();
+        lastName.setPromptText("last name");
+        TextField email = new TextField();
+        email.setPromptText("email");
+        TextField phoneNumber = new TextField();
+        phoneNumber.setPromptText("phone number");
+        TextField password = new TextField();
+        password.setPromptText("password");
+        TextField credit = new TextField();
+        credit.setPromptText("credit");
+
+        Button register = new Button("Register");
+        register.getStyleClass().add("dark-blue");
+        register.setMaxWidth(Double.MAX_VALUE);
+        register.setOnAction(e -> {
+            try
+            {
+                dataOutputStream.writeUTF("AddSupporter " + userName.getText() + " " + firstName.getText() + " " + lastName.getText() + " " + email.getText() + " "
                         + phoneNumber.getText() + " " + password.getText() + " " + credit.getText());
                 dataOutputStream.flush();
                 status.setText(dataInputStream.readUTF());

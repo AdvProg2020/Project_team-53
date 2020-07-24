@@ -187,6 +187,9 @@ public class ClientThread extends Thread {
                     details = input.split(" ");
                     output = adminManager.addNewAdminAccount(details[1], details[2], details[3], details[4], details[5], details[6], Integer.parseInt(details[7]));
                 }
+                else if (input.startsWith("AddSupporter")) {
+                    output = adminManager.addNewSupporterAccount(split[1], split[2], split[3], split[4], split[5], split[6], Integer.parseInt(split[7]));
+                }
                 else if (input.startsWith("ViewUsername"))
                 {
                     Account temp = Database.getAccountByUsername(input.split(" ")[1]);
@@ -429,6 +432,9 @@ public class ClientThread extends Thread {
                 else if (input.startsWith("ReceivedBuyLog"))
                 {
                     Objects.requireNonNull(Database.getBuyLogByID(Integer.parseInt(input.split(" ")[1]))).setDeliveryStatus("Received");
+                }
+                else if (input.startsWith("getAllSupporters")){
+                    output = Database.getUsers();
                 }
                 else if (input.startsWith("addMessage")) {
                     chatManager.addMessage(Integer.parseInt(split[1]), split[2], account);
