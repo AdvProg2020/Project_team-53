@@ -1,9 +1,6 @@
 package View.Menu;
 
-import Model.Account.Account;
-import Model.Account.AdminAccount;
-import Model.Account.BuyerAccount;
-import Model.Account.SellerAccount;
+import Model.Account.*;
 import View.Menu.AdminMenus.AdminMenu;
 import View.Menu.BuyerMenus.BuyerMenu;
 import View.Menu.SellerMenus.SellerMenu;
@@ -13,6 +10,7 @@ public class UserMenu extends Menu {
     SellerMenu sellerMenu = new SellerMenu(this.parentMenu);
     AdminMenu adminMenu = new AdminMenu(this.parentMenu);
     LoginMenu loginMenu = new LoginMenu(this.parentMenu);
+    ChatRoomMenu chatRoomMenu = new ChatRoomMenu(this.parentMenu);
     Account account;
     public UserMenu(Menu parentMenu) {
         super("User Menu", parentMenu);
@@ -36,6 +34,10 @@ public class UserMenu extends Menu {
         else if(Menu.account == null)
         {
             loginMenu.show();
+        }
+        else if(Menu.account instanceof SupporterAccount)
+        {
+            chatRoomMenu.show();
         }
     }
 }

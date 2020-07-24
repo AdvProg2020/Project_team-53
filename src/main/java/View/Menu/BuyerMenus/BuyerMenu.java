@@ -5,6 +5,7 @@ import Model.Account.BuyerAccount;
 import Model.Account.SellerAccount;
 import Model.Log.BuyLog;
 import Model.Product.DiscountAndOff.Discount;
+import View.Menu.ChatRoomMenu;
 import View.Menu.Menu;
 import View.Menu.UserMenu;
 import com.google.gson.Gson;
@@ -286,7 +287,7 @@ public class BuyerMenu extends Menu {
 
     private void handleShowSupporters()
     {
-
+        new ChatRoomMenu(this).show();
     }
 
     private void handleMyAuctions()

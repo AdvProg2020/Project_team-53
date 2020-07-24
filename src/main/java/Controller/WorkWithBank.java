@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.net.Socket;
 
 public class WorkWithBank {
-    public static final int PORT = 2222;
+    public static final int PORT = 2020;
     public static final String IP = "127.0.0.1";
 
     private static DataOutputStream outputStream;
@@ -59,5 +59,15 @@ public class WorkWithBank {
             res = sendMessage("pay " + res) ;
         }
         return res ;
+    }
+
+    public static String withdraw(int much , String bankUsername, String bankPassword, String bankId) {
+        String token = get_token(bankUsername , bankPassword);
+        String res = sendMessage("create_receipt " + token + " withdraw " + much + " " + bankId + " " + -1 +  " buying");
+        if (res.matches("[0-9]+")){
+            res = sendMessage("pay " + res) ;
+        }
+        return res ;
+
     }
 }

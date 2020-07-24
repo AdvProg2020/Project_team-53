@@ -127,15 +127,60 @@ public class BuyerManager {
         if (discountId!=-1 && !((BuyerAccount) account).canUseDiscount(discountId))
             return "You can't use this discount";
         else {
-            String res = bankBuy(discountId,account, address);
+            String res = bankBuy(discountId , account, address , bankUsername , bankPassword , bankID);
             if (res.equals("done successfully"))
                 return "product bought successfully";
             return res;
         }
     }
 
-    private String bankBuy(int discountId, Account account, String address) {
-        return "";
+    private String bankBuy(int discountId, Account account, String address , String bankUsername , String bankPassword , String bankId) {
+        BuyerAccount buyerAccount = (BuyerAccount) account;
+        long cost = buyerAccount.getCart().getCost();
+
+        if (buyerAccount.canUseDiscount(discountId)) {
+            buyerAccount.useDiscount(discountId);
+            if (discountId != -1) {
+                Discount discount = Database.getDiscountById(discountId);
+                cost = cost - Math.min((int) cost * discount.getPercent() / 100, discount.getMaxValue());
+            }
+        }
+        String res = WorkWithBank.withdraw(Math.toIntExact(cost), bankUsername , bankPassword, bankId);
+        if (!res.equals("done successfully"))
+            return res;
+        if (discountId!=-1 && buyerAccount.canUseDiscount(discountId)) {
+            buyerAccount.useDiscount(discountId);
+        }
+        payToSellerWithBank(discountId, account, address);
+        buyerAccount.setCart(new Cart());
+        return res;
+    }
+
+    public void payToSellerWithBank(int discountId, Account account, String addressOfBuyer) {
+        BuyerAccount buyerAccount = (BuyerAccount) account;
+        int discountValue = 0;
+        if (buyerAccount.canUseDiscount(discountId))
+            discountValue = Database.getDiscountById(discountId).getPercent();
+        if (discountId == -1)
+            discountValue = 0;
+        for (Integer productId : buyerAccount.getCart().getProductsID()) {
+            Product product = Database.getProductByID(productId);
+            SellerAccount sellerAccount = (SellerAccount) Database.getAccountByUsername(product.getSellerUsername());
+            int amount = sellerAccount.getCredit();
+            sellerAccount.setCredit(sellerAccount.getCredit() + product.getPrice() * buyerAccount.getCart().getMuchOfProductID(productId));
+            int maxValue = product.getPrice();
+            int offValue = 0;
+            if (product.doesHaveOff()) {
+                maxValue = product.getOff().getMaxValue();
+                offValue = product.getPrice() * product.getOff().getPercent() / 100;
+                sellerAccount.setCredit(sellerAccount.getCredit() - Math.min(offValue, maxValue) * buyerAccount.getCart().getMuchOfProductID(productId));
+            }
+            amount = sellerAccount.getCredit() - amount;
+            Account adminAccount = Database.getAccountByUsername("Admin");
+            adminAccount.setCredit(adminAccount.getCredit() + (amount * AdminManager.getCommission())/100);
+            sellerAccount.setCredit(sellerAccount.getCredit() - (amount * AdminManager.getCommission())/100);
+            Log.addLog(buyerAccount.getUsername(), product.getSellerUsername(), product.getPrice(), productId, Math.min(offValue, maxValue), discountValue * product.getPrice() / 100, addressOfBuyer, product.doesHasFile());
+        }
     }
 
     public void joinAuction(Auction auction, Account account){
