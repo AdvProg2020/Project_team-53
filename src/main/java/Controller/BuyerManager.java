@@ -121,6 +121,23 @@ public class BuyerManager {
         }
     }
 
+    public String bankPay(Account account , int discountId , String address , String bankUsername , String bankPassword , String bankID){
+        if (Database.getDiscountById(discountId) == null && discountId != -1)
+            return " your discount is not valid";
+        if (discountId!=-1 && !((BuyerAccount) account).canUseDiscount(discountId))
+            return "You can't use this discount";
+        else {
+            String res = bankBuy(discountId,account, address);
+            if (res.equals("done successfully"))
+                return "product bought successfully";
+            return res;
+        }
+    }
+
+    private String bankBuy(int discountId, Account account, String address) {
+        return "";
+    }
+
     public void joinAuction(Auction auction, Account account){
         auction.joinAuction((BuyerAccount) account);
     }

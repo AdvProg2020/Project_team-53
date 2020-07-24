@@ -466,6 +466,10 @@ public class ClientThread extends Thread {
                     details = input.split(" ");
                     output = buyerManager.setPriceForAuction(Integer.parseInt(details[1]), Integer.parseInt(details[2]), account);
                 }
+                else if (input.startsWith("BankPay ")){
+                    details = input.split(" ");
+                    buyerManager.bankPay(account , Integer.parseInt(details[1]), details[2] , details[3], details[4] ,details[5]);
+                }
                 else if (input.startsWith("Exit"))
                 {
                     clientSocket.close();

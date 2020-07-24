@@ -70,6 +70,10 @@ public class Database {
         return allAuction;
     }
 
+    public static ArrayList<Chat> getAllChats() {
+        return allChats;
+    }
+
     public static Account getAccountByUsername(String username) {
         for (Account account : allAccounts) {
             if (account.getUsername().equals(username))

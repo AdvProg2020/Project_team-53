@@ -173,6 +173,20 @@ public class ViewCartMenu extends Menu {
 
                 newWindow.showAndWait();
             });
+
+            Button bankPayButton = new Button("Pay with bank");
+            bankPayButton.setAlignment(Pos.CENTER);
+            bankPayButton.setMaxWidth(Double.MAX_VALUE);
+            bankPayButton.getStyleClass().add("dark-blue");
+            bankPayButton.setOnAction(e ->{
+                Stage newWindow = new Stage();
+                newWindow.initModality(Modality.APPLICATION_MODAL);
+
+                handleBankPay(newWindow);
+
+                newWindow.showAndWait();
+            });
+
             long totalCost = 0;
             try {
                 dataOutputStream.writeUTF("GetCostOfAccountCart");
@@ -191,8 +205,8 @@ public class ViewCartMenu extends Menu {
             message.setFont(Font.font(15));
             GridPane.setHalignment(message, HPos.CENTER);
             GridPane.setConstraints(payButton, 6 , i+1);
-
-            gridPane.getChildren().addAll(back, costOfAll, payButton, message);
+            GridPane.setConstraints(bankPayButton ,5 , i+1);
+            gridPane.getChildren().addAll(back, costOfAll, payButton, message, bankPayButton);
 
             super.mainPane.setCenter(gridPane);
 
@@ -202,6 +216,86 @@ public class ViewCartMenu extends Menu {
         {
             e.printStackTrace();
         }
+    }
+
+    private void handleBankPay(Stage newWindow) {
+        GridPane gridPane = new GridPane();
+        Scene scene = new Scene(gridPane, 600,400);
+        scene.getStylesheets().add(new File("Data/Styles/Buttons.css").toURI().toString());
+        scene.getStylesheets().add(new File("Data/Styles/textfield.css").toURI().toString());
+        scene.getStylesheets().add(new File("Data/Styles/backgrounds.css").toURI().toString());
+        gridPane.getStyleClass().add("cart");
+
+        TextField discountId = new TextField();
+        discountId.setPromptText("DiscountID");
+        discountId.getStyleClass().add("text-field");
+        TextField address = new TextField();
+        address.setPromptText("Address");
+        address.getStyleClass().add("text-field");
+
+        TextField bankUsername = new TextField();
+        bankUsername.setPromptText("Bank Username");
+        bankUsername.getStyleClass().add("text-field");
+
+        TextField bankPassword = new TextField();
+        bankPassword.setPromptText("Bank Password");
+        bankPassword.getStyleClass().add("text-field");
+
+        TextField bankId = new TextField();
+        bankId.setPromptText("Bank Id");
+        bankId.getStyleClass().add("text-field");
+
+        Button submit = new Button("Pay");
+        submit.getStyleClass().add("dark-blue");
+        submit.setAlignment(Pos.CENTER);
+        submit.setOnAction(e->{
+            int id = -1;
+            if (discountId.getText() != null && discountId.getText().matches("[0-9]+"))
+                id = Integer.parseInt(discountId.getText());
+            String res = "";
+            ArrayList<Product> allProducts = null;
+            try {
+                dataOutputStream.writeUTF("PrOfCart");
+                dataOutputStream.flush();
+                allProducts = new Gson().fromJson(dataInputStream.readUTF(), new TypeToken<ArrayList<Product>>(){}.getType());
+                dataOutputStream.writeUTF("BankPay " + id + " " + address.getText() + " " + bankUsername.getText() + " " + bankPassword.getText() + " " + bankId.getText());
+                dataOutputStream.flush();
+                res = dataInputStream.readUTF();
+            } catch (IOException ex) {
+                System.out.println(ex.getMessage());;
+            }
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Result");
+            alert.setHeaderText("Process Result");
+            alert.setContentText(res);
+            alert.showAndWait();
+            if (res.equalsIgnoreCase("product bought successfully"))
+            {
+                for (Product product : allProducts) {
+                    if (product.doesHasFile())
+                    {
+                        getFileOfProduct(product);
+                    }
+                }
+            }
+            show();
+            newWindow.close();
+        });
+
+        GridPane.setConstraints(discountId, 0, 0);
+        GridPane.setConstraints(address, 0, 1);
+        GridPane.setConstraints(bankUsername, 0, 2);
+        GridPane.setConstraints(bankPassword, 0, 3);
+        GridPane.setConstraints(bankId, 0, 4);
+
+        GridPane.setConstraints(submit, 0, 5);
+        GridPane.setHalignment(submit, HPos.CENTER);
+        gridPane.setAlignment(Pos.CENTER);
+        gridPane.setVgap(10);
+        gridPane.getChildren().addAll(discountId, address, bankUsername , bankPassword , bankId, submit);
+
+        newWindow.setScene(scene);
+
     }
 
     private void handlePay(Stage newWindow) {
