@@ -1,10 +1,12 @@
 package Model.Product;
 
-import Controller.BuyerManager;
+import Controller.Database;
 import Model.Account.BuyerAccount;
+import Model.Log.Log;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Objects;
 
 public class Auction extends Thread{
     private int numberOfAllAuctions = 1;
@@ -63,9 +65,8 @@ public class Auction extends Thread{
                 System.out.println(e.getMessage());
             }
         }
-        BuyerManager buyerManager = new BuyerManager();
-        buyerManager.addProductToCart(product, buyerWithMostPrice);
-        buyerManager.pay(-1, buyerWithMostPrice, "");
+        payAndFinish();
+        Database.removeAuction(this);
     }
 
     public Product getProduct() {
@@ -79,5 +80,12 @@ public class Auction extends Thread{
 
     public int getAuctionID() {
         return auctionID;
+    }
+
+    private void payAndFinish()
+    {
+        buyerWithMostPrice.setCredit((int) (buyerWithMostPrice.getCredit() - mostPrice));
+        Objects.requireNonNull(Database.getAccountByUsername(product.getSellerUsername())).setCredit((int) (Objects.requireNonNull(Database.getAccountByUsername(product.getSellerUsername())).getCredit() + mostPrice));
+        Log.addLog(buyerWithMostPrice.getUsername(), product.getSellerUsername(), (int) mostPrice, product.getProductId(), 0, 0, "Bought in Auction", product.doesHasFile);
     }
 }
