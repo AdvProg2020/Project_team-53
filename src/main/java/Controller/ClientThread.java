@@ -25,6 +25,7 @@ public class ClientThread extends Thread {
     private BuyerManager buyerManager;
     private SellerManager sellerManager;
     private ProductManager productManager;
+    private ChatManager chatManager;
 
     public ClientThread(Socket clientSocket, Server server) {
         this.server = server;
@@ -41,6 +42,7 @@ public class ClientThread extends Thread {
         buyerManager = new BuyerManager();
         sellerManager = new SellerManager();
         productManager = new ProductManager();
+        chatManager = new ChatManager();
     }
 
     @Override
@@ -53,6 +55,7 @@ public class ClientThread extends Thread {
             while (true)
             {
                 input = dataInputStream.readUTF();
+                String[] split = input.split(" ");
                 output = null;
                 if (input.startsWith("login"))
                 {
@@ -357,6 +360,13 @@ public class ClientThread extends Thread {
                     }
                     output = new Gson().toJson(myAuctions);
                 }
+                else if (input.startsWith("addMessage")){
+                    chatManager.addMessage(Integer.parseInt(split[1]), split[2], account);
+                }
+                else if (input.startsWith("getChatById")){
+                    output = new Gson().toJson(Database.getChatById(Integer.parseInt(split[1])));
+                }
+
                 else if (input.startsWith("Exit"))
                 {
                     clientSocket.close();

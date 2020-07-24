@@ -1,43 +1,62 @@
 package View.Menu;
 
-import javafx.geometry.Pos;
+import Model.Messaging.Chat;
+import Model.Messaging.Message;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import javafx.scene.Scene;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.layout.VBox;
+import javafx.scene.control.TextField;
+
+import java.io.IOException;
+import java.lang.reflect.Type;
 
 public class ChatMenu extends Menu {
+    private Chat chat;
+    private int chatId;
 
 
-    public ChatMenu(Menu parentMenu) {
+    public ChatMenu(Menu parentMenu, int chatId) {
         super("chat menu", parentMenu);
+        this.chatId = chatId;
     }
 
 
     @Override
     public void show() {
+        setChat();
         super.setPane();
-        VBox vBox = getVBox();
-
+        mainPane.getChildren().add(chat.showChat());
         Scene scene = new Scene(super.mainPane, 1000, 600);
-        ScrollPane scrollPane = new ScrollPane();
-        scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.ALWAYS);
-        scrollPane.setFitToHeight(true);
-        scrollPane.setFitToWidth(true);
-
-        scrollPane.setContent(vBox);
-
-        mainPane.getChildren().add(scrollPane);
-
         window.setScene(scene);
     }
 
-    private VBox getVBox() {
-        VBox vBox = new VBox();
-        vBox.setAlignment(Pos.CENTER);
-        vBox.setSpacing(10);
+    public void run() {
+        TextField textField = chat.getTextField();
+        textField.setOnAction(e -> {
+            // if e == enter.key
+            chat.addMessage(new Message(account, textField.getText()));
+            try {
+            dataOutputStream.writeUTF(  "addMessage"+ chatId + " " + textField.getText());
+                dataOutputStream.flush();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+        });
+        while (true) {
+            setChat();
+        }
+    }
 
-
-        return vBox;
+    private void setChat()  {
+        try {
+            dataOutputStream.writeUTF("getChatById " + chatId);
+            String input = dataInputStream.readUTF();
+            Type type = new TypeToken<Chat>(){}.getType();
+            Chat updatedChat = new Gson().fromJson(input, type);
+            chat = updatedChat;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 

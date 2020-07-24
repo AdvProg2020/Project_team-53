@@ -4,6 +4,7 @@ import Model.Account.Account;
 import Model.Account.AdminAccount;
 import Model.Account.BuyerAccount;
 import Model.Account.SellerAccount;
+import Model.Messaging.Chat;
 import Model.Product.Auction;
 import Model.Product.Category;
 import Model.Product.DiscountAndOff.Discount;
@@ -21,6 +22,22 @@ public class Database {
     static ArrayList<Discount> allDiscounts = new ArrayList<>();
     static ArrayList<Off> allOffs = new ArrayList<>();
     static ArrayList<Auction> allAuction = new ArrayList<>();
+    static ArrayList<Account> onlineChatUsers = new ArrayList<>();
+    static ArrayList<Chat> allChats = new ArrayList<>();
+
+    public static void addChat(Chat chat) {
+        allChats.add(chat);
+    }
+
+    public static Chat getChatById(int id) {
+        for (Chat chat : allChats) {
+            if (chat.getId() == id)
+                return chat;
+        }
+        return null;
+    }
+
+
 
     public static ArrayList<Account> getAllAccounts() {
         return allAccounts;
@@ -56,6 +73,14 @@ public class Database {
                 return account;
         }
         return null;
+    }
+
+    public synchronized static void addOnlineChatUsers(Account account){
+        onlineChatUsers.add(account);
+    }
+
+    public synchronized static void removeOnlineChatUsers(Account account){
+        onlineChatUsers.remove(account);
     }
 
     public static Product getProductByID(int productId){

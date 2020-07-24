@@ -9,11 +9,23 @@ import javafx.scene.layout.VBox;
 import java.util.ArrayList;
 
 public class Chat {
+    private static int idNumber = 0;
     private ArrayList<Message> messages = new ArrayList<>();
     private ArrayList<Account> members;
+    private TextField textField;
+    private int id;
+
+    public TextField getTextField() {
+        return textField;
+    }
 
     public Chat(ArrayList<Account> members) {
         this.members = members;
+        id = idNumber++;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public void addMessage(Message message) {
@@ -43,11 +55,13 @@ public class Chat {
     public ScrollPane showChat() {
         ScrollPane chatRoom = new ScrollPane();
         VBox vBox = new VBox();
+        vBox.setSpacing(10);
         ArrayList<String> content = getContent();
         for (String message : content) {
             vBox.getChildren().add(new Label(message));
         }
         TextField textField = new TextField();
+        this.textField = textField;
         vBox.getChildren().add(textField);
         chatRoom.setContent(vBox);
         return chatRoom;
