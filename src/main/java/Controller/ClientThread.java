@@ -443,9 +443,13 @@ public class ClientThread extends Thread {
                         arrayList.add(account);
                         arrayList.add((Database.getAccountByUsername(split[1])));
                         Chat chat = new Chat(arrayList);
-                        buyerAccount.addChat(chat);
+                        //buyerAccount.addChat(chat);
                         output = String.valueOf(chat.getId());
                     }
+                }
+                else if (input.startsWith("BankPay ")){
+                    details = input.split(" ");
+                    buyerManager.bankPay(account , Integer.parseInt(details[1]), details[2] , details[3], details[4] ,details[5]);
                 }
                 else if (input.startsWith("Exit"))
                 {

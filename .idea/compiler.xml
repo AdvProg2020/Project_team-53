@@ -10,6 +10,7 @@
         <module name="Project_team-53_Test" />
         <module name="Project_team-53" />
         <module name="Project" />
+        <module name="Project_anotherTime" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>

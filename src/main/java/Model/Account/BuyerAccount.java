@@ -15,12 +15,12 @@ public class BuyerAccount extends Account {
     private ArrayList<Integer> discountIds = new ArrayList<>();
     private HashMap<Integer, Integer> numberOfUse = new HashMap<>();
     private Cart cart;
-    private ArrayList<Chat> chats = new ArrayList<>();
+    //private ArrayList<Chat> chats = new ArrayList<>();
 
 
-    public void addChat(Chat chat) {
-        chats.add(chat);
-    }
+//    public void addChat(Chat chat) {
+//        chats.add(chat);
+//    }
 
     public BuyerAccount(String username, String firstName, String lastName, String password, String email, String phoneNumber, int credit) throws Exception {
         super(username, firstName, lastName, password, email, phoneNumber, credit);
@@ -30,9 +30,9 @@ public class BuyerAccount extends Account {
 
     public Chat hasChatWith(Account account) {
         ArrayList<Account> arrayList;
-        for (Chat chat : chats) {
+        for (Chat chat : Database.getAllChats()) {
             arrayList = chat.getMembers();
-            if (arrayList.size() == 2 && arrayList.contains(account))
+            if (arrayList.size() == 2 && arrayList.contains(account) && arrayList.contains(this))
                 return chat;
         }
         return null;
