@@ -30,6 +30,10 @@ public class Chat {
         return id;
     }
 
+    public ArrayList<Account> getMembers() {
+        return members;
+    }
+
     public void addMessage(Message message) {
         messages.add(message);
     }

@@ -28,6 +28,7 @@ public class ChatMenu extends Menu {
         mainPane.getChildren().add(chat.showChat());
         Scene scene = new Scene(super.mainPane, 1000, 600);
         window.setScene(scene);
+        execute();
     }
 
     @Override
@@ -35,7 +36,6 @@ public class ChatMenu extends Menu {
         TextField textField = chat.getTextField();
         chat.getBackButton().setOnAction(e -> {
             parentMenu.show();
-            parentMenu.execute();
         });
         textField.setOnAction(e -> {
             // if e == enter.key

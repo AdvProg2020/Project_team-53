@@ -18,10 +18,24 @@ public class BuyerAccount extends Account {
     private ArrayList<Chat> chats = new ArrayList<>();
 
 
+    public void addChat(Chat chat) {
+        chats.add(chat);
+    }
+
     public BuyerAccount(String username, String firstName, String lastName, String password, String email, String phoneNumber, int credit) throws Exception {
         super(username, firstName, lastName, password, email, phoneNumber, credit);
         this.buyLogs = new ArrayList<>();
         cart = new Cart();
+    }
+
+    public Chat hasChatWith(Account account) {
+        ArrayList<Account> arrayList;
+        for (Chat chat : chats) {
+            arrayList = chat.getMembers();
+            if (arrayList.size() == 2 && arrayList.contains(account))
+                return chat;
+        }
+        return null;
     }
 
     public boolean buyerProduct(int productId){

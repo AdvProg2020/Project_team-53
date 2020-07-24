@@ -1,9 +1,6 @@
 package Controller;
 
-import Model.Account.Account;
-import Model.Account.AdminAccount;
-import Model.Account.BuyerAccount;
-import Model.Account.SellerAccount;
+import Model.Account.*;
 import Model.Messaging.Chat;
 import Model.Product.Auction;
 import Model.Product.Category;
@@ -25,7 +22,7 @@ public class Database {
     static ArrayList<Account> onlineChatUsers = new ArrayList<>();
     static ArrayList<Chat> allChats = new ArrayList<>();
 
-    public static void addChat(Chat chat) {
+    public synchronized static void addChat(Chat chat) {
         allChats.add(chat);
     }
 
@@ -230,6 +227,15 @@ public class Database {
         for (Account account : allAccounts) {
             if (account instanceof BuyerAccount)
                 res.add((BuyerAccount) account);
+        }
+        return res;
+    }
+
+    public static ArrayList<SupporterAccount> getAllSupporterAccounts(){
+        ArrayList<SupporterAccount> res = new ArrayList<>();
+        for (Account account : allAccounts) {
+            if (account instanceof BuyerAccount)
+                res.add((SupporterAccount) account);
         }
         return res;
     }
