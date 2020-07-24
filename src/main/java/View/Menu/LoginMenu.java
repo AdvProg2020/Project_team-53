@@ -3,6 +3,7 @@ package View.Menu;
 import Model.Account.AdminAccount;
 import Model.Account.BuyerAccount;
 import Model.Account.SellerAccount;
+import Model.Account.SupporterAccount;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import javafx.geometry.HPos;
@@ -109,6 +110,10 @@ public class LoginMenu extends Menu{
                     else if (role.equalsIgnoreCase("Buyer"))
                     {
                         type = new TypeToken<BuyerAccount>(){}.getType();
+                        Menu.account = new Gson().fromJson(accountInJson, type);
+                    }
+                    else if (role.equalsIgnoreCase("Supporter")) {
+                        type = new TypeToken<SupporterAccount>() {}.getType();
                         Menu.account = new Gson().fromJson(accountInJson, type);
                     }
                     else {

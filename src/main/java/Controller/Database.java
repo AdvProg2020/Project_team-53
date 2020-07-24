@@ -1,9 +1,6 @@
 package Controller;
 
-import Model.Account.Account;
-import Model.Account.AdminAccount;
-import Model.Account.BuyerAccount;
-import Model.Account.SellerAccount;
+import Model.Account.*;
 import Model.Log.BuyLog;
 import Model.Messaging.Chat;
 import Model.Product.Auction;
@@ -96,6 +93,15 @@ public class Database {
         return null;
     }
 
+
+    public static String getUsers() {
+        String res = "";
+        for (Account account : allAccounts) {
+            if (account instanceof BuyerAccount || account instanceof SupporterAccount)
+                res += account.getUsername() + "\\n";
+        }
+        return res;
+    }
 
     public static Request getRequestById(int id) {
         for (Request request : allRequest) {

@@ -1,9 +1,6 @@
 package Controller;
 
-import Model.Account.Account;
-import Model.Account.AdminAccount;
-import Model.Account.BuyerAccount;
-import Model.Account.SellerAccount;
+import Model.Account.*;
 import Model.Product.Category;
 import Model.Product.DiscountAndOff.Discount;
 import Model.Product.DiscountAndOff.Off;
@@ -65,6 +62,17 @@ public class AdminManager {
             return e.getMessage();
         }
         return "New admin account registered.";
+    }
+
+    public String addNewSupporterAccount(String username, String firstName, String lastName, String email, String phoneNumber, String password, int credit) {
+        if (Database.getAccountByUsername(username) != null)
+            return "Exist account with this username.";
+        try {
+            Database.addAllAccounts(new SupporterAccount(username, firstName, lastName, password, email, phoneNumber, credit));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "New Supporter account registered.";
     }
 
     public String showRequestByiId(int id){
