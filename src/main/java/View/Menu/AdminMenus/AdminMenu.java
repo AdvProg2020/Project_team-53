@@ -133,7 +133,7 @@ public class AdminMenu extends Menu {
         GridPane.setHalignment(manageAddAdmin, HPos.CENTER);
         GridPane.setHalignment(logout, HPos.CENTER);
         GridPane.setHalignment(manageAddSupporter, HPos.CENTER);
-        allButtons.getChildren().addAll(editInfoButton, manageUser, manageRequest, manageProduct, manageCategories, manageDiscounts, manageAddAdmin, logout, onlineUser, manageLogs);
+        allButtons.getChildren().addAll(editInfoButton, manageUser, manageRequest, manageProduct, manageCategories,manageAddSupporter, manageDiscounts, manageAddAdmin, logout, onlineUser, manageLogs);
 
         try {
             dataOutputStream.writeUTF("GetLoggedAccount");
