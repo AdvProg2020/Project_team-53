@@ -258,7 +258,7 @@ public class ClientThread extends Thread {
                     else {
                         ArrayList<Account> arrayList = new ArrayList();
                             arrayList.add(account);
-                            arrayList.add((Database.getAccountByUsername(split[1]));
+                            arrayList.add((Database.getAccountByUsername(split[1])));
                         Chat chat = new Chat(arrayList);
                         buyerAccount.addChat(chat);
                         output = String.valueOf(chat.getId());
