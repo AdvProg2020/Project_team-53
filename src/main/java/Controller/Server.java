@@ -3,6 +3,7 @@ package Controller;
 import Model.Account.AdminAccount;
 import Model.Account.BuyerAccount;
 import Model.Account.SellerAccount;
+import Model.Account.SupporterAccount;
 
 import java.io.IOException;
 import java.net.ServerSocket;
@@ -15,6 +16,7 @@ public class Server {
     private ArrayList<AdminAccount> allOnlineAdmins;
     private ArrayList<BuyerAccount> allOnlineBuyers;
     private ArrayList<SellerAccount> allOnlineSellers;
+    private ArrayList<SupporterAccount> allOnlineSupporters;
     private HashMap<SellerAccount, Integer> portOfOnlineSellers;
 
     public static void main(String[] args) {
@@ -34,6 +36,7 @@ public class Server {
             allOnlineAdmins = new ArrayList<>();
             allOnlineBuyers = new ArrayList<>();
             allOnlineSellers = new ArrayList<>();
+            allOnlineSupporters = new ArrayList<>();
             portOfOnlineSellers = new HashMap<>();
         } catch (IOException e) {
             System.out.println(e.getMessage());
@@ -52,6 +55,11 @@ public class Server {
         allOnlineSellers.add(sellerAccount);
     }
 
+    public void addOnlineSupporter(SupporterAccount supporterAccount)
+    {
+        allOnlineSupporters.add(supporterAccount);
+    }
+
     public void removeOnlineAdmin(AdminAccount adminAccount){
         allOnlineAdmins.remove(adminAccount);
     }
@@ -64,6 +72,11 @@ public class Server {
         allOnlineSellers.remove(sellerAccount);
     }
 
+    public void removeOnlineSupporter(SupporterAccount supporterAccount)
+    {
+        allOnlineSupporters.remove(supporterAccount);
+    }
+
     public ArrayList<AdminAccount> getAllOnlineAdmins() {
         return allOnlineAdmins;
     }
@@ -74,6 +87,10 @@ public class Server {
 
     public ArrayList<SellerAccount> getAllOnlineSellers() {
         return allOnlineSellers;
+    }
+
+    public ArrayList<SupporterAccount> getAllOnlineSupporters() {
+        return allOnlineSupporters;
     }
 
     private void waitForClient()

@@ -1,8 +1,6 @@
 package View.Menu.BuyerMenus;
 
-import Model.Account.AdminAccount;
-import Model.Account.BuyerAccount;
-import Model.Account.SellerAccount;
+import Model.Account.*;
 import Model.Log.BuyLog;
 import Model.Product.DiscountAndOff.Discount;
 import View.Menu.ChatRoomMenu;
@@ -287,7 +285,71 @@ public class BuyerMenu extends Menu {
 
     private void handleShowSupporters()
     {
-        new ChatRoomMenu(this).show();
+        try {
+            super.setPane();
+            ArrayList<SupporterAccount> allOnlineAccount;
+            dataOutputStream.writeUTF("GetOnlineSupporters");
+            dataOutputStream.flush();
+            allOnlineAccount = new Gson().fromJson(dataInputStream.readUTF(), new TypeToken<ArrayList<SupporterAccount>>(){}.getType());
+            Scene scene = new Scene(super.mainPane, 1000, 600);
+            scene.getStylesheets().add(new File("Data/Styles/Buttons.css").toURI().toString());
+            scene.getStylesheets().add(new File("Data/Styles/textfield.css").toURI().toString());
+            scene.getStylesheets().add(new File("Data/Styles/backgrounds.css").toURI().toString());
+            scene.getStylesheets().add(new File("Data/Styles/choicebox.css").toURI().toString());
+            super.mainPane.getStyleClass().add("admin-page");
+            GridPane gridPane = new GridPane();
+            gridPane.setHgap(20);
+            gridPane.setVgap(10);
+            gridPane.setAlignment(Pos.CENTER);
+            ScrollPane scrollPane = new ScrollPane();
+            scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.ALWAYS);
+            scrollPane.setFitToHeight(true);
+            scrollPane.setFitToWidth(true);
+            scrollPane.getStyleClass().add("scroll-pane");
+            Label info = new Label("All Online Supporters");
+            info.setFont(Font.font(25));
+            GridPane.setHalignment(info, HPos.CENTER);
+            info.setAlignment(Pos.CENTER);
+            GridPane.setConstraints(info, 1, 0);
+            gridPane.getChildren().add(info);
+            int i = 1;
+            for (Account account : allOnlineAccount) {
+                String text = "";
+                Label label = new Label();
+                text = text + account.getUsername();
+                label.setText(text);
+                label.setFont(Font.font(15));
+                Button button = new Button("Chat");
+                button.setAlignment(Pos.CENTER);
+                button.setMaxWidth(Double.MAX_VALUE);
+                button.getStyleClass().add("dark-blue");
+                button.setOnAction(e -> {
+                    new ChatRoomMenu(this).show();
+                });
+                GridPane.setConstraints(label, 0, i);
+                GridPane.setConstraints(button, 2, i);
+                gridPane.getChildren().addAll(label, button);
+                i++;
+            }
+            Button back = new Button("back");
+            back.setAlignment(Pos.CENTER);
+            back.getStyleClass().add("dark-blue");
+            back.setMaxWidth(Double.MAX_VALUE);
+            GridPane.setHalignment(back, HPos.CENTER);
+            back.setOnAction(e -> show());
+            GridPane.setConstraints(back,1, i);
+            back.setAlignment(Pos.CENTER);
+            gridPane.getChildren().add(back);
+
+            scrollPane.setContent(gridPane);
+            super.mainPane.setCenter(scrollPane);
+
+            Menu.window.setScene(scene);
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+        }
     }
 
     private void handleMyAuctions()

@@ -1,9 +1,6 @@
 package Controller;
 
-import Model.Account.Account;
-import Model.Account.AdminAccount;
-import Model.Account.BuyerAccount;
-import Model.Account.SellerAccount;
+import Model.Account.*;
 import Model.Messaging.Chat;
 import Model.Product.Auction;
 import Model.Product.Product;
@@ -79,6 +76,8 @@ public class ClientThread extends Thread {
                         server.addOnlineBuyer((BuyerAccount) account);
                     else if (this.account instanceof SellerAccount)
                         server.addOnlineSeller((SellerAccount) account);
+                    else if (this.account instanceof SupporterAccount)
+                        server.addOnlineSupporter((SupporterAccount) account);
                 }
                 else if (input.startsWith("logout"))
                 {
@@ -88,6 +87,8 @@ public class ClientThread extends Thread {
                         server.removeOnlineBuyer((BuyerAccount) account);
                     else if (this.account instanceof SellerAccount)
                         server.removeOnlineSeller((SellerAccount) account);
+                    else if (this.account instanceof SupporterAccount)
+                        server.removeOnlineSupporter((SupporterAccount) account);
                     account = null;
                 }
                 else if (input.startsWith("register"))
@@ -219,6 +220,8 @@ public class ClientThread extends Thread {
                         output = "Seller_" + new Gson().toJson(account);
                     else if (account instanceof BuyerAccount)
                         output = "Buyer_" + new Gson().toJson(account);
+                    else if (account instanceof SupporterAccount)
+                        output = "Supp_" + new Gson().toJson(account);
                 }
                 else if (input.startsWith("GetProduct"))
                 {
@@ -338,6 +341,10 @@ public class ClientThread extends Thread {
                 else if (input.startsWith("GetOnlineSellers"))
                 {
                     output = new Gson().toJson(server.getAllOnlineSellers());
+                }
+                else if (input.startsWith("GetOnlineSupporters"))
+                {
+                    output = new Gson().toJson(server.getAllOnlineSupporters());
                 }
                 else if (input.startsWith("JoinAuction"))
                 {
