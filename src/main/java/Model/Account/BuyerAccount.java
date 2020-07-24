@@ -47,7 +47,12 @@ public class BuyerAccount extends Account {
     }
 
     public ArrayList<Integer> getDiscountIds() {
-        return discountIds;
+        ArrayList<Integer> finalDiscounts = new ArrayList<>();
+        for (Integer discountId : discountIds) {
+            if (this.canUseDiscount(discountId))
+                finalDiscounts.add(discountId);
+        }
+        return finalDiscounts;
     }
 
     public ArrayList<BuyLog> getBuyLogs() {

@@ -1,7 +1,9 @@
 package Controller;
 
-import Model.Account.*;
-import Model.Messaging.Chat;
+import Model.Account.Account;
+import Model.Account.AdminAccount;
+import Model.Account.BuyerAccount;
+import Model.Account.SellerAccount;
 import Model.Product.Auction;
 import Model.Product.Category;
 import Model.Product.DiscountAndOff.Discount;
@@ -70,14 +72,6 @@ public class Database {
                 return account;
         }
         return null;
-    }
-
-    public synchronized static void addOnlineChatUsers(Account account){
-        onlineChatUsers.add(account);
-    }
-
-    public synchronized static void removeOnlineChatUsers(Account account){
-        onlineChatUsers.remove(account);
     }
 
     public static Product getProductByID(int productId){
@@ -227,15 +221,6 @@ public class Database {
         for (Account account : allAccounts) {
             if (account instanceof BuyerAccount)
                 res.add((BuyerAccount) account);
-        }
-        return res;
-    }
-
-    public static ArrayList<SupporterAccount> getAllSupporterAccounts(){
-        ArrayList<SupporterAccount> res = new ArrayList<>();
-        for (Account account : allAccounts) {
-            if (account instanceof BuyerAccount)
-                res.add((SupporterAccount) account);
         }
         return res;
     }

@@ -87,13 +87,19 @@ public class BuyerMenu extends Menu {
         logout.setMaxWidth(Double.MAX_VALUE);
         logout.setOnAction(e -> handleLogout());
 
+        Button changeCredit = new Button("Change Credit");
+        changeCredit.getStyleClass().add("dark-blue");
+        changeCredit.setMaxWidth(Double.MAX_VALUE);
+        changeCredit.setOnAction(e -> handleChangeCredit());
+
         GridPane.setConstraints(viewAllDiscounts, 0, 0);
         GridPane.setConstraints(viewAllLogs, 0, 1);
         GridPane.setConstraints(viewMyAuctions, 0, 2);
         GridPane.setConstraints(viewCart,0, 3);
         GridPane.setConstraints(editInfoButton, 0, 4);
         GridPane.setConstraints(showSupporterButton, 0, 5);
-        GridPane.setConstraints(logout, 0, 6);
+        GridPane.setConstraints(changeCredit , 0 , 6);
+        GridPane.setConstraints(logout, 0, 7);
 
         GridPane.setHalignment(viewAllDiscounts, HPos.CENTER);
         GridPane.setHalignment(viewAllLogs, HPos.CENTER);
@@ -102,7 +108,7 @@ public class BuyerMenu extends Menu {
         GridPane.setHalignment(editInfoButton, HPos.CENTER);
         GridPane.setHalignment(showSupporterButton, HPos.CENTER);
         GridPane.setHalignment(logout, HPos.CENTER);
-
+        GridPane.setHalignment(changeCredit , HPos.CENTER);
         try {
             dataOutputStream.writeUTF("GetLoggedAccount");
             dataOutputStream.flush();
@@ -130,7 +136,7 @@ public class BuyerMenu extends Menu {
             System.out.println(e.getMessage());
         }
         Pane pane = Objects.requireNonNull(Menu.account).viewPersonalInfoInGraphic();
-        allButtons.getChildren().addAll(viewAllDiscounts, viewAllLogs, viewCart, editInfoButton, logout, viewMyAuctions, showSupporterButton);
+        allButtons.getChildren().addAll(viewAllDiscounts, viewAllLogs, viewCart, editInfoButton, logout, viewMyAuctions, showSupporterButton , changeCredit);
 
         GridPane.setConstraints(pane, 0, 0);
         GridPane.setConstraints(allButtons, 3, 0);
@@ -144,6 +150,84 @@ public class BuyerMenu extends Menu {
 
         window.setScene(scene);
     }
+
+    private void handleChangeCredit() {
+        super.setPane();
+        GridPane gridPane = new GridPane();
+        Scene scene = new Scene(super.mainPane, 1000, 600);
+        scene.getStylesheets().add(new File("Data/Styles/Buttons.css").toURI().toString());
+        scene.getStylesheets().add(new File("Data/Styles/textfield.css").toURI().toString());
+        scene.getStylesheets().add(new File("Data/Styles/backgrounds.css").toURI().toString());
+        scene.getStylesheets().add(new File("Data/Styles/choicebox.css").toURI().toString());
+        super.mainPane.getStyleClass().add("admin-page");
+        gridPane.setAlignment(Pos.CENTER);
+        gridPane.setVgap(10);
+        Label status = new Label();
+
+        TextField much = new TextField();
+        much.setPromptText("amount ");
+        much.getStyleClass().add("textfield.css");
+
+
+        TextField bankUsername = new TextField();
+        bankUsername.setPromptText("Bank Username");
+        bankUsername.getStyleClass().add("textfield.css");
+
+        TextField bankPassword = new TextField();
+        bankPassword.setPromptText("Bank Password");
+        bankPassword.getStyleClass().add("textfield.css");
+
+
+        TextField bankId = new TextField();
+        bankId.setPromptText("Bank Id");
+        bankId.getStyleClass().add("textfield.css");
+
+        Button edit = new Button("edit");
+        edit.getStyleClass().add("dark-blue");
+        edit.setMaxWidth(Double.MAX_VALUE);
+        edit.setOnAction(e -> {
+            try {
+                dataOutputStream.writeUTF("changeCredit " +  much.getText() + " " + bankUsername.getText() + " " + bankPassword.getText() + " " + bankId.getText());
+                dataOutputStream.flush();
+                status.setText(dataInputStream.readUTF());
+            }
+            catch (Exception ex)
+            {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error");
+                alert.setHeaderText("Process Fail");
+                alert.setContentText("Wrong input for change to");
+
+                alert.showAndWait();
+            }
+        });
+        Button back = new Button("back");
+        back.getStyleClass().add("dark-blue");
+        back.setMaxWidth(Double.MAX_VALUE);
+        back.setOnAction(e -> {
+            show();
+        });
+        GridPane.setConstraints(much, 0, 1);
+        GridPane.setConstraints(bankUsername, 0 , 2);
+        GridPane.setConstraints(bankPassword, 0 , 3);
+        GridPane.setConstraints(bankId, 0 , 4);
+
+        GridPane.setConstraints(edit, 0, 5);
+        GridPane.setConstraints(back, 0, 6);
+        GridPane.setConstraints(status, 0, 7);
+        GridPane.setHalignment(edit, HPos.CENTER);
+        GridPane.setHalignment(back, HPos.CENTER);
+        GridPane.setHalignment(bankUsername, HPos.CENTER);
+
+        GridPane.setHalignment(bankPassword, HPos.CENTER);
+        GridPane.setHalignment(bankId, HPos.CENTER);
+        GridPane.setHalignment(status, HPos.CENTER);
+        gridPane.getChildren().addAll(much, bankUsername , bankPassword , bankId , edit, back, status);
+        super.mainPane.setCenter(gridPane);
+
+        Menu.window.setScene(scene);
+    }
+
 
     private void handleAllLogs() {
         super.setPane();
@@ -363,7 +447,6 @@ public class BuyerMenu extends Menu {
     public void handleAllDiscountShow()
     {
         super.setPane();
-        ArrayList<Integer> allDiscountIds = ((BuyerAccount)Menu.account).getDiscountIds();
         Scene scene = new Scene(super.mainPane, 1000, 600);
         scene.getStylesheets().add(new File("Data/Styles/Buttons.css").toURI().toString());
         scene.getStylesheets().add(new File("Data/Styles/textfield.css").toURI().toString());
@@ -385,10 +468,18 @@ public class BuyerMenu extends Menu {
         info.setAlignment(Pos.CENTER);
         GridPane.setConstraints(info, 1, 0);
         gridPane.getChildren().add(info);
+        ArrayList<Integer> allDiscountIds = null;
+        try {
+            dataOutputStream.writeUTF("GetDiscountOfAccount");
+            dataOutputStream.flush();
+            allDiscountIds = new Gson().fromJson(dataInputStream.readUTF(), new TypeToken<ArrayList<Integer>>(){}.getType());
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+        }
         int i = 1;
-        for (Integer discountId : allDiscountIds) {
-            if (!((BuyerAccount)Menu.account).canUseDiscount(discountId))
-                continue;
+        for (Integer discountId : Objects.requireNonNull(allDiscountIds)) {
 
             Label label = new Label(discountId.toString());
             label.setFont(Font.font(15));

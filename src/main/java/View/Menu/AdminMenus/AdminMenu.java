@@ -1,10 +1,10 @@
 package View.Menu.AdminMenus;
 
-import Controller.Database;
 import Model.Account.Account;
 import Model.Account.AdminAccount;
 import Model.Account.BuyerAccount;
 import Model.Account.SellerAccount;
+import Model.Log.BuyLog;
 import Model.Product.Category;
 import Model.Product.DiscountAndOff.Discount;
 import Model.Product.Product;
@@ -95,6 +95,11 @@ public class AdminMenu extends Menu {
         manageDiscounts.getStyleClass().add("dark-blue");
         manageDiscounts.setMaxWidth(Double.MAX_VALUE);
 
+        Button manageLogs = new Button("Manage Logs");
+        manageLogs.setOnAction(e -> handleAllLogs());
+        manageLogs.getStyleClass().add("dark-blue");
+        manageLogs.setMaxWidth(Double.MAX_VALUE);
+
         Button manageAddAdmin = new Button("Add Manager");
         manageAddAdmin.setOnAction(e -> handleAddAdmin());
         manageAddAdmin.getStyleClass().add("dark-blue");
@@ -109,7 +114,9 @@ public class AdminMenu extends Menu {
         GridPane.setConstraints(manageCategories, 0, 5);
         GridPane.setConstraints(manageDiscounts, 0, 6);
         GridPane.setConstraints(manageAddAdmin, 0, 7);
-        GridPane.setConstraints(logout, 0, 8);
+        GridPane.setConstraints(manageLogs, 0, 8);
+        GridPane.setConstraints(logout, 0, 9);
+        GridPane.setHalignment(manageLogs, HPos.CENTER);
         GridPane.setHalignment(editInfoButton, HPos.CENTER);
         GridPane.setHalignment(manageUser, HPos.CENTER);
         GridPane.setHalignment(onlineUser, HPos.CENTER);
@@ -120,7 +127,7 @@ public class AdminMenu extends Menu {
         GridPane.setHalignment(manageAddAdmin, HPos.CENTER);
         GridPane.setHalignment(logout, HPos.CENTER);
 
-        allButtons.getChildren().addAll(editInfoButton, manageUser, manageRequest, manageProduct, manageCategories, manageDiscounts, manageAddAdmin, logout, onlineUser);
+        allButtons.getChildren().addAll(editInfoButton, manageUser, manageRequest, manageProduct, manageCategories, manageDiscounts, manageAddAdmin, logout, onlineUser, manageLogs);
 
         try {
             dataOutputStream.writeUTF("GetLoggedAccount");
@@ -231,15 +238,137 @@ public class AdminMenu extends Menu {
         userMenu.show();
     }
 
+    private void handleAllLogs()
+    {
+        try {
+            super.setPane();
+            dataOutputStream.writeUTF("GetAllBuyerAccounts");
+            dataOutputStream.flush();
+            ArrayList<BuyerAccount> allBuyers = new Gson().fromJson(dataInputStream.readUTF(), new TypeToken<ArrayList<BuyerAccount>>(){}.getType());
+            ArrayList<BuyLog> allLogs = new ArrayList<>();
+            for (BuyerAccount buyer : allBuyers) {
+                allLogs.addAll(buyer.getBuyLogs());
+            }
+            Scene scene = new Scene(super.mainPane, 1000, 600);
+            scene.getStylesheets().add(new File("Data/Styles/Buttons.css").toURI().toString());
+            scene.getStylesheets().add(new File("Data/Styles/textfield.css").toURI().toString());
+            scene.getStylesheets().add(new File("Data/Styles/backgrounds.css").toURI().toString());
+            scene.getStylesheets().add(new File("Data/Styles/choicebox.css").toURI().toString());
+            super.mainPane.getStyleClass().add("admin-page");
+            ScrollPane scrollPane = new ScrollPane();
+            scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.ALWAYS);
+            scrollPane.setFitToHeight(true);
+            scrollPane.setFitToWidth(true);
+            scrollPane.getStyleClass().add("scroll-pane");
+            GridPane gridPane = new GridPane();
+            gridPane.setHgap(20);
+            gridPane.setVgap(10);
+            gridPane.setAlignment(Pos.CENTER);
+            Label info = new Label("All Buy Logs");
+            info.setFont(Font.font(25));
+            GridPane.setHalignment(info, HPos.CENTER);
+            info.setAlignment(Pos.CENTER);
+            GridPane.setConstraints(info, 1, 0);
+            gridPane.getChildren().add(info);
+            int i = 1;
+            for (BuyLog buyLog : allLogs) {
+                Label label = new Label(String.valueOf(buyLog.getLogId()));
+                label.setFont(Font.font(15));
+                Button button = new Button("show");
+                button.setMaxWidth(Double.MAX_VALUE);
+                button.getStyleClass().add("dark-blue");
+                button.setAlignment(Pos.CENTER);
+                button.setOnAction(e -> {
+                    handleShowLog(buyLog);
+                });
+                GridPane.setConstraints(label, 0, i);
+                GridPane.setConstraints(button, 2, i);
+                gridPane.getChildren().addAll(label, button);
+                i++;
+            }
+            Button back = new Button("back");
+            back.setAlignment(Pos.CENTER);
+            back.getStyleClass().add("dark-blue");
+            back.setMaxWidth(Double.MAX_VALUE);
+            GridPane.setHalignment(back, HPos.CENTER);
+            back.setOnAction(e -> show());
+            GridPane.setConstraints(back,1, i);
+            gridPane.getChildren().add(back);
+
+            scrollPane.setContent(gridPane);
+            super.mainPane.setCenter(scrollPane);
+
+            Menu.window.setScene(scene);
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+    }
+
+    private void handleShowLog(BuyLog buyLog) {
+        Stage newWindow = new Stage();
+        Pane pane = buyLog.showLogWithGraphic();
+        ((GridPane)pane).setAlignment(Pos.CENTER);
+        Scene scene = new Scene(pane, 600, 400);
+        scene.getStylesheets().add(new File("Data/Styles/backgrounds.css").toURI().toString());
+        scene.getStylesheets().add(new File("Data/Styles/Buttons.css").toURI().toString());
+        pane.getStyleClass().add("admin-popup");
+        if (!buyLog.isWasProductHasFile() && !buyLog.getDeliveryStatus().equalsIgnoreCase("Received"))
+        {
+            Button receive = new Button("Received");
+            receive.getStyleClass().add("dark-blue");
+            receive.setMaxWidth(Double.MAX_VALUE);
+            GridPane.setConstraints(receive, 3, 0);
+            pane.getChildren().add(receive);
+            receive.setOnAction(event -> {
+                try {
+                    dataOutputStream.writeUTF("ReceivedBuyLog " + buyLog.getLogId());
+                    dataOutputStream.flush();
+                }
+                catch (Exception e)
+                {
+                    System.out.println(e.getMessage());
+                }
+                handleAllLogs();
+                newWindow.close();
+            });
+        }
+
+        newWindow.setScene(scene);
+        newWindow.initModality(Modality.APPLICATION_MODAL);
+        newWindow.setOnCloseRequest(e -> handleAllLogs());
+        newWindow.showAndWait();
+    }
+
     public void handleManageRequest()
     {
         try {
             super.setPane();
-            ArrayList<Request> allRequest;
-            dataOutputStream.writeUTF("AllRequest");
+            dataOutputStream.writeUTF("GetAllAddNewOffRequest");
             dataOutputStream.flush();
-            Gson gson = new Gson();
-            allRequest = gson.fromJson(dataInputStream.readUTF(), new TypeToken<ArrayList<Request>>(){}.getType());
+            ArrayList<AddNewOffRequest> addNewOffRequests = new Gson().fromJson(dataInputStream.readUTF(), new TypeToken<ArrayList<AddNewOffRequest>>(){}.getType());
+            dataOutputStream.writeUTF("GetAllDeleteProductRequest");
+            dataOutputStream.flush();
+            ArrayList<DeleteProduct> deleteProducts = new Gson().fromJson(dataInputStream.readUTF(), new TypeToken<ArrayList<DeleteProduct>>(){}.getType());
+            dataOutputStream.writeUTF("GetAllEditOffRequest");
+            dataOutputStream.flush();
+            ArrayList<EditOffRequest> editOffRequests = new Gson().fromJson(dataInputStream.readUTF(), new TypeToken<ArrayList<EditOffRequest>>(){}.getType());
+            dataOutputStream.writeUTF("GetAllEditProductRequest");
+            dataOutputStream.flush();
+            ArrayList<EditProductRequest> editProductRequests = new Gson().fromJson(dataInputStream.readUTF(), new TypeToken<ArrayList<EditProductRequest>>(){}.getType());
+            dataOutputStream.writeUTF("GetAllNewProductRequest");
+            dataOutputStream.flush();
+            ArrayList<NewProductRequest> newProductRequests = new Gson().fromJson(dataInputStream.readUTF(), new TypeToken<ArrayList<NewProductRequest>>(){}.getType());
+            dataOutputStream.writeUTF("GetAllNewSellerRequest");
+            dataOutputStream.flush();
+            ArrayList<NewSellerRequest> newSellerRequests = new Gson().fromJson(dataInputStream.readUTF(), new TypeToken<ArrayList<NewSellerRequest>>(){}.getType());
+            ArrayList<Request> allRequest = new ArrayList<>(addNewOffRequests);
+            allRequest.addAll(deleteProducts);
+            allRequest.addAll(editOffRequests);
+            allRequest.addAll(editProductRequests);
+            allRequest.addAll(newProductRequests);
+            allRequest.addAll(newSellerRequests);
             Scene scene = new Scene(super.mainPane, 1000, 600);
             scene.getStylesheets().add(new File("Data/Styles/Buttons.css").toURI().toString());
             scene.getStylesheets().add(new File("Data/Styles/textfield.css").toURI().toString());
@@ -392,11 +521,22 @@ public class AdminMenu extends Menu {
     {
         try {
             super.setPane();
-            ArrayList<Account> allAccount;
-            dataOutputStream.writeUTF("AllAccounts");
+            ArrayList<BuyerAccount> allBuyerAccount;
+            ArrayList<SellerAccount> allSellerAccount;
+            ArrayList<AdminAccount> allAdminAccount;
+            dataOutputStream.writeUTF("GetAllBuyerAccounts");
             dataOutputStream.flush();
             Gson gson = new Gson();
-            allAccount = gson.fromJson(dataInputStream.readUTF(), new TypeToken<ArrayList<Account>>(){}.getType());
+            allBuyerAccount = gson.fromJson(dataInputStream.readUTF(), new TypeToken<ArrayList<BuyerAccount>>(){}.getType());
+            dataOutputStream.writeUTF("GetAllSellerAccounts");
+            dataOutputStream.flush();
+            allSellerAccount = new Gson().fromJson(dataInputStream.readUTF(), new TypeToken<ArrayList<SellerAccount>>(){}.getType());
+            dataOutputStream.writeUTF("GetAllAdminAccounts");
+            dataOutputStream.flush();
+            allAdminAccount = new Gson().fromJson(dataInputStream.readUTF(), new TypeToken<ArrayList<AdminAccount>>(){}.getType());
+            ArrayList<Account> allAccount = new ArrayList<>(allAdminAccount);
+            allAccount.addAll(allSellerAccount);
+            allAccount.addAll(allBuyerAccount);
             Scene scene = new Scene(super.mainPane, 1000, 600);
             scene.getStylesheets().add(new File("Data/Styles/Buttons.css").toURI().toString());
             scene.getStylesheets().add(new File("Data/Styles/textfield.css").toURI().toString());
@@ -1143,13 +1283,14 @@ public class AdminMenu extends Menu {
             numberOfTimes.setPromptText("Number Of Times");
 
             ArrayList<CheckBox> checkBoxes = new ArrayList<>();
-            ArrayList<Account> allAccounts = Database.getAllAccounts();
+            ArrayList<Account> allAccounts;
+            dataOutputStream.writeUTF("GetAllBuyerAccounts");
+            dataOutputStream.flush();
+            allAccounts = new Gson().fromJson(dataInputStream.readUTF(), new TypeToken<ArrayList<BuyerAccount>>(){}.getType());
             for (Account account : allAccounts) {
-                if (account instanceof BuyerAccount){
-                    CheckBox checkBox = new CheckBox(account.getUsername());
-                    checkBox.setId(account.getUsername());
-                    checkBoxes.add(checkBox);
-                }
+                CheckBox checkBox = new CheckBox(account.getUsername());
+                checkBox.setId(account.getUsername());
+                checkBoxes.add(checkBox);
             }
 
             Button add = new Button("Add");
@@ -1162,8 +1303,8 @@ public class AdminMenu extends Menu {
                             unIAL.add(checkBox.getId());
                         }
                     }
-                    dataOutputStream.writeUTF("AddDiscount " + Integer.parseInt(maxValue.getText()) + " " + Integer.parseInt(percent.getText()) + " " +
-                            startDate.getText() + " " + endDate.getText() + " " + Integer.parseInt(numberOfTimes.getText()) + " " + new Gson().toJson(unIAL));
+                    dataOutputStream.writeUTF("AddDiscount\n" + Integer.parseInt(maxValue.getText()) + "\n" + Integer.parseInt(percent.getText()) + "\n" +
+                            startDate.getText() + "\n" + endDate.getText() + "\n" + Integer.parseInt(numberOfTimes.getText()) + "\n" + new Gson().toJson(unIAL));
                     dataOutputStream.flush();
                     status.setText(dataInputStream.readUTF());
                 }

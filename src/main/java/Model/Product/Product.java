@@ -39,6 +39,8 @@ public class Product {
     ArrayList<Score> scores = new ArrayList<>();
     ArrayList<Comment> comments = new ArrayList<>();
     int offId;
+    boolean doesHasFile;
+    String address;
 
     public static int getNumberOfAllProducts() {
         return numberOfAllProducts;
@@ -48,7 +50,7 @@ public class Product {
         Product.numberOfAllProducts = numberOfAllProducts;
     }
 
-    public Product(String status, String name, String sellerUsername, boolean available, int number, String description, String categoryName, int price) {
+    public Product(String status, String name, String sellerUsername, boolean available, int number, String description, String categoryName, int price, boolean doesHasFile, String address) {
         this.status = status;
         this.name = name;
         this.sellerUsername = sellerUsername;
@@ -58,6 +60,8 @@ public class Product {
         this.productId = numberOfAllProducts;
         this.categoryName = categoryName;
         this.price = price;
+        this.doesHasFile = doesHasFile;
+        this.address = address;
         numberOfAllProducts++;
         averageScore = 0;
         this.offId = -1;
@@ -274,6 +278,7 @@ public class Product {
         Label number = new Label("Number : " + product.getNumber());
         Label descriptionTag = new Label("Description : ");
         Label description = new Label(product.getDescription());
+        Label hasFile = new Label("HasFile : " + doesHasFile);
 
         GridPane.setConstraints(name, 0, 1 , 2 , 1);
         GridPane.setConstraints(averageScore, 0, 2 , 2 , 1);
@@ -286,8 +291,9 @@ public class Product {
         GridPane.setConstraints(number, 0, 9 , 2 , 1);
         GridPane.setConstraints(descriptionTag, 0, 10 , 2 , 1);
         GridPane.setConstraints(description, 1, 11 , 2 , 3);
+        GridPane.setConstraints(hasFile, 0, 15, 2, 1);
 
-        gridPane.getChildren().addAll( name, averageScore, scoreWithStar, price, category, status,sellerUsername,available,number,descriptionTag,description);
+        gridPane.getChildren().addAll( name, averageScore, scoreWithStar, price, category, status,sellerUsername,available,number,descriptionTag,description, hasFile);
 
         if (product.doesHaveOff()){
             try {
@@ -394,5 +400,15 @@ public class Product {
         scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.ALWAYS);
 
         return scrollPane;
+    }
+
+    public String getAddressOfProduct()
+    {
+        return this.address;
+    }
+
+    public boolean doesHasFile()
+    {
+        return this.doesHasFile;
     }
 }

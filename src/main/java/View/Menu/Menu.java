@@ -1,6 +1,5 @@
 package View.Menu;
 
-import Controller.Database;
 import Model.Account.Account;
 import Model.Account.BuyerAccount;
 import View.Menu.ProductsMenus.ProductsMenu;
@@ -150,38 +149,7 @@ public abstract class Menu{
 
     public void show() {}
 
-    public void execute(){
-        int input;
-        try {
-            String inputInString = scanner.nextLine();
-            input = Integer.parseInt(inputInString);
-            if((input > this.subMenus.size() + 1) || (input < 1))
-            {
-                throw new Exception("invalid input");
-            }
-        }
-        catch (Exception e){
-            System.out.println("your input is invalid");
-            this.execute();
-            return;
-        }
-        if(input == this.subMenus.size() + 1)
-        {
-            if(this.parentMenu == null)
-            {
-                Database.writeDataOnFile();
-                System.exit(1);
-            }
-            else {
-                this.parentMenu.show();
-                this.parentMenu.execute();
-            }
-        }
-        else{
-            this.subMenus.get(input).show();
-            this.subMenus.get(input).execute();
-        }
-    }
+    public void execute(){ }
 
     public static void setSocket(Socket socket) {
         Menu.socket = socket;

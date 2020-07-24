@@ -10,6 +10,8 @@ import View.Menu.Menu;
 import View.Menu.UserMenu;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.geometry.HPos;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -20,9 +22,10 @@ import javafx.scene.text.Font;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 import java.lang.reflect.Type;
+import java.net.ServerSocket;
+import java.net.Socket;
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -41,6 +44,13 @@ public class SellerMenu extends Menu {
     }
 
     public void show(){
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                handleBuyer();
+            }
+        }).start();
+
         super.setPane();
 
         Scene scene = new Scene(super.mainPane, 1000, 600);
@@ -77,6 +87,11 @@ public class SellerMenu extends Menu {
         editInfoButton.setMaxWidth(Double.MAX_VALUE);
         editInfoButton.setOnAction(e -> handleEdit());
 
+        Button changeCredit = new Button("Change Credit");
+        changeCredit.getStyleClass().add("dark-blue");
+        changeCredit.setMaxWidth(Double.MAX_VALUE);
+        changeCredit.setOnAction(e -> handleChangeCredit());
+
         Button logout = new Button("Logout");
         logout.getStyleClass().add("dark-blue");
         logout.setMaxWidth(Double.MAX_VALUE);
@@ -87,7 +102,8 @@ public class SellerMenu extends Menu {
         GridPane.setConstraints(manageOffs, 0, 2);
         GridPane.setConstraints(editInfoButton, 0, 3);
         GridPane.setConstraints(addAuction, 0, 4);
-        GridPane.setConstraints(logout, 0, 5);
+        GridPane.setConstraints(changeCredit ,  0 , 5);
+        GridPane.setConstraints(logout, 0, 6);
 
         GridPane.setHalignment(viewAllLogs, HPos.CENTER);
         GridPane.setHalignment(manageProducts, HPos.CENTER);
@@ -95,6 +111,7 @@ public class SellerMenu extends Menu {
         GridPane.setHalignment(editInfoButton, HPos.CENTER);
         GridPane.setHalignment(logout, HPos.CENTER);
         GridPane.setHalignment(addAuction, HPos.CENTER);
+        GridPane.setHalignment(changeCredit, HPos.CENTER);
 
         try {
             dataOutputStream.writeUTF("GetLoggedAccount");
@@ -123,7 +140,7 @@ public class SellerMenu extends Menu {
             System.out.println(e.getMessage());
         }
         Pane pane = Objects.requireNonNull(Menu.account).viewPersonalInfoInGraphic();
-        allButtons.getChildren().addAll(viewAllLogs, manageProducts, manageOffs, editInfoButton, logout, addAuction);
+        allButtons.getChildren().addAll(viewAllLogs, manageProducts, manageOffs, editInfoButton, logout, addAuction, changeCredit);
 
         GridPane.setConstraints(pane, 0, 0);
         GridPane.setConstraints(allButtons, 3, 0);
@@ -137,6 +154,130 @@ public class SellerMenu extends Menu {
 
         window.setScene(scene);
 
+    }
+
+    private void handleBuyer()
+    {
+        try {
+            ServerSocket sellerServerSocket = new ServerSocket(0);
+            dataOutputStream.writeUTF("SetPortOfSeller " + sellerServerSocket.getLocalPort());
+            dataOutputStream.flush();
+            while (true)
+            {
+                Socket buyerSocket = sellerServerSocket.accept();
+                DataInputStream sellerDataInputStream = new DataInputStream(new BufferedInputStream(buyerSocket.getInputStream()));
+                DataOutputStream sellerDataOutputStream = new DataOutputStream(new BufferedOutputStream(buyerSocket.getOutputStream()));
+                String input = sellerDataInputStream.readUTF();
+                if (input.startsWith("exit"))
+                {
+                    sellerDataInputStream.close();
+                    sellerDataOutputStream.close();
+                    buyerSocket.close();
+                    break;
+                }
+                else if (input.startsWith("GetProduct"))
+                {
+                    dataOutputStream.writeUTF("GetProduct " + input.split(" ")[1]);
+                    dataOutputStream.flush();
+                    Product product = new Gson().fromJson(dataInputStream.readUTF(), new TypeToken<Product>(){}.getType());
+                    String address = product.getAddressOfProduct();
+                    try {
+                        File file = new File(address);
+                        BufferedInputStream fileBufferedInputStream = new BufferedInputStream(new FileInputStream(file));
+                        byte[] fileBytes = new byte[(int) file.length()];
+                        fileBufferedInputStream.read(fileBytes, 0, fileBytes.length);
+                        sellerDataOutputStream.write(fileBytes, 0, fileBytes.length);
+                        sellerDataOutputStream.flush();
+                        fileBufferedInputStream.close();
+                    }
+                    catch (Exception e)
+                    {
+                        System.out.println(e.getMessage());
+                    }
+                    sellerDataInputStream.close();
+                    sellerDataOutputStream.close();
+                    buyerSocket.close();
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    private void handleChangeCredit() {
+        super.setPane();
+        GridPane gridPane = new GridPane();
+        Scene scene = new Scene(super.mainPane, 1000, 600);
+        scene.getStylesheets().add(new File("Data/Styles/Buttons.css").toURI().toString());
+        scene.getStylesheets().add(new File("Data/Styles/textfield.css").toURI().toString());
+        scene.getStylesheets().add(new File("Data/Styles/backgrounds.css").toURI().toString());
+        scene.getStylesheets().add(new File("Data/Styles/choicebox.css").toURI().toString());
+        super.mainPane.getStyleClass().add("admin-page");
+        gridPane.setAlignment(Pos.CENTER);
+        gridPane.setVgap(10);
+        Label status = new Label();
+
+        TextField much = new TextField();
+        much.setPromptText("amount (negative for decrease)");
+        much.getStyleClass().add("textfield.css");
+
+
+        TextField bankUsername = new TextField();
+        bankUsername.setPromptText("Bank Username");
+        bankUsername.getStyleClass().add("textfield.css");
+
+        TextField bankPassword = new TextField();
+        bankPassword.setPromptText("Bank Password");
+        bankPassword.getStyleClass().add("textfield.css");
+
+
+        TextField bankId = new TextField();
+        bankId.setPromptText("Bank Id");
+        bankId.getStyleClass().add("textfield.css");
+
+        Button edit = new Button("edit");
+        edit.getStyleClass().add("dark-blue");
+        edit.setMaxWidth(Double.MAX_VALUE);
+        edit.setOnAction(e -> {
+            try {
+                dataOutputStream.writeUTF("changeCredit " +  much.getText() + " " + bankUsername.getText() + " " + bankPassword.getText() + " " + bankId.getText());
+                dataOutputStream.flush();
+                status.setText(dataInputStream.readUTF());
+            }
+            catch (Exception ex)
+            {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error");
+                alert.setHeaderText("Process Fail");
+                alert.setContentText("Wrong input for change to");
+
+                alert.showAndWait();
+            }
+        });
+        Button back = new Button("back");
+        back.getStyleClass().add("dark-blue");
+        back.setMaxWidth(Double.MAX_VALUE);
+        back.setOnAction(e -> {
+            show();
+        });
+        GridPane.setConstraints(much, 0, 1);
+        GridPane.setConstraints(bankUsername, 0 , 2);
+        GridPane.setConstraints(bankPassword, 0 , 3);
+        GridPane.setConstraints(bankId, 0 , 4);
+
+        GridPane.setConstraints(edit, 0, 5);
+        GridPane.setConstraints(back, 0, 6);
+        GridPane.setConstraints(status, 0, 7);
+        GridPane.setHalignment(edit, HPos.CENTER);
+        GridPane.setHalignment(back, HPos.CENTER);
+        GridPane.setHalignment(bankUsername, HPos.CENTER);
+
+        GridPane.setHalignment(bankPassword, HPos.CENTER);
+        GridPane.setHalignment(bankId, HPos.CENTER);
+        GridPane.setHalignment(status, HPos.CENTER);
+        gridPane.getChildren().addAll(much, bankUsername , bankPassword , bankId , edit, back, status);
+        super.mainPane.setCenter(gridPane);
+
+        Menu.window.setScene(scene);
     }
 
     private void handleAddAuction(){
@@ -477,7 +618,7 @@ public class SellerMenu extends Menu {
         newWindow.setScene(scene);
     }
 
-    public void handleManageProducts()
+    private void handleManageProducts()
     {
         super.setPane();
         ArrayList<Product> allProduct = null;
@@ -610,16 +751,42 @@ public class SellerMenu extends Menu {
         price.getStyleClass().add("text-field");
         price.setPromptText("Price");
 
+        TextField address = new TextField();
+        address.getStyleClass().add("text-field");
+        address.setPromptText("AddressOfFile");
+        address.setDisable(true);
+
+        CheckBox doesProductHasFile = new CheckBox("DoesProductHasFile");
+        doesProductHasFile.selectedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                if (doesProductHasFile.isSelected())
+                    address.setDisable(false);
+                else if (!doesProductHasFile.isSelected())
+                    address.setDisable(true);
+            }
+        });
+
         Button sendRequest = new Button("Send Request");
         sendRequest.getStyleClass().add("dark-blue");
         sendRequest.setMaxWidth(Double.MAX_VALUE);
         sendRequest.setAlignment(Pos.CENTER);
         sendRequest.setOnAction(e -> {
             try {
-                dataOutputStream.writeUTF("AddNewProduct " + statusTextField.getText() +  " " + name.getText() +  " "
-                + available.isSelected() + " " + number.getText() + " " + description.getText() + " " + categoryName.getText() + " "
-                + price.getText());
-                dataOutputStream.flush();
+                if (doesProductHasFile.isSelected())
+                {
+                    dataOutputStream.writeUTF("AddNewProduct " + statusTextField.getText() +  " " + name.getText() +  " "
+                            + available.isSelected() + " " + number.getText() + " " + description.getText() + " " + categoryName.getText() + " "
+                            + price.getText() + " " + doesProductHasFile.isSelected() + " " + address.getText());
+                    dataOutputStream.flush();
+                }
+                else if (!doesProductHasFile.isSelected())
+                {
+                    dataOutputStream.writeUTF("AddNewProduct " + statusTextField.getText() +  " " + name.getText() +  " "
+                            + available.isSelected() + " " + number.getText() + " " + description.getText() + " " + categoryName.getText() + " "
+                            + price.getText() + " " + doesProductHasFile.isSelected() + " " + "DoesNotHaveFile");
+                    dataOutputStream.flush();
+                }
                 status.setText(dataInputStream.readUTF());
             } catch (IOException ex) {
                 System.out.println(ex.getMessage());
@@ -642,9 +809,11 @@ public class SellerMenu extends Menu {
         GridPane.setConstraints(categoryName, 0, 4);
         GridPane.setConstraints(price, 0, 5);
         GridPane.setConstraints(available, 0, 6);
-        GridPane.setConstraints(sendRequest, 0, 7);
-        GridPane.setConstraints(back, 0, 8);
-        GridPane.setConstraints(status, 0, 9);
+        GridPane.setConstraints(doesProductHasFile, 0, 7);
+        GridPane.setConstraints(address, 0, 8);
+        GridPane.setConstraints(sendRequest, 0, 9);
+        GridPane.setConstraints(back, 0, 10);
+        GridPane.setConstraints(status, 0, 11);
 
         GridPane.setHalignment(status, HPos.CENTER);
         GridPane.setHalignment(name, HPos.CENTER);
@@ -654,10 +823,12 @@ public class SellerMenu extends Menu {
         GridPane.setHalignment(categoryName, HPos.CENTER);
         GridPane.setHalignment(price, HPos.CENTER);
         GridPane.setHalignment(sendRequest, HPos.CENTER);
+        GridPane.setHalignment(doesProductHasFile, HPos.CENTER);
+        GridPane.setHalignment(address, HPos.CENTER);
         GridPane.setHalignment(back, HPos.CENTER);
         GridPane.setHalignment(status, HPos.CENTER);
 
-        gridPane.getChildren().addAll(statusTextField, name, available, number, description, categoryName, price, sendRequest, back, status);
+        gridPane.getChildren().addAll(statusTextField, name, available, number, description, categoryName, price, sendRequest, back, status, doesProductHasFile, address);
         super.mainPane.setCenter(gridPane);
 
         Menu.window.setScene(scene);
@@ -736,7 +907,7 @@ public class SellerMenu extends Menu {
         newWindow.showAndWait();
     }
 
-    public void handleShowProduct(Product product, Stage newWindow)
+    private void handleShowProduct(Product product, Stage newWindow)
     {
         Pane pane = product.showProductFullInfoGraphic();
         ((GridPane)pane).setAlignment(Pos.CENTER);
@@ -855,7 +1026,7 @@ public class SellerMenu extends Menu {
         newWindow.setScene(scene);
     }
 
-    public void handleEdit()
+    private void handleEdit()
     {
         super.setPane();
         GridPane gridPane = new GridPane();
@@ -915,9 +1086,16 @@ public class SellerMenu extends Menu {
         Menu.window.setScene(scene);
     }
 
-    public void handleLogout()
+    private void handleLogout()
     {
         try {
+            dataOutputStream.writeUTF("GetPortOfSeller " + account.getUsername());
+            dataOutputStream.flush();
+            Socket socket = new Socket("127.0.0.1", Integer.parseInt(dataInputStream.readUTF()));
+            DataOutputStream temp = new DataOutputStream(new BufferedOutputStream(socket.getOutputStream()));
+            temp.writeUTF("exit");
+            temp.flush();
+            temp.close();
             dataOutputStream.writeUTF("logout");
             dataOutputStream.flush();
         } catch (IOException e) {
