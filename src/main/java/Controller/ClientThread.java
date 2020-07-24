@@ -4,6 +4,7 @@ import Model.Account.Account;
 import Model.Account.AdminAccount;
 import Model.Account.BuyerAccount;
 import Model.Account.SellerAccount;
+import Model.Messaging.Chat;
 import Model.Product.Auction;
 import Model.Product.Product;
 import com.google.gson.Gson;
@@ -26,7 +27,7 @@ public class ClientThread extends Thread {
     private BuyerManager buyerManager;
     private SellerManager sellerManager;
     private ProductManager productManager;
-
+    private ChatManager chatManager;
     public ClientThread(Socket clientSocket, Server server) {
         this.server = server;
         this.clientSocket = clientSocket;
@@ -42,6 +43,7 @@ public class ClientThread extends Thread {
         buyerManager = new BuyerManager();
         sellerManager = new SellerManager();
         productManager = new ProductManager();
+        chatManager = new ChatManager();
     }
 
     @Override
@@ -54,6 +56,7 @@ public class ClientThread extends Thread {
             while (true)
             {
                 input = dataInputStream.readUTF();
+                String[] split = input.split(" ");
                 output = null;
                 if (input.startsWith("login"))
                 {
@@ -427,6 +430,23 @@ public class ClientThread extends Thread {
                 {
                     Objects.requireNonNull(Database.getBuyLogByID(Integer.parseInt(input.split(" ")[1]))).setDeliveryStatus("Received");
                 }
+                else if (input.startsWith("addMessage")) {
+                    chatManager.addMessage(Integer.parseInt(split[1]), split[2], account);
+                } else if (input.startsWith("getChatById")) {
+                    output = new Gson().toJson(Database.getChatById(Integer.parseInt(split[1])));
+                } else if (input.startsWith("chatWith")) {
+                    BuyerAccount buyerAccount = (BuyerAccount) account;
+                    if (buyerAccount.hasChatWith(Database.getAccountByUsername(split[1])) != null)
+                        output = String.valueOf(buyerAccount.hasChatWith(Database.getAccountByUsername(split[1])).getId());
+                    else {
+                        ArrayList<Account> arrayList = new ArrayList();
+                        arrayList.add(account);
+                        arrayList.add((Database.getAccountByUsername(split[1])));
+                        Chat chat = new Chat(arrayList);
+                        buyerAccount.addChat(chat);
+                        output = String.valueOf(chat.getId());
+                    }
+                }
                 else if (input.startsWith("Exit"))
                 {
                     clientSocket.close();
@@ -448,11 +468,11 @@ public class ClientThread extends Thread {
                     dataOutputStream.flush();
                 }
             }
-        }
-        catch (Exception e)
-        {
-            e.printStackTrace();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        } catch (Exception ex) {
+            ex.printStackTrace();
         }
     }
-}
+    }
 

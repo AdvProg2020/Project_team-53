@@ -4,6 +4,7 @@ import Model.Account.Account;
 import Model.Account.AdminAccount;
 import Model.Account.BuyerAccount;
 import Model.Account.SellerAccount;
+import Model.Messaging.Chat;
 import Model.Product.Auction;
 import Model.Product.Category;
 import Model.Product.DiscountAndOff.Discount;
