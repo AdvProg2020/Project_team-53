@@ -15,7 +15,7 @@ public class BuyerAccount extends Account {
     private ArrayList<Integer> discountIds = new ArrayList<>();
     private HashMap<Integer, Integer> numberOfUse = new HashMap<>();
     private Cart cart;
-    private ArrayList<Chat> chats = new ArrayList<>();
+    //private ArrayList<Chat> chats = new ArrayList<>();
 
 
     /*public void addChat(Chat chat) {
@@ -30,7 +30,8 @@ public class BuyerAccount extends Account {
 
     public Chat hasChatWith(Account account) {
         ArrayList<Account> arrayList;
-        for (Chat chat : chats) {
+        ArrayList<Chat> allChats = Database.getAllChats();
+        for (Chat chat : allChats) {
             arrayList = chat.getMembers();
             if (arrayList.size() == 2 && arrayList.contains(account))
                 return chat;
