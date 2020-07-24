@@ -15,7 +15,7 @@ import Model.Request.Request;
 import java.util.ArrayList;
 
 public class AdminManager {
-    private static int commission = 5 ;
+    private static int commission = 10 ;
     private static int minimumValue = 100;
 
     public static int getCommission() {
