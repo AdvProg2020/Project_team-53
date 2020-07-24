@@ -95,12 +95,24 @@ public class AccountManager {
         if (Database.getAccountByUsername(username) != null)
             return "Exist account with this username.";
         if (role.equalsIgnoreCase("Buyer")) {
-            Database.addAllAccounts(new BuyerAccount(username, firstName, lastName, password, email, phoneNumber, credit));
-            return "New buyer account registered.";
+            try {
+                Database.addAllAccounts(new BuyerAccount(username, firstName, lastName, password, email, phoneNumber, credit));
+                return "New buyer account registered.";
+            }
+            catch (Exception e)
+            {
+                return e.getMessage();
+            }
         }
         else if (role.equalsIgnoreCase("Seller")) {
-            Database.addRequest(new NewSellerRequest(username, firstName, lastName, password, email, company, credit, phoneNumber));
-            return "Your Request registered";
+            try {
+                Database.addRequest(new NewSellerRequest(username, firstName, lastName, password, email, company, credit, phoneNumber));
+                return "Your Request registered";
+            }
+            catch (Exception e)
+            {
+                return e.getMessage();
+            }
         }
         else
             return "Role is invalid!";

@@ -38,7 +38,9 @@ public class Database {
         return null;
     }
 
-
+    public static ArrayList<Chat> getAllChats() {
+        return allChats;
+    }
 
     public static ArrayList<Account> getAllAccounts() {
         return allAccounts;

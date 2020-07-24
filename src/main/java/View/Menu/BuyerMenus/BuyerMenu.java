@@ -327,7 +327,11 @@ public class BuyerMenu extends Menu {
                 button.getStyleClass().add("dark-blue");
                 button.setAlignment(Pos.CENTER);
                 button.setOnAction(e -> {
-                    handleShowAuction(string);
+                    Stage newWindow = new Stage();
+                    handleShowAuction(string, newWindow, "");
+                    newWindow.initModality(Modality.APPLICATION_MODAL);
+                    newWindow.showAndWait();
+                    newWindow.setOnCloseRequest(event -> handleMyAuctions());
                 });
                 GridPane.setConstraints(label, 0, i);
                 GridPane.setConstraints(button, 2, i);
@@ -368,7 +372,70 @@ public class BuyerMenu extends Menu {
         newWindow.showAndWait();
     }
 
-    private void handleShowAuction(String string){}
+    private void handleShowAuction(String string, Stage newWindow, String submitStatus){
+        try {
+            Pane pane = new GridPane();
+            ((GridPane)pane).setAlignment(Pos.CENTER);
+            Scene scene = new Scene(pane, 600, 400);
+            scene.getStylesheets().add(new File("Data/Styles/Buttons.css").toURI().toString());
+            scene.getStylesheets().add(new File("Data/Styles/textfield.css").toURI().toString());
+            scene.getStylesheets().add(new File("Data/Styles/backgrounds.css").toURI().toString());
+            scene.getStylesheets().add(new File("Data/Styles/choicebox.css").toURI().toString());
+            pane.getStyleClass().add("admin-popup");
+
+            Label auctionStatus = new Label();
+            String aStatus = "";
+            auctionStatus.setFont(Font.font(20));
+            dataOutputStream.writeUTF("GetMPBOfAuction " + string.split(":")[1].split("_")[0]);
+            dataOutputStream.flush();
+            aStatus += dataInputStream.readUTF();
+            aStatus += ":";
+            dataOutputStream.writeUTF("GetMPOfAuction " + string.split(":")[1].split("_")[0]);
+            dataOutputStream.flush();
+            aStatus += dataInputStream.readUTF();
+            auctionStatus.setText(aStatus);
+
+            Label submitStatus1 = new Label();
+            submitStatus1.setFont(Font.font(20));
+            submitStatus1.setText(submitStatus);
+
+            TextField textField = new TextField();
+            textField.setPromptText("New Price");
+            textField.getStyleClass().add("textfield.css");
+
+            Button submit = new Button("Submit");
+            submit.getStyleClass().add("dark-blue");
+            submit.setMaxWidth(Double.MAX_VALUE);
+            submit.setOnAction(e -> {
+                try {
+                    String id = string.split(":")[1].split("_")[0];
+                    dataOutputStream.writeUTF("SetMostPriceOfAuction " + id + " " + textField.getText());
+                    dataOutputStream.flush();
+                    handleShowAuction(string, newWindow, dataInputStream.readUTF());
+                } catch (IOException ex) {
+                    System.out.println(ex.getMessage());
+                }
+            });
+            GridPane.setConstraints(auctionStatus, 0, 0);
+            GridPane.setConstraints(textField, 0, 1);
+            GridPane.setConstraints(submit, 0, 2);
+            GridPane.setConstraints(submitStatus1, 0, 3);
+
+            GridPane.setHalignment(auctionStatus, HPos.CENTER);
+            GridPane.setHalignment(textField, HPos.CENTER);
+            GridPane.setHalignment(submit, HPos.CENTER);
+            GridPane.setHalignment(submitStatus1, HPos.CENTER);
+            ((GridPane)pane).setVgap(10);
+
+            pane.getChildren().addAll(auctionStatus, textField, submit, submitStatus1);
+
+            newWindow.setScene(scene);
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+        }
+    }
 
     public void handleEdit()
     {

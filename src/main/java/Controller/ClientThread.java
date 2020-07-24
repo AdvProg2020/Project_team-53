@@ -443,9 +443,28 @@ public class ClientThread extends Thread {
                         arrayList.add(account);
                         arrayList.add((Database.getAccountByUsername(split[1])));
                         Chat chat = new Chat(arrayList);
-                        buyerAccount.addChat(chat);
+                        //buyerAccount.addChat(chat);
                         output = String.valueOf(chat.getId());
                     }
+                }
+                else if (input.startsWith("GetMPBOfAuction"))
+                {
+                    try {
+                        output = new Gson().toJson(Objects.requireNonNull(Database.getAuctionByID(Integer.parseInt(input.split(" ")[1]))).getBuyerWithMostPrice().getUsername());
+                    }
+                    catch (Exception e)
+                    {
+                        output = "NoOne";
+                    }
+                }
+                else if (input.startsWith("GetMPOfAuction"))
+                {
+                    output = new Gson().toJson(Objects.requireNonNull(Database.getAuctionByID(Integer.parseInt(input.split(" ")[1]))).getMostPrice());
+                }
+                else if (input.startsWith("SetMostPriceOfAuction"))
+                {
+                    details = input.split(" ");
+                    output = buyerManager.setPriceForAuction(Integer.parseInt(details[1]), Integer.parseInt(details[2]), account);
                 }
                 else if (input.startsWith("Exit"))
                 {

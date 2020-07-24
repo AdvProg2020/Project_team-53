@@ -9,6 +9,8 @@ import Model.Product.Auction;
 import Model.Product.DiscountAndOff.Discount;
 import Model.Product.Product;
 
+import java.util.Objects;
+
 public class BuyerManager {
 
     public String showAllDiscounts(Account account) {
@@ -121,5 +123,13 @@ public class BuyerManager {
 
     public void joinAuction(Auction auction, Account account){
         auction.joinAuction((BuyerAccount) account);
+    }
+
+    public String setPriceForAuction(int auctionID, int price, Account account)
+    {
+        Auction auction = Database.getAuctionByID(auctionID);
+        if (!Objects.requireNonNull(auction).setMostPrice(price, (BuyerAccount) account))
+            return "Fail to set price";
+        return "Your price submitted";
     }
 }

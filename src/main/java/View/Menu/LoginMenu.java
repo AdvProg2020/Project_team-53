@@ -200,7 +200,7 @@ public class LoginMenu extends Menu{
                 if (role.getValue().equalsIgnoreCase("Buyer"))
                 {
                     dataOutputStream.writeUTF("register " + role.getValue() + " " + userName.getText() + " " + firstName.getText() + " " + lastName.getText() + " " + email.getText() + " "
-                            + phoneNumber.getText() + " " + password.getText() + " " + Integer.parseInt(credit.getText()) + " " + "");
+                            + phoneNumber.getText() + " " + password.getText() + " " + Integer.parseInt(credit.getText()) + " " + "IsBuyer");
                     dataOutputStream.flush();
                     status.setText(dataInputStream.readUTF());
                 }

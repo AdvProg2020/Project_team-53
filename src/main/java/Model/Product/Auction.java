@@ -26,6 +26,7 @@ public class Auction extends Thread{
         mostPrice = 0;
         currentDate = new Date();
         this.auctionID = numberOfAllAuctions;
+        allBuyers = new ArrayList<>();
         numberOfAllAuctions++;
     }
 
@@ -87,5 +88,13 @@ public class Auction extends Thread{
         buyerWithMostPrice.setCredit((int) (buyerWithMostPrice.getCredit() - mostPrice));
         Objects.requireNonNull(Database.getAccountByUsername(product.getSellerUsername())).setCredit((int) (Objects.requireNonNull(Database.getAccountByUsername(product.getSellerUsername())).getCredit() + mostPrice));
         Log.addLog(buyerWithMostPrice.getUsername(), product.getSellerUsername(), (int) mostPrice, product.getProductId(), 0, 0, "Bought in Auction", product.doesHasFile);
+    }
+
+    public BuyerAccount getBuyerWithMostPrice() {
+        return buyerWithMostPrice;
+    }
+
+    public long getMostPrice() {
+        return mostPrice;
     }
 }
