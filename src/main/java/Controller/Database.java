@@ -4,6 +4,7 @@ import Model.Account.Account;
 import Model.Account.AdminAccount;
 import Model.Account.BuyerAccount;
 import Model.Account.SellerAccount;
+import Model.Log.BuyLog;
 import Model.Messaging.Chat;
 import Model.Product.Auction;
 import Model.Product.Category;
@@ -305,5 +306,21 @@ public class Database {
             }
         }
         return res;
+    }
+
+    public static BuyLog getBuyLogByID(int id)
+    {
+        ArrayList<BuyerAccount> allBuyers = getAllBuyerAccounts();
+        ArrayList<BuyLog> allBuyLogs = new ArrayList<>();
+        for (BuyerAccount buyer : allBuyers) {
+            allBuyLogs.addAll(buyer.getBuyLogs());
+        }
+        for (BuyLog buyLog : allBuyLogs) {
+            if (buyLog.getLogId() == id)
+            {
+                return buyLog;
+            }
+        }
+        return null;
     }
 }
